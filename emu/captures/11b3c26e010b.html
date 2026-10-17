@@ -1,0 +1,34 @@
+
+<head>
+<title>NVDA Browser Test Case</title>
+</head>
+<body lang="en" onload="document.getElementById('loadStatus').innerHTML='Test page load complete'">
+<p>Before Test Case Marker</p>
+<p id="loadStatus">Loading...</p>
+
+			<div>
+				<div
+					contenteditable=""
+					spellcheck="false"
+					role="textbox"
+					aria-multiline="true"
+				><p>This is a line with no annotation</p>
+				<p><span
+						aria-description="User nearby, Aaron"
+					>Here is a sentence that is being edited by someone else.</span>
+					<b>Multiple can edit this.</b></p>
+				<p>An element with a role, follow <a
+					href="www.google.com"
+					aria-description="opens in a new tab"
+					>to google's</a
+				> website</p>
+				<p>Testing the title attribute, <a
+					href="www.google.com"
+					title="conduct a search"
+					>to google's</a
+				> website</p>
+				</div>
+			</div>
+		
+<p>After Test Case Marker</p>
+</body>

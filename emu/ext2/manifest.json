@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "ae-spike-tree",
+  "version": "0.0.1",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA+vWq8DU+4MBu9TUvZRHxRa4B2JdcV6zBjrdQcoYuH15rCNPgLME6mRJSbFvc8CyqGodjbbyGqde0VAl8ZUPGoEOEe7PCiwz4LFJozENCwKEy0ua/IJAv0QUvb3QwWJfEGGDzJl3T9CuxfgI/yX6V7585I4Gi7+g5lB0yQJcKcHicSIHM0gA+7c3fqCmb37lmZq/rK0lMT4FII18GhxLS9K/hKguiJ+5LFkD+UkJpZnxs2JLPZsBKDLp1GC3FCFTZyAjtqjFJcneR00cxh8j2J45w9tkDj8WUts+TkFY4qEAW7WbNLltHDWs8sHjQNLEzFPFcYGDcHLHUVTzqhk8omQIDAQAB",
+  "permissions": [
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "bg.js"
+  },
+  "automation": {
+    "desktop": true,
+    "interact": true,
+    "matches": [
+      "<all_urls>"
+    ]
+  }
+}

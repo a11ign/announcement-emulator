@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+q2/venv/
+nvda-src/
+nvda-appdir/
+chromium-src/
+cldr-src/
+chrome155/
+libs/
+tools/

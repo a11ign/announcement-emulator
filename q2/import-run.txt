@@ -1,0 +1,16 @@
+OK   controlTypes
+OK   characterProcessing
+OK   speech
+OK   speech.speech
+OK   speech.commands
+OK   textInfos
+OK   browseMode
+OK   virtualBuffers
+OK   documentBase
+OK   speechDictHandler
+LEDGER ['NVDAHelper', 'NVDAObjects', 'api', 'braille', 'comtypes', 'ctypes.FormatError', 'ctypes.GetLastError', 'ctypes.HRESULT', 'ctypes.OleDLL', 'ctypes.WINFUNCTYPE', 'ctypes.WinDLL', 'ctypes.WinError', 'ctypes.get_last_error', 'ctypes.oledll', 'ctypes.set_last_error', 'ctypes.windll', 'easeOfAccess', 'eventHandler', 'gui', 'gui.contextHelp', 'gui.dpiScalingHelper', 'gui.guiHelper', 'mouseHandler', 'nvwave', 'review', 'tones', 'ui', 'vision', 'winBindings', 'winBindings.advapi32', 'winBindings.dbgHelp', 'winBindings.gdi32', 'winBindings.kernel32', 'winBindings.ole32', 'winBindings.shell32', 'winBindings.user32', 'winBindings.version', 'winBindings.wtsapi32', 'winKernel', 'winUser', 'winreg', 'winsound', 'wx']
+heading1 -> ['Welcome', 'heading']
+link -> ['Home', 'link']
+button -> ['Send', 'button']
+checkbox -> ['Agree', 'check box', 'checked']
+edit-required -> ['Name', 'edit', 'required']

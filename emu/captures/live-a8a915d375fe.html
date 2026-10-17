@@ -1,0 +1,54 @@
+
+<head>
+<meta charset="UTF-8">
+<title>NVDA Browser Test Case</title>
+</head>
+<body lang="en" onload="document.getElementById('loadStatus').innerHTML='Test page load complete'">
+<p>Before Test Case Marker</p>
+<p id="loadStatus">Loading...</p>
+
+		<div class="editor" contenteditable spellcheck="false" role="textbox" aria-multiline="true">
+			<p>
+				<span aria-details="endnote-details">doc-endnote,</span>
+				<span aria-details="footnote-details">doc-footnote,</span>
+				<span aria-details="comment-details">comment,</span>
+				<span aria-details="definition-details-as-tag" role="term">definition,</span>
+				<span aria-details="definition-details-as-role" role="term">definition,</span>
+				<span aria-details="unknown-details">form</span>
+			</p>
+		</div>
+		<div>
+			<p>
+				<!-- Supported by Chrome attribute details-roles -->
+				<div id="endnote-details" role="doc-endnote">details with role doc-endnote</div>
+				<div id="footnote-details" role="doc-footnote">details with role doc-footnote</div>
+				<div id="comment-details" role="comment">details with role comment</div>
+				<!--
+					When using the following syntax, the dfn tag holds the role "term",
+					and the accompanying text becomes the "definition".
+					Authors may expected the aria-details to target the definition.
+					It is uncertain as to which element aria-details
+					should point towards, but we assume the dfn tag in this case,
+					as the accompanying definition text is not specifically captured by an HTML element.
+				-->
+				<p>
+					<dfn id="definition-details-as-tag">definition</dfn>:
+					details with tag definition
+				</p>
+				<!--
+					Authors may expected the aria-details to target the definition.
+					As the definition text is specifically captured by an HTML element with role "definition",
+					we map to that element.
+					This is inconsistent with previous example, using the dfn tag.
+				-->
+				<p>
+					<span role="term">definition</span>:
+					<span id="definition-details-as-role" role="definition">details with role definition</span>
+				</p>
+				<!-- Included as "form" is not supported by Chrome attribute details-roles -->
+				<div id="unknown-details" role="form">details with role form</div>
+			</p>
+		</div>
+		
+<p>After Test Case Marker</p>
+</body>

@@ -1,0 +1,29 @@
+
+<head>
+<meta charset="UTF-8">
+<title>NVDA Browser Test Case</title>
+</head>
+<body lang="en" onload="document.getElementById('loadStatus').innerHTML='Test page load complete'">
+<p>Before Test Case Marker</p>
+<p id="loadStatus">Loading...</p>
+
+		<!-- First a bunch of paragraphs that don't match text regex -->
+		<p>Header</p>
+		<p>Liberal MP: 1904–1908</p>
+		<p>.</p>
+		<p>…</p>
+		<p>5.</p>
+		<p>test....</p>
+		<p>a.b</p>
+		<p></p>
+		<!-- Now a bunch of matching paragraphs -->
+		<p>Hello, world!</p>
+		<p>He replied, "That's wonderful."</p>
+		<p>He replied, "That's wonderful".</p>
+		<p>He replied, "That's wonderful."[4]</p>
+		<p>Предложение по-русски.</p>
+		<p>我不会说中文！</p>
+		<p>Bye-bye, world!</p>
+	
+<p>After Test Case Marker</p>
+</body>

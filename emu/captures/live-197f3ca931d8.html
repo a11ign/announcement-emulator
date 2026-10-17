@@ -1,0 +1,24 @@
+
+<head>
+<meta charset="UTF-8">
+<title>NVDA Browser Test Case</title>
+</head>
+<body lang="en" onload="document.getElementById('loadStatus').innerHTML='Test page load complete'">
+<p>Before Test Case Marker</p>
+<p id="loadStatus">Loading...</p>
+
+			<div>
+			  <button id='trigger0'>trigger 0</button>
+			  <h4 id='target0' tabindex='-1'>target 0</h4>
+			</div>
+			<script>
+				let trigger0 = document.querySelector('#trigger0');
+				trigger0.addEventListener('click', e => {
+				  let focusTarget = document.querySelector('#target0');
+				  trigger0.remove();
+				  focusTarget.focus();
+				})
+			</script>
+		
+<p>After Test Case Marker</p>
+</body>

@@ -1,0 +1,325 @@
+in scope: ['test_i7562', 'test_i12147', 'test_ariaRoleDescription_focus', 'test_ariaRoleDescription_inline_browseMode', 'test_ariaRoleDescription_block_browseMode', 'test_ariaRoleDescription_inline_contentEditable', 'test_ariaRoleDescription_block_contentEditable', 'test_ariaDescription_focusMode', 'test_ariaDescription_browseMode', 'test_mark_focus', 'test_preventDuplicateSpeechFromDescription_browse_tab', 'test_quickNavTargetReporting', 'test_focusTargetReporting', 'test_focus_mode_on_focusable_read_only_lists', 'test_i13307', 'test_ariaErrorMessage']
+Traceback (most recent call last):
+  File "/home/agent/spikes/announcement-emulator-5661/emu/run_cases.py", line 24, in run_live
+    try: act = d.press(k)
+               ~~~~~~~^^^
+  File "/home/agent/spikes/announcement-emulator-5661/emu/live.py", line 67, in press
+    else: return driver.press(self.b, key)
+                 ~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/emu/driver.py", line 126, in press
+    b.passThrough = not b.passThrough
+    ^^^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/treeInterceptorHandler.py", line 159, in _set_passThrough
+    if self is focusObj.treeInterceptor:
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'treeInterceptor'
+Traceback (most recent call last):
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/speech/speech.py", line 816, in speakObject
+    sequence = getObjectSpeech(
+    	obj,
+    	reason,
+    	_prefixSpeechCommand,
+    )
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/speech/speech.py", line 866, in getObjectSpeech
+    info = obj.makeTextInfo(textInfos.POSITION_SELECTION)
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/documentBase.py", line 76, in makeTextInfo
+    return self.TextInfo(self, position)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 171, in __init__
+    tempTi, tempObj = self._getSelectionBase()
+                      ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 203, in _getSelectionBase
+    ti, obj = self._findContentDescendant(self.obj, textInfos.POSITION_CARET)
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 272, in _findContentDescendant
+    obj.appModule.helperLocalBindingHandle,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'
+== test_i7562 NVDA+space FAIL
+   expected: 'Focus mode'
+   actual:   "ERR AttributeError: 'NoneType' object has no attribute 'treeInterceptor'"
+== test_i7562 tab FAIL
+   expected: 'section  multi line  editable  before'
+   actual:   "ERR AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'"
+== test_i7562 downArrow FAIL
+   expected: 'list  bullet  frogs'
+   actual:   'before'
+== test_i7562 downArrow FAIL
+   expected: 'bullet  birds'
+   actual:   'list    frogs'
+== test_i7562 downArrow FAIL
+   expected: 'out of list  after'
+   actual:   'list    birds'
+== test_i12147 tab PASS
+== test_i12147 enter PASS
+== test_ariaRoleDescription_focus tab PASS
+== test_ariaRoleDescription_focus NVDA+space PASS
+== test_ariaRoleDescription_focus tab FAIL
+   expected: 'Meat  pizza'
+   actual:   'NVDA Browser Test Case  document\nMeat  pizza'
+== test_ariaRoleDescription_inline_browseMode downArrow FAIL
+   expected: 'Start  Unlabeled graphic  Our logo. To get missing image descriptions, open the context menu.  End'
+   actual:   'Start  Our logo  drawing    out of drawing  End'
+== test_ariaRoleDescription_inline_browseMode control+rightArrow FAIL
+   expected: 'Unlabeled graphic  Our'
+   actual:   'space'
+== test_ariaRoleDescription_inline_browseMode control+rightArrow FAIL
+   expected: 'logo.'
+   actual:   'Our logo  drawing\nspace'
+== test_ariaRoleDescription_block_browseMode downArrow PASS
+== test_ariaRoleDescription_block_browseMode downArrow PASS
+== test_ariaRoleDescription_block_browseMode downArrow PASS
+Traceback (most recent call last):
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/speech/speech.py", line 816, in speakObject
+    sequence = getObjectSpeech(
+    	obj,
+    	reason,
+    	_prefixSpeechCommand,
+    )
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/speech/speech.py", line 866, in getObjectSpeech
+    info = obj.makeTextInfo(textInfos.POSITION_SELECTION)
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/documentBase.py", line 76, in makeTextInfo
+    return self.TextInfo(self, position)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 171, in __init__
+    tempTi, tempObj = self._getSelectionBase()
+                      ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 203, in _getSelectionBase
+    ti, obj = self._findContentDescendant(self.obj, textInfos.POSITION_CARET)
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 272, in _findContentDescendant
+    obj.appModule.helperLocalBindingHandle,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'
+== test_ariaRoleDescription_inline_contentEditable NVDA+space FAIL
+   expected: 'Focus mode'
+   actual:   ''
+== test_ariaRoleDescription_inline_contentEditable tab FAIL
+   expected: 'section  multi line  editable  Top line'
+   actual:   "ERR AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'"
+== test_ariaRoleDescription_inline_contentEditable downArrow FAIL
+   expected: 'Start  Unlabeled graphic  Our logo. To get missing image descriptions, open the context menu.    End'
+   actual:   'Top line'
+== test_ariaRoleDescription_inline_contentEditable control+rightArrow FAIL
+   expected: 'Unlabeled graphic  Our logo. To get missing image descriptions, open the context menu.    out of Unlabeled graphic'
+   actual:   'l'
+== test_ariaRoleDescription_inline_contentEditable control+rightArrow FAIL
+   expected: 'End'
+   actual:   'i'
+Traceback (most recent call last):
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/speech/speech.py", line 816, in speakObject
+    sequence = getObjectSpeech(
+    	obj,
+    	reason,
+    	_prefixSpeechCommand,
+    )
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/speech/speech.py", line 866, in getObjectSpeech
+    info = obj.makeTextInfo(textInfos.POSITION_SELECTION)
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/documentBase.py", line 76, in makeTextInfo
+    return self.TextInfo(self, position)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 171, in __init__
+    tempTi, tempObj = self._getSelectionBase()
+                      ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 203, in _getSelectionBase
+    ti, obj = self._findContentDescendant(self.obj, textInfos.POSITION_CARET)
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 272, in _findContentDescendant
+    obj.appModule.helperLocalBindingHandle,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'
+== test_ariaRoleDescription_block_contentEditable NVDA+space FAIL
+   expected: 'Focus mode'
+   actual:   ''
+== test_ariaRoleDescription_block_contentEditable tab FAIL
+   expected: 'section  multi line  editable  Top line'
+   actual:   "ERR AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'"
+== test_ariaRoleDescription_block_contentEditable downArrow FAIL
+   expected: 'warning  Wet paint!'
+   actual:   'Top line'
+== test_ariaRoleDescription_block_contentEditable downArrow FAIL
+   expected: 'Please be careful.'
+   actual:   'warning  Wet paint!'
+== test_ariaRoleDescription_block_contentEditable downArrow FAIL
+   expected: 'out of warning  End'
+   actual:   'Please be careful.'
+Traceback (most recent call last):
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/speech/speech.py", line 816, in speakObject
+    sequence = getObjectSpeech(
+    	obj,
+    	reason,
+    	_prefixSpeechCommand,
+    )
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/speech/speech.py", line 866, in getObjectSpeech
+    info = obj.makeTextInfo(textInfos.POSITION_SELECTION)
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/documentBase.py", line 76, in makeTextInfo
+    return self.TextInfo(self, position)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 171, in __init__
+    tempTi, tempObj = self._getSelectionBase()
+                      ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 203, in _getSelectionBase
+    ti, obj = self._findContentDescendant(self.obj, textInfos.POSITION_CARET)
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 272, in _findContentDescendant
+    obj.appModule.helperLocalBindingHandle,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'
+== test_ariaDescription_focusMode tab FAIL
+   expected: 'edit  multi line  This is a line with no annotation\nFocus mode'
+   actual:   "ERR AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'"
+== test_ariaDescription_focusMode downArrow FAIL
+   expected: 'User nearby, Aaron  Here is a sentence that is being edited by someone else.  Multiple can edit this.'
+   actual:   'This is a line with no annotation'
+== test_ariaDescription_focusMode downArrow FAIL
+   expected: "An element with a role, follow  link  opens in a new tab  to google's  website"
+   actual:   'User nearby, Aaron  Here is a sentence that is being edited by someone else.  Multiple can edit this.'
+== test_ariaDescription_focusMode downArrow FAIL
+   expected: "Testing the title attribute,  link  to google's  website"
+   actual:   "An element with a role, follow  link  opens in a new tab  to google's  website"
+== test_ariaDescription_browseMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_mark_focus NVDA+space FAIL
+   expected: 'Focus mode'
+   actual:   ''
+== test_mark_focus tab FAIL
+   expected: 'highlighted\nKangaroo  link'
+   actual:   'NVDA Browser Test Case  document\nhighlighted\nKangaroo  link'
+== test_preventDuplicateSpeechFromDescription_browse_tab tab PASS
+== test_preventDuplicateSpeechFromDescription_browse_tab tab PASS
+== test_quickNavTargetReporting h PASS
+== test_quickNavTargetReporting control+home PASS
+== test_quickNavTargetReporting h PASS
+== test_focusTargetReporting tab PASS
+== test_focusTargetReporting tab PASS
+== test_focusTargetReporting shift+tab PASS
+== test_focusTargetReporting tab PASS
+== test_focusTargetReporting shift+tab PASS
+== test_focusTargetReporting NVDA+space FAIL
+   expected: 'Focus mode'
+   actual:   ''
+== test_focusTargetReporting tab FAIL
+   expected: 'Some name.  article  A bunch of text.\nFocus Target  link'
+   actual:   'NVDA Browser Test Case  document\nSome name.  article  A bunch of text.\nFocus Target  link'
+== test_focusTargetReporting shift+tab FAIL
+   expected: 'before Target  link'
+   actual:   'NVDA Browser Test Case  document\nbefore Target  link'
+== test_focusTargetReporting tab FAIL
+   expected: 'Some name.  article  A bunch of text.\nFocus Target  link'
+   actual:   'NVDA Browser Test Case  document\nSome name.  article  A bunch of text.\nFocus Target  link'
+== test_focus_mode_on_focusable_read_only_lists tab PASS
+== test_focus_mode_on_focusable_read_only_lists tab FAIL
+   expected: 'Messages  list\nlevel 1  Todd Kloots Hello all. At 1:30 PM  1 of 1\nFocus mode'
+   actual:   'NVDA Browser Test Case  document\nMessages  list\nlevel 1  Todd Kloots Hello all. At 1:30 PM  1 of 1'
+== test_i13307 tab PASS
+== test_i13307 tab PASS
+== test_i13307 tab PASS
+== test_i13307 tab PASS
+Traceback (most recent call last):
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/speech/speech.py", line 816, in speakObject
+    sequence = getObjectSpeech(
+    	obj,
+    	reason,
+    	_prefixSpeechCommand,
+    )
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/speech/speech.py", line 866, in getObjectSpeech
+    info = obj.makeTextInfo(textInfos.POSITION_SELECTION)
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/documentBase.py", line 76, in makeTextInfo
+    return self.TextInfo(self, position)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 171, in __init__
+    tempTi, tempObj = self._getSelectionBase()
+                      ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 203, in _getSelectionBase
+    ti, obj = self._findContentDescendant(self.obj, textInfos.POSITION_CARET)
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 272, in _findContentDescendant
+    obj.appModule.helperLocalBindingHandle,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'
+Traceback (most recent call last):
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/speech/speech.py", line 707, in getObjectPropertiesSpeech
+    newPropertyValues[name] = getattr(obj, tryName)
+                              ~~~~~~~^^^^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/baseObject.py", line 59, in __get__
+    return instance._getPropertyViaCache(self.fget)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/baseObject.py", line 167, in _getPropertyViaCache
+    val = getterMethod(self)
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/__init__.py", line 2012, in _get_errorMessage
+    errorNode = self._getIA2RelationFirstTarget(IAccessibleHandler.RelationType.ERROR)
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/__init__.py", line 1900, in _getIA2RelationFirstTarget
+    for target in targetsGen:
+                  ^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/__init__.py", line 1872, in _getIA2TargetsForRelationsOfType
+    targets, count = acc.relationTargetsOfType(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Facade' object has no attribute 'relationTargetsOfType'
+Traceback (most recent call last):
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/speech/speech.py", line 816, in speakObject
+    sequence = getObjectSpeech(
+    	obj,
+    	reason,
+    	_prefixSpeechCommand,
+    )
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/speech/speech.py", line 866, in getObjectSpeech
+    info = obj.makeTextInfo(textInfos.POSITION_SELECTION)
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/documentBase.py", line 76, in makeTextInfo
+    return self.TextInfo(self, position)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 171, in __init__
+    tempTi, tempObj = self._getSelectionBase()
+                      ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 203, in _getSelectionBase
+    ti, obj = self._findContentDescendant(self.obj, textInfos.POSITION_CARET)
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/ia2TextMozilla.py", line 272, in _findContentDescendant
+    obj.appModule.helperLocalBindingHandle,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'
+Traceback (most recent call last):
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/speech/speech.py", line 707, in getObjectPropertiesSpeech
+    newPropertyValues[name] = getattr(obj, tryName)
+                              ~~~~~~~^^^^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/baseObject.py", line 59, in __get__
+    return instance._getPropertyViaCache(self.fget)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/baseObject.py", line 167, in _getPropertyViaCache
+    val = getterMethod(self)
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/__init__.py", line 2012, in _get_errorMessage
+    errorNode = self._getIA2RelationFirstTarget(IAccessibleHandler.RelationType.ERROR)
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/__init__.py", line 1900, in _getIA2RelationFirstTarget
+    for target in targetsGen:
+                  ^^^^^^^^^^
+  File "/home/agent/spikes/announcement-emulator-5661/nvda-src/source/NVDAObjects/IAccessible/__init__.py", line 1872, in _getIA2TargetsForRelationsOfType
+    targets, count = acc.relationTargetsOfType(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Facade' object has no attribute 'relationTargetsOfType'
+== test_ariaErrorMessage NVDA+space FAIL
+   expected: 'Focus mode'
+   actual:   ''
+== test_ariaErrorMessage tab FAIL
+   expected: 'Input 1  edit  blank'
+   actual:   "ERR AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'"
+== test_ariaErrorMessage tab FAIL
+   expected: 'Input 2  edit  invalid entry  Error 2  selected b'
+   actual:   "ERR AttributeError: 'Facade' object has no attribute 'relationTargetsOfType'"
+== test_ariaErrorMessage tab FAIL
+   expected: 'Input 3  edit  blank'
+   actual:   "ERR AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'"
+== test_ariaErrorMessage tab FAIL
+   expected: 'Input 4  edit  invalid entry  Error 4  blank'
+   actual:   "ERR AttributeError: 'Facade' object has no attribute 'relationTargetsOfType'"
+== test_ariaErrorMessage NVDA+space PASS
+== test_ariaErrorMessage e PASS
+== test_ariaErrorMessage e FAIL
+   expected: 'Input 2  edit  invalid entry  Error 2  b'
+   actual:   'Input 2  edit  invalid entry  b'
+== test_ariaErrorMessage e PASS
+== test_ariaErrorMessage e FAIL
+   expected: 'Input 4  edit  invalid entry  Error 4'
+   actual:   'Input 4  edit  invalid entry'
+RESULT 29 / 66
+exit 0

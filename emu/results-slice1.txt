@@ -1,0 +1,21 @@
+in scope: ['test_ariaRoleDescription_inline_browseMode', 'test_ariaRoleDescription_block_browseMode', 'test_ariaDescription_browseMode', 'test_quickNavTargetReporting']
+== test_ariaRoleDescription_inline_browseMode downArrow FAIL
+   expected: 'Start  Unlabeled graphic  Our logo. To get missing image descriptions, open the context menu.  End'
+   actual:   'Start  Our logo  drawing    out of drawing  End'
+== test_ariaRoleDescription_inline_browseMode control+rightArrow FAIL
+   expected: 'Unlabeled graphic  Our'
+   actual:   'space'
+== test_ariaRoleDescription_inline_browseMode control+rightArrow FAIL
+   expected: 'logo.'
+   actual:   'Our logo  drawing\nspace'
+== test_ariaRoleDescription_block_browseMode downArrow PASS
+== test_ariaRoleDescription_block_browseMode downArrow PASS
+== test_ariaRoleDescription_block_browseMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_quickNavTargetReporting h PASS
+== test_quickNavTargetReporting control+home PASS
+== test_quickNavTargetReporting h PASS
+RESULT 10 / 13

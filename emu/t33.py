@@ -1,0 +1,12 @@
+import sys; sys.path.insert(0,'.')
+import boot, live, driver, textInfos, api
+d = live.LiveDoc('<div><p>The word <mark>Kangaroo</mark> is important.</p></div>')
+b = d.b; d.place_caret('Test page load complete')
+print(repr(d.press('downArrow')))
+print(repr(d.press('numpad6')))
+ri = api.getReviewPosition(); print('review pos', type(ri).__name__, ri._startOffset, ri._endOffset)
+print(repr(d.press('numpad6')))
+ri = api.getReviewPosition(); print('review pos', ri._startOffset, ri._endOffset)
+w = ri.copy(); w.expand(textInfos.UNIT_WORD); print('word', w._startOffset, w._endOffset, repr(w.text))
+for f in w.getTextWithFields({}): print('  ', f if isinstance(f,str) else (f.command, f.field.get('role') if f.field else None))
+d.close()

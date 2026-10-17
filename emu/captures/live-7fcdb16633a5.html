@@ -1,0 +1,33 @@
+
+<head>
+<meta charset="UTF-8">
+<title>NVDA Browser Test Case</title>
+</head>
+<body lang="en" onload="document.getElementById('loadStatus').innerHTML='Test page load complete'">
+<p>Before Test Case Marker</p>
+<p id="loadStatus">Loading...</p>
+
+		<h2>Native valid</h2>
+		<label for="i1">Input 1</label>
+		<input type="text" autocomplete="off" id="i1" aria-errormessage="e1" />
+		<p id="e1">Error 1</p>
+
+		<h2>Native invalid</h2>
+		<label for="i2">Input 2</label>
+		<input type="text" autocomplete="off"  id="i2" pattern="a" value="b" aria-errormessage="e2" />
+		<p id="e2">Error 2</p>
+
+		<h2>ARIA valid</h2>
+		<label id="l3">Input 3</label>
+		<div contenteditable role="textbox" aria-multiline="false" aria-labelledby="l3" aria-errormessage="e3"
+		     aria-invalid="false"></div>
+		<p id="e3">Error 3</p>
+
+		<h2>ARIA valid</h2>
+		<label id="l4">Input 4</label>
+		<div contenteditable role="textbox" aria-multiline="false" aria-labelledby="l4" aria-errormessage="e4"
+		     aria-invalid="true"></div>
+		<p id="e4">Error 4</p>
+	
+<p>After Test Case Marker</p>
+</body>

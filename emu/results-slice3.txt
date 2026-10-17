@@ -1,0 +1,148 @@
+in scope: 18 of 47 ['test_i7562', 'test_focus_mode_on_focusable_read_only_lists', 'test_ariaDescription_focusMode', 'test_ariaDescription_browseMode', 'test_i13307', 'test_ariaRoleDescription_focus', 'test_ariaRoleDescription_inline_browseMode', 'test_ariaRoleDescription_block_browseMode', 'test_ariaRoleDescription_inline_contentEditable', 'test_ariaRoleDescription_block_contentEditable', 'ARIAInvalid_spellingAndGrammar', 'test_ariaErrorMessage', 'test_mark_focus', 'test_i12147', 'preventDuplicateSpeechFromDescription_focus', 'test_preventDuplicateSpeechFromDescription_browse_tab', 'test_quickNavTargetReporting', 'test_focusTargetReporting']
+== test_i7562 NVDA+space PASS
+== test_i7562 tab FAIL
+   expected: 'section  multi line  editable  before'
+   actual:   "ERR AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'"
+== test_i7562 downArrow FAIL
+   expected: 'list  bullet  frogs'
+   actual:   'before'
+== test_i7562 downArrow FAIL
+   expected: 'bullet  birds'
+   actual:   'list    frogs'
+== test_i7562 downArrow FAIL
+   expected: 'out of list  after'
+   actual:   'list    birds'
+== test_focus_mode_on_focusable_read_only_lists tab PASS
+== test_focus_mode_on_focusable_read_only_lists tab FAIL
+   expected: 'Messages  list\nlevel 1  Todd Kloots Hello all. At 1:30 PM  1 of 1\nFocus mode'
+   actual:   'Messages  list\nlevel 1  Todd Kloots Hello all. At 1:30 PM  1 of 1'
+== test_ariaDescription_focusMode tab FAIL
+   expected: 'edit  multi line  This is a line with no annotation\nFocus mode'
+   actual:   "ERR AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'"
+== test_ariaDescription_focusMode downArrow FAIL
+   expected: 'User nearby, Aaron  Here is a sentence that is being edited by someone else.  Multiple can edit this.'
+   actual:   'This is a line with no annotation'
+== test_ariaDescription_focusMode downArrow FAIL
+   expected: "An element with a role, follow  link  opens in a new tab  to google's  website"
+   actual:   'User nearby, Aaron  Here is a sentence that is being edited by someone else.  Multiple can edit this.'
+== test_ariaDescription_focusMode downArrow FAIL
+   expected: "Testing the title attribute,  link  to google's  website"
+   actual:   "An element with a role, follow  link  opens in a new tab  to google's  website"
+== test_ariaDescription_browseMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_i13307 tab PASS
+== test_i13307 tab PASS
+== test_i13307 tab PASS
+== test_i13307 tab PASS
+== test_ariaRoleDescription_focus tab PASS
+== test_ariaRoleDescription_focus NVDA+space PASS
+== test_ariaRoleDescription_focus tab PASS
+== test_ariaRoleDescription_inline_browseMode downArrow FAIL
+   expected: 'Start  Unlabeled graphic  Our logo. To get missing image descriptions, open the context menu.  End'
+   actual:   'Start  Our logo  drawing    out of drawing  End'
+== test_ariaRoleDescription_inline_browseMode control+rightArrow FAIL
+   expected: 'Unlabeled graphic  Our'
+   actual:   'space'
+== test_ariaRoleDescription_inline_browseMode control+rightArrow FAIL
+   expected: 'logo.'
+   actual:   'Our logo  drawing\nspace'
+== test_ariaRoleDescription_block_browseMode downArrow PASS
+== test_ariaRoleDescription_block_browseMode downArrow PASS
+== test_ariaRoleDescription_block_browseMode downArrow PASS
+== test_ariaRoleDescription_inline_contentEditable NVDA+space PASS
+== test_ariaRoleDescription_inline_contentEditable tab FAIL
+   expected: 'section  multi line  editable  Top line'
+   actual:   "ERR AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'"
+== test_ariaRoleDescription_inline_contentEditable downArrow FAIL
+   expected: 'Start  Unlabeled graphic  Our logo. To get missing image descriptions, open the context menu.    End'
+   actual:   'Top line'
+== test_ariaRoleDescription_inline_contentEditable control+rightArrow FAIL
+   expected: 'Unlabeled graphic  Our logo. To get missing image descriptions, open the context menu.    out of Unlabeled graphic'
+   actual:   'l'
+== test_ariaRoleDescription_inline_contentEditable control+rightArrow FAIL
+   expected: 'End'
+   actual:   'i'
+== test_ariaRoleDescription_block_contentEditable NVDA+space PASS
+== test_ariaRoleDescription_block_contentEditable tab FAIL
+   expected: 'section  multi line  editable  Top line'
+   actual:   "ERR AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'"
+== test_ariaRoleDescription_block_contentEditable downArrow FAIL
+   expected: 'warning  Wet paint!'
+   actual:   'Top line'
+== test_ariaRoleDescription_block_contentEditable downArrow FAIL
+   expected: 'Please be careful.'
+   actual:   'warning  Wet paint!'
+== test_ariaRoleDescription_block_contentEditable downArrow FAIL
+   expected: 'out of warning  End'
+   actual:   'Please be careful.'
+== ARIAInvalid_spellingAndGrammar downArrow FAIL
+   expected: 'Big  spelling error  caat  meos'
+   actual:   'Big  caat  meos'
+== ARIAInvalid_spellingAndGrammar downArrow FAIL
+   expected: 'Small  grammar error  a dog  woofs'
+   actual:   'Small  a dog  woofs'
+== test_ariaErrorMessage NVDA+space PASS
+== test_ariaErrorMessage tab FAIL
+   expected: 'Input 1  edit  blank'
+   actual:   "ERR AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'"
+== test_ariaErrorMessage tab FAIL
+   expected: 'Input 2  edit  invalid entry  Error 2  selected b'
+   actual:   "ERR AttributeError: 'Facade' object has no attribute 'relationTargetsOfType'"
+== test_ariaErrorMessage tab FAIL
+   expected: 'Input 3  edit  blank'
+   actual:   "ERR AttributeError: 'NoneType' object has no attribute 'helperLocalBindingHandle'"
+== test_ariaErrorMessage tab FAIL
+   expected: 'Input 4  edit  invalid entry  Error 4  blank'
+   actual:   "ERR AttributeError: 'Facade' object has no attribute 'relationTargetsOfType'"
+== test_ariaErrorMessage NVDA+space PASS
+== test_ariaErrorMessage e PASS
+== test_ariaErrorMessage e FAIL
+   expected: 'Input 2  edit  invalid entry  Error 2  b'
+   actual:   'Input 2  edit  invalid entry  b'
+== test_ariaErrorMessage e PASS
+== test_ariaErrorMessage e FAIL
+   expected: 'Input 4  edit  invalid entry  Error 4'
+   actual:   'Input 4  edit  invalid entry'
+== test_mark_focus NVDA+space PASS
+== test_mark_focus tab PASS
+== test_i12147 tab PASS
+== test_i12147 enter PASS
+== preventDuplicateSpeechFromDescription_focus NVDA+space PASS
+== preventDuplicateSpeechFromDescription_focus tab PASS
+== preventDuplicateSpeechFromDescription_focus tab PASS
+== test_preventDuplicateSpeechFromDescription_browse_tab tab PASS
+== test_preventDuplicateSpeechFromDescription_browse_tab tab PASS
+== test_quickNavTargetReporting h PASS
+== test_quickNavTargetReporting control+home PASS
+== test_quickNavTargetReporting h PASS
+== test_focusTargetReporting tab PASS
+== test_focusTargetReporting tab PASS
+== test_focusTargetReporting shift+tab PASS
+== test_focusTargetReporting tab PASS
+== test_focusTargetReporting shift+tab PASS
+== test_focusTargetReporting NVDA+space PASS
+== test_focusTargetReporting tab PASS
+== test_focusTargetReporting shift+tab PASS
+== test_focusTargetReporting tab PASS
+RESULT 43 / 71
+  1/5  test_i7562
+  1/2  test_focus_mode_on_focusable_read_only_lists
+  0/4  test_ariaDescription_focusMode
+  4/4  test_ariaDescription_browseMode
+  4/4  test_i13307
+  3/3  test_ariaRoleDescription_focus
+  0/3  test_ariaRoleDescription_inline_browseMode
+  3/3  test_ariaRoleDescription_block_browseMode
+  1/5  test_ariaRoleDescription_inline_contentEditable
+  1/5  test_ariaRoleDescription_block_contentEditable
+  0/2  ARIAInvalid_spellingAndGrammar
+  4/10  test_ariaErrorMessage
+  2/2  test_mark_focus
+  2/2  test_i12147
+  3/3  preventDuplicateSpeechFromDescription_focus
+  2/2  test_preventDuplicateSpeechFromDescription_browse_tab
+  3/3  test_quickNavTargetReporting
+  9/9  test_focusTargetReporting
+exit 0

@@ -1,0 +1,24 @@
+{
+ "mode": "noallow",
+ "got": {
+  "x.png": {},
+  "favicon.ico": {}
+ },
+ "chromeStderrTail": [
+  "[1500035:1500035:1017/064743.757581:ERROR:ui/gl/gl_display.cc:638] eglInitialize SwANGLE failed with error EGL_NOT_INITIALIZED",
+  "[1500035:1500035:1017/064743.757808:ERROR:ui/gl/gl_display.cc:673] Initialization of all (1) EGL display types failed.",
+  "[1500035:1500035:1017/064743.757881:ERROR:ui/ozone/common/gl_ozone_egl.cc:26] GLDisplayEGL::Initialize failed.",
+  "[1500035:1500035:1017/064743.789589:ERROR:ui/gl/angle_platform_impl.cc:47] DisplayVkXcb.cpp:62 (initialize): xcb_connect() failed, error 1",
+  "ERR: DisplayVkXcb.cpp:62 (initialize): xcb_connect() failed, error 1",
+  "[1500035:1500035:1017/064743.789707:ERROR:ui/gl/angle_platform_impl.cc:47] Display.cpp:1097 (initialize): ANGLE Display::initialize error 0: Not initialized.",
+  "ERR: Display.cpp:1097 (initialize): ANGLE Display::initialize error 0: Not initialized.",
+  "[1500035:1500035:1017/064743.789797:ERROR:ui/gl/egl_util.cc:92] EGL Driver message (Critical) eglInitialize: Not initialized.",
+  "[1500035:1500035:1017/064743.789878:ERROR:ui/gl/gl_display.cc:638] eglInitialize SwANGLE failed with error EGL_NOT_INITIALIZED",
+  "[1500035:1500035:1017/064743.789987:ERROR:ui/gl/gl_display.cc:673] Initialization of all (1) EGL display types failed.",
+  "[1500035:1500035:1017/064743.790069:ERROR:ui/ozone/common/gl_ozone_egl.cc:26] GLDisplayEGL::Initialize failed.",
+  "[1500035:1500035:1017/064743.791977:ERROR:components/viz/service/main/viz_main_impl.cc:190] Exiting GPU process due to errors during initialization",
+  "[1499814:1499846:1017/064747.092809:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR",
+  "[1499814:1499846:1017/064747.123022:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR",
+  "[1499814:1499846:1017/064747.125518:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR"
+ ]
+}

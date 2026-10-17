@@ -1,0 +1,174 @@
+in scope: 28 of 47 ['announce_list_item_when_moving_by_word_or_character', 'test_i7562', 'test_pr11606', 'test_focus_mode_on_focusable_read_only_lists', 'test_ariaDescription_focusMode', 'test_ariaDescription_browseMode', 'test_mark_aria_details_role', 'test_i13307', 'test_tableNavigationWithMergedColumns', 'test_tableInStyleDisplayTable', 'test_i10840', 'test_reportLanguageDisabled', 'test_reportNotSupportedLanguageWithoutOtherLanguages', 'test_ariaRoleDescription_focus', 'test_ariaRoleDescription_inline_browseMode', 'test_ariaRoleDescription_block_browseMode', 'test_ariaRoleDescription_inline_contentEditable', 'test_ariaRoleDescription_block_contentEditable', 'ARIAInvalid_spellingAndGrammar', 'test_ariaErrorMessage', 'test_mark_focus', 'checkbox_labelled_by_inner_element', 'test_i12147', 'preventDuplicateSpeechFromDescription_focus', 'test_preventDuplicateSpeechFromDescription_browse_tab', 'test_ensureNoBrowseModeDescription', 'test_quickNavTargetReporting', 'test_focusTargetReporting']
+== announce_list_item_when_moving_by_word_or_character NVDA+space PASS
+== announce_list_item_when_moving_by_word_or_character tab PASS
+== announce_list_item_when_moving_by_word_or_character downArrow PASS
+== announce_list_item_when_moving_by_word_or_character control+rightArrow FAIL
+   expected: 'cat'
+   actual:   'l'
+== announce_list_item_when_moving_by_word_or_character rightArrow FAIL
+   expected: 'a'
+   actual:   'space'
+== announce_list_item_when_moving_by_word_or_character end FAIL
+   expected: 'blank'
+   actual:   't'
+== announce_list_item_when_moving_by_word_or_character rightArrow PASS
+== announce_list_item_when_moving_by_word_or_character leftArrow FAIL
+   expected: 'list item  level 1'
+   actual:   'list item  level 1\nt'
+== announce_list_item_when_moving_by_word_or_character control+rightArrow PASS
+== announce_list_item_when_moving_by_word_or_character control+leftArrow FAIL
+   expected: 'list item  level 1'
+   actual:   'list item  level 1\nt'
+== test_i7562 NVDA+space PASS
+== test_i7562 tab PASS
+== test_i7562 downArrow PASS
+== test_i7562 downArrow FAIL
+   expected: 'bullet  birds'
+   actual:   'list  bullet  birds'
+== test_i7562 downArrow FAIL
+   expected: 'out of list  after'
+   actual:   'after'
+== test_pr11606 NVDA+space PASS
+== test_pr11606 tab FAIL
+   expected: 'section  multi line  editable  list  bullet  link  A    link  B'
+   actual:   'section  multi line  editable  list  bullet  link  A'
+== test_pr11606 rightArrow FAIL
+   expected: 'out of link\nspace'
+   actual:   'list item  level 1\nspace'
+== test_pr11606 end FAIL
+   expected: 'blank'
+   actual:   'link\nB'
+== test_pr11606 NVDA+upArrow FAIL
+   expected: 'bullet  link  A    link  B'
+   actual:   'list  bullet  link  A    link  B'
+== test_focus_mode_on_focusable_read_only_lists tab PASS
+== test_focus_mode_on_focusable_read_only_lists tab PASS
+== test_ariaDescription_focusMode tab PASS
+== test_ariaDescription_focusMode downArrow PASS
+== test_ariaDescription_focusMode downArrow PASS
+== test_ariaDescription_focusMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_mark_aria_details_role downArrow PASS
+== test_mark_aria_details_role upArrow PASS
+== test_mark_aria_details_role NVDA+space PASS
+== test_mark_aria_details_role tab FAIL
+   expected: 'edit  multi line  has details  doc-endnote,    has foot note  doc-footnote,    has comment  comment,    has details  definition,    has details  definition,    has details  form'
+   actual:   'edit  multi line  doc-endnote,'
+== test_i13307 tab PASS
+== test_i13307 tab PASS
+== test_i13307 tab PASS
+== test_i13307 tab PASS
+== test_tableNavigationWithMergedColumns downArrow PASS
+== test_tableNavigationWithMergedColumns downArrow PASS
+== test_tableNavigationWithMergedColumns downArrow PASS
+== test_tableNavigationWithMergedColumns control+alt+downArrow PASS
+== test_tableNavigationWithMergedColumns control+alt+upArrow PASS
+== test_tableInStyleDisplayTable t PASS
+== test_tableInStyleDisplayTable control+alt+downArrow PASS
+== test_i10840 t PASS
+== test_i10840 control+alt+rightArrow PASS
+== test_reportLanguageDisabled downArrow PASS
+== test_reportNotSupportedLanguageWithoutOtherLanguages downArrow PASS
+== test_ariaRoleDescription_focus tab PASS
+== test_ariaRoleDescription_focus NVDA+space PASS
+== test_ariaRoleDescription_focus tab PASS
+== test_ariaRoleDescription_inline_browseMode downArrow FAIL
+   expected: 'Start  Unlabeled graphic  Our logo. To get missing image descriptions, open the context menu.  End'
+   actual:   'Start  Our logo  drawing    out of drawing  End'
+== test_ariaRoleDescription_inline_browseMode control+rightArrow FAIL
+   expected: 'Unlabeled graphic  Our'
+   actual:   'space'
+== test_ariaRoleDescription_inline_browseMode control+rightArrow FAIL
+   expected: 'logo.'
+   actual:   'Our logo  drawing\nspace'
+== test_ariaRoleDescription_block_browseMode downArrow PASS
+== test_ariaRoleDescription_block_browseMode downArrow PASS
+== test_ariaRoleDescription_block_browseMode downArrow PASS
+== test_ariaRoleDescription_inline_contentEditable NVDA+space PASS
+== test_ariaRoleDescription_inline_contentEditable tab PASS
+== test_ariaRoleDescription_inline_contentEditable downArrow FAIL
+   expected: 'Start  Unlabeled graphic  Our logo. To get missing image descriptions, open the context menu.    End'
+   actual:   'Start  Our logo  drawing    out of drawing  End'
+== test_ariaRoleDescription_inline_contentEditable control+rightArrow FAIL
+   expected: 'Unlabeled graphic  Our logo. To get missing image descriptions, open the context menu.    out of Unlabeled graphic'
+   actual:   'space'
+== test_ariaRoleDescription_inline_contentEditable control+rightArrow FAIL
+   expected: 'End'
+   actual:   'Our logo  drawing\nspace'
+== test_ariaRoleDescription_block_contentEditable NVDA+space PASS
+== test_ariaRoleDescription_block_contentEditable tab PASS
+== test_ariaRoleDescription_block_contentEditable downArrow PASS
+== test_ariaRoleDescription_block_contentEditable downArrow PASS
+== test_ariaRoleDescription_block_contentEditable downArrow PASS
+== ARIAInvalid_spellingAndGrammar downArrow PASS
+== ARIAInvalid_spellingAndGrammar downArrow PASS
+== test_ariaErrorMessage NVDA+space PASS
+== test_ariaErrorMessage tab PASS
+== test_ariaErrorMessage tab PASS
+== test_ariaErrorMessage tab PASS
+== test_ariaErrorMessage tab PASS
+== test_ariaErrorMessage NVDA+space PASS
+== test_ariaErrorMessage e PASS
+== test_ariaErrorMessage e PASS
+== test_ariaErrorMessage e PASS
+== test_ariaErrorMessage e PASS
+== test_mark_focus NVDA+space PASS
+== test_mark_focus tab PASS
+== checkbox_labelled_by_inner_element tab PASS
+== test_i12147 tab PASS
+== test_i12147 enter PASS
+== preventDuplicateSpeechFromDescription_focus NVDA+space PASS
+== preventDuplicateSpeechFromDescription_focus tab PASS
+== preventDuplicateSpeechFromDescription_focus tab PASS
+== test_preventDuplicateSpeechFromDescription_browse_tab tab PASS
+== test_preventDuplicateSpeechFromDescription_browse_tab tab PASS
+== test_ensureNoBrowseModeDescription downArrow PASS
+== test_ensureNoBrowseModeDescription downArrow PASS
+== test_ensureNoBrowseModeDescription nvda+space PASS
+== test_ensureNoBrowseModeDescription tab PASS
+== test_ensureNoBrowseModeDescription tab PASS
+== test_quickNavTargetReporting h PASS
+== test_quickNavTargetReporting control+home PASS
+== test_quickNavTargetReporting h PASS
+== test_focusTargetReporting tab PASS
+== test_focusTargetReporting tab PASS
+== test_focusTargetReporting shift+tab PASS
+== test_focusTargetReporting tab PASS
+== test_focusTargetReporting shift+tab PASS
+== test_focusTargetReporting NVDA+space PASS
+== test_focusTargetReporting tab PASS
+== test_focusTargetReporting shift+tab PASS
+== test_focusTargetReporting tab PASS
+RESULT 89 / 107
+  5/10  announce_list_item_when_moving_by_word_or_character
+  3/5  test_i7562
+  1/5  test_pr11606
+  2/2  test_focus_mode_on_focusable_read_only_lists
+  4/4  test_ariaDescription_focusMode
+  4/4  test_ariaDescription_browseMode
+  3/4  test_mark_aria_details_role
+  4/4  test_i13307
+  5/5  test_tableNavigationWithMergedColumns
+  2/2  test_tableInStyleDisplayTable
+  2/2  test_i10840
+  1/1  test_reportLanguageDisabled
+  1/1  test_reportNotSupportedLanguageWithoutOtherLanguages
+  3/3  test_ariaRoleDescription_focus
+  0/3  test_ariaRoleDescription_inline_browseMode
+  3/3  test_ariaRoleDescription_block_browseMode
+  2/5  test_ariaRoleDescription_inline_contentEditable
+  5/5  test_ariaRoleDescription_block_contentEditable
+  2/2  ARIAInvalid_spellingAndGrammar
+  10/10  test_ariaErrorMessage
+  2/2  test_mark_focus
+  1/1  checkbox_labelled_by_inner_element
+  2/2  test_i12147
+  3/3  preventDuplicateSpeechFromDescription_focus
+  2/2  test_preventDuplicateSpeechFromDescription_browse_tab
+  5/5  test_ensureNoBrowseModeDescription
+  3/3  test_quickNavTargetReporting
+  9/9  test_focusTargetReporting
+exit 0
