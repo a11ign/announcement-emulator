@@ -611,7 +611,17 @@ class Builder:
     @staticmethod
     def add_text(parent, previous, text):
         if not text: return None
-        t = TextField(text); t.parent = parent
+        # VBufStorage_buffer_t::addTextFieldNode (storage.cpp:586-614, #2963): private-use characters (U+E000-U+F8FF, icon fonts) and U+200B are stripped from the
+        # start and end of every text node; the count stripped from the start is kept for IA2Text offsets.
+        priv = lambda ch: '\ue000' <= ch <= '\uf8ff' or ch == '\u200b'
+        i = 0
+        while i < len(text) and priv(text[i]): i += 1
+        start = i
+        j = 0
+        while j < len(text) and priv(text[len(text) - 1 - j]): j += 1
+        stripped = text[start:max(len(text) - j, start)] if (start or j) else text
+        t = TextField(stripped); t.parent = parent
+        if start: t.attrs['strippedCharsFromStart'] = str(start)
         if previous is None: parent.kids.insert(0, t)
         else: parent.kids.insert(parent.kids.index(previous) + 1, t)
         return t
@@ -800,11 +810,15 @@ class Builder:
 
     @staticmethod
     def _useful_content(node):
-        """nodeHasUsefulContent (gecko_ia2.cpp): any non-whitespace text under the node."""
-        def walk(n):
-            if isinstance(n, TextField): return n.text.strip() != ''
-            return any(walk(k) for k in n.kids)
-        return walk(node)
+        """nodeHasUsefulContent (nvdaHelper/vbufBase/utils.cpp:148): false for an empty node, true for more than three characters, otherwise true if any of
+        them is neither white space nor a private-use character."""
+        def text(n):
+            if isinstance(n, TextField): return n.text
+            return ''.join(text(k) for k in n.kids)
+        content = text(node)
+        if len(content) == 0: return False
+        if len(content) > 3: return True
+        return any(not c.isspace() and not ('\ue000' <= c <= '\uf8ff' or c == '\u200b') for c in content)
 
     @staticmethod
     def _content_matches(node, s):
