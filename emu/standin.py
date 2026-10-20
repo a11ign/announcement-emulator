@@ -481,7 +481,51 @@ class Buffer:
             start = s
             nl = n.text.rfind('\n')
             if nl >= 0: start = s + nl + 1; hard = True
+        if max_len > 0: start, end = self._max_line_length(flat, idx, rel, offset, start, end, max_len)
         return start, end
+
+    @staticmethod
+    def _max_line_length(flat, idx, rel, offset, line_start, line_end, max_len):
+        """The last step of getLineOffsets (storage.cpp:1175-1198): "finally take maxLineLength into account". A line longer than `max_len` (NVDA's
+        virtualBuffers.maxLineLength, 100) is cut at the last place in the line where a word starts (or a node starts or ends) within `max_len` characters.
+        The places are the ones the search for the line's ends passed: the start and end of every node visited, the first non-space after white space going
+        forward from `offset`, and the position after each white-space run going backward from it."""
+        possible = set()
+        for k in range(len(flat)):      # every node of the line was visited by one of the two searches
+            n, s, e = flat[k]
+            if e > line_start and s < line_end: possible.update((s, e))
+        for k in range(idx, len(flat)):      # forward word starts
+            n, s, e = flat[k]
+            if s >= line_end: break
+            last_space = False
+            for i in range(rel if k == idx else 0, n.length):
+                if n.text[i].isspace(): last_space = True
+                else:
+                    if last_space: possible.add(s + i)
+                    last_space = False
+        for k in range(idx, -1, -1):      # backward: after each run of white space
+            n, s, e = flat[k]
+            if e <= line_start: break
+            last_space = False
+            for i in range((rel if k == idx else n.length) - 1, -1, -1):
+                if n.text[i].isspace():
+                    if not last_space: possible.add(s + i + 1)
+                    last_space = True
+                else: last_space = False
+        real = {line_start, line_end}
+        ordered = sorted(possible)
+        i, count = line_start, 0
+        import bisect
+        while i < line_end:
+            if count == max_len:
+                if ordered:
+                    pos = bisect.bisect_right(ordered, i)      # upper_bound
+                    if pos > 0 and ordered[pos - 1] > i - max_len: i = ordered[pos - 1]
+                real.add(i); count = 0
+            i += 1; count += 1
+        rs = sorted(real)
+        hi = bisect.bisect_right(rs, offset)
+        return rs[hi - 1], rs[hi]
 
 
 def _crosses_control(a, b):
