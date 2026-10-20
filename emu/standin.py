@@ -55,7 +55,7 @@ class PN:
         if self.atomic_text_field or self.is_text: return True
         if self.role == 'textField' or self.state.get('richlyEditable'): return False
         if self.role == 'button': return False
-        if self.role == 'image': return self.raw.get('htmlTag') == 'img' and False  # role=img/image attribute not exposed by the API: NOT PORTED
+        if self.role == 'image': return self.raw.get('htmlTag') != 'img'      # ax_node.cc:2449: a leaf when role="img"/"image" is the author's. chrome.automation does not expose the role attribute, so it is RECONSTRUCTED: an image that is not an <img> element is an ARIA image (an <img> with children is an image map, which is not a leaf)
         if self.role in ('docCover', 'graphicsSymbol', 'meter', 'scrollBar', 'spinButton', 'slider', 'splitter', 'progressIndicator'): return True
         if self.role in ('checkBox', 'listBoxOption', 'menuListOption', 'menuItem', 'menuItemCheckBox', 'menuItemRadio', 'popUpButton',
                          'toggleButton', 'radioButton', 'switch', 'tab'):
