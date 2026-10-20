@@ -1,8 +1,8 @@
 """Layer 0/1: load a page in Chrome 155 (headless=new, allowlisted companion extension) and return the web area's chrome.automation nodes."""
 import json, os, subprocess, pathlib, tempfile, hashlib
-R = pathlib.Path.home() / 'spikes/announcement-emulator-5661'
+from paths import CODE, DOWNLOADS as R
 CHROME = R / 'chrome155/chrome-linux64/chrome'
-CACHE = R / 'emu/captures'; CACHE.mkdir(exist_ok=True)
+CACHE = CODE / 'emu/captures'; CACHE.mkdir(exist_ok=True)
 
 WRAP = """
 <head>
@@ -25,7 +25,7 @@ def capture(case_html, key):
     page.write_text(WRAP.format(title='NVDA Browser Test Case', case=case_html))
     raw = CACHE / f'{key}.raw.json'
     env = {**os.environ, 'CHROME': str(CHROME), 'PAGE': str(page)}
-    subprocess.run(['node', 'run.mjs', 'allow', str(raw)], cwd=R / 'q1', env=env, check=True, capture_output=True, timeout=120)
+    subprocess.run(['node', 'run.mjs', 'allow', str(raw)], cwd=CODE / 'q1', env=env, check=True, capture_output=True, timeout=120)
     nodes = json.loads(raw.read_text())['got']['desktop-tree']['nodes']
     for i, n in enumerate(nodes):
         if n.get('role') == 'rootWebArea':

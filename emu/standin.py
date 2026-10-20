@@ -17,6 +17,7 @@ HERE = pathlib.Path(__file__).parent
 T = json.loads((HERE / 'tables.json').read_text())
 CONST = {**T['ole'], **T['ia2_role'], **T['ia2_state']}
 XML_ROLES = {'article': 'article', 'figure': 'figure', 'region': 'region', 'switch': 'switch', 'main': 'main', 'navigation': 'navigation',
+             'header': 'banner', 'footer': 'contentinfo',      # Q3 (a11y-worker oracle, 2026-10-20): NVDA says "banner landmark" and "content info landmark" for a page-level <header> and <footer> with no role attribute, which chrome.automation reports as 'header' and 'footer'; a nested <header> is 'sectionHeader'. Inferred from the dev split's fleet transcripts, not read in Chromium's source.
              'banner': 'banner', 'treeGrid': 'treegrid', 'gridCell': 'gridcell', 'complementary': 'complementary', 'contentInfo': 'contentinfo', 'form': 'form', 'search': 'search'}
 EMBED = '￼'
 EMPTY_TEXT = ' '
@@ -186,9 +187,9 @@ class PN:
         r = self.role
         conditional = {'form': 'IA2_ROLE_FORM' if self.raw.get('name') else 'IA2_ROLE_SECTION'}
         c = conditional.get(r) or T['ia2'].get(r) or T['msaa'].get(r)
+        if r == 'image': c = 'IA2_ROLE_IMAGE_MAP' if self.pkids else T['msaa'].get(r)      # ax_platform_node_win.cc:7389: `if (IsImageWithMap())`; the generated table took the conditional branch for every image
         if r == 'row': c = 'ROLE_SYSTEM_ROW'      # the generated table missed it: kRow is a braced conditional case (ax_platform_node_win.cc:6999), outline item inside a treegrid below
         if c is None: return 0
-        if r in ('image',) and self.pkids: c = 'IA2_ROLE_IMAGE_MAP'
         if r == 'row':      # ax_platform_node_win.cc:6999 / IsInTreeGrid: a row whose parent (or grandparent, past a row group) is a treegrid is an outline item
             par = self.parent
             if par is not None and par.role == 'rowGroup': par = par.parent
@@ -261,6 +262,7 @@ class PN:
         if raw.get('posInSet'): a['posinset'] = str(raw['posInSet'])
         if raw.get('checked') is not None: a['checkable'] = 'true'
         if self.state.get('invisible'): a['hidden'] = 'true'
+        if raw.get('ariaCurrentState') in ('false', 'true', 'page', 'step', 'location', 'date', 'time'): a['current'] = raw['ariaCurrentState']      # ax_platform_node_base.cc:1301
         if raw.get('liveStatus'): a['live'] = raw['liveStatus']
         if raw.get('liveRelevant'): a['relevant'] = raw['liveRelevant']
         if raw.get('liveAtomic'): a['atomic'] = 'true'

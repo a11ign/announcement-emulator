@@ -2,7 +2,7 @@
 Nothing is retyped: the page is the test's prepareChrome(...) argument and the expectation is its strings_match(...) argument,
 both evaluated in a namespace built from the file's own module-level constants and helper functions."""
 import ast, pathlib, sys
-R = pathlib.Path.home() / 'spikes/announcement-emulator-5661'
+from paths import DOWNLOADS as R
 SRC = R / 'nvda-src/tests/system/robot/chromeTests.py'
 
 
