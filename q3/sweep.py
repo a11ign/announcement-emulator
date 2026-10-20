@@ -137,17 +137,43 @@ def disclosure_probe(w, phrase):
     return True
 
 
-def read_through(w, steps=600):
-    """readPageInOrder with the line strategy: Down arrow until the page bottom (the caret stops) or `steps`. Leaves the caret at the bottom,
-    which is where the sweeps start. Returns the lines read."""
-    lines = []
+MAX_SILENT_STEPS, MAX_REPEATED_PHRASES, MAX_WRAP_REPEATS, SUBSTANTIAL_PHRASE_LEN = 8, 3, 4, 20      # capture-pure.mjs
+
+
+def phrase_action(phrase, heard, t):
+    """phraseAction: keep the line, skip it, or the reason the read-through ends. `t` is mutated."""
+    if not phrase:
+        t["silentRun"] += 1
+        return "silent" if (t["silentAtStart"] and heard <= 1 and t["silentRun"] >= MAX_SILENT_STEPS) else "skip"
+    t["silentRun"] = 0
+    if phrase == t["previous"]:
+        t["repeated"] += 1
+        return "repeatBottom" if t["repeated"] >= MAX_REPEATED_PHRASES else "skip"
+    t["repeated"] = 0; t["previous"] = phrase
+    substantial = len(phrase) > SUBSTANTIAL_PHRASE_LEN
+    if substantial and phrase in t["seen"]:
+        t["wrapRun"] += 1
+        return "wrap" if t["wrapRun"] >= MAX_WRAP_REPEATS else "skip"
+    t["wrapRun"] = 0
+    if substantial: t["seen"].add(phrase)
+    return "keep"
+
+
+def read_through(w, steps=600, deadline=None):
+    """readPageInOrder with the line strategy (`nvda.next()`: Down arrow, then the logged phrase of that action), ended by the worker's own rules
+    (phraseAction): the page bottom (a line three times running), a wrap (four already-heard lines running), silence, or the step cap. The caret
+    is left where the read ended, which is where the sweeps start, and on a page whose read-through is cut short that is not the bottom.
+    Returns (lines, stopReason)."""
+    t = {"seen": set(), "previous": None, "repeated": 0, "wrapRun": 0, "silentRun": 0, "silentAtStart": False}
+    lines, reason = [], "maxSteps"
     for _ in range(steps):
-        before = w.d.caret()
-        try: w.perform("downArrow")
-        except ActionError: break
-        if w.d.caret() == before: break
-        if w.log[-1]: lines.append(w.log[-1])
-    return lines
+        if deadline and time.time() > deadline: reason = "deadline"; break
+        try: phrase = w.perform("downArrow").strip()
+        except ActionError: reason = "stepError"; break
+        act = phrase_action(phrase, len(lines), t)
+        if act == "keep": lines.append(phrase)
+        elif act != "skip": reason = act; break
+    return lines, reason
 
 
 def structure_sweep(w, deadline):

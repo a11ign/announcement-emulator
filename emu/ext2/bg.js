@@ -32,6 +32,7 @@ chrome.runtime.onInstalled.addListener(() => { chrome.tabs.create({url: chrome.r
 setInterval(async () => {
   try {
     const j = await (await fetch(COLLECTOR + 'poll')).json(); TARGET = j.target || ''; if (j.dump) dump(j.dump);
+    if (j.history) { for (const url of j.history) await chrome.history.addUrl({url}); }      // the fleet's browser has visited the pages it captured: visited links are part of what NVDA says
     if (j.action !== undefined) { for (const [node, i] of IX) if (i === j.action) { node.doDefault(); break; } }      // IAccessibleAction::doAction(0): the node's default action
     if (j.scroll !== undefined) { for (const [node, i] of IX) if (i === j.scroll) { node.makeVisible(); break; } }      // IAccessible2::scrollTo: scroll the node into view
     if (j.focus !== undefined) { for (const [node, i] of IX) if (i === j.focus) { node.focus(); break; } }      // accSelect(SELFLAG_TAKEFOCUS): focus the node by its index in the last dump

@@ -36,8 +36,10 @@ class LivePage(live.LiveDoc):
     def census(self):
         """Counts by chrome.automation role, to compare with the worker's accessibility-tree census (`censusFromAXTree`)."""
         n = {}
-        for node in self.world.by_ix.values():
-            r = node.raw.get('role')
-            n[r] = n.get(r, 0) + 1
+        def walk(pn, top):
+            if pn.raw.get('role') == 'rootWebArea' and not top: return      # the worker's census is Accessibility.getFullAXTree, one frame; an iframe's document is not in it
+            n[pn.raw.get('role')] = n.get(pn.raw.get('role'), 0) + 1
+            for k in pn.kids: walk(k, False)
+        walk(self.world.root, True)
         landmarks = sum(n.get(r, 0) for r in ('banner', 'complementary', 'contentInfo', 'main', 'navigation', 'search', 'form', 'region'))
         return {'heading': n.get('heading', 0), 'link': n.get('link', 0), 'graphic': n.get('image', 0) + n.get('graphicsSymbol', 0), 'landmark': landmarks, 'roles': n}

@@ -4,12 +4,13 @@ const [,, pageFile, extDir0, chromeBin] = process.argv;
 // A live URL instead of a served file: pageFile is 'url:<address>'. Ports are per session so several can run side by side (EMU_PORT, EMU_CDP).
 const PORT = Number(process.env.EMU_PORT || 8765), CDP = Number(process.env.EMU_CDP || 9333);
 const LIVE = pageFile.startsWith('url:'), LIVE_URL = LIVE ? pageFile.slice(4) : null;
-const [VW, VH] = (process.env.EMU_VIEWPORT || (LIVE ? '1024x768' : '1280x3000')).split('x').map(Number);
+// headless=new puts 143 px of browser UI inside the window: 1008x872 gives a page the 1008x729 the fleet's Edge reports (environment.innerWidth/innerHeight)
+const [VW, VH] = (process.env.EMU_VIEWPORT || (LIVE ? '1008x872' : '1280x3000')).split('x').map(Number);
 const UA = process.env.EMU_UA || null; let target = LIVE ? '' : 'http://127.0.0.1:' + PORT + '/page.html';
 const R = process.env.EMU_DOWNLOADS || process.env.HOME + '/spikes/announcement-emulator-5661';
 const CODE = new URL('..', import.meta.url).pathname;
 const id = readFileSync(CODE + 'q1/ext-id.txt', 'utf8').trim();
-let pending = null, want = null, wantFocus, wantAction, wantScroll;
+let pending = null, want = null, wantFocus, wantAction, wantScroll, wantHistory;
 const srv = http.createServer((req, res) => {
   if (req.url === '/page.html' && !LIVE) { res.setHeader('content-type', 'text/html'); return res.end(readFileSync(pageFile)); }
   if (req.url.startsWith('/aria/')) {      // NVDA's include/w3c-aria-practices submodule (pinned 84b921a0), served over http because the tests' file:// iframes cannot load from this origin
@@ -20,7 +21,7 @@ const srv = http.createServer((req, res) => {
     try { const body = readFileSync(R + '/aria-practices/' + rel); res.setHeader('content-type', rel.endsWith('.html') ? 'text/html' : rel.endsWith('.css') ? 'text/css' : rel.endsWith('.js') ? 'text/javascript' : 'application/octet-stream'); return res.end(body); }
     catch (e) { res.statusCode = 404; return res.end(); }
   }
-  if (req.url === '/poll') { res.end(JSON.stringify({target, ...(want ? {dump: want} : wantFocus !== undefined ? {focus: wantFocus} : wantAction !== undefined ? {action: wantAction} : wantScroll !== undefined ? {scroll: wantScroll} : {})})); want = null; wantFocus = undefined; wantAction = undefined; wantScroll = undefined; return; }
+  if (req.url === '/poll') { res.end(JSON.stringify({target, ...(wantHistory ? {history: wantHistory} : {}), ...(want ? {dump: want} : wantFocus !== undefined ? {focus: wantFocus} : wantAction !== undefined ? {action: wantAction} : wantScroll !== undefined ? {scroll: wantScroll} : {})})); want = null; wantHistory = undefined; wantFocus = undefined; wantAction = undefined; wantScroll = undefined; return; }
   let b = ''; req.on('data', d => b += d);
   req.on('end', () => { if (req.url === '/dump' && pending) { const p = pending; pending = null; p(JSON.parse(b)); } res.end('ok'); });
 }).listen(PORT);
@@ -76,6 +77,13 @@ for await (const line of rl) {
       await sleep(c.settle || 2500);
       const href = (await cdp('Runtime.evaluate', {expression: 'location.href', returnByValue: true})).result?.result?.value || c.url;
       target = href.split('#')[0]; console.log(JSON.stringify({ok: true, loaded: ready, href}));
+    }
+    else if (c.cmd === 'history') { wantHistory = c.urls; await sleep(1500); console.log(JSON.stringify({ok: true})); }
+    else if (c.cmd === 'reload') {
+      events.length = 0; await cdp('Page.reload', {}); await sleep(1000);
+      let ready = false; const t0 = Date.now();
+      while (Date.now() - t0 < 40000) { const r = await cdp('Runtime.evaluate', {expression: 'document.readyState', returnByValue: true}); if (r.result?.result?.value === 'complete') { ready = true; break; } await sleep(250); }
+      await sleep(c.settle || 2500); console.log(JSON.stringify({ok: true, loaded: ready}));
     }
     else if (c.cmd === 'focus') { wantFocus = c.ix; await sleep(c.wait || 700); console.log(JSON.stringify({ok: true})); }
     else if (c.cmd === 'action') { wantAction = c.ix; await sleep(c.wait || 700); console.log(JSON.stringify({ok: true})); }

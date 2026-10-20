@@ -22,6 +22,8 @@ class Session:
             time.sleep(1)       # the platform tree is built lazily after the first getDesktop() call
         raise RuntimeError(d['error'])
     def navigate(self, url, settle=2500, timeout=40000): return self._cmd(cmd='navigate', url=url, settle=settle, timeout=timeout)
+    def add_history(self, urls): return self._cmd(cmd='history', urls=list(urls))
+    def reload(self, settle=2500): return self._cmd(cmd='reload', settle=settle)
     def key(self, name, mods=0, wait=400): self._cmd(cmd='key', key=name, mods=mods, wait=wait)
     def focus(self, ix, wait=700): self._cmd(cmd='focus', ix=ix, wait=wait)
     def action(self, ix, wait=700): self._cmd(cmd='action', ix=ix, wait=wait)

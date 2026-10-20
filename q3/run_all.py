@@ -9,7 +9,7 @@ from split import split_of
 
 ap = argparse.ArgumentParser(); ap.add_argument('oracle'); ap.add_argument('out'); ap.add_argument('--split', default='dev', choices=['dev', 'held', 'all'])
 ap.add_argument('--jobs', type=int, default=8); ap.add_argument('--runs', type=int, default=2); ap.add_argument('--only', default=''); ap.add_argument('--port-base', type=int, default=9100)
-ap.add_argument('--timeout', type=int, default=900); a = ap.parse_args()
+ap.add_argument('--timeout', type=int, default=900); ap.add_argument('--history'); a = ap.parse_args()
 os.makedirs(a.out, exist_ok=True)
 here = os.path.dirname(os.path.abspath(__file__))
 pages = []
@@ -28,7 +28,7 @@ def one(slot, slug, url):
         if os.path.exists(out): continue
         t = time.time()
         try:
-            r = subprocess.run([sys.executable, os.path.join(here, 'emulate.py'), url, out + '.part', '--port', str(a.port_base + 2 * slot)], timeout=a.timeout,
+            r = subprocess.run([sys.executable, os.path.join(here, 'emulate.py'), url, out + '.part', '--port', str(a.port_base + 2 * slot)] + (['--history', a.history] if a.history else []), timeout=a.timeout,
                                capture_output=True, text=True)
             if os.path.exists(out + '.part'): os.replace(out + '.part', out)
             fault = json.load(open(out)).get('fault') if os.path.exists(out) else 'no output'
