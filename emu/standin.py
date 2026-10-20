@@ -263,6 +263,7 @@ class PN:
         if raw.get('checked') is not None: a['checkable'] = 'true'
         if self.state.get('invisible'): a['hidden'] = 'true'
         if raw.get('ariaCurrentState') in ('false', 'true', 'page', 'step', 'location', 'date', 'time'): a['current'] = raw['ariaCurrentState']      # ax_platform_node_base.cc:1301
+        if self.role == 'image' and raw.get('url'): a['src'] = raw['url']      # ax_platform_node_base.cc:1459: IsImage(role) && kUrl; gecko_ia2.cpp:1264 names an unlabelled graphic from it
         if raw.get('liveStatus'): a['live'] = raw['liveStatus']
         if raw.get('liveRelevant'): a['relevant'] = raw['liveRelevant']
         if raw.get('liveAtomic'): a['atomic'] = 'true'
@@ -629,7 +630,7 @@ class Builder:
     TABLE_ROLES = ('table', 'grid', 'treeGrid', 'layoutTable')
     CELL_ROLES = ('cell', 'gridCell', 'columnHeader', 'rowHeader', 'layoutTableCell')
 
-    def fill(self, pn, parent, previous, table_pn=None, table_id=0):
+    def fill(self, pn, parent, previous, table_pn=None, table_id=0, ign=False):
         C = CONST
         ID = pn.ix
         if (self.doc_handle, ID) in self.buf.by_id: return None            # loop guard
@@ -719,6 +720,7 @@ class Builder:
         value = pn.value()
         if role == C['ROLE_SYSTEM_LINK'] and value is not None: a['IAccessible::value'] = value
         if not value: value = None
+        if interactive and not ign: ign = name is not None      # gecko_ia2.cpp:1034: an interactive node with a name makes the unlabelled graphics under it uninteresting
         if text and render_children:
             # The loop of gecko_ia2.cpp:1067-1150: a chunk ends at the end of the text, at the end of an attribute run, or at an embedded
             # object character; each chunk carries its run's text attributes.
@@ -746,13 +748,19 @@ class Builder:
                     chunk_start = i + 1
                     child = next((k for k in kids if not k.is_text), None)
                     if child is not None:
-                        sub = self.fill(child, node, previous, table_pn, table_id)
+                        sub = self.fill(child, node, previous, table_pn, table_id, ign)
                         if sub is not None:
                             previous = sub
                             sub.attrs['ia2TextStartOffset'] = str(i); sub.attrs['ia2TextWindowHandle'] = str(self.doc_handle); sub.attrs['ia2TextUniqueID'] = str(ID)
                 i += 1
-        elif role == C['ROLE_SYSTEM_GRAPHIC']:
-            pass  # NOT PORTED: graphics (alt, URL-derived names)
+        elif role == C['ROLE_SYSTEM_GRAPHIC']:      # gecko_ia2.cpp:1248
+            if name:
+                previous = self.add_text(node, previous, name)
+            elif name == '' or ign:
+                interactive = False
+            elif interactive:
+                if in_link and value: previous = self.add_text(node, previous, _name_for_url(value))
+                elif 'IAccessible2::attribute_src' in a: previous = self.add_text(node, previous, _name_for_url(a['IAccessible2::attribute_src']))
         elif not name_is_content and value is not None:
             previous = self.add_text(node, previous, value)
         if not is_editable and (name_is_content or role in (C['IA2_ROLE_SECTION'], C['IA2_ROLE_TEXT_FRAME'])) and not self._useful_content(node):
@@ -833,7 +841,34 @@ def _is_descendant(parent, d):
     return False
 
 
-def _name_for_url(u): return u.rsplit('/', 1)[-1] or u
+def _name_for_url(url):
+    """getNameForURL, nvdaHelper/vbufBase/utils.cpp:21 (a size_t that steps below zero is npos there, None here)."""
+    if not url: return url
+    colon = url.find(':')
+    if colon != -1 and url[colon:colon + 3] != '://':
+        if url[:11].lower() == 'data:image/': return ''
+        return url[colon + 1:]
+    q, a = url.rfind('?'), url.rfind('#')
+    qlen = a - q - 1 if a != -1 and q != -1 else None
+    strip = True
+    path_end = q if q != -1 else (a if a != -1 else len(url))
+    path_end = path_end - 1 if path_end >= 1 else None
+    if path_end is not None and url[path_end] == '/':
+        path_end = path_end - 1 if path_end >= 1 else None; strip = False
+    start = 0
+    if path_end is not None:
+        start = url.rfind('/', 0, path_end + 1)
+        if start == -1: start = 0
+        else:
+            start += 1
+            if strip and start == (colon + 3 if colon != -1 else 2): strip = False
+        if strip:
+            e = url.rfind('.', 0, path_end + 1)
+            if e != -1 and e > start: path_end = e - 1
+    name = url[start:path_end + 1] if path_end is not None else ''
+    if q != -1: name += ' ' + (url[q + 1:] if qlen is None or qlen < 0 else url[q + 1:q + 1 + qlen])
+    if a != -1: name += ' ' + url[a + 1:]
+    return name[:30] + '\u2026' if len(name) > 30 else name
 
 
 # ---------------------------------------------------------------- nvdaHelper/local/textUtils.cpp (word / character offsets)
