@@ -3,6 +3,8 @@ import sys, os, json, tempfile, subprocess, unittest, io, contextlib, threading,
 HERE = os.path.dirname(os.path.abspath(__file__)); Q3 = os.path.dirname(HERE)
 sys.path.insert(0, HERE); sys.path.insert(0, Q3)
 import readback as rb, check, corpus_capture as cc, policy_override as po, explain_visited as ev, make_views
+sys.path.insert(0, os.path.join(Q3, 'replay'))
+import replay_readback as rrb
 
 def write(path, text):
     with open(path, 'w') as f: f.write(text)
@@ -373,5 +375,122 @@ class Check(unittest.TestCase):
         write(doc, base.replace('## Gate\n', '## Gate\n\n## Re-measure\n\nfigure\n')); self.assertEqual(run()[0], check.FAIL)      # inside the Gate section
         write(doc, base.replace('## Q3\n', '## Re-measure\n\nfigure\n\n## Q3\n')); self.assertEqual(run()[0], check.FAIL)
 
+
+    def doc_repo(self, base):
+        """A repository whose page is `base`, committed; returns a function that checks the working page against that commit."""
+        repo = os.path.join(self.dir, 'doc-repo'); os.makedirs(repo)
+        git = lambda *a: subprocess.run(['git', '-C', repo, '-c', 'user.name=t', '-c', 'user.email=t@t', *a], check=True, capture_output=True)
+        git('init', '-q'); doc = os.path.join(repo, 'spike.md'); write(doc, base); git('add', '.'); git('commit', '-qm', 'base')
+        def run(text):
+            write(doc, text); cwd = os.getcwd(); os.chdir(repo)
+            try: return check.check_doc('spike.md', 'HEAD')
+            finally: os.chdir(cwd)
+        return run
+
+    def test_once_the_base_has_the_re_measure_section_one_subsection_at_its_end_is_accepted_and_nothing_else(self):
+        base = '# Spike\n\n## Gate\n\nnot passed\n\n## Re-measure\n\nfigure\n\n### Drift-free re-score\n\nstatic\n\n## Follow-ups\n\nmore\n'
+        run = self.doc_repo(base); sub = '### Scripted replay: the same bytes, scripts included\n\nreplayed\n\n'
+        self.assertEqual(run(base)[0], check.PENDING)
+        self.assertEqual(run(base.replace('## Follow-ups', sub + '## Follow-ups'))[0], check.OK)
+        self.assertEqual(run(base.replace('## Follow-ups', sub.rstrip('\n') + '\n\n## Follow-ups'))[0], check.OK)      # however the diff places the blank line
+        # a second subsection, a section, a line of an earlier part, or an edit of an old line is refused
+        self.assertEqual(run(base.replace('## Follow-ups', sub + '### And another\n\nmore\n\n## Follow-ups'))[0], check.FAIL)
+        self.assertEqual(run(base.replace('## Follow-ups', sub + '## A new section\n\ntext\n\n## Follow-ups'))[0], check.FAIL)
+        self.assertEqual(run(base.replace('static', 'static, changed').replace('## Follow-ups', sub + '## Follow-ups'))[0], check.FAIL)
+        self.assertEqual(run(base.replace('figure\n', 'figure\n\nan extra paragraph\n'))[0], check.FAIL)      # text added inside the section, not a subsection
+        self.assertEqual(run(base.replace('### Drift-free re-score', sub + '### Drift-free re-score'))[0], check.FAIL)      # not at the end of the section
+        self.assertEqual(run(base.replace('## Gate\n', '## Gate\n\n' + sub))[0], check.FAIL)      # inside another section
+        self.assertEqual(run(base.replace('## Follow-ups', '#### A smaller heading\n\ntext\n\n## Follow-ups'))[0], check.FAIL)      # not a `### `
+
+    def test_a_subsection_at_the_very_end_of_the_page_is_at_the_end_of_re_measure_too(self):
+        base = '# Spike\n\n## Gate\n\nnot passed\n\n## Re-measure\n\nfigure\n'
+        self.assertEqual(self.doc_repo(base)(base + '\n### Scripted replay\n\nreplayed\n')[0], check.OK)
+
+    def test_the_page_is_found_in_the_base_from_any_directory_and_by_an_absolute_path(self):
+        base = '# Spike\n\n## Gate\n\nnot passed\n\n## Re-measure\n\nfigure\n\n## Follow-ups\n\nmore\n'
+        repo = os.path.join(self.dir, 'doc-repo2'); os.makedirs(os.path.join(repo, 'docs'))
+        git = lambda *a: subprocess.run(['git', '-C', repo, '-c', 'user.name=t', '-c', 'user.email=t@t', *a], check=True, capture_output=True)
+        doc = os.path.join(repo, 'docs', 'spike.md'); git('init', '-q'); write(doc, base); git('add', '.'); git('commit', '-qm', 'base')
+        write(doc, base.replace('## Follow-ups', '### Scripted replay\n\nreplayed\n\n## Follow-ups')); cwd = os.getcwd()
+        try:
+            os.chdir(os.path.join(repo, 'docs')); self.assertEqual(check.check_doc('spike.md', 'HEAD')[0], check.OK)      # from the page's own directory
+            os.chdir(repo); self.assertEqual(check.check_doc(doc, 'HEAD')[0], check.OK)      # an absolute path
+            os.chdir(os.path.join(repo, 'docs')); self.assertEqual(check.check_doc(doc, 'HEAD')[0], check.OK)      # an absolute path from elsewhere in the repository
+        finally: os.chdir(cwd)
+
+    def write_manifest(self, urls, **over):
+        path = os.path.join(self.dir, 'archive-manifest.json')
+        rb.write_json(path, {'pages': [{'url': u, 'slug': cc.slug_of(u), 'archive': f'archives/{cc.slug_of(u)}.flows', 'sha256': f'{i + 1:064x}', **over} for i, u in enumerate(urls)]}); return path
+
+    def test_the_manifest_is_one_archive_per_corpus_address_each_with_its_sha256(self):
+        a, b = 'https://example.org/a', 'https://example.org/b'; corpus = self.corpus(a, b)
+        self.assertEqual(check.check_manifest(os.path.join(self.dir, 'none.json'), corpus)[0], check.PENDING)
+        self.assertEqual(check.check_manifest(self.write_manifest([a, b]), corpus)[0], check.OK)
+        self.assertEqual(check.check_manifest(self.write_manifest([a]), corpus)[0], check.FAIL)            # an address without an archive
+        self.assertEqual(check.check_manifest(self.write_manifest([a, a]), corpus)[0], check.FAIL)         # one twice
+        self.assertEqual(check.check_manifest(self.write_manifest([a, b], sha256='nothex'), corpus)[0], check.FAIL)
+        self.assertEqual(check.check_manifest(self.write_manifest([a, b], archive='archives/same.flows'), corpus)[0], check.FAIL)      # two addresses, one file
+        self.assertEqual(check.check_manifest(self.write_manifest([a, b], mainStatus=503), corpus)[0], check.FAIL)      # recorded as an error page and served as one: the worker refuses it
+        self.assertEqual(check.check_manifest(self.write_manifest([a, b], mainStatus=503, servedStatus=200), corpus)[0], check.OK)
+
+    def served(self, manifest, **per_page):
+        """A join summary: every page served `sha`, with the differences given (page -> list)."""
+        pages = []
+        for p in rb.read_json(manifest)['pages']:
+            sha = per_page.get('sha', {}).get(p['url'], p['sha256']); diffs = per_page.get('differences', {}).get(p['url'], [])
+            entry = {'url': p['url'], 'slug': p['slug'], 'fleet': {'archiveSha256': p['sha256']}, 'emulator': {'gate.run1': {'archiveSha256': sha}}, 'differences': [{'run': 'gate.run1', 'kind': 'k', 'request': r} for r in diffs]}
+            if p['url'] in per_page.get('explained', {}): entry['explained'] = per_page['explained'][p['url']]
+            if p['url'] in per_page.get('missing', {}): entry = {'url': p['url'], 'slug': p['slug'], 'missing': '0 fleet logs, 4 emulator logs'}
+            pages.append(entry)
+        path = os.path.join(self.dir, 'served-identically.json'); rb.write_json(path, {'pages': pages}); return path
+
+    def test_served_identically_is_proven_by_the_join_and_each_refusal_is_a_failure(self):
+        a, b = 'https://example.org/a', 'https://example.org/b'; m = self.write_manifest([a, b])
+        self.assertEqual(check.check_served(os.path.join(self.dir, 'none.json'), m)[0], check.PENDING)
+        self.assertEqual(check.check_served(self.served(m), m)[0], check.OK)
+        self.assertEqual(check.check_served(self.served(m, differences={a: ['GET https://example.org/late.js']}), m)[0], check.FAIL)         # answered on one side only, unexplained
+        self.assertEqual(check.check_served(self.served(m, differences={a: ['GET https://example.org/late.js']}, explained={a: 'a timer'}), m)[0], check.OK)      # explained in the write-up
+        self.assertEqual(check.check_served(self.served(m, sha={b: 'f' * 64}), m)[0], check.FAIL)           # a side was served another archive than the manifest's
+        self.assertEqual(check.check_served(self.served(m, missing={b: 1}), m)[0], check.FAIL)              # a page without its logs
+        rb.write_json(os.path.join(self.dir, 'served-identically.json'), {'pages': rb.read_json(self.served(m))['pages'][:1]}); self.assertEqual(check.check_served(os.path.join(self.dir, 'served-identically.json'), m)[0], check.FAIL)      # an address missing
+
+    def eleven(self, edit=None):
+        os.makedirs(os.path.join(self.dir, 'evidence'), exist_ok=True); write(os.path.join(self.dir, 'evidence', 'one.json'), '{}')
+        misses = [{'page': f'p{i}', 'channel': 'formFields', 'expected': f'Field {i}, check box', 'class': 'method', 'evidence': ['evidence/one.json']} for i in range(11)]
+        if edit: edit(misses)
+        path = os.path.join(self.dir, 'misses-explained.json'); rb.write_json(path, {'misses': misses}); return path
+
+    def test_the_eleven_misses_are_each_classed_with_evidence_or_kept_unexplained_with_what_was_tried(self):
+        page = os.path.join(self.dir, 'page.md'); write(page, '\n'.join(f'Field {i}, check box' for i in range(11)))
+        self.assertEqual(check.check_explained(os.path.join(self.dir, 'none.json'), self.dir)[0], check.PENDING)
+        self.assertEqual(check.check_explained(self.eleven(), self.dir, page)[0], check.OK)
+        self.assertEqual(check.check_explained(self.eleven(lambda m: m.pop()), self.dir, page)[0], check.FAIL)                                  # fewer than 11
+        self.assertEqual(check.check_explained(self.eleven(lambda m: m.append(dict(m[0]))), self.dir, page)[0], check.FAIL)                      # more than 11
+        self.assertEqual(check.check_explained(self.eleven(lambda m: m[0].update(evidence=[])), self.dir, page)[0], check.FAIL)                  # a class without evidence
+        self.assertEqual(check.check_explained(self.eleven(lambda m: m[0].update(evidence=['evidence/gone.json'])), self.dir, page)[0], check.FAIL)      # evidence that is not there
+        self.assertEqual(check.check_explained(self.eleven(lambda m: m[0].update(**{'class': 'a bug I think'})), self.dir, page)[0], check.FAIL)
+        self.assertEqual(check.check_explained(self.eleven(lambda m: m[0].update(**{'class': 'unexplained'})), self.dir, page)[0], check.FAIL)      # unexplained, and nothing said of what was tried
+        self.assertEqual(check.check_explained(self.eleven(lambda m: m[0].update(**{'class': 'unexplained', 'tried': 'the sweep order, the frames, the focus'})), self.dir, page)[0], check.OK)
+        write(page, 'Field 1, check box'); self.assertEqual(check.check_explained(self.eleven(), self.dir, page)[0], check.FAIL)                  # the page does not name them
+
+    def test_the_replay_readback_check_wants_three_boxes_behind_the_server_and_honest_flags(self):
+        path = os.path.join(self.dir, 'replay-readback.json'); box = lambda: {'proxy': {'server': 'capture-host:3202', 'readAt': '2026-10-21T09:00:00Z'}, 'certificate': {'thumbprint': 'A' * 40, 'readAt': '2026-10-21T09:01:00Z'},
+                                                                         'on': {'capturedAt': '2026-10-21T09:05:00.000Z', 'read': True}, 'after-run': {'capturedAt': '2026-10-21T11:00:00.000Z', 'read': True}}
+        self.assertEqual(check.check_replay_readback(path)[0], check.PENDING)
+        rrb.save(path, {'workers': {f'a11y-worker-{n}': box() for n in (2, 3, 4)}}); self.assertEqual(check.check_replay_readback(path)[0], check.OK)
+        rrb.save(path, {'workers': {f'a11y-worker-{n}': box() for n in (2, 3)}}); self.assertEqual(check.check_replay_readback(path)[0], check.FAIL)
+        data = rb.read_json(path); data['workers']['a11y-worker-2']['passed'] = False; data['workers']['a11y-worker-4'] = dict(box(), passed=True, heldRun=True, restoredOk=False); rb.write_json(path, data)
+        self.assertEqual(check.check_replay_readback(path)[0], check.FAIL)      # a stored flag that is not what the readings give
+
+    def test_every_replay_record_names_the_archive_the_manifest_holds_for_its_address(self):
+        a = 'https://example.org/a'; m = self.write_manifest([a]); sha = rb.read_json(m)['pages'][0]['sha256']; path = os.path.join(self.dir, 'replay-readback.json')
+        box = {'proxy': {'server': 'x', 'readAt': '2026-10-21T09:00:00Z'}, 'certificate': {'readAt': '2026-10-21T09:01:00Z'}, 'on': {'capturedAt': '2026-10-21T09:05:00.000Z', 'read': True}, 'after-run': {'capturedAt': '2026-10-21T11:00:00.000Z', 'read': True}}
+        rrb.save(path, {'workers': {'a11y-worker-2': box}})
+        rec = lambda **block: {'worker': 'a11y-worker-2', 'capture': {'url': a}, 'replay': {'archiveSha256': sha, 'unmatched': 3, **block}}
+        ok = self.oracle(a=rec()); self.assertEqual(check.check_replay_stamps(ok, m, path)[0], check.OK)
+        self.assertEqual(check.check_replay_stamps(self.oracle(a=rec(archiveSha256='0' * 64)), m, path)[0], check.FAIL)      # another archive than the manifest's
+        self.assertEqual(check.check_replay_stamps(self.oracle(a=rec(unmatched=None)), m, path)[0], check.FAIL)
+        self.assertEqual(check.check_replay_stamps(self.oracle(a={'worker': 'a11y-worker-2', 'capture': {'url': a}}), m, path)[0], check.FAIL)      # no block at all
+        self.assertEqual(check.check_replay_stamps(self.oracle(a=rec() | {'worker': 'a11y-worker-9'}), m, path)[0], check.FAIL)      # a box that did not hold
 
 if __name__ == '__main__': unittest.main()

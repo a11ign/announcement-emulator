@@ -29,7 +29,10 @@ const PROFILE = '/tmp/emu-profile-' + PORT; execSync('rm -rf ' + PROFILE);
 // the companion extension, with this session's collector port written into a private copy
 const extDir = PROFILE + '-ext'; execSync('rm -rf ' + extDir); mkdirSync(extDir, {recursive: true}); cpSync(extDir0, extDir, {recursive: true});
 writeFileSync(extDir + '/bg.js', readFileSync(extDir0 + '/bg.js', 'utf8').replaceAll('__PORT__', String(PORT)));
-const ch = spawn(chromeBin, ['--headless=new', '--no-sandbox', '--force-renderer-accessibility', `--window-size=${VW},${VH}`, '--user-data-dir=' + PROFILE, '--no-first-run',
+// A replay (A11-165): the page is read through a proxy that answers every request from a recording, and the run's certificate authority is trusted by its SPKI hash. With EMU_PROXY unset the launch is as it was.
+if (process.env.EMU_PROXY && !process.env.EMU_PROXY_SPKI) throw new Error('EMU_PROXY needs EMU_PROXY_SPKI, the hash of the certificate authority the proxy signs with');
+const REPLAY = process.env.EMU_PROXY ? ['--proxy-server=' + process.env.EMU_PROXY, '--ignore-certificate-errors-spki-list=' + process.env.EMU_PROXY_SPKI, '--disable-background-networking'] : [];
+const ch = spawn(chromeBin, ['--headless=new', '--no-sandbox', '--force-renderer-accessibility', `--window-size=${VW},${VH}`, '--user-data-dir=' + PROFILE, '--no-first-run', ...REPLAY,
   '--remote-debugging-port=' + CDP, '--allowlisted-extension-id=' + id, '--load-extension=' + extDir, '--disable-features=DisableLoadExtensionCommandLineSwitch',
   LIVE ? LIVE_URL : 'http://127.0.0.1:' + PORT + '/page.html'], {env: {...process.env, LD_LIBRARY_PATH: R + '/libs/root/usr/lib/x86_64-linux-gnu'}, stdio: ['ignore', 'ignore', 'ignore']});
 process.on('exit', () => { try { ch.kill('SIGKILL'); } catch (e) {} });

@@ -1,0 +1,76 @@
+---
+# Take one fleet box from behind the replay server (A11-165): the proxy policy values and the run's CA are removed, and read back as absent. The history policy is not this play's: it goes back to 0 through
+# control's own `provision-role.yml --tags policy`, as A11-155 did.
+#
+#     cd /root/control/ansible && ANSIBLE_CONFIG=ansible.cfg ansible-playbook /tmp/replay/<run>/replay-off.yml -l a11y-worker-2 -e @/tmp/replay/<run>/vars.json
+- name: Take one box from behind the replay server
+  hosts: a11y_workers
+  gather_facts: false
+  vars:
+    edge_policy_key: 'HKLM:\SOFTWARE\Policies\Microsoft\Edge'
+  tasks:
+    - name: Exactly one box, and the CA to remove
+      ansible.builtin.assert:
+        that:
+          - ansible_play_hosts_all | length == 1
+          - replay_thumbprint is match('^[0-9A-F]{40}$')
+        fail_msg: replay-off.yml takes one box (-l) and replay_thumbprint (see replay-on.yml)
+      run_once: true
+
+    - name: The box is idle, as the worker says
+      ansible.windows.win_uri:
+        url: http://127.0.0.1:8765/health
+        return_content: true
+      register: health
+      failed_when: (health.content | from_json).busy | default(true)
+
+    - name: Edge is stopped, so the next capture starts it without the proxy
+      ansible.windows.win_shell: |
+        Get-Process msedge -ErrorAction SilentlyContinue | Stop-Process -Force
+        Start-Sleep 3
+        (Get-Process msedge -ErrorAction SilentlyContinue | Measure-Object).Count
+      register: edge_stopped
+      changed_when: false
+      failed_when: edge_stopped.stdout | trim != '0'
+
+    - name: The proxy values are removed
+      become: true
+      ansible.windows.win_regedit:
+        path: "{{ edge_policy_key }}"
+        name: "{{ item }}"
+        state: absent
+      loop: [ProxyMode, ProxyServer, ProxyBypassList]
+
+    - name: The run's CA is no longer a trusted root
+      become: true
+      ansible.windows.win_certificate_store:
+        thumbprint: "{{ replay_thumbprint }}"
+        store_location: LocalMachine
+        store_name: Root
+        state: absent
+
+    - name: Read the proxy values back
+      become: true
+      ansible.windows.win_reg_stat:
+        path: "{{ edge_policy_key }}"
+        name: "{{ item }}"
+      loop: [ProxyMode, ProxyServer, ProxyBypassList]
+      register: proxy_values
+
+    - name: Read the certificate store back
+      become: true
+      ansible.windows.win_powershell:
+        parameters: { Thumbprint: "{{ replay_thumbprint }}" }
+        script: |
+          param($Thumbprint)
+          $Ansible.Changed = $false
+          @(Get-ChildItem Cert:\LocalMachine\Root | Where-Object { $_.Thumbprint -eq $Thumbprint }).Count
+      register: cert_count
+
+    - name: Refuse to call this box restored if a value or the certificate is still there
+      ansible.builtin.assert:
+        that:
+          - proxy_values.results | map(attribute='exists') | list == [false, false, false]
+          - cert_count.output | map('int') | list == [0]
+        fail_msg: "still present: exists={{ proxy_values.results | map(attribute='exists') | list }}, certificate count {{ cert_count.output }}"
+        success_msg: "replay off: ProxyMode, ProxyServer and ProxyBypassList are absent; certificate {{ replay_thumbprint }} is not in LocalMachine\\Root"
