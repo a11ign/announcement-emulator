@@ -215,6 +215,7 @@ class Snapshot(unittest.TestCase):
         self.assertIn('added by script', html); self.assertIn('<title>Changed by script</title>', html)                    # what the page did before the copy is kept
         self.assertIn(f'url("{base}/bg.png")', html); self.assertNotIn('<link rel="stylesheet"', html)                        # the stylesheet is in, its url() absolute
         self.assertIn('id="self" href="index.html"', html); self.assertIn('id="frag" href="#late"', html); self.assertIn(f'id="other" href="{base}/other.html"', html)
+        self.assertNotIn('data-snap', html)                                                                                    # nothing of the tool's own marks is left
         self.assertIn('srcdoc=', html); self.assertIn('inside', html); self.assertIn('value="typed"', html)                   # the same-origin iframe is inline, a form value is kept
 
     def test_frames_can_be_written_as_documents_and_lazy_loading_taken_off(self):
@@ -305,10 +306,11 @@ class Check(unittest.TestCase):
     def test_the_committed_summary_must_be_the_corpus_once_each_and_stamped(self):
         rb_path = self.write_readback(self.three()); a, b = 'https://example.org/a', 'https://example.org/b'
         path = os.path.join(self.dir, 'oracle-summary.json'); entry = lambda u, w='a11y-worker-2': {'url': u, 'worker': w, 'history': cc.history_block(passing_box())}
-        rb.write_json(path, [entry(a), entry(b)]); self.assertEqual(check.check_summary(path, rb_path, self.corpus(a, b))[0], check.OK)
+        rb.write_json(path, [{**entry(a), 'status': 200}, {**entry(b), 'status': 200}]); self.assertEqual(check.check_summary(path, rb_path, self.corpus(a, b))[0], check.OK)
         rb.write_json(path, [entry(a), entry(a)]); self.assertEqual(check.check_summary(path, rb_path, self.corpus(a, b))[0], check.FAIL)
         rb.write_json(path, [entry(a), entry(b, 'a11y-worker-99')]); self.assertEqual(check.check_summary(path, rb_path, self.corpus(a, b))[0], check.FAIL)
         rb.write_json(path, [entry(a), {'url': b, 'worker': 'a11y-worker-2'}]); self.assertEqual(check.check_summary(path, rb_path, self.corpus(a, b))[0], check.FAIL)
+        rb.write_json(path, [entry(a), {**entry(b), 'status': 500}]); self.assertEqual(check.check_summary(path, rb_path, self.corpus(a, b))[0], check.FAIL)
     def test_a_record_without_the_history_block_fails_the_check(self):
         rb_path = self.write_readback(self.three()); a = 'https://example.org/a'
         self.assertEqual(check.check_oracle(self.oracle(a=record(url=a)), rb_path, self.corpus(a))[0], check.FAIL)
@@ -321,8 +323,16 @@ class Check(unittest.TestCase):
         self.assertEqual(state, check.FAIL); self.assertIn('1 corpus addresses missing', msg)
     def test_a_static_copy_counts_as_the_address_it_is_a_copy_of(self):
         rb_path = self.write_readback(self.three()); a = 'https://example.org/a'
-        rec = self.stamped(url='http://capture-host:8001/a-slug/index.html'); rec['staticOf'] = a
+        rec = self.stamped(url=f'http://capture-host:8001/{cc.slug_of(a)}/index.html'); rec['staticOf'] = a
         self.assertEqual(check.check_oracle(self.oracle(a=rec), rb_path, self.corpus(a))[0], check.OK)
+    def test_a_copy_read_at_another_address_than_its_own_fails_the_check(self):
+        rb_path = self.write_readback(self.three()); a = 'https://example.org/a'
+        rec = self.stamped(url='https://example.org/a'); rec['staticOf'] = a      # `staticOf` on a record of the live address
+        self.assertEqual(check.check_oracle(self.oracle(a=rec), rb_path, self.corpus(a))[0], check.FAIL)
+    def test_an_extra_record_for_an_address_already_covered_fails_the_check(self):
+        rb_path = self.write_readback(self.three()); a = 'https://example.org/a'
+        oracle = self.oracle(a=self.stamped(url=a), b=self.stamped(url=a))
+        self.assertEqual(check.check_oracle(oracle, rb_path, self.corpus(a))[0], check.FAIL)
     def test_a_failed_capture_in_the_oracle_fails_the_check(self):
         rb_path = self.write_readback(self.three()); a = 'https://example.org/a'; rec = self.stamped(url=a); rec['status'] = 500
         self.assertEqual(check.check_oracle(self.oracle(a=rec), rb_path, self.corpus(a))[0], check.FAIL)
@@ -338,6 +348,12 @@ class Check(unittest.TestCase):
     def test_an_attributed_misses_file_that_is_a_list_is_not_a_gate_figure(self):
         rb.write_json(os.path.join(self.dir, 'misses-held-freeze-attributed.json'), [{'class': 'agree'}])
         self.assertEqual(check.check_figures(self.dir)[0], check.PENDING)
+    def test_a_figure_that_is_not_on_the_page_fails_the_check(self):
+        rb.write_json(os.path.join(self.dir, 'misses-held-freeze.json'), {'gate': {'exact': 4497, 'total': 4607}})
+        write(os.path.join(self.dir, 'measure-held-freeze.txt'), 'GATE: 4497 of 4607 = 97.61% exact\n')
+        page = os.path.join(self.dir, 'page.md')
+        write(page, 'the figure is 4,497 of 4,607\n'); self.assertEqual(check.check_figures(self.dir, page)[0], check.OK)
+        write(page, 'the figure is 4,498 of 4,607\n'); self.assertEqual(check.check_figures(self.dir, page)[0], check.FAIL)
     def test_a_gate_figure_that_disagrees_with_its_text_fails(self):
         rb.write_json(os.path.join(self.dir, 'misses-held-freeze.json'), {'gate': {'exact': 4497, 'total': 4607}})
         t = os.path.join(self.dir, 'measure-held-freeze.txt')

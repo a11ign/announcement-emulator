@@ -14,6 +14,8 @@ import sys, os, re, json, glob, argparse, subprocess
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import readback as rb
 import explain_visited
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+import corpus_capture
 
 CHANNELS = ('headings', 'landmarks', 'formFields', 'graphics', 'links', 'lists', 'frames', 'tableCells')
 IPV4 = re.compile(r'(?<![\w.])(?:(?:25[0-5]|2[0-4]\d|1?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|1?\d?\d)(?![\w]|\.\d)')
@@ -34,7 +36,7 @@ def check_readback(path, control_path=None):
     if not control: bad.append('no box has a `before` probe that read visited: the probe has not been shown to see history')
     for w, box in sorted(boxes.items()):
         if box.get('passed') != rb.box_passes(box): bad.append(f'{w}: stored `passed` disagrees with its readings')
-    return (FAIL, '; '.join(bad)) if bad else (OK, f'{len(rb.cleared_workers(data))} of {len(boxes)} boxes cleared ({len(rb.held_workers(data))} held to the end, {sum(1 for b in boxes.values() if b.get("restored"))} restored): {", ".join(rb.cleared_workers(data))}; the probe saw history on {", ".join(control)}')
+    return (FAIL, '; '.join(bad)) if bad else (OK, f'{len(rb.cleared_workers(data))} of {len(boxes)} boxes cleared ({len(rb.held_workers(data))} held to the end, {sum(1 for b in boxes.values() if b.get("restored"))} restored): {", ".join(rb.cleared_workers(data))}; the probe saw history on {", ".join(control)}{" (in the run --control-from names)" if control_path and not rb.control_workers(data) else ""}')
 
 
 def visited_problems(directory, visited, explained_path):
@@ -69,7 +71,9 @@ def check_oracle(directory, readback_path, corpus_path, explained_path=None):
         swept = explain_visited.visited_in(cap); visited += len(swept); urls.add(rec.get('staticOf') or cap.get('url'))      # a static copy is the record of the address it is a copy of
         if not swept and rb.announced_visited(cap): bad.append(f'{name}: `visited` is spoken in the read-through but in no swept channel')
         bad += record_problems(name, rec, held)
+        if rec.get('staticOf') and not str(cap.get('url', '')).endswith(f"/{corpus_capture.slug_of(rec['staticOf'])}/index.html"): bad.append(f'{name}: a copy of {rec["staticOf"]} that was not read at its own address')
     expected = {e if isinstance(e, str) else e['url'] for e in rb.read_json(corpus_path)}
+    if len(files) != len(expected): bad.append(f'{len(files)} records for {len(expected)} corpus addresses')
     if urls != expected: bad.append(f'{len(expected - urls)} corpus addresses missing, {len(urls - expected)} not in the corpus')
     if visited: bad += visited_problems(directory, visited, explained_path)
     return (FAIL, '; '.join(bad[:5]) + (f' (+{len(bad) - 5} more)' if len(bad) > 5 else '')) if bad else (OK, f'{len(files)} records, all stamped, {visited} `visited` announcements, {"all explained" if visited else "none"}')
@@ -79,7 +83,7 @@ def check_summary(path, readback_path, corpus_path):
     """oracle-summary.json is what is committed of the oracle (its pages are third-party's): one entry per corpus address, each stamped, each from a box that held."""
     if not os.path.exists(path): return PENDING, 'no oracle summary yet'
     held = set(rb.held_workers(rb.load(readback_path))); entries = rb.read_json(path); bad = []
-    for e in entries: bad += record_problems(e['url'], {**e, 'status': 200, 'capture': {'structure': {'x': [1]}}}, held)
+    for e in entries: bad += record_problems(e['url'], {**e, 'capture': {'structure': {'x': [1]}}}, held)      # `structure` stands in: the summary keeps counts, the status is its own
     expected = {e['url'] for e in rb.read_json(corpus_path)}
     if {e['url'] for e in entries} != expected or len(entries) != len(expected): bad.append(f'the summary is not the {len(expected)} corpus addresses, once each')
     return (FAIL, '; '.join(bad[:5])) if bad else (OK, f'{len(entries)} entries, all stamped by a box that held')
@@ -91,7 +95,10 @@ def gate_of(misses_path):
     return data.get('gate') if isinstance(data, dict) else None
 
 
-def check_figures(results):
+def thousands(n): return f'{int(n):,}'
+
+
+def check_figures(results, doc=None):
     pairs = [(m, m.replace('misses-', 'measure-')[:-5] + '.txt') for m in sorted(glob.glob(os.path.join(results, 'misses-*.json'))) if gate_of(m)]
     if not pairs: return PENDING, 'no figures yet'
     bad = []
@@ -99,7 +106,12 @@ def check_figures(results):
         gate = gate_of(m); line = re.search(r'^GATE: (\d+) of (\d+)', read_text(t) if os.path.exists(t) else '', re.M)
         if not line: bad.append(f'{os.path.basename(t)}: no GATE line')
         elif (int(line[1]), int(line[2])) != (gate['exact'], gate['total']): bad.append(f'{os.path.basename(m)}: {gate["exact"]}/{gate["total"]} but the text says {line[1]}/{line[2]}')
-    return (FAIL, '; '.join(bad)) if bad else (OK, f'{len(pairs)} figures match their text')
+    if doc and os.path.exists(doc):
+        page = read_text(doc)
+        for m, t in pairs:
+            line = re.search(r'^GATE: (\d+) of (\d+)', read_text(t), re.M)
+            if f'{thousands(line[1])} of {thousands(line[2])}' not in page: bad.append(f'{os.path.basename(t)}: {thousands(line[1])} of {thousands(line[2])} is not on the page')
+    return (FAIL, '; '.join(bad)) if bad else (OK, f'{len(pairs)} figures match their text' + (' and are on the page' if doc else ''))
 
 
 def check_addresses(paths):
@@ -137,7 +149,7 @@ def main(argv):
     ap = argparse.ArgumentParser(); ap.add_argument('--results', default='q3/results/remeasure'); ap.add_argument('--oracle'); ap.add_argument('--corpus', default='q3/results/corpus.json'); ap.add_argument('--explained'); ap.add_argument('--control-from', help='another run\'s history-readback.json whose `before` probes show the method (a run that took none of its own)'); ap.add_argument('--doc', default='docs/announcement-emulator-spike.md')
     ap.add_argument('--base', default='origin/main'); ap.add_argument('--require-complete', action='store_true'); a = ap.parse_args(argv)
     readback = os.path.join(a.results, 'history-readback.json')
-    results = [('readback', check_readback(readback, a.control_from)), ('summary', check_summary(os.path.join(a.results, 'oracle-summary.json'), readback, a.corpus)), ('oracle', check_oracle(a.oracle, readback, a.corpus, a.explained or os.path.join(a.results, 'visited-explained.json'))), ('figures', check_figures(a.results)),
+    results = [('readback', check_readback(readback, a.control_from)), ('summary', check_summary(os.path.join(a.results, 'oracle-summary.json'), readback, a.corpus)), ('oracle', check_oracle(a.oracle, readback, a.corpus, a.explained or os.path.join(a.results, 'visited-explained.json'))), ('figures', check_figures(a.results, a.doc)),
                ('addresses', check_addresses([a.results, a.doc])), ('doc', check_doc(a.doc, a.base))]
     for name, (state, msg) in results: print(f'{state:>8}  {name}: {msg}')
     states = {s for _, (s, _) in results}

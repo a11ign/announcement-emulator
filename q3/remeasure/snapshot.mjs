@@ -9,7 +9,13 @@
 //     any other iframe keeps its address;
 //   - with `--lazy eager`, `loading=lazy` taken off iframes and images (`keep` is the default and what the copies are);
 //   - form values written into attributes.
-// What it does not freeze: images, fonts and the content of other-origin iframes are still fetched live; shadow DOM is not serialised (no `getHTML`).
+// What it does not do, and what it leaves as it found it:
+//   - images, fonts and the content of other-origin iframes are still fetched live; shadow DOM is not serialised (no `getHTML`); <template> is dropped;
+//   - a stylesheet link whose text the browser did not report stays a link, an @import is made absolute but not inlined, and an inline style="" attribute is left as it is (its url()s are not made absolute);
+//   - a URL attribute outside the list in the code (svg href, formaction, background) stays relative;
+//   - a link counts as "to the page's own address" when it equals the address asked for, not the address the page ended on (a redirect);
+//   - a same-origin iframe that had not loaded when the copy was made is written as an empty document;
+//   - the output is UTF-8; `meta.json`'s `bytes` is the size of the files written (the page and its frame files).
 import { spawn } from "node:child_process";
 import { mkdirSync, writeFileSync, rmSync, readFileSync } from "node:fs";
 const [, , address, outDir, ...rest] = process.argv;
@@ -131,9 +137,9 @@ try {
   const out = JSON.parse(await evaluate(`${SERIALISE}(${JSON.stringify(sheets)}, ${JSON.stringify(address.split("#")[0])}, ${FRAMES === "files"}, ${LAZY === "eager"})`));
   mkdirSync(outDir, { recursive: true });
   const self = (h) => h.replaceAll("@@SELF@@", "index.html");
-  for (const f of out.frames) writeFileSync(outDir + "/" + f.name, self(f.html));
-  writeFileSync(outDir + "/index.html", self(out.html));      // the copy is served as <slug>/index.html: a link to the page itself stays a link to this document, on whatever host serves it
-  writeFileSync(outDir + "/meta.json", JSON.stringify({ address, finalAddress: out.href, title: out.title, bytes: Buffer.byteLength(out.html), elements: out.elements, iframes: out.iframes, frameFiles: out.frames.length, frames: FRAMES, lazy: LAZY,
+  const written = [{ name: "index.html", html: self(out.html) }, ...out.frames.map((f) => ({ name: f.name, html: self(f.html) }))];
+  for (const f of written) writeFileSync(outDir + "/" + f.name, f.html);      // the copy is served as <slug>/index.html: a link to the page itself stays a link to this document, on whatever host serves it
+  writeFileSync(outDir + "/meta.json", JSON.stringify({ address, finalAddress: out.href, title: out.title, bytes: written.reduce((n, f) => n + Buffer.byteLength(f.html), 0), elements: out.elements, iframes: out.iframes, frameFiles: out.frames.length, frames: FRAMES, lazy: LAZY,
     stylesheetsInlined: Object.keys(sheets).length, snapshotAt: new Date().toISOString() }, null, 1));
   console.log(`${out.title.slice(0, 60)} | ${out.elements} elements, ${Buffer.byteLength(out.html)} bytes, ${Object.keys(sheets).length} sheets`);
   done(0);
