@@ -1,0 +1,47 @@
+pages 60 (held)  comparable: 57   emulator fault: 1   not comparable: 2
+   emulator fault: https://ico.org.uk/action-weve-taken/enforcement/  [emulator fault: timeout 900s]
+   not comparable: https://www.hubspot.com/  [not comparable: document title fleet 'Hub Spot Software and Tools for your Bus' / emulator 'HubSpot | Software & Tools for your Busi']
+   not comparable: https://www.w3.org/WAI/demos/bad/before/news.html  [not comparable: document title fleet 'Welcome to City Lights! Inaccessible New' / emulator 'Welcome to CityLights! [Inaccessible New']
+
+agreement by element kind (57 comparable pages)
+     exact / total       %  positional
+      815 / 820       99.4%         815  headings
+     3964 / 4129      96.0%        3844  links
+      258 / 263       98.1%         237  buttons
+      537 / 558       96.2%         444  formFields
+      557 / 565       98.6%         550  landmarks
+      526 / 531       99.1%         526  lists
+      175 / 179       97.8%         175  graphics
+       60 / 60       100.0%          60  frames
+
+agreement by swept channel
+     exact / total       %  positional
+      815 / 820       99.4%         815  headings
+      557 / 565       98.6%         550  landmarks
+      795 / 821       96.8%         681  formFields
+      175 / 179       97.8%         175  graphics
+     3964 / 4129      96.0%        3844  links
+      526 / 531       99.1%         526  lists
+       60 / 60       100.0%          60  frames
+
+shapes: 7045 announcements in 283 distinct shapes; top 10 cover 4977 = 70.6% (the fleet's script quotes 33 shapes, top 10 = 94.3%)
+
+agreement by shape (top 10, ranked in this run)
+     exact / total       %  positional
+     2572 / 2574      99.9%        2481  NAME + ROLE
+      513 / 513      100.0%         513  NAME + ROLE + LEVEL
+      340 / 348       97.7%         322  NAME + ROLE + STATE
+      337 / 337      100.0%         328  NAME + ROLE + ROLE + COUNT + NAME + ROLE
+      295 / 295      100.0%         286  ROLE + COUNT + NAME + ROLE
+      257 / 263       97.7%         253  NAME + NAME + ROLE
+      231 / 231      100.0%         222  NAME + STATE + ROLE
+       14 / 147        9.5%          14  NAME + NAME + NAME + NAME + ROLE
+      135 / 135      100.0%         135  NAME + ROLE + ROLE
+      134 / 134      100.0%         132  NAME + ROLE + NAME + ROLE + LEVEL
+
+GATE: 4828 of 4977 = 97.01% exact on the top 10 shapes   (positional: 4686 of 4977)   [BELOW 98%]
+      with the not-comparable pages kept in: 4989 of 5146 = 96.95%
+      emulator announcements with no counterpart in the fleet's lists (extras): 239
+      top-10 misses by cause: language 138, unexplained 11
+      the same, with the pages' `history` misses not counted as misses against us: 4828 of 4977 = 97.01%   (an upper bound if the fleet's browser history could be reproduced)
+      misses over all channels: 213 of 7105; on top-10 shapes: 149

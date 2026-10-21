@@ -217,6 +217,19 @@ class Snapshot(unittest.TestCase):
         self.assertIn('id="self" href="index.html"', html); self.assertIn('id="frag" href="#late"', html); self.assertIn(f'id="other" href="{base}/other.html"', html)
         self.assertIn('srcdoc=', html); self.assertIn('inside', html); self.assertIn('value="typed"', html)                   # the same-origin iframe is inline, a form value is kept
 
+    def test_frames_can_be_written_as_documents_and_lazy_loading_taken_off(self):
+        files = {'/page.html': ('text/html', '<!doctype html><title>p</title><iframe loading="lazy" src="/inner.html"></iframe><img loading="lazy" src="/i.png" alt="x">'), '/inner.html': ('text/html', '<!doctype html><title>inner</title><p>inside</p>')}
+        class H(http.server.BaseHTTPRequestHandler):
+            def do_GET(self):
+                kind, body = files.get(self.path, ('image/png', 'x')); self.send_response(200); self.send_header('content-type', kind); self.end_headers(); self.wfile.write(body.encode())
+            def log_message(self, *a): pass
+        server = http.server.HTTPServer(('127.0.0.1', 0), H); threading.Thread(target=server.serve_forever, daemon=True).start(); self.addCleanup(server.shutdown); self.addCleanup(server.server_close)
+        out = tempfile.TemporaryDirectory(); self.addCleanup(out.cleanup)
+        done = subprocess.run(['node', os.path.join(HERE, 'snapshot.mjs'), f'http://127.0.0.1:{server.server_port}/page.html', out.name, '--frames', 'files', '--lazy', 'eager'], capture_output=True, text=True, timeout=120)
+        self.assertEqual(done.returncode, 0, done.stderr)
+        html = open(os.path.join(out.name, 'index.html')).read()
+        self.assertIn('src="frame-0.html"', html); self.assertNotIn('srcdoc', html); self.assertNotIn('loading="lazy"', html); self.assertIn('inside', open(os.path.join(out.name, 'frame-0.html')).read())
+
 
 class Check(unittest.TestCase):
     def setUp(self): self.tmp = tempfile.TemporaryDirectory(); self.dir = self.tmp.name
@@ -306,6 +319,10 @@ class Check(unittest.TestCase):
         rb_path = self.write_readback(self.three()); a, b = 'https://example.org/a', 'https://example.org/b'
         state, msg = check.check_oracle(self.oracle(a=self.stamped(url=a)), rb_path, self.corpus(a, b))
         self.assertEqual(state, check.FAIL); self.assertIn('1 corpus addresses missing', msg)
+    def test_a_static_copy_counts_as_the_address_it_is_a_copy_of(self):
+        rb_path = self.write_readback(self.three()); a = 'https://example.org/a'
+        rec = self.stamped(url='http://capture-host:8001/a-slug/index.html'); rec['staticOf'] = a
+        self.assertEqual(check.check_oracle(self.oracle(a=rec), rb_path, self.corpus(a))[0], check.OK)
     def test_a_failed_capture_in_the_oracle_fails_the_check(self):
         rb_path = self.write_readback(self.three()); a = 'https://example.org/a'; rec = self.stamped(url=a); rec['status'] = 500
         self.assertEqual(check.check_oracle(self.oracle(a=rec), rb_path, self.corpus(a))[0], check.FAIL)

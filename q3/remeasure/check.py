@@ -66,7 +66,7 @@ def check_oracle(directory, readback_path, corpus_path, explained_path=None):
     held = set(rb.held_workers(rb.load(readback_path))); bad = []; visited = 0; urls = set()
     for f in files:
         rec = rb.read_json(f); cap = rec.get('capture') or {}; name = os.path.basename(f)
-        swept = explain_visited.visited_in(cap); visited += len(swept); urls.add(cap.get('url'))
+        swept = explain_visited.visited_in(cap); visited += len(swept); urls.add(rec.get('staticOf') or cap.get('url'))      # a static copy is the record of the address it is a copy of
         if not swept and rb.announced_visited(cap): bad.append(f'{name}: `visited` is spoken in the read-through but in no swept channel')
         bad += record_problems(name, rec, held)
     expected = {e if isinstance(e, str) else e['url'] for e in rb.read_json(corpus_path)}

@@ -9,6 +9,8 @@ grep -E '^GATE' q3/results/remeasure/measure-held-freeze.txt q3/results/remeasur
 git diff origin/main --numstat -- docs/announcement-emulator-spike.md                                       # additions only: N 0
 ```
 
+**The drift-free round (the chairman's second request): the same 102 pages saved once, served from `capture-host`, read by the fleet and by the emulator as the same bytes: 4,828 of 4,977 = 97.01% held out at `5fbd726`, 0 `history` misses, 138 Windows-only language misses (133 on one page) and 11 unexplained; the Gate is not passed on the number or the rule.** Its evidence is `q3/results/remeasure/static/`; its check is `python3 q3/remeasure/check.py --results q3/results/remeasure/static --control-from q3/results/remeasure/history-readback.json` (all `ok` but `oracle`, which needs the third-party pages), and the same grep over `static/measure-held-*.txt`.
+
 To re-run the live part (fleet and oracle) see `q3/remeasure/RUNBOOK.md`; with the oracle, `python3 q3/remeasure/check.py --oracle <dir> --require-complete` exits 0.
 
 ## What changed
@@ -19,7 +21,7 @@ To re-run the live part (fleet and oracle) see `q3/remeasure/RUNBOOK.md`; with t
 - `q3/remeasure/policy_override.py`: writes the `-e @file` for `provision-role.yml --tags policy` from the control checkout's own `worker_edge_policy` plus `SavingBrowserHistoryDisabled=1` (an extra var replaces the whole list). Run against `control` at its head it gives the eight declared entries plus the new one.
 - `q3/remeasure/check.py`: the checks of the plan's proof table that need no commit: read-back, oracle (exactly the corpus addresses, each a good stamped capture from a box that held, `visited` count 0 over swept and spoken announcements), each Gate figure equal to its text, no IPv4 literal under the results or in the doc, and the doc diff being one `## Re-measure` section between `## Gate` and the next section. Without the fleet they read `pending`; `--require-complete` makes `pending` fail.
 - `q3/remeasure/RUNBOOK.md`: every fleet and measure step, in order, with its pass criterion.
-- `q3/remeasure/test_remeasure.py`: 57 tests.
+- `q3/remeasure/test_remeasure.py`: 63 tests, including `snapshot.mjs` against a local server (skipped where the emulator's Chrome is not built).
 
 ## What the run found (details in the write-up)
 
@@ -58,3 +60,6 @@ To re-run the live part (fleet and oracle) see `q3/remeasure/RUNBOOK.md`; with t
 | a restored box not counted as cleared | 3 |
 | a `visited` spoken in the read-through but in no swept channel ignored | 1 |
 | `fleet_capture.mjs` does not turn a refused or cut-off connection into a record | 2 |
+| a static copy not counted as the address it copies (check) / not stamped with `staticOf` / the original view keeping the copy's address | 1 each |
+| `snapshot.mjs` ignoring `--frames files` or `--lazy eager` | 1 |
+| the control of a run that took no `before` probe not read from the run that did | 1 |

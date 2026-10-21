@@ -8,16 +8,26 @@
     "read": true,
     "visited": false
    },
+   "after-run": {
+    "capturedAt": "2026-10-21T15:50:22.706Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
    "emptied": {
     "at": "2026-10-21T14:30:42Z",
     "what": "win_file absent under Default; History: changed: true; History-journal: changed: true; Visited Links: changed: false"
    },
-   "passed": true,
+   "passed": false,
    "policy": {
     "evidence": "provision-role.yml --tags policy -e override: play recap failed=0, 'Refuse to call this provisioned' task ok; win_reg_stat read SavingBrowserHistoryDisabled value 1",
     "name": "SavingBrowserHistoryDisabled",
     "readAt": "2026-10-21T14:30:42Z",
     "value": 1
+   },
+   "restored": {
+    "at": "2026-10-21T15:56:21Z",
+    "evidence": "provision-role.yml --tags policy -e restore override (SavingBrowserHistoryDisabled=0): play recap failed=0; win_reg_stat read value 0"
    }
   },
   "a11y-worker-12": {
@@ -27,16 +37,26 @@
     "read": true,
     "visited": false
    },
+   "after-run": {
+    "capturedAt": "2026-10-21T15:50:15.833Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
    "emptied": {
     "at": "2026-10-21T14:36:42Z",
     "what": "win_file absent under Default; History: changed: true; History-journal: changed: true; Visited Links: changed: false"
    },
-   "passed": true,
+   "passed": false,
    "policy": {
     "evidence": "provision-role.yml --tags policy -e override: play recap failed=0, 'Refuse to call this provisioned' task ok; win_reg_stat read SavingBrowserHistoryDisabled value 1",
     "name": "SavingBrowserHistoryDisabled",
     "readAt": "2026-10-21T14:36:42Z",
     "value": 1
+   },
+   "restored": {
+    "at": "2026-10-21T15:57:15Z",
+    "evidence": "provision-role.yml --tags policy -e restore override (SavingBrowserHistoryDisabled=0): play recap failed=0; win_reg_stat read value 0"
    }
   },
   "a11y-worker-13": {
@@ -46,16 +66,26 @@
     "read": true,
     "visited": false
    },
+   "after-run": {
+    "capturedAt": "2026-10-21T15:50:08.257Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
    "emptied": {
     "at": "2026-10-21T14:42:31Z",
     "what": "win_file absent under Default; History: changed: true; History-journal: changed: true; Visited Links: changed: false"
    },
-   "passed": true,
+   "passed": false,
    "policy": {
     "evidence": "provision-role.yml --tags policy -e override: play recap failed=0, 'Refuse to call this provisioned' task ok; win_reg_stat read SavingBrowserHistoryDisabled value 1",
     "name": "SavingBrowserHistoryDisabled",
     "readAt": "2026-10-21T14:42:31Z",
     "value": 1
+   },
+   "restored": {
+    "at": "2026-10-21T15:58:05Z",
+    "evidence": "provision-role.yml --tags policy -e restore override (SavingBrowserHistoryDisabled=0): play recap failed=0; win_reg_stat read value 0"
    }
   },
   "a11y-worker-14": {
@@ -65,16 +95,26 @@
     "read": true,
     "visited": false
    },
+   "after-run": {
+    "capturedAt": "2026-10-21T15:50:07.186Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
    "emptied": {
     "at": "2026-10-21T14:48:16Z",
     "what": "win_file absent under Default; History: changed: true; History-journal: changed: true; Visited Links: changed: false"
    },
-   "passed": true,
+   "passed": false,
    "policy": {
     "evidence": "provision-role.yml --tags policy -e override: play recap failed=0, 'Refuse to call this provisioned' task ok; win_reg_stat read SavingBrowserHistoryDisabled value 1",
     "name": "SavingBrowserHistoryDisabled",
     "readAt": "2026-10-21T14:48:16Z",
     "value": 1
+   },
+   "restored": {
+    "at": "2026-10-21T15:58:54Z",
+    "evidence": "provision-role.yml --tags policy -e restore override (SavingBrowserHistoryDisabled=0): play recap failed=0; win_reg_stat read value 0"
    }
   },
   "a11y-worker-15": {
@@ -84,16 +124,26 @@
     "read": true,
     "visited": false
    },
+   "after-run": {
+    "capturedAt": "2026-10-21T15:50:06.625Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
    "emptied": {
     "at": "2026-10-21T14:54:15Z",
     "what": "win_file absent under Default; History: changed: true; History-journal: changed: true; Visited Links: changed: false"
    },
-   "passed": true,
+   "passed": false,
    "policy": {
     "evidence": "provision-role.yml --tags policy -e override: play recap failed=0, 'Refuse to call this provisioned' task ok; win_reg_stat read SavingBrowserHistoryDisabled value 1",
     "name": "SavingBrowserHistoryDisabled",
     "readAt": "2026-10-21T14:54:15Z",
     "value": 1
+   },
+   "restored": {
+    "at": "2026-10-21T15:59:47Z",
+    "evidence": "provision-role.yml --tags policy -e restore override (SavingBrowserHistoryDisabled=0): play recap failed=0; win_reg_stat read value 0"
    }
   },
   "a11y-worker-16": {
@@ -103,16 +153,26 @@
     "read": true,
     "visited": false
    },
+   "after-run": {
+    "capturedAt": "2026-10-21T15:50:07.025Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
    "emptied": {
     "at": "2026-10-21T15:00:06Z",
     "what": "win_file absent under Default; History: changed: true; History-journal: changed: true; Visited Links: changed: false"
    },
-   "passed": true,
+   "passed": false,
    "policy": {
     "evidence": "provision-role.yml --tags policy -e override: play recap failed=0, 'Refuse to call this provisioned' task ok; win_reg_stat read SavingBrowserHistoryDisabled value 1",
     "name": "SavingBrowserHistoryDisabled",
     "readAt": "2026-10-21T15:00:06Z",
     "value": 1
+   },
+   "restored": {
+    "at": "2026-10-21T16:00:38Z",
+    "evidence": "provision-role.yml --tags policy -e restore override (SavingBrowserHistoryDisabled=0): play recap failed=0; win_reg_stat read value 0"
    }
   },
   "a11y-worker-2": {
@@ -122,16 +182,26 @@
     "read": true,
     "visited": false
    },
+   "after-run": {
+    "capturedAt": "2026-10-21T15:50:24.209Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
    "emptied": {
     "at": "2026-10-21T13:46:07Z",
     "what": "win_file absent under Default; History: changed: true; History-journal: changed: true; Visited Links: changed: false"
    },
-   "passed": true,
+   "passed": false,
    "policy": {
     "evidence": "provision-role.yml --tags policy -e override: play recap failed=0, 'Refuse to call this provisioned' task ok; win_reg_stat read SavingBrowserHistoryDisabled value 1",
     "name": "SavingBrowserHistoryDisabled",
     "readAt": "2026-10-21T13:46:07Z",
     "value": 1
+   },
+   "restored": {
+    "at": "2026-10-21T15:51:25Z",
+    "evidence": "provision-role.yml --tags policy -e restore override (SavingBrowserHistoryDisabled=0): play recap failed=0; win_reg_stat read value 0"
    }
   },
   "a11y-worker-3": {
@@ -141,16 +211,26 @@
     "read": true,
     "visited": false
    },
+   "after-run": {
+    "capturedAt": "2026-10-21T15:50:05.714Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
    "emptied": {
     "at": "2026-10-21T14:01:46Z",
     "what": "win_file absent under Default; History: changed: true; History-journal: changed: true; Visited Links: changed: false"
    },
-   "passed": true,
+   "passed": false,
    "policy": {
     "evidence": "provision-role.yml --tags policy -e override: play recap failed=0, 'Refuse to call this provisioned' task ok; win_reg_stat read SavingBrowserHistoryDisabled value 1",
     "name": "SavingBrowserHistoryDisabled",
     "readAt": "2026-10-21T14:01:46Z",
     "value": 1
+   },
+   "restored": {
+    "at": "2026-10-21T15:52:10Z",
+    "evidence": "provision-role.yml --tags policy -e restore override (SavingBrowserHistoryDisabled=0): play recap failed=0; win_reg_stat read value 0"
    }
   },
   "a11y-worker-4": {
@@ -160,16 +240,26 @@
     "read": true,
     "visited": false
    },
+   "after-run": {
+    "capturedAt": "2026-10-21T15:50:08.056Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
    "emptied": {
     "at": "2026-10-21T14:07:31Z",
     "what": "win_file absent under Default; History: changed: true; History-journal: changed: true; Visited Links: changed: false"
    },
-   "passed": true,
+   "passed": false,
    "policy": {
     "evidence": "provision-role.yml --tags policy -e override: play recap failed=0, 'Refuse to call this provisioned' task ok; win_reg_stat read SavingBrowserHistoryDisabled value 1",
     "name": "SavingBrowserHistoryDisabled",
     "readAt": "2026-10-21T14:07:31Z",
     "value": 1
+   },
+   "restored": {
+    "at": "2026-10-21T15:53:00Z",
+    "evidence": "provision-role.yml --tags policy -e restore override (SavingBrowserHistoryDisabled=0): play recap failed=0; win_reg_stat read value 0"
    }
   },
   "a11y-worker-7": {
@@ -179,16 +269,26 @@
     "read": true,
     "visited": false
    },
+   "after-run": {
+    "capturedAt": "2026-10-21T15:50:07.508Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
    "emptied": {
     "at": "2026-10-21T14:13:14Z",
     "what": "win_file absent under Default; History: changed: true; History-journal: changed: true; Visited Links: changed: false"
    },
-   "passed": true,
+   "passed": false,
    "policy": {
     "evidence": "provision-role.yml --tags policy -e override: play recap failed=0, 'Refuse to call this provisioned' task ok; win_reg_stat read SavingBrowserHistoryDisabled value 1",
     "name": "SavingBrowserHistoryDisabled",
     "readAt": "2026-10-21T14:13:14Z",
     "value": 1
+   },
+   "restored": {
+    "at": "2026-10-21T15:53:51Z",
+    "evidence": "provision-role.yml --tags policy -e restore override (SavingBrowserHistoryDisabled=0): play recap failed=0; win_reg_stat read value 0"
    }
   },
   "a11y-worker-8": {
@@ -198,16 +298,26 @@
     "read": true,
     "visited": false
    },
+   "after-run": {
+    "capturedAt": "2026-10-21T15:50:23.053Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
    "emptied": {
     "at": "2026-10-21T14:19:04Z",
     "what": "win_file absent under Default; History: changed: true; History-journal: changed: true; Visited Links: changed: false"
    },
-   "passed": true,
+   "passed": false,
    "policy": {
     "evidence": "provision-role.yml --tags policy -e override: play recap failed=0, 'Refuse to call this provisioned' task ok; win_reg_stat read SavingBrowserHistoryDisabled value 1",
     "name": "SavingBrowserHistoryDisabled",
     "readAt": "2026-10-21T14:19:04Z",
     "value": 1
+   },
+   "restored": {
+    "at": "2026-10-21T15:54:41Z",
+    "evidence": "provision-role.yml --tags policy -e restore override (SavingBrowserHistoryDisabled=0): play recap failed=0; win_reg_stat read value 0"
    }
   },
   "a11y-worker-9": {
@@ -217,16 +327,26 @@
     "read": true,
     "visited": false
    },
+   "after-run": {
+    "capturedAt": "2026-10-21T15:50:14.441Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
    "emptied": {
     "at": "2026-10-21T14:24:54Z",
     "what": "win_file absent under Default; History: changed: true; History-journal: changed: true; Visited Links: changed: false"
    },
-   "passed": true,
+   "passed": false,
    "policy": {
     "evidence": "provision-role.yml --tags policy -e override: play recap failed=0, 'Refuse to call this provisioned' task ok; win_reg_stat read SavingBrowserHistoryDisabled value 1",
     "name": "SavingBrowserHistoryDisabled",
     "readAt": "2026-10-21T14:24:54Z",
     "value": 1
+   },
+   "restored": {
+    "at": "2026-10-21T15:55:31Z",
+    "evidence": "provision-role.yml --tags policy -e restore override (SavingBrowserHistoryDisabled=0): play recap failed=0; win_reg_stat read value 0"
    }
   }
  }

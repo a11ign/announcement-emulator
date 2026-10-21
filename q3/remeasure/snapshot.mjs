@@ -1,17 +1,23 @@
 // A static copy of a live page, so that the fleet and the emulator can both read the same bytes (A11-155, the drift-free comparison).
-//   node snapshot.mjs <address> <out_dir>
+//   node snapshot.mjs <address> <out_dir> [--frames srcdoc|files] [--lazy keep|eager]
 // Writes <out_dir>/index.html and <out_dir>/meta.json. The browser is the emulator's own Chrome 155, asked as the emulator asks (Edge on Windows, the 1008x872 window), the page is loaded,
 // scrolled to its end and back so what loads on scroll is there, and its DOM is written out with:
 //   - every script, <noscript>, preload hint, <base>, meta refresh and inline event handler removed (the copy does nothing by itself);
 //   - every stylesheet inlined (the browser's own text of it, so a rule a script inserted is in), its url()s made absolute;
 //   - every URL made absolute, except a link to a place on the page itself (`#x`), and a link to the page's own address, which points at the copy (`index.html`), so "same page" stays "same page";
-//   - an iframe of the same origin written into its own `srcdoc` by the same steps; any other iframe keeps its address;
+//   - an iframe of the same origin written out by the same steps, into its `srcdoc` (`--frames srcdoc`, the default and what the re-measure's copies are) or as its own document `frame-<n>.html` beside the page (`--frames files`);
+//     any other iframe keeps its address;
+//   - with `--lazy eager`, `loading=lazy` taken off iframes and images (`keep` is the default and what the copies are);
 //   - form values written into attributes.
 // What it does not freeze: images, fonts and the content of other-origin iframes are still fetched live; shadow DOM is not serialised (no `getHTML`).
 import { spawn } from "node:child_process";
 import { mkdirSync, writeFileSync, rmSync, readFileSync } from "node:fs";
 const [, , address, outDir, ...rest] = process.argv;
-if (!address || !outDir) throw new Error("usage: node snapshot.mjs <address> <out_dir>");
+if (!address || !outDir) throw new Error("usage: node snapshot.mjs <address> <out_dir> [--frames srcdoc|files] [--lazy keep|eager]");
+const FRAMES = rest.includes("--frames") ? rest[rest.indexOf("--frames") + 1] : "srcdoc";
+const LAZY = rest.includes("--lazy") ? rest[rest.indexOf("--lazy") + 1] : "keep";
+if (!["keep", "eager"].includes(LAZY)) throw new Error("--lazy is keep or eager");
+if (!["files", "srcdoc"].includes(FRAMES)) throw new Error("--frames is files or srcdoc");
 const TAG = `${process.pid}-${Date.now()}`;      // one profile per run; the browser picks its own debugging port, so runs side by side cannot meet in one browser
 const R = process.env.EMU_DOWNLOADS || process.env.HOME + "/spikes/announcement-emulator-5661";
 const PROFILE = `/tmp/snap-profile-${TAG}`;
@@ -39,7 +45,8 @@ async function connect() {
 }
 
 // Runs in the page. `sheets` maps a stylesheet's address to its text; `self` is the page's address; returns the serialised document.
-const SERIALISE = `(function (sheets, self) {
+const SERIALISE = `(function (sheets, self, asFiles, eager) {
+  const frames = [];
   const URL_ATTRS = { a: ['href'], area: ['href'], link: ['href'], img: ['src'], source: ['src'], video: ['src', 'poster'], audio: ['src'], track: ['src'], iframe: ['src'], embed: ['src'], object: ['data'], form: ['action'], input: ['src'] };
   const noFragment = (u) => u.split('#')[0];
   const abs = (v, base) => { try { return new URL(v, base).href; } catch { return v; } };
@@ -72,19 +79,24 @@ const SERIALISE = `(function (sheets, self) {
         if (t === 'a' && noFragment(u) === noFragment(self)) u = '@@SELF@@' + (u.includes('#') ? '#' + u.split('#').slice(1).join('#') : '');
         c.setAttribute(attr, u);
       }
+      if (eager && (t === 'iframe' || t === 'img') && c.getAttribute('loading') === 'lazy') c.removeAttribute('loading');      // everything the page had loaded is loaded: lazy loading is timing, and the copy is to be read the same way twice
       for (const attr of ['srcset', 'imagesrcset']) if (c.hasAttribute(attr)) c.setAttribute(attr, absSrcset(c.getAttribute(attr), base));
       if (t === 'input') { if (o.type === 'checkbox' || o.type === 'radio') { if (o.checked) c.setAttribute('checked', ''); else c.removeAttribute('checked'); } else if (o.type !== 'password' && o.type !== 'file') c.setAttribute('value', o.value); }
       if (t === 'textarea') c.textContent = o.value;
       if (t === 'option') { if (o.selected) c.setAttribute('selected', ''); else c.removeAttribute('selected'); }
       if (t === 'iframe') {
         let inner = null; try { inner = o.contentDocument; } catch {}
-        if (inner && inner.documentElement) { c.removeAttribute('src'); c.setAttribute('srcdoc', serialise(inner)); }
+        if (inner && inner.documentElement) {
+          if (asFiles) { const at = frames.length, name = 'frame-' + at + '.html'; frames.push(null); frames[at] = { name, html: serialise(inner) }; c.removeAttribute('srcdoc'); c.setAttribute('src', name); }
+          else { c.removeAttribute('src'); c.setAttribute('srcdoc', serialise(inner)); }
+        }
       }
     }
     if (!clone.querySelector('meta[charset]')) { const m = doc.createElement('meta'); m.setAttribute('charset', 'utf-8'); clone.querySelector('head')?.prepend(m); }
     return '<!DOCTYPE html>\\n' + clone.outerHTML;
   }
-  return JSON.stringify({ html: serialise(document), title: document.title, href: location.href, elements: document.querySelectorAll('*').length, iframes: document.querySelectorAll('iframe').length });
+  const html = serialise(document);
+  return JSON.stringify({ html, frames, title: document.title, href: location.href, elements: document.querySelectorAll('*').length, iframes: document.querySelectorAll('iframe').length });
 })`;
 
 function cssAbsolute(text, sheetUrl) {
@@ -116,10 +128,12 @@ try {
     const r = await cdp("CSS.getStyleSheetText", { styleSheetId: h.styleSheetId });
     if (r.result?.text != null) sheets[h.sourceURL] = cssAbsolute(r.result.text, h.sourceURL);
   }
-  const out = JSON.parse(await evaluate(`${SERIALISE}(${JSON.stringify(sheets)}, ${JSON.stringify(address.split("#")[0])})`));
+  const out = JSON.parse(await evaluate(`${SERIALISE}(${JSON.stringify(sheets)}, ${JSON.stringify(address.split("#")[0])}, ${FRAMES === "files"}, ${LAZY === "eager"})`));
   mkdirSync(outDir, { recursive: true });
-  writeFileSync(outDir + "/index.html", out.html.replaceAll("@@SELF@@", "index.html"));      // the copy is served as <slug>/index.html: a link to the page itself stays a link to this document, on whatever host serves it
-  writeFileSync(outDir + "/meta.json", JSON.stringify({ address, finalAddress: out.href, title: out.title, bytes: Buffer.byteLength(out.html), elements: out.elements, iframes: out.iframes,
+  const self = (h) => h.replaceAll("@@SELF@@", "index.html");
+  for (const f of out.frames) writeFileSync(outDir + "/" + f.name, self(f.html));
+  writeFileSync(outDir + "/index.html", self(out.html));      // the copy is served as <slug>/index.html: a link to the page itself stays a link to this document, on whatever host serves it
+  writeFileSync(outDir + "/meta.json", JSON.stringify({ address, finalAddress: out.href, title: out.title, bytes: Buffer.byteLength(out.html), elements: out.elements, iframes: out.iframes, frameFiles: out.frames.length, frames: FRAMES, lazy: LAZY,
     stylesheetsInlined: Object.keys(sheets).length, snapshotAt: new Date().toISOString() }, null, 1));
   console.log(`${out.title.slice(0, 60)} | ${out.elements} elements, ${Buffer.byteLength(out.html)} bytes, ${Object.keys(sheets).length} sheets`);
   done(0);

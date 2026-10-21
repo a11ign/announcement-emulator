@@ -127,3 +127,23 @@ python3 -m unittest discover -s q3/remeasure -t q3/remeasure
 ```
 
 **Pass:** no `pending` and no `FAIL`.
+
+## 7. The drift-free re-score: the same bytes on both sides
+
+A page that moved between the fleet's capture and the emulator's run says nothing about the emulator. To remove that, save each page once, serve the copy, and have the fleet and the emulator read the same file:
+
+```sh
+python3 q3/remeasure/snapshot_all.py q3/results/corpus.json $W/static --jobs 6 --index $R/static/static-pages.json     # 102 copies (snapshot.mjs); --frames files / --lazy eager are options, not what the figures used
+( cd $W/static && python3 -m http.server 8001 --bind 0.0.0.0 & )                                                         # on capture-host, beside the probe server on 8000
+# the fleet: step 1 again for each box (policy through the playbook, stop Edge, empty, `after` probe; no `before` probe is needed, the control was shown in the first run), RB=$R/static/history-readback.json
+python3 q3/corpus_capture.py q3/results/corpus.json $W/oracle-static --workers "$WORKERS" --readback $R/static/history-readback.json --summary $R/static/capture-run.json --static-base http://<capture-host address>:8001
+# then the after-run probe on each box, and step 5 (restore) with the same readback file
+python3 q3/remeasure/make_views.py $W/oracle-static $W/view-orig $W/view-run http://127.0.0.1:8001                         # view-orig: capture.url is the original address (measure.py, split); view-run: the copy's address (run_all.py)
+( cd $W/emu-gate && $PY q3/run_all.py $W/view-run $W/emu-gate-static --split all --runs 2 --jobs 5 --port-base 10100 )     # 5fbd726; and at head into emu-head-static
+$PY q3/measure.py $W/view-orig $W/emu-gate-static --split held --final --json $R/static/misses-held-freeze.json > $R/static/measure-held-freeze.txt     # likewise head, and attribute.py
+$PY q3/remeasure/explain_visited.py $W/oracle-static $W/emu-head-static $R/static/visited-explained.json
+python3 q3/remeasure/check.py --results $R/static --control-from $R/history-readback.json --oracle $W/oracle-static
+```
+
+**Pass:** every copy exists (`snapshot_all.py` exits 0), `capture-run.json` shows `captured: 102, failed: []`, and `check.py` has no `FAIL`. The copies keep what a page had loaded (images, fonts and other-origin iframes are still fetched live; shadow DOM is not serialised).
+

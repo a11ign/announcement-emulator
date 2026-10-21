@@ -1,0 +1,85 @@
+[13:45:07] a11y-worker-2: msedge before: 11
+[13:46:00] a11y-worker-2: policy read back: value 1
+a11y-worker-2 after {'capturedAt': '2026-10-21T13:50:48.818Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-2 passes
+[13:50:48] a11y-worker-2: PASSES
+[14:00:48] a11y-worker-3: msedge before: 9
+[14:01:39] a11y-worker-3: policy read back: value 1
+a11y-worker-3 after {'capturedAt': '2026-10-21T14:06:28.136Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-3 passes
+[14:06:28] a11y-worker-3: PASSES
+[14:06:28] a11y-worker-3 exit 0
+[14:06:32] a11y-worker-4: msedge before: 11
+[14:07:24] a11y-worker-4: policy read back: value 1
+a11y-worker-4 after {'capturedAt': '2026-10-21T14:12:08.286Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-4 passes
+[14:12:08] a11y-worker-4: PASSES
+[14:12:08] a11y-worker-4 exit 0
+[14:12:12] a11y-worker-7: msedge before: 12
+[14:13:07] a11y-worker-7: policy read back: value 1
+a11y-worker-7 after {'capturedAt': '2026-10-21T14:17:57.991Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-7 passes
+[14:17:58] a11y-worker-7: PASSES
+[14:17:58] a11y-worker-7 exit 0
+[14:18:02] a11y-worker-8: msedge before: 8
+[14:18:56] a11y-worker-8: policy read back: value 1
+a11y-worker-8 after {'capturedAt': '2026-10-21T14:23:49.094Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-8 passes
+[14:23:49] a11y-worker-8: PASSES
+[14:23:49] a11y-worker-8 exit 0
+[14:23:53] a11y-worker-9: msedge before: 8
+[14:24:47] a11y-worker-9: policy read back: value 1
+a11y-worker-9 after {'capturedAt': '2026-10-21T14:29:34.794Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-9 passes
+[14:29:34] a11y-worker-9: PASSES
+[14:29:34] a11y-worker-9 exit 0
+[14:29:39] a11y-worker-10: msedge before: 8
+[14:30:35] a11y-worker-10: policy read back: value 1
+a11y-worker-10 after {'capturedAt': '2026-10-21T14:35:29.800Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-10 passes
+[14:35:29] a11y-worker-10: PASSES
+[14:35:29] a11y-worker-10 exit 0
+[14:35:34] a11y-worker-12: msedge before: 8
+[14:36:34] a11y-worker-12: policy read back: value 1
+a11y-worker-12 after {'capturedAt': '2026-10-21T14:41:24.621Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-12 passes
+[14:41:24] a11y-worker-12: PASSES
+[14:41:24] a11y-worker-12 exit 0
+[14:41:29] a11y-worker-13: msedge before: 9
+[14:42:23] a11y-worker-13: policy read back: value 1
+a11y-worker-13 after {'capturedAt': '2026-10-21T14:47:10.803Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-13 passes
+[14:47:10] a11y-worker-13: PASSES
+[14:47:10] a11y-worker-13 exit 0
+[14:47:14] a11y-worker-14: msedge before: 10
+[14:48:09] a11y-worker-14: policy read back: value 1
+a11y-worker-14 after {'capturedAt': '2026-10-21T14:53:03.751Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-14 passes
+[14:53:03] a11y-worker-14: PASSES
+[14:53:03] a11y-worker-14 exit 0
+[14:53:08] a11y-worker-15: msedge before: 10
+[14:54:08] a11y-worker-15: policy read back: value 1
+a11y-worker-15 after {'capturedAt': '2026-10-21T14:58:59.187Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-15 passes
+[14:58:59] a11y-worker-15: PASSES
+[14:58:59] a11y-worker-15 exit 0
+[14:59:03] a11y-worker-16: msedge before: 8
+[14:59:59] a11y-worker-16: policy read back: value 1
+a11y-worker-16 after {'capturedAt': '2026-10-21T15:04:47.612Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-16 passes
+[15:04:47] a11y-worker-16: PASSES
+[15:04:47] a11y-worker-16 exit 0
+ALLDONE
+[15:51:25] a11y-worker-2: RESTORED (value 0 read back)
+[15:52:10] a11y-worker-3: RESTORED (value 0 read back)
+[15:53:00] a11y-worker-4: RESTORED (value 0 read back)
+[15:53:51] a11y-worker-7: RESTORED (value 0 read back)
+[15:54:41] a11y-worker-8: RESTORED (value 0 read back)
+[15:55:31] a11y-worker-9: RESTORED (value 0 read back)
+[15:56:21] a11y-worker-10: RESTORED (value 0 read back)
+[15:57:15] a11y-worker-12: RESTORED (value 0 read back)
+[15:58:05] a11y-worker-13: RESTORED (value 0 read back)
+[15:58:54] a11y-worker-14: RESTORED (value 0 read back)
+[15:59:47] a11y-worker-15: RESTORED (value 0 read back)
+[16:00:38] a11y-worker-16: RESTORED (value 0 read back)
+RESTOREDONE
