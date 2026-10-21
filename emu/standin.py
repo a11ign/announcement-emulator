@@ -215,8 +215,8 @@ class PN:
         if self.raw.get('selected'): out |= CONST['STATE_SYSTEM_SELECTED']
         if s.get('visited'): out |= CONST['STATE_SYSTEM_TRAVERSED']
         ch = self.raw.get('checked')
-        if ch == 'true':
-            out |= CONST['STATE_SYSTEM_CHECKED']
+        if ch == 'true':      # ax_platform_node_win.cc:8161 MSAAState: a toggle button is PRESSED, a switch is both, anything else CHECKED
+            if r != 'toggleButton': out |= CONST['STATE_SYSTEM_CHECKED']
             if r in ('toggleButton', 'switch'): out |= CONST['STATE_SYSTEM_PRESSED']
         elif ch == 'mixed': out |= CONST['STATE_SYSTEM_MIXED']
         rs = self.raw.get('restriction')

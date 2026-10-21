@@ -192,3 +192,16 @@ def structure_sweep(w, deadline):
         marks.append(mark)
     structure["tableCells"] = []
     return structure, marks
+
+
+def load_lazy_content(d, max_steps=120):
+    """Scroll the page to its end in steps, and back, then read the tree again. On the fleet NVDA scrolls the browser as the caret moves (IA2 scrollTo), and a page's
+    lazily loaded frames and images load as they come into view; the emulator does not scroll for each key (LivePage.scroll_browser is off, a key would cost a second),
+    so without this a page that loads its examples on scroll is read before they exist."""
+    for _ in range(max_steps):
+        at_end = d.s.eval("window.scrollBy(0, Math.max(300, innerHeight - 100)); innerHeight + scrollY >= document.documentElement.scrollHeight - 2")
+        time.sleep(0.35)
+        if at_end: break
+    time.sleep(2.0)
+    d.s.eval("window.scrollTo(0, 0)"); time.sleep(0.5)
+    d.refresh()
