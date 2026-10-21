@@ -1,0 +1,6 @@
+misses on the top-10 shapes at the freeze: 3 {'unexplained': 3}
+all channels: 12 {'unexplained': 12}
+  left: bathingwaters.sepa.org.uk/ graphics 'This website uses cookies, region, logo, graphic' -> 'logo, graphic'
+  left: service-manual.nhs.uk/design-system/components/table links 'list, with 2 items, Page 6, link' -> 'list, with 6 items, Page 6, link'
+  left: www.adobe.com/ formFields 'Creative Cloud, Creativity and design, tab' -> 'Creative Cloud, Creativity and design, tab, selected'
+fixes: {}

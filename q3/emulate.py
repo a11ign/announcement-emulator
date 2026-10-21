@@ -5,9 +5,10 @@
 Prints nothing but errors; the result is the JSON. Needs the emulator's virtualenv (see Reproduction in docs/announcement-emulator-spike.md)."""
 import sys, os, json, time, argparse
 os.environ.setdefault('EMU_NVDA_INI', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'nvda-fleet.ini'))      # the fleet's NVDA settings, not the system tests'
+os.environ.setdefault('EMU_FLEET_VOICES', '1')      # and its synthesizer's languages (emu/driver.py)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from livepage import LivePage
-import driver, sweep
+import driver, sweep, kernel32_standin
 
 ap = argparse.ArgumentParser(); ap.add_argument('url'); ap.add_argument('out'); ap.add_argument('--port', type=int, default=8765)
 ap.add_argument('--history', help='JSON list of addresses the fleet browser has visited'); ap.add_argument('--budget', type=int, default=420, help='seconds, the worker captures within 420 (DEFAULT_BUDGET_MS)')
@@ -32,6 +33,7 @@ except BaseException as e:
     import traceback; traceback.print_exc()
     res['fault'] = f'{type(e).__name__}: {e}'
 finally:
+    res.update(kernel32_standin.report())      # the language names NVDA asked Windows for, and any the table lacked (emu/langnames/check.py refuses a record that has one)
     res['seconds'] = round(time.time() - t0, 1)
     open(a.out, 'w').write(json.dumps(res, indent=1))
     if d: d.close()

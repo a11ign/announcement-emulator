@@ -1,0 +1,138 @@
+[
+ {
+  "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+  "channel": "links",
+  "expected": "banner landmark, Language switcher, navigation landmark, list, with 2 items, Welsh (not supported), Cymraeg, link",
+  "before": "banner landmark, Language switcher, navigation landmark, list, with 2 items, cy (not supported), Cymraeg, link",
+  "status": "fixed",
+  "now": null
+ },
+ {
+  "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+  "channel": "links",
+  "expected": "English, English, same page, link",
+  "before": "English, same page, link",
+  "status": "fixed",
+  "now": null
+ },
+ {
+  "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+  "channel": "links",
+  "expected": "Welsh (not supported), Cymraeg, link",
+  "before": "cy (not supported), Cymraeg, link",
+  "status": "fixed",
+  "now": null
+ },
+ {
+  "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+  "channel": "links",
+  "expected": "Translations, navigation landmark, list, with 2 items, Welsh (not supported), Cymraeg, link",
+  "before": "Translations, navigation landmark, list, with 2 items, cy (not supported), Cymraeg, link",
+  "status": "fixed",
+  "now": null
+ },
+ {
+  "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+  "channel": "links",
+  "expected": "Breadcrumb, navigation landmark, list, with 4 items, English, National Insurance, link",
+  "before": "Breadcrumb, navigation landmark, list, with 4 items, National Insurance, link",
+  "status": "fixed",
+  "now": null
+ },
+ {
+  "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+  "channel": "links",
+  "expected": "Welsh (not supported), Rhestr o Wasanaethau Cymraeg, link",
+  "before": "cy (not supported), Rhestr o Wasanaethau Cymraeg, link",
+  "status": "fixed",
+  "now": null
+ },
+ {
+  "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+  "channel": "links",
+  "expected": "English, Government Digital Service, link",
+  "before": "Government Digital Service, link",
+  "status": "fixed",
+  "now": null
+ },
+ {
+  "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+  "channel": "lists",
+  "expected": "list, with 8 items, Help, link, Privacy, link, Cookies, link, Accessibility statement, link, Contact, link, Terms and conditions, link, Welsh (not supported), Rhestr o Wasanaethau Cymraeg",
+  "before": "list, with 8 items, Help, link, Privacy, link, Cookies, link, Accessibility statement, link, Contact, link, Terms and conditions, link, cy (not supported), Rhestr o Wasanaethau Cymraeg",
+  "status": "fixed",
+  "now": null
+ },
+ {
+  "url": "https://www.gov.uk/vehicle-tax",
+  "channel": "links",
+  "expected": "Welsh (not supported), Rhestr o Wasanaethau Cymraeg, link",
+  "before": "cy (not supported), Rhestr o Wasanaethau Cymraeg, link",
+  "status": "fixed",
+  "now": null
+ },
+ {
+  "url": "https://www.gov.uk/vehicle-tax",
+  "channel": "links",
+  "expected": "English, Government Digital Service, link",
+  "before": "Government Digital Service, link",
+  "status": "fixed",
+  "now": null
+ },
+ {
+  "url": "https://www.gov.uk/vehicle-tax",
+  "channel": "lists",
+  "expected": "list, with 8 items, Help, link, Privacy, link, Cookies, link, Accessibility statement, link, Contact, link, Terms and conditions, link, Welsh (not supported), Rhestr o Wasanaethau Cymraeg",
+  "before": "list, with 8 items, Help, link, Privacy, link, Cookies, link, Accessibility statement, link, Contact, link, Terms and conditions, link, cy (not supported), Rhestr o Wasanaethau Cymraeg",
+  "status": "fixed",
+  "now": null
+ },
+ {
+  "url": "https://www.gov.wales/statistics-and-research",
+  "channel": "landmarks",
+  "expected": "Language, navigation landmark, list, with 1 item, Welsh (not supported), Cymraeg, link",
+  "before": "Language, navigation landmark, list, with 1 item, cy (not supported), Cymraeg, link",
+  "status": "fixed",
+  "now": null
+ },
+ {
+  "url": "https://www.gov.wales/statistics-and-research",
+  "channel": "landmarks",
+  "expected": "English, Home, link, Welsh Government",
+  "before": "Home, link, Welsh Government",
+  "status": "fixed",
+  "now": null
+ },
+ {
+  "url": "https://www.gov.wales/statistics-and-research",
+  "channel": "links",
+  "expected": "banner landmark, Language, navigation landmark, list, with 1 item, Welsh (not supported), Cymraeg, link",
+  "before": "banner landmark, Language, navigation landmark, list, with 1 item, cy (not supported), Cymraeg, link",
+  "status": "fixed",
+  "now": null
+ },
+ {
+  "url": "https://www.gov.wales/statistics-and-research",
+  "channel": "links",
+  "expected": "English, Home, link, Welsh Government",
+  "before": "Home, link, Welsh Government",
+  "status": "fixed",
+  "now": null
+ },
+ {
+  "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+  "channel": "links",
+  "expected": "Welsh (not supported), Cymraeg (CY), link",
+  "before": "cy (not supported), Cymraeg (CY), link",
+  "status": "fixed",
+  "now": null
+ },
+ {
+  "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+  "channel": "links",
+  "expected": "English, Skip to main content, same page, link",
+  "before": "Skip to main content, same page, link",
+  "status": "fixed",
+  "now": null
+ }
+]

@@ -1,0 +1,777 @@
+{
+ "generatedBy": "emu/langnames/gen_language_names.py",
+ "source": {
+  "raw": "windows-locales.raw.json",
+  "rawSha256": "8a9e09b9c8ae218b2f138240efed0c898bb9cf2bafcb89c84c95e725af152ff8",
+  "script": "query-windows-locales.ps1",
+  "scriptSha256": "cbd88696280717bc098b5a81efa364b2c8141b40b312e1c760bc39dbf2bb8124",
+  "codes": "codes.txt",
+  "codesSha256": "2fa2be7cc4287f46231d3ac71bc724d98303c4f78f1d0ef2bcf99c1944c07869"
+ },
+ "windows": {
+  "caption": "Microsoft Windows 11 Pro",
+  "build": "26300.9711",
+  "uiCulture": "en-GB",
+  "culture": "en-GB",
+  "worker": "a11y-worker-2"
+ },
+ "synthesizerLanguages": [
+  "en-GB"
+ ],
+ "names": {
+  "af": {
+   "known": true,
+   "lcid": 1078,
+   "displayName": "Afrikaans",
+   "language": "Afrikaans (South Africa)"
+  },
+  "ak": {
+   "known": false,
+   "lcid": 4096
+  },
+  "am": {
+   "known": true,
+   "lcid": 1118,
+   "displayName": "Amharic",
+   "language": "Amharic (Ethiopia)"
+  },
+  "an": {
+   "known": false,
+   "lcid": 4096
+  },
+  "ar": {
+   "known": true,
+   "lcid": 1025,
+   "displayName": "Arabic",
+   "language": "Arabic (Saudi Arabia)"
+  },
+  "as": {
+   "known": true,
+   "lcid": 1101,
+   "displayName": "Assamese",
+   "language": "Assamese (India)"
+  },
+  "ay": {
+   "known": false,
+   "lcid": 4096
+  },
+  "az": {
+   "known": true,
+   "lcid": 1068,
+   "displayName": "Azerbaijani (Latin)",
+   "language": "Azerbaijani (Latin, Azerbaijan)"
+  },
+  "be": {
+   "known": true,
+   "lcid": 1059,
+   "displayName": "Belarusian",
+   "language": "Belarusian (Belarus)"
+  },
+  "bg": {
+   "known": true,
+   "lcid": 1026,
+   "displayName": "Bulgarian",
+   "language": "Bulgarian (Bulgaria)"
+  },
+  "bho": {
+   "known": false,
+   "lcid": 4096
+  },
+  "bm": {
+   "known": false,
+   "lcid": 4096
+  },
+  "bn": {
+   "known": true,
+   "lcid": 2117,
+   "displayName": "Bangla",
+   "language": "Bangla (Bangladesh)"
+  },
+  "bs": {
+   "known": true,
+   "lcid": 5146,
+   "displayName": "Bosnian (Latin)",
+   "language": "Bosnian (Latin, Bosnia & Herzegovina)"
+  },
+  "ca": {
+   "known": true,
+   "lcid": 1027,
+   "displayName": "Catalan",
+   "language": "Catalan (Catalan)"
+  },
+  "ceb": {
+   "known": false,
+   "lcid": 4096
+  },
+  "ckb": {
+   "known": true,
+   "lcid": 1170,
+   "displayName": "Central Kurdish",
+   "language": "Central Kurdish (Iraq)"
+  },
+  "co": {
+   "known": true,
+   "lcid": 1155,
+   "displayName": "Corsican",
+   "language": "Corsican (France)"
+  },
+  "cs": {
+   "known": true,
+   "lcid": 1029,
+   "displayName": "Czech",
+   "language": "Czech (Czech Republic)"
+  },
+  "cy": {
+   "known": true,
+   "lcid": 1106,
+   "displayName": "Welsh",
+   "language": "Welsh (United Kingdom)"
+  },
+  "da": {
+   "known": true,
+   "lcid": 1030,
+   "displayName": "Danish",
+   "language": "Danish (Denmark)"
+  },
+  "de": {
+   "known": true,
+   "lcid": 1031,
+   "displayName": "German",
+   "language": "German (Germany)"
+  },
+  "doi": {
+   "known": false,
+   "lcid": 4096
+  },
+  "dv": {
+   "known": true,
+   "lcid": 1125,
+   "displayName": "Divehi",
+   "language": "Divehi (Maldives)"
+  },
+  "ee": {
+   "known": false,
+   "lcid": 4096
+  },
+  "el": {
+   "known": true,
+   "lcid": 1032,
+   "displayName": "Greek",
+   "language": "Greek (Greece)"
+  },
+  "en": {
+   "known": true,
+   "lcid": 1033,
+   "displayName": "English",
+   "language": "English (United States)"
+  },
+  "eo": {
+   "known": false,
+   "lcid": 4096
+  },
+  "es": {
+   "known": true,
+   "lcid": 3082,
+   "displayName": "Spanish",
+   "language": "Spanish (Spain, International Sort)"
+  },
+  "et": {
+   "known": true,
+   "lcid": 1061,
+   "displayName": "Estonian",
+   "language": "Estonian (Estonia)"
+  },
+  "eu": {
+   "known": true,
+   "lcid": 1069,
+   "displayName": "Basque",
+   "language": "Basque (Basque)"
+  },
+  "fa": {
+   "known": true,
+   "lcid": 1065,
+   "displayName": "Persian",
+   "language": "Persian (Iran)"
+  },
+  "fi": {
+   "known": true,
+   "lcid": 1035,
+   "displayName": "Finnish",
+   "language": "Finnish (Finland)"
+  },
+  "fr": {
+   "known": true,
+   "lcid": 1036,
+   "displayName": "French",
+   "language": "French (France)"
+  },
+  "fy": {
+   "known": true,
+   "lcid": 1122,
+   "displayName": "Western Frisian",
+   "language": "Western Frisian (Netherlands)"
+  },
+  "ga": {
+   "known": true,
+   "lcid": 2108,
+   "displayName": "Irish",
+   "language": "Irish (Ireland)"
+  },
+  "gd": {
+   "known": true,
+   "lcid": 1169,
+   "displayName": "Scottish Gaelic",
+   "language": "Scottish Gaelic (United Kingdom)"
+  },
+  "gl": {
+   "known": true,
+   "lcid": 1110,
+   "displayName": "Galician",
+   "language": "Galician (Galician)"
+  },
+  "gn": {
+   "known": true,
+   "lcid": 1140,
+   "displayName": "Guarani",
+   "language": "Guarani (Paraguay)"
+  },
+  "gom": {
+   "known": false,
+   "lcid": 4096
+  },
+  "gu": {
+   "known": true,
+   "lcid": 1095,
+   "displayName": "Gujarati",
+   "language": "Gujarati (India)"
+  },
+  "ha": {
+   "known": true,
+   "lcid": 1128,
+   "displayName": "Hausa (Latin)",
+   "language": "Hausa (Latin, Nigeria)"
+  },
+  "haw": {
+   "known": true,
+   "lcid": 1141,
+   "displayName": "Hawaiian",
+   "language": "Hawaiian (United States)"
+  },
+  "hi": {
+   "known": true,
+   "lcid": 1081,
+   "displayName": "Hindi",
+   "language": "Hindi (India)"
+  },
+  "hmn": {
+   "known": false,
+   "lcid": 4096
+  },
+  "hr": {
+   "known": true,
+   "lcid": 1050,
+   "displayName": "Croatian",
+   "language": "Croatian (Croatia)"
+  },
+  "ht": {
+   "known": false,
+   "lcid": 4096
+  },
+  "hu": {
+   "known": true,
+   "lcid": 1038,
+   "displayName": "Hungarian",
+   "language": "Hungarian (Hungary)"
+  },
+  "hy": {
+   "known": true,
+   "lcid": 1067,
+   "displayName": "Armenian",
+   "language": "Armenian (Armenia)"
+  },
+  "id": {
+   "known": true,
+   "lcid": 1057,
+   "displayName": "Indonesian",
+   "language": "Indonesian (Indonesia)"
+  },
+  "ig": {
+   "known": true,
+   "lcid": 1136,
+   "displayName": "Igbo",
+   "language": "Igbo (Nigeria)"
+  },
+  "ilo": {
+   "known": false,
+   "lcid": 4096
+  },
+  "is": {
+   "known": true,
+   "lcid": 1039,
+   "displayName": "Icelandic",
+   "language": "Icelandic (Iceland)"
+  },
+  "it": {
+   "known": true,
+   "lcid": 1040,
+   "displayName": "Italian",
+   "language": "Italian (Italy)"
+  },
+  "iw": {
+   "known": false,
+   "lcid": 4096
+  },
+  "ja": {
+   "known": true,
+   "lcid": 1041,
+   "displayName": "Japanese",
+   "language": "Japanese (Japan)"
+  },
+  "jw": {
+   "known": false,
+   "lcid": 4096
+  },
+  "ka": {
+   "known": true,
+   "lcid": 1079,
+   "displayName": "Georgian",
+   "language": "Georgian (Georgia)"
+  },
+  "kk": {
+   "known": true,
+   "lcid": 1087,
+   "displayName": "Kazakh",
+   "language": "Kazakh (Kazakhstan)"
+  },
+  "km": {
+   "known": true,
+   "lcid": 1107,
+   "displayName": "Khmer",
+   "language": "Khmer (Cambodia)"
+  },
+  "kmr": {
+   "known": false,
+   "lcid": 4096
+  },
+  "kn": {
+   "known": true,
+   "lcid": 1099,
+   "displayName": "Kannada",
+   "language": "Kannada (India)"
+  },
+  "ko": {
+   "known": true,
+   "lcid": 1042,
+   "displayName": "Korean",
+   "language": "Korean (Korea)"
+  },
+  "kri": {
+   "known": false,
+   "lcid": 4096
+  },
+  "ku": {
+   "known": true,
+   "lcid": 1170,
+   "displayName": "Central Kurdish",
+   "language": "Central Kurdish (Iraq)"
+  },
+  "ky": {
+   "known": true,
+   "lcid": 1088,
+   "displayName": "Kyrgyz",
+   "language": "Kyrgyz (Kyrgyzstan)"
+  },
+  "la": {
+   "known": true,
+   "lcid": 1142,
+   "displayName": "Latin",
+   "language": "Latin (Vatican City)"
+  },
+  "lb": {
+   "known": true,
+   "lcid": 1134,
+   "displayName": "Luxembourgish",
+   "language": "Luxembourgish (Luxembourg)"
+  },
+  "lg": {
+   "known": false,
+   "lcid": 4096
+  },
+  "ln": {
+   "known": false,
+   "lcid": 4096
+  },
+  "lo": {
+   "known": true,
+   "lcid": 1108,
+   "displayName": "Lao",
+   "language": "Lao (Laos)"
+  },
+  "lt": {
+   "known": true,
+   "lcid": 1063,
+   "displayName": "Lithuanian",
+   "language": "Lithuanian (Lithuania)"
+  },
+  "lus": {
+   "known": false,
+   "lcid": 4096
+  },
+  "lv": {
+   "known": true,
+   "lcid": 1062,
+   "displayName": "Latvian",
+   "language": "Latvian (Latvia)"
+  },
+  "mai": {
+   "known": false,
+   "lcid": 4096
+  },
+  "mg": {
+   "known": false,
+   "lcid": 4096
+  },
+  "mi": {
+   "known": true,
+   "lcid": 1153,
+   "displayName": "Māori",
+   "language": "Māori (New Zealand)"
+  },
+  "mk": {
+   "known": true,
+   "lcid": 1071,
+   "displayName": "Macedonian",
+   "language": "Macedonian (North Macedonia)"
+  },
+  "ml": {
+   "known": true,
+   "lcid": 1100,
+   "displayName": "Malayalam",
+   "language": "Malayalam (India)"
+  },
+  "mn": {
+   "known": true,
+   "lcid": 1104,
+   "displayName": "Mongolian",
+   "language": "Mongolian (Mongolia)"
+  },
+  "mni": {
+   "known": true,
+   "lcid": 1112,
+   "displayName": "Manipuri (Bangla)",
+   "language": "Manipuri (Bangla, India)"
+  },
+  "mr": {
+   "known": true,
+   "lcid": 1102,
+   "displayName": "Marathi",
+   "language": "Marathi (India)"
+  },
+  "ms": {
+   "known": true,
+   "lcid": 1086,
+   "displayName": "Malay",
+   "language": "Malay (Malaysia)"
+  },
+  "mt": {
+   "known": true,
+   "lcid": 1082,
+   "displayName": "Maltese",
+   "language": "Maltese (Malta)"
+  },
+  "my": {
+   "known": true,
+   "lcid": 1109,
+   "displayName": "Burmese",
+   "language": "Burmese (Myanmar)"
+  },
+  "ne": {
+   "known": true,
+   "lcid": 1121,
+   "displayName": "Nepali",
+   "language": "Nepali (Nepal)"
+  },
+  "nl": {
+   "known": true,
+   "lcid": 1043,
+   "displayName": "Dutch",
+   "language": "Dutch (Netherlands)"
+  },
+  "no": {
+   "known": true,
+   "lcid": 1044,
+   "displayName": "Norwegian Bokmål",
+   "language": "Norwegian Bokmål (Norway)"
+  },
+  "nso": {
+   "known": true,
+   "lcid": 1132,
+   "displayName": "Sesotho sa Leboa",
+   "language": "Sesotho sa Leboa (South Africa)"
+  },
+  "ny": {
+   "known": false,
+   "lcid": 4096
+  },
+  "om": {
+   "known": true,
+   "lcid": 1138,
+   "displayName": "Oromo",
+   "language": "Oromo (Ethiopia)"
+  },
+  "or": {
+   "known": true,
+   "lcid": 1096,
+   "displayName": "Odia",
+   "language": "Odia (India)"
+  },
+  "pa": {
+   "known": true,
+   "lcid": 1094,
+   "displayName": "Punjabi",
+   "language": "Punjabi (India)"
+  },
+  "pl": {
+   "known": true,
+   "lcid": 1045,
+   "displayName": "Polish",
+   "language": "Polish (Poland)"
+  },
+  "ps": {
+   "known": true,
+   "lcid": 1123,
+   "displayName": "Pashto",
+   "language": "Pashto (Afghanistan)"
+  },
+  "pt": {
+   "known": true,
+   "lcid": 1046,
+   "displayName": "Portuguese",
+   "language": "Portuguese (Brazil)"
+  },
+  "qu": {
+   "known": true,
+   "lcid": 1131,
+   "displayName": "Quechua",
+   "language": "Quechua (Bolivia)"
+  },
+  "ro": {
+   "known": true,
+   "lcid": 1048,
+   "displayName": "Romanian",
+   "language": "Romanian (Romania)"
+  },
+  "ru": {
+   "known": true,
+   "lcid": 1049,
+   "displayName": "Russian",
+   "language": "Russian (Russia)"
+  },
+  "rw": {
+   "known": true,
+   "lcid": 1159,
+   "displayName": "Kinyarwanda",
+   "language": "Kinyarwanda (Rwanda)"
+  },
+  "sa": {
+   "known": true,
+   "lcid": 1103,
+   "displayName": "Sanskrit",
+   "language": "Sanskrit (India)"
+  },
+  "sd": {
+   "known": true,
+   "lcid": 2137,
+   "displayName": "Sindhi",
+   "language": "Sindhi (Pakistan)"
+  },
+  "si": {
+   "known": true,
+   "lcid": 1115,
+   "displayName": "Sinhala",
+   "language": "Sinhala (Sri Lanka)"
+  },
+  "sk": {
+   "known": true,
+   "lcid": 1051,
+   "displayName": "Slovak",
+   "language": "Slovak (Slovakia)"
+  },
+  "sl": {
+   "known": true,
+   "lcid": 1060,
+   "displayName": "Slovenian",
+   "language": "Slovenian (Slovenia)"
+  },
+  "sm": {
+   "known": false,
+   "lcid": 4096
+  },
+  "sn": {
+   "known": false,
+   "lcid": 4096
+  },
+  "so": {
+   "known": true,
+   "lcid": 1143,
+   "displayName": "Somali",
+   "language": "Somali (Somalia)"
+  },
+  "sq": {
+   "known": true,
+   "lcid": 1052,
+   "displayName": "Albanian",
+   "language": "Albanian (Albania)"
+  },
+  "sr": {
+   "known": true,
+   "lcid": 9242,
+   "displayName": "Serbian (Latin)",
+   "language": "Serbian (Latin, Serbia)"
+  },
+  "st": {
+   "known": true,
+   "lcid": 1072,
+   "displayName": "Sesotho",
+   "language": "Sesotho (South Africa)"
+  },
+  "su": {
+   "known": false,
+   "lcid": 4096
+  },
+  "sv": {
+   "known": true,
+   "lcid": 1053,
+   "displayName": "Swedish",
+   "language": "Swedish (Sweden)"
+  },
+  "sw": {
+   "known": true,
+   "lcid": 1089,
+   "displayName": "Kiswahili",
+   "language": "Kiswahili (Kenya)"
+  },
+  "ta": {
+   "known": true,
+   "lcid": 1097,
+   "displayName": "Tamil",
+   "language": "Tamil (India)"
+  },
+  "te": {
+   "known": true,
+   "lcid": 1098,
+   "displayName": "Telugu",
+   "language": "Telugu (India)"
+  },
+  "tg": {
+   "known": true,
+   "lcid": 1064,
+   "displayName": "Tajik (Cyrillic)",
+   "language": "Tajik (Cyrillic, Tajikistan)"
+  },
+  "th": {
+   "known": true,
+   "lcid": 1054,
+   "displayName": "Thai",
+   "language": "Thai (Thailand)"
+  },
+  "ti": {
+   "known": true,
+   "lcid": 2163,
+   "displayName": "Tigrinya",
+   "language": "Tigrinya (Eritrea)"
+  },
+  "tk": {
+   "known": true,
+   "lcid": 1090,
+   "displayName": "Turkmen",
+   "language": "Turkmen (Turkmenistan)"
+  },
+  "tl": {
+   "known": false,
+   "lcid": 4096
+  },
+  "tr": {
+   "known": true,
+   "lcid": 1055,
+   "displayName": "Turkish",
+   "language": "Turkish (Türkiye)"
+  },
+  "ts": {
+   "known": true,
+   "lcid": 1073,
+   "displayName": "Xitsonga",
+   "language": "Xitsonga (South Africa)"
+  },
+  "tt": {
+   "known": true,
+   "lcid": 1092,
+   "displayName": "Tatar",
+   "language": "Tatar (Russia)"
+  },
+  "ug": {
+   "known": true,
+   "lcid": 1152,
+   "displayName": "Uyghur",
+   "language": "Uyghur (China)"
+  },
+  "uk": {
+   "known": true,
+   "lcid": 1058,
+   "displayName": "Ukrainian",
+   "language": "Ukrainian (Ukraine)"
+  },
+  "ur": {
+   "known": true,
+   "lcid": 1056,
+   "displayName": "Urdu",
+   "language": "Urdu (Pakistan)"
+  },
+  "uz": {
+   "known": true,
+   "lcid": 1091,
+   "displayName": "Uzbek (Latin)",
+   "language": "Uzbek (Latin, Uzbekistan)"
+  },
+  "vi": {
+   "known": true,
+   "lcid": 1066,
+   "displayName": "Vietnamese",
+   "language": "Vietnamese (Vietnam)"
+  },
+  "xh": {
+   "known": true,
+   "lcid": 1076,
+   "displayName": "isiXhosa",
+   "language": "isiXhosa (South Africa)"
+  },
+  "yi": {
+   "known": true,
+   "lcid": 1085,
+   "displayName": "Yiddish",
+   "language": "Yiddish (world)"
+  },
+  "yo": {
+   "known": true,
+   "lcid": 1130,
+   "displayName": "Yoruba",
+   "language": "Yoruba (Nigeria)"
+  },
+  "yue": {
+   "known": false,
+   "lcid": 4096
+  },
+  "zh": {
+   "known": true,
+   "lcid": 2052,
+   "displayName": "Chinese (Simplified)",
+   "language": "Chinese (Simplified, Mainland China)"
+  },
+  "zu": {
+   "known": true,
+   "lcid": 1077,
+   "displayName": "isiZulu",
+   "language": "isiZulu (South Africa)"
+  }
+ }
+}
