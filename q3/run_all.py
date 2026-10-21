@@ -3,7 +3,7 @@
     python run_all.py <oracle_dir> <out_dir> [--split dev|held|all] [--jobs 8] [--runs 2] [--only substring]
 
 Each page is `<out_dir>/<slug>.run<k>.json` (emulate.py's output). A page already done is skipped, so an interrupted batch resumes."""
-import sys, os, json, glob, subprocess, argparse, time, concurrent.futures as cf
+import sys, os, json, glob, subprocess, argparse, time, queue, concurrent.futures as cf
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from split import split_of
 
@@ -36,8 +36,8 @@ def one(slot, slug, url):
             fault = f'timeout {a.timeout}s'; json.dump({'url': url, 'fault': fault}, open(out, 'w'))
         print(f'  slot {slot} {slug} run{k} {round(time.time() - t)}s {fault or "ok"}', flush=True)
 
-slots = list(range(a.jobs)); free = __import__('queue').Queue()
-for s in slots: free.put(s)
+free = queue.Queue()
+for s in range(a.jobs): free.put(s)
 def job(p):
     s = free.get()
     try: one(s, *p)

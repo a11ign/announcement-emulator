@@ -79,7 +79,7 @@ class Walker:
 class ActionError(Exception): pass
 
 
-def sweep_in_direction(w, key, label, out, seen_keys, on_item, deadline):
+def sweep_in_direction(w, key, out, seen_keys, on_item, deadline):
     """sweepInDirection. Returns {stop, steps, stopPhrase}."""
     prev, repeats, recoveries, seen = "", 0, 0, len(w.log)
     for i in range(MAX_SWEEP_STEPS):
@@ -110,9 +110,9 @@ def sweep_in_direction(w, key, label, out, seen_keys, on_item, deadline):
 
 def collect_by_type(w, prev_key, next_key, label, deadline, on_item=None):
     out, seen_keys = [], set()
-    p = sweep_in_direction(w, prev_key, label, out, seen_keys, on_item, deadline)
+    p = sweep_in_direction(w, prev_key, out, seen_keys, on_item, deadline)
     prev_count = len(out)
-    n = sweep_in_direction(w, next_key, label, out, seen_keys, on_item, deadline)
+    n = sweep_in_direction(w, next_key, out, seen_keys, on_item, deadline)
     return out, {"type": label, "found": len(out), "prevStop": p["stop"], "nextStop": n["stop"], "prevStopPhrase": p.get("stopPhrase"),
                  "nextStopPhrase": n.get("stopPhrase"), "prevCount": prev_count, "prevSteps": p["steps"], "nextSteps": n["steps"],
                  **({"error": p.get("error") or n.get("error")} if p.get("error") or n.get("error") else {})}

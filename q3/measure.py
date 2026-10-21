@@ -41,7 +41,7 @@ def kind_of(channel, text):
     if channel in ('headings', 'landmarks', 'links', 'lists', 'graphics', 'frames'): return channel
     toks = [t.strip().lower() for t in text.split(',')]
     for t in reversed(toks):
-        if t == 'button' or t.endswith(' button') and t not in ('radio button', 'toggle button', 'menu button', 'split button'): return 'buttons'
+        if t == 'button' or (t.endswith(' button') and t not in ('radio button', 'toggle button', 'menu button', 'split button')): return 'buttons'
         if t in FORM_ROLES: return 'formFields'
     return 'formFields'
 
@@ -187,7 +187,6 @@ if a.sig:
     sigs = collections.Counter((signature(r)) for r in miss)
     print("\nwhat the misses differ in (all channels; only the dev split is ever printed without --final):")
     for k, v in sigs.most_common(a.sig): print(f"  {v:>5}  {k}")
-    if not a.final and a.split != 'dev': pass
 if a.json:
     json.dump({'split': a.split, 'pages': [{'url': p['url'], 'status': p['status']} for p in P], 'gate': {'exact': k, 'total': n},
                'top': [' + '.join(s) for s in top], 'misses': [{k_: (v if k_ != 'shape' else list(v)) for k_, v in r.items()} for r in miss if (not quiet(r['url']))]},

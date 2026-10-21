@@ -18,7 +18,7 @@ class LivePage(live.LiveDoc):
         if k == 'escape': return self._escape()
         if k in ('enter', 'tab', 'shift+tab', 'space'): return self.press(key)
         if self.b.passThrough and (len(k) == 1 or (k.startswith('shift+') and len(k) == 7)):      # focus mode: NVDA speaks the typed character
-            import speech; speech.speakTypedCharacters(k[-1].upper() if k.startswith('shift+') else k) if hasattr(speech, 'speakTypedCharacters') else speech.speak([k[-1]])
+            import speech.speech; speech.speech.speakTypedCharacters(k[-1].upper() if k.startswith('shift+') else k)
             driver._flush(); return
         driver.press(self.b, key)
         if self._focus_requested: self.settle(moves_focus=True)

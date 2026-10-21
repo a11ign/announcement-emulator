@@ -506,10 +506,6 @@ class Buffer:
         return line_start, line_end
 
 
-def _crosses_control(a, b):
-    """Not using screen layout, line search stops at a control field boundary (storage.cpp: `node->firstChild`)."""
-    return a.parent is not b.parent
-
 
 # ---------------------------------------------------------------- storage.cpp: nextNodeInTree / matchAttributes / findNodeByAttributes
 
