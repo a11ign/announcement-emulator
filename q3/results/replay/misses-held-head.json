@@ -1,0 +1,952 @@
+{
+ "split": "held",
+ "pages": [
+  {
+   "url": "https://bathingwaters.sepa.org.uk/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "status": "comparable"
+  },
+  {
+   "url": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "status": "comparable"
+  },
+  {
+   "url": "https://data.southwark.gov.uk/data-catalog-explorer/",
+   "status": "not comparable: heading fleet 1 / emulator 4, link fleet 5 / emulator 6"
+  },
+  {
+   "url": "https://design-patterns.service.justice.gov.uk/components/filter/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-patterns.service.justice.gov.uk/components/scrollable-pane/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/accordion/",
+   "status": "unstable: the two emulator runs differ"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/checkboxes/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/date-input/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/skip-link/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/tabs/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://european-union.europa.eu/index_en",
+   "status": "comparable"
+  },
+  {
+   "url": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "status": "comparable"
+  },
+  {
+   "url": "https://ico.org.uk/action-weve-taken/enforcement/",
+   "status": "emulator fault: timeout 900s"
+  },
+  {
+   "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+   "status": "comparable"
+  },
+  {
+   "url": "https://reports.ofsted.gov.uk/search?q=school",
+   "status": "comparable"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/components/table",
+   "status": "comparable"
+  },
+  {
+   "url": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "status": "not comparable: heading fleet 24 / emulator 25"
+  },
+  {
+   "url": "https://tfl.gov.uk/plan-a-journey/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://the-internet.herokuapp.com/login",
+   "status": "comparable"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/warnings-and-advice/uk-warnings",
+   "status": "not comparable: heading fleet 0 / emulator 24, link fleet 7 / emulator 9"
+  },
+  {
+   "url": "https://www.adobe.com/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.british-history.ac.uk/catalogue",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.dropbox.com/",
+   "status": "not comparable: heading fleet 0 / emulator 32, link fleet 0 / emulator 85"
+  },
+  {
+   "url": "https://www.gla.ac.uk/undergraduate/degrees/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.scot/about/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.uk/vehicle-tax",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/edinburgh-castle/",
+   "status": "not comparable: headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document"
+  },
+  {
+   "url": "https://www.hubspot.com/",
+   "status": "unstable: the two emulator runs differ"
+  },
+  {
+   "url": "https://www.leeds.ac.uk/undergraduate",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.mygov.scot/browse/benefits",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.mygov.scot/scottish-child-payment",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nationalarchives.gov.uk/about-us/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.networkrail.co.uk/careers/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nhs.uk/conditions/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nhs.uk/service-search/find-a-gp",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing",
+   "status": "not comparable: headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document"
+  },
+  {
+   "url": "https://www.notion.com/",
+   "status": "not comparable: link fleet 52 / emulator 54"
+  },
+  {
+   "url": "https://www.nrscotland.gov.uk/publications/",
+   "status": "unstable: the two emulator runs differ"
+  },
+  {
+   "url": "https://www.nrscotland.gov.uk/statistics-and-data/",
+   "status": "not comparable: heading fleet 3 / emulator 1, link fleet 37 / emulator 1, headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document"
+  },
+  {
+   "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/after/tickets.html",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/before/news.html",
+   "status": "not comparable: document title fleet 'Welcome to City Lights! Inaccessible New' / emulator 'Welcome to CityLights! [Inaccessible New'"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/carousels/structure/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/forms/instructions/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/forms/multi-page/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/decorative/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/informative/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/menus/flyout/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/page-structure/regions/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/tables/one-header/",
+   "status": "comparable"
+  }
+ ],
+ "gate": {
+  "exact": 4367,
+  "total": 4376
+ },
+ "top": [
+  "NAME + ROLE",
+  "NAME + ROLE + STATE",
+  "NAME + ROLE + LEVEL",
+  "NAME + ROLE + ROLE + COUNT + NAME + ROLE",
+  "ROLE + COUNT + NAME + ROLE",
+  "NAME + NAME + ROLE",
+  "NAME + STATE + ROLE",
+  "NAME + ROLE + ROLE",
+  "NAME + ROLE + ROLE + LEVEL",
+  "NAME + ROLE + NAME + ROLE"
+ ],
+ "misses": [
+  {
+   "url": "https://bathingwaters.sepa.org.uk/",
+   "channel": "landmarks",
+   "i": 1,
+   "expected": "complementary landmark, Back to top, button",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://bathingwaters.sepa.org.uk/",
+   "channel": "formFields",
+   "i": 0,
+   "expected": "complementary landmark, Back to top, button",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://bathingwaters.sepa.org.uk/",
+   "channel": "graphics",
+   "i": 0,
+   "expected": "This website uses cookies, region, logo, graphic",
+   "predicted": "logo, graphic",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "graphics",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "frames",
+   "i": 0,
+   "expected": "main landmark, Date input example, frame",
+   "predicted": "main landmark, Date input example, frame, When was your passport issued?, grouping, When was your passport issued?, heading, level 1",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "frames",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+   "channel": "links",
+   "i": 4,
+   "expected": "banner landmark, Language switcher, navigation landmark, list, with 2 items, Welsh (not supported), Cymraeg, link",
+   "predicted": "banner landmark, Language switcher, navigation landmark, list, with 2 items, cy (not supported), Cymraeg, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+   "channel": "links",
+   "i": 5,
+   "expected": "English, English, same page, link",
+   "predicted": "English, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+   "channel": "links",
+   "i": 17,
+   "expected": "Welsh (not supported), Cymraeg, link",
+   "predicted": "cy (not supported), Cymraeg, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+   "channel": "links",
+   "i": 18,
+   "expected": "main landmark, English, Expand breadcrumb navigation, collapsed, same page, link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "NAME",
+    "STATE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "landmarks",
+   "i": 0,
+   "expected": "main landmark, sortable-server-side-last-login-descending, frame, clickable, Pagination, navigation landmark, list, with 2 items, Page 1, link, current page",
+   "predicted": "main landmark, sortable-server-side-last-login-descending, frame, clickable, Pagination, navigation landmark, list, with 6 items, Page 1, link, current page",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "landmarks",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "links",
+   "i": 7,
+   "expected": "list, with 2 items, Page 6, link",
+   "predicted": "list, with 6 items, Page 6, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "links",
+   "i": 114,
+   "expected": "Pagination, navigation landmark, list, with 2 items, Page 1, link, current page",
+   "predicted": "Pagination, navigation landmark, list, with 6 items, Page 1, link, current page",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "lists",
+   "i": 18,
+   "expected": "sortable-server-side-last-login-descending, frame, clickable, Pagination, navigation landmark, list, with 2 items, Page 1, link, current page",
+   "predicted": "sortable-server-side-last-login-descending, frame, clickable, Pagination, navigation landmark, list, with 6 items, Page 1, link, current page",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "lists",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.adobe.com/",
+   "channel": "headings",
+   "i": 22,
+   "expected": "slide, Students and teachers save, clickable, 75 percent, dot, heading, level 2",
+   "predicted": "slide, Create at the highest level., heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "STATE",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.adobe.com/",
+   "channel": "formFields",
+   "i": 11,
+   "expected": "Education, Students and teachers, tab, selected",
+   "predicted": "Education, Students and teachers, tab",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.adobe.com/",
+   "channel": "formFields",
+   "i": 15,
+   "expected": "Creative Cloud, Creativity and design, tab",
+   "predicted": "Creative Cloud, Creativity and design, tab, selected",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+   "channel": "links",
+   "i": 54,
+   "expected": "Translations, navigation landmark, list, with 2 items, Welsh (not supported), Cymraeg, link",
+   "predicted": "Translations, navigation landmark, list, with 2 items, cy (not supported), Cymraeg, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+   "channel": "links",
+   "i": 55,
+   "expected": "Breadcrumb, navigation landmark, list, with 4 items, English, National Insurance, link",
+   "predicted": "Breadcrumb, navigation landmark, list, with 4 items, National Insurance, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+   "channel": "links",
+   "i": 64,
+   "expected": "list, with 6 items, English, HM Revenue and Customs, link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+   "channel": "links",
+   "i": 104,
+   "expected": "Welsh (not supported), Rhestr o Wasanaethau Cymraeg, link",
+   "predicted": "cy (not supported), Rhestr o Wasanaethau Cymraeg, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+   "channel": "links",
+   "i": 105,
+   "expected": "English, Government Digital Service, link",
+   "predicted": "Government Digital Service, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+   "channel": "lists",
+   "i": 14,
+   "expected": "list, with 8 items, Help, link, Privacy, link, Cookies, link, Accessibility statement, link, Contact, link, Terms and conditions, link, Welsh (not supported), Rhestr o Wasanaethau Cymraeg",
+   "predicted": "list, with 8 items, Help, link, Privacy, link, Cookies, link, Accessibility statement, link, Contact, link, Terms and conditions, link, cy (not supported), Rhestr o Wasanaethau Cymraeg",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "lists",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/vehicle-tax",
+   "channel": "links",
+   "i": 59,
+   "expected": "Welsh (not supported), Rhestr o Wasanaethau Cymraeg, link",
+   "predicted": "cy (not supported), Rhestr o Wasanaethau Cymraeg, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/vehicle-tax",
+   "channel": "links",
+   "i": 60,
+   "expected": "English, Government Digital Service, link",
+   "predicted": "Government Digital Service, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/vehicle-tax",
+   "channel": "lists",
+   "i": 11,
+   "expected": "list, with 8 items, Help, link, Privacy, link, Cookies, link, Accessibility statement, link, Contact, link, Terms and conditions, link, Welsh (not supported), Rhestr o Wasanaethau Cymraeg",
+   "predicted": "list, with 8 items, Help, link, Privacy, link, Cookies, link, Accessibility statement, link, Contact, link, Terms and conditions, link, cy (not supported), Rhestr o Wasanaethau Cymraeg",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "lists",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "channel": "landmarks",
+   "i": 4,
+   "expected": "Language, navigation landmark, list, with 1 item, Welsh (not supported), Cymraeg, link",
+   "predicted": "Language, navigation landmark, list, with 1 item, cy (not supported), Cymraeg, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "channel": "landmarks",
+   "i": 5,
+   "expected": "English, Home, link, Welsh Government",
+   "predicted": "Home, link, Welsh Government",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "landmarks",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "channel": "landmarks",
+   "i": 7,
+   "expected": "banner landmark, Home, link, Welsh Government",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "landmarks",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "channel": "landmarks",
+   "i": 8,
+   "expected": "Search GOV dot WALES, search landmark, section, English, Search",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "landmarks",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "channel": "links",
+   "i": 38,
+   "expected": "banner landmark, Language, navigation landmark, list, with 1 item, Welsh (not supported), Cymraeg, link",
+   "predicted": "banner landmark, Language, navigation landmark, list, with 1 item, cy (not supported), Cymraeg, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "channel": "links",
+   "i": 39,
+   "expected": "English, Home, link, Welsh Government",
+   "predicted": "Home, link, Welsh Government",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "channel": "links",
+   "i": 42,
+   "expected": "banner landmark, Home, link, Welsh Government",
+   "predicted": "list, with 3 items, About statistics and research, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "channel": "links",
+   "i": 43,
+   "expected": "main landmark, Breadcrumb links, navigation landmark, list, with 2 items, English, Home, link",
+   "predicted": "Sign up for newsletters on statistics and research, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+   "channel": "links",
+   "i": 76,
+   "expected": "Welsh (not supported), Cymraeg (CY), link",
+   "predicted": "cy (not supported), Cymraeg (CY), link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+   "channel": "links",
+   "i": 78,
+   "expected": "English, Skip to main content, same page, link",
+   "predicted": "Skip to main content, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+   "channel": "links",
+   "i": 81,
+   "expected": "banner landmark, Skip to main content, same page, link",
+   "predicted": "list, with 5 items, Release calendar, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+   "channel": "links",
+   "i": 82,
+   "expected": "list, with 5 items, English, Release calendar, link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/after/tickets.html",
+   "channel": "lists",
+   "i": 2,
+   "expected": "list, with 2 items, Skip to content (within demo page), same page, link",
+   "predicted": "list, with 2 items",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "lists",
+   "class": "unexplained"
+  }
+ ]
+}

@@ -1,0 +1,61 @@
+{
+ "channel": "links",
+ "earlierReading": [
+  {
+   "class": "language",
+   "expected": "list, with 134 items, Zulu \u2014, isi Zulu (not supported), Isi Zulu, link",
+   "predicted": "list, with 134 items, Zulu \u2014, zu (not supported), Isi Zulu, link"
+  },
+  {
+   "class": "language",
+   "expected": "English, Dutch \u2014, Dutch (not supported), Nederlands, link",
+   "predicted": "Zulu \u2014, zu (not supported), Isi Zulu, link"
+  },
+  {
+   "class": "unexplained",
+   "expected": "English, Zulu \u2014, isi Zulu (not supported), Isi Zulu, link",
+   "predicted": null
+  }
+ ],
+ "emulatorOnTheReplay": {
+  "gate.run1": {
+   "entries": 179,
+   "withNeedle": [
+    "list, with 134 items, Zulu \u2014, zu (not supported), Isi Zulu, link",
+    "Zulu \u2014, zu (not supported), Isi Zulu, link"
+   ]
+  },
+  "gate.run2": {
+   "entries": 179,
+   "withNeedle": [
+    "list, with 134 items, Zulu \u2014, zu (not supported), Isi Zulu, link",
+    "Zulu \u2014, zu (not supported), Isi Zulu, link"
+   ]
+  },
+  "head.run1": {
+   "entries": 179,
+   "withNeedle": [
+    "list, with 134 items, Zulu \u2014, zu (not supported), Isi Zulu, link",
+    "Zulu \u2014, zu (not supported), Isi Zulu, link"
+   ]
+  },
+  "head.run2": {
+   "entries": 179,
+   "withNeedle": [
+    "list, with 134 items, Zulu \u2014, zu (not supported), Isi Zulu, link",
+    "Zulu \u2014, zu (not supported), Isi Zulu, link"
+   ]
+  }
+ },
+ "fleetOnTheReplay": {
+  "entries": 0,
+  "firstLines": [
+   "button, Cookie settings",
+   "heading, level 2, How nidirect uses cookies",
+   "The nidirect website uses some essential cookies to make this service work. nidirect would like to"
+  ],
+  "withNeedle": []
+ },
+ "needle": "Zulu",
+ "url": "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing"
+}

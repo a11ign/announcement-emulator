@@ -1,0 +1,83 @@
+[WARNING]: Unable to parse /root/control/ansible/inventory.yml as an inventory source
+
+PLAY [Put one box behind the replay server] ************************************
+
+TASK [Exactly one box, and its replay variables] *******************************
+Wednesday 21 October 2026  17:44:51 +0000 (0:00:00.009)       0:00:00.009 ***** 
+ok: [a11y-worker-9] => 
+    changed: false
+    msg: All assertions passed
+
+TASK [The box is idle, as the worker says] *************************************
+Wednesday 21 October 2026  17:44:52 +0000 (0:00:00.044)       0:00:00.054 ***** 
+ok: [a11y-worker-9]
+
+TASK [Edge is stopped (the worker keeps it alive between captures, and a running Edge holds its profile and its policy)] ***
+Wednesday 21 October 2026  17:44:54 +0000 (0:00:02.414)       0:00:02.468 ***** 
+ok: [a11y-worker-9]
+
+TASK [The run's CA certificate is on the box] **********************************
+Wednesday 21 October 2026  17:45:00 +0000 (0:00:05.744)       0:00:08.212 ***** 
+changed: [a11y-worker-9]
+
+TASK [The CA is a trusted root of the machine, for this run] *******************
+Wednesday 21 October 2026  17:45:06 +0000 (0:00:05.828)       0:00:14.041 ***** 
+changed: [a11y-worker-9]
+
+TASK [The certificate file is removed again (the store holds it)] **************
+Wednesday 21 October 2026  17:45:10 +0000 (0:00:03.996)       0:00:18.037 ***** 
+changed: [a11y-worker-9]
+
+TASK [Edge's proxy policy, three string values] ********************************
+Wednesday 21 October 2026  17:45:11 +0000 (0:00:01.575)       0:00:19.612 ***** 
+changed: [a11y-worker-9] => (item=ProxyMode)
+changed: [a11y-worker-9] => (item=ProxyServer)
+changed: [a11y-worker-9] => (item=ProxyBypassList)
+
+TASK [The browser profile holds nothing an earlier page left (as the worker's own account, Edge being stopped)] ***
+Wednesday 21 October 2026  17:45:22 +0000 (0:00:10.880)       0:00:30.492 ***** 
+changed: [a11y-worker-9] => (item=Cache)
+changed: [a11y-worker-9] => (item=Code Cache)
+changed: [a11y-worker-9] => (item=GPUCache)
+changed: [a11y-worker-9] => (item=Network\Cookies)
+changed: [a11y-worker-9] => (item=Network\Cookies-journal)
+changed: [a11y-worker-9] => (item=Service Worker)
+changed: [a11y-worker-9] => (item=Local Storage)
+changed: [a11y-worker-9] => (item=Session Storage)
+changed: [a11y-worker-9] => (item=IndexedDB)
+
+TASK [Read the proxy values back] **********************************************
+Wednesday 21 October 2026  17:45:43 +0000 (0:00:21.228)       0:00:51.721 ***** 
+ok: [a11y-worker-9] => (item=ProxyMode)
+ok: [a11y-worker-9] => (item=ProxyServer)
+ok: [a11y-worker-9] => (item=ProxyBypassList)
+
+TASK [Read the certificate store back] *****************************************
+Wednesday 21 October 2026  17:45:51 +0000 (0:00:08.273)       0:00:59.995 ***** 
+ok: [a11y-worker-9]
+
+TASK [Refuse to call this box ready if a value or the certificate did not land] ***
+Wednesday 21 October 2026  17:45:56 +0000 (0:00:04.376)       0:01:04.372 ***** 
+ok: [a11y-worker-9] => 
+    changed: false
+    msg: 'replay on: ProxyMode=fixed_servers ProxyServer=capture-host:3209 ProxyBypassList=capture-host;localhost;
+        certificate D48FA1A141C8FCBF01781DE3485FCEE6CE5DD304 found once in LocalMachine\Root'
+
+PLAY RECAP *********************************************************************
+a11y-worker-9              : ok=11   changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+TASKS RECAP ********************************************************************
+Wednesday 21 October 2026  17:45:56 +0000 (0:00:00.042)       0:01:04.414 ***** 
+=============================================================================== 
+The browser profile holds nothing an earlier page left (as the worker's own account, Edge being stopped) -- 21.23s
+Edge's proxy policy, three string values ------------------------------- 10.88s
+Read the proxy values back ---------------------------------------------- 8.27s
+The run's CA certificate is on the box ---------------------------------- 5.83s
+Edge is stopped (the worker keeps it alive between captures, and a running Edge holds its profile and its policy) --- 5.74s
+Read the certificate store back ----------------------------------------- 4.38s
+The CA is a trusted root of the machine, for this run ------------------- 4.00s
+The box is idle, as the worker says ------------------------------------- 2.41s
+The certificate file is removed again (the store holds it) -------------- 1.58s
+Exactly one box, and its replay variables ------------------------------- 0.04s
+Refuse to call this box ready if a value or the certificate did not land --- 0.04s

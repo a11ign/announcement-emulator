@@ -1,0 +1,48 @@
+{
+ "url": "https://design-system.service.gov.uk/components/checkboxes/",
+ "atLoad": {
+  "activeElement": "body.govuk-template__body.js-enabled.govuk-frontend-supported",
+  "focusedNode": {
+   "role": "rootWebArea",
+   "name": "Checkboxes \u2013 GOV.UK Design System",
+   "tag": "#document"
+  }
+ },
+ "afterScroll": {
+  "activeElement": "body.govuk-template__body.js-enabled.govuk-frontend-supported",
+  "focusedNode": {
+   "role": "rootWebArea",
+   "name": "Checkboxes \u2013 GOV.UK Design System",
+   "tag": "#document"
+  }
+ },
+ "afterAnchorToTop": {
+  "activeElement": "body.govuk-template__body.js-enabled.govuk-frontend-supported",
+  "caret": 0,
+  "lineIndex": 0,
+  "lines": 277,
+  "line": "Cookies on GOV.UK Design System",
+  "before": [],
+  "after": [
+   "We\u2019d like to use analytics cookies so we can understand how you use the Design System and make ",
+   "improvements."
+  ]
+ },
+ "readThrough": {
+  "count": 106,
+  "stopReason": "wrap",
+  "activeElement": "body.govuk-template__body.js-enabled.govuk-frontend-supported",
+  "caret": 3410,
+  "lineIndex": 111,
+  "lines": 277,
+  "line": "Farm or agricultural waste",
+  "before": [
+   "Waste from animal carcasses",
+   "Waste from mines or quarries"
+  ],
+  "after": [
+   "HTML",
+   "Nunjucks"
+  ]
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "url": "https://design-system.service.gov.uk/components/accordion/",
+ "atLoad": {
+  "activeElement": "body.govuk-template__body.js-enabled.govuk-frontend-supported",
+  "focusedNode": {
+   "role": "rootWebArea",
+   "name": "Accordion \u2013 GOV.UK Design System",
+   "tag": "#document"
+  }
+ },
+ "afterScroll": {
+  "activeElement": "body.govuk-template__body.js-enabled.govuk-frontend-supported",
+  "focusedNode": {
+   "role": "rootWebArea",
+   "name": "Accordion \u2013 GOV.UK Design System",
+   "tag": "#document"
+  }
+ },
+ "afterAnchorToTop": {
+  "activeElement": "body.govuk-template__body.js-enabled.govuk-frontend-supported",
+  "caret": 0,
+  "lineIndex": 0,
+  "lines": 226,
+  "line": "Cookies on GOV.UK Design System",
+  "before": [],
+  "after": [
+   "We\u2019d like to use analytics cookies so we can understand how you use the Design System and make ",
+   "improvements."
+  ]
+ },
+ "readThrough": {
+  "count": 221,
+  "stopReason": "repeatBottom",
+  "activeElement": "body.govuk-template__body.js-enabled.govuk-frontend-supported",
+  "caret": 10248,
+  "lineIndex": 225,
+  "lines": 226,
+  "line": "\u00a9 Crown copyright",
+  "before": [
+   "Built by the GOV.UK Design System team",
+   "All content is available under the Open Government Licence v3.0, except where otherwise stated"
+  ],
+  "after": []
+ }
+}

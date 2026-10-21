@@ -1,0 +1,29 @@
+{
+ "captured": 95,
+ "endedAt": "2026-10-21T18:49:29Z",
+ "failed": [
+  "https://primary-authority.beis.gov.uk/par",
+  "https://www.cqc.org.uk/about-us",
+  "https://www.financial-ombudsman.org.uk/businesses/resolving-complaint/ombudsman-decisions",
+  "https://www.leeds.ac.uk/undergraduate",
+  "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/",
+  "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained",
+  "https://www.sportengland.org/research-and-data/data/active-lives"
+ ],
+ "pages": 102,
+ "startedAt": "2026-10-21T18:08:47Z",
+ "workers": [
+  "a11y-worker-10",
+  "a11y-worker-12",
+  "a11y-worker-13",
+  "a11y-worker-14",
+  "a11y-worker-15",
+  "a11y-worker-16",
+  "a11y-worker-2",
+  "a11y-worker-3",
+  "a11y-worker-4",
+  "a11y-worker-7",
+  "a11y-worker-8",
+  "a11y-worker-9"
+ ]
+}

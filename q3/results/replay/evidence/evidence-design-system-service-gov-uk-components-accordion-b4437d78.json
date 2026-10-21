@@ -1,0 +1,186 @@
+{
+ "capturedAt": "2026-10-21T18:15:29.163Z",
+ "channel": "formFields",
+ "emulator": {
+  "gate.run1": {
+   "entries": 23,
+   "first": [
+    "main landmark, Nunjucks, tab, collapsed",
+    "HTML, tab, collapsed",
+    "Accordion with summary sections \u2013 Accordion example, frame, clickable, Phases of an agile project , Discovery, alpha, beta, live and retirement. , Show this section, button, collapsed, heading, level 2"
+   ],
+   "frameHeaderIndexes": [
+    2,
+    7,
+    14,
+    19
+   ],
+   "onlyInEmulator": [],
+   "onlyInFleet": [],
+   "order": "agree",
+   "start": {
+    "readThrough": {
+     "count": 216,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 23,
+     "nextSteps": 19,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Copy code, button",
+     "prevCount": 14,
+     "prevSteps": 19,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Accept analytics cookies, button",
+     "type": "formField"
+    }
+   }
+  },
+  "gate.run2": {
+   "entries": 23,
+   "first": [
+    "main landmark, Nunjucks, tab, collapsed",
+    "HTML, tab, collapsed",
+    "Accordion with summary sections \u2013 Accordion example, frame, clickable, Phases of an agile project , Discovery, alpha, beta, live and retirement. , Show this section, button, collapsed, heading, level 2"
+   ],
+   "frameHeaderIndexes": [
+    2,
+    7,
+    14,
+    19
+   ],
+   "onlyInEmulator": [],
+   "onlyInFleet": [],
+   "order": "agree",
+   "start": {
+    "readThrough": {
+     "count": 216,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 23,
+     "nextSteps": 19,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Copy code, button",
+     "prevCount": 14,
+     "prevSteps": 19,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Accept analytics cookies, button",
+     "type": "formField"
+    }
+   }
+  },
+  "head.run1": {
+   "entries": 23,
+   "first": [
+    "main landmark, Nunjucks, tab, collapsed",
+    "HTML, tab, collapsed",
+    "Accordion with summary sections \u2013 Accordion example, frame, clickable, Phases of an agile project , Discovery, alpha, beta, live and retirement. , Show this section, button, collapsed, heading, level 2"
+   ],
+   "frameHeaderIndexes": [
+    2,
+    7,
+    14,
+    19
+   ],
+   "onlyInEmulator": [],
+   "onlyInFleet": [],
+   "order": "agree",
+   "start": {
+    "readThrough": {
+     "count": 221,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 23,
+     "nextSteps": 19,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Copy code, button",
+     "prevCount": 14,
+     "prevSteps": 19,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Accept analytics cookies, button",
+     "type": "formField"
+    }
+   }
+  },
+  "head.run2": {
+   "entries": 23,
+   "first": [
+    "main landmark, Nunjucks, tab, collapsed",
+    "HTML, tab, collapsed",
+    "Accordion with summary sections \u2013 Accordion example, frame, clickable, Phases of an agile project , Discovery, alpha, beta, live and retirement. , Show this section, button, collapsed, heading, level 2"
+   ],
+   "frameHeaderIndexes": [
+    2,
+    6,
+    13,
+    18
+   ],
+   "onlyInEmulator": [
+    "clickable, Understanding agile project management , Introductions, methods, core features. , Hide this section, button, expanded, heading, level 2"
+   ],
+   "onlyInFleet": [
+    "clickable, Understanding agile project management , Introductions, methods, core features. , Show this section, button, collapsed, heading, level 2"
+   ],
+   "order": "differentEntries",
+   "start": {
+    "readThrough": {
+     "count": 221,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 23,
+     "nextSteps": 19,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Copy code, button",
+     "prevCount": 13,
+     "prevSteps": 18,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Accept analytics cookies, button",
+     "type": "formField"
+    }
+   }
+  }
+ },
+ "fleet": {
+  "entries": 23,
+  "first": [
+   "main landmark, Nunjucks, tab, collapsed",
+   "HTML, tab, collapsed",
+   "Accordion with summary sections \u2013 Accordion example, frame, clickable, Phases of an agile project , Discovery, alpha, beta, live and retirement. , Show this section, button, collapsed, heading, level 2"
+  ],
+  "frameHeaderIndexes": [
+   2,
+   7,
+   14,
+   19
+  ]
+ },
+ "fleetObserved": {
+  "asked": true,
+  "complete": true,
+  "focusInFrame": null,
+  "stop": {
+   "next": "exhausted",
+   "prev": "exhausted"
+  }
+ },
+ "fleetStart": {
+  "firstFocusIn": {
+   "atMs": 111811,
+   "id": 0,
+   "name": "A",
+   "type": "focusin"
+  },
+  "focusBeforeReadThroughEnded": false,
+  "focusFrameBeforeSweep": null,
+  "readThrough": {
+   "atMs": 90156,
+   "count": 222,
+   "stopReason": "repeatBottom"
+  }
+ },
+ "url": "https://design-system.service.gov.uk/components/accordion/",
+ "worker": "a11y-worker-13"
+}

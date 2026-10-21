@@ -1,0 +1,7 @@
+[WARNING]: Unable to parse /root/control/ansible/inventory.yml as an inventory source
+a11y-worker-9 | SUCCESS => 
+    changed: false
+    exists: true
+    raw_value: 0
+    type: REG_DWORD
+    value: 0
