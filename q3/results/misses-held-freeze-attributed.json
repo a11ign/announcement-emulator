@@ -1,0 +1,4941 @@
+[
+ {
+  "url": "https://bathingwaters.sepa.org.uk/",
+  "channel": "landmarks",
+  "i": 1,
+  "expected": "complementary landmark, Back to top, button",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://bathingwaters.sepa.org.uk/",
+  "channel": "formFields",
+  "i": 0,
+  "expected": "complementary landmark, Back to top, button",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "buttons",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://bathingwaters.sepa.org.uk/",
+  "channel": "graphics",
+  "i": 0,
+  "expected": "This website uses cookies, region, logo, graphic",
+  "predicted": "logo, graphic",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "graphics",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://bathingwaters.sepa.org.uk/",
+  "channel": "links",
+  "i": 0,
+  "expected": "Cookiebot by Usercentrics - opens in a new window, visited, link",
+  "predicted": "Cookiebot by Usercentrics - opens in a new window, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://caselaw.nationalarchives.gov.uk/search?query=",
+  "channel": "links",
+  "i": 30,
+  "expected": "Cookies on Find Case Law, region, Set cookie preferences, visited, link",
+  "predicted": "Cookies on Find Case Law, region, Set cookie preferences, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://caselaw.nationalarchives.gov.uk/search?query=",
+  "channel": "links",
+  "i": 42,
+  "expected": "Cookies, visited, link",
+  "predicted": "Cookies, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+  "channel": "links",
+  "i": 0,
+  "expected": "Cookies on Check for flooding, region, View your cookie settings, visited, link",
+  "predicted": "Cookies on Check for flooding, region, View your cookie settings, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+  "channel": "links",
+  "i": 1,
+  "expected": "Skip to main content, same page, link",
+  "predicted": "Skip to main content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+  "channel": "links",
+  "i": 13,
+  "expected": "Cookies, visited, link",
+  "predicted": "Cookies, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+  "channel": "lists",
+  "i": 1,
+  "expected": "content info landmark, list, with 4 items, Accessibility statement, link, Cookies, visited, link, Privacy notice, link, Terms and conditions",
+  "predicted": "content info landmark, list, with 4 items, Accessibility statement, link, Cookies, link, Privacy notice, link, Terms and conditions",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "lists",
+  "class": "history"
+ },
+ {
+  "url": "https://design-patterns.service.justice.gov.uk/components/filter/",
+  "channel": "links",
+  "i": 31,
+  "expected": "Skip to main content, same page, link",
+  "predicted": "Skip to main content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://design-patterns.service.justice.gov.uk/components/scrollable-pane/",
+  "channel": "links",
+  "i": 27,
+  "expected": "Skip to main content, same page, link",
+  "predicted": "Skip to main content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 0,
+  "expected": "clickable, Know your audience , Show this section, button, collapsed, heading, level 2",
+  "predicted": "Support links, heading, level 2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 1,
+  "expected": "clickable, Writing well for specialists , Show this section, button, collapsed, heading, level 2",
+  "predicted": "main landmark, Need help?, heading, level 2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 2,
+  "expected": "clickable, Writing well for the web , Show this section, button, collapsed, heading, level 2",
+  "predicted": "Help improve this component, heading, level 2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 14,
+  "expected": "Accordion second example, frame, clickable, Writing well for the web , Show this section, button, collapsed, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 15,
+  "expected": "Write clear button text, heading, level 4",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 16,
+  "expected": "Adding a summary line, heading, level 4",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 17,
+  "expected": "Accordion with summary sections – Accordion example, frame, clickable, Understanding agile project management , Introductions, methods, core features. , Show this section, button, collapsed, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME",
+   "NAME",
+   "NAME",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 18,
+  "expected": "clickable, Working with agile methods , Workspaces, tools and techniques, user stories, planning. , Show this section, button, collapsed, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "NAME",
+   "NAME",
+   "NAME",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 19,
+  "expected": "clickable, Governing agile services , Principles, measuring progress, spending money. , Show this section, button, collapsed, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "NAME",
+   "NAME",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 20,
+  "expected": "clickable, Phases of an agile project , Discovery, alpha, beta, live and retirement. , Show this section, button, collapsed, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "NAME",
+   "NAME",
+   "NAME",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 21,
+  "expected": "Structure section headings with the rest of the page, heading, level 4",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 22,
+  "expected": "Starting with sections open, heading, level 3",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 23,
+  "expected": "Do not disable sections, heading, level 3",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 24,
+  "expected": "Research on this component, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 25,
+  "expected": "Users that navigate using elements lists’, heading, level 3",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 26,
+  "expected": "Known issues and gaps, heading, level 3",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 27,
+  "expected": "Recent changes, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 28,
+  "expected": "Help improve this component, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 29,
+  "expected": "Need help?, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "channel": "headings",
+  "i": 30,
+  "expected": "content info landmark, Support links, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/checkboxes/",
+  "channel": "headings",
+  "i": 12,
+  "expected": "Checkbox items with hint – Checkboxes example, frame, What is your nationality?, grouping, What is your nationality?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/checkboxes/",
+  "channel": "headings",
+  "i": 14,
+  "expected": "Checkboxes with and number 8216 none and number 8217; option – Checkboxes example, frame, Will you be travelling to any of these countries?, grouping, Will you be travelling to any of these countries?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/checkboxes/",
+  "channel": "headings",
+  "i": 15,
+  "expected": "Checkboxes with and number 8216 none and number 8217; option showing an error – Checkboxes example, frame, Will you be travelling to any of these countries?, grouping, Will you be travelling to any of these countries?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/checkboxes/",
+  "channel": "headings",
+  "i": 17,
+  "expected": "Checkboxes with conditionally revealing content – Checkboxes example, frame, How would you like to be contacted?, grouping, How would you like to be contacted?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/checkboxes/",
+  "channel": "headings",
+  "i": 20,
+  "expected": "Small checkboxes – Checkboxes example, frame, Organisation, grouping, Organisation, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/checkboxes/",
+  "channel": "headings",
+  "i": 22,
+  "expected": "Checkbox items with error – Checkboxes example, frame, What is your nationality?, grouping, What is your nationality?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/date-input/",
+  "channel": "headings",
+  "i": 17,
+  "expected": "Dates with errors – Date input example, frame, When was your passport issued?, grouping, When was your passport issued?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/date-input/",
+  "channel": "headings",
+  "i": 18,
+  "expected": "Date input with errors – Date input example, frame, When was your passport issued?, grouping, When was your passport issued?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/date-input/",
+  "channel": "headings",
+  "i": 20,
+  "expected": "Date input to ask for date of birth – Date input example, frame, What is your date of birth?, grouping, What is your date of birth?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "headings",
+  "i": 12,
+  "expected": "Inline radios – Radios example, frame, Have you changed your name?, grouping, Have you changed your name?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "headings",
+  "i": 14,
+  "expected": "Radio items with hint – Radios example, frame, How do you want to sign in?, grouping, How do you want to sign in?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "headings",
+  "i": 16,
+  "expected": "Radios with a text divider – Radios example, frame, Where do you live?, grouping, Where do you live?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "headings",
+  "i": 18,
+  "expected": "Radios with conditionally revealing content – Radios example, frame, How would you prefer to be contacted?, grouping, How would you prefer to be contacted?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "headings",
+  "i": 21,
+  "expected": "Small radios – Radios example, frame, Filter, grouping, Filter, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "headings",
+  "i": 23,
+  "expected": "Inline radios with error – Radios example, frame, Where do you live?, grouping, Where do you live?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "headings",
+  "i": 28,
+  "expected": "Radios with conditionally revealing content showing an error – Radios example, frame, How would you prefer to be contacted?, grouping, How would you prefer to be contacted?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "formFields",
+  "i": 12,
+  "expected": "Radios with conditionally revealing content – Radios example, frame, How would you prefer to be contacted?, grouping, clickable, Text message, radio button, not checked",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "formFields",
+  "i": 13,
+  "expected": "Email, radio button, not checked",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "formFields",
+  "i": 14,
+  "expected": "Radios with a text divider – Radios example, frame, Where do you live?, grouping, clickable, I am a British citizen living abroad, radio button, not checked",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "formFields",
+  "i": 15,
+  "expected": "Northern Ireland, radio button, not checked",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "formFields",
+  "i": 16,
+  "expected": "Radio items with hint – Radios example, frame, How do you want to sign in?, grouping, clickable, Sign in with GOV dot UK One Login, radio button, not checked, If you don’t have a GOV dot UK One Login, you can create one",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "formFields",
+  "i": 17,
+  "expected": "Sign in with Government Gateway, radio button, not checked, You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "formFields",
+  "i": 18,
+  "expected": "Inline radios – Radios example, frame, Have you changed your name?, grouping, clickable, No, radio button, not checked",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "formFields",
+  "i": 19,
+  "expected": "Yes, radio button, not checked",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "formFields",
+  "i": 28,
+  "expected": "No, radio button, not checked",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "formFields",
+  "i": 29,
+  "expected": "Sign in with GOV dot UK One Login, radio button, not checked, If you don’t have a GOV dot UK One Login, you can create one",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "formFields",
+  "i": 30,
+  "expected": "I am a British citizen living abroad, radio button, not checked",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "formFields",
+  "i": 31,
+  "expected": "Text message, radio button, not checked",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "frames",
+  "i": 3,
+  "expected": "Inline radios – Radios example, frame, Have you changed your name?, grouping, Have you changed your name?, heading, level 1",
+  "predicted": "Inline radios – Radios example, frame",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "frames",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "frames",
+  "i": 4,
+  "expected": "Radio items with hint – Radios example, frame, How do you want to sign in?, grouping, How do you want to sign in?, heading, level 1",
+  "predicted": "Radio items with hint – Radios example, frame",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "frames",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "frames",
+  "i": 5,
+  "expected": "Radios with a text divider – Radios example, frame, Where do you live?, grouping, Where do you live?, heading, level 1",
+  "predicted": "Radios with a text divider – Radios example, frame",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "frames",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "channel": "frames",
+  "i": 6,
+  "expected": "Radios with conditionally revealing content – Radios example, frame, How would you prefer to be contacted?, grouping, How would you prefer to be contacted?, heading, level 1",
+  "predicted": "Radios with conditionally revealing content – Radios example, frame",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "frames",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "headings",
+  "i": 18,
+  "expected": "Text input with prefix and suffix with error – Text input example, frame, What is the cost per item, in pounds?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "headings",
+  "i": 20,
+  "expected": "Text input with errors – Text input example, frame, What is the name of the event?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "headings",
+  "i": 26,
+  "expected": "Text input with suffix – Text input example, frame, What is the weight in kilograms?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "headings",
+  "i": 28,
+  "expected": "Text input with prefix – Text input example, frame, What is the cost in pounds?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "headings",
+  "i": 30,
+  "expected": "Text input with prefix and suffix – Text input example, frame, What is the cost per item, in pounds?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "headings",
+  "i": 35,
+  "expected": "Number input – Text input example, frame, What is your account number?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "headings",
+  "i": 40,
+  "expected": "Hint text – Text input example, frame, What is the name of the event?, heading, level 1",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 6,
+  "expected": "Text input with suffix – Text input example, frame, What is the weight in kilograms?, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 7,
+  "expected": "Text input with prefix – Text input example, frame, What is the cost in pounds?, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 8,
+  "expected": "Text input with prefix and suffix – Text input example, frame, What is the cost per item, in pounds?, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 9,
+  "expected": "Example of a text input asking for a code or sequence – Text input example, frame, Company authentication code, edit, This is on the company incorporation letter sent to the registered office address, NC 1701",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 10,
+  "expected": "Example of an input asking for numbers with decimal places – Text input example, frame, Weight, in kilograms, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 11,
+  "expected": "Number input – Text input example, frame, What is your account number?, edit, Must be between 6 and 8 digits long",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 12,
+  "expected": "Hint text – Text input example, frame, What is the name of the event?, edit, The name you’ll use on promotional material",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 13,
+  "expected": "Fluid width inputs – Text input example, frame, One-quarter width, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 14,
+  "expected": "One-third width, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 15,
+  "expected": "One-half width, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 16,
+  "expected": "Two-thirds width, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 17,
+  "expected": "Three-quarters width, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 18,
+  "expected": "Full width, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 19,
+  "expected": "Fixed width inputs – Text input example, frame, 2 character width, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 20,
+  "expected": "3 character width, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 21,
+  "expected": "4 character width, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 22,
+  "expected": "5 character width, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 23,
+  "expected": "10 character width, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 24,
+  "expected": "20 character width, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 31,
+  "expected": "Fixed width inputs – Text input example, frame, 20 character width, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 32,
+  "expected": "2 character width, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 33,
+  "expected": "Fluid width inputs – Text input example, frame, Full width, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "formFields",
+  "i": 34,
+  "expected": "One-quarter width, edit",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "frames",
+  "i": 3,
+  "expected": "Fixed width inputs – Text input example, frame, 20 character width",
+  "predicted": "Fixed width inputs – Text input example, frame",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "frames",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "frames",
+  "i": 4,
+  "expected": "Fluid width inputs – Text input example, frame, Full width",
+  "predicted": "Fluid width inputs – Text input example, frame",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "frames",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "frames",
+  "i": 5,
+  "expected": "Hint text – Text input example, frame, What is the name of the event?, heading, level 1",
+  "predicted": "Hint text – Text input example, frame",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "frames",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "frames",
+  "i": 6,
+  "expected": "Number input – Text input example, frame, What is your account number?, heading, level 1",
+  "predicted": "Number input – Text input example, frame",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "frames",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "frames",
+  "i": 7,
+  "expected": "Example of an input asking for numbers with decimal places – Text input example, frame, Weight, in kilograms",
+  "predicted": "Example of an input asking for numbers with decimal places – Text input example, frame",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "frames",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "frames",
+  "i": 8,
+  "expected": "Example of a text input asking for a code or sequence – Text input example, frame, Company authentication code",
+  "predicted": "Example of a text input asking for a code or sequence – Text input example, frame",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "frames",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "frames",
+  "i": 9,
+  "expected": "Text input with prefix and suffix – Text input example, frame, What is the cost per item, in pounds?, heading, level 1",
+  "predicted": "Text input with prefix and suffix – Text input example, frame",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "frames",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "frames",
+  "i": 10,
+  "expected": "Text input with prefix – Text input example, frame, What is the cost in pounds?, heading, level 1",
+  "predicted": "Text input with prefix – Text input example, frame",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "frames",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "channel": "frames",
+  "i": 11,
+  "expected": "Text input with suffix – Text input example, frame, What is the weight in kilograms?, heading, level 1",
+  "predicted": "Text input with suffix – Text input example, frame",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "frames",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+  "channel": "links",
+  "i": 9,
+  "expected": "Language switcher, navigation landmark, list, with 2 items, English, same page, link",
+  "predicted": "Language switcher, navigation landmark, list, with 2 items, English, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+  "channel": "links",
+  "i": 10,
+  "expected": "Welsh (not supported), Cymraeg, link",
+  "predicted": "cy (not supported), Cymraeg, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "language"
+ },
+ {
+  "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+  "channel": "links",
+  "i": 11,
+  "expected": "main landmark, English, Expand breadcrumb navigation, collapsed, same page, link",
+  "predicted": "main landmark, Expand breadcrumb navigation, collapsed, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "NAME",
+   "STATE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "language"
+ },
+ {
+  "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+  "channel": "lists",
+  "i": 2,
+  "expected": "Language switcher, navigation landmark, list, with 2 items, English, same page, link,",
+  "predicted": "Language switcher, navigation landmark, list, with 2 items, English, visited, same page, link,",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "lists",
+  "class": "history"
+ },
+ {
+  "url": "https://reports.ofsted.gov.uk/search?q=school",
+  "channel": "landmarks",
+  "i": 5,
+  "expected": "content info landmark, list, with 7 items, Terms of use, link, Copyright, link, Privacy, visited, link, Cookies, link, Ofsted's privacy notices, link, Accessibility statement, link, Contact us",
+  "predicted": "content info landmark, list, with 7 items, Terms of use, link, Copyright, link, Privacy, link, Cookies, link, Ofsted's privacy notices, link, Accessibility statement, link, Contact us",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://reports.ofsted.gov.uk/search?q=school",
+  "channel": "links",
+  "i": 1,
+  "expected": "cookies to collect information, visited, link",
+  "predicted": "cookies to collect information, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://reports.ofsted.gov.uk/search?q=school",
+  "channel": "links",
+  "i": 2,
+  "expected": "Skip to main content, same page, link",
+  "predicted": "Skip to main content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://reports.ofsted.gov.uk/search?q=school",
+  "channel": "links",
+  "i": 24,
+  "expected": "Privacy, visited, link",
+  "predicted": "Privacy, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://reports.ofsted.gov.uk/search?q=school",
+  "channel": "lists",
+  "i": 16,
+  "expected": "content info landmark, list, with 7 items, Terms of use, link, Copyright, link, Privacy, visited, link, Cookies, link, Ofsted's privacy notices, link, Accessibility statement, link, Contact us",
+  "predicted": "content info landmark, list, with 7 items, Terms of use, link, Copyright, link, Privacy, link, Cookies, link, Ofsted's privacy notices, link, Accessibility statement, link, Contact us",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "lists",
+  "class": "history"
+ },
+ {
+  "url": "https://service-manual.nhs.uk/design-system/components/table",
+  "channel": "formFields",
+  "i": 14,
+  "expected": "On, toggle button, pressed",
+  "predicted": "On, toggle button, pressed, checked",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "toggle button state"
+ },
+ {
+  "url": "https://service-manual.nhs.uk/design-system/components/table",
+  "channel": "formFields",
+  "i": 38,
+  "expected": "Toggle Java Script, grouping, On, toggle button, pressed",
+  "predicted": "Toggle Java Script, grouping, On, toggle button, pressed, checked",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "formFields",
+  "class": "bug-fixed",
+  "fix": "toggle button state"
+ },
+ {
+  "url": "https://www.british-history.ac.uk/catalogue",
+  "channel": "links",
+  "i": 213,
+  "expected": "Skip to main content, same page, link",
+  "predicted": "Skip to main content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.dropbox.com/",
+  "channel": "formFields",
+  "i": 5,
+  "expected": "content info landmark, English (United Kingdom), button",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "buttons",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.dropbox.com/",
+  "channel": "graphics",
+  "i": 0,
+  "expected": "main landmark, Family taking a photo at a birthday party, graphic",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "graphics",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.dropbox.com/",
+  "channel": "graphics",
+  "i": 1,
+  "expected": "Race car, graphic",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "graphics",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.gla.ac.uk/undergraduate/degrees/",
+  "channel": "links",
+  "i": 3,
+  "expected": "Privacy and cookies, link",
+  "predicted": "Privacy and cookies, visited, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.gla.ac.uk/undergraduate/degrees/",
+  "channel": "links",
+  "i": 235,
+  "expected": "edit consent, complementary landmark, privacy policy page, link",
+  "predicted": "edit consent, complementary landmark, privacy policy page, visited, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.gov.scot/about/",
+  "channel": "links",
+  "i": 7,
+  "expected": "Accessibility, visited, link",
+  "predicted": "Accessibility, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.gov.scot/about/",
+  "channel": "links",
+  "i": 47,
+  "expected": "list, with 2 items, Accessibility help, visited, link",
+  "predicted": "list, with 2 items, Accessibility help, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.gov.scot/about/",
+  "channel": "links",
+  "i": 48,
+  "expected": "Skip to main content, same page, link",
+  "predicted": "Skip to main content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.gov.scot/about/",
+  "channel": "links",
+  "i": 49,
+  "expected": "Accessibility help, visited, link",
+  "predicted": "Accessibility help, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.gov.scot/about/",
+  "channel": "links",
+  "i": 65,
+  "expected": "list, with 7 items, Accessibility, visited, link",
+  "predicted": "list, with 7 items, Accessibility, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.gov.scot/about/",
+  "channel": "lists",
+  "i": 9,
+  "expected": "list, with 7 items, Accessibility, visited, link, Archive, link, Contact, link, Cookies, link, Crown Copyright, link, Jobs and vacancies, link, Privacy",
+  "predicted": "list, with 7 items, Accessibility, link, Archive, link, Contact, link, Cookies, link, Crown Copyright, link, Jobs and vacancies, link, Privacy",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "lists",
+  "class": "history"
+ },
+ {
+  "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+  "channel": "links",
+  "i": 54,
+  "expected": "Translations, navigation landmark, list, with 2 items, Welsh (not supported), Cymraeg, link",
+  "predicted": "Translations, navigation landmark, list, with 2 items, cy (not supported), Cymraeg, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "language"
+ },
+ {
+  "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+  "channel": "links",
+  "i": 55,
+  "expected": "Breadcrumb, navigation landmark, list, with 4 items, English, National Insurance, link",
+  "predicted": "Breadcrumb, navigation landmark, list, with 4 items, National Insurance, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "language"
+ },
+ {
+  "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+  "channel": "links",
+  "i": 64,
+  "expected": "list, with 6 items, English, HM Revenue and Customs, link",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+  "channel": "links",
+  "i": 104,
+  "expected": "Welsh (not supported), Rhestr o Wasanaethau Cymraeg, link",
+  "predicted": "cy (not supported), Rhestr o Wasanaethau Cymraeg, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "language"
+ },
+ {
+  "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+  "channel": "links",
+  "i": 105,
+  "expected": "English, Government Digital Service, link",
+  "predicted": "Government Digital Service, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "language"
+ },
+ {
+  "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+  "channel": "lists",
+  "i": 14,
+  "expected": "list, with 8 items, Help, link, Privacy, link, Cookies, visited, link, Accessibility statement, link, Contact, link, Terms and conditions, link, Welsh (not supported), Rhestr o Wasanaethau Cymraeg",
+  "predicted": "list, with 8 items, Help, link, Privacy, link, Cookies, visited, link, Accessibility statement, link, Contact, link, Terms and conditions, link, cy (not supported), Rhestr o Wasanaethau Cymraeg",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "lists",
+  "class": "language"
+ },
+ {
+  "url": "https://www.gov.uk/vehicle-tax",
+  "channel": "links",
+  "i": 59,
+  "expected": "Welsh (not supported), Rhestr o Wasanaethau Cymraeg, link",
+  "predicted": "cy (not supported), Rhestr o Wasanaethau Cymraeg, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "language"
+ },
+ {
+  "url": "https://www.gov.uk/vehicle-tax",
+  "channel": "links",
+  "i": 60,
+  "expected": "English, Government Digital Service, link",
+  "predicted": "Government Digital Service, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "language"
+ },
+ {
+  "url": "https://www.gov.uk/vehicle-tax",
+  "channel": "lists",
+  "i": 11,
+  "expected": "list, with 8 items, Help, link, Privacy, link, Cookies, visited, link, Accessibility statement, link, Contact, link, Terms and conditions, link, Welsh (not supported), Rhestr o Wasanaethau Cymraeg",
+  "predicted": "list, with 8 items, Help, link, Privacy, link, Cookies, visited, link, Accessibility statement, link, Contact, link, Terms and conditions, link, cy (not supported), Rhestr o Wasanaethau Cymraeg",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "lists",
+  "class": "language"
+ },
+ {
+  "url": "https://www.gov.wales/statistics-and-research",
+  "channel": "landmarks",
+  "i": 4,
+  "expected": "Language, navigation landmark, list, with 1 item, Welsh (not supported), Cymraeg, link",
+  "predicted": "Language, navigation landmark, list, with 1 item, cy (not supported), Cymraeg, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "language"
+ },
+ {
+  "url": "https://www.gov.wales/statistics-and-research",
+  "channel": "landmarks",
+  "i": 5,
+  "expected": "English, Home, link, Welsh Government",
+  "predicted": "Home, link, Welsh Government",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "language"
+ },
+ {
+  "url": "https://www.gov.wales/statistics-and-research",
+  "channel": "landmarks",
+  "i": 7,
+  "expected": "banner landmark, Home, link, Welsh Government",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.gov.wales/statistics-and-research",
+  "channel": "landmarks",
+  "i": 8,
+  "expected": "Search GOV dot WALES, search landmark, section, English, Search",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.gov.wales/statistics-and-research",
+  "channel": "links",
+  "i": 37,
+  "expected": "banner landmark, Language, navigation landmark, list, with 1 item, Welsh (not supported), Cymraeg, link",
+  "predicted": "banner landmark, Language, navigation landmark, list, with 1 item, cy (not supported), Cymraeg, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "language"
+ },
+ {
+  "url": "https://www.gov.wales/statistics-and-research",
+  "channel": "links",
+  "i": 38,
+  "expected": "English, Home, link, Welsh Government",
+  "predicted": "Home, link, Welsh Government",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "links",
+  "class": "language"
+ },
+ {
+  "url": "https://www.gov.wales/statistics-and-research",
+  "channel": "links",
+  "i": 40,
+  "expected": "Skip to main content, same page, link",
+  "predicted": "Skip to main content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.gov.wales/statistics-and-research",
+  "channel": "links",
+  "i": 41,
+  "expected": "banner landmark, Home, link, Welsh Government",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.gov.wales/statistics-and-research",
+  "channel": "links",
+  "i": 42,
+  "expected": "main landmark, Breadcrumb links, navigation landmark, list, with 2 items, English, Home, link",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.mygov.scot/browse/benefits",
+  "channel": "landmarks",
+  "i": 5,
+  "expected": "content info landmark, list, with 6 items, About, link, myaccount, link, Accessibility statement, link, Cookies, visited, link, Feedback, link, Privacy",
+  "predicted": "content info landmark, list, with 6 items, About, link, myaccount, link, Accessibility statement, link, Cookies, link, Feedback, link, Privacy",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.mygov.scot/browse/benefits",
+  "channel": "links",
+  "i": 3,
+  "expected": "Cookies, visited, link",
+  "predicted": "Cookies, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.mygov.scot/browse/benefits",
+  "channel": "links",
+  "i": 27,
+  "expected": "clickable, Set cookie preferences, visited, link",
+  "predicted": "clickable, Set cookie preferences, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.mygov.scot/browse/benefits",
+  "channel": "links",
+  "i": 28,
+  "expected": "cookies, visited, link",
+  "predicted": "cookies, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.mygov.scot/browse/benefits",
+  "channel": "links",
+  "i": 29,
+  "expected": "list, with 1 item, Skip to main content, same page, link",
+  "predicted": "list, with 1 item, Skip to main content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.mygov.scot/browse/benefits",
+  "channel": "links",
+  "i": 30,
+  "expected": "clickable, cookies, visited, link",
+  "predicted": "clickable, cookies, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.mygov.scot/browse/benefits",
+  "channel": "links",
+  "i": 31,
+  "expected": "Set cookie preferences, visited, link",
+  "predicted": "Set cookie preferences, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.mygov.scot/browse/benefits",
+  "channel": "lists",
+  "i": 2,
+  "expected": "content info landmark, list, with 6 items, About, link, myaccount, link, Accessibility statement, link, Cookies, visited, link, Feedback, link, Privacy",
+  "predicted": "content info landmark, list, with 6 items, About, link, myaccount, link, Accessibility statement, link, Cookies, link, Feedback, link, Privacy",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "lists",
+  "class": "history"
+ },
+ {
+  "url": "https://www.mygov.scot/scottish-child-payment",
+  "channel": "landmarks",
+  "i": 8,
+  "expected": "content info landmark, list, with 6 items, About, link, myaccount, link, Accessibility statement, link, Cookies, visited, link, Feedback, link, Privacy",
+  "predicted": "content info landmark, list, with 6 items, About, link, myaccount, link, Accessibility statement, link, Cookies, link, Feedback, link, Privacy",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.mygov.scot/scottish-child-payment",
+  "channel": "links",
+  "i": 3,
+  "expected": "Cookies, visited, link",
+  "predicted": "Cookies, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.mygov.scot/scottish-child-payment",
+  "channel": "links",
+  "i": 23,
+  "expected": "clickable, Set cookie preferences, visited, link",
+  "predicted": "clickable, Set cookie preferences, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.mygov.scot/scottish-child-payment",
+  "channel": "links",
+  "i": 24,
+  "expected": "cookies, visited, link",
+  "predicted": "cookies, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.mygov.scot/scottish-child-payment",
+  "channel": "links",
+  "i": 25,
+  "expected": "list, with 1 item, Skip to main content, same page, link",
+  "predicted": "list, with 1 item, Skip to main content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.mygov.scot/scottish-child-payment",
+  "channel": "links",
+  "i": 26,
+  "expected": "clickable, cookies, visited, link",
+  "predicted": "clickable, cookies, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.mygov.scot/scottish-child-payment",
+  "channel": "links",
+  "i": 27,
+  "expected": "Set cookie preferences, visited, link",
+  "predicted": "Set cookie preferences, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.mygov.scot/scottish-child-payment",
+  "channel": "lists",
+  "i": 4,
+  "expected": "content info landmark, list, with 6 items, About, link, myaccount, link, Accessibility statement, link, Cookies, visited, link, Feedback, link, Privacy",
+  "predicted": "content info landmark, list, with 6 items, About, link, myaccount, link, Accessibility statement, link, Cookies, link, Feedback, link, Privacy",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "lists",
+  "class": "history"
+ },
+ {
+  "url": "https://www.notion.com/",
+  "channel": "headings",
+  "i": 13,
+  "expected": "Where teams and agents Build together., heading, level 1",
+  "predicted": "Where teams and agents Create together., heading, level 1",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.notion.com/",
+  "channel": "links",
+  "i": 10,
+  "expected": "banner landmark, Change to English (UK), link",
+  "predicted": "banner landmark, Change to English (UK), visited, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained",
+  "channel": "landmarks",
+  "i": 4,
+  "expected": "navigation landmark, English, Welsh (not supported), Cymraeg Newid yr iaith i'r Gymraeg, link",
+  "predicted": "navigation landmark, English, cy (not supported), Cymraeg Newid yr iaith i'r Gymraeg, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "language"
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained",
+  "channel": "landmarks",
+  "i": 5,
+  "expected": "You are in the section, navigation landmark, English, You are in the section, heading, level 2",
+  "predicted": "You are in the section, navigation landmark, You are in the section, heading, level 2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "landmarks",
+  "class": "language"
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained",
+  "channel": "landmarks",
+  "i": 7,
+  "expected": "banner landmark, Main navigation, navigation landmark, Main navigation, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "landmarks",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained",
+  "channel": "landmarks",
+  "i": 10,
+  "expected": "form, Feedback, grouping, English, Feedback",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained",
+  "channel": "links",
+  "i": 6,
+  "expected": "Who the price cap protects, same page, link, current",
+  "predicted": "Who the price cap protects, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "links",
+  "class": "bug-fixed",
+  "fix": "lazily loaded content"
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained",
+  "channel": "links",
+  "i": 8,
+  "expected": "navigation landmark, English, Welsh (not supported), Cymraeg Newid yr iaith i'r Gymraeg, link",
+  "predicted": "navigation landmark, English, cy (not supported), Cymraeg Newid yr iaith i'r Gymraeg, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "language"
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained",
+  "channel": "links",
+  "i": 9,
+  "expected": "You are in the section, navigation landmark, list, with 1 item, English, Your energy supply, link",
+  "predicted": "You are in the section, navigation landmark, list, with 1 item, Your energy supply, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "language"
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained",
+  "channel": "links",
+  "i": 11,
+  "expected": "Skip to main content, same page, link",
+  "predicted": "Skip to main content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained",
+  "channel": "links",
+  "i": 12,
+  "expected": "main landmark, You are in the section, navigation landmark, list, with 1 item, Your energy supply, link",
+  "predicted": "list, with 3 items, What is the price cap, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained",
+  "channel": "links",
+  "i": 13,
+  "expected": "list, with 3 items, English, What is the price cap, same page, link",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+  "channel": "links",
+  "i": 76,
+  "expected": "Welsh (not supported), Cymraeg (CY), link",
+  "predicted": "cy (not supported), Cymraeg (CY), link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "language"
+ },
+ {
+  "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+  "channel": "links",
+  "i": 78,
+  "expected": "English, Skip to main content, same page, link",
+  "predicted": "Skip to main content, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "language"
+ },
+ {
+  "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+  "channel": "links",
+  "i": 81,
+  "expected": "banner landmark, Skip to main content, same page, link",
+  "predicted": "list, with 5 items, Release calendar, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+  "channel": "links",
+  "i": 82,
+  "expected": "list, with 5 items, English, Release calendar, link",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/after/tickets.html",
+  "channel": "graphics",
+  "i": 3,
+  "expected": "W 3C logo, graphic, visited, link, W 3C Home",
+  "predicted": "W 3C logo, graphic, link, W 3C Home",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "graphics",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/after/tickets.html",
+  "channel": "links",
+  "i": 13,
+  "expected": "W 3C logo, graphic, visited, link, W 3C Home",
+  "predicted": "W 3C logo, graphic, link, W 3C Home",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/after/tickets.html",
+  "channel": "links",
+  "i": 14,
+  "expected": "Skip to accessible demo page, same page, link",
+  "predicted": "Skip to accessible demo page, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/after/tickets.html",
+  "channel": "links",
+  "i": 25,
+  "expected": "W 3C, visited, link",
+  "predicted": "W 3C, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/after/tickets.html",
+  "channel": "lists",
+  "i": 2,
+  "expected": "list, with 2 items, Skip to content (within demo page), same page, link",
+  "predicted": "list, with 2 items",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "lists",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/carousels/structure/",
+  "channel": "landmarks",
+  "i": 11,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/carousels/structure/",
+  "channel": "landmarks",
+  "i": 12,
+  "expected": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, same page, link, Change Text Size or Colors, visited, link, All Translations",
+  "predicted": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, visited, same page, link, Change Text Size or Colors, link, All Translations",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/carousels/structure/",
+  "channel": "graphics",
+  "i": 1,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "graphics",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/carousels/structure/",
+  "channel": "links",
+  "i": 3,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/carousels/structure/",
+  "channel": "links",
+  "i": 5,
+  "expected": "Change Text Size or Colors, visited, link",
+  "predicted": "Change Text Size or Colors, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/carousels/structure/",
+  "channel": "links",
+  "i": 6,
+  "expected": "Skip to Content, same page, link",
+  "predicted": "Skip to Content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/carousels/structure/",
+  "channel": "links",
+  "i": 70,
+  "expected": "World Wide Web Consortium, visited, link",
+  "predicted": "World Wide Web Consortium, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+  "channel": "landmarks",
+  "i": 16,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+  "channel": "landmarks",
+  "i": 17,
+  "expected": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, same page, link, Change Text Size or Colors, visited, link, All Translations",
+  "predicted": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, visited, same page, link, Change Text Size or Colors, link, All Translations",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+  "channel": "graphics",
+  "i": 2,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "graphics",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+  "channel": "links",
+  "i": 3,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+  "channel": "links",
+  "i": 5,
+  "expected": "Change Text Size or Colors, visited, link",
+  "predicted": "Change Text Size or Colors, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+  "channel": "links",
+  "i": 6,
+  "expected": "Skip to Content, same page, link",
+  "predicted": "Skip to Content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+  "channel": "links",
+  "i": 73,
+  "expected": "World Wide Web Consortium, visited, link",
+  "predicted": "World Wide Web Consortium, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/instructions/",
+  "channel": "landmarks",
+  "i": 15,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/instructions/",
+  "channel": "landmarks",
+  "i": 16,
+  "expected": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, same page, link, Change Text Size or Colors, visited, link, All Translations",
+  "predicted": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, visited, same page, link, Change Text Size or Colors, link, All Translations",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/instructions/",
+  "channel": "graphics",
+  "i": 2,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "graphics",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/instructions/",
+  "channel": "links",
+  "i": 3,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/instructions/",
+  "channel": "links",
+  "i": 5,
+  "expected": "Change Text Size or Colors, visited, link",
+  "predicted": "Change Text Size or Colors, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/instructions/",
+  "channel": "links",
+  "i": 6,
+  "expected": "Skip to Content, same page, link",
+  "predicted": "Skip to Content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/instructions/",
+  "channel": "links",
+  "i": 83,
+  "expected": "World Wide Web Consortium, visited, link",
+  "predicted": "World Wide Web Consortium, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
+  "channel": "landmarks",
+  "i": 16,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
+  "channel": "landmarks",
+  "i": 17,
+  "expected": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, same page, link, Change Text Size or Colors, visited, link, All Translations",
+  "predicted": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, visited, same page, link, Change Text Size or Colors, link, All Translations",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
+  "channel": "graphics",
+  "i": 2,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "graphics",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
+  "channel": "links",
+  "i": 3,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
+  "channel": "links",
+  "i": 5,
+  "expected": "Change Text Size or Colors, visited, link",
+  "predicted": "Change Text Size or Colors, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
+  "channel": "links",
+  "i": 6,
+  "expected": "Skip to Content, same page, link",
+  "predicted": "Skip to Content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
+  "channel": "links",
+  "i": 92,
+  "expected": "World Wide Web Consortium, visited, link",
+  "predicted": "World Wide Web Consortium, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/multi-page/",
+  "channel": "landmarks",
+  "i": 13,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/multi-page/",
+  "channel": "landmarks",
+  "i": 14,
+  "expected": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, same page, link, Change Text Size or Colors, visited, link, All Translations",
+  "predicted": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, visited, same page, link, Change Text Size or Colors, link, All Translations",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/multi-page/",
+  "channel": "graphics",
+  "i": 1,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "graphics",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/multi-page/",
+  "channel": "links",
+  "i": 3,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/multi-page/",
+  "channel": "links",
+  "i": 5,
+  "expected": "Change Text Size or Colors, visited, link",
+  "predicted": "Change Text Size or Colors, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/multi-page/",
+  "channel": "links",
+  "i": 6,
+  "expected": "Skip to Content, same page, link",
+  "predicted": "Skip to Content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/multi-page/",
+  "channel": "links",
+  "i": 80,
+  "expected": "World Wide Web Consortium, visited, link",
+  "predicted": "World Wide Web Consortium, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/decorative/",
+  "channel": "landmarks",
+  "i": 13,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/decorative/",
+  "channel": "landmarks",
+  "i": 14,
+  "expected": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, same page, link, Change Text Size or Colors, visited, link, All Translations",
+  "predicted": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, visited, same page, link, Change Text Size or Colors, link, All Translations",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/decorative/",
+  "channel": "graphics",
+  "i": 1,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "graphics",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/decorative/",
+  "channel": "links",
+  "i": 3,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/decorative/",
+  "channel": "links",
+  "i": 5,
+  "expected": "Change Text Size or Colors, visited, link",
+  "predicted": "Change Text Size or Colors, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/decorative/",
+  "channel": "links",
+  "i": 6,
+  "expected": "Skip to Content, same page, link",
+  "predicted": "Skip to Content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/decorative/",
+  "channel": "links",
+  "i": 72,
+  "expected": "World Wide Web Consortium, visited, link",
+  "predicted": "World Wide Web Consortium, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+  "channel": "landmarks",
+  "i": 14,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+  "channel": "landmarks",
+  "i": 15,
+  "expected": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, same page, link, Change Text Size or Colors, visited, link, All Translations",
+  "predicted": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, visited, same page, link, Change Text Size or Colors, link, All Translations",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+  "channel": "graphics",
+  "i": 1,
+  "expected": "complementary landmark, new window, graphic, visited, link",
+  "predicted": "complementary landmark, new window, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "graphics",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+  "channel": "graphics",
+  "i": 2,
+  "expected": "complementary landmark, W 3C home, graphic, visited, link",
+  "predicted": "complementary landmark, W 3C home, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "graphics",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+  "channel": "graphics",
+  "i": 5,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "graphics",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+  "channel": "links",
+  "i": 1,
+  "expected": "complementary landmark, W 3C Home page, new window, visited, link",
+  "predicted": "complementary landmark, W 3C Home page, new window, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+  "channel": "links",
+  "i": 2,
+  "expected": "complementary landmark, W 3C Home, visited, link",
+  "predicted": "complementary landmark, W 3C Home, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+  "channel": "links",
+  "i": 3,
+  "expected": "complementary landmark, W 3C home, graphic, visited, link",
+  "predicted": "complementary landmark, W 3C home, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+  "channel": "links",
+  "i": 43,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+  "channel": "links",
+  "i": 45,
+  "expected": "Change Text Size or Colors, visited, link",
+  "predicted": "Change Text Size or Colors, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+  "channel": "links",
+  "i": 46,
+  "expected": "Skip to Content, same page, link",
+  "predicted": "Skip to Content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+  "channel": "links",
+  "i": 87,
+  "expected": "World Wide Web Consortium, visited, link",
+  "predicted": "World Wide Web Consortium, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/informative/",
+  "channel": "landmarks",
+  "i": 14,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/informative/",
+  "channel": "landmarks",
+  "i": 15,
+  "expected": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, same page, link, Change Text Size or Colors, visited, link, All Translations",
+  "predicted": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, visited, same page, link, Change Text Size or Colors, link, All Translations",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/informative/",
+  "channel": "graphics",
+  "i": 1,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "graphics",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/informative/",
+  "channel": "links",
+  "i": 44,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/informative/",
+  "channel": "links",
+  "i": 46,
+  "expected": "Change Text Size or Colors, visited, link",
+  "predicted": "Change Text Size or Colors, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/informative/",
+  "channel": "links",
+  "i": 47,
+  "expected": "Skip to Content, same page, link",
+  "predicted": "Skip to Content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/informative/",
+  "channel": "links",
+  "i": 90,
+  "expected": "World Wide Web Consortium, visited, link",
+  "predicted": "World Wide Web Consortium, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/menus/flyout/",
+  "channel": "landmarks",
+  "i": 18,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/menus/flyout/",
+  "channel": "landmarks",
+  "i": 19,
+  "expected": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, same page, link, Change Text Size or Colors, visited, link, All Translations",
+  "predicted": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, visited, same page, link, Change Text Size or Colors, link, All Translations",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/menus/flyout/",
+  "channel": "graphics",
+  "i": 2,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "graphics",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/menus/flyout/",
+  "channel": "links",
+  "i": 3,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/menus/flyout/",
+  "channel": "links",
+  "i": 5,
+  "expected": "Change Text Size or Colors, visited, link",
+  "predicted": "Change Text Size or Colors, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/menus/flyout/",
+  "channel": "links",
+  "i": 6,
+  "expected": "Skip to Content, same page, link",
+  "predicted": "Skip to Content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/menus/flyout/",
+  "channel": "links",
+  "i": 75,
+  "expected": "World Wide Web Consortium, visited, link",
+  "predicted": "World Wide Web Consortium, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+  "channel": "landmarks",
+  "i": 11,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+  "channel": "landmarks",
+  "i": 12,
+  "expected": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, same page, link, Change Text Size or Colors, visited, link, All Translations",
+  "predicted": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, visited, same page, link, Change Text Size or Colors, link, All Translations",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+  "channel": "graphics",
+  "i": 1,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "graphics",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+  "channel": "links",
+  "i": 38,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+  "channel": "links",
+  "i": 40,
+  "expected": "Change Text Size or Colors, visited, link",
+  "predicted": "Change Text Size or Colors, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+  "channel": "links",
+  "i": 41,
+  "expected": "Skip to Content, same page, link",
+  "predicted": "Skip to Content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+  "channel": "links",
+  "i": 90,
+  "expected": "World Wide Web Consortium, visited, link",
+  "predicted": "World Wide Web Consortium, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/regions/",
+  "channel": "landmarks",
+  "i": 13,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/regions/",
+  "channel": "landmarks",
+  "i": 14,
+  "expected": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, same page, link, Change Text Size or Colors, visited, link, All Translations",
+  "predicted": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, visited, same page, link, Change Text Size or Colors, link, All Translations",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/regions/",
+  "channel": "graphics",
+  "i": 1,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "graphics",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/regions/",
+  "channel": "links",
+  "i": 3,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/regions/",
+  "channel": "links",
+  "i": 5,
+  "expected": "Change Text Size or Colors, visited, link",
+  "predicted": "Change Text Size or Colors, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/regions/",
+  "channel": "links",
+  "i": 6,
+  "expected": "Skip to Content, same page, link",
+  "predicted": "Skip to Content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/regions/",
+  "channel": "links",
+  "i": 77,
+  "expected": "World Wide Web Consortium, visited, link",
+  "predicted": "World Wide Web Consortium, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/tables/one-header/",
+  "channel": "landmarks",
+  "i": 13,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/tables/one-header/",
+  "channel": "landmarks",
+  "i": 14,
+  "expected": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, same page, link, Change Text Size or Colors, visited, link, All Translations",
+  "predicted": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, visited, same page, link, Change Text Size or Colors, link, All Translations",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME",
+   "STATE",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/tables/one-header/",
+  "channel": "graphics",
+  "i": 1,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "graphics",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/tables/one-header/",
+  "channel": "links",
+  "i": 3,
+  "expected": "W 3C homepage, graphic, visited, link",
+  "predicted": "W 3C homepage, graphic, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/tables/one-header/",
+  "channel": "links",
+  "i": 5,
+  "expected": "Change Text Size or Colors, visited, link",
+  "predicted": "Change Text Size or Colors, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/tables/one-header/",
+  "channel": "links",
+  "i": 6,
+  "expected": "Skip to Content, same page, link",
+  "predicted": "Skip to Content, visited, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/tables/one-header/",
+  "channel": "links",
+  "i": 68,
+  "expected": "World Wide Web Consortium, visited, link",
+  "predicted": "World Wide Web Consortium, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "history"
+ }
+]

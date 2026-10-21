@@ -1,0 +1,2391 @@
+{
+ "split": "dev",
+ "pages": [
+  {
+   "url": "https://design-patterns.service.justice.gov.uk/components/sortable-table/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-patterns.service.justice.gov.uk/patterns/filter-a-list/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/details/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/error-message/",
+   "status": "not comparable: document title fleet 'Microsoft Terms of Use Microsoft Legal -' / emulator 'Error message – GOV.UK Design System', headings read fleet fleet names 24, 0% of them found in the emulator's / emulator a different document"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/error-summary/",
+   "status": "not comparable: document title fleet 'Microsoft Terms of Use Microsoft Legal -' / emulator 'Error summary – GOV.UK Design System', headings read fleet fleet names 24, 0% of them found in the emulator's / emulator a different document"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/select/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/table/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://disinfectants.defra.gov.uk/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://events.bl.uk/",
+   "status": "not comparable: heading fleet 24 / emulator 28, link fleet 44 / emulator 45, document title fleet 'Upcoming events and exhibitions, The Bri' / emulator 'Upcoming events & exhibitions, The Briti'"
+  },
+  {
+   "url": "https://forms.charitycommission.gov.uk/raising-concerns/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://ico.org.uk/for-the-public/",
+   "status": "not comparable: heading fleet 26 / emulator 30, link fleet 67 / emulator 68"
+  },
+  {
+   "url": "https://mailchimp.com/",
+   "status": "not comparable: link fleet 89 / emulator 90, document title fleet 'Email and SMS Marketing Platform Mailchi' / emulator 'Email & SMS Marketing Platform | Mailchi'"
+  },
+  {
+   "url": "https://primary-authority.beis.gov.uk/par",
+   "status": "comparable"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/components/text-input",
+   "status": "comparable"
+  },
+  {
+   "url": "https://tfl.gov.uk/modes/tube/",
+   "status": "not comparable: link fleet 64 / emulator 63"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/forecast/gcpvj0v07",
+   "status": "emulator fault: timeout 600s"
+  },
+  {
+   "url": "https://www.atlassian.com/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.cqc.org.uk/about-us",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.cqc.org.uk/search/all?query=hospital",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.financial-ombudsman.org.uk/businesses/resolving-complaint/ombudsman-decisions",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.scot/publications/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.uk/browse/benefits",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.uk/search/news-and-communications",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.uk/search/research-and-statistics",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.lbhf.gov.uk/council-tax",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nls.uk/join/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.scotcourts.gov.uk/judgments/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.sportengland.org/research-and-data/data/active-lives",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.transport.gov.scot/publications/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/after/news.html",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/after/survey.html",
+   "status": "not comparable: document title fleet 'Copilot' / emulator 'Citylights Survey [Accessible Survey Pag', headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/after/template.html",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/before/template.html",
+   "status": "not comparable: document title fleet 'Welcome to City Lights! Inaccessible Tem' / emulator 'Welcome to CityLights! [Inaccessible Tem'"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/before/tickets.html",
+   "status": "not comparable: document title fleet 'Welcome to City Lights! Inaccessible Tic' / emulator 'Welcome to CityLights! [Inaccessible Tic'"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/forms/validation/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/complex/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/groups/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/menus/structure/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/tables/irregular/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/tables/multi-level/",
+   "status": "not comparable: document title fleet 'C: WINDOWS SYSTEM 32 cmd dot exe' / emulator 'Tables with Multi-Level Headers | Web Ac'"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/tables/two-headers/",
+   "status": "not comparable: document title fleet 'C: WINDOWS SYSTEM 32 cmd dot exe' / emulator 'Tables with Two Headers | Web Accessibil'"
+  }
+ ],
+ "gate": {
+  "exact": "fleet has ['link'] | emulator has -",
+  "total": 3073
+ },
+ "top": [
+  "NAME + ROLE",
+  "NAME + ROLE + STATE",
+  "NAME + ROLE + LEVEL",
+  "ROLE + COUNT + NAME + ROLE",
+  "NAME + ROLE + NAME",
+  "NAME + ROLE + ROLE + LEVEL",
+  "NAME + ROLE + ROLE + COUNT + NAME + ROLE",
+  "NAME + STATE + ROLE",
+  "NAME + NAME + ROLE",
+  "NAME + ROLE + NAME + ROLE + LEVEL"
+ ],
+ "misses": [
+  {
+   "url": "https://design-patterns.service.justice.gov.uk/components/sortable-table/",
+   "channel": "links",
+   "i": 27,
+   "expected": "Skip to main content, same page, link",
+   "predicted": "Skip to main content, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://design-patterns.service.justice.gov.uk/patterns/filter-a-list/",
+   "channel": "links",
+   "i": 43,
+   "expected": "Skip to main content, same page, link",
+   "predicted": "Skip to main content, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://disinfectants.defra.gov.uk/",
+   "channel": "links",
+   "i": 2,
+   "expected": "Disinfectants approved for statutory notifiable animal disease control in GB, same page, link",
+   "predicted": "Disinfectants approved for statutory notifiable animal disease control in GB, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://forms.charitycommission.gov.uk/raising-concerns/",
+   "channel": "landmarks",
+   "i": 1,
+   "expected": "banner landmark, Charity Commission for England and Wales, graphic, visited, link",
+   "predicted": "banner landmark, Charity Commission for England and Wales, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://forms.charitycommission.gov.uk/raising-concerns/",
+   "channel": "graphics",
+   "i": 0,
+   "expected": "banner landmark, Charity Commission for England and Wales, graphic, visited, link",
+   "predicted": "banner landmark, Charity Commission for England and Wales, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "graphics",
+   "class": "history"
+  },
+  {
+   "url": "https://forms.charitycommission.gov.uk/raising-concerns/",
+   "channel": "links",
+   "i": 0,
+   "expected": "Skip to main content, same page, link",
+   "predicted": "Skip to main content, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://forms.charitycommission.gov.uk/raising-concerns/",
+   "channel": "links",
+   "i": 1,
+   "expected": "banner landmark, Charity Commission for England and Wales, graphic, visited, link",
+   "predicted": "banner landmark, Charity Commission for England and Wales, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.atlassian.com/",
+   "channel": "landmarks",
+   "i": 2,
+   "expected": "Skip to content, same page, link",
+   "predicted": "Skip to content, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.atlassian.com/",
+   "channel": "formFields",
+   "i": 2,
+   "expected": "Gallery navigation, grouping, Next slide, button, unavailable",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.atlassian.com/",
+   "channel": "formFields",
+   "i": 3,
+   "expected": "Previous slide, button",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.atlassian.com/",
+   "channel": "formFields",
+   "i": 9,
+   "expected": "Pause video, toggle button, pressed",
+   "predicted": "Play video, toggle button, not pressed",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.atlassian.com/",
+   "channel": "formFields",
+   "i": 13,
+   "expected": "main landmark, Play video, toggle button, not pressed",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.atlassian.com/",
+   "channel": "formFields",
+   "i": 14,
+   "expected": "Gallery navigation, grouping, Previous slide, button",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.atlassian.com/",
+   "channel": "formFields",
+   "i": 15,
+   "expected": "Next slide, button, unavailable",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.atlassian.com/",
+   "channel": "links",
+   "i": 23,
+   "expected": "Skip to content, same page, link",
+   "predicted": "Skip to content, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/about-us",
+   "channel": "landmarks",
+   "i": 5,
+   "expected": "banner landmark, complementary landmark, The Care Quality Commission, The Care Quality Commission, visited, link",
+   "predicted": "banner landmark, complementary landmark, The Care Quality Commission, The Care Quality Commission, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "NAME",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/about-us",
+   "channel": "landmarks",
+   "i": 6,
+   "expected": "navigation landmark, Skip to main content, same page, link",
+   "predicted": "navigation landmark, Skip to main content, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/about-us",
+   "channel": "graphics",
+   "i": 1,
+   "expected": "banner landmark, banner landmark, complementary landmark, The Care Quality Commission, graphic, visited, link",
+   "predicted": "banner landmark, banner landmark, complementary landmark, The Care Quality Commission, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "graphics",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/about-us",
+   "channel": "links",
+   "i": 63,
+   "expected": "banner landmark, Breadcrumb, navigation landmark, list, with 1 item, Home, visited, link",
+   "predicted": "banner landmark, Breadcrumb, navigation landmark, list, with 1 item, Home, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/about-us",
+   "channel": "links",
+   "i": 64,
+   "expected": "banner landmark, complementary landmark, The Care Quality Commission, The Care Quality Commission, visited, link",
+   "predicted": "banner landmark, complementary landmark, The Care Quality Commission, The Care Quality Commission, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "NAME",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/about-us",
+   "channel": "links",
+   "i": 65,
+   "expected": "navigation landmark, Skip to main content, same page, link",
+   "predicted": "navigation landmark, Skip to main content, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/about-us",
+   "channel": "links",
+   "i": 81,
+   "expected": "Home, visited, link",
+   "predicted": "Home, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/about-us",
+   "channel": "links",
+   "i": 84,
+   "expected": "Cookies, visited, link",
+   "predicted": "Cookies, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/about-us",
+   "channel": "lists",
+   "i": 0,
+   "expected": "banner landmark, Breadcrumb, navigation landmark, list, with 1 item, Home, visited, link",
+   "predicted": "banner landmark, Breadcrumb, navigation landmark, list, with 1 item, Home, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "lists",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/search/all?query=hospital",
+   "channel": "landmarks",
+   "i": 6,
+   "expected": "banner landmark, navigation landmark, list, with 1 item, Home, visited, link",
+   "predicted": "banner landmark, navigation landmark, list, with 1 item, Home, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/search/all?query=hospital",
+   "channel": "landmarks",
+   "i": 7,
+   "expected": "banner landmark, complementary landmark, The Care Quality Commission, visited, link",
+   "predicted": "banner landmark, complementary landmark, The Care Quality Commission, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/search/all?query=hospital",
+   "channel": "landmarks",
+   "i": 8,
+   "expected": "navigation landmark, Skip to main content, same page, link",
+   "predicted": "navigation landmark, Skip to main content, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/search/all?query=hospital",
+   "channel": "formFields",
+   "i": 59,
+   "expected": "Last week (10), radio button, not checked",
+   "predicted": "Last week (9), radio button, not checked",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.cqc.org.uk/search/all?query=hospital",
+   "channel": "links",
+   "i": 80,
+   "expected": "banner landmark, navigation landmark, list, with 1 item, Home, visited, link",
+   "predicted": "banner landmark, navigation landmark, list, with 1 item, Home, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/search/all?query=hospital",
+   "channel": "links",
+   "i": 81,
+   "expected": "banner landmark, complementary landmark, The Care Quality Commission, visited, link",
+   "predicted": "banner landmark, complementary landmark, The Care Quality Commission, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/search/all?query=hospital",
+   "channel": "links",
+   "i": 82,
+   "expected": "navigation landmark, Skip to main content, same page, link",
+   "predicted": "navigation landmark, Skip to main content, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/search/all?query=hospital",
+   "channel": "links",
+   "i": 108,
+   "expected": "Home, visited, link",
+   "predicted": "Home, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/search/all?query=hospital",
+   "channel": "links",
+   "i": 111,
+   "expected": "Cookies, visited, link",
+   "predicted": "Cookies, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.cqc.org.uk/search/all?query=hospital",
+   "channel": "lists",
+   "i": 0,
+   "expected": "banner landmark, navigation landmark, list, with 1 item, Home, visited, link",
+   "predicted": "banner landmark, navigation landmark, list, with 1 item, Home, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "lists",
+   "class": "history"
+  },
+  {
+   "url": "https://www.gov.scot/publications/",
+   "channel": "formFields",
+   "i": 67,
+   "expected": "Wednesday, column 4, Wednesday 21 October 2026, button, unavailable",
+   "predicted": "Updated before, edit",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.scot/publications/",
+   "channel": "formFields",
+   "i": 68,
+   "expected": "Thursday, column 5, Thursday 22 October 2026, button, unavailable",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.scot/publications/",
+   "channel": "formFields",
+   "i": 69,
+   "expected": "Friday, column 6, Friday 23 October 2026, button, unavailable",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.scot/publications/",
+   "channel": "formFields",
+   "i": 70,
+   "expected": "Saturday, column 7, Saturday 24 October 2026, button, unavailable",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.scot/publications/",
+   "channel": "formFields",
+   "i": 71,
+   "expected": "row 6, Sunday, column 1, Sunday 25 October 2026, button, unavailable",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.scot/publications/",
+   "channel": "formFields",
+   "i": 72,
+   "expected": "Monday, column 2, Monday 26 October 2026, button, unavailable",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.scot/publications/",
+   "channel": "formFields",
+   "i": 73,
+   "expected": "Tuesday, column 3, Tuesday 27 October 2026, button, unavailable",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.scot/publications/",
+   "channel": "formFields",
+   "i": 74,
+   "expected": "Wednesday, column 4, Wednesday 28 October 2026, button, unavailable",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.scot/publications/",
+   "channel": "formFields",
+   "i": 75,
+   "expected": "Thursday, column 5, Thursday 29 October 2026, button, unavailable",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.scot/publications/",
+   "channel": "formFields",
+   "i": 76,
+   "expected": "Friday, column 6, Friday 30 October 2026, button, unavailable",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.scot/publications/",
+   "channel": "formFields",
+   "i": 77,
+   "expected": "Saturday, column 7, Saturday 31 October 2026, button, unavailable",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.scot/publications/",
+   "channel": "formFields",
+   "i": 78,
+   "expected": "Cancel, button",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.scot/publications/",
+   "channel": "formFields",
+   "i": 79,
+   "expected": "OK, button",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.uk/browse/benefits",
+   "channel": "links",
+   "i": 49,
+   "expected": "Welsh (not supported), Rhestr o Wasanaethau Cymraeg, link",
+   "predicted": "cy (not supported), Rhestr o Wasanaethau Cymraeg, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/browse/benefits",
+   "channel": "links",
+   "i": 50,
+   "expected": "English, Government Digital Service, link",
+   "predicted": "Government Digital Service, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/browse/benefits",
+   "channel": "lists",
+   "i": 6,
+   "expected": "list, with 8 items, Help, link, Privacy, link, Cookies, visited, link, Accessibility statement, link, Contact, link, Terms and conditions, link, Welsh (not supported), Rhestr o Wasanaethau Cymraeg",
+   "predicted": "list, with 8 items, Help, link, Privacy, link, Cookies, visited, link, Accessibility statement, link, Contact, link, Terms and conditions, link, cy (not supported), Rhestr o Wasanaethau Cymraeg",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "lists",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/search/news-and-communications",
+   "channel": "headings",
+   "i": 4,
+   "expected": "main landmark, section, News and communications search results, region, clickable, 141,092 results, heading, level 2",
+   "predicted": "main landmark, section, News and communications search results, region, clickable, 141,095 results, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.uk/search/news-and-communications",
+   "channel": "landmarks",
+   "i": 1,
+   "expected": "clickable, 141,092 results, heading, level 2",
+   "predicted": "clickable, 141,095 results, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "STATE",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "landmarks",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.uk/search/news-and-communications",
+   "channel": "links",
+   "i": 8,
+   "expected": "list, with 20 items, Normalisation of relations between Kosovo and Serbia remains essential to long term stability: UK statement at the UN Security Council, link",
+   "predicted": "list, with 20 items, 10,000 young people to get foot in the door of Britain's tech sector as work placements rolled out across the country, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.uk/search/news-and-communications",
+   "channel": "links",
+   "i": 25,
+   "expected": "Grant helps landowners survey thousands of hectares of spruce woodland, link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.uk/search/news-and-communications",
+   "channel": "links",
+   "i": 26,
+   "expected": "Reducing the risk of Ips typographus infestation at Whiligh Estate, link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.uk/search/news-and-communications",
+   "channel": "links",
+   "i": 27,
+   "expected": "DSCC Online: Multi-factor Authentication, link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.uk/search/news-and-communications",
+   "channel": "links",
+   "i": 59,
+   "expected": "Welsh (not supported), Rhestr o Wasanaethau Cymraeg, link",
+   "predicted": "cy (not supported), Rhestr o Wasanaethau Cymraeg, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/search/news-and-communications",
+   "channel": "links",
+   "i": 60,
+   "expected": "English, Government Digital Service, link",
+   "predicted": "Government Digital Service, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/search/news-and-communications",
+   "channel": "lists",
+   "i": 2,
+   "expected": "list, with 20 items, Normalisation of relations between Kosovo and Serbia remains essential to long term stability: UK, link",
+   "predicted": "list, with 20 items, 10,000 young people to get foot in the door of Britain's tech sector as work placements rolled out, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "lists",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.uk/search/news-and-communications",
+   "channel": "lists",
+   "i": 8,
+   "expected": "list, with 8 items, Help, link, Privacy, link, Cookies, visited, link, Accessibility statement, link, Contact, link, Terms and conditions, link, Welsh (not supported), Rhestr o Wasanaethau Cymraeg",
+   "predicted": "list, with 8 items, Help, link, Privacy, link, Cookies, visited, link, Accessibility statement, link, Contact, link, Terms and conditions, link, cy (not supported), Rhestr o Wasanaethau Cymraeg",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "lists",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/search/research-and-statistics",
+   "channel": "links",
+   "i": 73,
+   "expected": "Welsh (not supported), Rhestr o Wasanaethau Cymraeg, link",
+   "predicted": "cy (not supported), Rhestr o Wasanaethau Cymraeg, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/search/research-and-statistics",
+   "channel": "links",
+   "i": 74,
+   "expected": "English, Government Digital Service, link",
+   "predicted": "Government Digital Service, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/search/research-and-statistics",
+   "channel": "lists",
+   "i": 24,
+   "expected": "list, with 8 items, Help, link, Privacy, link, Cookies, visited, link, Accessibility statement, link, Contact, link, Terms and conditions, link, Welsh (not supported), Rhestr o Wasanaethau Cymraeg",
+   "predicted": "list, with 8 items, Help, link, Privacy, link, Cookies, visited, link, Accessibility statement, link, Contact, link, Terms and conditions, link, cy (not supported), Rhestr o Wasanaethau Cymraeg",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "lists",
+   "class": "language"
+  },
+  {
+   "url": "https://www.lbhf.gov.uk/council-tax",
+   "channel": "links",
+   "i": 44,
+   "expected": "Cookiebot by Usercentrics - opens in a new window, visited, link",
+   "predicted": "Cookiebot by Usercentrics - opens in a new window, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/",
+   "channel": "lists",
+   "i": 2,
+   "expected": "main landmark, list, with 3 items, clickable, Choose a different subject, link",
+   "predicted": "main landmark, list, with 3 items, clickable, Choose a different subject",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "STATE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "lists",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.sportengland.org/research-and-data/data/active-lives",
+   "channel": "headings",
+   "i": 2,
+   "expected": "Measuring the nation's activity levels, heading, level 3",
+   "predicted": null,
+   "ok": false,
+   "positional": true,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.sportengland.org/research-and-data/data/active-lives",
+   "channel": "landmarks",
+   "i": 0,
+   "expected": "Breadcrumbs, navigation landmark, list, with 4 items, Home, visited, link, greater, Research and data, link, greater, Data, link, greater, current page, Active Lives",
+   "predicted": "Breadcrumbs, navigation landmark, list, with 4 items, Home, link, greater, Research and data, link, greater, Data, link, greater, current page, Active Lives",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.sportengland.org/research-and-data/data/active-lives",
+   "channel": "landmarks",
+   "i": 3,
+   "expected": "banner landmark, Home, graphic, visited, link",
+   "predicted": "banner landmark, Home, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.sportengland.org/research-and-data/data/active-lives",
+   "channel": "landmarks",
+   "i": 6,
+   "expected": "content info landmark, Sport England, graphic, visited, link, Awarding funds from The National Lottery",
+   "predicted": "content info landmark, Sport England, graphic, link, Awarding funds from The National Lottery",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.sportengland.org/research-and-data/data/active-lives",
+   "channel": "graphics",
+   "i": 1,
+   "expected": "banner landmark, Home, graphic, visited, link",
+   "predicted": "banner landmark, Home, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "graphics",
+   "class": "history"
+  },
+  {
+   "url": "https://www.sportengland.org/research-and-data/data/active-lives",
+   "channel": "graphics",
+   "i": 3,
+   "expected": "content info landmark, Sport England, graphic, visited, link",
+   "predicted": "content info landmark, Sport England, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "graphics",
+   "class": "history"
+  },
+  {
+   "url": "https://www.sportengland.org/research-and-data/data/active-lives",
+   "channel": "links",
+   "i": 5,
+   "expected": "Sport England, graphic, visited, link",
+   "predicted": "Sport England, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.sportengland.org/research-and-data/data/active-lives",
+   "channel": "links",
+   "i": 18,
+   "expected": "Home, visited, link",
+   "predicted": "Home, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.sportengland.org/research-and-data/data/active-lives",
+   "channel": "links",
+   "i": 28,
+   "expected": "banner landmark, Home, graphic, visited, link",
+   "predicted": "banner landmark, Home, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.sportengland.org/research-and-data/data/active-lives",
+   "channel": "links",
+   "i": 29,
+   "expected": "Skip to content, same page, link",
+   "predicted": "Skip to content, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.sportengland.org/research-and-data/data/active-lives",
+   "channel": "links",
+   "i": 34,
+   "expected": "Breadcrumbs, navigation landmark, list, with 4 items, Home, visited, link",
+   "predicted": "Breadcrumbs, navigation landmark, list, with 4 items, Home, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.sportengland.org/research-and-data/data/active-lives",
+   "channel": "lists",
+   "i": 2,
+   "expected": "Breadcrumbs, navigation landmark, list, with 4 items, Home, visited, link, greater, Research and data, link, greater, Data, link, greater, current page, Active Lives",
+   "predicted": "Breadcrumbs, navigation landmark, list, with 4 items, Home, link, greater, Research and data, link, greater, Data, link, greater, current page, Active Lives",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "lists",
+   "class": "history"
+  },
+  {
+   "url": "https://www.transport.gov.scot/publications/",
+   "channel": "links",
+   "i": 36,
+   "expected": "Skip to main content, visited, same page, link",
+   "predicted": "Skip to main content, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/after/news.html",
+   "channel": "graphics",
+   "i": 3,
+   "expected": "W 3C logo, graphic, visited, link, W 3C Home",
+   "predicted": "W 3C logo, graphic, link, W 3C Home",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "graphics",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/after/news.html",
+   "channel": "links",
+   "i": 20,
+   "expected": "W 3C logo, graphic, visited, link, W 3C Home",
+   "predicted": "W 3C logo, graphic, link, W 3C Home",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/after/news.html",
+   "channel": "links",
+   "i": 21,
+   "expected": "Skip to accessible demo page, same page, link",
+   "predicted": "Skip to accessible demo page, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/after/news.html",
+   "channel": "links",
+   "i": 31,
+   "expected": "W 3C, visited, link",
+   "predicted": "W 3C, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/after/news.html",
+   "channel": "lists",
+   "i": 2,
+   "expected": "list, with 2 items, Skip to content (within demo page), same page, link",
+   "predicted": "list, with 2 items",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "lists",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/after/template.html",
+   "channel": "graphics",
+   "i": 3,
+   "expected": "W 3C logo, graphic, visited, link, W 3C Home",
+   "predicted": "W 3C logo, graphic, link, W 3C Home",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "graphics",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/after/template.html",
+   "channel": "links",
+   "i": 13,
+   "expected": "W 3C logo, graphic, visited, link, W 3C Home",
+   "predicted": "W 3C logo, graphic, link, W 3C Home",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/after/template.html",
+   "channel": "links",
+   "i": 14,
+   "expected": "Skip to accessible demo page, same page, link",
+   "predicted": "Skip to accessible demo page, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/after/template.html",
+   "channel": "links",
+   "i": 26,
+   "expected": "W 3C, visited, link",
+   "predicted": "W 3C, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/after/template.html",
+   "channel": "lists",
+   "i": 2,
+   "expected": "list, with 2 items, Skip to content (within demo page), same page, link",
+   "predicted": "list, with 2 items",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "lists",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/forms/validation/",
+   "channel": "landmarks",
+   "i": 16,
+   "expected": "W 3C homepage, graphic, visited, link",
+   "predicted": "W 3C homepage, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/forms/validation/",
+   "channel": "landmarks",
+   "i": 17,
+   "expected": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, same page, link, Change Text Size or Colors, visited, link, All Translations",
+   "predicted": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, visited, same page, link, Change Text Size or Colors, link, All Translations",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/forms/validation/",
+   "channel": "graphics",
+   "i": 2,
+   "expected": "W 3C homepage, graphic, visited, link",
+   "predicted": "W 3C homepage, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "graphics",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/forms/validation/",
+   "channel": "links",
+   "i": 3,
+   "expected": "W 3C homepage, graphic, visited, link",
+   "predicted": "W 3C homepage, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/forms/validation/",
+   "channel": "links",
+   "i": 5,
+   "expected": "Change Text Size or Colors, visited, link",
+   "predicted": "Change Text Size or Colors, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/forms/validation/",
+   "channel": "links",
+   "i": 6,
+   "expected": "Skip to Content, same page, link",
+   "predicted": "Skip to Content, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/forms/validation/",
+   "channel": "links",
+   "i": 80,
+   "expected": "World Wide Web Consortium, visited, link",
+   "predicted": "World Wide Web Consortium, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/complex/",
+   "channel": "landmarks",
+   "i": 13,
+   "expected": "W 3C homepage, graphic, visited, link",
+   "predicted": "W 3C homepage, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/complex/",
+   "channel": "landmarks",
+   "i": 14,
+   "expected": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, same page, link, Change Text Size or Colors, visited, link, All Translations",
+   "predicted": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, visited, same page, link, Change Text Size or Colors, link, All Translations",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/complex/",
+   "channel": "graphics",
+   "i": 1,
+   "expected": "W 3C homepage, graphic, visited, link",
+   "predicted": "W 3C homepage, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "graphics",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/complex/",
+   "channel": "links",
+   "i": 42,
+   "expected": "W 3C homepage, graphic, visited, link",
+   "predicted": "W 3C homepage, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/complex/",
+   "channel": "links",
+   "i": 44,
+   "expected": "Change Text Size or Colors, visited, link",
+   "predicted": "Change Text Size or Colors, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/complex/",
+   "channel": "links",
+   "i": 45,
+   "expected": "Skip to Content, same page, link",
+   "predicted": "Skip to Content, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/complex/",
+   "channel": "links",
+   "i": 86,
+   "expected": "World Wide Web Consortium, visited, link",
+   "predicted": "World Wide Web Consortium, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/groups/",
+   "channel": "landmarks",
+   "i": 12,
+   "expected": "W 3C homepage, graphic, visited, link",
+   "predicted": "W 3C homepage, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/groups/",
+   "channel": "landmarks",
+   "i": 13,
+   "expected": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, same page, link, Change Text Size or Colors, visited, link, All Translations",
+   "predicted": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, visited, same page, link, Change Text Size or Colors, link, All Translations",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/groups/",
+   "channel": "graphics",
+   "i": 1,
+   "expected": "W 3C homepage, graphic, visited, link",
+   "predicted": "W 3C homepage, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "graphics",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/groups/",
+   "channel": "links",
+   "i": 36,
+   "expected": "W 3C homepage, graphic, visited, link",
+   "predicted": "W 3C homepage, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/groups/",
+   "channel": "links",
+   "i": 38,
+   "expected": "Change Text Size or Colors, visited, link",
+   "predicted": "Change Text Size or Colors, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/groups/",
+   "channel": "links",
+   "i": 39,
+   "expected": "Skip to Content, same page, link",
+   "predicted": "Skip to Content, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/groups/",
+   "channel": "links",
+   "i": 80,
+   "expected": "World Wide Web Consortium, visited, link",
+   "predicted": "World Wide Web Consortium, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/menus/structure/",
+   "channel": "landmarks",
+   "i": 13,
+   "expected": "W 3C homepage, graphic, visited, link",
+   "predicted": "W 3C homepage, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/menus/structure/",
+   "channel": "landmarks",
+   "i": 14,
+   "expected": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, same page, link, Change Text Size or Colors, visited, link, All Translations",
+   "predicted": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, visited, same page, link, Change Text Size or Colors, link, All Translations",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/menus/structure/",
+   "channel": "graphics",
+   "i": 1,
+   "expected": "W 3C homepage, graphic, visited, link",
+   "predicted": "W 3C homepage, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "graphics",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/menus/structure/",
+   "channel": "links",
+   "i": 3,
+   "expected": "W 3C homepage, graphic, visited, link",
+   "predicted": "W 3C homepage, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/menus/structure/",
+   "channel": "links",
+   "i": 5,
+   "expected": "Change Text Size or Colors, visited, link",
+   "predicted": "Change Text Size or Colors, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/menus/structure/",
+   "channel": "links",
+   "i": 6,
+   "expected": "Skip to Content, same page, link",
+   "predicted": "Skip to Content, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/menus/structure/",
+   "channel": "links",
+   "i": 75,
+   "expected": "World Wide Web Consortium, visited, link",
+   "predicted": "World Wide Web Consortium, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/tables/irregular/",
+   "channel": "landmarks",
+   "i": 13,
+   "expected": "W 3C homepage, graphic, visited, link",
+   "predicted": "W 3C homepage, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/tables/irregular/",
+   "channel": "landmarks",
+   "i": 14,
+   "expected": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, same page, link, Change Text Size or Colors, visited, link, All Translations",
+   "predicted": "Skip Link and Language Selector, navigation landmark, list, with 3 items, Skip to Content, visited, same page, link, Change Text Size or Colors, link, All Translations",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "landmarks",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/tables/irregular/",
+   "channel": "graphics",
+   "i": 1,
+   "expected": "W 3C homepage, graphic, visited, link",
+   "predicted": "W 3C homepage, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "graphics",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/tables/irregular/",
+   "channel": "links",
+   "i": 3,
+   "expected": "W 3C homepage, graphic, visited, link",
+   "predicted": "W 3C homepage, graphic, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/tables/irregular/",
+   "channel": "links",
+   "i": 5,
+   "expected": "Change Text Size or Colors, visited, link",
+   "predicted": "Change Text Size or Colors, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/tables/irregular/",
+   "channel": "links",
+   "i": 6,
+   "expected": "Skip to Content, same page, link",
+   "predicted": "Skip to Content, visited, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/tables/irregular/",
+   "channel": "links",
+   "i": 65,
+   "expected": "World Wide Web Consortium, visited, link",
+   "predicted": "World Wide Web Consortium, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "history"
+  }
+ ]
+}

@@ -1,0 +1,80 @@
+pages 60 (held)  comparable: 47   unstable: 3   not comparable: 9   emulator fault: 1
+   unstable: https://data.southwark.gov.uk/data-catalog-explorer/  [unstable: the two emulator runs differ]
+   unstable: https://www.hubspot.com/  [unstable: the two emulator runs differ]
+   unstable: https://www.leeds.ac.uk/undergraduate  [unstable: the two emulator runs differ]
+   not comparable: https://european-union.europa.eu/index_en  [not comparable: link fleet 32 / emulator 31]
+   not comparable: https://sheffield.ac.uk/postgraduate/taught/courses/2027  [not comparable: heading fleet 24 / emulator 25]
+   not comparable: https://weather.metoffice.gov.uk/warnings-and-advice/uk-warnings  [not comparable: heading fleet 0 / emulator 24, link fleet 6 / emulator 8]
+   not comparable: https://www.adobe.com/  [not comparable: heading fleet 25 / emulator 24, link fleet 30 / emulator 24]
+   not comparable: https://www.historicenvironment.scot/visit/all/edinburgh-castle/  [not comparable: headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing  [not comparable: headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.nrscotland.gov.uk/publications/  [not comparable: heading fleet 20 / emulator 1, link fleet 45 / emulator 1, headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.nrscotland.gov.uk/statistics-and-data/  [not comparable: heading fleet 3 / emulator 1, link fleet 37 / emulator 1, headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.w3.org/WAI/demos/bad/before/news.html  [not comparable: document title fleet 'Copilot' / emulator 'Welcome to CityLights! [Inaccessible New', headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   emulator fault: https://ico.org.uk/action-weve-taken/enforcement/  [emulator fault: timeout 900s]
+
+agreement by element kind (47 comparable pages)
+     exact / total       %  positional
+      695 / 739       94.0%         614  headings
+     3491 / 3602      96.9%        3406  links
+      265 / 267       99.3%         252  buttons
+      583 / 620       94.0%         565  formFields
+      472 / 508       92.9%         460  landmarks
+      494 / 503       98.2%         494  lists
+      120 / 138       87.0%         104  graphics
+       47 / 60        78.3%          47  frames
+
+agreement by swept channel
+     exact / total       %  positional
+      695 / 739       94.0%         614  headings
+      472 / 508       92.9%         460  landmarks
+      848 / 887       95.6%         817  formFields
+      120 / 138       87.0%         104  graphics
+     3491 / 3602      96.9%        3406  links
+      494 / 503       98.2%         494  lists
+       47 / 60        78.3%          47  frames
+
+shapes: 6377 announcements in 283 distinct shapes; top 10 cover 4607 = 72.2% (the fleet's script quotes 33 shapes, top 10 = 94.3%)
+
+agreement by shape (top 10, ranked in this run)
+     exact / total       %  positional
+     2260 / 2274      99.4%        2191  NAME + ROLE
+      455 / 467       97.4%         390  NAME + ROLE + LEVEL
+      421 / 427       98.6%         416  NAME + ROLE + STATE
+      321 / 321      100.0%         313  NAME + ROLE + ROLE + COUNT + NAME + ROLE
+      286 / 286      100.0%         277  ROLE + COUNT + NAME + ROLE
+      255 / 261       97.7%         251  NAME + NAME + ROLE
+      189 / 248       76.2%         185  NAME + STATE + ROLE
+      106 / 111       95.5%          96  NAME + ROLE + NAME + ROLE + LEVEL
+      109 / 109      100.0%         107  NAME + ROLE + ROLE + LEVEL
+       95 / 103       92.2%          86  NAME + ROLE + NAME + ROLE
+
+GATE: 4497 of 4607 = 97.61% exact on the top 10 shapes   (positional: 4312 of 4607)   [BELOW 98%]
+      with the not-comparable pages kept in: 4797 of 4955 = 96.81%
+      emulator announcements with no counterpart in the fleet's lists (extras): 222
+      top-10 misses by cause: history 61, unexplained 43, language 6
+      the same, with the pages' `history` misses not counted as misses against us: 4558 of 4607 = 98.94%   (an upper bound if the fleet's browser history could be reproduced)
+      misses over all channels: 270 of 6437; on top-10 shapes: 110
+
+what the misses differ in (all channels; only the dev split is ever printed without --final):
+     97  fleet has ['visited'] | emulator has -
+     89  MISSING (no counterpart in the emulator list)
+     28  fleet has - | emulator has ['visited']
+     12  fleet has - | emulator has -
+     11  fleet has ['Welsh (not supported)'] | emulator has ['cy (not supported)']
+      9  MANY tokens differ
+      9  fleet has ['English'] | emulator has -
+      2  fleet has - | emulator has ['checked']
+      1  fleet has ['This website uses cookies', 'region'] | emulator has -
+      1  fleet has ['20 character width'] | emulator has -
+      1  fleet has ['Full width'] | emulator has -
+      1  fleet has ['What is the name of the event?', 'heading', 'level 1'] | emulator has -
+      1  fleet has ['What is your account number?', 'heading', 'level 1'] | emulator has -
+      1  fleet has ['Weight', 'in kilograms'] | emulator has -
+      1  fleet has ['Company authentication code'] | emulator has -
+      1  fleet has ['What is the cost per item', 'heading', 'in pounds?', 'level 1'] | emulator has -
+      1  fleet has ['What is the cost in pounds?', 'heading', 'level 1'] | emulator has -
+      1  fleet has ['What is the weight in kilograms?', 'heading', 'level 1'] | emulator has -
+      1  fleet has ['Where teams and agents Build together.'] | emulator has ['Where teams and agents Create together.']
+      1  fleet has ['current'] | emulator has -
+      1  fleet has ['Skip to content (within demo page)', 'link', 'same page'] | emulator has -

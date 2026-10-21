@@ -1,0 +1,1838 @@
+[
+ {
+  "url": "https://bathingwaters.sepa.org.uk/",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:57:44.328Z",
+  "transcriptLines": 75,
+  "documentReadyTitle": "Bathing Waters Home Scottish Environment Protection Agency (SEPA)",
+  "swept": {
+   "headings": 8,
+   "landmarks": 7,
+   "formFields": 9,
+   "graphics": 1,
+   "links": 31,
+   "lists": 3,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://caselaw.nationalarchives.gov.uk/search?query=",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:38:08.456Z",
+  "transcriptLines": 87,
+  "documentReadyTitle": "Search results - Find Case Law - The National Archives",
+  "swept": {
+   "headings": 8,
+   "landmarks": 8,
+   "formFields": 75,
+   "graphics": 1,
+   "links": 48,
+   "lists": 6,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:37:41.719Z",
+  "transcriptLines": 37,
+  "documentReadyTitle": "Find river, sea, groundwater and rainfall levels - GOV dot UK",
+  "swept": {
+   "headings": 4,
+   "landmarks": 8,
+   "formFields": 5,
+   "graphics": 1,
+   "links": 19,
+   "lists": 2,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://data.southwark.gov.uk/data-catalog-explorer/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:43:10.105Z",
+  "transcriptLines": 280,
+  "documentReadyTitle": "Southwark Data – Data Explorer",
+  "swept": {
+   "headings": 23,
+   "landmarks": 8,
+   "formFields": 32,
+   "graphics": 1,
+   "links": 167,
+   "lists": 1,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://design-patterns.service.justice.gov.uk/components/filter/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:31:47.363Z",
+  "transcriptLines": 159,
+  "documentReadyTitle": "Filter - MOJ Design System",
+  "swept": {
+   "headings": 25,
+   "landmarks": 7,
+   "formFields": 27,
+   "graphics": 0,
+   "links": 59,
+   "lists": 14,
+   "tableCells": 0,
+   "frames": 1
+  }
+ },
+ {
+  "url": "https://design-patterns.service.justice.gov.uk/components/scrollable-pane/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:32:16.489Z",
+  "transcriptLines": 175,
+  "documentReadyTitle": "Scrollable pane - MOJ Design System",
+  "swept": {
+   "headings": 13,
+   "landmarks": 8,
+   "formFields": 20,
+   "graphics": 0,
+   "links": 45,
+   "lists": 9,
+   "tableCells": 0,
+   "frames": 1
+  }
+ },
+ {
+  "url": "https://design-patterns.service.justice.gov.uk/components/sortable-table/",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:31:43.047Z",
+  "transcriptLines": 125,
+  "documentReadyTitle": "Sortable table - MOJ Design System",
+  "swept": {
+   "headings": 12,
+   "landmarks": 7,
+   "formFields": 24,
+   "graphics": 0,
+   "links": 48,
+   "lists": 9,
+   "tableCells": 0,
+   "frames": 1
+  }
+ },
+ {
+  "url": "https://design-patterns.service.justice.gov.uk/patterns/filter-a-list/",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:31:47.270Z",
+  "transcriptLines": 63,
+  "documentReadyTitle": "Filter a list - MOJ Design System",
+  "swept": {
+   "headings": 13,
+   "landmarks": 7,
+   "formFields": 22,
+   "graphics": 0,
+   "links": 63,
+   "lists": 10,
+   "tableCells": 0,
+   "frames": 1
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:26:06.985Z",
+  "transcriptLines": 130,
+  "documentReadyTitle": "Accordion – GOV dot UK Design System",
+  "swept": {
+   "headings": 31,
+   "landmarks": 7,
+   "formFields": 25,
+   "graphics": 1,
+   "links": 95,
+   "lists": 14,
+   "tableCells": 0,
+   "frames": 3
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/checkboxes/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:22:36.250Z",
+  "transcriptLines": 101,
+  "documentReadyTitle": "Checkboxes – GOV dot UK Design System",
+  "swept": {
+   "headings": 31,
+   "landmarks": 7,
+   "formFields": 39,
+   "graphics": 1,
+   "links": 87,
+   "lists": 8,
+   "tableCells": 0,
+   "frames": 9
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/date-input/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:23:45.974Z",
+  "transcriptLines": 267,
+  "documentReadyTitle": "Date input – GOV dot UK Design System",
+  "swept": {
+   "headings": 31,
+   "landmarks": 7,
+   "formFields": 21,
+   "graphics": 1,
+   "links": 78,
+   "lists": 7,
+   "tableCells": 0,
+   "frames": 6
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/details/",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:24:26.213Z",
+  "transcriptLines": 125,
+  "documentReadyTitle": "Details – GOV dot UK Design System",
+  "swept": {
+   "headings": 13,
+   "landmarks": 7,
+   "formFields": 9,
+   "graphics": 1,
+   "links": 73,
+   "lists": 6,
+   "tableCells": 0,
+   "frames": 2
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/error-message/",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:26:28.135Z",
+  "transcriptLines": 346,
+  "documentReadyTitle": "Microsoft Terms of Use Microsoft Legal - Profile 1 - Microsoft​ Edge",
+  "swept": {
+   "headings": 26,
+   "landmarks": 9,
+   "formFields": 13,
+   "graphics": 2,
+   "links": 84,
+   "lists": 28,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/error-summary/",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:26:30.256Z",
+  "transcriptLines": 346,
+  "documentReadyTitle": "Microsoft Terms of Use Microsoft Legal - Profile 1 - Microsoft​ Edge",
+  "swept": {
+   "headings": 26,
+   "landmarks": 9,
+   "formFields": 13,
+   "graphics": 2,
+   "links": 84,
+   "lists": 28,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:23:12.155Z",
+  "transcriptLines": 103,
+  "documentReadyTitle": "Radios – GOV dot UK Design System",
+  "swept": {
+   "headings": 34,
+   "landmarks": 7,
+   "formFields": 36,
+   "graphics": 1,
+   "links": 86,
+   "lists": 9,
+   "tableCells": 0,
+   "frames": 10
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/select/",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:21:57.498Z",
+  "transcriptLines": 148,
+  "documentReadyTitle": "Select – GOV dot UK Design System",
+  "swept": {
+   "headings": 15,
+   "landmarks": 7,
+   "formFields": 11,
+   "graphics": 1,
+   "links": 73,
+   "lists": 7,
+   "tableCells": 0,
+   "frames": 4
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/skip-link/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:24:50.036Z",
+  "transcriptLines": 133,
+  "documentReadyTitle": "Skip link – GOV dot UK Design System",
+  "swept": {
+   "headings": 11,
+   "landmarks": 7,
+   "formFields": 7,
+   "graphics": 1,
+   "links": 74,
+   "lists": 6,
+   "tableCells": 0,
+   "frames": 2
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/table/",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:25:21.813Z",
+  "transcriptLines": 104,
+  "documentReadyTitle": "Table – GOV dot UK Design System",
+  "swept": {
+   "headings": 15,
+   "landmarks": 7,
+   "formFields": 7,
+   "graphics": 1,
+   "links": 78,
+   "lists": 6,
+   "tableCells": 0,
+   "frames": 7
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/tabs/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:24:39.592Z",
+  "transcriptLines": 122,
+  "documentReadyTitle": "Tabs – GOV dot UK Design System",
+  "swept": {
+   "headings": 22,
+   "landmarks": 7,
+   "formFields": 15,
+   "graphics": 1,
+   "links": 71,
+   "lists": 12,
+   "tableCells": 0,
+   "frames": 2
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:23:57.531Z",
+  "transcriptLines": 379,
+  "documentReadyTitle": "Text input – GOV dot UK Design System",
+  "swept": {
+   "headings": 56,
+   "landmarks": 7,
+   "formFields": 35,
+   "graphics": 1,
+   "links": 96,
+   "lists": 9,
+   "tableCells": 0,
+   "frames": 14
+  }
+ },
+ {
+  "url": "https://disinfectants.defra.gov.uk/",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:26:59.486Z",
+  "transcriptLines": 113,
+  "documentReadyTitle": "Defra-approved disinfectants Disinfectants approved for statutory notifiable animal disease control in GB",
+  "swept": {
+   "headings": 5,
+   "landmarks": 5,
+   "formFields": 24,
+   "graphics": 1,
+   "links": 60,
+   "lists": 6,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://european-union.europa.eu/index_en",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:55:40.518Z",
+  "transcriptLines": 91,
+  "documentReadyTitle": "Your gateway to the EU, News, Highlights European Union - Profile 1 - Microsoft​ Edge",
+  "swept": {
+   "headings": 4,
+   "landmarks": 7,
+   "formFields": 10,
+   "graphics": 4,
+   "links": 32,
+   "lists": 6,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://events.bl.uk/",
+  "role": "training",
+  "split": "dev",
+  "capturedAt": "2026-10-20T22:01:24.529Z",
+  "transcriptLines": 137,
+  "documentReadyTitle": "Upcoming events and exhibitions, The British Library British Library",
+  "swept": {
+   "headings": 28,
+   "landmarks": 7,
+   "formFields": 16,
+   "graphics": 11,
+   "links": 54,
+   "lists": 7,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:56:26.139Z",
+  "transcriptLines": 46,
+  "documentReadyTitle": "MARINE AND GENERAL MUTUAL LIFE ASSURANCE SOCIETY overview - Find and update company information - GOV dot UK",
+  "swept": {
+   "headings": 5,
+   "landmarks": 7,
+   "formFields": 9,
+   "graphics": 1,
+   "links": 17,
+   "lists": 8,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://forms.charitycommission.gov.uk/raising-concerns/",
+  "role": "training",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:54:59.625Z",
+  "transcriptLines": 27,
+  "documentReadyTitle": "Raising Concerns - Charity Commission for England and Wales",
+  "swept": {
+   "headings": 4,
+   "landmarks": 5,
+   "formFields": 1,
+   "graphics": 1,
+   "links": 13,
+   "lists": 3,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://ico.org.uk/action-weve-taken/enforcement/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:37:47.192Z",
+  "transcriptLines": 76,
+  "documentReadyTitle": "Enforcement action ICO",
+  "swept": {
+   "headings": 21,
+   "landmarks": 9,
+   "formFields": 48,
+   "graphics": 5,
+   "links": 79,
+   "lists": 14,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://ico.org.uk/for-the-public/",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:31:52.591Z",
+  "transcriptLines": 97,
+  "documentReadyTitle": "For the public ICO",
+  "swept": {
+   "headings": 26,
+   "landmarks": 6,
+   "formFields": 4,
+   "graphics": 5,
+   "links": 77,
+   "lists": 9,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://mailchimp.com/",
+  "role": "field",
+  "split": "dev",
+  "capturedAt": "2026-10-20T22:09:48.968Z",
+  "transcriptLines": 196,
+  "documentReadyTitle": "Email and SMS Marketing Platform Mailchimp",
+  "swept": {
+   "headings": 23,
+   "landmarks": 8,
+   "formFields": 14,
+   "graphics": 21,
+   "links": 113,
+   "lists": 20,
+   "tableCells": 0,
+   "frames": 1
+  }
+ },
+ {
+  "url": "https://primary-authority.beis.gov.uk/par",
+  "role": "training",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:55:39.902Z",
+  "transcriptLines": 65,
+  "documentReadyTitle": "Search for a partnership Primary Authority Register",
+  "swept": {
+   "headings": 3,
+   "landmarks": 8,
+   "formFields": 4,
+   "graphics": 1,
+   "links": 18,
+   "lists": 13,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:40:41.332Z",
+  "transcriptLines": 68,
+  "documentReadyTitle": "Search a local authority area Food Hygiene Ratings",
+  "swept": {
+   "headings": 6,
+   "landmarks": 3,
+   "formFields": 23,
+   "graphics": 0,
+   "links": 58,
+   "lists": 5,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://reports.ofsted.gov.uk/search?q=school",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:39:25.066Z",
+  "transcriptLines": 87,
+  "documentReadyTitle": "Search - Find an Inspection Report - Ofsted",
+  "swept": {
+   "headings": 16,
+   "landmarks": 6,
+   "formFields": 40,
+   "graphics": 1,
+   "links": 30,
+   "lists": 17,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://service-manual.nhs.uk/design-system/components/table",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:32:39.799Z",
+  "transcriptLines": 174,
+  "documentReadyTitle": "Table – NHS digital service manual",
+  "swept": {
+   "headings": 40,
+   "landmarks": 8,
+   "formFields": 42,
+   "graphics": 0,
+   "links": 136,
+   "lists": 25,
+   "tableCells": 0,
+   "frames": 12
+  }
+ },
+ {
+  "url": "https://service-manual.nhs.uk/design-system/components/text-input",
+  "role": "training",
+  "split": "dev",
+  "capturedAt": "2026-10-20T22:02:14.330Z",
+  "transcriptLines": 262,
+  "documentReadyTitle": "Text input – NHS digital service manual - Profile 1 - Microsoft​ Edge",
+  "swept": {
+   "headings": 32,
+   "landmarks": 6,
+   "formFields": 57,
+   "graphics": 0,
+   "links": 99,
+   "lists": 9,
+   "tableCells": 0,
+   "frames": 12
+  }
+ },
+ {
+  "url": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T22:00:39.358Z",
+  "transcriptLines": 234,
+  "documentReadyTitle": "Postgraduate taught courses 2027-2028 The University of Sheffield",
+  "swept": {
+   "headings": 24,
+   "landmarks": 14,
+   "formFields": 14,
+   "graphics": 11,
+   "links": 230,
+   "lists": 12,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://tfl.gov.uk/modes/tube/",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:34:45.585Z",
+  "transcriptLines": 141,
+  "documentReadyTitle": "Tube - Transport for London",
+  "swept": {
+   "headings": 23,
+   "landmarks": 9,
+   "formFields": 32,
+   "graphics": 20,
+   "links": 45,
+   "lists": 6,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://tfl.gov.uk/plan-a-journey/",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:53:16.777Z",
+  "transcriptLines": 79,
+  "documentReadyTitle": "Plan a journey - Transport for London",
+  "swept": {
+   "headings": 6,
+   "landmarks": 9,
+   "formFields": 13,
+   "graphics": 3,
+   "links": 57,
+   "lists": 8,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://the-internet.herokuapp.com/login",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:46:26.601Z",
+  "transcriptLines": 12,
+  "documentReadyTitle": "The Internet",
+  "swept": {
+   "headings": 2,
+   "landmarks": 1,
+   "formFields": 3,
+   "graphics": 1,
+   "links": 2,
+   "lists": 0,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/forecast/gcpvj0v07",
+  "role": "training",
+  "split": "dev",
+  "capturedAt": "2026-10-20T22:03:17.177Z",
+  "transcriptLines": 527,
+  "documentReadyTitle": "London (Greater London) weather - Met Office",
+  "swept": {
+   "headings": 47,
+   "landmarks": 13,
+   "formFields": 35,
+   "graphics": 168,
+   "links": 0,
+   "lists": 0,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/warnings-and-advice/uk-warnings",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:29:58.801Z",
+  "transcriptLines": 27,
+  "documentReadyTitle": "UK weather warnings - Met Office",
+  "swept": {
+   "headings": 0,
+   "landmarks": 3,
+   "formFields": 4,
+   "graphics": 4,
+   "links": 6,
+   "lists": 2,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.adobe.com/",
+  "role": "field",
+  "split": "held",
+  "capturedAt": "2026-10-20T22:08:00.866Z",
+  "transcriptLines": 122,
+  "documentReadyTitle": "Adobe: Creative, marketing and document management solutions",
+  "swept": {
+   "headings": 24,
+   "landmarks": 4,
+   "formFields": 24,
+   "graphics": 12,
+   "links": 34,
+   "lists": 3,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.atlassian.com/",
+  "role": "field",
+  "split": "dev",
+  "capturedAt": "2026-10-20T22:09:04.130Z",
+  "transcriptLines": 96,
+  "documentReadyTitle": "Collaboration software for software, IT and business teams Atlassian",
+  "swept": {
+   "headings": 20,
+   "landmarks": 4,
+   "formFields": 19,
+   "graphics": 14,
+   "links": 62,
+   "lists": 7,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.british-history.ac.uk/catalogue",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:58:26.653Z",
+  "transcriptLines": 260,
+  "documentReadyTitle": "Catalogue British History Online",
+  "swept": {
+   "headings": 6,
+   "landmarks": 9,
+   "formFields": 0,
+   "graphics": 1,
+   "links": 228,
+   "lists": 5,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.cqc.org.uk/about-us",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:35:18.967Z",
+  "transcriptLines": 80,
+  "documentReadyTitle": "About us - Care Quality Commission",
+  "swept": {
+   "headings": 29,
+   "landmarks": 8,
+   "formFields": 11,
+   "graphics": 5,
+   "links": 89,
+   "lists": 9,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.cqc.org.uk/search/all?query=hospital",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:40:24.031Z",
+  "transcriptLines": 53,
+  "documentReadyTitle": "Search Results - Care Quality Commission",
+  "swept": {
+   "headings": 44,
+   "landmarks": 10,
+   "formFields": 82,
+   "graphics": 5,
+   "links": 116,
+   "lists": 19,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.dropbox.com/",
+  "role": "field",
+  "split": "held",
+  "capturedAt": "2026-10-20T22:08:24.800Z",
+  "transcriptLines": 184,
+  "documentReadyTitle": "Dropbox: Secure cloud storage, file sharing and more",
+  "swept": {
+   "headings": 33,
+   "landmarks": 3,
+   "formFields": 6,
+   "graphics": 18,
+   "links": 68,
+   "lists": 8,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.financial-ombudsman.org.uk/businesses/resolving-complaint/ombudsman-decisions",
+  "role": "training",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:51:52.135Z",
+  "transcriptLines": 90,
+  "documentReadyTitle": "Ombudsman decisions – Financial Ombudsman service",
+  "swept": {
+   "headings": 7,
+   "landmarks": 8,
+   "formFields": 28,
+   "graphics": 0,
+   "links": 54,
+   "lists": 8,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.gla.ac.uk/undergraduate/degrees/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:42:27.463Z",
+  "transcriptLines": 252,
+  "documentReadyTitle": "University of Glasgow - Undergraduate study - 2027 Degree programmes A‐Z - Profile 1 - Microsoft​ Edge",
+  "swept": {
+   "headings": 14,
+   "landmarks": 8,
+   "formFields": 11,
+   "graphics": 12,
+   "links": 257,
+   "lists": 15,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.gov.scot/about/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:27:14.608Z",
+  "transcriptLines": 72,
+  "documentReadyTitle": "About the Scottish Government - gov dot scot",
+  "swept": {
+   "headings": 3,
+   "landmarks": 7,
+   "formFields": 12,
+   "graphics": 3,
+   "links": 67,
+   "lists": 10,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.gov.scot/publications/",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:27:34.679Z",
+  "transcriptLines": 110,
+  "documentReadyTitle": "Publications - gov dot scot",
+  "swept": {
+   "headings": 22,
+   "landmarks": 8,
+   "formFields": 80,
+   "graphics": 0,
+   "links": 0,
+   "lists": 0,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.gov.uk/browse/benefits",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:29:07.346Z",
+  "transcriptLines": 59,
+  "documentReadyTitle": "Benefits - GOV dot UK",
+  "swept": {
+   "headings": 19,
+   "landmarks": 5,
+   "formFields": 11,
+   "graphics": 0,
+   "links": 53,
+   "lists": 7,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:59:15.494Z",
+  "transcriptLines": 78,
+  "documentReadyTitle": "Rates and thresholds for employers 2025 to 2026 - GOV dot UK",
+  "swept": {
+   "headings": 43,
+   "landmarks": 10,
+   "formFields": 15,
+   "graphics": 0,
+   "links": 108,
+   "lists": 15,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.gov.uk/search/news-and-communications",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:34:21.489Z",
+  "transcriptLines": 107,
+  "documentReadyTitle": "News and communications - GOV dot UK",
+  "swept": {
+   "headings": 14,
+   "landmarks": 9,
+   "formFields": 262,
+   "graphics": 0,
+   "links": 63,
+   "lists": 9,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.gov.uk/search/research-and-statistics",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:34:16.715Z",
+  "transcriptLines": 167,
+  "documentReadyTitle": "Research and statistics - GOV dot UK",
+  "swept": {
+   "headings": 15,
+   "landmarks": 9,
+   "formFields": 264,
+   "graphics": 0,
+   "links": 77,
+   "lists": 25,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.gov.uk/vehicle-tax",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:29:40.087Z",
+  "transcriptLines": 89,
+  "documentReadyTitle": "Tax your vehicle - GOV dot UK",
+  "swept": {
+   "headings": 15,
+   "landmarks": 7,
+   "formFields": 12,
+   "graphics": 0,
+   "links": 63,
+   "lists": 12,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.gov.wales/statistics-and-research",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:43:21.624Z",
+  "transcriptLines": 316,
+  "documentReadyTitle": "Statistics and research Released GOV dot WALES",
+  "swept": {
+   "headings": 9,
+   "landmarks": 13,
+   "formFields": 254,
+   "graphics": 0,
+   "links": 46,
+   "lists": 0,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.historicenvironment.scot/visit/all/edinburgh-castle/",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:55:06.473Z",
+  "transcriptLines": 7,
+  "documentReadyTitle": "Edinburgh Castle Historic Scotland",
+  "swept": {
+   "headings": 1,
+   "landmarks": 0,
+   "formFields": 3,
+   "graphics": 0,
+   "links": 1,
+   "lists": 0,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.hubspot.com/",
+  "role": "field",
+  "split": "held",
+  "capturedAt": "2026-10-20T22:08:52.183Z",
+  "transcriptLines": 49,
+  "documentReadyTitle": "Hub Spot Software and Tools for your Business - Homepage - Profile 1 - Microsoft​ Edge",
+  "swept": {
+   "headings": 29,
+   "landmarks": 6,
+   "formFields": 19,
+   "graphics": 23,
+   "links": 75,
+   "lists": 19,
+   "tableCells": 0,
+   "frames": 2
+  }
+ },
+ {
+  "url": "https://www.lbhf.gov.uk/council-tax",
+  "role": "training",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:58:27.457Z",
+  "transcriptLines": 108,
+  "documentReadyTitle": "Council tax London Borough of Hammersmith and Fulham",
+  "swept": {
+   "headings": 19,
+   "landmarks": 5,
+   "formFields": 16,
+   "graphics": 2,
+   "links": 53,
+   "lists": 5,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.leeds.ac.uk/undergraduate",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:51:58.199Z",
+  "transcriptLines": 5,
+  "documentReadyTitle": "Undergraduate courses University of Leeds - Profile 1 - Microsoft​ Edge",
+  "swept": {
+   "headings": 1,
+   "landmarks": 0,
+   "formFields": 2,
+   "graphics": 0,
+   "links": 1,
+   "lists": 0,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.mygov.scot/browse/benefits",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:27:09.197Z",
+  "transcriptLines": 66,
+  "documentReadyTitle": "Benefits - mygov dot scot",
+  "swept": {
+   "headings": 21,
+   "landmarks": 6,
+   "formFields": 11,
+   "graphics": 3,
+   "links": 37,
+   "lists": 3,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.mygov.scot/scottish-child-payment",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:35:03.543Z",
+  "transcriptLines": 58,
+  "documentReadyTitle": "Scottish Child Payment - mygov dot scot",
+  "swept": {
+   "headings": 4,
+   "landmarks": 9,
+   "formFields": 11,
+   "graphics": 3,
+   "links": 36,
+   "lists": 5,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.nationalarchives.gov.uk/about-us/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:33:17.377Z",
+  "transcriptLines": 82,
+  "documentReadyTitle": "About us - The National Archives",
+  "swept": {
+   "headings": 16,
+   "landmarks": 12,
+   "formFields": 2,
+   "graphics": 5,
+   "links": 55,
+   "lists": 8,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/",
+  "role": "training",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:59:31.309Z",
+  "transcriptLines": 562,
+  "documentReadyTitle": "Research guides - The National Archives",
+  "swept": {
+   "headings": 31,
+   "landmarks": 11,
+   "formFields": 3,
+   "graphics": 2,
+   "links": 166,
+   "lists": 29,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.networkrail.co.uk/careers/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:34:43.372Z",
+  "transcriptLines": 66,
+  "documentReadyTitle": "Careers - Network Rail",
+  "swept": {
+   "headings": 10,
+   "landmarks": 6,
+   "formFields": 7,
+   "graphics": 7,
+   "links": 22,
+   "lists": 2,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.nhs.uk/conditions/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:32:09.405Z",
+  "transcriptLines": 590,
+  "documentReadyTitle": "Conditions A to Z - NHS",
+  "swept": {
+   "headings": 29,
+   "landmarks": 8,
+   "formFields": 4,
+   "graphics": 0,
+   "links": 249,
+   "lists": 33,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.nhs.uk/service-search/find-a-gp",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:55:40.834Z",
+  "transcriptLines": 44,
+  "documentReadyTitle": "Find a GP - NHS",
+  "swept": {
+   "headings": 3,
+   "landmarks": 7,
+   "formFields": 5,
+   "graphics": 0,
+   "links": 29,
+   "lists": 7,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:58:22.123Z",
+  "transcriptLines": 9,
+  "documentReadyTitle": "MOT and vehicle testing nidirect - Profile 1 - Microsoft​ Edge",
+  "swept": {
+   "headings": 1,
+   "landmarks": 0,
+   "formFields": 4,
+   "graphics": 0,
+   "links": 0,
+   "lists": 0,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.nls.uk/join/",
+  "role": "training",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:51:19.570Z",
+  "transcriptLines": 62,
+  "documentReadyTitle": "Join the National Library of Scotland National Library of Scotland",
+  "swept": {
+   "headings": 10,
+   "landmarks": 6,
+   "formFields": 6,
+   "graphics": 0,
+   "links": 2,
+   "lists": 0,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.notion.com/",
+  "role": "field",
+  "split": "held",
+  "capturedAt": "2026-10-20T22:06:43.239Z",
+  "transcriptLines": 95,
+  "documentReadyTitle": "The AI workspace that works for you. Notion - Profile 1 - Microsoft​ Edge",
+  "swept": {
+   "headings": 15,
+   "landmarks": 8,
+   "formFields": 9,
+   "graphics": 7,
+   "links": 46,
+   "lists": 4,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.nrscotland.gov.uk/publications/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:35:46.179Z",
+  "transcriptLines": 12,
+  "documentReadyTitle": "Publications - National Records of Scotland (NRS)",
+  "swept": {
+   "headings": 1,
+   "landmarks": 1,
+   "formFields": 14,
+   "graphics": 0,
+   "links": 23,
+   "lists": 13,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.nrscotland.gov.uk/statistics-and-data/",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:27:46.139Z",
+  "transcriptLines": 12,
+  "documentReadyTitle": "Statistics and data - National Records of Scotland (NRS)",
+  "swept": {
+   "headings": 1,
+   "landmarks": 1,
+   "formFields": 14,
+   "graphics": 0,
+   "links": 23,
+   "lists": 13,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:37:55.774Z",
+  "transcriptLines": 81,
+  "documentReadyTitle": "Energy price cap and standing charges explained Ofgem",
+  "swept": {
+   "headings": 11,
+   "landmarks": 12,
+   "formFields": 7,
+   "graphics": 1,
+   "links": 29,
+   "lists": 9,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T22:00:54.622Z",
+  "transcriptLines": 188,
+  "documentReadyTitle": "Inflation and price indices - Office for National Statistics",
+  "swept": {
+   "headings": 51,
+   "landmarks": 10,
+   "formFields": 4,
+   "graphics": 8,
+   "links": 109,
+   "lists": 16,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.scotcourts.gov.uk/judgments/",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:38:28.204Z",
+  "transcriptLines": 95,
+  "documentReadyTitle": "Judgments Scottish Courts and Tribunals Service",
+  "swept": {
+   "headings": 5,
+   "landmarks": 5,
+   "formFields": 23,
+   "graphics": 1,
+   "links": 1,
+   "lists": 6,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.sportengland.org/research-and-data/data/active-lives",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:35:48.063Z",
+  "transcriptLines": 6,
+  "documentReadyTitle": "Active Lives Sport England",
+  "swept": {
+   "headings": 5,
+   "landmarks": 8,
+   "formFields": 15,
+   "graphics": 6,
+   "links": 48,
+   "lists": 6,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.transport.gov.scot/publications/",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:38:42.402Z",
+  "transcriptLines": 72,
+  "documentReadyTitle": "Publications Transport Scotland",
+  "swept": {
+   "headings": 13,
+   "landmarks": 6,
+   "formFields": 197,
+   "graphics": 7,
+   "links": 51,
+   "lists": 13,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/after/news.html",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:20:19.500Z",
+  "transcriptLines": 89,
+  "documentReadyTitle": "Citylights News Accessible News Page",
+  "swept": {
+   "headings": 11,
+   "landmarks": 1,
+   "formFields": 2,
+   "graphics": 7,
+   "links": 53,
+   "lists": 4,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/after/survey.html",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:19:23.351Z",
+  "transcriptLines": 12,
+  "documentReadyTitle": "Copilot",
+  "swept": {
+   "headings": 1,
+   "landmarks": 0,
+   "formFields": 3,
+   "graphics": 1,
+   "links": 3,
+   "lists": 0,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/after/template.html",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:20:09.364Z",
+  "transcriptLines": 49,
+  "documentReadyTitle": "Citylights Template Accessible Template Page",
+  "swept": {
+   "headings": 4,
+   "landmarks": 1,
+   "formFields": 2,
+   "graphics": 4,
+   "links": 48,
+   "lists": 4,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/after/tickets.html",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:19:55.191Z",
+  "transcriptLines": 63,
+  "documentReadyTitle": "Citylights Tickets Accessible Tickets Page",
+  "swept": {
+   "headings": 4,
+   "landmarks": 1,
+   "formFields": 2,
+   "graphics": 4,
+   "links": 47,
+   "lists": 5,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/before/news.html",
+  "role": "calibration",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:19:21.381Z",
+  "transcriptLines": 12,
+  "documentReadyTitle": "Copilot",
+  "swept": {
+   "headings": 1,
+   "landmarks": 0,
+   "formFields": 3,
+   "graphics": 1,
+   "links": 3,
+   "lists": 0,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/before/template.html",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:19:49.844Z",
+  "transcriptLines": 64,
+  "documentReadyTitle": "Welcome to City Lights! Inaccessible Template Page",
+  "swept": {
+   "headings": 1,
+   "landmarks": 0,
+   "formFields": 1,
+   "graphics": 8,
+   "links": 45,
+   "lists": 2,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/before/tickets.html",
+  "role": "calibration",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:19:47.466Z",
+  "transcriptLines": 58,
+  "documentReadyTitle": "Welcome to City Lights! Inaccessible Tickets Page",
+  "swept": {
+   "headings": 1,
+   "landmarks": 0,
+   "formFields": 1,
+   "graphics": 9,
+   "links": 44,
+   "lists": 2,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/carousels/structure/",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:52:45.865Z",
+  "transcriptLines": 123,
+  "documentReadyTitle": "Carousel Structure Web Accessibility Initiative (WAI) W 3C",
+  "swept": {
+   "headings": 4,
+   "landmarks": 18,
+   "formFields": 3,
+   "graphics": 3,
+   "links": 75,
+   "lists": 13,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:52:45.194Z",
+  "transcriptLines": 228,
+  "documentReadyTitle": "Grouping Controls Web Accessibility Initiative (WAI) W 3C",
+  "swept": {
+   "headings": 9,
+   "landmarks": 23,
+   "formFields": 26,
+   "graphics": 3,
+   "links": 78,
+   "lists": 16,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/instructions/",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:48:42.039Z",
+  "transcriptLines": 187,
+  "documentReadyTitle": "Form Instructions Web Accessibility Initiative (WAI) W 3C",
+  "swept": {
+   "headings": 11,
+   "landmarks": 22,
+   "formFields": 7,
+   "graphics": 3,
+   "links": 88,
+   "lists": 18,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:49:42.985Z",
+  "transcriptLines": 222,
+  "documentReadyTitle": "Labeling Controls Web Accessibility Initiative (WAI) W 3C",
+  "swept": {
+   "headings": 14,
+   "landmarks": 23,
+   "formFields": 8,
+   "graphics": 3,
+   "links": 97,
+   "lists": 16,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/multi-page/",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:53:06.054Z",
+  "transcriptLines": 182,
+  "documentReadyTitle": "Multi-page Forms Web Accessibility Initiative (WAI) W 3C",
+  "swept": {
+   "headings": 8,
+   "landmarks": 20,
+   "formFields": 3,
+   "graphics": 3,
+   "links": 85,
+   "lists": 17,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/validation/",
+  "role": "training",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:53:43.079Z",
+  "transcriptLines": 228,
+  "documentReadyTitle": "Validating Input Web Accessibility Initiative (WAI) W 3C",
+  "swept": {
+   "headings": 12,
+   "landmarks": 23,
+   "formFields": 11,
+   "graphics": 3,
+   "links": 85,
+   "lists": 18,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/complex/",
+  "role": "training",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:48:50.115Z",
+  "transcriptLines": 164,
+  "documentReadyTitle": "Complex Images Web Accessibility Initiative (WAI) W 3C - Profile 1 - Microsoft​ Edge",
+  "swept": {
+   "headings": 10,
+   "landmarks": 20,
+   "formFields": 3,
+   "graphics": 5,
+   "links": 91,
+   "lists": 15,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/decorative/",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:48:00.962Z",
+  "transcriptLines": 137,
+  "documentReadyTitle": "Decorative Images Web Accessibility Initiative (WAI) W 3C",
+  "swept": {
+   "headings": 7,
+   "landmarks": 20,
+   "formFields": 3,
+   "graphics": 3,
+   "links": 77,
+   "lists": 14,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:48:32.478Z",
+  "transcriptLines": 146,
+  "documentReadyTitle": "Functional Images Web Accessibility Initiative (WAI) W 3C",
+  "swept": {
+   "headings": 8,
+   "landmarks": 21,
+   "formFields": 5,
+   "graphics": 6,
+   "links": 92,
+   "lists": 14,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/groups/",
+  "role": "training",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:48:23.771Z",
+  "transcriptLines": 142,
+  "documentReadyTitle": "Groups of Images Web Accessibility Initiative (WAI) W 3C",
+  "swept": {
+   "headings": 5,
+   "landmarks": 19,
+   "formFields": 3,
+   "graphics": 7,
+   "links": 85,
+   "lists": 13,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/informative/",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:48:44.008Z",
+  "transcriptLines": 170,
+  "documentReadyTitle": "Informative Images Web Accessibility Initiative (WAI) W 3C",
+  "swept": {
+   "headings": 8,
+   "landmarks": 21,
+   "formFields": 3,
+   "graphics": 11,
+   "links": 95,
+   "lists": 14,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/menus/flyout/",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:52:52.535Z",
+  "transcriptLines": 114,
+  "documentReadyTitle": "Fly-out Menus Web Accessibility Initiative (WAI) W 3C",
+  "swept": {
+   "headings": 9,
+   "landmarks": 25,
+   "formFields": 4,
+   "graphics": 3,
+   "links": 80,
+   "lists": 18,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/menus/structure/",
+  "role": "training",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:52:53.018Z",
+  "transcriptLines": 160,
+  "documentReadyTitle": "Menu Structure Web Accessibility Initiative (WAI) W 3C",
+  "swept": {
+   "headings": 12,
+   "landmarks": 20,
+   "formFields": 3,
+   "graphics": 3,
+   "links": 80,
+   "lists": 16,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:53:27.095Z",
+  "transcriptLines": 126,
+  "documentReadyTitle": "Headings Web Accessibility Initiative (WAI) W 3C",
+  "swept": {
+   "headings": 9,
+   "landmarks": 18,
+   "formFields": 3,
+   "graphics": 6,
+   "links": 95,
+   "lists": 16,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/regions/",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:53:17.283Z",
+  "transcriptLines": 155,
+  "documentReadyTitle": "Page Regions Web Accessibility Initiative (WAI) W 3C",
+  "swept": {
+   "headings": 10,
+   "landmarks": 20,
+   "formFields": 3,
+   "graphics": 3,
+   "links": 82,
+   "lists": 15,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/tables/irregular/",
+  "role": "training",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:48:11.095Z",
+  "transcriptLines": 173,
+  "documentReadyTitle": "Tables with Irregular Headers Web Accessibility Initiative (WAI) W 3C",
+  "swept": {
+   "headings": 5,
+   "landmarks": 20,
+   "formFields": 3,
+   "graphics": 3,
+   "links": 70,
+   "lists": 15,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/tables/multi-level/",
+  "role": "training",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:48:16.438Z",
+  "transcriptLines": 2,
+  "documentReadyTitle": "C: WINDOWS SYSTEM 32 cmd dot exe",
+  "swept": {
+   "headings": 0,
+   "landmarks": 0,
+   "formFields": 0,
+   "graphics": 0,
+   "links": 0,
+   "lists": 0,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/tables/one-header/",
+  "role": "training",
+  "split": "held",
+  "capturedAt": "2026-10-20T21:48:13.356Z",
+  "transcriptLines": 178,
+  "documentReadyTitle": "Tables with One Header Web Accessibility Initiative (WAI) W 3C",
+  "swept": {
+   "headings": 6,
+   "landmarks": 20,
+   "formFields": 3,
+   "graphics": 3,
+   "links": 73,
+   "lists": 13,
+   "tableCells": 0,
+   "frames": 0
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/tables/two-headers/",
+  "role": "training",
+  "split": "dev",
+  "capturedAt": "2026-10-20T21:47:54.731Z",
+  "transcriptLines": 2,
+  "documentReadyTitle": "C: WINDOWS SYSTEM 32 cmd dot exe",
+  "swept": {
+   "headings": 0,
+   "landmarks": 0,
+   "formFields": 0,
+   "graphics": 0,
+   "links": 0,
+   "lists": 0,
+   "tableCells": 0,
+   "frames": 0
+  }
+ }
+]

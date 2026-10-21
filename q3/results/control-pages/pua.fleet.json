@@ -1,0 +1,66 @@
+{
+ "capturedAt": "2026-10-20T22:49:22.443Z",
+ "worker": "http://192.168.1.107:8765",
+ "capture": {
+  "url": "http://192.168.1.108:8899/pua.html",
+  "transcript": [
+   "same page, link, Home",
+   "main landmark, heading, level 1, PUA control",
+   "visited, same page, link, About us",
+   "same page, link, Other",
+   "button, Go",
+   "same page, link, Plain link",
+   "content info landmark, same page, link, Foot",
+   "same page, link, Foot"
+  ],
+  "structure": {
+   "headings": [
+    "main landmark, PUA control, heading, level 1"
+   ],
+   "landmarks": [
+    "banner landmark, Home, same page, link",
+    "main landmark, PUA control, heading, level 1",
+    "content info landmark, Foot, same page, link"
+   ],
+   "formFields": [
+    "main landmark, Go, button"
+   ],
+   "graphics": [],
+   "links": [
+    "Other, same page, link",
+    "About us, visited, same page, link",
+    "banner landmark, Home, same page, link",
+    "Plain link, same page, link",
+    "content info landmark, Foot, same page, link"
+   ],
+   "lists": [],
+   "tableCells": [],
+   "frames": []
+  },
+  "environment": {
+   "measuredAt": "2026-10-20T22:49:18.742Z",
+   "screenReader": "NVDA",
+   "browser": "Microsoft Edge",
+   "guidepupVersion": "0.31.0",
+   "screenReaderSettings": "speech.autoLanguageSwitching=True,speech.reportLanguage=True,speech.reportNotSupportedLanguage=speech",
+   "browserProfile": "adopted",
+   "nodeVersion": "v24.20.0",
+   "architecture": "x64",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24,
+   "provisionRevision": "a20963f766666de8",
+   "windowSize": "1024x768",
+   "displayMode": "1024x768",
+   "displayAdapter": "Intel(R) UHD Graphics 630",
+   "displaySampledMsAgo": 112,
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "screenReaderVersion": "2026.1.1",
+   "browserVersion": "155.0.4283.62",
+   "versionsSampledMsAgo": 4443,
+   "windowsBuild": "26300.9711",
+   "innerWidth": 1008,
+   "innerHeight": 729,
+   "devicePixelRatio": 1
+  }
+ }
+}

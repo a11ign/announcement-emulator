@@ -26,6 +26,7 @@ FORM_ROLES = ("edit", "combo box", "check box", "radio button", "toggle button",
 
 ap = argparse.ArgumentParser(); ap.add_argument('oracle'); ap.add_argument('emu'); ap.add_argument('--split', default='dev', choices=['dev', 'held', 'all'])
 ap.add_argument('--final', action='store_true'); ap.add_argument('--json'); ap.add_argument('--misses', type=int, default=0); ap.add_argument('--top', type=int, default=10); ap.add_argument('--sig', type=int, default=0)
+ap.add_argument('--as-frozen', action='store_true', help='the comparability rules as they stood when the emulator was frozen (see the Q3 section: two were corrected after the first held reading)')
 a = ap.parse_args()
 quiet = lambda url: split_of(url) == 'held' and not a.final
 
@@ -69,10 +70,14 @@ for p in pages:
     elif not p['oracle'].get('structure') or any(c not in p['oracle']['structure'] for c in CHANNELS): p['status'] = 'oracle lacks a channel'
     else:
         oc, ec = p['census'] or {}, r1['census']
-        diff = {k: (oc.get(k), ec.get(k)) for k in ('heading', 'link', 'graphic') if oc.get(k) != ec.get(k)}
+        # CORRECTED after the first held-out reading (a.as_frozen restores the earlier rule): the graphic count is not used, because the fleet's tree census and the
+        # emulator's tree count images differently - on W3C's static demo pages, which do not change, they differ by two - and a count that differs on a page that
+        # cannot have changed does not say the page changed.
+        diff = {k: (oc.get(k), ec.get(k)) for k in (('heading', 'link', 'graphic') if a.as_frozen else ('heading', 'link')) if oc.get(k) != ec.get(k)}
         ot = next((e.get('title') for e in p['oracle'].get('diagnostics', []) if e.get('event') == 'documentReady'), None)      # what the fleet's browser reported as the document's title when NVDA was asked
         et = r1.get('title')
-        norm = lambda t: re.sub(r'[^a-z0-9]+', ' ', (t or '').lower().replace('\u200b', '')).strip()
+        # CORRECTED likewise: the fleet's title is what NVDA SPOKE ("GOV dot UK Design System"), the emulator's is the document's ("GOV.UK Design System"); the word `dot` is dropped from both.
+        norm = lambda t: re.sub(r'[^a-z0-9]+', ' ', re.sub(r'\bdot\b', ' ', (t or '').lower().replace('\u200b', '')) if not a.as_frozen else (t or '').lower().replace('\u200b', '')).strip()
         if ot and et and norm(ot)[:25] not in norm(et) and norm(et)[:25] not in norm(ot): diff['document title'] = (repr(ot[:40]), repr(et[:40]))
         oh, eh = set(p['oracle']['structure']['headings']), set(r1['structure']['headings'])
         names = lambda L: {x.split(', heading')[0].split(', ')[-1] for x in L}
@@ -122,11 +127,12 @@ def classify(r):
       language  a language name: Windows' (GetLocaleInfo, languageHandler.py:164) where the emulator has the language code.
       prompt    Chromium's image-description prompt and role text, present in the fleet's tree and absent from the Linux one (measured in Q2 and here)."""
     e, q = r['expected'], r['predicted']
+    if 'Unlabelled graphic' in e or 'To get missing image descriptions' in e: return 'prompt'
     if q is None: return 'unexplained'
     te, tq = [t.strip() for t in e.split(',')], [t.strip() for t in q.split(',')]
     ce, cq = collections.Counter(te), collections.Counter(tq)
     oe, oq = list((ce - cq).elements()), list((cq - ce).elements())
-    if (oe == ['visited'] and not oq) or (oq == ['visited'] and not oe): return 'history'
+    if te != tq and [t for t in te if t != 'visited'] == [t for t in tq if t != 'visited']: return 'history'      # the strings differ only in where the word `visited` stands (or whether it does)
     if 'Unlabelled graphic' in e or 'To get missing image descriptions' in e: return 'prompt'
     if any('(not supported)' in t for t in oe + oq) or ('English' in oe and not oq): return 'language'
     return 'unexplained'
@@ -136,6 +142,11 @@ def classify(r):
 ok_pages = [p for p in P if p['status'] == 'comparable']
 all_rows = [r for p in ok_pages for r in evaluate(p)]
 for r in all_rows: r['class'] = 'agree' if r['ok'] else classify(r)
+# A page whose graphics sweep lacks the prompt'd graphic starts its link sweep elsewhere (the sweeps carry the caret from one to the next), so the link and list
+# announcements that follow differ in order and in which element is reached first: `prompt-downstream`, INFERRED from the same page having a `prompt` miss.
+_prompt_pages = {r['url'] for r in all_rows if r['class'] == 'prompt'}
+for r in all_rows:
+    if r['class'] == 'unexplained' and r['url'] in _prompt_pages and r['channel'] in ('links', 'lists', 'landmarks', 'formFields'): r['class'] = 'prompt-downstream'
 incl_rows = [r for p in P if p['status'].startswith(('comparable', 'not comparable')) for r in evaluate(p)]
 table(all_rows, lambda r: r['kind'], f"agreement by element kind ({len(ok_pages)} comparable pages)", order=['headings', 'links', 'buttons', 'formFields', 'landmarks', 'lists', 'graphics', 'frames'])
 table(all_rows, lambda r: r['channel'], "agreement by swept channel", order=list(CHANNELS))
