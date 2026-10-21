@@ -66,6 +66,8 @@ ia2.IAccessible2 = _IAccessible2; ia2.IAccessible2_2 = _IAccessible2_2; ia2.IAcc
 for _n, _v in (('IA2_TEXT_BOUNDARY_CHAR', 0), ('IA2_TEXT_BOUNDARY_WORD', 1), ('IA2_TEXT_BOUNDARY_SENTENCE', 2), ('IA2_TEXT_BOUNDARY_PARAGRAPH', 3), ('IA2_TEXT_BOUNDARY_LINE', 4), ('IA2_TEXT_BOUNDARY_ALL', 5), ('IA2_COORDTYPE_SCREEN_RELATIVE', 0), ('IA2_COORDTYPE_PARENT_RELATIVE', 1)):
     setattr(ia2, _n, _v)      # ia2_api_all.idl
 import winuser_standin; sys.modules['winUser'] = winuser_standin.m
+import kernel32_standin      # the locale calls of winBindings.kernel32 that NVDA's getLanguageDescription makes, answered from the table of Windows language names (emu/langnames)
+import winBindings; sys.modules['winBindings.kernel32'] = winBindings.kernel32 = kernel32_standin.m
 import globalVars
 globalVars.appDir = str(R / 'nvda-appdir'); globalVars.appArgs.configPath = tempfile.mkdtemp(prefix='nvda-cfg-'); globalVars.appArgs.disableAddons = True
 # The system tests' own NVDA settings (tests/system/nvdaSettingsFiles/standard-dontShowWelcomeDialog.ini, chromeTests.robot:32), unmodified:

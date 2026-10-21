@@ -1,6 +1,6 @@
 """Layer 0/5 shim for the spike: an NVDA Gecko_ia2 treeInterceptor whose buffer comes from the stand-in, with the pieces that
 need a live Windows NVDAObject (the root object, focus, the app module) replaced by values taken from the Q1 tree."""
-import boot, json, textInfos, controlTypes
+import boot, os, json, textInfos, controlTypes
 import IAccessibleHandler  # NVDA imports this first (circular otherwise)
 import virtualBuffers.gecko_ia2 as g
 from NVDAObjects.IAccessible import chromium   # the buffer class NVDA really uses for Chrome (ChromeVBuf, ChromeVBufTextInfo)
@@ -91,6 +91,8 @@ import characterProcessing; characterProcessing.initialize()
 sys.path.insert(0, str(boot.R / 'nvda-src/tests/system/libraries/SystemTestSpy'))
 import speechSpySynthDriver as _spy_mod
 _synth = _spy_mod.SpeechSpySynthDriver()
+if os.environ.get('EMU_FLEET_VOICES'):      # Q3 (q3/emulate.py): the fleet's voices, not the spy's (en, es, fr, la) that the system tests of Q2 rely on. "(not supported)" is the synthesizer's own answer, languageIsSupported()
+    _synth.availableLanguages = set(boot.kernel32_standin.instance.synthesizer_languages)
 synthDriverHandler._curSynth = _synth
 _synth.initSettings()
 speech.speech.initialize()
