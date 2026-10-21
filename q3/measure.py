@@ -111,8 +111,27 @@ def table(rows, key, title, order=None, limit=None):
         print(f"  {ok:>7} / {n:<7}  {100 * ok / n:>5.1f}%  {pos:>10}  {k}")
     return c
 
+def classify(r):
+    """The cause of a miss, where a rule with evidence names one (docs/announcement-emulator-spike.md, Gate). Anything else is `unexplained`.
+      history   the fleet browser had visited the link's address and ours had not (or the reverse): the only difference is the word `visited`. The fleet's
+                profile history is not something the emulator can read; it is neither an emulator bug nor Windows-only, which the Gate's two classes do not allow for.
+      language  a language name: Windows' (GetLocaleInfo, languageHandler.py:164) where the emulator has the language code.
+      prompt    Chromium's image-description prompt and role text, present in the fleet's tree and absent from the Linux one (measured in Q2 and here)."""
+    e, q = r['expected'], r['predicted']
+    if q is None: return 'unexplained'
+    te, tq = [t.strip() for t in e.split(',')], [t.strip() for t in q.split(',')]
+    ce, cq = collections.Counter(te), collections.Counter(tq)
+    oe, oq = list((ce - cq).elements()), list((cq - ce).elements())
+    if (oe == ['visited'] and not oq) or (oq == ['visited'] and not oe): return 'history'
+    if 'Unlabelled graphic' in e or 'To get missing image descriptions' in e: return 'prompt'
+    if any('(not supported)' in t for t in oe + oq) or ('English' in oe and not oq): return 'language'
+    return 'unexplained'
+
+
+
 ok_pages = [p for p in P if p['status'] == 'comparable']
 all_rows = [r for p in ok_pages for r in evaluate(p)]
+for r in all_rows: r['class'] = 'agree' if r['ok'] else classify(r)
 incl_rows = [r for p in P if p['status'].startswith(('comparable', 'not comparable')) for r in evaluate(p)]
 table(all_rows, lambda r: r['kind'], f"agreement by element kind ({len(ok_pages)} comparable pages)", order=['headings', 'links', 'buttons', 'formFields', 'landmarks', 'lists', 'graphics', 'frames'])
 table(all_rows, lambda r: r['channel'], "agreement by swept channel", order=list(CHANNELS))
@@ -128,6 +147,10 @@ inc = [r for r in incl_rows if r['channel'] in SHAPE_CHANNELS and r['shape'] in 
 print(f"      with the not-comparable pages kept in: {sum(r['ok'] for r in inc)} of {len(inc)} = {100 * sum(r['ok'] for r in inc) / max(1, len(inc)):.2f}%")
 print(f"      emulator announcements with no counterpart in the fleet's lists (extras): {sum(sum(p['extras'].values()) for p in ok_pages)}")
 miss = [r for r in all_rows if not r['ok']]
+cl = collections.Counter(r['class'] for r in gate if not r['ok'])
+print("      top-10 misses by cause: " + ', '.join(f'{c} {v}' for c, v in cl.most_common()))
+excl = n - cl.get('history', 0)
+print(f"      the same, with the pages' `history` misses not counted as misses against us: {k + cl.get('history', 0)} of {n} = {100 * (k + cl.get('history', 0)) / max(1, n):.2f}%   (an upper bound if the fleet's browser history could be reproduced)")
 print(f"      misses over all channels: {len(miss)} of {len(all_rows)}; on top-{a.top} shapes: {n - k}")
 if a.misses:
     print(f"\nmisses (first {a.misses}):")

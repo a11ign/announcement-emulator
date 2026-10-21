@@ -436,96 +436,67 @@ class Buffer:
         return p
 
     def line_offsets(self, offset, max_len, screen_layout):
-        """VBufStorage_buffer_t::getLineOffsets (storage.cpp:1068-1200), ported without the maxLineLength refinement's
-        'possibleBreaks' preference for the common case max_len == 0; with max_len > 0 the same refinement is applied."""
+        """VBufStorage_buffer_t::getLineOffsets (nvdaHelper/vbufBase/storage.cpp:1066-1198), line for line: search forward and backward from the text node at
+        `offset` through the tree (control nodes included, so an empty block ends a line), collecting the places a line may be cut, then apply maxLineLength."""
         if self.root is None or offset >= self.root.length: return None
-        flat = []  # (node, start, end) of every text node in order
-        def walk(n, base):
-            if isinstance(n, TextField): flat.append((n, base, base + n.length)); return
-            for k in n.kids: walk(k, base); base += k.length
-        walk(self.root, 0)
-        idx = next(i for i, (n, s, e) in enumerate(flat) if s <= offset < e)
-        init = flat[idx][0]
+        r = self.text_node_at(offset)
+        if r is None: return None
+        init, init_s, init_e = r
+        possible = set()
         limit = init.parent
         while limit is not None and not limit.is_block: limit = limit.parent
-        def block_of(n):
-            p = n.parent
-            while p is not None and not p.is_block: p = p.parent
-            return p
+        is_break = lambda t, i: t[i] == '\n' or (t[i] == '\r' and (i + 1 >= len(t) or t[i + 1] != '\n'))
         # forward
-        end = flat[idx][2]; j = idx; hard = False
-        text = init.text; rel = offset - flat[idx][1]
-        for i in range(rel, len(text)):
-            if text[i] == '\n' or (text[i] == '\r' and (i + 1 >= len(text) or text[i + 1] != '\n')):
-                end = flat[idx][1] + i + 1; hard = True; break
-        while not hard:
-            j += 1
-            if j >= len(flat): break
-            n, s, e = flat[j]
-            if block_of(n) is not limit: break          # moved out of the block
-            if not screen_layout and _crosses_control(flat[j - 1][0], n): break
-            end = e
-            nl = n.text.find('\n')
-            if nl >= 0: end = s + nl + 1; hard = True
+        node, rel, bs, be = init, offset - init_s, init_s, init_e
+        line_end, hard = init_e, False
+        while True:
+            possible.add(bs); possible.add(be)
+            if node.length > 0 and not node.kids:
+                text = node.text; line_end = be; last_space = False
+                for i in range(rel, node.length):
+                    if is_break(text, i): line_end = bs + i + 1; hard = True; break
+                    if text[i].isspace(): last_space = True
+                    else:
+                        if last_space: possible.add(bs + i)
+                        last_space = False
+                if hard: break
+            nxt, trel = next_in_tree(node, FORWARD, limit)
+            if nxt is not None and ((not screen_layout and nxt.kids) or nxt.is_block): nxt = None
+            if nxt is None: break
+            bs += trel; be = bs + nxt.length; rel = 0; node = nxt
         # backward
-        start = flat[idx][1]; j = idx; hard = False
-        for i in range(rel - 1, -1, -1):
-            if text[i] == '\n' or (text[i] == '\r' and (i + 1 >= len(text) or text[i + 1] != '\n')):
-                start = flat[idx][1] + i + 1; hard = True; break
-        while not hard:
-            j -= 1
-            if j < 0: break
-            n, s, e = flat[j]
-            if block_of(n) is not block_of(init) if not screen_layout else block_of(n) is not limit: break
-            if not screen_layout and _crosses_control(n, flat[j + 1][0]): break
-            start = s
-            nl = n.text.rfind('\n')
-            if nl >= 0: start = s + nl + 1; hard = True
-        if max_len > 0: start, end = self._max_line_length(flat, idx, rel, offset, start, end, max_len)
-        return start, end
-
-    @staticmethod
-    def _max_line_length(flat, idx, rel, offset, line_start, line_end, max_len):
-        """The last step of getLineOffsets (storage.cpp:1175-1198): "finally take maxLineLength into account". A line longer than `max_len` (NVDA's
-        virtualBuffers.maxLineLength, 100) is cut at the last place in the line where a word starts (or a node starts or ends) within `max_len` characters.
-        The places are the ones the search for the line's ends passed: the start and end of every node visited, the first non-space after white space going
-        forward from `offset`, and the position after each white-space run going backward from it."""
-        possible = set()
-        for k in range(len(flat)):      # every node of the line was visited by one of the two searches
-            n, s, e = flat[k]
-            if e > line_start and s < line_end: possible.update((s, e))
-        for k in range(idx, len(flat)):      # forward word starts
-            n, s, e = flat[k]
-            if s >= line_end: break
-            last_space = False
-            for i in range(rel if k == idx else 0, n.length):
-                if n.text[i].isspace(): last_space = True
-                else:
-                    if last_space: possible.add(s + i)
-                    last_space = False
-        for k in range(idx, -1, -1):      # backward: after each run of white space
-            n, s, e = flat[k]
-            if e <= line_start: break
-            last_space = False
-            for i in range((rel if k == idx else n.length) - 1, -1, -1):
-                if n.text[i].isspace():
-                    if not last_space: possible.add(s + i + 1)
-                    last_space = True
-                else: last_space = False
-        real = {line_start, line_end}
-        ordered = sorted(possible)
-        i, count = line_start, 0
-        import bisect
-        while i < line_end:
-            if count == max_len:
-                if ordered:
-                    pos = bisect.bisect_right(ordered, i)      # upper_bound
-                    if pos > 0 and ordered[pos - 1] > i - max_len: i = ordered[pos - 1]
-                real.add(i); count = 0
-            i += 1; count += 1
-        rs = sorted(real)
-        hi = bisect.bisect_right(rs, offset)
-        return rs[hi - 1], rs[hi]
+        node, rel, bs, be = init, offset - init_s, init_s, init_e
+        line_start, hard = init_s, False
+        while True:
+            possible.add(bs); possible.add(be)
+            if node.length > 0 and not node.kids:
+                text = node.text; line_start = bs; last_space = False
+                for i in range(rel - 1, -1, -1):
+                    if is_break(text, i): line_start = bs + i + 1; hard = True; break
+                    if text[i].isspace():
+                        if not last_space: possible.add(bs + i + 1)
+                        last_space = True
+                    else: last_space = False
+                if hard: break
+            nxt, trel = next_in_tree(node, SYMBACK, limit if screen_layout else node.parent)
+            if nxt is not None and nxt.is_block: nxt = None
+            if nxt is None: break
+            bs += trel; be = bs + nxt.length; rel = nxt.length; node = nxt
+        # finally take maxLineLength into account
+        if max_len > 0:
+            import bisect
+            ordered = sorted(possible); real = {line_start, line_end}
+            i, count = line_start, 0
+            while i < line_end:
+                if count == max_len:
+                    if ordered:
+                        pos = bisect.bisect_right(ordered, i)      # upper_bound
+                        if pos > 0 and ordered[pos - 1] > i - max_len: i = ordered[pos - 1]
+                    real.add(i); count = 0
+                i += 1; count += 1
+            rs = sorted(real); hi = bisect.bisect_right(rs, offset)
+            line_end, line_start = rs[hi], rs[hi - 1]
+        return line_start, line_end
 
 
 def _crosses_control(a, b):
@@ -535,7 +506,7 @@ def _crosses_control(a, b):
 
 # ---------------------------------------------------------------- storage.cpp: nextNodeInTree / matchAttributes / findNodeByAttributes
 
-FORWARD, BACK, UP = 0, 1, 2          # VBufStorage_findDirection_* (virtualBuffers/__init__.py)
+FORWARD, BACK, UP, SYMBACK = 0, 1, 2, 3          # VBufStorage_findDirection_* (virtualBuffers/__init__.py)
 
 
 def _prev(n): return n.parent.kids[n.parent.kids.index(n) - 1] if n.parent and n.parent.kids.index(n) > 0 else None
@@ -553,6 +524,14 @@ def next_in_tree(node, direction, limit=None):
                 if t is limit: t = None
             if t is None or _next(t) is None: return None, 0
             rel = node.length; t = _next(t)
+    elif direction == SYMBACK:      # TREEDIRECTION_SYMMETRICAL_BACK: the pre-order walked backwards, last child first
+        if t.kids: t = t.kids[-1]; rel = node.length - t.length
+        else:
+            while t is not None and _prev(t) is None:
+                t = t.parent
+                if t is limit: t = None
+            if t is None or _prev(t) is None: return None, 0
+            t = _prev(t); rel -= t.length
     elif direction == BACK:
         p = _prev(t)
         if p is not None:

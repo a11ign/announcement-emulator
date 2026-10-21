@@ -28,13 +28,9 @@ in scope: 44 of 47 ['announce_list_item_when_moving_by_word_or_character', 'test
 == test_mark_aria_details downArrow PASS
 == test_mark_aria_details control+rightArrow PASS
 == test_mark_aria_details NVDA+d PASS
-== test_mark_aria_details control+rightArrow FAIL
-   expected: 'highlighted  has comment  cat  out of highlighted'
-   actual:   'highlighted  has comment  cat'
+== test_mark_aria_details control+rightArrow PASS
 == test_mark_aria_details NVDA+d PASS
-== test_mark_aria_details downArrow FAIL
-   expected: 'out of edit  Hello  highlighted  has details  this is a  link  test'
-   actual:   'out of highlighted  out of edit  Hello  highlighted  has details  this is a  link  test'
+== test_mark_aria_details downArrow PASS
 == test_mark_aria_details k PASS
 == test_mark_aria_details upArrow PASS
 == test_mark_aria_details k PASS
@@ -54,13 +50,9 @@ in scope: 44 of 47 ['announce_list_item_when_moving_by_word_or_character', 'test
 == test_mark_aria_details_FreeReviewCursor downArrow PASS
 == test_mark_aria_details_FreeReviewCursor control+rightArrow PASS
 == test_mark_aria_details_FreeReviewCursor NVDA+d PASS
-== test_mark_aria_details_FreeReviewCursor control+rightArrow FAIL
-   expected: 'highlighted  has comment  cat  out of highlighted'
-   actual:   'highlighted  has comment  cat'
+== test_mark_aria_details_FreeReviewCursor control+rightArrow PASS
 == test_mark_aria_details_FreeReviewCursor NVDA+d PASS
-== test_mark_aria_details_FreeReviewCursor downArrow FAIL
-   expected: 'out of edit  Hello  highlighted  has details  this is a  link  test'
-   actual:   'out of highlighted  out of edit  Hello  highlighted  has details  this is a  link  test'
+== test_mark_aria_details_FreeReviewCursor downArrow PASS
 == test_mark_aria_details_FreeReviewCursor k PASS
 == test_mark_aria_details_FreeReviewCursor upArrow PASS
 == test_mark_aria_details_FreeReviewCursor k PASS
@@ -152,7 +144,7 @@ in scope: 44 of 47 ['announce_list_item_when_moving_by_word_or_character', 'test
    actual:   'drawing  Our'
 == test_ariaRoleDescription_inline_browseMode control+rightArrow FAIL
    expected: 'logo.'
-   actual:   'logo'
+   actual:   'logo  out of drawing'
 == test_ariaRoleDescription_block_browseMode downArrow PASS
 == test_ariaRoleDescription_block_browseMode downArrow PASS
 == test_ariaRoleDescription_block_browseMode downArrow PASS
@@ -204,9 +196,7 @@ in scope: 44 of 47 ['announce_list_item_when_moving_by_word_or_character', 'test
 == test_ARIASwitchRole NVDA+tab PASS
 == test_mark_browse downArrow PASS
 == test_mark_browse numpad6 PASS
-== test_mark_browse numpad6 FAIL
-   expected: 'highlighted  Kangaroo  out of highlighted'
-   actual:   'highlighted  Kangaroo'
+== test_mark_browse numpad6 PASS
 == test_mark_focus NVDA+space PASS
 == test_mark_focus tab PASS
 == checkbox_labelled_by_inner_element tab PASS
@@ -266,13 +256,13 @@ in scope: 44 of 47 ['announce_list_item_when_moving_by_word_or_character', 'test
 == test_styleNav d PASS
 == test_styleNav shift+s PASS
 == test_styleNav s PASS
-RESULT 207 / 227
+RESULT 212 / 227
   8/10  announce_list_item_when_moving_by_word_or_character
   5/5  test_i7562
   5/5  test_pr11606
   2/2  test_focus_mode_on_focusable_read_only_lists
-  14/18  test_mark_aria_details
-  14/18  test_mark_aria_details_FreeReviewCursor
+  16/18  test_mark_aria_details
+  16/18  test_mark_aria_details_FreeReviewCursor
   2/2  test_aria_details_noVBufNoTextInterface
   2/2  test_aria_details_noVBufNoTextInterface
   4/4  test_ariaDescription_focusMode
@@ -300,7 +290,7 @@ RESULT 207 / 227
   10/10  test_ariaErrorMessage
   2/2  test_ariaCheckbox_browseMode
   10/10  test_ARIASwitchRole
-  2/3  test_mark_browse
+  3/3  test_mark_browse
   2/2  test_mark_focus
   1/1  checkbox_labelled_by_inner_element
   2/2  test_i12147
