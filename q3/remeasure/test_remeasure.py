@@ -43,8 +43,10 @@ class BoxPasses(unittest.TestCase):
         for gone in ('policy', 'emptied', 'after'):
             b = passing_box(); del b[gone]; self.assertFalse(rb.box_passes(b), gone)
         b = passing_box(); b['policy']['value'] = 0; self.assertFalse(rb.box_passes(b))
-    def test_a_box_whose_before_probe_saw_no_history_fails_because_the_probe_is_unproven_there(self):
-        b = passing_box(); b['before'] = rb.probe_outcome(record()); self.assertFalse(rb.box_passes(b))
+    def test_a_box_whose_before_probe_saw_no_history_still_passes_but_is_not_the_control(self):
+        b = passing_box(); b['before'] = rb.probe_outcome(record() | {'capturedAt': '2026-10-21T08:00:00.000Z'}); self.assertTrue(rb.box_passes(b)); self.assertFalse(rb.has_control(b))
+    def test_a_box_with_no_before_probe_at_all_passes_on_its_other_readings(self):
+        b = passing_box(); del b['before']; self.assertTrue(rb.box_passes(b))
     def test_readings_out_of_order_fail_the_box(self):
         b = passing_box(); b['after'] = rb.probe_outcome(record() | {'capturedAt': '2026-10-21T08:30:00.000Z'}); self.assertFalse(rb.box_passes(b))      # the clean probe predates the policy
     def test_a_capture_that_is_not_the_probe_page_is_not_a_reading(self):
@@ -122,6 +124,8 @@ class PolicyOverride(unittest.TestCase):
     DEFAULTS = "worker_other: 1\nworker_edge_policy:\n  # a comment\n  - { name: HideFirstRunExperience, value: 1 }\n  - { name: BrowserSignin, value: 0 }\n"
     def test_it_restates_every_entry_and_adds_the_history_policy_last(self):
         self.assertEqual(po.override(self.DEFAULTS), {'worker_edge_policy': [{'name': 'HideFirstRunExperience', 'value': 1}, {'name': 'BrowserSignin', 'value': 0}, {'name': rb.POLICY, 'value': 1}]})
+    def test_restore_sets_the_history_policy_to_the_browsers_default_in_the_same_list(self):
+        self.assertEqual(po.override(self.DEFAULTS, history=0)['worker_edge_policy'][-1], {'name': rb.POLICY, 'value': 0}); self.assertEqual(len(po.override(self.DEFAULTS, history=0)['worker_edge_policy']), 3)
     def test_it_does_not_leak_other_variables_into_the_override(self):
         self.assertEqual(list(po.override(self.DEFAULTS)), ['worker_edge_policy'])
     def test_it_refuses_when_the_policy_is_already_declared(self):
@@ -145,6 +149,10 @@ class Check(unittest.TestCase):
 
     def test_readback_with_fewer_than_three_passing_boxes_fails(self):
         self.assertEqual(check.check_readback(self.write_readback({'a11y-worker-2': held_box(), 'a11y-worker-3': held_box(), 'a11y-worker-4': passing_box(visited_after=True)}))[0], check.FAIL)
+    def test_readback_where_no_box_showed_the_probe_seeing_history_fails(self):
+        boxes = self.three()
+        for b in boxes.values(): b['before'] = rb.probe_outcome(record() | {'capturedAt': '2026-10-21T08:00:00.000Z'})
+        state, msg = check.check_readback(self.write_readback(boxes)); self.assertEqual(state, check.FAIL); self.assertIn('has not been shown to see history', msg)
     def test_readback_passes_with_three_clean_boxes(self):
         self.assertEqual(check.check_readback(self.write_readback(self.three()))[0], check.OK)
     def test_one_visited_announcement_in_the_oracle_fails_the_check(self):

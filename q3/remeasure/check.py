@@ -3,7 +3,7 @@
     python check.py [--results q3/results/remeasure] [--oracle <dir>] [--doc docs/announcement-emulator-spike.md --base <ref>] [--require-complete]
 
   readback    every box in history-readback.json carries a `passed` flag equal to its readings (policy value 1, emptied store, clean `after` probe), and the `before`
-              positive control read `visited` on each box, the readings are in the order of the steps, and at least three boxes pass
+              positive control read `visited` on at least one box, the readings are in the order of the steps, and at least three boxes pass
   oracle      the fresh oracle holds exactly the corpus addresses, each a good capture stamped by a box that held a clean read-back through the run (`after-run` too), and no announcement in any swept channel carries the `visited` token (count 0)
   figures     each misses-*.json's gate.exact/total equals the GATE line of its measure-*.txt
   addresses   nothing under the results directory or in the doc holds an IPv4 literal
@@ -28,9 +28,10 @@ def check_readback(path):
     data = rb.load(path); boxes = data['workers']; bad = []
     if not boxes: return PENDING, 'no box read back yet'
     if len(rb.passed_workers(data)) < MIN_BOXES: bad.append(f'fewer than {MIN_BOXES} boxes pass')
+    if not rb.control_workers(data): bad.append('no box has a `before` probe that read visited: the probe has not been shown to see history')
     for w, box in sorted(boxes.items()):
         if box.get('passed') != rb.box_passes(box): bad.append(f'{w}: stored `passed` disagrees with its readings')
-    return (FAIL, '; '.join(bad)) if bad else (OK, f'{len(rb.passed_workers(data))} of {len(boxes)} boxes pass: {", ".join(rb.passed_workers(data))}')
+    return (FAIL, '; '.join(bad)) if bad else (OK, f'{len(rb.passed_workers(data))} of {len(boxes)} boxes pass: {", ".join(rb.passed_workers(data))}; the probe saw history on {", ".join(rb.control_workers(data))}')
 
 
 def check_oracle(directory, readback_path, corpus_path):

@@ -8,7 +8,7 @@
 `probe` reads a fleet_capture.mjs record of q3/remeasure/visited-probe.html and stores what it says about `visited`; the stage is `before` (the positive control:
 it must read visited), `after` (the box passes only if nothing reads visited) or `after-run` (read again once the corpus is captured). `policy` stores the value the
 Ansible policy task asserted. `emptied` stores that the history store was emptied; `restored` that the policy value was removed again, after which the box can no longer be captured from.
-The values `policy`, `emptied` and `restored` store are what the operator read from the Ansible output; they are not parsed from it. `before` is taken twice (the first capture puts the probe page in the box's history, the second reads it) and the second is recorded. Workers are named (`a11y-worker-2`), never addressed."""
+The values `policy`, `emptied` and `restored` store are what the operator read from the Ansible output; they are not parsed from it. `before` is taken after a first capture has visited the probe page (the first capture puts the page in the box's history, a later one reads it); it is recorded as read, whatever it read. Workers are named (`a11y-worker-2`), never addressed."""
 import sys, os, json, datetime
 
 POLICY = 'SavingBrowserHistoryDisabled'
@@ -56,16 +56,21 @@ def at(stamp): return datetime.datetime.fromisoformat(stamp.replace('Z', '+00:00
 
 def in_order(box):
     """The readings were taken in the order the steps run: the probe that shows `visited` first, then the policy and the emptying, then the probe that must not."""
-    times = [at((box.get('before') or {}).get('capturedAt')), at((box.get('policy') or {}).get('readAt')), at((box.get('emptied') or {}).get('at')), at((box.get('after') or {}).get('capturedAt'))]
+    before = [at((box.get('before') or {}).get('capturedAt'))] if box.get('before') else []
+    times = before + [at((box.get('policy') or {}).get('readAt')), at((box.get('emptied') or {}).get('at')), at((box.get('after') or {}).get('capturedAt'))]
     return None not in times and times == sorted(times)
 
 
 def box_passes(box):
-    """May this box be captured from: the `before` probe saw history (the box's own positive control, which also leaves the probe page in its store for the emptying to remove),
-    the policy value read back is 1, the store was emptied, and the `after` probe read both links without `visited`, all in that order, and the box has not been restored."""
+    """May this box be captured from: the policy value read back is 1, the store was emptied, and the `after` probe read both links without `visited`, in that order
+    (after the `before` probe, when one was taken), and the box has not been restored. Whether the `before` probe saw history is the positive control of the METHOD, which
+    one box must show (`has_control`); it is not asked of every box, because Edge writes its history in batches and a box's second capture can come before the first is on disk."""
     pol = box.get('policy') or {}
-    return (stage_passes('before', box.get('before')) and pol.get('name') == POLICY and pol.get('value') == 1 and bool(box.get('emptied')) and stage_passes('after', box.get('after'))
+    return (pol.get('name') == POLICY and pol.get('value') == 1 and bool(box.get('emptied')) and stage_passes('after', box.get('after'))
             and in_order(box) and not box.get('restored'))
+
+
+def has_control(box): return stage_passes('before', box.get('before'))
 
 
 def box_held(box):
@@ -83,6 +88,7 @@ def save(path, data):
 
 
 def passed_workers(data): return sorted(w for w, box in data.get('workers', {}).items() if box_passes(box))
+def control_workers(data): return sorted(w for w, box in data.get('workers', {}).items() if has_control(box))
 def held_workers(data): return sorted(w for w, box in data.get('workers', {}).items() if box_held(box))
 
 
