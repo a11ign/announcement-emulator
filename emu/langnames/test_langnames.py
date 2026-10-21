@@ -7,7 +7,7 @@ import contextlib, copy, ctypes, io, json, os, pathlib, re, subprocess, sys, tem
 HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 sys.path[:0] = [str(HERE), str(ROOT / 'emu'), str(ROOT / 'q2')]
-import check, collect_codes, gen_language_names as gen, kernel32_standin as k32
+import check, check_archives, collect_codes, gen_language_names as gen, kernel32_standin as k32
 from paths import DOWNLOADS
 
 VENV_PYTHON = DOWNLOADS / 'q2' / 'venv' / 'bin' / 'python'
@@ -295,6 +295,17 @@ class Check(unittest.TestCase):
             self.record(d, 'a.run1.json', languageCodes=['zz'], unknownLanguageCodes=['zz'])
             self.assertEqual(check.main([d]), 1)
             self.assertEqual(check.main([]), 0)
+
+
+class Archives(unittest.TestCase):
+    def test_an_archive_that_is_not_the_recorded_bytes_or_is_missing_is_named(self):
+        with tempfile.TemporaryDirectory() as d:
+            (pathlib.Path(d) / 'a.flows').write_bytes(b'one'); (pathlib.Path(d) / 'b.flows').write_bytes(b'two')
+            manifest = pathlib.Path(d) / 'm.json'
+            sha = lambda b: __import__('hashlib').sha256(b).hexdigest()
+            manifest.write_text(json.dumps({'pages': [{'slug': 'a', 'archive': 'a.flows', 'sha256': sha(b'one')}, {'slug': 'b', 'archive': 'b.flows', 'sha256': sha(b'other')},
+                                                      {'slug': 'c', 'archive': 'c.flows', 'sha256': sha(b'')}]}))
+            self.assertEqual(check_archives.mismatches(d, manifest), ([('b', 'sha256 differs from the manifest'), ('c', 'missing')], 3))
 
 
 class CollectCodes(unittest.TestCase):
