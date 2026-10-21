@@ -1,8 +1,8 @@
 {
  "capturedAt": "2026-10-20T22:49:22.443Z",
- "worker": "http://192.168.1.107:8765",
+ "worker": "a11y-worker-2",
  "capture": {
-  "url": "http://192.168.1.108:8899/pua.html",
+  "url": "http://capture-host:8899/pua.html",
   "transcript": [
    "same page, link, Home",
    "main landmark, heading, level 1, PUA control",

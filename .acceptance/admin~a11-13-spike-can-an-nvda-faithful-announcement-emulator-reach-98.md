@@ -25,6 +25,11 @@ c = collections.Counter(r['class'] for r in g)
 assert len(g) == 110, len(g)
 assert 4607 - 4497 == len(g)
 assert dict(c) == {'history': 61, 'bug-fixed': 34, 'language': 6, 'unexplained': 9}, dict(c)
+# each misses file's gate count is the count in the run it came from
+for n in ('control-freeze', 'dev-freeze', 'dev-post', 'held-freeze', 'held-post'):
+    gate = json.load(open(f'q3/results/misses-{n}.json'))['gate']
+    run = open(f'q3/results/measure-{n}.txt').read()
+    assert isinstance(gate['exact'], int) and 'GATE: %d of %d ' % (gate['exact'], gate['total']) in run, n
 PY
 # the Dates table has end dates and the elapsed days
 grep -Eq '^\| Q3 finished; Gate measured +\| 2026-10-21' "$d"
@@ -32,6 +37,8 @@ grep -Eq 'Days from the first commit to the Gate' "$d"
 # Q2: the committed run is the page's figure
 grep -q '^RESULT 215 / 227' emu/results-final.txt
 grep -q '215 of 227' "$d"
+# no network address of a worker or of the capture server is published: the records name `a11y-worker-N` and `capture-host`
+! git grep -nE '192\.168\.[0-9]+\.[0-9]+' -- . ':!.acceptance' | grep -q .
 # the code imports no a11ign package, so it cannot write an evidence record (the guard the ADR asks of the layer, in its simplest form)
 ! git grep -nE '@a11ign|from a11ign|import a11ign' -- emu q1 q2 q3 ':!q3/results' | grep -q .
 ```

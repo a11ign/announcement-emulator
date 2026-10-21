@@ -360,7 +360,7 @@ not change, they differ by two), which excluded four more. **As first frozen, th
 and the figure lower, not higher (`q3/results/measure-held-freeze-as-frozen.txt`, `measure-held-post-as-frozen.txt`).
 
 **The control: static pages, no drift.** The control this row set is the synthetic dataset pages (1,715 cases, 3,430 pages, `runs/screenreader-dataset/pages`). Its fleet captures are not on disk, so a fixed
-sample was captured on the fleet for this row: every 21st page of the sorted list, **160 pages**, served from this host on the LAN and captured by the twelve boxes with the same request as the real pages
+sample was captured on the fleet for this row: every 21st page of the sorted list, **160 pages**, served from `capture-host` (the machine this work ran on) and captured by the twelve boxes with the same request as the real pages
 (`q3/control_capture.py`). The emulator, unchanged, on them (`q3/results/measure-control-freeze.txt`). Their strings were read while the emulator was developed, to see what the misses were (the image prompt, `visited`, and the order that follows a missing graphic), but **nothing in the emulator was changed because of them**:
 
 ```

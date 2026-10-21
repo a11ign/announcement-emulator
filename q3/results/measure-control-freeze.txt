@@ -1,5 +1,5 @@
 pages 160 (all)  comparable: 159   not comparable: 1
-   not comparable: http://192.168.1.108:8898/custom-control-bulk-concert-hall-016/good.html  [not comparable: document title fleet 'C: WINDOWS SYSTEM 32 cmd dot exe' / emulator 'Concert hall 016 controls']
+   not comparable: http://capture-host:8898/custom-control-bulk-concert-hall-016/good.html  [not comparable: document title fleet 'C: WINDOWS SYSTEM 32 cmd dot exe' / emulator 'Concert hall 016 controls']
 
 agreement by element kind (159 comparable pages)
      exact / total       %  positional

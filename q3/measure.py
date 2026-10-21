@@ -186,7 +186,7 @@ def signature(r):
 if a.sig:
     sigs = collections.Counter((signature(r)) for r in miss)
     print("\nwhat the misses differ in (all channels; only the dev split is ever printed without --final):")
-    for k, v in sigs.most_common(a.sig): print(f"  {v:>5}  {k}")
+    for sig, v in sigs.most_common(a.sig): print(f"  {v:>5}  {sig}")
 if a.json:
     json.dump({'split': a.split, 'pages': [{'url': p['url'], 'status': p['status']} for p in P], 'gate': {'exact': k, 'total': n},
                'top': [' + '.join(s) for s in top], 'misses': [{k_: (v if k_ != 'shape' else list(v)) for k_, v in r.items()} for r in miss if (not quiet(r['url']))]},

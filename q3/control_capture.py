@@ -1,8 +1,10 @@
-"""Capture a sample of the static synthetic pages on the fleet (the control: no page drift) - python control_capture.py <pages_dir> <host_url> <out_dir> <n> [--workers file]
+"""Capture a sample of the static synthetic pages on the fleet (the control: no page drift) - python control_capture.py <pages_dir> <host_url> <out_dir> <n> --workers <file>
+`--workers` is a file of `name=url` pairs separated by commas (`a11y-worker-2=http://host:8765,...`): the records name the worker and `capture-host`, never an address.
 The sample is every k-th file of the sorted list of good/bad pages, so it is fixed by n alone."""
 import sys, os, json, glob, subprocess, threading, queue
 pages_dir, base, out, n = sys.argv[1], sys.argv[2].rstrip('/'), sys.argv[3], int(sys.argv[4])
 workers = open(sys.argv[sys.argv.index('--workers') + 1]).read().strip().split(',')
+if not all('=http' in w for w in workers): sys.exit('--workers: each worker is name=url, e.g. a11y-worker-2=http://host:8765')
 files = sorted(glob.glob(os.path.join(pages_dir, '*', '*.html')))
 step = max(1, len(files) // n); sample = files[::step][:n]
 os.makedirs(out, exist_ok=True)

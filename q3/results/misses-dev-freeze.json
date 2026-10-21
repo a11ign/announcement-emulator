@@ -171,7 +171,7 @@
   }
  ],
  "gate": {
-  "exact": "fleet has ['link'] | emulator has -",
+  "exact": 3023,
   "total": 3073
  },
  "top": [
