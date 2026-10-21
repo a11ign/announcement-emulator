@@ -472,6 +472,52 @@ the agreement is 97.1%. It was measured against twelve boxes of one fleet on one
 **Below the gate, the spike stops here.** Nothing beyond the spike is built: no CI engine, no listen mode, no extension. The repository, its name, its licence wording ("only" or "or later") and the
 absorption of `nvda-speech` (ADR 0047, Decision 3) are the chairman's and are untouched.
 
+## Re-measure
+
+**Re-measured on 2026-10-21, with the fleet's browsers keeping no history: the held-out figure at the freeze is 4,426 of 4,480 = 98.79%, at or above 98%, and `history` is 0 of its 54 misses (it was 61 of 110). On the reading used above (at least 98% and no unexplained miss) the Gate is still not passed: 13 of the 54 misses are unexplained.** Nothing above this section is changed, and no emulator fix was made.
+
+**The set-up.** The twelve boxes that agree on every version `fleet:status` prints (Edge 155.0.4283.62, Windows build 26300.9711): `a11y-worker-2`, `-3`, `-4`, `-7`, `-8`, `-9`, `-10`, `-12`, `-13`, `-14`, `-15`, `-16`; the page server is `capture-host`. (`a11y-worker-5`, `-6` and `-11` read other Edge or Windows builds and were not used.)
+Each box, one at a time and the first alone, was given Edge's `SavingBrowserHistoryDisabled=1` through the fleet's own play, `provision-role.yml --tags policy`, with an extra-vars file that restates the declared `worker_edge_policy` and adds the one value
+(`q3/remeasure/policy_override.py`; control is unchanged). The play's own task `Refuse to call this provisioned if a policy value did not land` was `ok` and its recap `failed=0` on every box; `win_reg_stat` then read the value `1`; the box's `History` and `History-journal` were removed by `win_file` as the worker's own account
+(Edge was stopped first: the worker keeps it alive between captures, which the plan had not expected). The same play also converged the values the role already declares (the screensaver, OneDrive's run entries; `Evict OneDrive itself` reports `changed` on every run). The profile directory was kept: a new one brings back the first-run surface.
+**The read-back is a capture:** `q3/remeasure/visited-probe.html`, a page of ours with a link to itself and a link to a page nobody opens, captured by each box before (the first capture visits the page, a later one reads it) and after the policy (a visit, then a read), and again after the corpus.
+Before the policy the probe read the self link as `visited` on ten of the twelve boxes (not on `a11y-worker-10` or `-14`, in three reads: Edge writes its history in batches), so it can see history; after it, on **all twelve** boxes, at the end of the run too, it read neither link as `visited`.
+Every reading is in `q3/results/remeasure/history-readback.json`, and every record of the new oracle carries a `history` block (the policy value, when it was read back, that the store was emptied, the probe) in `q3/results/remeasure/oracle-summary.json`.
+
+**The capture.** The same 102 addresses (`q3/results/corpus.json`), the same request as before, by `q3/corpus_capture.py`: **102 captured, 0 failed, 11:03Z to 11:57Z.** The first attempt (11:03Z to 11:13Z) kept 3 records and lost the rest to the capture client, whose `fetch` gives up on a worker's answer after 300 s;
+`fleet_capture.mjs` now waits with `node:http`, and the other 99 were captured from 11:14Z (`capture-run.json`, `capture-run-attempt1.json`). Every record names its worker and `capture-host`.
+Two things the plan did not foresee. The worker **keeps Edge alive across captures** (`browserReused` in every record) rather than launching it once per page. And **7 `visited` announcements remain, on 4 pages** (`design-patterns.service.justice.gov.uk/components/filter/`, `european-union.europa.eu/index_en`,
+`reports.ofsted.gov.uk/search?q=school`, `www.ons.gov.uk/economy/inflationandpriceindices`); each is a link to the page's own address (`Clear filters, visited, link`; `Open, visited, same page, link`). The plan said a non-zero count stops the run. They are not history carried between captures: the emulator's Chrome, fresh, with no history model
+and nothing visited before, announces **the same seven strings** (`q3/remeasure/explain_visited.py`, `visited-explained.json`), so the browser marks the page it is on. The check was made to say so rather than to count to zero, and it refuses any `visited` the emulator does not make.
+
+**The figures** (`q3/results/remeasure/`, the split rule unchanged, `measure.py` at head with the corrected comparability rules, the emulator run without `--history`, two runs a page; the freezes were named in `freeze.json` and committed before any fresh record was read):
+
+| | exact / total | | pages compared | not comparable |
+|---|---|---|---|---|
+| **Gate figure: held out, the emulator frozen at `5fbd726`** | **4,426 of 4,480 = 98.79%** | at or above 98% | 44 of 60 | 12, and 3 unstable, 1 timed out |
+| the same, with the not-comparable pages kept in | 4,924 of 5,057 = 97.37% | | | |
+| the emulator at head (`43b7fc1`, after the held-out reading fixed two faults; **not held out**) | 4,389 of 4,407 = 99.59% | at or above | 44 of 60 | 10, and 5 unstable, 1 timed out |
+| for comparison, the spike's reading at the freeze (before) | 4,497 of 4,607 = 97.61% | below | 47 of 60 | 9, and 3 unstable, 1 timed out |
+
+The shape that history had broken is now clean: `NAME + STATE + ROLE` is **185 of 185** (it was 189 of 248, 76.2%). The page population differs from the spike's (44 pages compared, not 47: pages changed in a day), so the rise from 97.61% is the removal of `visited` and the change of pages together; the `visited` misses alone were 61.
+
+**The misses by cause**, the ten shapes at the freeze, 54 (`attribute.txt`, `misses-held-freeze-attributed.json`; the spike's classes):
+
+| cause | now | spike |
+|---|---|---|
+| emulator bug, shown by a fix that already exists (agreed at head on the same page) | 35, all lazily loaded content | 34 |
+| Windows-only (language names) | 6 | 6 |
+| **history (`visited`)** | **0** | 61 |
+| unexplained | **13** | 9 |
+
+The 13 unexplained are 11 on `caselaw.nationalarchives.gov.uk/search?query=`, a live search page whose rows and page numbers moved between the fleet's capture and the emulator's run (a miss on a page that changed is unexplained under the rule above), 1 on `bathingwaters.sepa.org.uk` (the fleet's tree has a cookie-banner `region` before the logo, the emulator's does not) and 1 on `www.dropbox.com` (a graphic the fleet found and the emulator did not); the last two were not investigated. At head, 12 remain, with the 6 Windows-only ones.
+
+**Is the Gate passed?** On the number, yes: 98.79% is at or above 98% on a held-out half, and the browser's history, which made the first reading fail, accounts for none of the misses. On the reading this page has used (at least 98% and no unexplained miss), **no**: 13 misses are unexplained, 11 of them one page that changed.
+Whether a page that moved between two captures counts against the emulator is the same call the Gate section left to the chairman; this section does not make it.
+
+**The fleet was restored** through the same play on 12:04Z to 12:13Z, one box at a time: the play only sets values, so `SavingBrowserHistoryDisabled` was set to `0`, Edge's default (history is saved again), the play was `failed=0`, and `win_reg_stat` read `0` on all twelve boxes. The value stays in the registry, as 0, on those twelve boxes, which the role does not declare.
+`fleet:status` read all twelve `ready` afterwards (`fleet-readings.txt`, before and after); it lists no `provisionRevision` difference in either reading, and its split across fifteen boxes (Edge and Windows builds) is the three boxes that were not used. Whether production captures should run with history off for good (declaring the value in `worker_edge_policy` and reporting it in `/diagnostics`) is a control and worker change and the chairman's call, not made here.
+
 ## What this page does not settle, and follow-ups
 
 - **ADR 0047 quotes `51 tests, about 220 exact-speech assertions`** for Q2 and layer 1 as `getTree`; the checkout has 47 and 193 (227 as executed), and layer 1 is `getDesktop`. The ADR's "after #2568" wording

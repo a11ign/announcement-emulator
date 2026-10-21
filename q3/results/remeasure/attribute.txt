@@ -1,0 +1,16 @@
+misses on the top-10 shapes at the freeze: 54 {'unexplained': 13, 'bug-fixed': 35, 'language': 6}
+all channels: 137 {'unexplained': 28, 'bug-fixed': 93, 'language': 16}
+  left: bathingwaters.sepa.org.uk/ graphics 'This website uses cookies, region, logo, graphic' -> 'logo, graphic'
+  left: caselaw.nationalarchives.gov.uk/search?query= links 'list, with 7 items, Page 9695, link' -> 'list, with 7 items, Page 9697, link'
+  left: caselaw.nationalarchives.gov.uk/search?query= links 'row 18, Margal Estates Ltd v The Pensions Regulator, link' -> 'row 18, Paint Worx Autobodyshop Ltd v The Pensions Regulator, link'
+  left: caselaw.nationalarchives.gov.uk/search?query= links 'row 16, AA v The Secretary of State for the Home Department, link' -> 'row 16, The Republic of Mozambique v Privinvest Shipbuilding SAL (Holding) and O'
+  left: caselaw.nationalarchives.gov.uk/search?query= links 'row 14, Scottish Power (SCPL) Limited and others v Commissioners for His Majesty' -> 'row 14, The Ministry of Defence v Debbie O’Connell, link'
+  left: caselaw.nationalarchives.gov.uk/search?query= links 'row 12, West Devon Borough Council v Irene Connors and Ors, link' -> 'row 12, Faria Ahmed v The Registrar of Approved Driving Instructors, link'
+  left: caselaw.nationalarchives.gov.uk/search?query= links 'row 10, Paint Worx Autobodyshop Ltd v The Pensions Regulator, link' -> 'row 10, MT v The Secretary of State for the Home Department, link'
+  left: caselaw.nationalarchives.gov.uk/search?query= links 'row 8, The Republic of Mozambique v Privinvest Shipbuilding SAL (Holding) and Or' -> 'row 8, Wayne Pollock, Insurance and Travel Services (NI) Ltd v The Pensions Regu'
+  left: caselaw.nationalarchives.gov.uk/search?query= links 'row 6, MT v The Secretary of State for the Home Department, link' -> 'row 6, William Thomas Stockler v Joel Matthew Adams and Anor, link'
+  left: caselaw.nationalarchives.gov.uk/search?query= links 'row 2, Fargro Ltd v David Hide, link' -> 'row 2, Thair Maouas v The Registrar of Approved Driving Instructors, link'
+  left: caselaw.nationalarchives.gov.uk/search?query= links 'row 20, TA v The Secretary of State for the Home Department, link' -> 'row 20, West Devon Borough Council v Irene Connors and Ors, link'
+  left: caselaw.nationalarchives.gov.uk/search?query= links 'Page 9695, link' -> 'Page 9697, link'
+  left: www.dropbox.com/ graphics 'Race car, graphic' -> ''
+fixes: {'lazily loaded content': 91, 'toggle button state': 2}
