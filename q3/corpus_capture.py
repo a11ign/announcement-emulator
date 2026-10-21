@@ -59,14 +59,24 @@ def captured_ok(rec): return rec.get('status') == 200 and not (rec.get('capture'
 def capture_one(entry, name, url, box, dest, capture_script):
     """One page on one worker: True when a stamped record is at `dest`, else False with a reason."""
     tmp = dest + '.part'
+    if os.path.exists(tmp): os.remove(tmp)
     try:
         done = subprocess.run(['node', capture_script, f'{name}={url}', entry['url'], tmp], capture_output=True, text=True, timeout=700)
         if os.path.exists(tmp) and captured_ok(rb.read_json(tmp)):
             stamp(tmp, entry, box); os.replace(tmp, dest)
             return True, 'ok'
         return False, 'failed ' + (done.stderr.strip()[-100:] or done.stdout.strip()[:80])
+    except Exception as e:      # a timeout, an unreadable record, no node: this page fails and the worker goes on, rather than the thread dying with the page taken off the queue
+        return False, f'failed {type(e).__name__}: {e}'
     finally:
         if os.path.exists(tmp): os.remove(tmp)
+
+
+def already_captured(dest, readback):
+    """A record on disk is kept only if it is stamped and its worker still has a passing read-back; any other (an earlier, unclean run in the same directory) is captured again."""
+    if not os.path.exists(dest): return False
+    rec = rb.read_json(dest)
+    return bool(rec.get('history')) and rec.get('worker') in rb.passed_workers(readback)
 
 
 def run(entries, workers, readback, out, capture_script, attempts=2, log=print):
@@ -80,7 +90,7 @@ def run(entries, workers, readback, out, capture_script, attempts=2, log=print):
             try: entry, attempt = todo.get_nowait()
             except queue.Empty: return
             dest = os.path.join(out, slug_of(entry['url']) + '.json')
-            ok, why = (True, 'already captured') if os.path.exists(dest) else capture_one(entry, name, url, readback['workers'][name], dest, capture_script)
+            ok, why = (True, 'already captured') if already_captured(dest, readback) else capture_one(entry, name, url, readback['workers'][name], dest, capture_script)
             with lock:
                 if ok: done.append(entry['url'])
                 elif attempt < attempts: todo.put((entry, attempt + 1))
@@ -102,7 +112,7 @@ def main(argv):
     summary = run(entries_of(rb.read_json(a.corpus)), workers, readback, a.out, a.capture_script, a.attempts)
     if a.summary: rb.write_json(a.summary, summary)
     print(summary)
-    sys.exit(1 if summary['failed'] else 0)
+    sys.exit(0 if summary['captured'] == summary['pages'] and not summary['failed'] else 1)
 
 
 if __name__ == '__main__': main(sys.argv[1:])

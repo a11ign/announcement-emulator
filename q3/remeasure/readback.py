@@ -3,15 +3,18 @@
     python readback.py probe  <readback.json> <worker> <stage> <capture-record.json>
     python readback.py policy <readback.json> <worker> <value> <evidence>
     python readback.py emptied <readback.json> <worker> <what was emptied>
+    python readback.py restored <readback.json> <worker> <what the read-back showed>
 
 `probe` reads a fleet_capture.mjs record of q3/remeasure/visited-probe.html and stores what it says about `visited`; the stage is `before` (the positive control:
 it must read visited), `after` (the box passes only if nothing reads visited) or `after-run` (read again once the corpus is captured). `policy` stores the value the
-Ansible policy task asserted. `emptied` stores that the history store was emptied. Workers are named (`a11y-worker-2`), never addressed."""
+Ansible policy task asserted. `emptied` stores that the history store was emptied; `restored` that the policy value was removed again, after which the box can no longer be captured from.
+The values `policy`, `emptied` and `restored` store are what the operator read from the Ansible output; they are not parsed from it. `before` is taken twice (the first capture puts the probe page in the box's history, the second reads it) and the second is recorded. Workers are named (`a11y-worker-2`), never addressed."""
 import sys, os, json, datetime
 
 POLICY = 'SavingBrowserHistoryDisabled'
 STAGES = ('before', 'after', 'after-run')
-PROBE_LINKS = 2     # visited-probe.html holds two links; a record that announces fewer did not read the page
+PROBE_PAGE = 'visited-probe.html'
+PROBE_LINKS = 2     # the probe page holds two links; a record that announces fewer did not read the page
 
 
 def now(): return datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
@@ -28,13 +31,18 @@ def write_json(path, data):
 def tokens(announcement): return [t.strip().lower() for t in str(announcement).split(',')]
 
 
+def announced_visited(capture):
+    """Whether any announcement of a capture, swept or spoken, carries the `visited` token."""
+    swept = [a for channel in (capture.get('structure') or {}).values() for a in channel or []]
+    return any('visited' in tokens(a) for a in swept + [str(x) for x in capture.get('transcript') or []])
+
+
 def probe_outcome(record):
-    """What a probe capture says: how many link announcements it holds, and whether any of the page's announcements, swept or spoken, carries the word `visited`."""
+    """What a capture of the probe page says: whether it read the probe page (its address, both links), and whether it announced `visited`."""
     cap = record.get('capture') or {}
     links = list((cap.get('structure') or {}).get('links') or [])
-    spoken = [str(x) for x in cap.get('transcript') or []]
-    ok = record.get('status') == 200 and not cap.get('error') and len(links) >= PROBE_LINKS
-    return {'capturedAt': record.get('capturedAt'), 'links': len(links), 'read': ok, 'visited': any('visited' in tokens(x) for x in links + spoken)}
+    ok = record.get('status') == 200 and not cap.get('error') and str(cap.get('url', '')).endswith(PROBE_PAGE) and len(links) >= PROBE_LINKS
+    return {'capturedAt': record.get('capturedAt'), 'links': len(links), 'read': ok, 'visited': announced_visited(cap)}
 
 
 def stage_passes(stage, outcome):
@@ -43,12 +51,26 @@ def stage_passes(stage, outcome):
     return outcome['visited'] if stage == 'before' else not outcome['visited']
 
 
+def at(stamp): return datetime.datetime.fromisoformat(stamp.replace('Z', '+00:00')) if stamp else None
+
+
+def in_order(box):
+    """The readings were taken in the order the steps run: the probe that shows `visited` first, then the policy and the emptying, then the probe that must not."""
+    times = [at((box.get('before') or {}).get('capturedAt')), at((box.get('policy') or {}).get('readAt')), at((box.get('emptied') or {}).get('at')), at((box.get('after') or {}).get('capturedAt'))]
+    return None not in times and times == sorted(times)
+
+
 def box_passes(box):
-    """A box passes when the policy value read back is 1, its store was emptied, and its `after` probe read the page without visited. `after-run`, when taken, must agree."""
+    """May this box be captured from: the `before` probe saw history (the box's own positive control, which also leaves the probe page in its store for the emptying to remove),
+    the policy value read back is 1, the store was emptied, and the `after` probe read both links without `visited`, all in that order, and the box has not been restored."""
     pol = box.get('policy') or {}
-    after_run = box.get('after-run')
-    return (pol.get('name') == POLICY and pol.get('value') == 1 and bool(box.get('emptied')) and stage_passes('after', box.get('after'))
-            and (after_run is None or stage_passes('after-run', after_run)))
+    return (stage_passes('before', box.get('before')) and pol.get('name') == POLICY and pol.get('value') == 1 and bool(box.get('emptied')) and stage_passes('after', box.get('after'))
+            and in_order(box) and not box.get('restored'))
+
+
+def box_held(box):
+    """Did the box stay clean for the whole run: it passed, and the probe read again once the corpus was captured (`after-run`) still shows no history. Restoring the fleet afterwards does not undo it."""
+    return box_passes({**box, 'restored': None}) and stage_passes('after-run', box.get('after-run'))
 
 
 def load(path):
@@ -61,6 +83,7 @@ def save(path, data):
 
 
 def passed_workers(data): return sorted(w for w, box in data.get('workers', {}).items() if box_passes(box))
+def held_workers(data): return sorted(w for w, box in data.get('workers', {}).items() if box_held(box))
 
 
 def record_probe(box, worker, stage, record_path):
@@ -77,11 +100,14 @@ def record_policy(box, value, evidence): box['policy'] = {'name': POLICY, 'value
 def record_emptied(box, what): box['emptied'] = {'at': now(), 'what': what}
 
 
+def record_restored(box, evidence): box['restored'] = {'at': now(), 'evidence': evidence}
+
+
 def main(argv):
-    if len(argv) < 4 or argv[0] not in ('probe', 'policy', 'emptied'): sys.exit(__doc__)
+    if len(argv) < 4 or argv[0] not in ('probe', 'policy', 'emptied', 'restored'): sys.exit(__doc__)
     verb, path, worker, *rest = argv
     data = load(path); box = data['workers'].setdefault(worker, {})
-    {'probe': record_probe, 'policy': record_policy, 'emptied': record_emptied}[verb](*(([box, worker] if verb == 'probe' else [box]) + rest))
+    {'probe': record_probe, 'policy': record_policy, 'emptied': record_emptied, 'restored': record_restored}[verb](*(([box, worker] if verb == 'probe' else [box]) + rest))
     save(path, data)
     print(worker, 'passes' if data['workers'][worker]['passed'] else 'does not pass yet')
 

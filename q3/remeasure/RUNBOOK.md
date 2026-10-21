@@ -23,7 +23,7 @@ worker_url() { ansible-inventory --host "$1" | python3 -c 'import json,sys; prin
 Serve the probe page from `capture-host` and take the fleet's state:
 
 ```sh
-python3 -m http.server 8000 --directory $EMU/q3/remeasure &        # on capture-host; the page is http://capture-host:8000/visited-probe.html
+python3 -m http.server 8000 --directory $EMU/q3/remeasure &        # on capture-host (a shell there; the commands below are run from the control plane); the page is http://capture-host:8000/visited-probe.html
 ( cd $CONTROL && npm run fleet:status ) | tee /tmp/remeasure/status-before.txt
 ```
 
@@ -33,47 +33,52 @@ python3 -m http.server 8000 --directory $EMU/q3/remeasure &        # on capture-
 BOXES="a11y-worker-2 a11y-worker-3 a11y-worker-4 a11y-worker-7 a11y-worker-8"      # example: edit to the group fleet:status shows
 ```
 
-## 1. The probe, before, on the first box (the positive control)
+## 1. One box at a time: probe, policy, empty, probe
+
+For each box `B` in `BOXES`, `$FIRST` first. Nothing is run on a box that is not idle.
 
 ```sh
-node $EMU/q3/fleet_capture.mjs $FIRST=$(worker_url $FIRST) http://<capture-host address>:8000/visited-probe.html /tmp/remeasure/$FIRST.before.json
-python3 $EMU/q3/remeasure/readback.py probe $R/history-readback.json $FIRST before /tmp/remeasure/$FIRST.before.json
+set -o pipefail
+CAPTURE_HOST=<capture-host's address>                              # typed here, never written to a result: fleet_capture.mjs records it as capture-host
+PROBE=http://$CAPTURE_HOST:8000/visited-probe.html
+python3 $EMU/q3/remeasure/policy_override.py $CONTROL/ansible/roles/worker/defaults/main.yml > /tmp/remeasure/override.yml      # once; read it: the declared list plus SavingBrowserHistoryDisabled=1
+
+cd $CONTROL
+# idle: both must hold, because --tags skips the play's own busy check
+curl -s "http://$(ansible-inventory --host $B | python3 -c 'import json,sys; print(json.load(sys.stdin)["ansible_host"])'):8765/health" | python3 -c 'import json,sys; assert json.load(sys.stdin)["busy"] is False'
+ansible $B -m ansible.windows.win_shell -a '(Get-Process msedge -ErrorAction SilentlyContinue | Measure-Object).Count'          # must print 0
+cd $EMU
+
+# BEFORE: the probe is captured twice. The first capture visits the page, which a browser that keeps history records; the second reads it back. The second is the positive control.
+node q3/fleet_capture.mjs $B=$(worker_url $B) $PROBE /tmp/remeasure/$B.before0.json
+node q3/fleet_capture.mjs $B=$(worker_url $B) $PROBE /tmp/remeasure/$B.before.json
+python3 q3/remeasure/readback.py probe $R/history-readback.json $B before /tmp/remeasure/$B.before.json
 ```
 
-**Pass:** the command prints `before ... visited: True ... as expected`. This proves the probe can see history. If it prints `NOT AS REQUIRED`, stop: `visited-probe.html`'s second link needs an address this box has visited
-(any address of `q3/results/corpus.json` that the spike's misses name as `visited`). Change that link and capture again; do not go on with a probe that cannot see history.
-
-## 2. Policy and emptying, one box at a time
-
-For each box `B` in `BOXES`, `$FIRST` first (check the box is idle, run the policy play, read the value back, empty the store, probe):
+**Pass:** `before ... visited: True ... as expected`. This proves the probe sees history on this box, and it leaves the probe page in the box's store for step "empty" to remove. If it prints `NOT AS REQUIRED`, the box is not on the run
+(its browser already keeps no history, or the probe could not read it); name it in the write-up and go on with the others. The probe's two links are on `capture-host`: Chromium keys `visited` by the top-level site, so a link to another site could not read as visited from this page.
 
 ```sh
-python3 $EMU/q3/remeasure/policy_override.py $CONTROL/ansible/roles/worker/defaults/main.yml > /tmp/remeasure/override.yml      # once; read it: it must be the declared list plus SavingBrowserHistoryDisabled=1
 cd $CONTROL
-
-# idle: both must hold, because --tags skips the play's own busy check
-curl -s http://$(ansible-inventory --host $B | python3 -c 'import json,sys; print(json.load(sys.stdin)["ansible_host"])'):8765/health | python3 -c 'import json,sys; assert json.load(sys.stdin)["busy"] is False'
-ansible $B -m ansible.windows.win_shell -a '(Get-Process msedge -ErrorAction SilentlyContinue | Measure-Object).Count'          # must print 0
-
-# the policy, through the fleet's own play (look first on the first box only)
-ansible-playbook ansible/provision-role.yml --tags policy -l $B -e @/tmp/remeasure/override.yml --check --diff                   # first box only: the diff is one value, SavingBrowserHistoryDisabled
+# the policy, through the fleet's own play. (No --check: the play's last task asserts the value landed, so a dry run fails by design, and win_powershell shows no diff.)
 ansible-playbook ansible/provision-role.yml --tags policy -l $B -e @/tmp/remeasure/override.yml | tee /tmp/remeasure/$B.policy.txt
-ansible $B -b -m ansible.windows.win_reg_stat -a 'path=HKLM:\SOFTWARE\Policies\Microsoft\Edge name=SavingBrowserHistoryDisabled'  # "value": 1
+ansible $B -b -m ansible.windows.win_reg_stat -a 'path=HKLM:\SOFTWARE\Policies\Microsoft\Edge name=SavingBrowserHistoryDisabled'      # "value": 1
 
-# empty the history the box already has: as the worker's own account, no -b
+# empty the history the box already has: as the worker's own account, no -b. JSON arguments, because a backslash-a in key=value form is read as a bell character.
 for f in History History-journal 'Visited Links'; do
-  ansible $B -m ansible.windows.win_file -a "path='%LOCALAPPDATA%\\a11y-witness\\edge-profile\\Default\\$f' state=absent"
+  ansible $B -m ansible.windows.win_file -a "{\"path\": \"%LOCALAPPDATA%\\\\a11y-witness\\\\edge-profile\\\\Default\\\\$f\", \"state\": \"absent\"}"
 done
-
 cd $EMU
+
 python3 q3/remeasure/readback.py policy $R/history-readback.json $B 1 "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1"
-python3 q3/remeasure/readback.py emptied $R/history-readback.json $B "Default/History, History-journal, Visited Links"
-node q3/fleet_capture.mjs $B=$(worker_url $B) http://<capture-host address>:8000/visited-probe.html /tmp/remeasure/$B.after.json
+python3 q3/remeasure/readback.py emptied $R/history-readback.json $B "Default/History, History-journal, Visited Links: win_file changed=true"
+node q3/fleet_capture.mjs $B=$(worker_url $B) $PROBE /tmp/remeasure/$B.after.json
 python3 q3/remeasure/readback.py probe $R/history-readback.json $B after /tmp/remeasure/$B.after.json
 ```
 
-**Pass, per box:** the policy task `Refuse to call this provisioned if a policy value did not land` is `ok` and says `all N policy values verified`; `win_reg_stat` shows `"value": 1`; the `after` probe prints `visited: False ... as expected`
-and `readback.py` ends with `<box> passes`. **A box that does not pass stays off the run**; name it in the write-up and go on with the others.
+**Pass, per box:** the policy task `Refuse to call this provisioned if a policy value did not land` is `ok` and says `all N policy values verified`; `win_reg_stat` shows `"value": 1`; `win_file` reports `changed` for `History` (a box that has run captures has one); the `after` probe prints `visited: False ... as expected`
+and `readback.py` ends with `<box> passes` (`before`, policy, emptying and `after`, in that order). The box is counted as having held only once its `after-run` probe is recorded (step 3). The values `policy` and `emptied` are typed from the Ansible output above; the machine does not parse them.
+**A box that does not pass stays off the run**; name it in the write-up and go on with the others.
 Then read `fleet:status` again: the boxes still `ready`, and `provisionRevision` unchanged (it hashes the role's files, so it does not move; that is why the capture records the setting).
 
 ## 3. Capture the same 102 addresses
@@ -83,13 +88,13 @@ WORKERS=$(for B in $BOXES; do printf '%s=%s,' $B $(worker_url $B); done | sed 's
 python3 q3/corpus_capture.py q3/results/corpus.json /tmp/remeasure/oracle --workers "$WORKERS" --readback $R/history-readback.json --summary $R/capture-run.json
 ```
 
-**Pass:** exit 0, `capture-run.json` shows `captured: 102, failed: []`, and the box names are the passing ones (a worker without a passing read-back is refused by name). Then, per box, capture the probe again as in step 2 into `/tmp/remeasure/$B.after-run.json` and record it with `readback.py probe $R/history-readback.json $B after-run ...`,
+**Pass:** exit 0 (every page captured, none failed), `capture-run.json` shows `captured: 102, failed: []`, and the box names are the passing ones (a worker without a passing read-back is refused by name). Then, per box, capture the probe once more into `/tmp/remeasure/$B.after-run.json` and record it with `readback.py probe $R/history-readback.json $B after-run ...` (a box without it is not counted as having held, and `check.py` refuses its records),
 and read `fleet:status` and `/health` again (the spike kept both readings in `fleet-readings.txt`; keep these in `$R/fleet-readings.txt`).
 
 ## 4. The visited count: the run stops here if it is not 0
 
 ```sh
-python3 q3/remeasure/check.py --oracle /tmp/remeasure/oracle
+python3 q3/remeasure/check.py --oracle /tmp/remeasure/oracle      # --corpus q3/results/corpus.json is the default: the oracle must hold exactly those addresses
 ```
 
 **Pass:** `ok  oracle: 102 records, all stamped, visited count 0` and no `FAIL` line. A non-zero count means the history was not clean: record why in the write-up and measure nothing.
@@ -120,6 +125,7 @@ cd $CONTROL
 for B in $BOXES; do
   ansible $B -b -m ansible.windows.win_regedit -a 'path=HKLM:\SOFTWARE\Policies\Microsoft\Edge name=SavingBrowserHistoryDisabled state=absent'
   ansible $B -b -m ansible.windows.win_reg_stat -a 'path=HKLM:\SOFTWARE\Policies\Microsoft\Edge name=SavingBrowserHistoryDisabled'      # "exists": false
+  ( cd $EMU && python3 q3/remeasure/readback.py restored $R/history-readback.json $B "win_regedit state=absent; win_reg_stat exists false" )
 done
 npm run fleet:status
 ```
@@ -133,7 +139,7 @@ Append one `## Re-measure` section to `docs/announcement-emulator-spike.md`, aft
 and that the fleet was restored. Then:
 
 ```sh
-python3 q3/remeasure/check.py --oracle /tmp/remeasure/oracle --require-complete
+python3 q3/remeasure/check.py --oracle /tmp/remeasure/oracle --require-complete      # a restored box no longer passes, but still counts as having held, so this holds after step 6
 python3 -m unittest discover -s q3/remeasure -t q3/remeasure
 ```
 
