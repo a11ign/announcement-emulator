@@ -7,7 +7,7 @@ import contextlib, copy, ctypes, io, json, os, pathlib, re, subprocess, sys, tem
 HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 sys.path[:0] = [str(HERE), str(ROOT / 'emu'), str(ROOT / 'q2')]
-import check, check_archives, collect_codes, gen_language_names as gen, kernel32_standin as k32
+import check, check_archives, collect_codes, fixed_misses, gen_language_names as gen, kernel32_standin as k32
 from paths import DOWNLOADS
 
 VENV_PYTHON = DOWNLOADS / 'q2' / 'venv' / 'bin' / 'python'
@@ -306,6 +306,24 @@ class Archives(unittest.TestCase):
             manifest.write_text(json.dumps({'pages': [{'slug': 'a', 'archive': 'a.flows', 'sha256': sha(b'one')}, {'slug': 'b', 'archive': 'b.flows', 'sha256': sha(b'other')},
                                                       {'slug': 'c', 'archive': 'c.flows', 'sha256': sha(b'')}]}))
             self.assertEqual(check_archives.mismatches(d, manifest), ([('b', 'sha256 differs from the manifest'), ('c', 'missing')], 3))
+
+
+class FixedMisses(unittest.TestCase):
+    def test_a_row_is_fixed_still_a_miss_or_on_a_page_that_cannot_say(self):
+        row = lambda url, expected: {'url': url, 'channel': 'links', 'expected': expected, 'predicted': 'cy (not supported), x', 'class': 'language'}
+        earlier = {'misses': [row('a', 'Welsh (not supported), x'), row('b', 'Welsh (not supported), y'), row('c', 'Welsh (not supported), z'), {**row('a', 'other'), 'class': 'unexplained'}]}
+        later = {'pages': [{'url': 'a', 'status': 'comparable'}, {'url': 'b', 'status': 'comparable'}, {'url': 'c', 'status': 'not comparable'}],
+                 'misses': [{'url': 'b', 'channel': 'links', 'expected': 'Welsh (not supported), y', 'predicted': 'cy (not supported), y'}]}
+        with tempfile.TemporaryDirectory() as d:
+            paths = [pathlib.Path(d) / 'e.json', pathlib.Path(d) / 'l.json', pathlib.Path(d) / 'out.json']
+            paths[0].write_text(json.dumps(earlier)); paths[1].write_text(json.dumps(later))
+            with contextlib.redirect_stdout(io.StringIO()): code = fixed_misses.main([str(p) for p in paths])
+            out = json.loads(paths[2].read_text())
+        self.assertEqual([r['status'] for r in out], ['fixed', 'still a miss', 'page not comparable']); self.assertEqual(out[1]['now'], 'cy (not supported), y'); self.assertEqual(code, 1)
+
+    def test_the_committed_re_score_fixes_every_language_row_of_the_replay_reading_before_it(self):
+        rows = json.loads((ROOT / 'q3' / 'results' / 'langnames' / 'language-misses-fixed.json').read_text(encoding='utf-8'))
+        self.assertEqual((len(rows), {r['status'] for r in rows}), (17, {'fixed'}))
 
 
 class CollectCodes(unittest.TestCase):

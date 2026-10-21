@@ -1,0 +1,2 @@
+  ok  table: 135 names, every one of codes.txt among them; Windows has no name for 28 (ak, an, ay, bho, bm, ceb, doi, ee, eo, gom, hmn, ht, ilo, iw, jw, kmr, kri, lg, ln, lus, mai, mg, ny, sm, sn, su, tl, yue); generated from windows-locales.raw.json byte for byte
+  ok  records /tmp/claude-1000/-home-agent-repos--tickets-A11-164/33dde292-cc06-4356-a29a-4b7ead6d4dbd/scratchpad/emu-head-out: 200 records name 133 distinct codes, none unknown (4 of the emulator's faults not checked)
