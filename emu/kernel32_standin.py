@@ -16,15 +16,26 @@ WHICH_STRING = {LOCALE_SLANGDISPLAYNAME: 'displayName', LOCALE_SLANGUAGE: 'langu
 
 class Kernel32:
     def __init__(self, table_path):
-        table = json.loads(pathlib.Path(table_path).read_text(encoding='utf-8'))
-        self.synthesizer_languages = {lang.replace('-', '_') for lang in table['synthesizerLanguages']}      # as NVDA's OneCore driver lists them (`en_GB`)
-        self._by_name = {name.lower(): entry for name, entry in table['names'].items()}      # Windows locale names are not case-sensitive
-        self._by_lcid = {entry['lcid']: entry for entry in table['names'].values() if entry['known']}
+        self._table_path = table_path
+        self._loaded = None
         self._asked = {}            # every locale name NVDA asked about, as asked -> whether the table has it
         self._unknown_lcids = set()
 
+    @property
+    def _table(self):
+        """The table, read on first use: Q2's processes import boot too and never ask about a language."""
+        if self._loaded is None:
+            table = json.loads(pathlib.Path(self._table_path).read_text(encoding='utf-8'))
+            self._loaded = {'synthesizer_languages': {lang.replace('-', '_') for lang in table['synthesizerLanguages']},      # as NVDA's OneCore driver lists them (`en_GB`)
+                            'by_name': {name.lower(): entry for name, entry in table['names'].items()},      # Windows locale names are not case-sensitive
+                            'by_lcid': {entry['lcid']: entry for entry in table['names'].values() if entry['known']}}
+        return self._loaded
+
+    @property
+    def synthesizer_languages(self): return self._table['synthesizer_languages']
+
     def LocaleNameToLCID(self, name, flags):
-        entry = self._by_name.get(name.lower())
+        entry = self._table['by_name'].get(name.lower())
         if entry is None and name not in self._asked:
             print(f'emu: language code {name!r} is not in the table of Windows language names; answered as Windows answers an unknown name', file=sys.stderr)
         self._asked[name] = entry is not None
@@ -32,7 +43,7 @@ class Kernel32:
 
     def GetLocaleInfo(self, lcid, lctype, buf, size):
         """GetLocaleInfoW: the string's length with its NUL, the string written into `buf` (the caller reads `buf.value`); 0 when Windows had none."""
-        entry = self._by_lcid.get(lcid)
+        entry = self._table['by_lcid'].get(lcid)
         if entry is None:
             self._unknown_lcids.add(lcid)
             return 0

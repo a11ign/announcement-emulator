@@ -7,6 +7,7 @@ an example frame's focus shows), the node the emulator's tree reports as focused
 that caret, forward and backward, so a side that starts elsewhere lists the same entries in another order."""
 import sys, os, json, argparse
 os.environ.setdefault('EMU_NVDA_INI', os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'nvda-fleet.ini'))
+os.environ.setdefault('EMU_FLEET_VOICES', '1')      # as q3/emulate.py: the fleet's voices
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from livepage import LivePage
 import driver, sweep

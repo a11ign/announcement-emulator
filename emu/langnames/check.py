@@ -33,7 +33,10 @@ def check_records(directory, table):
     faulted, problems, asked = 0, [], set()
     for path in paths:
         record = json.loads(pathlib.Path(path).read_text(encoding='utf-8'))
-        if record.get('fault'): faulted += 1; continue
+        if record.get('fault'):
+            faulted += 1
+            if record.get('unknownLanguageCodes'): problems.append(f'{os.path.basename(path)}: unknown language codes {record["unknownLanguageCodes"]} (the page faulted)')
+            continue
         if 'languageCodes' not in record: problems.append(f'{os.path.basename(path)}: no languageCodes, so not made by an emulator that answers language names from the table'); continue
         if record.get('unknownLanguageCodes'): problems.append(f'{os.path.basename(path)}: unknown language codes {record["unknownLanguageCodes"]}')
         lacking = [c for c in record['languageCodes'] if c.lower() not in known]

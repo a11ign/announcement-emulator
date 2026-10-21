@@ -68,6 +68,7 @@ for _n, _v in (('IA2_TEXT_BOUNDARY_CHAR', 0), ('IA2_TEXT_BOUNDARY_WORD', 1), ('I
 import winuser_standin; sys.modules['winUser'] = winuser_standin.m
 import kernel32_standin      # the locale calls of winBindings.kernel32 that NVDA's getLanguageDescription makes, answered from the table of Windows language names (emu/langnames)
 import winBindings; sys.modules['winBindings.kernel32'] = winBindings.kernel32 = kernel32_standin.m
+stubs.LEDGER.append('winBindings.kernel32')      # still a stub for every name but those two locale calls
 import globalVars
 globalVars.appDir = str(R / 'nvda-appdir'); globalVars.appArgs.configPath = tempfile.mkdtemp(prefix='nvda-cfg-'); globalVars.appArgs.disableAddons = True
 # The system tests' own NVDA settings (tests/system/nvdaSettingsFiles/standard-dontShowWelcomeDialog.ini, chromeTests.robot:32), unmodified:

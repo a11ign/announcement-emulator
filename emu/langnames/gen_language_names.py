@@ -33,6 +33,16 @@ def entry_of(answer):
     return entry
 
 
+def check_one_answer_per_lcid(names):
+    """GetLocaleInfo is asked by LCID, so every name that shares an LCID must have been given the same strings."""
+    strings = {}
+    for code, entry in names.items():
+        if not entry['known']: continue
+        answer = {key: entry.get(key) for key in ('displayName', 'language')}
+        if strings.setdefault(entry['lcid'], answer) != answer:
+            raise ValueError(f'{code!r} shares its LCID {entry["lcid"]} with another name but Windows gave it other strings')
+
+
 def generate(directory=HERE):
     """The table, as text, for the source files in `directory`."""
     raw = json.loads((directory / RAW).read_text(encoding='utf-8'))
@@ -44,10 +54,7 @@ def generate(directory=HERE):
     if voices['winrtError'] or not voices['winrt']:
         raise ValueError(f'{RAW} has no voices to take the synthesizer\'s languages from: {voices["winrtError"]!r}')
     names = {code: entry_of(raw['names'][code]) for code in codes}
-    strings = {}
-    for code, e in names.items():      # GetLocaleInfo is asked by LCID, so one LCID must have one answer
-        if e['known'] and strings.setdefault(e['lcid'], {k: e.get(k) for k in ('displayName', 'language')}) != {k: e.get(k) for k in ('displayName', 'language')}:
-            raise ValueError(f'{code!r} shares its LCID {e["lcid"]} with another name but Windows gave it other strings')
+    check_one_answer_per_lcid(names)
     table = {
         'generatedBy': 'emu/langnames/gen_language_names.py',
         'source': {'raw': RAW, 'rawSha256': sha256(directory / RAW), 'script': SCRIPT, 'scriptSha256': sha256(directory / SCRIPT), 'codes': CODES, 'codesSha256': sha256(directory / CODES)},

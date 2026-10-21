@@ -56,7 +56,7 @@ def gate_language_rows():
 class Generation(unittest.TestCase):
     def test_the_committed_table_is_what_the_committed_source_generates_byte_for_byte(self):
         self.assertEqual((HERE / gen.TABLE).read_bytes(), gen.generate().encode('utf-8'))
-        self.assertEqual(gen.main(['--check']), 0)
+        with contextlib.redirect_stdout(io.StringIO()): self.assertEqual(gen.main(['--check']), 0)
 
     def test_generation_is_deterministic(self):
         self.assertEqual(gen.generate(), gen.generate())
@@ -150,12 +150,17 @@ class StandIn(unittest.TestCase):
         self.assertEqual(self.k.GetLocaleInfo(0x7777, k32.LOCALE_SLANGUAGE, ctypes.create_unicode_buffer(8), 8), 0)
         self.assertEqual(self.k.report()['unknownLanguageLcids'], [0x7777])
 
+    def test_the_table_is_read_when_first_asked_not_when_the_module_is_imported(self):
+        k = k32.Kernel32('/no/such/table.json')      # Q2's processes import boot and never ask about a language
+        with self.assertRaises(FileNotFoundError): k.LocaleNameToLCID('cy', 0)
+
     def test_the_synthesizer_languages_are_the_fleets_voices(self):
         self.assertEqual(self.k.synthesizer_languages, {'en_GB'})
 
     def test_the_stand_in_is_the_module_boot_installs(self):
         boot = (ROOT / 'emu' / 'boot.py').read_text(encoding='utf-8')
         self.assertIn("sys.modules['winBindings.kernel32'] = winBindings.kernel32 = kernel32_standin.m", boot)
+        self.assertIn("stubs.LEDGER.append('winBindings.kernel32')", boot)
         self.assertEqual(k32.m.LocaleNameToLCID('cy', 0), 1106)
 
 
@@ -279,6 +284,11 @@ class Check(unittest.TestCase):
             self.record(d, 'a.run1.json', fault='timeout 900s')
             status, why = check.check_records(d, TABLE)
         self.assertEqual(status, check.OK); self.assertIn('1 of the emulator', why)
+
+    def test_a_page_that_faulted_after_asking_for_an_unknown_code_still_fails(self):
+        with tempfile.TemporaryDirectory() as d:
+            self.record(d, 'a.run1.json', fault='timeout 900s', unknownLanguageCodes=['zz'])
+            self.assertEqual(check.check_records(d, TABLE)[0], check.FAIL)
 
     def test_main_exits_1_on_a_fail_and_0_on_a_pass(self):
         with tempfile.TemporaryDirectory() as d, contextlib.redirect_stdout(io.StringIO()):
