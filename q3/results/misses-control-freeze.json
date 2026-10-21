@@ -2,643 +2,643 @@
  "split": "all",
  "pages": [
   {
-   "url": "http://192.168.1.108:8898/custom-control-archive+also-generic-alt-fake-heading/bad.html",
+   "url": "capture-host/custom-control-archive+also-generic-alt-fake-heading/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/custom-control-bulk-concert-hall-016/good.html",
+   "url": "capture-host/custom-control-bulk-concert-hall-016/good.html",
    "status": "not comparable: document title fleet 'C: WINDOWS SYSTEM 32 cmd dot exe' / emulator 'Concert hall 016 controls'"
   },
   {
-   "url": "http://192.168.1.108:8898/custom-control-bulk-housing-office-032/bad.html",
+   "url": "capture-host/custom-control-bulk-housing-office-032/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/custom-control-bulk-river-walk-020/good.html",
+   "url": "capture-host/custom-control-bulk-river-walk-020/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/custom-control-calibration-aquarium-001/bad.html",
+   "url": "capture-host/custom-control-calibration-aquarium-001/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/custom-control-calibration-harbour-003/good.html",
+   "url": "capture-host/custom-control-calibration-harbour-003/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/custom-control-calibration-stadium-023/bad.html",
+   "url": "capture-host/custom-control-calibration-stadium-023/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/custom-control-garden/good.html",
+   "url": "capture-host/custom-control-garden/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/custom-control-refresh+also-filename-alt-bare-edit/bad.html",
+   "url": "capture-host/custom-control-refresh+also-filename-alt-bare-edit/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/disclosure-focus-moves-to-collapsed-sibling+also-generic-alt-position-only-table/good.html",
+   "url": "capture-host/disclosure-focus-moves-to-collapsed-sibling+also-generic-alt-position-only-table/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/disclosure-state-calibration-gallery-009/bad.html",
+   "url": "capture-host/disclosure-state-calibration-gallery-009/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/disclosure-state-calibration-railway-014/good.html",
+   "url": "capture-host/disclosure-state-calibration-railway-014/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/disclosure-state-silent-bulk-aquarium-001/bad.html",
+   "url": "capture-host/disclosure-state-silent-bulk-aquarium-001/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/disclosure-state-silent-bulk-gallery-009/good.html",
+   "url": "capture-host/disclosure-state-silent-bulk-gallery-009/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/disclosure-state-silent-bulk-playground-006/bad.html",
+   "url": "capture-host/disclosure-state-silent-bulk-playground-006/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/disclosure-state-silent-bulk-swimming-pool-029/good.html",
+   "url": "capture-host/disclosure-state-silent-bulk-swimming-pool-029/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/disclosure-state-silent-garden/bad.html",
+   "url": "capture-host/disclosure-state-silent-garden/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/disclosure-state-silent-refunds/good.html",
+   "url": "capture-host/disclosure-state-silent-refunds/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/error-remedy-missing-group+also-generic-heading-unnamed-graphic/bad.html",
+   "url": "capture-host/error-remedy-missing-group+also-generic-heading-unnamed-graphic/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/error-remedy-missing-password+also-generic-alt-fake-heading/good.html",
+   "url": "capture-host/error-remedy-missing-password+also-generic-alt-fake-heading/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/error-remedy-missing-postcode/bad.html",
+   "url": "capture-host/error-remedy-missing-postcode/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/field-followup-select-language/good.html",
+   "url": "capture-host/field-followup-select-language/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/filter-status-calibration-bookshop-025/bad.html",
+   "url": "capture-host/filter-status-calibration-bookshop-025/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/filter-status-calibration-health-centre-011/good.html",
+   "url": "capture-host/filter-status-calibration-health-centre-011/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/filter-status-calibration-station-005/bad.html",
+   "url": "capture-host/filter-status-calibration-station-005/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/filter-status-silent-bulk-art-studio-072/good.html",
+   "url": "capture-host/filter-status-silent-bulk-art-studio-072/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/filter-status-silent-bulk-coastal-path-045/bad.html",
+   "url": "capture-host/filter-status-silent-bulk-coastal-path-045/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/filter-status-silent-bulk-farmers-hall-073/good.html",
+   "url": "capture-host/filter-status-silent-bulk-farmers-hall-073/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/filter-status-silent-bulk-harbour-office-075/bad.html",
+   "url": "capture-host/filter-status-silent-bulk-harbour-office-075/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/filter-status-silent-bulk-marina-022/good.html",
+   "url": "capture-host/filter-status-silent-bulk-marina-022/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/filter-status-silent-bulk-public-square-059/bad.html",
+   "url": "capture-host/filter-status-silent-bulk-public-square-059/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/filter-status-silent-bulk-sports-field-047/good.html",
+   "url": "capture-host/filter-status-silent-bulk-sports-field-047/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/filter-status-silent-bulk-waterworks-046/bad.html",
+   "url": "capture-host/filter-status-silent-bulk-waterworks-046/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/filter-status-silent-colours+with-component-index/good.html",
+   "url": "capture-host/filter-status-silent-colours+with-component-index/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/filter-status-silent-garden/bad.html",
+   "url": "capture-host/filter-status-silent-garden/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/filter-status-silent-prices+with-component-index/good.html",
+   "url": "capture-host/filter-status-silent-prices+with-component-index/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/focus-context-change-archive/bad.html",
+   "url": "capture-host/focus-context-change-archive/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/focus-context-change-permit+with-component-index/good.html",
+   "url": "capture-host/focus-context-change-permit+with-component-index/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/focus-context-change-route/bad.html",
+   "url": "capture-host/focus-context-change-route/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/focus-order-tabindex+also-position-only-table-bare-edit-inert/good.html",
+   "url": "capture-host/focus-order-tabindex+also-position-only-table-bare-edit-inert/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/focus-panel-undismissable-help+first-tab-stop+also-fake-heading-unnamed-graphic/bad.html",
+   "url": "capture-host/focus-panel-undismissable-help+first-tab-stop+also-fake-heading-unnamed-graphic/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/focus-panel-undismissable-terms/good.html",
+   "url": "capture-host/focus-panel-undismissable-terms/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/focus-script-blur-window+also-filename-alt-bare-edit/bad.html",
+   "url": "capture-host/focus-script-blur-window+also-filename-alt-bare-edit/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-error-calibration-ferry-terminal-015/good.html",
+   "url": "capture-host/form-error-calibration-ferry-terminal-015/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-error-calibration-playground-006/bad.html",
+   "url": "capture-host/form-error-calibration-playground-006/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-error-silent+also-generic-alt-fake-heading/good.html",
+   "url": "capture-host/form-error-silent+also-generic-alt-fake-heading/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-error-silent-bulk-carers-centre-031/bad.html",
+   "url": "capture-host/form-error-silent-bulk-carers-centre-031/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-error-silent-bulk-cultural-centre-049/good.html",
+   "url": "capture-host/form-error-silent-bulk-cultural-centre-049/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-error-silent-bulk-forest-cabin-081/bad.html",
+   "url": "capture-host/form-error-silent-bulk-forest-cabin-081/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-error-silent-bulk-housing-office-032/good.html",
+   "url": "capture-host/form-error-silent-bulk-housing-office-032/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-error-silent-bulk-nature-trail-069/bad.html",
+   "url": "capture-host/form-error-silent-bulk-nature-trail-069/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-error-silent-bulk-river-station-076/good.html",
+   "url": "capture-host/form-error-silent-bulk-river-station-076/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-error-silent-bulk-town-library-077/bad.html",
+   "url": "capture-host/form-error-silent-bulk-town-library-077/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-error-silent-clinic/good.html",
+   "url": "capture-host/form-error-silent-clinic/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-error-silent-ferry/bad.html",
+   "url": "capture-host/form-error-silent-ferry/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-error-silent-orchard/good.html",
+   "url": "capture-host/form-error-silent-orchard/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-placeholder-calibration-aquarium-001+also-bare-edit-vague-link/bad.html",
+   "url": "capture-host/form-placeholder-calibration-aquarium-001+also-bare-edit-vague-link/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-placeholder-calibration-ferry-terminal-015/good.html",
+   "url": "capture-host/form-placeholder-calibration-ferry-terminal-015/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-placeholder-calibration-marina-022/bad.html",
+   "url": "capture-host/form-placeholder-calibration-marina-022/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-placeholder-calibration-playground-006/good.html",
+   "url": "capture-host/form-placeholder-calibration-playground-006/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-placeholder-only+with-component-index/bad.html",
+   "url": "capture-host/form-placeholder-only+with-component-index/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-unlabelled-allotment/good.html",
+   "url": "capture-host/form-unlabelled-allotment/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-unlabelled-bulk-civic-hall-007/bad.html",
+   "url": "capture-host/form-unlabelled-bulk-civic-hall-007/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-unlabelled-bulk-digital-lab-071/good.html",
+   "url": "capture-host/form-unlabelled-bulk-digital-lab-071/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-unlabelled-bulk-greenhouse-024/bad.html",
+   "url": "capture-host/form-unlabelled-bulk-greenhouse-024/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-unlabelled-bulk-local-archive-060/good.html",
+   "url": "capture-host/form-unlabelled-bulk-local-archive-060/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-unlabelled-bulk-post-office-037/bad.html",
+   "url": "capture-host/form-unlabelled-bulk-post-office-037/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-unlabelled-bulk-solar-field-055/good.html",
+   "url": "capture-host/form-unlabelled-bulk-solar-field-055/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-unlabelled-bulk-volunteer-centre-057/bad.html",
+   "url": "capture-host/form-unlabelled-bulk-volunteer-centre-057/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-unlabelled-flood/good.html",
+   "url": "capture-host/form-unlabelled-flood/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/form-unlabelled-reference/bad.html",
+   "url": "capture-host/form-unlabelled-reference/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/heading-vague-bulk-bike-workshop-061/good.html",
+   "url": "capture-host/heading-vague-bulk-bike-workshop-061/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/heading-vague-bulk-community-forest-054/bad.html",
+   "url": "capture-host/heading-vague-bulk-community-forest-054/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/heading-vague-bulk-ferry-terminal-015/good.html",
+   "url": "capture-host/heading-vague-bulk-ferry-terminal-015/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/heading-vague-bulk-health-centre-011/bad.html",
+   "url": "capture-host/heading-vague-bulk-health-centre-011/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/heading-vague-bulk-market-garden-044/good.html",
+   "url": "capture-host/heading-vague-bulk-market-garden-044/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/heading-vague-bulk-rail-depot-080/bad.html",
+   "url": "capture-host/heading-vague-bulk-rail-depot-080/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/heading-vague-bulk-stadium-023/good.html",
+   "url": "capture-host/heading-vague-bulk-stadium-023/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/heading-vague-bulk-wellbeing-centre-068/bad.html",
+   "url": "capture-host/heading-vague-bulk-wellbeing-centre-068/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/heading-vague-ferry/good.html",
+   "url": "capture-host/heading-vague-ferry/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/heading-vague-solar/bad.html",
+   "url": "capture-host/heading-vague-solar/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/headings-fake-calibration-aquarium-001+also-bare-edit-vague-link/good.html",
+   "url": "capture-host/headings-fake-calibration-aquarium-001+also-bare-edit-vague-link/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/headings-fake-calibration-energy-park-019/bad.html",
+   "url": "capture-host/headings-fake-calibration-energy-park-019/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/headings-fake-calibration-hill-farm-021/good.html",
+   "url": "capture-host/headings-fake-calibration-hill-farm-021/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/headings-fake-calibration-museum-004+also-silent-toggle-inert-generic-heading/bad.html",
+   "url": "capture-host/headings-fake-calibration-museum-004+also-silent-toggle-inert-generic-heading/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/headings-fake-calibration-wetland-008/good.html",
+   "url": "capture-host/headings-fake-calibration-wetland-008/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/headings-none-directory+also-silent-toggle-inert/bad.html",
+   "url": "capture-host/headings-none-directory+also-silent-toggle-inert/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/headings-none-outage+with-status-region/good.html",
+   "url": "capture-host/headings-none-outage+with-status-region/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/headings-vague-stuff+also-unnamed-graphic-position-only-table/bad.html",
+   "url": "capture-host/headings-vague-stuff+also-unnamed-graphic-position-only-table/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/headings-vague-things+with-status-region/good.html",
+   "url": "capture-host/headings-vague-things+with-status-region/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/icon-button-calibration-bookshop-025/bad.html",
+   "url": "capture-host/icon-button-calibration-bookshop-025/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/icon-button-calibration-health-centre-011/good.html",
+   "url": "capture-host/icon-button-calibration-health-centre-011/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/icon-button-calibration-station-005/bad.html",
+   "url": "capture-host/icon-button-calibration-station-005/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/icon-button-unnamed-hall/good.html",
+   "url": "capture-host/icon-button-unnamed-hall/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-filename-alt+also-bare-edit-vague-link/bad.html",
+   "url": "capture-host/image-filename-alt+also-bare-edit-vague-link/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-filename-alt-exhibit+with-component-index/good.html",
+   "url": "capture-host/image-filename-alt-exhibit+with-component-index/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-filename-alt-solar+also-bare-edit-vague-link/bad.html",
+   "url": "capture-host/image-filename-alt-solar+also-bare-edit-vague-link/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-filename-calibration-bookshop-025/good.html",
+   "url": "capture-host/image-filename-calibration-bookshop-025/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-filename-calibration-hill-farm-021/bad.html",
+   "url": "capture-host/image-filename-calibration-hill-farm-021/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-filename-calibration-station-005/good.html",
+   "url": "capture-host/image-filename-calibration-station-005/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-generic-alt-allotment+also-vague-link-generic-heading/bad.html",
+   "url": "capture-host/image-generic-alt-allotment+also-vague-link-generic-heading/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-generic-alt-recipe+with-status-region/good.html",
+   "url": "capture-host/image-generic-alt-recipe+with-status-region/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-generic-alt/bad.html",
+   "url": "capture-host/image-generic-alt/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-generic-calibration-greenhouse-024/good.html",
+   "url": "capture-host/image-generic-calibration-greenhouse-024/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-generic-calibration-river-walk-020/bad.html",
+   "url": "capture-host/image-generic-calibration-river-walk-020/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt+with-validation-message/good.html",
+   "url": "capture-host/image-missing-alt+with-validation-message/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-art-studio-072/bad.html",
+   "url": "capture-host/image-missing-alt-bulk-art-studio-072/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-coastal-path-045/good.html",
+   "url": "capture-host/image-missing-alt-bulk-coastal-path-045/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-ferry-terminal-015/bad.html",
+   "url": "capture-host/image-missing-alt-bulk-ferry-terminal-015/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-health-centre-011/good.html",
+   "url": "capture-host/image-missing-alt-bulk-health-centre-011/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-meadow-002/bad.html",
+   "url": "capture-host/image-missing-alt-bulk-meadow-002/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-recycling-centre-035/good.html",
+   "url": "capture-host/image-missing-alt-bulk-recycling-centre-035/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-tide-station-065/bad.html",
+   "url": "capture-host/image-missing-alt-bulk-tide-station-065/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-wildlife-trust-030/good.html",
+   "url": "capture-host/image-missing-alt-bulk-wildlife-trust-030/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-garden/bad.html",
+   "url": "capture-host/image-missing-alt-garden/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-observatory/good.html",
+   "url": "capture-host/image-missing-alt-observatory/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/input-context-change-ledger+also-generic-alt-fake-heading/bad.html",
+   "url": "capture-host/input-context-change-ledger+also-generic-alt-fake-heading/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/input-context-change-register+also-generic-alt-position-only-table/good.html",
+   "url": "capture-host/input-context-change-register+also-generic-alt-position-only-table/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/input-purpose-invalid-signup+also-filename-alt-bare-edit/bad.html",
+   "url": "capture-host/input-purpose-invalid-signup+also-filename-alt-bare-edit/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/keyboard-trap-modal-cycle+also-filename-alt-bare-edit-inert/good.html",
+   "url": "capture-host/keyboard-trap-modal-cycle+also-filename-alt-bare-edit-inert/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/keyboard-trap-postcode+with-component-index/bad.html",
+   "url": "capture-host/keyboard-trap-postcode+with-component-index/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/keyboard-unreachable-native-button+with-component-index/good.html",
+   "url": "capture-host/keyboard-unreachable-native-button+with-component-index/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/label-vague-value/bad.html",
+   "url": "capture-host/label-vague-value/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/landmark-vague-bulk-bookshop-025/good.html",
+   "url": "capture-host/landmark-vague-bulk-bookshop-025/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/landmark-vague-bulk-greenhouse-024/bad.html",
+   "url": "capture-host/landmark-vague-bulk-greenhouse-024/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/landmark-vague-bulk-playground-006/good.html",
+   "url": "capture-host/landmark-vague-bulk-playground-006/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/landmark-vague-bulk-town-hall-026/bad.html",
+   "url": "capture-host/landmark-vague-bulk-town-hall-026/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/landmark-vague-ferry/good.html",
+   "url": "capture-host/landmark-vague-ferry/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/landmarks-missing+with-validation-message/bad.html",
+   "url": "capture-host/landmarks-missing+with-validation-message/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/landmarks-missing-help+with-validation-message/good.html",
+   "url": "capture-host/landmarks-missing-help+with-validation-message/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/language-unmarked-inscription+also-unnamed-graphic-position-only-table/bad.html",
+   "url": "capture-host/language-unmarked-inscription+also-unnamed-graphic-position-only-table/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/language-unmarked-motto+with-component-index/good.html",
+   "url": "capture-host/language-unmarked-motto+with-component-index/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/language-unmarked-recipe+also-filename-alt-generic-heading/bad.html",
+   "url": "capture-host/language-unmarked-recipe+also-filename-alt-generic-heading/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/link-click-here+with-status-region/good.html",
+   "url": "capture-host/link-click-here+with-status-region/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/link-vague-bulk-aquarium-001/bad.html",
+   "url": "capture-host/link-vague-bulk-aquarium-001/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/link-vague-bulk-civic-theatre-063/good.html",
+   "url": "capture-host/link-vague-bulk-civic-theatre-063/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/link-vague-bulk-farmers-hall-073/bad.html",
+   "url": "capture-host/link-vague-bulk-farmers-hall-073/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/link-vague-bulk-harbour-office-075/good.html",
+   "url": "capture-host/link-vague-bulk-harbour-office-075/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/link-vague-bulk-market-garden-044/bad.html",
+   "url": "capture-host/link-vague-bulk-market-garden-044/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/link-vague-bulk-public-square-059/good.html",
+   "url": "capture-host/link-vague-bulk-public-square-059/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/link-vague-bulk-station-005/bad.html",
+   "url": "capture-host/link-vague-bulk-station-005/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/link-vague-bulk-wellbeing-centre-068/good.html",
+   "url": "capture-host/link-vague-bulk-wellbeing-centre-068/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/link-vague-details+with-validation-message/bad.html",
+   "url": "capture-host/link-vague-details+with-validation-message/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/link-vague-here/good.html",
+   "url": "capture-host/link-vague-here/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/link-vague-theatre/bad.html",
+   "url": "capture-host/link-vague-theatre/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/progress-status-silent-import/good.html",
+   "url": "capture-host/progress-status-silent-import/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/route-title-stale+with-status-region/bad.html",
+   "url": "capture-host/route-title-stale+with-status-region/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/route-title-stale-claim+also-filename-alt-generic-heading/good.html",
+   "url": "capture-host/route-title-stale-claim+also-filename-alt-generic-heading/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/skip-link-broken+also-fake-heading-unnamed-graphic/bad.html",
+   "url": "capture-host/skip-link-broken+also-fake-heading-unnamed-graphic/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/skip-link-duplicate-id/good.html",
+   "url": "capture-host/skip-link-duplicate-id/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/skip-link-target-replaced+with-component-index/bad.html",
+   "url": "capture-host/skip-link-target-replaced+with-component-index/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/status-progress-claim+also-filename-alt-bare-edit/good.html",
+   "url": "capture-host/status-progress-claim+also-filename-alt-bare-edit/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/status-progress-signup+with-component-index/bad.html",
+   "url": "capture-host/status-progress-signup+with-component-index/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/status-waiting-appointments+with-component-index/good.html",
+   "url": "capture-host/status-waiting-appointments+with-component-index/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/status-waiting-prescriptions/bad.html",
+   "url": "capture-host/status-waiting-prescriptions/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/table-bulk-aquarium-001/good.html",
+   "url": "capture-host/table-bulk-aquarium-001/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/table-bulk-garden-centre-027/bad.html",
+   "url": "capture-host/table-bulk-garden-centre-027/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/table-bulk-park-gate-038/good.html",
+   "url": "capture-host/table-bulk-park-gate-038/good.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/table-bulk-swimming-pool-029/bad.html",
+   "url": "capture-host/table-bulk-swimming-pool-029/bad.html",
    "status": "comparable"
   },
   {
-   "url": "http://192.168.1.108:8898/table-ferry+also-unnamed-graphic/good.html",
+   "url": "capture-host/table-ferry+also-unnamed-graphic/good.html",
    "status": "comparable"
   }
  ],
@@ -660,7 +660,7 @@
  ],
  "misses": [
   {
-   "url": "http://192.168.1.108:8898/error-remedy-missing-group+also-generic-heading-unnamed-graphic/bad.html",
+   "url": "capture-host/error-remedy-missing-group+also-generic-heading-unnamed-graphic/bad.html",
    "channel": "graphics",
    "i": 0,
    "expected": "To get missing image descriptions, open the context menu., Unlabelled graphic",
@@ -676,7 +676,7 @@
    "class": "prompt"
   },
   {
-   "url": "http://192.168.1.108:8898/error-remedy-missing-group+also-generic-heading-unnamed-graphic/bad.html",
+   "url": "capture-host/error-remedy-missing-group+also-generic-heading-unnamed-graphic/bad.html",
    "channel": "links",
    "i": 0,
    "expected": "list, with 6 items, Opening times for the north entrance 01, same page, link",
@@ -694,7 +694,7 @@
    "class": "prompt-downstream"
   },
   {
-   "url": "http://192.168.1.108:8898/error-remedy-missing-group+also-generic-heading-unnamed-graphic/bad.html",
+   "url": "capture-host/error-remedy-missing-group+also-generic-heading-unnamed-graphic/bad.html",
    "channel": "links",
    "i": 2,
    "expected": "Accessibility statement 03, same page, link",
@@ -710,7 +710,7 @@
    "class": "prompt-downstream"
   },
   {
-   "url": "http://192.168.1.108:8898/error-remedy-missing-group+also-generic-heading-unnamed-graphic/bad.html",
+   "url": "capture-host/error-remedy-missing-group+also-generic-heading-unnamed-graphic/bad.html",
    "channel": "links",
    "i": 3,
    "expected": "Travel and parking 04, same page, link",
@@ -726,7 +726,7 @@
    "class": "prompt-downstream"
   },
   {
-   "url": "http://192.168.1.108:8898/error-remedy-missing-group+also-generic-heading-unnamed-graphic/bad.html",
+   "url": "capture-host/error-remedy-missing-group+also-generic-heading-unnamed-graphic/bad.html",
    "channel": "links",
    "i": 4,
    "expected": "Volunteering enquiries 05, same page, link",
@@ -742,7 +742,7 @@
    "class": "prompt-downstream"
   },
   {
-   "url": "http://192.168.1.108:8898/focus-panel-undismissable-help+first-tab-stop+also-fake-heading-unnamed-graphic/bad.html",
+   "url": "capture-host/focus-panel-undismissable-help+first-tab-stop+also-fake-heading-unnamed-graphic/bad.html",
    "channel": "graphics",
    "i": 0,
    "expected": "To get missing image descriptions, open the context menu., Unlabelled graphic",
@@ -758,7 +758,7 @@
    "class": "prompt"
   },
   {
-   "url": "http://192.168.1.108:8898/headings-vague-stuff+also-unnamed-graphic-position-only-table/bad.html",
+   "url": "capture-host/headings-vague-stuff+also-unnamed-graphic-position-only-table/bad.html",
    "channel": "graphics",
    "i": 0,
    "expected": "To get missing image descriptions, open the context menu., Unlabelled graphic",
@@ -774,7 +774,7 @@
    "class": "prompt"
   },
   {
-   "url": "http://192.168.1.108:8898/headings-vague-stuff+also-unnamed-graphic-position-only-table/bad.html",
+   "url": "capture-host/headings-vague-stuff+also-unnamed-graphic-position-only-table/bad.html",
    "channel": "links",
    "i": 0,
    "expected": "list, with 6 items, Opening times for the north entrance 01, same page, link",
@@ -792,7 +792,7 @@
    "class": "prompt-downstream"
   },
   {
-   "url": "http://192.168.1.108:8898/headings-vague-stuff+also-unnamed-graphic-position-only-table/bad.html",
+   "url": "capture-host/headings-vague-stuff+also-unnamed-graphic-position-only-table/bad.html",
    "channel": "links",
    "i": 2,
    "expected": "Accessibility statement 03, same page, link",
@@ -808,7 +808,7 @@
    "class": "prompt-downstream"
   },
   {
-   "url": "http://192.168.1.108:8898/headings-vague-stuff+also-unnamed-graphic-position-only-table/bad.html",
+   "url": "capture-host/headings-vague-stuff+also-unnamed-graphic-position-only-table/bad.html",
    "channel": "links",
    "i": 3,
    "expected": "Travel and parking 04, same page, link",
@@ -824,7 +824,7 @@
    "class": "prompt-downstream"
   },
   {
-   "url": "http://192.168.1.108:8898/headings-vague-stuff+also-unnamed-graphic-position-only-table/bad.html",
+   "url": "capture-host/headings-vague-stuff+also-unnamed-graphic-position-only-table/bad.html",
    "channel": "links",
    "i": 4,
    "expected": "Volunteering enquiries 05, same page, link",
@@ -840,7 +840,7 @@
    "class": "prompt-downstream"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-art-studio-072/bad.html",
+   "url": "capture-host/image-missing-alt-bulk-art-studio-072/bad.html",
    "channel": "graphics",
    "i": 0,
    "expected": "main landmark, To get missing image descriptions, open the context menu., Unlabelled graphic",
@@ -857,7 +857,7 @@
    "class": "prompt"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-art-studio-072/bad.html",
+   "url": "capture-host/image-missing-alt-bulk-art-studio-072/bad.html",
    "channel": "links",
    "i": 0,
    "expected": "list, with 6 items, Opening times for the north entrance 01, same page, link",
@@ -875,7 +875,7 @@
    "class": "prompt-downstream"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-art-studio-072/bad.html",
+   "url": "capture-host/image-missing-alt-bulk-art-studio-072/bad.html",
    "channel": "links",
    "i": 2,
    "expected": "Accessibility statement 03, same page, link",
@@ -891,7 +891,7 @@
    "class": "prompt-downstream"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-art-studio-072/bad.html",
+   "url": "capture-host/image-missing-alt-bulk-art-studio-072/bad.html",
    "channel": "links",
    "i": 3,
    "expected": "Travel and parking 04, same page, link",
@@ -907,7 +907,7 @@
    "class": "prompt-downstream"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-art-studio-072/bad.html",
+   "url": "capture-host/image-missing-alt-bulk-art-studio-072/bad.html",
    "channel": "links",
    "i": 4,
    "expected": "Volunteering enquiries 05, same page, link",
@@ -923,7 +923,7 @@
    "class": "prompt-downstream"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-ferry-terminal-015/bad.html",
+   "url": "capture-host/image-missing-alt-bulk-ferry-terminal-015/bad.html",
    "channel": "graphics",
    "i": 0,
    "expected": "To get missing image descriptions, open the context menu., Unlabelled graphic",
@@ -939,7 +939,7 @@
    "class": "prompt"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-meadow-002/bad.html",
+   "url": "capture-host/image-missing-alt-bulk-meadow-002/bad.html",
    "channel": "graphics",
    "i": 0,
    "expected": "main landmark, To get missing image descriptions, open the context menu., Unlabelled graphic",
@@ -956,7 +956,7 @@
    "class": "prompt"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-meadow-002/bad.html",
+   "url": "capture-host/image-missing-alt-bulk-meadow-002/bad.html",
    "channel": "links",
    "i": 0,
    "expected": "list, with 6 items, Opening times for the north entrance 01, same page, link",
@@ -974,7 +974,7 @@
    "class": "prompt-downstream"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-meadow-002/bad.html",
+   "url": "capture-host/image-missing-alt-bulk-meadow-002/bad.html",
    "channel": "links",
    "i": 2,
    "expected": "Accessibility statement 03, same page, link",
@@ -990,7 +990,7 @@
    "class": "prompt-downstream"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-meadow-002/bad.html",
+   "url": "capture-host/image-missing-alt-bulk-meadow-002/bad.html",
    "channel": "links",
    "i": 3,
    "expected": "Travel and parking 04, same page, link",
@@ -1006,7 +1006,7 @@
    "class": "prompt-downstream"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-meadow-002/bad.html",
+   "url": "capture-host/image-missing-alt-bulk-meadow-002/bad.html",
    "channel": "links",
    "i": 4,
    "expected": "Volunteering enquiries 05, same page, link",
@@ -1022,7 +1022,7 @@
    "class": "prompt-downstream"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-bulk-tide-station-065/bad.html",
+   "url": "capture-host/image-missing-alt-bulk-tide-station-065/bad.html",
    "channel": "graphics",
    "i": 0,
    "expected": "To get missing image descriptions, open the context menu., Unlabelled graphic",
@@ -1038,7 +1038,7 @@
    "class": "prompt"
   },
   {
-   "url": "http://192.168.1.108:8898/image-missing-alt-garden/bad.html",
+   "url": "capture-host/image-missing-alt-garden/bad.html",
    "channel": "graphics",
    "i": 0,
    "expected": "To get missing image descriptions, open the context menu., Unlabelled graphic",
@@ -1054,7 +1054,7 @@
    "class": "prompt"
   },
   {
-   "url": "http://192.168.1.108:8898/keyboard-unreachable-native-button+with-component-index/good.html",
+   "url": "capture-host/keyboard-unreachable-native-button+with-component-index/good.html",
    "channel": "links",
    "i": 9,
    "expected": "Accordion, visited, link",
@@ -1070,7 +1070,7 @@
    "class": "history"
   },
   {
-   "url": "http://192.168.1.108:8898/language-unmarked-inscription+also-unnamed-graphic-position-only-table/bad.html",
+   "url": "capture-host/language-unmarked-inscription+also-unnamed-graphic-position-only-table/bad.html",
    "channel": "graphics",
    "i": 0,
    "expected": "To get missing image descriptions, open the context menu., Unlabelled graphic",
@@ -1086,7 +1086,7 @@
    "class": "prompt"
   },
   {
-   "url": "http://192.168.1.108:8898/link-vague-here/good.html",
+   "url": "capture-host/link-vague-here/good.html",
    "channel": "links",
    "i": 0,
    "expected": "Read the station step-free access information, visited, link",
@@ -1102,7 +1102,7 @@
    "class": "history"
   },
   {
-   "url": "http://192.168.1.108:8898/link-vague-theatre/bad.html",
+   "url": "capture-host/link-vague-theatre/bad.html",
    "channel": "links",
    "i": 6,
    "expected": "main landmark, Here, visited, link",
@@ -1119,7 +1119,7 @@
    "class": "history"
   },
   {
-   "url": "http://192.168.1.108:8898/skip-link-broken+also-fake-heading-unnamed-graphic/bad.html",
+   "url": "capture-host/skip-link-broken+also-fake-heading-unnamed-graphic/bad.html",
    "channel": "graphics",
    "i": 0,
    "expected": "To get missing image descriptions, open the context menu., Unlabelled graphic",
@@ -1135,7 +1135,7 @@
    "class": "prompt"
   },
   {
-   "url": "http://192.168.1.108:8898/skip-link-broken+also-fake-heading-unnamed-graphic/bad.html",
+   "url": "capture-host/skip-link-broken+also-fake-heading-unnamed-graphic/bad.html",
    "channel": "links",
    "i": 0,
    "expected": "main landmark, navigation landmark, list, with 3 items, Contact the team, link",
@@ -1154,7 +1154,7 @@
    "class": "prompt-downstream"
   },
   {
-   "url": "http://192.168.1.108:8898/status-progress-signup+with-component-index/bad.html",
+   "url": "capture-host/status-progress-signup+with-component-index/bad.html",
    "channel": "links",
    "i": 0,
    "expected": "list, with 4 items, Accordion, visited, link",
@@ -1172,7 +1172,7 @@
    "class": "history"
   },
   {
-   "url": "http://192.168.1.108:8898/status-waiting-appointments+with-component-index/good.html",
+   "url": "capture-host/status-waiting-appointments+with-component-index/good.html",
    "channel": "links",
    "i": 0,
    "expected": "list, with 4 items, Accordion, visited, link",

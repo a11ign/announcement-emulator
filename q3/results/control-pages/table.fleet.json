@@ -1,8 +1,8 @@
 {
  "capturedAt": "2026-10-21T00:08:14.687Z",
- "worker": "http://192.168.1.107:8765",
+ "worker": "a11y-worker-2",
  "capture": {
-  "url": "http://192.168.1.108:8899/table.html",
+  "url": "capture-host/table.html",
   "transcript": [
    "Hello, world!",
    "table, with 5 rows and 5 columns, row 1, column 1, A 1",
