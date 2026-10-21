@@ -25,15 +25,16 @@ def read_text(path):
     with open(path, errors='replace') as f: return f.read()
 
 
-def check_readback(path):
+def check_readback(path, control_path=None):
     if not os.path.exists(path): return PENDING, 'no history-readback.json yet'
     data = rb.load(path); boxes = data['workers']; bad = []
     if not boxes: return PENDING, 'no box read back yet'
     if len(rb.cleared_workers(data)) < MIN_BOXES: bad.append(f'fewer than {MIN_BOXES} boxes pass')
-    if not rb.control_workers(data): bad.append('no box has a `before` probe that read visited: the probe has not been shown to see history')
+    control = rb.control_workers(data) or (rb.control_workers(rb.load(control_path)) if control_path and os.path.exists(control_path) else [])
+    if not control: bad.append('no box has a `before` probe that read visited: the probe has not been shown to see history')
     for w, box in sorted(boxes.items()):
         if box.get('passed') != rb.box_passes(box): bad.append(f'{w}: stored `passed` disagrees with its readings')
-    return (FAIL, '; '.join(bad)) if bad else (OK, f'{len(rb.cleared_workers(data))} of {len(boxes)} boxes cleared ({len(rb.held_workers(data))} held to the end, {sum(1 for b in boxes.values() if b.get("restored"))} restored): {", ".join(rb.cleared_workers(data))}; the probe saw history on {", ".join(rb.control_workers(data))}')
+    return (FAIL, '; '.join(bad)) if bad else (OK, f'{len(rb.cleared_workers(data))} of {len(boxes)} boxes cleared ({len(rb.held_workers(data))} held to the end, {sum(1 for b in boxes.values() if b.get("restored"))} restored): {", ".join(rb.cleared_workers(data))}; the probe saw history on {", ".join(control)}')
 
 
 def visited_problems(directory, visited, explained_path):
@@ -133,10 +134,10 @@ def check_doc(doc, base):
 
 
 def main(argv):
-    ap = argparse.ArgumentParser(); ap.add_argument('--results', default='q3/results/remeasure'); ap.add_argument('--oracle'); ap.add_argument('--corpus', default='q3/results/corpus.json'); ap.add_argument('--explained'); ap.add_argument('--doc', default='docs/announcement-emulator-spike.md')
+    ap = argparse.ArgumentParser(); ap.add_argument('--results', default='q3/results/remeasure'); ap.add_argument('--oracle'); ap.add_argument('--corpus', default='q3/results/corpus.json'); ap.add_argument('--explained'); ap.add_argument('--control-from', help='another run\'s history-readback.json whose `before` probes show the method (a run that took none of its own)'); ap.add_argument('--doc', default='docs/announcement-emulator-spike.md')
     ap.add_argument('--base', default='origin/main'); ap.add_argument('--require-complete', action='store_true'); a = ap.parse_args(argv)
     readback = os.path.join(a.results, 'history-readback.json')
-    results = [('readback', check_readback(readback)), ('summary', check_summary(os.path.join(a.results, 'oracle-summary.json'), readback, a.corpus)), ('oracle', check_oracle(a.oracle, readback, a.corpus, a.explained or os.path.join(a.results, 'visited-explained.json'))), ('figures', check_figures(a.results)),
+    results = [('readback', check_readback(readback, a.control_from)), ('summary', check_summary(os.path.join(a.results, 'oracle-summary.json'), readback, a.corpus)), ('oracle', check_oracle(a.oracle, readback, a.corpus, a.explained or os.path.join(a.results, 'visited-explained.json'))), ('figures', check_figures(a.results)),
                ('addresses', check_addresses([a.results, a.doc])), ('doc', check_doc(a.doc, a.base))]
     for name, (state, msg) in results: print(f'{state:>8}  {name}: {msg}')
     states = {s for _, (s, _) in results}

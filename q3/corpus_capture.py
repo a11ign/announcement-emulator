@@ -1,11 +1,14 @@
 """Capture the corpus again on boxes whose browser keeps no history (A11-155), and stamp every record with the read-back that allowed it.
 
-    python corpus_capture.py <corpus.json> <out_dir> --workers name=url,name=url,... --readback <history-readback.json> [--summary <capture-run.json>] [--attempts 2]
+    python corpus_capture.py <corpus.json> <out_dir> --workers name=url,name=url,... --readback <history-readback.json> [--summary <capture-run.json>] [--attempts 2] [--static-base http://host:port]
 
 `corpus.json` is q3/results/corpus.json (or a list of addresses): the same addresses as the spike, so the split rule (split.py, a function of the address) and the
 comparison with the spike's figures hold. A worker with no passing read-back in the read-back file is refused, and so is a run with fewer than three. One record per page,
 `<out_dir>/<slug>.json`, in the shape the spike's oracle has (`capture`, `worker`, `role`) plus a `history` block; a page already captured is skipped, so an interrupted run resumes.
-The records name the worker and `capture-host`, never an address (fleet_capture.mjs)."""
+The records name the worker and `capture-host`, never an address (fleet_capture.mjs).
+
+`--static-base` captures the static copy of each address (`<base>/<slug>/index.html`, q3/remeasure/snapshot_all.py) instead of the address itself; the record is still named by the original address
+(its file, its `staticOf`), so the split rule, a function of the address, is unchanged."""
 import sys, os, json, re, hashlib, subprocess, threading, queue, argparse, datetime
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'remeasure'))
 import readback as rb
@@ -42,13 +45,16 @@ def history_block(box):
             'probeAfter': {'capturedAt': box['after']['capturedAt'], 'visited': box['after']['visited']}}
 
 
-def entries_of(corpus):
-    return [{'url': e, 'role': None} if isinstance(e, str) else {'url': e['url'], 'role': e.get('role')} for e in corpus]
+def entries_of(corpus, static_base=None):
+    entries = [{'url': e, 'role': None} if isinstance(e, str) else {'url': e['url'], 'role': e.get('role')} for e in corpus]
+    for e in entries: e['address'] = f"{static_base.rstrip('/')}/{slug_of(e['url'])}/index.html" if static_base else e['url']
+    return entries
 
 
 def stamp(path, entry, box):
     rec = rb.read_json(path)
     rec['role'] = entry['role']; rec['history'] = history_block(box)
+    if entry.get('address', entry['url']) != entry['url']: rec['staticOf'] = entry['url']
     rb.write_json(path, rec)
     return rec
 
@@ -61,7 +67,7 @@ def capture_one(entry, name, url, box, dest, capture_script):
     tmp = dest + '.part'
     if os.path.exists(tmp): os.remove(tmp)
     try:
-        done = subprocess.run(['node', capture_script, f'{name}={url}', entry['url'], tmp], capture_output=True, text=True, timeout=700)
+        done = subprocess.run(['node', capture_script, f'{name}={url}', entry.get('address', entry['url']), tmp], capture_output=True, text=True, timeout=700)
         if os.path.exists(tmp) and captured_ok(rb.read_json(tmp)):
             stamp(tmp, entry, box); os.replace(tmp, dest)
             return True, 'ok'
@@ -105,11 +111,11 @@ def run(entries, workers, readback, out, capture_script, attempts=2, log=print):
 
 def main(argv):
     ap = argparse.ArgumentParser(); ap.add_argument('corpus'); ap.add_argument('out'); ap.add_argument('--workers', required=True); ap.add_argument('--readback', required=True)
-    ap.add_argument('--summary'); ap.add_argument('--attempts', type=int, default=2); ap.add_argument('--capture-script', default=os.path.join(HERE, 'fleet_capture.mjs'))
+    ap.add_argument('--summary'); ap.add_argument('--static-base'); ap.add_argument('--attempts', type=int, default=2); ap.add_argument('--capture-script', default=os.path.join(HERE, 'fleet_capture.mjs'))
     a = ap.parse_args(argv)
     readback = rb.load(a.readback)
     workers = usable_workers(parse_workers(a.workers), readback)
-    summary = run(entries_of(rb.read_json(a.corpus)), workers, readback, a.out, a.capture_script, a.attempts)
+    summary = run(entries_of(rb.read_json(a.corpus), a.static_base), workers, readback, a.out, a.capture_script, a.attempts)
     if a.summary: rb.write_json(a.summary, summary)
     print(summary)
     sys.exit(0 if summary['captured'] == summary['pages'] and not summary['failed'] else 1)

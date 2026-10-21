@@ -2,7 +2,7 @@
 import sys, os, json, tempfile, subprocess, unittest, io, contextlib, threading, time, http.server
 HERE = os.path.dirname(os.path.abspath(__file__)); Q3 = os.path.dirname(HERE)
 sys.path.insert(0, HERE); sys.path.insert(0, Q3)
-import readback as rb, check, corpus_capture as cc, policy_override as po, explain_visited as ev
+import readback as rb, check, corpus_capture as cc, policy_override as po, explain_visited as ev, make_views
 
 def write(path, text):
     with open(path, 'w') as f: f.write(text)
@@ -120,6 +120,19 @@ writeFileSync(out, JSON.stringify({ capturedAt: 'now', worker: name, status: 200
         out = os.path.join(self.dir, 'oracle')
         s = cc.run([{'url': 'https://example.org/broken', 'role': None}, {'url': 'https://example.org/fine', 'role': None}], self.workers('a11y-worker-2', 'a11y-worker-3', 'a11y-worker-4'), self.readback, out, self.stub, log=lambda *a, **k: None)
         self.assertEqual(s['failed'], ['https://example.org/broken']); self.assertEqual(len(os.listdir(out)), 1)
+    def test_a_static_copy_is_captured_at_its_address_and_the_record_stays_the_originals(self):
+        out = os.path.join(self.dir, 'oracle'); url = 'https://example.org/live/page'
+        entries = cc.entries_of([{'url': url, 'role': 'training'}], 'http://capture-host:8001/')
+        self.assertEqual(entries[0]['address'], f'http://capture-host:8001/{cc.slug_of(url)}/index.html')
+        s = cc.run(entries, self.workers('a11y-worker-2', 'a11y-worker-3', 'a11y-worker-4'), self.readback, out, self.stub, log=lambda *a, **k: None)
+        rec = rb.read_json(os.path.join(out, cc.slug_of(url) + '.json'))
+        self.assertEqual((s['captured'], rec['staticOf'], rec['capture']['url']), (1, url, entries[0]['address']))
+    def test_the_views_give_the_scripts_the_address_each_needs(self):
+        src, orig, run = (os.path.join(self.dir, d) for d in ('src', 'orig', 'run')); os.makedirs(src); url = 'https://example.org/live/page'
+        rb.write_json(os.path.join(src, cc.slug_of(url) + '.json'), record(url='http://capture-host:8001/x/index.html') | {'staticOf': url, 'role': 'training'})
+        make_views.main(src, orig, run, 'http://127.0.0.1:8001/')
+        self.assertEqual(rb.read_json(os.path.join(orig, cc.slug_of(url) + '.json'))['capture']['url'], url)
+        self.assertEqual(rb.read_json(os.path.join(run, cc.slug_of(url) + '.json'))['capture']['url'], f'http://127.0.0.1:8001/{cc.slug_of(url)}/index.html')
     def test_slugs_are_distinct_for_addresses_that_differ_only_in_punctuation(self):
         self.assertNotEqual(cc.slug_of('https://a.org/x?y=1'), cc.slug_of('https://a.org/x/y/1'))
 
@@ -179,6 +192,32 @@ class FleetCapture(unittest.TestCase):
         self.assertEqual(rec['capture']['url'], 'http://capture-host:8000/p.html')
 
 
+CHROME = os.path.join(os.environ.get('EMU_DOWNLOADS') or os.path.expanduser('~/spikes/announcement-emulator-5661'), 'chrome155/chrome-linux64/chrome')
+PAGE = '''<!doctype html><html lang="en"><head><title>Original</title><link rel="stylesheet" href="/style.css"><script>document.title = "Changed by script"</script></head>
+<body><h1 onclick="alert(1)">Heading</h1><a id=self href="/page.html">Itself</a> <a id=frag href="#late">Place</a> <a id=other href="other.html">Other</a>
+<iframe src="/inner.html"></iframe><input id=name value="typed"><noscript><p>no script</p></noscript><script>document.body.insertAdjacentHTML("beforeend", "<p id=late>added by script</p>")</script></body></html>'''
+
+
+@unittest.skipUnless(os.path.exists(CHROME), 'the emulator\'s Chrome is not built here (setup.sh)')
+class Snapshot(unittest.TestCase):
+    def test_a_copy_is_inert_self_contained_and_keeps_same_page_links_same_page(self):
+        files = {'/page.html': ('text/html', PAGE), '/style.css': ('text/css', 'h1 { background: url(bg.png) }'), '/inner.html': ('text/html', '<!doctype html><title>inner</title><p>inside</p>')}
+        class H(http.server.BaseHTTPRequestHandler):
+            def do_GET(self):
+                kind, body = files.get(self.path, ('text/plain', 'x')); self.send_response(200); self.send_header('content-type', kind); self.end_headers(); self.wfile.write(body.encode())
+            def log_message(self, *a): pass
+        server = http.server.HTTPServer(('127.0.0.1', 0), H); threading.Thread(target=server.serve_forever, daemon=True).start(); self.addCleanup(server.shutdown); self.addCleanup(server.server_close)
+        base = f'http://127.0.0.1:{server.server_port}'; out = tempfile.TemporaryDirectory(); self.addCleanup(out.cleanup)
+        done = subprocess.run(['node', os.path.join(HERE, 'snapshot.mjs'), base + '/page.html', out.name], capture_output=True, text=True, timeout=120)
+        self.assertEqual(done.returncode, 0, done.stderr)
+        html = open(os.path.join(out.name, 'index.html')).read()
+        self.assertNotIn('<script', html); self.assertNotIn('onclick', html); self.assertNotIn('no script', html)           # inert
+        self.assertIn('added by script', html); self.assertIn('<title>Changed by script</title>', html)                    # what the page did before the copy is kept
+        self.assertIn(f'url("{base}/bg.png")', html); self.assertNotIn('<link rel="stylesheet"', html)                        # the stylesheet is in, its url() absolute
+        self.assertIn('id="self" href="index.html"', html); self.assertIn('id="frag" href="#late"', html); self.assertIn(f'id="other" href="{base}/other.html"', html)
+        self.assertIn('srcdoc=', html); self.assertIn('inside', html); self.assertIn('value="typed"', html)                   # the same-origin iframe is inline, a form value is kept
+
+
 class Check(unittest.TestCase):
     def setUp(self): self.tmp = tempfile.TemporaryDirectory(); self.dir = self.tmp.name
     def tearDown(self): self.tmp.cleanup()
@@ -204,6 +243,12 @@ class Check(unittest.TestCase):
         boxes = self.three()
         for b in boxes.values(): b['restored'] = {'at': '2026-10-21T13:00:00Z'}
         self.assertEqual(check.check_readback(self.write_readback(boxes))[0], check.OK)
+    def test_a_run_without_a_before_probe_takes_its_control_from_the_run_that_had_one(self):
+        boxes = self.three()
+        for b in boxes.values(): del b['before']
+        path = self.write_readback(boxes); self.assertEqual(check.check_readback(path)[0], check.FAIL)
+        other = os.path.join(self.dir, 'other.json'); rb.save(other, {'policy': rb.POLICY, 'workers': self.three()})
+        self.assertEqual(check.check_readback(path, other)[0], check.OK)
     def test_readback_passes_with_three_clean_boxes(self):
         self.assertEqual(check.check_readback(self.write_readback(self.three()))[0], check.OK)
     def test_one_visited_announcement_in_the_oracle_fails_the_check(self):
