@@ -1,0 +1,1559 @@
+{
+ "capturedAt": "2026-10-21T11:00:49.249Z",
+ "worker": "a11y-worker-10",
+ "status": 200,
+ "capture": {
+  "url": "http://capture-host:8000/visited-probe.html",
+  "screenReader": "NVDA",
+  "capturedAt": "2026-10-21T11:00:47.698Z",
+  "transcript": [
+   "heading, level 1, History probe",
+   "same page, link, History probe self",
+   "link, History probe other"
+  ],
+  "structure": {
+   "headings": [
+    "History probe, heading, level 1"
+   ],
+   "landmarks": [],
+   "formFields": [],
+   "graphics": [],
+   "links": [
+    "History probe self, same page, link",
+    "History probe other, link"
+   ],
+   "lists": [],
+   "tableCells": [],
+   "frames": []
+  },
+  "interaction": {
+   "controls": [],
+   "stateChanges": [],
+   "formChanges": [
+    {
+     "control": "History probe self, same page, link",
+     "kind": "route",
+     "after": "History probe, document",
+     "baselineQuiet": true,
+     "baselineWaitedMs": 300
+    }
+   ],
+   "postSubmitFields": [],
+   "focusOrder": [
+    "History probe self, link, focused, linked, same page",
+    "History probe other, link, focused, linked",
+    "History probe self, link, focused, linked, same page",
+    "History probe other, link, focused, linked",
+    "History probe self, link, focused, linked, same page",
+    "History probe other, link, focused, linked",
+    "History probe self, link, focused, linked, same page"
+   ],
+   "routeChange": {
+    "control": "History probe self, same page, link",
+    "titleBefore": "History probe",
+    "titleAfter": "History probe",
+    "headingBefore": "no next heading",
+    "headingAfter": "no next heading",
+    "nextFocusAfter": "History probe other, link, focused, linked",
+    "announced": "History probe, document",
+    "navigated": true
+   },
+   "focusContext": {
+    "focused": true,
+    "control": "History probe other, link, focused, linked",
+    "titleBefore": "History probe",
+    "titleAfter": "History probe"
+   },
+   "focusReveal": {
+    "asked": true,
+    "revealed": null,
+    "why": "a control held focus from an earlier probe, so the baseline was not the untouched document -- content already revealed before this probe began cannot appear in its delta"
+   },
+   "focusEvents": {
+    "asked": true,
+    "checked": true,
+    "events": 43,
+    "log": [
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 28720
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 30083
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 30084
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 33464
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 33480
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 35414
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 35414
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 36692
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 36694
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 38743
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 38743
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 41206
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 41208
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 43312
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 43312
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 53566
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 54257
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 54257
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 54969
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 54971
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 55704
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 55704
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 57859
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 57860
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 58581
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 58581
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 59235
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 59238
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 59953
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 59953
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 71950
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 73319
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 73319
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 73967
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 73969
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 74649
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 74650
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 76158
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 76160
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 76839
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 76839
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 77489
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 77491
+     }
+    ],
+    "truncated": false
+   }
+  },
+  "media": [],
+  "formInputs": [],
+  "observed": {
+   "headings": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "landmarks": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "formFields": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "graphics": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "links": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "lists": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "frames": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "tableCells": {
+    "asked": false,
+    "why": "probeTables is opt-in and this capture did not request it"
+   },
+   "formChanges": {
+    "asked": false,
+    "why": "probeForms is off and no formState was configured, so no control was activated"
+   },
+   "postSubmitFields": {
+    "asked": false,
+    "why": "probeForms is off and no formState was configured"
+   },
+   "focusOrder": {
+    "asked": true
+   },
+   "dialogEscape": {
+    "asked": false,
+    "why": "probeDialog is opt-in: it presses Escape, which changes state on a page we do not own"
+   },
+   "arrowNavigation": {
+    "asked": false,
+    "why": "probeArrows is opt-in: it presses keys inside whatever widget focus last landed on"
+   },
+   "typedFeedback": {
+    "asked": false,
+    "why": "probeTyping is opt-in: it enters characters into a field, changing the page under measurement"
+   },
+   "focusContext": {
+    "asked": true
+   },
+   "routeChange": {
+    "asked": true
+   }
+  },
+  "diagnostics": [
+   {
+    "event": "browserSelected",
+    "atMs": 0,
+    "id": "edge",
+    "name": "Microsoft Edge"
+   },
+   {
+    "event": "browserReady",
+    "atMs": 2377,
+    "type": "browserReady",
+    "pid": 12148
+   },
+   {
+    "event": "landedOnRequested",
+    "atMs": 2450,
+    "ok": true,
+    "actual": "http://capture-host:8000/visited-probe.html",
+    "attempts": 1,
+    "waitedMs": 73,
+    "requested": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "pageServed",
+    "atMs": 2588,
+    "requested": "http://capture-host:8000/visited-probe.html",
+    "waitedMs": 137,
+    "polls": 1,
+    "status": 200,
+    "type": "navigate",
+    "url": "http://capture-host:8000/visited-probe.html",
+    "responseEnd": 469.59999999403954,
+    "readyState": "complete",
+    "settled": true
+   },
+   {
+    "event": "pageSettled",
+    "atMs": 3088,
+    "reads": 2,
+    "waitedMs": 500,
+    "shape": "1/2/0/1"
+   },
+   {
+    "event": "viewport",
+    "atMs": 3104,
+    "innerWidth": 1008,
+    "innerHeight": 729,
+    "devicePixelRatio": 1,
+    "targetMatch": "matched"
+   },
+   {
+    "event": "windowsActivate",
+    "atMs": 3431,
+    "ok": true,
+    "via": "cdpBringToFront",
+    "waitedMs": 327
+   },
+   {
+    "event": "pointerParked",
+    "atMs": 4074,
+    "x": 0,
+    "y": 0,
+    "attempts": 1,
+    "ms": 643
+   },
+   {
+    "event": "nvdaStart",
+    "atMs": 4074,
+    "ok": true,
+    "reused": true,
+    "captures": 8
+   },
+   {
+    "event": "speechChannel",
+    "atMs": 4654,
+    "alive": true,
+    "heard": "heading, level 1, History probe"
+   },
+   {
+    "event": "documentReady",
+    "atMs": 5272,
+    "ok": true,
+    "title": "History probe",
+    "attempt": 1
+   },
+   {
+    "event": "focusEventListenerEarlyInstall",
+    "atMs": 5288,
+    "installed": true,
+    "targetMatch": "matched",
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html",
+    "already": false
+   },
+   {
+    "event": "browseBufferFresh",
+    "atMs": 5288,
+    "reason": "a new window was launched, so NVDA built its buffer here"
+   },
+   {
+    "event": "afterStart",
+    "atMs": 8318,
+    "lastSpoken": "heading, level 1, History probe"
+   },
+   {
+    "event": "readBudget",
+    "atMs": 8318,
+    "readDeadlineInMs": 356336,
+    "reservedMs": 60000
+   },
+   {
+    "event": "readThrough",
+    "atMs": 10453,
+    "count": 3,
+    "stopReason": "repeatBottom",
+    "firstStepError": null
+   },
+   {
+    "event": "probeOrder",
+    "atMs": 10525,
+    "order": "sweep,focus",
+    "requested": "default"
+   },
+   {
+    "event": "pageState",
+    "atMs": 10537,
+    "beforeProbe": "sweep",
+    "tookMs": 12,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 1,
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "focusRestore",
+    "atMs": 10537,
+    "attempted": false,
+    "why": "focus is in the top document"
+   },
+   {
+    "event": "pageState",
+    "atMs": 10551,
+    "beforeProbe": "sweep:heading",
+    "tookMs": 13,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 1,
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "sweep",
+    "atMs": 11450,
+    "type": "heading",
+    "found": 1,
+    "prevMs": 617,
+    "nextMs": 281,
+    "prevTrips": 5,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "History probe, heading, level 1",
+    "nextStopPhrase": "",
+    "prevCount": 1,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": [
+     "History probe, heading, level 1"
+    ]
+   },
+   {
+    "event": "pageState",
+    "atMs": 11459,
+    "beforeProbe": "sweep:landmark",
+    "tookMs": 8,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 1,
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "sweep",
+    "atMs": 12274,
+    "type": "landmark",
+    "found": 0,
+    "prevMs": 286,
+    "nextMs": 529,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "pageState",
+    "atMs": 13036,
+    "beforeProbe": "sweep:formField",
+    "tookMs": 753,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 1,
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "sweep",
+    "atMs": 13596,
+    "type": "formField",
+    "found": 0,
+    "prevMs": 284,
+    "nextMs": 276,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "structural",
+    "atMs": 13596,
+    "headings": 1,
+    "landmarks": 0,
+    "formFields": 0,
+    "roundTrips": 20
+   },
+   {
+    "event": "pageState",
+    "atMs": 13600,
+    "beforeProbe": "sweep:graphic",
+    "tookMs": 4,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 1,
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "sweep",
+    "atMs": 14147,
+    "type": "graphic",
+    "found": 0,
+    "prevMs": 276,
+    "nextMs": 271,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "pageState",
+    "atMs": 14161,
+    "beforeProbe": "sweep:link",
+    "tookMs": 14,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 1,
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "sweep",
+    "atMs": 15406,
+    "type": "link",
+    "found": 2,
+    "prevMs": 276,
+    "nextMs": 969,
+    "prevTrips": 3,
+    "nextTrips": 7,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "History probe other, link",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": [
+     "History probe self, same page, link",
+     "History probe other, link"
+    ]
+   },
+   {
+    "event": "pageState",
+    "atMs": 18416,
+    "beforeProbe": "sweep:list",
+    "tookMs": 114,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 1,
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "sweep",
+    "atMs": 18960,
+    "type": "list",
+    "found": 0,
+    "prevMs": 274,
+    "nextMs": 270,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "pageState",
+    "atMs": 21836,
+    "beforeProbe": "sweep:frame",
+    "tookMs": 9,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 1,
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "sweep",
+    "atMs": 23339,
+    "type": "frame",
+    "found": 0,
+    "prevMs": 1234,
+    "nextMs": 269,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "establishBrowseMode",
+    "atMs": 29092,
+    "applied": 3,
+    "caretAnchored": true
+   },
+   {
+    "event": "pageState",
+    "atMs": 29097,
+    "beforeProbe": "focus",
+    "tookMs": 5,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 1,
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "titleSource",
+    "atMs": 32867,
+    "title": "History probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 1
+   },
+   {
+    "event": "titleSource",
+    "atMs": 35085,
+    "title": "History probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 1
+   },
+   {
+    "event": "titleSource",
+    "atMs": 38480,
+    "title": "History probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 1
+   },
+   {
+    "event": "titleSource",
+    "atMs": 40431,
+    "title": "History probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 1
+   },
+   {
+    "event": "titleSource",
+    "atMs": 41709,
+    "title": "History probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 1
+   },
+   {
+    "event": "titleSource",
+    "atMs": 43747,
+    "title": "History probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 1
+   },
+   {
+    "event": "titleSource",
+    "atMs": 45412,
+    "title": "History probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 1
+   },
+   {
+    "event": "titleSource",
+    "atMs": 47567,
+    "title": "History probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 1
+   },
+   {
+    "event": "titleSource",
+    "atMs": 50322,
+    "title": "History probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 1
+   },
+   {
+    "event": "focusContext",
+    "atMs": 50323,
+    "focused": true,
+    "control": "History probe other, link, focused, linked",
+    "stops": 8,
+    "titleBefore": "History probe",
+    "titleAfter": "History probe",
+    "startedFrom": "History probe, document, focused, read only",
+    "focusReset": {
+     "applied": true,
+     "logSuppressed": false,
+     "why": "confirmed nothing held focus already"
+    }
+   },
+   {
+    "event": "browseBufferFresh",
+    "atMs": 50323,
+    "reason": "a new window was launched, so NVDA built its buffer here"
+   },
+   {
+    "event": "focusContextBrowseRestored",
+    "atMs": 53857,
+    "via": "anchorToTop"
+   },
+   {
+    "event": "focusReveal",
+    "atMs": 70839,
+    "asked": true,
+    "revealed": null,
+    "why": "a control held focus from an earlier probe, so the baseline was not the untouched document -- content already revealed before this probe began cannot appear in its delta",
+    "tabs": 8,
+    "revealedAt": -1,
+    "focusBefore": "History probe other, link, focused, linked",
+    "focusAfter": "History probe other, link, focused, linked",
+    "startedFrom": "History probe other, link, focused, linked",
+    "focusReset": {
+     "applied": true,
+     "logSuppressed": true,
+     "why": "a control held focus from an earlier probe and was blurred; the resulting focusout was kept out of the focus-event log"
+    }
+   },
+   {
+    "event": "browseBufferFresh",
+    "atMs": 70839,
+    "reason": "a new window was launched, so NVDA built its buffer here"
+   },
+   {
+    "event": "focusRevealBrowseRestored",
+    "atMs": 73695,
+    "via": "anchorToTop"
+   },
+   {
+    "event": "focusOrder",
+    "atMs": 83223,
+    "stops": 7,
+    "cycled": true,
+    "stalled": false,
+    "truncated": false,
+    "stop": "cycled",
+    "walkedUrl": "http://capture-host:8000/visited-probe.html",
+    "startedFrom": "History probe other, link, focused, linked",
+    "focusReset": {
+     "applied": true,
+     "logSuppressed": true,
+     "why": "a control held focus from an earlier probe and was blurred; the resulting focusout was kept out of the focus-event log"
+    }
+   },
+   {
+    "event": "focusConfinement",
+    "atMs": 83223,
+    "confined": false,
+    "cycled": true,
+    "ring": 2,
+    "controlsOnPage": 0
+   },
+   {
+    "event": "focusEventLog",
+    "atMs": 83228,
+    "installed": true,
+    "installTargetMatch": "matched",
+    "installTargetUrl": "http://capture-host:8000/visited-probe.html",
+    "installError": null,
+    "collectTargetMatch": "matched",
+    "collectTargetUrl": "http://capture-host:8000/visited-probe.html",
+    "collectCandidates": 1,
+    "eventCount": 43,
+    "events": [
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 28720
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 30083
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 30084
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 33464
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 33480
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 35414
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 35414
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 36692
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 36694
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 38743
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 38743
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 41206
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 41208
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 43312
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 43312
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 53566
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 54257
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 54257
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 54969
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 54971
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 55704
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 55704
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 57859
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 57860
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 58581
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 58581
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 59235
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 59238
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 59953
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 59953
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 71950
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 73319
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 73319
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 73967
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 73969
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 74649
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 74650
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 76158
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 76160
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 76839
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 76839
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 77489
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 77491
+     }
+    ],
+    "collectError": null,
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "titleSource",
+    "atMs": 90062,
+    "title": "History probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 1
+   },
+   {
+    "event": "routeChange",
+    "atMs": 91251,
+    "activating": "History probe self, same page, link"
+   },
+   {
+    "event": "titleSource",
+    "atMs": 96583,
+    "title": "History probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 1
+   },
+   {
+    "event": "routeChange",
+    "atMs": 99713,
+    "found": true,
+    "titleChanged": false,
+    "viewChanged": false,
+    "announcedChars": 23
+   },
+   {
+    "event": "interaction",
+    "atMs": 99715,
+    "controls": 0,
+    "stateChanges": 0,
+    "formChanges": 1,
+    "postSubmit": 0,
+    "sweepLog": [
+     "route \"History probe self, same page, link\" -> \"History probe, document\""
+    ]
+   },
+   {
+    "event": "structureCensus",
+    "atMs": 99715,
+    "landmark": 1,
+    "heading": 1,
+    "link": 2,
+    "graphic": 0,
+    "formControl": 0,
+    "graphicUnnamed": 0,
+    "graphicUnnamedDetail": [],
+    "graphicExempted": 0,
+    "graphicExemptedDetail": [],
+    "names": [
+     "History probe",
+     "History probe",
+     "History probe",
+     "History probe self",
+     "History probe other",
+     "History probe",
+     "History probe self",
+     "History probe other",
+     "History probe self",
+     "History probe other"
+    ],
+    "distinct": {
+     "landmark": 1,
+     "heading": 1,
+     "link": 2,
+     "graphic": 0,
+     "formControl": 0
+    },
+    "targetMatch": "matched",
+    "candidates": 1,
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html",
+    "readAt": {
+     "startedAtMs": 10453,
+     "tookMs": 5
+    }
+   },
+   {
+    "event": "domCensus",
+    "atMs": 99715,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 1,
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html",
+    "readAt": {
+     "startedAtMs": 10458,
+     "tookMs": 22
+    }
+   },
+   {
+    "event": "mediaCensus",
+    "atMs": 99715,
+    "count": 0,
+    "targetMatch": "matched",
+    "candidates": 1,
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html",
+    "readAt": {
+     "startedAtMs": 10480,
+     "tookMs": 20
+    }
+   },
+   {
+    "event": "formInputCensus",
+    "atMs": 99715,
+    "count": 0,
+    "total": 0,
+    "targetMatch": "matched",
+    "candidates": 1,
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html",
+    "readAt": {
+     "startedAtMs": 10500,
+     "tookMs": 11
+    }
+   },
+   {
+    "event": "truncatedAnnouncements",
+    "atMs": 99715,
+    "truncated": [],
+    "checked": true
+   },
+   {
+    "event": "structureCrossCheck",
+    "atMs": 99715,
+    "sameCounts": false,
+    "compared": 4,
+    "differsOn": [
+     {
+      "type": "landmark",
+      "sweepEntries": 0,
+      "oracleDistinctNames": 1
+     }
+    ],
+    "basis": "distinct-names"
+   },
+   {
+    "event": "done",
+    "atMs": 99716,
+    "transcript": 3
+   },
+   {
+    "event": "browserKeptAlive",
+    "atMs": 99716
+   }
+  ],
+  "task": null,
+  "environment": {
+   "measuredAt": "2026-10-21T11:00:47.698Z",
+   "screenReader": "NVDA",
+   "browser": "Microsoft Edge",
+   "guidepupVersion": "0.31.0",
+   "screenReaderSettings": "speech.autoLanguageSwitching=True,speech.reportLanguage=True,speech.reportNotSupportedLanguage=speech",
+   "browserProfile": "adopted",
+   "nodeVersion": "v24.20.0",
+   "architecture": "x64",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24,
+   "provisionRevision": "a20963f766666de8",
+   "windowSize": "1024x768",
+   "displayMode": "1024x768",
+   "displayAdapter": "Intel(R) UHD Graphics 630",
+   "displaySampledMsAgo": 3462,
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "screenReaderVersion": "2026.1.1",
+   "browserVersion": "155.0.4283.62",
+   "versionsSampledMsAgo": 3461,
+   "windowsBuild": "26300.9711",
+   "innerWidth": 1008,
+   "innerHeight": 729,
+   "devicePixelRatio": 1
+  }
+ }
+}

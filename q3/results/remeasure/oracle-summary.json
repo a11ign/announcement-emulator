@@ -4,6 +4,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-2",
+  "status": 200,
   "capturedAt": "2026-10-21T11:07:29.425Z",
   "transcriptLines": 75,
   "swept": {
@@ -17,6 +18,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Bathing Waters Home Scottish Environment Protection Agency (SEPA)",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -36,6 +45,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-3",
+  "status": 200,
   "capturedAt": "2026-10-21T11:19:40.419Z",
   "transcriptLines": 91,
   "swept": {
@@ -49,6 +59,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Search results - Find Case Law - The National Archives",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -68,6 +86,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-4",
+  "status": 200,
   "capturedAt": "2026-10-21T11:05:43.419Z",
   "transcriptLines": 37,
   "swept": {
@@ -81,6 +100,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Find river, sea, groundwater and rainfall levels - GOV dot UK",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -100,6 +127,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-7",
+  "status": 200,
   "capturedAt": "2026-10-21T11:21:36.677Z",
   "transcriptLines": 280,
   "swept": {
@@ -113,6 +141,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Southwark Data \u2013 Data Explorer",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -132,6 +168,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-2",
+  "status": 200,
   "capturedAt": "2026-10-21T11:20:07.560Z",
   "transcriptLines": 159,
   "swept": {
@@ -145,6 +182,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Filter - MOJ Design System - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -164,6 +209,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-8",
+  "status": 200,
   "capturedAt": "2026-10-21T11:19:34.132Z",
   "transcriptLines": 175,
   "swept": {
@@ -177,6 +223,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Scrollable pane - MOJ Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -196,6 +250,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-4",
+  "status": 200,
   "capturedAt": "2026-10-21T11:19:21.928Z",
   "transcriptLines": 125,
   "swept": {
@@ -209,6 +264,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Sortable table - MOJ Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -228,6 +291,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-9",
+  "status": 200,
   "capturedAt": "2026-10-21T11:19:20.557Z",
   "transcriptLines": 63,
   "swept": {
@@ -241,6 +305,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Filter a list - MOJ Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -260,6 +332,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-10",
+  "status": 200,
   "capturedAt": "2026-10-21T11:20:31.130Z",
   "transcriptLines": 129,
   "swept": {
@@ -273,6 +346,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Accordion \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -292,6 +373,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-12",
+  "status": 200,
   "capturedAt": "2026-10-21T11:20:33.551Z",
   "transcriptLines": 101,
   "swept": {
@@ -305,6 +387,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Checkboxes \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -324,6 +414,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-13",
+  "status": 200,
   "capturedAt": "2026-10-21T11:20:59.229Z",
   "transcriptLines": 268,
   "swept": {
@@ -337,6 +428,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Date input \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -356,6 +455,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-16",
+  "status": 200,
   "capturedAt": "2026-10-21T11:07:46.771Z",
   "transcriptLines": 125,
   "swept": {
@@ -369,6 +469,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Details \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -388,6 +496,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-14",
+  "status": 200,
   "capturedAt": "2026-10-21T11:20:22.573Z",
   "transcriptLines": 245,
   "swept": {
@@ -401,6 +510,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Error message \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -420,6 +537,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-15",
+  "status": 200,
   "capturedAt": "2026-10-21T11:20:42.409Z",
   "transcriptLines": 182,
   "swept": {
@@ -433,6 +551,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Error summary \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -452,6 +578,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-16",
+  "status": 200,
   "capturedAt": "2026-10-21T11:20:23.644Z",
   "transcriptLines": 103,
   "swept": {
@@ -465,6 +592,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Radios \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -484,6 +619,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-9",
+  "status": 200,
   "capturedAt": "2026-10-21T11:24:17.633Z",
   "transcriptLines": 150,
   "swept": {
@@ -497,6 +633,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Select \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -516,6 +660,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-4",
+  "status": 200,
   "capturedAt": "2026-10-21T11:23:55.248Z",
   "transcriptLines": 133,
   "swept": {
@@ -529,6 +674,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Skip link \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -548,6 +701,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-8",
+  "status": 200,
   "capturedAt": "2026-10-21T11:24:43.136Z",
   "transcriptLines": 104,
   "swept": {
@@ -561,6 +715,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Table \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -580,6 +742,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-3",
+  "status": 200,
   "capturedAt": "2026-10-21T11:24:24.189Z",
   "transcriptLines": 122,
   "swept": {
@@ -593,6 +756,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Tabs \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -612,6 +783,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-2",
+  "status": 200,
   "capturedAt": "2026-10-21T11:27:14.316Z",
   "transcriptLines": 382,
   "swept": {
@@ -625,6 +797,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Text input \u2013 GOV dot UK Design System - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -644,6 +824,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-14",
+  "status": 200,
   "capturedAt": "2026-10-21T11:25:27.155Z",
   "transcriptLines": 113,
   "swept": {
@@ -657,6 +838,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Defra-approved disinfectants Disinfectants approved for statutory notifiable animal disease control in GB",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -676,6 +865,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-16",
+  "status": 200,
   "capturedAt": "2026-10-21T11:23:47.870Z",
   "transcriptLines": 90,
   "swept": {
@@ -689,6 +879,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Your gateway to the EU, News, Highlights European Union",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -708,6 +906,7 @@
   "role": "training",
   "split": "dev",
   "worker": "a11y-worker-10",
+  "status": 200,
   "capturedAt": "2026-10-21T11:26:21.610Z",
   "transcriptLines": 137,
   "swept": {
@@ -721,6 +920,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Upcoming events and exhibitions, The British Library British Library",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -740,6 +947,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-12",
+  "status": 200,
   "capturedAt": "2026-10-21T11:23:15.254Z",
   "transcriptLines": 46,
   "swept": {
@@ -753,6 +961,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "MARINE AND GENERAL MUTUAL LIFE ASSURANCE SOCIETY overview - Find and update company information - GOV dot UK",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -772,6 +988,7 @@
   "role": "training",
   "split": "dev",
   "worker": "a11y-worker-15",
+  "status": 200,
   "capturedAt": "2026-10-21T11:22:56.961Z",
   "transcriptLines": 27,
   "swept": {
@@ -785,6 +1002,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Raising Concerns - Charity Commission for England and Wales",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -804,6 +1029,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-13",
+  "status": 200,
   "capturedAt": "2026-10-21T11:26:49.221Z",
   "transcriptLines": 76,
   "swept": {
@@ -817,6 +1043,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Enforcement action ICO",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -836,6 +1070,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-7",
+  "status": 200,
   "capturedAt": "2026-10-21T11:26:09.624Z",
   "transcriptLines": 97,
   "swept": {
@@ -849,6 +1084,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "For the public ICO",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -868,6 +1111,7 @@
   "role": "field",
   "split": "dev",
   "worker": "a11y-worker-15",
+  "status": 200,
   "capturedAt": "2026-10-21T11:30:09.576Z",
   "transcriptLines": 198,
   "swept": {
@@ -881,6 +1125,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Email and SMS Marketing Platform Mailchimp",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -900,6 +1152,7 @@
   "role": "training",
   "split": "dev",
   "worker": "a11y-worker-12",
+  "status": 200,
   "capturedAt": "2026-10-21T11:26:03.657Z",
   "transcriptLines": 65,
   "swept": {
@@ -913,6 +1166,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Search for a partnership Primary Authority Register",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -932,6 +1193,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-16",
+  "status": 200,
   "capturedAt": "2026-10-21T11:29:57.955Z",
   "transcriptLines": 68,
   "swept": {
@@ -945,6 +1207,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Search a local authority area Food Hygiene Ratings",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -964,6 +1234,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-4",
+  "status": 200,
   "capturedAt": "2026-10-21T11:29:03.018Z",
   "transcriptLines": 87,
   "swept": {
@@ -977,6 +1248,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Search - Find an Inspection Report - Ofsted",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -996,6 +1275,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-9",
+  "status": 200,
   "capturedAt": "2026-10-21T11:31:31.485Z",
   "transcriptLines": 174,
   "swept": {
@@ -1009,6 +1289,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Table \u2013 NHS digital service manual",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1028,6 +1316,7 @@
   "role": "training",
   "split": "dev",
   "worker": "a11y-worker-3",
+  "status": 200,
   "capturedAt": "2026-10-21T11:31:29.736Z",
   "transcriptLines": 259,
   "swept": {
@@ -1041,6 +1330,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Text input \u2013 NHS digital service manual",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1060,6 +1357,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-8",
+  "status": 200,
   "capturedAt": "2026-10-21T11:31:49.976Z",
   "transcriptLines": 234,
   "swept": {
@@ -1073,6 +1371,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Postgraduate taught courses 2027-2028 The University of Sheffield",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1092,6 +1398,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-14",
+  "status": 200,
   "capturedAt": "2026-10-21T11:29:48.701Z",
   "transcriptLines": 132,
   "swept": {
@@ -1105,6 +1412,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Tube - Transport for London",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1124,6 +1439,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-12",
+  "status": 200,
   "capturedAt": "2026-10-21T11:29:31.815Z",
   "transcriptLines": 79,
   "swept": {
@@ -1137,6 +1453,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Plan a journey - Transport for London",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1156,6 +1480,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-7",
+  "status": 200,
   "capturedAt": "2026-10-21T11:28:15.816Z",
   "transcriptLines": 12,
   "swept": {
@@ -1169,6 +1494,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "The Internet",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1188,6 +1521,7 @@
   "role": "training",
   "split": "dev",
   "worker": "a11y-worker-10",
+  "status": 200,
   "capturedAt": "2026-10-21T11:33:59.038Z",
   "transcriptLines": 555,
   "swept": {
@@ -1201,6 +1535,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "London (Greater London) weather - Met Office",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1220,6 +1562,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-13",
+  "status": 200,
   "capturedAt": "2026-10-21T11:29:06.016Z",
   "transcriptLines": 28,
   "swept": {
@@ -1233,6 +1576,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "UK weather warnings - Met Office",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1252,6 +1603,7 @@
   "role": "field",
   "split": "held",
   "worker": "a11y-worker-2",
+  "status": 200,
   "capturedAt": "2026-10-21T11:31:47.836Z",
   "transcriptLines": 123,
   "swept": {
@@ -1265,6 +1617,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Adobe: Creative, marketing and document management solutions",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1284,6 +1644,7 @@
   "role": "field",
   "split": "dev",
   "worker": "a11y-worker-7",
+  "status": 200,
   "capturedAt": "2026-10-21T11:33:59.277Z",
   "transcriptLines": 96,
   "swept": {
@@ -1297,6 +1658,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Collaboration software for software, IT and business teams Atlassian",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1316,6 +1685,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-4",
+  "status": 200,
   "capturedAt": "2026-10-21T11:36:09.105Z",
   "transcriptLines": 260,
   "swept": {
@@ -1329,6 +1699,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Catalogue British History Online",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1348,6 +1726,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-13",
+  "status": 200,
   "capturedAt": "2026-10-21T11:35:13.991Z",
   "transcriptLines": 80,
   "swept": {
@@ -1361,6 +1740,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "About us - Care Quality Commission",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1380,6 +1767,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-12",
+  "status": 200,
   "capturedAt": "2026-10-21T11:36:39.203Z",
   "transcriptLines": 53,
   "swept": {
@@ -1393,6 +1781,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Search Results - Care Quality Commission",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1412,6 +1808,7 @@
   "role": "field",
   "split": "held",
   "worker": "a11y-worker-14",
+  "status": 200,
   "capturedAt": "2026-10-21T11:35:30.026Z",
   "transcriptLines": 182,
   "swept": {
@@ -1425,6 +1822,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Dropbox: Secure cloud storage, file sharing and more",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1444,6 +1849,7 @@
   "role": "training",
   "split": "dev",
   "worker": "a11y-worker-16",
+  "status": 200,
   "capturedAt": "2026-10-21T11:33:11.001Z",
   "transcriptLines": 84,
   "swept": {
@@ -1457,6 +1863,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Ombudsman decisions \u2013 Financial Ombudsman service",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1476,6 +1890,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-15",
+  "status": 200,
   "capturedAt": "2026-10-21T11:37:16.902Z",
   "transcriptLines": 252,
   "swept": {
@@ -1489,6 +1904,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "University of Glasgow - Undergraduate study - 2027 Degree programmes A\u2010Z",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1508,6 +1931,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-3",
+  "status": 200,
   "capturedAt": "2026-10-21T11:35:17.308Z",
   "transcriptLines": 72,
   "swept": {
@@ -1521,6 +1945,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "About the Scottish Government - gov dot scot",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1540,6 +1972,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-9",
+  "status": 200,
   "capturedAt": "2026-10-21T11:36:31.894Z",
   "transcriptLines": 65,
   "swept": {
@@ -1553,6 +1986,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Publications - gov dot scot",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1572,6 +2013,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-2",
+  "status": 200,
   "capturedAt": "2026-10-21T11:36:21.074Z",
   "transcriptLines": 59,
   "swept": {
@@ -1585,6 +2027,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Benefits - GOV dot UK",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1604,6 +2054,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-8",
+  "status": 200,
   "capturedAt": "2026-10-21T11:37:32.596Z",
   "transcriptLines": 78,
   "swept": {
@@ -1617,6 +2068,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Rates and thresholds for employers 2025 to 2026 - GOV dot UK",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1636,6 +2095,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-16",
+  "status": 200,
   "capturedAt": "2026-10-21T11:40:17.862Z",
   "transcriptLines": 103,
   "swept": {
@@ -1649,6 +2109,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "News and communications - GOV dot UK",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1668,6 +2136,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-10",
+  "status": 200,
   "capturedAt": "2026-10-21T11:41:05.816Z",
   "transcriptLines": 137,
   "swept": {
@@ -1681,6 +2150,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Research and statistics - GOV dot UK",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1700,6 +2177,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-7",
+  "status": 200,
   "capturedAt": "2026-10-21T11:39:03.501Z",
   "transcriptLines": 89,
   "swept": {
@@ -1713,6 +2191,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Tax your vehicle - GOV dot UK - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1732,6 +2218,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-13",
+  "status": 200,
   "capturedAt": "2026-10-21T11:42:47.783Z",
   "transcriptLines": 316,
   "swept": {
@@ -1745,6 +2232,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Statistics and research Released GOV dot WALES - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1764,6 +2259,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-3",
+  "status": 200,
   "capturedAt": "2026-10-21T11:37:06.961Z",
   "transcriptLines": 7,
   "swept": {
@@ -1777,6 +2273,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Edinburgh Castle Historic Scotland",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1796,6 +2300,7 @@
   "role": "field",
   "split": "held",
   "worker": "a11y-worker-14",
+  "status": 200,
   "capturedAt": "2026-10-21T11:40:48.749Z",
   "transcriptLines": 31,
   "swept": {
@@ -1809,6 +2314,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Hub Spot Software and Tools for your Business - Homepage",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1828,6 +2341,7 @@
   "role": "training",
   "split": "dev",
   "worker": "a11y-worker-4",
+  "status": 200,
   "capturedAt": "2026-10-21T11:41:38.194Z",
   "transcriptLines": 108,
   "swept": {
@@ -1841,6 +2355,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Council tax London Borough of Hammersmith and Fulham",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1860,6 +2382,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-2",
+  "status": 200,
   "capturedAt": "2026-10-21T11:39:11.222Z",
   "transcriptLines": 5,
   "swept": {
@@ -1873,6 +2396,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Undergraduate courses University of Leeds",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1892,6 +2423,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-9",
+  "status": 200,
   "capturedAt": "2026-10-21T11:39:53.109Z",
   "transcriptLines": 66,
   "swept": {
@@ -1905,6 +2437,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Benefits - mygov dot scot",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1924,6 +2464,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-12",
+  "status": 200,
   "capturedAt": "2026-10-21T11:39:45.755Z",
   "transcriptLines": 58,
   "swept": {
@@ -1937,6 +2478,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Scottish Child Payment - mygov dot scot",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1956,6 +2505,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-3",
+  "status": 200,
   "capturedAt": "2026-10-21T11:40:55.133Z",
   "transcriptLines": 82,
   "swept": {
@@ -1969,6 +2519,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "About us - The National Archives - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -1988,6 +2546,7 @@
   "role": "training",
   "split": "dev",
   "worker": "a11y-worker-15",
+  "status": 200,
   "capturedAt": "2026-10-21T11:44:50.689Z",
   "transcriptLines": 562,
   "swept": {
@@ -2001,6 +2560,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Research guides - The National Archives",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2020,6 +2587,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-8",
+  "status": 200,
   "capturedAt": "2026-10-21T11:40:31.258Z",
   "transcriptLines": 66,
   "swept": {
@@ -2033,6 +2601,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Careers - Network Rail",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2052,6 +2628,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-7",
+  "status": 200,
   "capturedAt": "2026-10-21T11:46:23.770Z",
   "transcriptLines": 590,
   "swept": {
@@ -2065,6 +2642,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Conditions A to Z - NHS - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2084,6 +2669,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-2",
+  "status": 200,
   "capturedAt": "2026-10-21T11:42:00.099Z",
   "transcriptLines": 44,
   "swept": {
@@ -2097,6 +2683,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Find a GP - NHS",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2116,6 +2710,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-12",
+  "status": 200,
   "capturedAt": "2026-10-21T11:42:08.491Z",
   "transcriptLines": 9,
   "swept": {
@@ -2129,6 +2724,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "MOT and vehicle testing nidirect",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2148,6 +2751,7 @@
   "role": "training",
   "split": "dev",
   "worker": "a11y-worker-9",
+  "status": 200,
   "capturedAt": "2026-10-21T11:42:28.067Z",
   "transcriptLines": 62,
   "swept": {
@@ -2161,6 +2765,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Join the National Library of Scotland National Library of Scotland",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2180,6 +2792,7 @@
   "role": "field",
   "split": "held",
   "worker": "a11y-worker-14",
+  "status": 200,
   "capturedAt": "2026-10-21T11:55:48.140Z",
   "transcriptLines": 95,
   "swept": {
@@ -2193,6 +2806,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "The AI workspace that works for you. Notion",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2212,6 +2833,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-8",
+  "status": 200,
   "capturedAt": "2026-10-21T11:44:19.944Z",
   "transcriptLines": 12,
   "swept": {
@@ -2225,6 +2847,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Publications - National Records of Scotland (NRS)",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2244,6 +2874,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-14",
+  "status": 200,
   "capturedAt": "2026-10-21T11:44:40.674Z",
   "transcriptLines": 12,
   "swept": {
@@ -2257,6 +2888,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Statistics and data - National Records of Scotland (NRS)",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2276,6 +2915,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-16",
+  "status": 200,
   "capturedAt": "2026-10-21T11:44:17.690Z",
   "transcriptLines": 4,
   "swept": {
@@ -2289,6 +2929,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Energy price cap and standing charges explained Ofgem",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2308,6 +2956,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-3",
+  "status": 200,
   "capturedAt": "2026-10-21T11:46:53.926Z",
   "transcriptLines": 189,
   "swept": {
@@ -2321,6 +2970,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Inflation and price indices - Office for National Statistics - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2340,6 +2997,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-10",
+  "status": 200,
   "capturedAt": "2026-10-21T11:44:54.114Z",
   "transcriptLines": 100,
   "swept": {
@@ -2353,6 +3011,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Judgments Scottish Courts and Tribunals Service",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2372,6 +3038,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-4",
+  "status": 200,
   "capturedAt": "2026-10-21T11:45:21.645Z",
   "transcriptLines": 57,
   "swept": {
@@ -2385,6 +3052,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Active Lives Sport England - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2404,6 +3079,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-2",
+  "status": 200,
   "capturedAt": "2026-10-21T11:48:23.474Z",
   "transcriptLines": 72,
   "swept": {
@@ -2417,6 +3093,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Publications Transport Scotland",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2436,6 +3120,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-12",
+  "status": 200,
   "capturedAt": "2026-10-21T11:45:42.927Z",
   "transcriptLines": 89,
   "swept": {
@@ -2449,6 +3134,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Citylights News Accessible News Page",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2468,6 +3161,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-9",
+  "status": 200,
   "capturedAt": "2026-10-21T11:46:06.708Z",
   "transcriptLines": 89,
   "swept": {
@@ -2481,6 +3175,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Citylights Survey Accessible Survey Page",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2500,6 +3202,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-13",
+  "status": 200,
   "capturedAt": "2026-10-21T11:46:12.986Z",
   "transcriptLines": 49,
   "swept": {
@@ -2513,6 +3216,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Citylights Template Accessible Template Page - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2532,6 +3243,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-16",
+  "status": 200,
   "capturedAt": "2026-10-21T11:47:31.366Z",
   "transcriptLines": 63,
   "swept": {
@@ -2545,6 +3257,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Citylights Tickets Accessible Tickets Page",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2564,6 +3284,7 @@
   "role": "calibration",
   "split": "held",
   "worker": "a11y-worker-8",
+  "status": 200,
   "capturedAt": "2026-10-21T11:47:28.746Z",
   "transcriptLines": 103,
   "swept": {
@@ -2577,6 +3298,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Welcome to City Lights! Inaccessible News Page",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2596,6 +3325,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-14",
+  "status": 200,
   "capturedAt": "2026-10-21T11:47:36.585Z",
   "transcriptLines": 64,
   "swept": {
@@ -2609,6 +3339,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Welcome to City Lights! Inaccessible Template Page",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2628,6 +3366,7 @@
   "role": "calibration",
   "split": "dev",
   "worker": "a11y-worker-15",
+  "status": 200,
   "capturedAt": "2026-10-21T11:47:43.245Z",
   "transcriptLines": 58,
   "swept": {
@@ -2641,6 +3380,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Welcome to City Lights! Inaccessible Tickets Page",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2660,6 +3407,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-10",
+  "status": 200,
   "capturedAt": "2026-10-21T11:49:10.453Z",
   "transcriptLines": 123,
   "swept": {
@@ -2673,6 +3421,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Carousel Structure Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2692,6 +3448,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-4",
+  "status": 200,
   "capturedAt": "2026-10-21T11:51:50.307Z",
   "transcriptLines": 228,
   "swept": {
@@ -2705,6 +3462,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Grouping Controls Web Accessibility Initiative (WAI) W 3C - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2724,6 +3489,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-12",
+  "status": 200,
   "capturedAt": "2026-10-21T11:51:06.154Z",
   "transcriptLines": 187,
   "swept": {
@@ -2737,6 +3503,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Form Instructions Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2756,6 +3530,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-9",
+  "status": 200,
   "capturedAt": "2026-10-21T11:51:53.998Z",
   "transcriptLines": 222,
   "swept": {
@@ -2769,6 +3544,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Labeling Controls Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2788,6 +3571,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-13",
+  "status": 200,
   "capturedAt": "2026-10-21T11:51:31.166Z",
   "transcriptLines": 182,
   "swept": {
@@ -2801,6 +3585,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Multi-page Forms Web Accessibility Initiative (WAI) W 3C - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2820,6 +3612,7 @@
   "role": "training",
   "split": "dev",
   "worker": "a11y-worker-7",
+  "status": 200,
   "capturedAt": "2026-10-21T11:52:23.041Z",
   "transcriptLines": 228,
   "swept": {
@@ -2833,6 +3626,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Validating Input Web Accessibility Initiative (WAI) W 3C - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2852,6 +3653,7 @@
   "role": "training",
   "split": "dev",
   "worker": "a11y-worker-3",
+  "status": 200,
   "capturedAt": "2026-10-21T11:52:07.052Z",
   "transcriptLines": 164,
   "swept": {
@@ -2865,6 +3667,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Complex Images Web Accessibility Initiative (WAI) W 3C - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2884,6 +3694,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-8",
+  "status": 200,
   "capturedAt": "2026-10-21T11:52:03.942Z",
   "transcriptLines": 137,
   "swept": {
@@ -2897,6 +3708,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Decorative Images Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2916,6 +3735,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-16",
+  "status": 200,
   "capturedAt": "2026-10-21T11:52:45.012Z",
   "transcriptLines": 146,
   "swept": {
@@ -2929,6 +3749,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Functional Images Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2948,6 +3776,7 @@
   "role": "training",
   "split": "dev",
   "worker": "a11y-worker-14",
+  "status": 200,
   "capturedAt": "2026-10-21T11:52:21.826Z",
   "transcriptLines": 142,
   "swept": {
@@ -2961,6 +3790,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Groups of Images Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -2980,6 +3817,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-15",
+  "status": 200,
   "capturedAt": "2026-10-21T11:53:01.894Z",
   "transcriptLines": 170,
   "swept": {
@@ -2993,6 +3831,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Informative Images Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -3012,6 +3858,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-2",
+  "status": 200,
   "capturedAt": "2026-10-21T11:53:02.845Z",
   "transcriptLines": 114,
   "swept": {
@@ -3025,6 +3872,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Fly-out Menus Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -3044,6 +3899,7 @@
   "role": "training",
   "split": "dev",
   "worker": "a11y-worker-10",
+  "status": 200,
   "capturedAt": "2026-10-21T11:53:56.917Z",
   "transcriptLines": 160,
   "swept": {
@@ -3057,6 +3913,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Menu Structure Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -3076,6 +3940,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-12",
+  "status": 200,
   "capturedAt": "2026-10-21T11:55:57.092Z",
   "transcriptLines": 126,
   "swept": {
@@ -3089,6 +3954,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Headings Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -3108,6 +3981,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-13",
+  "status": 200,
   "capturedAt": "2026-10-21T11:56:28.871Z",
   "transcriptLines": 155,
   "swept": {
@@ -3121,6 +3995,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Page Regions Web Accessibility Initiative (WAI) W 3C - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -3140,6 +4022,7 @@
   "role": "training",
   "split": "dev",
   "worker": "a11y-worker-4",
+  "status": 200,
   "capturedAt": "2026-10-21T11:56:40.752Z",
   "transcriptLines": 173,
   "swept": {
@@ -3153,6 +4036,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Tables with Irregular Headers Web Accessibility Initiative (WAI) W 3C - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -3172,6 +4063,7 @@
   "role": "training",
   "split": "dev",
   "worker": "a11y-worker-9",
+  "status": 200,
   "capturedAt": "2026-10-21T11:56:53.893Z",
   "transcriptLines": 232,
   "swept": {
@@ -3185,6 +4077,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Tables with Multi-Level Headers Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -3204,6 +4104,7 @@
   "role": "training",
   "split": "held",
   "worker": "a11y-worker-8",
+  "status": 200,
   "capturedAt": "2026-10-21T11:56:44.213Z",
   "transcriptLines": 178,
   "swept": {
@@ -3217,6 +4118,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Tables with One Header Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",
@@ -3236,6 +4145,7 @@
   "role": "training",
   "split": "dev",
   "worker": "a11y-worker-3",
+  "status": 200,
   "capturedAt": "2026-10-21T11:56:17.179Z",
   "transcriptLines": 76,
   "swept": {
@@ -3249,6 +4159,14 @@
    "tableCells": 0
   },
   "documentReadyTitle": "Tables with Two Headers Web Accessibility Initiative (WAI) W 3C - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
   "history": {
    "policy": {
     "name": "SavingBrowserHistoryDisabled",

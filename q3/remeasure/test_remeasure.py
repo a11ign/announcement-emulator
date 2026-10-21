@@ -55,6 +55,10 @@ class BoxPasses(unittest.TestCase):
     def test_a_restored_box_no_longer_passes_but_still_counts_as_having_held(self):
         b = held_box(); self.assertTrue(rb.box_held(b)); b['restored'] = {'at': '2026-10-21T13:00:00Z'}
         self.assertFalse(rb.box_passes(b)); self.assertTrue(rb.box_held(b))
+    def test_holding_needs_the_after_run_probe_after_the_after_probe_and_the_restore_after_both(self):
+        b = held_box(); b['after-run'] = rb.probe_outcome(record() | {'capturedAt': '2026-10-21T10:00:00.000Z'}); self.assertFalse(rb.box_held(b))      # not later than `after`
+        b = held_box(); b['restored'] = {'at': '2026-10-21T11:00:00Z'}; self.assertFalse(rb.box_held(b))                                              # put back before the after-run probe
+        b = held_box(); b['restored'] = {'at': '2026-10-21T13:00:00Z'}; self.assertTrue(rb.box_held(b))
     def test_holding_through_the_run_needs_a_clean_after_run_probe(self):
         self.assertFalse(rb.box_held(passing_box()))
         b = held_box(); b['after-run'] = rb.probe_outcome(record(links=('a, visited, link', 'b, link'))); self.assertFalse(rb.box_held(b))
@@ -152,6 +156,24 @@ class FleetCapture(unittest.TestCase):
     def test_a_busy_worker_is_a_record_with_its_status_and_reason(self):
         done, rec = self.capture(self.serve(429, 'a capture is already in progress', delay=0))
         self.assertEqual((rec['status'], rec['capture']['error']), (429, 'a capture is already in progress'))
+    def test_a_refused_connection_is_a_record_that_names_the_worker_and_not_its_address(self):
+        import socket
+        with socket.socket() as sock: sock.bind(('127.0.0.1', 0)); port = sock.getsockname()[1]      # a port nothing listens on
+        done, rec = self.capture(f'http://127.0.0.1:{port}')
+        self.assertEqual(rec['status'], 0); self.assertIn('a11y-worker-2', rec['capture']['error']); self.assertNotIn('127.0.0.1', json.dumps(rec)); self.assertEqual(done.returncode, 0)
+    def test_an_answer_cut_off_midway_is_a_record_with_an_error_not_a_hang(self):
+        import socket
+        server = socket.socket(); server.bind(('127.0.0.1', 0)); server.listen(1); self.addCleanup(server.close)
+        def cut():
+            conn, _ = server.accept(); conn.recv(65536); conn.sendall(b'HTTP/1.1 200 OK\r\ncontent-length: 100\r\n\r\n{"tran'); conn.close()
+        threading.Thread(target=cut, daemon=True).start()
+        done, rec = self.capture(f'http://127.0.0.1:{server.getsockname()[1]}')
+        self.assertEqual(rec['status'], 0); self.assertIn('aborted', rec['capture']['error'])
+    def test_a_worker_url_that_is_not_http_is_refused(self):
+        done = subprocess.run(['node', os.path.join(Q3, 'fleet_capture.mjs'), 'a11y-worker-2=https://127.0.0.1:8765', 'http://127.0.0.1:8000/p.html', os.path.join(self.tmpdir(), 'x.json')], capture_output=True, text=True, timeout=30)
+        self.assertNotEqual(done.returncode, 0); self.assertIn('http: the workers speak no other', done.stderr)
+    def tmpdir(self):
+        d = tempfile.TemporaryDirectory(); self.addCleanup(d.cleanup); return d.name
     def test_the_server_is_written_by_name_when_given_as_an_address(self):
         done, rec = self.capture(self.serve(200, json.dumps({'url': 'http://192.0.2.7:8000/p.html', 'structure': {}}), delay=0), address='http://192.0.2.7:8000/p.html')
         self.assertEqual(rec['capture']['url'], 'http://capture-host:8000/p.html')
@@ -191,16 +213,23 @@ class Check(unittest.TestCase):
     def test_a_visited_in_the_spoken_transcript_alone_fails_the_check(self):
         rb_path = self.write_readback(self.three()); a = 'https://example.org/a'
         self.assertEqual(check.check_oracle(self.oracle(a=self.stamped(url=a, transcript=['Cookies, visited, link'])), rb_path, self.corpus(a))[0], check.FAIL)
-    def explained(self, found, unexplained=()):
-        path = os.path.join(self.dir, 'visited-explained.json'); rb.write_json(path, {'oracleVisitedAnnouncements': found, 'explained': found - len(unexplained), 'unexplained': list(unexplained), 'pages': {}}); return path
+    def explained(self, found, unexplained=(), pages=None):
+        path = os.path.join(self.dir, 'visited-explained.json'); rb.write_json(path, {'oracleVisitedAnnouncements': found, 'explained': found - len(unexplained), 'unexplained': list(unexplained), 'pages': pages or {}}); return path
     def test_visited_announcements_the_emulator_with_no_history_also_makes_are_accepted(self):
         rb_path = self.write_readback(self.three()); a = 'https://example.org/a'
         oracle = self.oracle(a=self.stamped(url=a, links=('Clear filters, visited, link',), transcript=['visited, link, Clear filters']))
-        self.assertEqual(check.check_oracle(oracle, rb_path, self.corpus(a), self.explained(1))[0], check.OK)
+        self.assertEqual(check.check_oracle(oracle, rb_path, self.corpus(a), self.explained(1, pages={a: {'announcements': ['Clear filters, visited, link']}}))[0], check.OK)
     def test_visited_announcements_the_emulator_does_not_make_fail_the_check(self):
         rb_path = self.write_readback(self.three()); a = 'https://example.org/a'
         oracle = self.oracle(a=self.stamped(url=a, links=('Cookies, visited, link',)))
-        self.assertEqual(check.check_oracle(oracle, rb_path, self.corpus(a), self.explained(1, [{'announcement': 'Cookies, visited, link'}]))[0], check.FAIL)
+        self.assertEqual(check.check_oracle(oracle, rb_path, self.corpus(a), self.explained(1, [{'announcement': 'Cookies, visited, link'}], pages={a: {'announcements': ['Cookies, visited, link']}}))[0], check.FAIL)
+    def test_an_explanation_of_other_pages_or_strings_with_the_same_count_is_stale_too(self):
+        rb_path = self.write_readback(self.three()); a = 'https://example.org/a'
+        oracle = self.oracle(a=self.stamped(url=a, links=('Cookies, visited, link',)))
+        self.assertEqual(check.check_oracle(oracle, rb_path, self.corpus(a), self.explained(1, pages={a: {'announcements': ['Other, visited, link']}}))[0], check.FAIL)
+        self.assertEqual(check.check_oracle(oracle, rb_path, self.corpus(a), self.explained(1, pages={'https://example.org/z': {'announcements': ['Cookies, visited, link']}}))[0], check.FAIL)
+    def test_a_visited_in_a_channel_the_checker_did_not_list_is_still_counted(self):
+        self.assertEqual(ev.visited_in({'structure': {'buttons': ['Go, visited, button'], 'links': ['a, link']}}), [('buttons', 'Go, visited, button')])
     def test_an_explanation_of_another_count_is_stale_and_fails_the_check(self):
         rb_path = self.write_readback(self.three()); a = 'https://example.org/a'
         oracle = self.oracle(a=self.stamped(url=a, links=('Cookies, visited, link',)))

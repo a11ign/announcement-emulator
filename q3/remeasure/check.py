@@ -40,6 +40,11 @@ def visited_problems(directory, visited, explained_path):
     """`visited` in the oracle is explained or it is a history that was not clean: explain_visited.py's output must account for every one, with the emulator's no-history run as the witness."""
     if not explained_path or not os.path.exists(explained_path): return [f'{visited} announcements carry `visited` and nothing explains them (explain_visited.py): the history was not clean, measure nothing']
     got = rb.read_json(explained_path)
+    here = {}
+    for f in sorted(glob.glob(os.path.join(directory, '*.json'))):
+        cap = rb.read_json(f).get('capture') or {}; hits = [a for _, a in explain_visited.visited_in(cap)]
+        if hits: here[cap.get('url')] = {'announcements': hits}
+    if {u: v['announcements'] for u, v in got['pages'].items()} != {u: v['announcements'] for u, v in here.items()}: return [f'the explanation is not of this oracle\'s {visited} `visited` announcements (it names other pages or strings): run explain_visited.py again']
     if got['oracleVisitedAnnouncements'] != visited: return [f'{visited} announcements carry `visited` but the explanation covers {got["oracleVisitedAnnouncements"]}: it is stale']
     if got['unexplained']: return [f'{len(got["unexplained"])} of {visited} `visited` announcements are not explained: the history was not clean, measure nothing']
     return []

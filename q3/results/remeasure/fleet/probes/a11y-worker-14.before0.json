@@ -1,0 +1,1197 @@
+{
+ "capturedAt": "2026-10-21T09:54:52.480Z",
+ "worker": "a11y-worker-14",
+ "status": 200,
+ "capture": {
+  "url": "http://capture-host:8000/visited-probe.html",
+  "screenReader": "NVDA",
+  "capturedAt": "2026-10-21T09:54:52.460Z",
+  "transcript": [
+   "heading, level 1, History probe",
+   "same page, link, History probe self",
+   "link, History probe other"
+  ],
+  "structure": {
+   "headings": [
+    "History probe, heading, level 1"
+   ],
+   "landmarks": [],
+   "formFields": [],
+   "graphics": [],
+   "links": [
+    "History probe self, same page, link",
+    "History probe other, link"
+   ],
+   "lists": [],
+   "tableCells": [],
+   "frames": []
+  },
+  "interaction": {
+   "controls": [],
+   "stateChanges": [],
+   "formChanges": [],
+   "postSubmitFields": [],
+   "focusOrder": [
+    "History probe self, link, focused, linked, same page",
+    "History probe other, link, focused, linked",
+    "Search tabs, button, focused, collapsed",
+    "History probe - Memory usage - 30.2 MB, tab, focused, selected, capture-host:8000, 1 of 1",
+    "New Tab, button, focused, New tab (Ctrl plus T), Ctrl plus, T",
+    "Back, button, focused, Press to go back (Alt plus Left arrow), or open context menu to see history",
+    "Refresh, button, focused, Refresh (Ctrl plus R)",
+    "Not secure, button, focused, collapsed",
+    "Address and search bar, search landmark, focused, collapsed, Search or enter web address, Ctrl plus, L, selected capture-host:8000 slash visited-probe dot html",
+    "Add this page to favourites (Ctrl plus D), button, focused, collapsed",
+    "Favourites, button, focused, Favourites (Ctrl plus Shift plus O)",
+    "Profile 1 Profile, button, focused, collapsed, Profile 1",
+    "Settings and more (Alt plus F), button, focused",
+    "Chat, button, focused, Copilot (Ctrl plus Shift plus .)",
+    "Copilot menu, button, focused",
+    "History probe self, link, focused, linked, same page",
+    "History probe other, link, focused, linked",
+    "Search tabs, button, focused, collapsed"
+   ],
+   "routeChange": {
+    "control": null,
+    "titleBefore": "History probe",
+    "titleAfter": "History probe",
+    "headingBefore": "",
+    "headingAfter": "",
+    "nextFocusAfter": null,
+    "announced": "",
+    "navigated": false
+   },
+   "focusContext": {
+    "focused": true,
+    "control": "Not secure, button, focused, collapsed",
+    "titleBefore": "History probe",
+    "titleAfter": "History probe"
+   },
+   "focusReveal": {
+    "asked": true,
+    "revealed": null,
+    "why": "a control held focus from an earlier probe, so the baseline was not the untouched document -- content already revealed before this probe began cannot appear in its delta"
+   },
+   "focusEvents": {
+    "asked": true,
+    "checked": true,
+    "events": 8,
+    "log": [
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 3437
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 4952
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 4952
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 5611
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 17883
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 19900
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 19900
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 20569
+     }
+    ],
+    "truncated": false
+   }
+  },
+  "media": [],
+  "formInputs": [],
+  "observed": {
+   "headings": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "landmarks": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "formFields": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "graphics": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "links": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "lists": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "frames": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "tableCells": {
+    "asked": false,
+    "why": "probeTables is opt-in and this capture did not request it"
+   },
+   "formChanges": {
+    "asked": false,
+    "why": "probeForms is off and no formState was configured, so no control was activated"
+   },
+   "postSubmitFields": {
+    "asked": false,
+    "why": "probeForms is off and no formState was configured"
+   },
+   "focusOrder": {
+    "asked": true
+   },
+   "dialogEscape": {
+    "asked": false,
+    "why": "probeDialog is opt-in: it presses Escape, which changes state on a page we do not own"
+   },
+   "arrowNavigation": {
+    "asked": false,
+    "why": "probeArrows is opt-in: it presses keys inside whatever widget focus last landed on"
+   },
+   "typedFeedback": {
+    "asked": false,
+    "why": "probeTyping is opt-in: it enters characters into a field, changing the page under measurement"
+   },
+   "focusContext": {
+    "asked": true
+   },
+   "routeChange": {
+    "asked": true
+   }
+  },
+  "diagnostics": [
+   {
+    "event": "browserSelected",
+    "atMs": 2,
+    "id": "edge",
+    "name": "Microsoft Edge"
+   },
+   {
+    "event": "browserReused",
+    "atMs": 416,
+    "url": "http://capture-host:8000/visited-probe.html",
+    "captures": 21
+   },
+   {
+    "event": "landedOnRequested",
+    "atMs": 421,
+    "ok": true,
+    "actual": "http://capture-host:8000/visited-probe.html",
+    "attempts": 1,
+    "waitedMs": 5,
+    "requested": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "pageServed",
+    "atMs": 444,
+    "requested": "http://capture-host:8000/visited-probe.html",
+    "waitedMs": 23,
+    "polls": 1,
+    "status": 200,
+    "type": "navigate",
+    "url": "http://capture-host:8000/visited-probe.html",
+    "responseEnd": 133.69999998807907,
+    "readyState": "complete",
+    "settled": true
+   },
+   {
+    "event": "pageSettled",
+    "atMs": 889,
+    "reads": 2,
+    "waitedMs": 445,
+    "shape": "1/2/0/1"
+   },
+   {
+    "event": "viewport",
+    "atMs": 893,
+    "innerWidth": 1000,
+    "innerHeight": 676,
+    "devicePixelRatio": 1,
+    "targetMatch": "matched"
+   },
+   {
+    "event": "windowsActivate",
+    "atMs": 1201,
+    "ok": true,
+    "via": "cdpBringToFront",
+    "waitedMs": 308
+   },
+   {
+    "event": "pointerParked",
+    "atMs": 1833,
+    "x": 0,
+    "y": 0,
+    "attempts": 1,
+    "ms": 632
+   },
+   {
+    "event": "nvdaStart",
+    "atMs": 1834,
+    "ok": true,
+    "reused": true,
+    "captures": 4
+   },
+   {
+    "event": "speechChannel",
+    "atMs": 2566,
+    "alive": true,
+    "heard": "heading, level 1, History probe"
+   },
+   {
+    "event": "documentReady",
+    "atMs": 3307,
+    "ok": true,
+    "title": "History probe - Profile 1 - Microsoft​ Edge",
+    "attempt": 1
+   },
+   {
+    "event": "focusEventListenerEarlyInstall",
+    "atMs": 3346,
+    "installed": true,
+    "targetMatch": "matched",
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html",
+    "already": false
+   },
+   {
+    "event": "bufferReady",
+    "atMs": 3640,
+    "sawLoading": false,
+    "refreshed": true,
+    "waitedMs": 0
+   },
+   {
+    "event": "browseBufferRefreshed",
+    "atMs": 3972,
+    "reason": "navigated an already-open window",
+    "ready": true,
+    "refreshed": true
+   },
+   {
+    "event": "afterStart",
+    "atMs": 9876,
+    "lastSpoken": "heading, level 1, History probe"
+   },
+   {
+    "event": "readBudget",
+    "atMs": 9876,
+    "readDeadlineInMs": 352690,
+    "reservedMs": 60000
+   },
+   {
+    "event": "readThrough",
+    "atMs": 11606,
+    "count": 3,
+    "stopReason": "repeatBottom",
+    "firstStepError": null
+   },
+   {
+    "event": "probeOrder",
+    "atMs": 11665,
+    "order": "sweep,focus",
+    "requested": "default"
+   },
+   {
+    "event": "pageState",
+    "atMs": 11678,
+    "beforeProbe": "sweep",
+    "tookMs": 13,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "http://capture-host:8000/visited-probe.html",
+     "https://www.lbhf.gov.uk/council-tax"
+    ],
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "focusRestore",
+    "atMs": 11679,
+    "attempted": false,
+    "why": "focus is in the top document"
+   },
+   {
+    "event": "pageState",
+    "atMs": 11684,
+    "beforeProbe": "sweep:heading",
+    "tookMs": 5,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "http://capture-host:8000/visited-probe.html",
+     "https://www.lbhf.gov.uk/council-tax"
+    ],
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "sweep",
+    "atMs": 12600,
+    "type": "heading",
+    "found": 1,
+    "prevMs": 645,
+    "nextMs": 271,
+    "prevTrips": 5,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "History probe, heading, level 1",
+    "nextStopPhrase": "",
+    "prevCount": 1,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": [
+     "History probe, heading, level 1"
+    ]
+   },
+   {
+    "event": "pageState",
+    "atMs": 12609,
+    "beforeProbe": "sweep:landmark",
+    "tookMs": 9,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "http://capture-host:8000/visited-probe.html",
+     "https://www.lbhf.gov.uk/council-tax"
+    ],
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "sweep",
+    "atMs": 13165,
+    "type": "landmark",
+    "found": 0,
+    "prevMs": 286,
+    "nextMs": 270,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "pageState",
+    "atMs": 13176,
+    "beforeProbe": "sweep:formField",
+    "tookMs": 11,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "http://capture-host:8000/visited-probe.html",
+     "https://www.lbhf.gov.uk/council-tax"
+    ],
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "sweep",
+    "atMs": 14521,
+    "type": "formField",
+    "found": 0,
+    "prevMs": 274,
+    "nextMs": 1071,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "structural",
+    "atMs": 14521,
+    "headings": 1,
+    "landmarks": 0,
+    "formFields": 0,
+    "roundTrips": 20
+   },
+   {
+    "event": "pageState",
+    "atMs": 14540,
+    "beforeProbe": "sweep:graphic",
+    "tookMs": 19,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "http://capture-host:8000/visited-probe.html",
+     "https://www.lbhf.gov.uk/council-tax"
+    ],
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "sweep",
+    "atMs": 15102,
+    "type": "graphic",
+    "found": 0,
+    "prevMs": 288,
+    "nextMs": 274,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "pageState",
+    "atMs": 15113,
+    "beforeProbe": "sweep:link",
+    "tookMs": 11,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "http://capture-host:8000/visited-probe.html",
+     "https://www.lbhf.gov.uk/council-tax"
+    ],
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "sweep",
+    "atMs": 16387,
+    "type": "link",
+    "found": 2,
+    "prevMs": 282,
+    "nextMs": 992,
+    "prevTrips": 3,
+    "nextTrips": 7,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "History probe other, link",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": [
+     "History probe self, same page, link",
+     "History probe other, link"
+    ]
+   },
+   {
+    "event": "pageState",
+    "atMs": 19320,
+    "beforeProbe": "sweep:list",
+    "tookMs": 76,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "http://capture-host:8000/visited-probe.html",
+     "https://www.lbhf.gov.uk/council-tax"
+    ],
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "sweep",
+    "atMs": 19881,
+    "type": "list",
+    "found": 0,
+    "prevMs": 283,
+    "nextMs": 278,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "pageState",
+    "atMs": 22752,
+    "beforeProbe": "sweep:frame",
+    "tookMs": 15,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "http://capture-host:8000/visited-probe.html",
+     "https://www.lbhf.gov.uk/council-tax"
+    ],
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "sweep",
+    "atMs": 24399,
+    "type": "frame",
+    "found": 0,
+    "prevMs": 1370,
+    "nextMs": 277,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "establishBrowseMode",
+    "atMs": 30449,
+    "applied": 3,
+    "caretAnchored": true
+   },
+   {
+    "event": "pageState",
+    "atMs": 30455,
+    "beforeProbe": "focus",
+    "tookMs": 6,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "http://capture-host:8000/visited-probe.html",
+     "https://www.lbhf.gov.uk/council-tax"
+    ],
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "titleSource",
+    "atMs": 34222,
+    "title": "History probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 36226,
+    "title": "History probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 39734,
+    "title": "History probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 41761,
+    "title": "History probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 45114,
+    "title": "History probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 46740,
+    "title": "History probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 50141,
+    "title": "History probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 51845,
+    "title": "History probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 53040,
+    "title": "History probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "focusContext",
+    "atMs": 53040,
+    "focused": true,
+    "control": "Not secure, button, focused, collapsed",
+    "stops": 8,
+    "titleBefore": "History probe",
+    "titleAfter": "History probe",
+    "startedFrom": "History probe, document, focused, read only",
+    "focusReset": {
+     "applied": true,
+     "logSuppressed": false,
+     "why": "confirmed nothing held focus already"
+    }
+   },
+   {
+    "event": "bufferReady",
+    "atMs": 53418,
+    "sawLoading": false,
+    "refreshed": false,
+    "waitedMs": 0
+   },
+   {
+    "event": "browseBufferRefreshed",
+    "atMs": 53718,
+    "reason": "navigated an already-open window",
+    "ready": true,
+    "refreshed": false
+   },
+   {
+    "event": "focusContextBrowseRestored",
+    "atMs": 60771,
+    "via": "anchorToTop"
+   },
+   {
+    "event": "focusReveal",
+    "atMs": 79618,
+    "asked": true,
+    "revealed": null,
+    "why": "a control held focus from an earlier probe, so the baseline was not the untouched document -- content already revealed before this probe began cannot appear in its delta",
+    "tabs": 8,
+    "revealedAt": -1,
+    "focusBefore": "Not secure, button, focused, collapsed",
+    "focusAfter": "Not secure, button, focused, collapsed",
+    "startedFrom": "History probe, document, focused, read only",
+    "focusReset": {
+     "applied": true,
+     "logSuppressed": false,
+     "why": "confirmed nothing held focus already"
+    }
+   },
+   {
+    "event": "bufferReady",
+    "atMs": 79969,
+    "sawLoading": false,
+    "refreshed": false,
+    "waitedMs": 0
+   },
+   {
+    "event": "browseBufferRefreshed",
+    "atMs": 80279,
+    "reason": "navigated an already-open window",
+    "ready": true,
+    "refreshed": false
+   },
+   {
+    "event": "focusRevealBrowseRestored",
+    "atMs": 85226,
+    "via": "anchorToTop"
+   },
+   {
+    "event": "focusOrder",
+    "atMs": 107397,
+    "stops": 18,
+    "cycled": true,
+    "stalled": false,
+    "truncated": false,
+    "stop": "cycled",
+    "walkedUrl": "http://capture-host:8000/visited-probe.html",
+    "startedFrom": "History probe, document, focused, read only",
+    "focusReset": {
+     "applied": true,
+     "logSuppressed": false,
+     "why": "confirmed nothing held focus already"
+    }
+   },
+   {
+    "event": "focusConfinement",
+    "atMs": 107397,
+    "confined": false,
+    "cycled": true,
+    "ring": 15,
+    "controlsOnPage": 0
+   },
+   {
+    "event": "focusEventLog",
+    "atMs": 107410,
+    "installed": true,
+    "installTargetMatch": "matched",
+    "installTargetUrl": "http://capture-host:8000/visited-probe.html",
+    "installError": null,
+    "collectTargetMatch": "matched",
+    "collectTargetUrl": "http://capture-host:8000/visited-probe.html",
+    "collectCandidates": 2,
+    "eventCount": 8,
+    "events": [
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 3437
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 4952
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 4952
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 5611
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 17883
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 19900
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 19900
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 20569
+     }
+    ],
+    "collectError": null,
+    "expectedUrl": "http://capture-host:8000/visited-probe.html"
+   },
+   {
+    "event": "titleSource",
+    "atMs": 120295,
+    "title": "History probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "routeChange",
+    "atMs": 121662,
+    "found": false,
+    "reason": "no-link"
+   },
+   {
+    "event": "interaction",
+    "atMs": 121694,
+    "controls": 0,
+    "stateChanges": 0,
+    "formChanges": 0,
+    "postSubmit": 0,
+    "sweepLog": [
+     "routeChange no-link"
+    ]
+   },
+   {
+    "event": "structureCensus",
+    "atMs": 121694,
+    "landmark": 1,
+    "heading": 1,
+    "link": 2,
+    "graphic": 0,
+    "formControl": 0,
+    "graphicUnnamed": 0,
+    "graphicUnnamedDetail": [],
+    "graphicExempted": 0,
+    "graphicExemptedDetail": [],
+    "names": [
+     "History probe",
+     "History probe",
+     "History probe",
+     "History probe self",
+     "History probe other",
+     "History probe",
+     "History probe self",
+     "History probe other",
+     "History probe self",
+     "History probe other"
+    ],
+    "distinct": {
+     "landmark": 1,
+     "heading": 1,
+     "link": 2,
+     "graphic": 0,
+     "formControl": 0
+    },
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "http://capture-host:8000/visited-probe.html",
+     "https://www.lbhf.gov.uk/council-tax"
+    ],
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html",
+    "readAt": {
+     "startedAtMs": 11606,
+     "tookMs": 7
+    }
+   },
+   {
+    "event": "domCensus",
+    "atMs": 121694,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "http://capture-host:8000/visited-probe.html",
+     "https://www.lbhf.gov.uk/council-tax"
+    ],
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html",
+    "readAt": {
+     "startedAtMs": 11613,
+     "tookMs": 16
+    }
+   },
+   {
+    "event": "mediaCensus",
+    "atMs": 121695,
+    "count": 0,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html",
+    "readAt": {
+     "startedAtMs": 11629,
+     "tookMs": 9
+    }
+   },
+   {
+    "event": "formInputCensus",
+    "atMs": 121695,
+    "count": 0,
+    "total": 0,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "targetUrl": "http://capture-host:8000/visited-probe.html",
+    "expectedUrl": "http://capture-host:8000/visited-probe.html",
+    "readAt": {
+     "startedAtMs": 11638,
+     "tookMs": 16
+    }
+   },
+   {
+    "event": "truncatedAnnouncements",
+    "atMs": 121695,
+    "truncated": [],
+    "checked": true
+   },
+   {
+    "event": "structureCrossCheck",
+    "atMs": 121697,
+    "sameCounts": false,
+    "compared": 4,
+    "differsOn": [
+     {
+      "type": "landmark",
+      "sweepEntries": 0,
+      "oracleDistinctNames": 1
+     }
+    ],
+    "basis": "distinct-names"
+   },
+   {
+    "event": "done",
+    "atMs": 121697,
+    "transcript": 3
+   },
+   {
+    "event": "browserKeptAlive",
+    "atMs": 121697
+   }
+  ],
+  "task": null,
+  "environment": {
+   "measuredAt": "2026-10-21T09:54:51.756Z",
+   "screenReader": "NVDA",
+   "browser": "Microsoft Edge",
+   "guidepupVersion": "0.31.0",
+   "screenReaderSettings": "speech.autoLanguageSwitching=True,speech.reportLanguage=True,speech.reportNotSupportedLanguage=speech",
+   "browserProfile": "adopted",
+   "nodeVersion": "v24.20.0",
+   "architecture": "x64",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24,
+   "provisionRevision": "a20963f766666de8",
+   "windowSize": "1024x768",
+   "displayMode": "1024x768",
+   "displayAdapter": "Intel(R) UHD Graphics 630",
+   "displaySampledMsAgo": 1825,
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "screenReaderVersion": "2026.1.1",
+   "browserVersion": "155.0.4283.62",
+   "versionsSampledMsAgo": 3009,
+   "windowsBuild": "26300.9711",
+   "innerWidth": 1000,
+   "innerHeight": 676,
+   "devicePixelRatio": 1
+  }
+ }
+}

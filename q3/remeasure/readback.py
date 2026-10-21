@@ -80,7 +80,10 @@ def has_control(box): return stage_passes('before', box.get('before'))
 
 def box_held(box):
     """Did the box stay clean for the whole run: it passed, and the probe read again once the corpus was captured (`after-run`) still shows no history. Restoring the fleet afterwards does not undo it."""
-    return box_cleared(box) and stage_passes('after-run', box.get('after-run'))
+    after_run, after = box.get('after-run') or {}, box.get('after') or {}
+    put_back = at((box.get('restored') or {}).get('at'))
+    return (box_cleared(box) and stage_passes('after-run', box.get('after-run')) and at(after_run.get('capturedAt')) > at(after.get('capturedAt'))
+            and (put_back is None or put_back > at(after_run.get('capturedAt'))))
 
 
 def load(path):

@@ -117,5 +117,11 @@
   "a11y-worker-7",
   "a11y-worker-8",
   "a11y-worker-9"
- ]
+ ],
+ "cause": {
+  "UND_ERR_HEADERS_TIMEOUT: fetch gave up on the answer of a worker after 300 s": 13,
+  "429 a capture is already in progress: the retry met the worker still capturing the abandoned request": 185,
+  "other": 0
+ },
+ "note": "the capture client was node fetch; fleet_capture.mjs now uses node:http. The 3 records captured here were kept; the other 99 addresses were captured by the second attempt (capture-run.json)."
 }

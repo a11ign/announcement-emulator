@@ -1,0 +1,123 @@
+[08:46:25] a11y-worker-3: msedge before: 8
+a11y-worker-3 before {'capturedAt': '2026-10-21T08:50:04.001Z', 'links': 2, 'read': True, 'visited': True} as expected
+[08:50:55] a11y-worker-3: policy read back: value 1
+a11y-worker-3 after {'capturedAt': '2026-10-21T08:54:30.136Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-3 passes
+[08:54:30] a11y-worker-3: PASSES
+[08:54:30] a11y-worker-3 exit 0
+[08:54:34] a11y-worker-4: msedge before: 10
+a11y-worker-4 before {'capturedAt': '2026-10-21T08:59:20.921Z', 'links': 2, 'read': True, 'visited': True} as expected
+[09:00:17] a11y-worker-4: policy read back: value 1
+a11y-worker-4 after {'capturedAt': '2026-10-21T09:03:53.001Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-4 passes
+[09:03:53] a11y-worker-4: PASSES
+[09:03:53] a11y-worker-4 exit 0
+[09:03:57] a11y-worker-7: msedge before: 10
+a11y-worker-7 before {'capturedAt': '2026-10-21T09:07:45.599Z', 'links': 2, 'read': True, 'visited': True} as expected
+[09:08:44] a11y-worker-7: policy read back: value 1
+a11y-worker-7 after {'capturedAt': '2026-10-21T09:12:19.703Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-7 passes
+[09:12:19] a11y-worker-7: PASSES
+[09:12:19] a11y-worker-7 exit 0
+[09:12:24] a11y-worker-8: msedge before: 10
+a11y-worker-8 before {'capturedAt': '2026-10-21T09:16:32.585Z', 'links': 2, 'read': True, 'visited': False} NOT AS REQUIRED
+[09:16:32] a11y-worker-8: BEFORE PROBE SAW NO HISTORY: box not on the run
+[09:16:32] a11y-worker-8 exit 0
+[09:16:37] a11y-worker-9: msedge before: 12
+a11y-worker-9 before {'capturedAt': '2026-10-21T09:20:46.037Z', 'links': 2, 'read': True, 'visited': False} NOT AS REQUIRED
+[09:20:46] a11y-worker-9: BEFORE PROBE SAW NO HISTORY: box not on the run
+[09:20:46] a11y-worker-9 exit 0
+[09:20:50] a11y-worker-10: msedge before: 11
+a11y-worker-10 before {'capturedAt': '2026-10-21T09:25:30.228Z', 'links': 2, 'read': True, 'visited': False} NOT AS REQUIRED
+a11y-worker-10 before {'capturedAt': '2026-10-21T09:27:51.182Z', 'links': 2, 'read': True, 'visited': False} NOT AS REQUIRED
+a11y-worker-10 before {'capturedAt': '2026-10-21T09:30:15.962Z', 'links': 2, 'read': True, 'visited': True} as expected
+[09:31:15] a11y-worker-10: policy read back: value 1
+a11y-worker-10 after {'capturedAt': '2026-10-21T09:34:55.182Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-10 passes
+[09:34:55] a11y-worker-10: PASSES
+[09:34:55] a11y-worker-10 exit 0
+[09:35:00] a11y-worker-12: msedge before: 8
+a11y-worker-12 before {'capturedAt': '2026-10-21T09:38:58.888Z', 'links': 2, 'read': True, 'visited': True} as expected
+[09:38:58] a11y-worker-12: positive control shown
+[09:40:02] a11y-worker-12: policy read back: value 1
+a11y-worker-12 after {'capturedAt': '2026-10-21T09:43:47.037Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-12 passes
+[09:43:47] a11y-worker-12: PASSES
+[09:43:47] a11y-worker-12 exit 0
+[09:43:51] a11y-worker-13: msedge before: 17
+a11y-worker-13 before {'capturedAt': '2026-10-21T09:48:11.059Z', 'links': 2, 'read': True, 'visited': True} as expected
+[09:48:11] a11y-worker-13: positive control shown
+[09:49:09] a11y-worker-13: policy read back: value 1
+a11y-worker-13 after {'capturedAt': '2026-10-21T09:52:44.156Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-13 passes
+[09:52:44] a11y-worker-13: PASSES
+[09:52:44] a11y-worker-13 exit 0
+[09:52:48] a11y-worker-14: msedge before: 19
+a11y-worker-14 before {'capturedAt': '2026-10-21T09:57:25.522Z', 'links': 2, 'read': True, 'visited': False} NOT AS REQUIRED
+a11y-worker-14 before {'capturedAt': '2026-10-21T09:59:58.991Z', 'links': 2, 'read': True, 'visited': False} NOT AS REQUIRED
+a11y-worker-14 before {'capturedAt': '2026-10-21T10:02:31.195Z', 'links': 2, 'read': True, 'visited': False} NOT AS REQUIRED
+[10:02:31] a11y-worker-14: positive control NOT shown on this box (three reads): the box goes on, the method is shown by the boxes that did
+[10:03:28] a11y-worker-14: policy read back: value 1
+a11y-worker-14 after {'capturedAt': '2026-10-21T10:07:05.522Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-14 passes
+[10:07:05] a11y-worker-14: PASSES
+[10:07:05] a11y-worker-14 exit 0
+[10:07:10] a11y-worker-15: msedge before: 8
+a11y-worker-15 before {'capturedAt': '2026-10-21T10:11:17.153Z', 'links': 2, 'read': True, 'visited': True} as expected
+[10:11:17] a11y-worker-15: positive control shown
+[10:12:25] a11y-worker-15: policy read back: value 1
+a11y-worker-15 after {'capturedAt': '2026-10-21T10:16:12.576Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-15 passes
+[10:16:12] a11y-worker-15: PASSES
+[10:16:12] a11y-worker-15 exit 0
+[10:16:17] a11y-worker-16: msedge before: 9
+a11y-worker-16 before {'capturedAt': '2026-10-21T10:20:38.942Z', 'links': 2, 'read': True, 'visited': False} NOT AS REQUIRED
+a11y-worker-16 before {'capturedAt': '2026-10-21T10:23:04.787Z', 'links': 2, 'read': True, 'visited': True} as expected
+[10:23:04] a11y-worker-16: positive control shown
+[10:24:04] a11y-worker-16: policy read back: value 1
+a11y-worker-16 after {'capturedAt': '2026-10-21T10:27:40.123Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-16 passes
+[10:27:40] a11y-worker-16: PASSES
+[10:27:40] a11y-worker-16 exit 0
+ALLDONE
+[10:27:53] a11y-worker-8: msedge before: 10
+a11y-worker-8 before {'capturedAt': '2026-10-21T10:32:17.161Z', 'links': 2, 'read': True, 'visited': False} NOT AS REQUIRED
+a11y-worker-8 before {'capturedAt': '2026-10-21T10:34:42.159Z', 'links': 2, 'read': True, 'visited': True} as expected
+[10:34:42] a11y-worker-8: positive control shown
+[10:35:42] a11y-worker-8: policy read back: value 1
+a11y-worker-8 after {'capturedAt': '2026-10-21T10:39:18.469Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-8 passes
+[10:39:18] a11y-worker-8: PASSES
+[10:39:18] a11y-worker-8 exit 0
+[10:39:22] a11y-worker-9: msedge before: 12
+a11y-worker-9 before {'capturedAt': '2026-10-21T10:44:45.237Z', 'links': 2, 'read': True, 'visited': True} as expected
+[10:44:45] a11y-worker-9: positive control shown
+[10:45:46] a11y-worker-9: policy read back: value 1
+a11y-worker-9 after {'capturedAt': '2026-10-21T10:49:18.786Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-9 passes
+[10:49:18] a11y-worker-9: PASSES
+[10:49:18] a11y-worker-9 exit 0
+[10:49:23] a11y-worker-10: msedge before: 8
+a11y-worker-10 before {'capturedAt': '2026-10-21T10:53:27.550Z', 'links': 2, 'read': True, 'visited': False} NOT AS REQUIRED
+a11y-worker-10 before {'capturedAt': '2026-10-21T10:55:45.143Z', 'links': 2, 'read': True, 'visited': False} NOT AS REQUIRED
+a11y-worker-10 before {'capturedAt': '2026-10-21T10:58:02.158Z', 'links': 2, 'read': True, 'visited': False} NOT AS REQUIRED
+[10:58:02] a11y-worker-10: positive control NOT shown on this box (three reads): the box goes on, the method is shown by the boxes that did
+[10:59:00] a11y-worker-10: policy read back: value 1
+a11y-worker-10 after {'capturedAt': '2026-10-21T11:02:35.874Z', 'links': 2, 'read': True, 'visited': False} as expected
+a11y-worker-10 passes
+[11:02:35] a11y-worker-10: PASSES
+[11:02:35] a11y-worker-10 exit 0
+AGAINDONE
+[12:04:01] a11y-worker-2: RESTORED (value 0 read back)
+[12:04:46] a11y-worker-3: RESTORED (value 0 read back)
+[12:05:32] a11y-worker-4: RESTORED (value 0 read back)
+[12:06:21] a11y-worker-7: RESTORED (value 0 read back)
+[12:07:10] a11y-worker-8: RESTORED (value 0 read back)
+[12:07:59] a11y-worker-9: RESTORED (value 0 read back)
+[12:08:48] a11y-worker-10: RESTORED (value 0 read back)
+[12:09:40] a11y-worker-12: RESTORED (value 0 read back)
+[12:10:29] a11y-worker-13: RESTORED (value 0 read back)
+[12:11:17] a11y-worker-14: RESTORED (value 0 read back)
+[12:12:10] a11y-worker-15: RESTORED (value 0 read back)
+[12:12:59] a11y-worker-16: RESTORED (value 0 read back)
+RESTOREDONE

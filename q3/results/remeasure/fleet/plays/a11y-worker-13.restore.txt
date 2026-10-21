@@ -1,0 +1,73 @@
+[WARNING]: Unable to parse /root/control/ansible/inventory.yml as an inventory source
+
+PLAY [Provision the capture workers (role)] ************************************
+
+TASK [worker : Edge policy — first run, background work, and autofill] *********
+Wednesday 21 October 2026  12:09:41 +0000 (0:00:00.055)       0:00:00.055 ***** 
+changed: [a11y-worker-13]
+
+TASK [worker : Edge auto-update off] *******************************************
+Wednesday 21 October 2026  12:09:46 +0000 (0:00:04.893)       0:00:04.949 ***** 
+ok: [a11y-worker-13]
+
+TASK [worker : Nothing pops to the foreground uninvited] ***********************
+Wednesday 21 October 2026  12:09:50 +0000 (0:00:04.042)       0:00:08.991 ***** 
+ok: [a11y-worker-13]
+
+TASK [worker : Feature updates may not reach this box outside a provisioning decision] ***
+Wednesday 21 October 2026  12:09:54 +0000 (0:00:04.063)       0:00:13.055 ***** 
+ok: [a11y-worker-13]
+
+TASK [worker : Refuse to call this provisioned if a policy value did not land] ***
+Wednesday 21 October 2026  12:09:58 +0000 (0:00:04.090)       0:00:17.146 ***** 
+ok: [a11y-worker-13]
+
+TASK [worker : Suggestion surfaces off for the worker's own account] ***********
+Wednesday 21 October 2026  12:10:03 +0000 (0:00:04.192)       0:00:21.338 ***** 
+ok: [a11y-worker-13] => (item=SubscribedContent-338389Enabled)
+ok: [a11y-worker-13] => (item=SubscribedContent-310093Enabled)
+ok: [a11y-worker-13] => (item=SoftLandingEnabled)
+ok: [a11y-worker-13] => (item=SystemPaneSuggestionsEnabled)
+
+TASK [worker : Screensaver off] ************************************************
+Wednesday 21 October 2026  12:10:11 +0000 (0:00:08.234)       0:00:29.572 ***** 
+ok: [a11y-worker-13] => (item=ScreenSaveActive)
+ok: [a11y-worker-13] => (item=ScreenSaveTimeOut)
+
+TASK [worker : Remove OneDrive's per-user Run entries] *************************
+Wednesday 21 October 2026  12:10:15 +0000 (0:00:04.108)       0:00:33.681 ***** 
+ok: [a11y-worker-13] => (item=OneDrive)
+ok: [a11y-worker-13] => (item=OneDriveSetup)
+
+TASK [worker : Evict OneDrive itself] ******************************************
+Wednesday 21 October 2026  12:10:19 +0000 (0:00:03.979)       0:00:37.661 ***** 
+changed: [a11y-worker-13]
+
+TASK [worker : Report the UAC posture, and do not change it] *******************
+Wednesday 21 October 2026  12:10:22 +0000 (0:00:03.032)       0:00:40.693 ***** 
+ok: [a11y-worker-13]
+
+TASK [worker : Say what it is] *************************************************
+Wednesday 21 October 2026  12:10:25 +0000 (0:00:02.742)       0:00:43.436 ***** 
+ok: [a11y-worker-13] => 
+    msg: 'PromptOnSecureDesktop=1 — fine either way, because nothing in the capture path
+        elevates. OneDrive: uninstalled'
+
+PLAY RECAP *********************************************************************
+a11y-worker-13             : ok=11   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+TASKS RECAP ********************************************************************
+Wednesday 21 October 2026  12:10:25 +0000 (0:00:00.042)       0:00:43.478 ***** 
+=============================================================================== 
+worker : Suggestion surfaces off for the worker's own account ----------- 8.23s
+worker : Edge policy — first run, background work, and autofill --------- 4.89s
+worker : Refuse to call this provisioned if a policy value did not land --- 4.19s
+worker : Screensaver off ------------------------------------------------ 4.11s
+worker : Feature updates may not reach this box outside a provisioning decision --- 4.09s
+worker : Nothing pops to the foreground uninvited ----------------------- 4.06s
+worker : Edge auto-update off ------------------------------------------- 4.04s
+worker : Remove OneDrive's per-user Run entries ------------------------- 3.98s
+worker : Evict OneDrive itself ------------------------------------------ 3.03s
+worker : Report the UAC posture, and do not change it ------------------- 2.74s
+worker : Say what it is ------------------------------------------------- 0.04s
