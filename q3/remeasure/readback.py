@@ -63,22 +63,25 @@ def save(path, data):
 def passed_workers(data): return sorted(w for w, box in data.get('workers', {}).items() if box_passes(box))
 
 
+def record_probe(box, worker, stage, record_path):
+    if stage not in STAGES: sys.exit(f'stage is one of {STAGES}')
+    record = read_json(record_path)
+    if record.get('worker') != worker: sys.exit(f'{record_path} was captured by another worker than {worker}')
+    box[stage] = probe_outcome(record)
+    print(worker, stage, box[stage], 'as expected' if stage_passes(stage, box[stage]) else 'NOT AS REQUIRED')
+
+
+def record_policy(box, value, evidence): box['policy'] = {'name': POLICY, 'value': int(value), 'readAt': now(), 'evidence': evidence}
+
+
+def record_emptied(box, what): box['emptied'] = {'at': now(), 'what': what}
+
+
 def main(argv):
     if len(argv) < 4 or argv[0] not in ('probe', 'policy', 'emptied'): sys.exit(__doc__)
-    verb, path, worker = argv[:3]
+    verb, path, worker, *rest = argv
     data = load(path); box = data['workers'].setdefault(worker, {})
-    if verb == 'probe':
-        stage, rec = argv[3], argv[4]
-        if stage not in STAGES: sys.exit(f'stage is one of {STAGES}')
-        record = read_json(rec)
-        if record.get('worker') != worker: sys.exit(f'{rec} was captured by another worker than {worker}')
-        outcome = probe_outcome(record)
-        box[stage] = outcome
-        print(worker, stage, outcome, 'as expected' if stage_passes(stage, outcome) else 'NOT AS REQUIRED')
-    elif verb == 'policy':
-        box['policy'] = {'name': POLICY, 'value': int(argv[3]), 'readAt': now(), 'evidence': argv[4]}
-    else:
-        box['emptied'] = {'at': now(), 'what': argv[3]}
+    {'probe': record_probe, 'policy': record_policy, 'emptied': record_emptied}[verb](*(([box, worker] if verb == 'probe' else [box]) + rest))
     save(path, data)
     print(worker, 'passes' if data['workers'][worker]['passed'] else 'does not pass yet')
 

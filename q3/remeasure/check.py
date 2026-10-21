@@ -2,8 +2,8 @@
 
     python check.py [--results q3/results/remeasure] [--oracle <dir>] [--doc docs/announcement-emulator-spike.md --base <ref>] [--require-complete]
 
-  readback    every worker in history-readback.json that is named as used has a policy value of 1, an emptied store, a clean `after` probe, and the `before` positive control
-              (on at least the first box) read `visited`
+  readback    every box in history-readback.json carries a `passed` flag equal to its readings (policy value 1, emptied store, clean `after` probe), and the `before`
+              positive control (on at least the first box) read `visited`
   oracle      every record in the fresh oracle has a `history` block from a passing worker, and no announcement in any swept channel carries the `visited` token (count 0)
   figures     each misses-*.json's gate.exact/total equals the GATE line of its measure-*.txt
   addresses   nothing under the results directory or in the doc holds an IPv4 literal
@@ -77,15 +77,14 @@ def check_addresses(paths):
 def check_doc(doc, base):
     diff = subprocess.run(['git', 'diff', '-U0', base, '--', doc], capture_output=True, text=True, check=True).stdout
     if not diff: return PENDING, 'the Re-measure section is not written yet'
-    removed = [l for l in diff.splitlines() if l.startswith('-') and not l.startswith('---')]
-    hunks = re.findall(r'^@@ -\d+(?:,\d+)? \+(\d+)(?:,(\d+))? @@', diff, re.M)
-    lines = read_text(doc).splitlines()
-    gate = next((i + 1 for i, l in enumerate(lines) if l.startswith('## Gate')), None)
-    first = next((int(s) for s, _ in hunks), None)
-    added = [l[1:] for l in diff.splitlines() if l.startswith('+') and not l.startswith('+++')]
-    sections = [l for l in added if l.startswith('## ')]
+    body = diff.splitlines()
+    removed = [l for l in body if l.startswith('-') and not l.startswith('---')]
+    added = [l[1:] for l in body if l.startswith('+') and not l.startswith('+++')]
+    first_added_line = [int(n) for n in re.findall(r'^@@ -\d+(?:,\d+)? \+(\d+)', diff, re.M)]
+    gate_line = next((n for n, l in enumerate(read_text(doc).splitlines(), 1) if l.startswith('## Gate')), None)
     if removed: return FAIL, f'{len(removed)} existing lines changed or removed'
-    if len(hunks) != 1 or sections != ['## Re-measure'] or gate is None or first <= gate: return FAIL, 'not one `## Re-measure` section added after `## Gate`'
+    one_section_after_gate = len(first_added_line) == 1 and [l for l in added if l.startswith('## ')] == ['## Re-measure'] and gate_line is not None and first_added_line[0] > gate_line
+    if not one_section_after_gate: return FAIL, 'not one `## Re-measure` section added after `## Gate`'
     return OK, f'one section, {len(added)} lines added after `## Gate`, nothing else touched'
 
 

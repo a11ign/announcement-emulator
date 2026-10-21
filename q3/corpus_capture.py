@@ -56,33 +56,40 @@ def stamp(path, entry, box):
 def captured_ok(rec): return rec.get('status') == 200 and not (rec.get('capture') or {}).get('error') and bool((rec.get('capture') or {}).get('structure'))
 
 
+def capture_one(entry, name, url, box, dest, capture_script):
+    """One page on one worker: True when a stamped record is at `dest`, else False with a reason."""
+    tmp = dest + '.part'
+    try:
+        done = subprocess.run(['node', capture_script, f'{name}={url}', entry['url'], tmp], capture_output=True, text=True, timeout=700)
+        if os.path.exists(tmp) and captured_ok(rb.read_json(tmp)):
+            stamp(tmp, entry, box); os.replace(tmp, dest)
+            return True, 'ok'
+        return False, 'failed ' + (done.stderr.strip()[-100:] or done.stdout.strip()[:80])
+    finally:
+        if os.path.exists(tmp): os.remove(tmp)
+
+
 def run(entries, workers, readback, out, capture_script, attempts=2, log=print):
+    """Each worker takes pages off one queue until it is empty; a page that fails goes back for another attempt, up to `attempts`, and is then named in `failed`."""
     os.makedirs(out, exist_ok=True)
     todo = queue.Queue(); failed = []; done = []; lock = threading.Lock()
     for e in entries: todo.put((e, 1))
+
     def work(name, url):
-        box = readback['workers'][name]
         while True:
-            try: e, n = todo.get_nowait()
+            try: entry, attempt = todo.get_nowait()
             except queue.Empty: return
-            dest = os.path.join(out, slug_of(e['url']) + '.json')
-            if os.path.exists(dest):
-                with lock: done.append(e['url'])
-                continue
-            tmp = dest + '.part'
-            r = subprocess.run(['node', capture_script, f'{name}={url}', e['url'], tmp], capture_output=True, text=True, timeout=700)
-            ok = os.path.exists(tmp) and captured_ok(rb.read_json(tmp))
-            if ok:
-                stamp(tmp, e, box); os.replace(tmp, dest)
+            dest = os.path.join(out, slug_of(entry['url']) + '.json')
+            ok, why = (True, 'already captured') if os.path.exists(dest) else capture_one(entry, name, url, readback['workers'][name], dest, capture_script)
             with lock:
-                if ok: done.append(e['url'])
-                elif n < attempts: todo.put((e, n + 1))
-                else: failed.append(e['url'])
-                log(slug_of(e['url']), name, 'ok' if ok else 'failed ' + (r.stderr.strip()[-100:] or r.stdout.strip()[:80]), flush=True)
-            if os.path.exists(tmp): os.remove(tmp)
+                if ok: done.append(entry['url'])
+                elif attempt < attempts: todo.put((entry, attempt + 1))
+                else: failed.append(entry['url'])
+                log(slug_of(entry['url']), name, why, flush=True)
+
     started = datetime.datetime.now(datetime.timezone.utc)
-    ts = [threading.Thread(target=work, args=(n, u)) for n, u in workers.items()]
-    [t.start() for t in ts]; [t.join() for t in ts]
+    threads = [threading.Thread(target=work, args=(n, u)) for n, u in workers.items()]
+    [t.start() for t in threads]; [t.join() for t in threads]
     return {'startedAt': started.strftime('%Y-%m-%dT%H:%M:%SZ'), 'endedAt': rb.now(), 'workers': sorted(workers), 'pages': len(entries), 'captured': len(done), 'failed': sorted(failed)}
 
 
