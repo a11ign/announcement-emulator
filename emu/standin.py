@@ -187,6 +187,9 @@ class PN:
         r = self.role
         conditional = {'form': 'IA2_ROLE_FORM' if self.raw.get('name') else 'IA2_ROLE_SECTION'}
         c = conditional.get(r) or T['ia2'].get(r) or T['msaa'].get(r)
+        if r in ('disclosureTriangle', 'disclosureTriangleGrouped'): c = T['msaa'].get(r)      # ax_platform_node_win.cc:7298: IA2_ROLE_HEADING only when features::IsAccessibilityExposeSummaryAsHeadingEnabled(); the fleet's Edge announces a <summary> as `button`, so the feature is off (the generated table took the guarded branch as unconditional)
+        if r in ('embeddedObject', 'pluginObject'): c = 'IA2_ROLE_SECTION' if self.pkids else 'IA2_ROLE_EMBEDDED_OBJECT'      # ax_platform_node_win.cc:7363 / 7433: GetChildCount() ? SECTION : EMBEDDED_OBJECT (the generated table has neither)
+        if r == 'canvas': c = 'IA2_ROLE_CANVAS' if self.pkids else T['msaa'].get(r)      # :7269: only a canvas with fallback content (kCanvasHasFallback; approximated by having children) is IA2_ROLE_CANVAS
         if r == 'image': c = 'IA2_ROLE_IMAGE_MAP' if self.pkids else T['msaa'].get(r)      # ax_platform_node_win.cc:7389: `if (IsImageWithMap())`; the generated table took the conditional branch for every image
         if r == 'row': c = 'ROLE_SYSTEM_ROW'      # the generated table missed it: kRow is a braced conditional case (ax_platform_node_win.cc:6999), outline item inside a treegrid below
         if c is None: return 0
@@ -264,6 +267,10 @@ class PN:
         if self.state.get('invisible'): a['hidden'] = 'true'
         if raw.get('ariaCurrentState') in ('false', 'true', 'page', 'step', 'location', 'date', 'time'): a['current'] = raw['ariaCurrentState']      # ax_platform_node_base.cc:1301
         if self.role == 'image' and raw.get('url'): a['src'] = raw['url']      # ax_platform_node_base.cc:1459: IsImage(role) && kUrl; gecko_ia2.cpp:1264 names an unlabelled graphic from it
+        if self.role in ('cell', 'gridCell', 'columnHeader', 'rowHeader', 'layoutTableCell'):      # ax_platform_node_base.cc:1349: aria-rowindex / aria-colindex, exposed only where they differ from the physical position
+            ar, pr, ac, pc = raw.get('tableCellAriaRowIndex'), raw.get('tableCellRowIndex'), raw.get('tableCellAriaColumnIndex'), raw.get('tableCellColumnIndex')
+            if ar is not None and pr is not None and ar - 1 != pr: a['rowindex'] = str(ar)
+            if ac is not None and pc is not None and ac - 1 != pc: a['colindex'] = str(ac)
         if raw.get('liveStatus'): a['live'] = raw['liveStatus']
         if raw.get('liveRelevant'): a['relevant'] = raw['liveRelevant']
         if raw.get('liveAtomic'): a['atomic'] = 'true'
@@ -713,6 +720,13 @@ class Builder:
             render_children = False
         # NOT PORTED: renderSelectedItemOnly for ROLE_SYSTEM_LIST (non-readonly) and ROLE_SYSTEM_OUTLINE
         # NOT PORTED: table information (IAccessibleTable2 / TableCell), presentational row/column attributes
+        # presentational table attributes (gecko_ia2.cpp:984-1002): what the page says (aria-rowindex, aria-colindex, aria-rowcount, aria-colcount) where Chromium
+        # exposes it, i.e. where it differs from the physical position; NVDA reports these and navigates by the physical table-rownumber and table-columnnumber.
+        # (The row-level propagation of table-rownumber-presentational to cells is not ported; the cell carries its own.)
+        for ia2, buf_attr in (('rowindex', 'table-rownumber-presentational'), ('colindex', 'table-columnnumber-presentational'),
+                              ('rowcount', 'table-rowcount-presentational'), ('colcount', 'table-columncount-presentational')):
+            v = a.get(f'IAccessible2::attribute_{ia2}')
+            if v is not None: node.attrs[buf_attr] = v
         # --- table cell and table information (gecko_ia2.cpp:906-1005); physical coordinates only
         raw = pn.raw
         if pn.role in self.CELL_ROLES and raw.get('tableCellRowIndex') is not None:

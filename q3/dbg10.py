@@ -7,7 +7,7 @@ d = LivePage(url=sys.argv[1], port=8895)
 needle = sys.argv[2]
 for ix, pn in sorted(d.world.by_ix.items()):
     r = pn.raw
-    if r.get('role') == 'link' and needle in (r.get('name') or ''):
+    if needle in (r.get('name') or '') and r.get('role') != 'staticText':
         def show(p, dep=0):
             q = p.raw; print('  ' * dep, p.ix, q.get('role'), q.get('htmlTag'), repr((q.get('name') or '')[:40]), 'display=', q.get('display'), 'cls=', (q.get('className') or '')[:40], 'inv' if q.get('state', {}).get('invisible') else '')
             for k in p.kids: show(k, dep + 1)

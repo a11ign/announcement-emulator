@@ -1,11 +1,12 @@
 // Ask one fleet worker for the capture of one address, with the body the real-page capture sends (screenreader-worker's /capture), and write the record.
-//   node fleet_capture.mjs <worker url> <address> <out.json> [steps]
+//   node fleet_capture.mjs <worker url> <address> <out.json> [steps] [--tables]
 // Used for control pages we serve ourselves; it changes nothing on the worker and touches no evidence record of a11ign.
 import { writeFileSync } from "node:fs";
 const [, , worker, url, out, steps] = process.argv;
+const tables = process.argv.includes('--tables');
 const res = await fetch(`${worker}/capture`, {
   method: "POST", headers: { "content-type": "application/json" },
-  body: JSON.stringify({ url, probeForms: false, probeFocus: true, probeNavigation: true, probeFocusContext: true, probeFocusReveal: true, steps: Number(steps || 600) }),
+  body: JSON.stringify({ url, probeForms: false, probeFocus: true, probeNavigation: true, probeFocusContext: true, probeFocusReveal: true, steps: Number(steps || 600), ...(tables ? { probeTables: true } : {}) }),
   signal: AbortSignal.timeout(600_000),
 });
 const text = await res.text();
