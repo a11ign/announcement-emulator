@@ -193,6 +193,14 @@ class NvdaThroughTheStandIn(unittest.TestCase):
     def test_only_the_fleets_voice_language_is_supported(self):
         self.assertEqual(self.said['supported'], {'en': True, 'en_GB': True, 'cy': False, 'fr': False, 'es': False, 'la': False})
 
+    def test_the_system_tests_of_q2_keep_the_spy_synthesizers_languages(self):
+        said = probe({'supported': ['en', 'es', 'fr', 'la', 'cy'], 'systemTests': True})
+        self.assertEqual(said['supported'], {'en': True, 'es': True, 'fr': True, 'la': True, 'cy': False})
+
+    def test_the_q3_emulator_asks_for_the_fleets_voices(self):
+        self.assertIn("os.environ.setdefault('EMU_FLEET_VOICES', '1')", (ROOT / 'q3' / 'emulate.py').read_text(encoding='utf-8'))
+        self.assertIn("os.environ.setdefault('EMU_FLEET_VOICES', '1')", (ROOT / 'q3' / 'replay' / 'start_state.py').read_text(encoding='utf-8'))
+
     def test_nvda_speaks_the_windows_name_with_not_supported_as_the_fleet_does(self):
         self.assertEqual(self.said['speech'][0], 'Welsh (not supported) a')
 

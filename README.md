@@ -17,6 +17,7 @@ The write-up is `docs/announcement-emulator-spike.md`, with Dates, Q1, Q2, Q3, G
 ## What is in this repository
 
 - `emu/` the emulator: the tree source, the Windows mapping (`standin.py`), the buffer builder, the harness around NVDA's code, and the system-test runner (`run_cases.py`).
+- `emu/langnames/` the Windows language names NVDA speaks, as a table recorded on a fleet box and the stand-in that answers NVDA's locale calls from it (`emu/kernel32_standin.py`); see its `README.md`.
 - `q1/`, `q2/` the first two questions' probes.
 - `q3/` the third: the fleet's sweep re-implemented over the emulator (`sweep.py`, `emulate.py`), the measure (`measure.py`, `shapes.py`, `split.py`), and `results/`.
 - `setup.sh` builds what is not here.

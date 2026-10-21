@@ -2,7 +2,7 @@
 
     python probe_nvda.py <request.json>      # prints JSON
 
-The request: {"codes": ["cy", ...], "supported": ["en", ...], "sequences": [[{"lang": "cy"}, "text", ...], ...], "table": "<path>"}.
+The request: {"codes": ["cy", ...], "supported": ["en", ...], "sequences": [[{"lang": "cy"}, "text", ...], ...], "table": "<path>", "systemTests": true}.
   descriptions  languageHandler.getLanguageDescription(code), NVDA's own function, over the stand-in
   supported     the synthesizer's languageIsSupported(code)
   speech        what NVDA's speak() sends the synthesizer for each sequence, joined, the language state reset before each
@@ -12,7 +12,8 @@ import json, os, sys
 request = json.loads(open(sys.argv[1], encoding='utf-8').read())
 HERE = os.path.dirname(os.path.abspath(__file__))
 os.environ.setdefault('EMU_NVDA_INI', os.path.join(HERE, '..', '..', 'q3', 'nvda-fleet.ini'))
-os.environ.setdefault('EMU_FLEET_VOICES', '1')
+if request.get('systemTests'): os.environ.pop('EMU_FLEET_VOICES', None)      # as Q2's run_cases.py: the spy synthesizer's own languages
+else: os.environ.setdefault('EMU_FLEET_VOICES', '1')
 if request.get('table'): os.environ['EMU_LANGUAGE_NAMES'] = request['table']
 sys.path.insert(0, os.path.join(HERE, '..'))
 import driver, languageHandler, speech
