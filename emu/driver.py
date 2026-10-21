@@ -120,8 +120,8 @@ def _flush():
 
 
 def press(b, key):
-    """Press `key` on the buffer: NVDA's own browse-mode script bound to it, or (for NVDA+upArrow, a global command) the same
-    lines as globalCommands.script_reportCurrentLine:268-275. Returns what the spy saw."""
+    """Press `key` on the buffer: NVDA's own browse-mode script bound to it, or a global command's own script (NVDA+upArrow is
+    globalCommands.script_reportCurrentLine, which reads the focus object in focus mode). Returns what the spy saw."""
     i = len(SPY.sequences)
     g = Gesture(key)
     if key.lower() == 'nvda+downarrow':      # globalCommands.script_sayAll: read from the caret

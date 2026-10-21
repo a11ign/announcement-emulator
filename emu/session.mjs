@@ -1,5 +1,5 @@
 // A live Chrome 155 session for the emulator spike: serves one page, accepts JSON commands on stdin (dump, key, eval), answers on stdout.
-import http from 'node:http'; import {readFileSync, mkdirSync, writeFileSync, cpSync} from 'node:fs'; import {spawn, execSync} from 'node:child_process'; import readline from 'node:readline';
+import {fileURLToPath} from 'node:url'; import http from 'node:http'; import {readFileSync, mkdirSync, writeFileSync, cpSync} from 'node:fs'; import {spawn, execSync} from 'node:child_process'; import readline from 'node:readline';
 const [,, pageFile, extDir0, chromeBin] = process.argv;
 // A live URL instead of a served file: pageFile is 'url:<address>'. Ports are per session so several can run side by side (EMU_PORT, EMU_CDP).
 const PORT = Number(process.env.EMU_PORT || 8765), CDP = Number(process.env.EMU_CDP || 9333);
@@ -8,7 +8,7 @@ const LIVE = pageFile.startsWith('url:'), LIVE_URL = LIVE ? pageFile.slice(4) : 
 const [VW, VH] = (process.env.EMU_VIEWPORT || (LIVE ? '1008x872' : '1280x3000')).split('x').map(Number);
 const UA = process.env.EMU_UA || null; let target = LIVE ? '' : 'http://127.0.0.1:' + PORT + '/page.html';
 const R = process.env.EMU_DOWNLOADS || process.env.HOME + '/spikes/announcement-emulator-5661';
-const CODE = new URL('..', import.meta.url).pathname;
+const CODE = fileURLToPath(new URL('..', import.meta.url));
 const id = readFileSync(CODE + 'q1/ext-id.txt', 'utf8').trim();
 let pending = null, want = null, wantFocus, wantAction, wantScroll, wantHistory;
 const srv = http.createServer((req, res) => {
@@ -35,15 +35,14 @@ const ch = spawn(chromeBin, ['--headless=new', '--no-sandbox', '--force-renderer
 process.on('exit', () => { try { ch.kill('SIGKILL'); } catch (e) {} });
 process.stdin.on('end', () => process.exit(0));
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-let ws, msgId = 0; const waiters = new Map(); const events = [];
-async function waitEvent(name, ms) { for (let t = 0; t < ms; t += 100) { if (events.includes(name)) return true; await sleep(100); } return false; }
+let ws, msgId = 0; const waiters = new Map();
 async function connect() {
   for (let i = 0; i < 60; i++) {
     try {
       const list = await (await fetch('http://127.0.0.1:' + CDP + '/json/list')).json();
       const t = list.find(t => t.type === 'page' && (LIVE ? t.url.startsWith('http') : t.url.startsWith('http://127.0.0.1:' + PORT + '/page.html')));
       if (t) { ws = new WebSocket(t.webSocketDebuggerUrl); await new Promise((ok, no) => { ws.onopen = ok; ws.onerror = no; });
-        ws.onmessage = m => { const d = JSON.parse(m.data); if (d.id && waiters.has(d.id)) { waiters.get(d.id)(d); waiters.delete(d.id); } else if (d.method) { events.push(d.method); } }; return; }
+        ws.onmessage = m => { const d = JSON.parse(m.data); if (d.id && waiters.has(d.id)) { waiters.get(d.id)(d); waiters.delete(d.id); } }; return; }
     } catch (e) {}
     await sleep(500);
   }
@@ -80,7 +79,7 @@ for await (const line of rl) {
     }
     else if (c.cmd === 'history') { wantHistory = c.urls; await sleep(1500); console.log(JSON.stringify({ok: true})); }
     else if (c.cmd === 'reload') {
-      events.length = 0; await cdp('Page.reload', {}); await sleep(1000);
+      await cdp('Page.reload', {}); await sleep(1000);
       let ready = false; const t0 = Date.now();
       while (Date.now() - t0 < 40000) { const r = await cdp('Runtime.evaluate', {expression: 'document.readyState', returnByValue: true}); if (r.result?.result?.value === 'complete') { ready = true; break; } await sleep(250); }
       await sleep(c.settle || 2500); console.log(JSON.stringify({ok: true, loaded: ready}));

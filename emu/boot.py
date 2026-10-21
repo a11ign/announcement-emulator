@@ -1,6 +1,7 @@
 """Boot NVDA release-2026.1.1's own Python on Linux for stage 2: the stage-1 stub list MINUS the modules the stand-in now
 supplies for real (NVDAHelper.localLib, oleacc constants, IA2 constants), so IAccessibleHandler's role/state tables are NVDA's."""
 import sys, os, types, ast, json, tempfile, builtins, pathlib
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from paths import CODE, DOWNLOADS as R      # R: the downloads (nvda-src, nvda-appdir, ...); the code is CODE
 SRC = str(R / 'nvda-src/source')
 sys.path[:0] = [str(CODE / 'q2'), str(CODE / 'emu'), SRC]

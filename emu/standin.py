@@ -718,9 +718,9 @@ class Builder:
         # NOT PORTED: table information (IAccessibleTable2 / TableCell), presentational row/column attributes
         # presentational table attributes (gecko_ia2.cpp:984-1002): what the page says (aria-rowindex, aria-colindex, aria-rowcount, aria-colcount) where Chromium
         # exposes it, i.e. where it differs from the physical position; NVDA reports these and navigates by the physical table-rownumber and table-columnnumber.
-        # (The row-level propagation of table-rownumber-presentational to cells is not ported; the cell carries its own.)
-        for ia2, buf_attr in (('rowindex', 'table-rownumber-presentational'), ('colindex', 'table-columnnumber-presentational'),
-                              ('rowcount', 'table-rowcount-presentational'), ('colcount', 'table-columncount-presentational')):
+        # Only the cell's rowindex and colindex are produced (ia2_attrs); a row's rowindex, a table's rowcount/colcount and the row-level propagation of
+        # table-rownumber-presentational to cells are NOT ported.
+        for ia2, buf_attr in (('rowindex', 'table-rownumber-presentational'), ('colindex', 'table-columnnumber-presentational')):
             v = a.get(f'IAccessible2::attribute_{ia2}')
             if v is not None: node.attrs[buf_attr] = v
         # --- table cell and table information (gecko_ia2.cpp:906-1005); physical coordinates only

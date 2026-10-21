@@ -3,7 +3,7 @@
 #
 #   EMU_DOWNLOADS=/some/dir ./setup.sh
 #
-# Every address and revision below is the one the spike was measured with (docs/announcement-emulator-spike.md, Reproduction). Needs git, curl, python3, dpkg-deb,
+# Needs node 22 or later as well (emu/session.mjs uses the global WebSocket). Every address and revision below is the one the spike was measured with (docs/announcement-emulator-spike.md, Reproduction). Needs git, curl, python3, dpkg-deb,
 # apt-get download (the Chrome libraries are fetched as .deb files and unpacked under libs/root; nothing is installed), and about 2.5 GB.
 set -eu
 D="${EMU_DOWNLOADS:-$HOME/spikes/announcement-emulator-5661}"
@@ -27,7 +27,7 @@ rm nvda-appdir/locale/en && mkdir nvda-appdir/locale/en
 for f in nvda-src/source/locale/en/*; do ln -s "$D/$f" "nvda-appdir/locale/en/$(basename "$f")"; done
 ln -sf "$D/cldr-src/locale/en/cldr.dic" nvda-appdir/locale/en/cldr.dic
 # 3. the W3C ARIA examples the tests open
-if [ ! -d aria-practices/.git ]; then git clone -q --filter=blob:none https://github.com/w3c/aria-practices aria-practices; git -C aria-practices checkout -q "$ARIA_REV"; fi
+if [ ! -d aria-practices/content ]; then rm -rf aria-practices; git clone -q --filter=blob:none https://github.com/w3c/aria-practices aria-practices; git -C aria-practices checkout -q "$ARIA_REV"; fi
 # 4. Chromium's Windows accessibility mapping, as read: the tables are generated from these (emu/gen_tables.py)
 mkdir -p chromium-src
 for p in ui/accessibility/platform/ax_platform_node_win.cc ui/accessibility/platform/ax_platform_node_base.cc ui/accessibility/platform/ax_platform_node_delegate.h \
