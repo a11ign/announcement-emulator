@@ -2,14 +2,14 @@
 # the 12 boxes the capture used: .107 .105 .175 .21 .146 .217 .80 .48 .70 .122 .147 .156 (workers 2 3 4 7 8 9 10 12 13 14 15 16)
 
 ## after
-  a11y-worker-2  (address remo   ready  25bb45d9b38d7a62  28 captures, 1 recoveries
-  a11y-worker-3  (address remo   ready  25bb45d9b38d7a62  23 captures, 1 recoveries
-  a11y-worker-4  (address remo   ready  25bb45d9b38d7a62  25 captures, 0 recoveries
-  a11y-worker-5  (address remo   ready  8f07fd23dc694ef3  0 captures, 0 recoveries
-  a11y-worker-6  (address remo    ready  25bb45d9b38d7a62  3 captures, 0 recoveries
-  a11y-worker-7  (address remo    ready  25bb45d9b38d7a62  24 captures, 1 recoveries
-  a11y-worker-8  (address remo   ready  25bb45d9b38d7a62  21 captures, 1 recoveries
-  a11y-worker-9  (address remo   ready  25bb45d9b38d7a62  22 captures, 1 recoveries
+  a11y-worker-2  -               ready  25bb45d9b38d7a62  28 captures, 1 recoveries
+  a11y-worker-3  -               ready  25bb45d9b38d7a62  23 captures, 1 recoveries
+  a11y-worker-4  -               ready  25bb45d9b38d7a62  25 captures, 0 recoveries
+  a11y-worker-5  -               ready  8f07fd23dc694ef3  0 captures, 0 recoveries
+  a11y-worker-6  -                ready  25bb45d9b38d7a62  3 captures, 0 recoveries
+  a11y-worker-7  -                ready  25bb45d9b38d7a62  24 captures, 1 recoveries
+  a11y-worker-8  -               ready  25bb45d9b38d7a62  21 captures, 1 recoveries
+  a11y-worker-9  -               ready  25bb45d9b38d7a62  22 captures, 1 recoveries
   a11y-worker-10  (address remov   ready  25bb45d9b38d7a62  22 captures, 1 recoveries
   a11y-worker-11  (address remov   ready  25bb45d9b38d7a62  0 captures, 0 recoveries
   a11y-worker-12  (address remov   ready  25bb45d9b38d7a62  23 captures, 1 recoveries
