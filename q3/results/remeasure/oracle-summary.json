@@ -1,0 +1,4184 @@
+[
+ {
+  "url": "https://bathingwaters.sepa.org.uk/",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-2",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:07:29.425Z",
+  "transcriptLines": 75,
+  "swept": {
+   "formFields": 9,
+   "frames": 0,
+   "graphics": 1,
+   "headings": 8,
+   "landmarks": 7,
+   "links": 31,
+   "lists": 3,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Bathing Waters Home Scottish Environment Protection Agency (SEPA)",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:40:38Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:44:03.401Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:40:38Z"
+  }
+ },
+ {
+  "url": "https://caselaw.nationalarchives.gov.uk/search?query=",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-3",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:19:40.419Z",
+  "transcriptLines": 91,
+  "swept": {
+   "formFields": 75,
+   "frames": 0,
+   "graphics": 1,
+   "headings": 8,
+   "landmarks": 8,
+   "links": 48,
+   "lists": 6,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Search results - Find Case Law - The National Archives",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:51:02Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:54:30.136Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:51:02Z"
+  }
+ },
+ {
+  "url": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-4",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:05:43.419Z",
+  "transcriptLines": 37,
+  "swept": {
+   "formFields": 6,
+   "frames": 0,
+   "graphics": 1,
+   "headings": 4,
+   "landmarks": 8,
+   "links": 19,
+   "lists": 2,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Find river, sea, groundwater and rainfall levels - GOV dot UK",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:00:24Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:03:53.001Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:00:24Z"
+  }
+ },
+ {
+  "url": "https://data.southwark.gov.uk/data-catalog-explorer/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-7",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:21:36.677Z",
+  "transcriptLines": 280,
+  "swept": {
+   "formFields": 32,
+   "frames": 0,
+   "graphics": 1,
+   "headings": 23,
+   "landmarks": 8,
+   "links": 167,
+   "lists": 1,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Southwark Data \u2013 Data Explorer",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:08:52Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:12:19.703Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:08:52Z"
+  }
+ },
+ {
+  "url": "https://design-patterns.service.justice.gov.uk/components/filter/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-2",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:20:07.560Z",
+  "transcriptLines": 159,
+  "swept": {
+   "formFields": 27,
+   "frames": 1,
+   "graphics": 0,
+   "headings": 25,
+   "landmarks": 7,
+   "links": 59,
+   "lists": 14,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Filter - MOJ Design System - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:40:38Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:44:03.401Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:40:38Z"
+  }
+ },
+ {
+  "url": "https://design-patterns.service.justice.gov.uk/components/scrollable-pane/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-8",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:19:34.132Z",
+  "transcriptLines": 175,
+  "swept": {
+   "formFields": 20,
+   "frames": 1,
+   "graphics": 0,
+   "headings": 13,
+   "landmarks": 8,
+   "links": 45,
+   "lists": 9,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Scrollable pane - MOJ Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:35:50Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:39:18.469Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:35:50Z"
+  }
+ },
+ {
+  "url": "https://design-patterns.service.justice.gov.uk/components/sortable-table/",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-4",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:19:21.928Z",
+  "transcriptLines": 125,
+  "swept": {
+   "formFields": 24,
+   "frames": 1,
+   "graphics": 0,
+   "headings": 12,
+   "landmarks": 7,
+   "links": 48,
+   "lists": 9,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Sortable table - MOJ Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:00:24Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:03:53.001Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:00:24Z"
+  }
+ },
+ {
+  "url": "https://design-patterns.service.justice.gov.uk/patterns/filter-a-list/",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-9",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:19:20.557Z",
+  "transcriptLines": 63,
+  "swept": {
+   "formFields": 22,
+   "frames": 1,
+   "graphics": 0,
+   "headings": 13,
+   "landmarks": 7,
+   "links": 63,
+   "lists": 10,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Filter a list - MOJ Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:45:53Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:49:18.786Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:45:53Z"
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-10",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:20:31.130Z",
+  "transcriptLines": 129,
+  "swept": {
+   "formFields": 25,
+   "frames": 3,
+   "graphics": 1,
+   "headings": 31,
+   "landmarks": 7,
+   "links": 95,
+   "lists": 14,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Accordion \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:59:07Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T11:02:35.874Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:59:07Z"
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/checkboxes/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-12",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:20:33.551Z",
+  "transcriptLines": 101,
+  "swept": {
+   "formFields": 39,
+   "frames": 9,
+   "graphics": 1,
+   "headings": 31,
+   "landmarks": 7,
+   "links": 87,
+   "lists": 8,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Checkboxes \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:40:09Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:43:47.037Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:40:09Z"
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/date-input/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-13",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:20:59.229Z",
+  "transcriptLines": 268,
+  "swept": {
+   "formFields": 21,
+   "frames": 6,
+   "graphics": 1,
+   "headings": 31,
+   "landmarks": 7,
+   "links": 78,
+   "lists": 7,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Date input \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:49:16Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:52:44.156Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:49:16Z"
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/details/",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-16",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:07:46.771Z",
+  "transcriptLines": 125,
+  "swept": {
+   "formFields": 9,
+   "frames": 2,
+   "graphics": 1,
+   "headings": 13,
+   "landmarks": 7,
+   "links": 73,
+   "lists": 6,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Details \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:24:11Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:27:40.123Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:24:11Z"
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/error-message/",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-14",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:20:22.573Z",
+  "transcriptLines": 245,
+  "swept": {
+   "formFields": 17,
+   "frames": 3,
+   "graphics": 1,
+   "headings": 22,
+   "landmarks": 7,
+   "links": 83,
+   "lists": 19,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Error message \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:03:35Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:07:05.522Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:03:35Z"
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/error-summary/",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-15",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:20:42.409Z",
+  "transcriptLines": 182,
+  "swept": {
+   "formFields": 20,
+   "frames": 6,
+   "graphics": 2,
+   "headings": 23,
+   "landmarks": 11,
+   "links": 96,
+   "lists": 13,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Error summary \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:12:33Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:16:12.576Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:12:33Z"
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-16",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:20:23.644Z",
+  "transcriptLines": 103,
+  "swept": {
+   "formFields": 36,
+   "frames": 10,
+   "graphics": 1,
+   "headings": 34,
+   "landmarks": 7,
+   "links": 86,
+   "lists": 9,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Radios \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:24:11Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:27:40.123Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:24:11Z"
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/select/",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-9",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:24:17.633Z",
+  "transcriptLines": 150,
+  "swept": {
+   "formFields": 11,
+   "frames": 4,
+   "graphics": 1,
+   "headings": 15,
+   "landmarks": 7,
+   "links": 73,
+   "lists": 7,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Select \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:45:53Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:49:18.786Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:45:53Z"
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/skip-link/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-4",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:23:55.248Z",
+  "transcriptLines": 133,
+  "swept": {
+   "formFields": 7,
+   "frames": 2,
+   "graphics": 1,
+   "headings": 11,
+   "landmarks": 7,
+   "links": 74,
+   "lists": 6,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Skip link \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:00:24Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:03:53.001Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:00:24Z"
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/table/",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-8",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:24:43.136Z",
+  "transcriptLines": 104,
+  "swept": {
+   "formFields": 7,
+   "frames": 7,
+   "graphics": 1,
+   "headings": 15,
+   "landmarks": 7,
+   "links": 78,
+   "lists": 6,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Table \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:35:50Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:39:18.469Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:35:50Z"
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/tabs/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-3",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:24:24.189Z",
+  "transcriptLines": 122,
+  "swept": {
+   "formFields": 15,
+   "frames": 2,
+   "graphics": 1,
+   "headings": 22,
+   "landmarks": 7,
+   "links": 71,
+   "lists": 12,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Tabs \u2013 GOV dot UK Design System",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:51:02Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:54:30.136Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:51:02Z"
+  }
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-2",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:27:14.316Z",
+  "transcriptLines": 382,
+  "swept": {
+   "formFields": 35,
+   "frames": 14,
+   "graphics": 1,
+   "headings": 56,
+   "landmarks": 7,
+   "links": 96,
+   "lists": 9,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Text input \u2013 GOV dot UK Design System - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:40:38Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:44:03.401Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:40:38Z"
+  }
+ },
+ {
+  "url": "https://disinfectants.defra.gov.uk/",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-14",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:25:27.155Z",
+  "transcriptLines": 113,
+  "swept": {
+   "formFields": 24,
+   "frames": 0,
+   "graphics": 1,
+   "headings": 5,
+   "landmarks": 5,
+   "links": 60,
+   "lists": 6,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Defra-approved disinfectants Disinfectants approved for statutory notifiable animal disease control in GB",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:03:35Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:07:05.522Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:03:35Z"
+  }
+ },
+ {
+  "url": "https://european-union.europa.eu/index_en",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-16",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:23:47.870Z",
+  "transcriptLines": 90,
+  "swept": {
+   "formFields": 10,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 4,
+   "landmarks": 7,
+   "links": 32,
+   "lists": 7,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Your gateway to the EU, News, Highlights European Union",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:24:11Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:27:40.123Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:24:11Z"
+  }
+ },
+ {
+  "url": "https://events.bl.uk/",
+  "role": "training",
+  "split": "dev",
+  "worker": "a11y-worker-10",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:26:21.610Z",
+  "transcriptLines": 137,
+  "swept": {
+   "formFields": 16,
+   "frames": 0,
+   "graphics": 11,
+   "headings": 28,
+   "landmarks": 7,
+   "links": 54,
+   "lists": 7,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Upcoming events and exhibitions, The British Library British Library",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:59:07Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T11:02:35.874Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:59:07Z"
+  }
+ },
+ {
+  "url": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-12",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:23:15.254Z",
+  "transcriptLines": 46,
+  "swept": {
+   "formFields": 9,
+   "frames": 0,
+   "graphics": 1,
+   "headings": 5,
+   "landmarks": 7,
+   "links": 17,
+   "lists": 8,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "MARINE AND GENERAL MUTUAL LIFE ASSURANCE SOCIETY overview - Find and update company information - GOV dot UK",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:40:09Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:43:47.037Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:40:09Z"
+  }
+ },
+ {
+  "url": "https://forms.charitycommission.gov.uk/raising-concerns/",
+  "role": "training",
+  "split": "dev",
+  "worker": "a11y-worker-15",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:22:56.961Z",
+  "transcriptLines": 27,
+  "swept": {
+   "formFields": 1,
+   "frames": 0,
+   "graphics": 1,
+   "headings": 4,
+   "landmarks": 5,
+   "links": 13,
+   "lists": 3,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Raising Concerns - Charity Commission for England and Wales",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:12:33Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:16:12.576Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:12:33Z"
+  }
+ },
+ {
+  "url": "https://ico.org.uk/action-weve-taken/enforcement/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-13",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:26:49.221Z",
+  "transcriptLines": 76,
+  "swept": {
+   "formFields": 48,
+   "frames": 0,
+   "graphics": 5,
+   "headings": 21,
+   "landmarks": 9,
+   "links": 79,
+   "lists": 14,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Enforcement action ICO",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:49:16Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:52:44.156Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:49:16Z"
+  }
+ },
+ {
+  "url": "https://ico.org.uk/for-the-public/",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-7",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:26:09.624Z",
+  "transcriptLines": 97,
+  "swept": {
+   "formFields": 4,
+   "frames": 0,
+   "graphics": 5,
+   "headings": 26,
+   "landmarks": 6,
+   "links": 77,
+   "lists": 9,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "For the public ICO",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:08:52Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:12:19.703Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:08:52Z"
+  }
+ },
+ {
+  "url": "https://mailchimp.com/",
+  "role": "field",
+  "split": "dev",
+  "worker": "a11y-worker-15",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:30:09.576Z",
+  "transcriptLines": 198,
+  "swept": {
+   "formFields": 14,
+   "frames": 1,
+   "graphics": 21,
+   "headings": 23,
+   "landmarks": 8,
+   "links": 112,
+   "lists": 20,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Email and SMS Marketing Platform Mailchimp",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:12:33Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:16:12.576Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:12:33Z"
+  }
+ },
+ {
+  "url": "https://primary-authority.beis.gov.uk/par",
+  "role": "training",
+  "split": "dev",
+  "worker": "a11y-worker-12",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:26:03.657Z",
+  "transcriptLines": 65,
+  "swept": {
+   "formFields": 4,
+   "frames": 0,
+   "graphics": 1,
+   "headings": 3,
+   "landmarks": 8,
+   "links": 18,
+   "lists": 13,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Search for a partnership Primary Authority Register",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:40:09Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:43:47.037Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:40:09Z"
+  }
+ },
+ {
+  "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-16",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:29:57.955Z",
+  "transcriptLines": 68,
+  "swept": {
+   "formFields": 23,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 6,
+   "landmarks": 3,
+   "links": 58,
+   "lists": 5,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Search a local authority area Food Hygiene Ratings",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:24:11Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:27:40.123Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:24:11Z"
+  }
+ },
+ {
+  "url": "https://reports.ofsted.gov.uk/search?q=school",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-4",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:29:03.018Z",
+  "transcriptLines": 87,
+  "swept": {
+   "formFields": 40,
+   "frames": 0,
+   "graphics": 1,
+   "headings": 16,
+   "landmarks": 6,
+   "links": 30,
+   "lists": 17,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Search - Find an Inspection Report - Ofsted",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:00:24Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:03:53.001Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:00:24Z"
+  }
+ },
+ {
+  "url": "https://service-manual.nhs.uk/design-system/components/table",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-9",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:31:31.485Z",
+  "transcriptLines": 174,
+  "swept": {
+   "formFields": 42,
+   "frames": 12,
+   "graphics": 0,
+   "headings": 40,
+   "landmarks": 8,
+   "links": 136,
+   "lists": 25,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Table \u2013 NHS digital service manual",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:45:53Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:49:18.786Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:45:53Z"
+  }
+ },
+ {
+  "url": "https://service-manual.nhs.uk/design-system/components/text-input",
+  "role": "training",
+  "split": "dev",
+  "worker": "a11y-worker-3",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:31:29.736Z",
+  "transcriptLines": 259,
+  "swept": {
+   "formFields": 57,
+   "frames": 12,
+   "graphics": 0,
+   "headings": 32,
+   "landmarks": 6,
+   "links": 99,
+   "lists": 9,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Text input \u2013 NHS digital service manual",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:51:02Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:54:30.136Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:51:02Z"
+  }
+ },
+ {
+  "url": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-8",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:31:49.976Z",
+  "transcriptLines": 234,
+  "swept": {
+   "formFields": 14,
+   "frames": 0,
+   "graphics": 11,
+   "headings": 24,
+   "landmarks": 14,
+   "links": 230,
+   "lists": 12,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Postgraduate taught courses 2027-2028 The University of Sheffield",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:35:50Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:39:18.469Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:35:50Z"
+  }
+ },
+ {
+  "url": "https://tfl.gov.uk/modes/tube/",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-14",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:29:48.701Z",
+  "transcriptLines": 132,
+  "swept": {
+   "formFields": 27,
+   "frames": 0,
+   "graphics": 17,
+   "headings": 23,
+   "landmarks": 9,
+   "links": 45,
+   "lists": 6,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Tube - Transport for London",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:03:35Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:07:05.522Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:03:35Z"
+  }
+ },
+ {
+  "url": "https://tfl.gov.uk/plan-a-journey/",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-12",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:29:31.815Z",
+  "transcriptLines": 79,
+  "swept": {
+   "formFields": 13,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 6,
+   "landmarks": 9,
+   "links": 57,
+   "lists": 8,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Plan a journey - Transport for London",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:40:09Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:43:47.037Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:40:09Z"
+  }
+ },
+ {
+  "url": "https://the-internet.herokuapp.com/login",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-7",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:28:15.816Z",
+  "transcriptLines": 12,
+  "swept": {
+   "formFields": 3,
+   "frames": 0,
+   "graphics": 1,
+   "headings": 2,
+   "landmarks": 1,
+   "links": 2,
+   "lists": 0,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "The Internet",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:08:52Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:12:19.703Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:08:52Z"
+  }
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/forecast/gcpvj0v07",
+  "role": "training",
+  "split": "dev",
+  "worker": "a11y-worker-10",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:33:59.038Z",
+  "transcriptLines": 555,
+  "swept": {
+   "formFields": 34,
+   "frames": 0,
+   "graphics": 168,
+   "headings": 48,
+   "landmarks": 12,
+   "links": 0,
+   "lists": 0,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "London (Greater London) weather - Met Office",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:59:07Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T11:02:35.874Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:59:07Z"
+  }
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/warnings-and-advice/uk-warnings",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-13",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:29:06.016Z",
+  "transcriptLines": 28,
+  "swept": {
+   "formFields": 4,
+   "frames": 0,
+   "graphics": 5,
+   "headings": 0,
+   "landmarks": 3,
+   "links": 9,
+   "lists": 2,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "UK weather warnings - Met Office",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:49:16Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:52:44.156Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:49:16Z"
+  }
+ },
+ {
+  "url": "https://www.adobe.com/",
+  "role": "field",
+  "split": "held",
+  "worker": "a11y-worker-2",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:31:47.836Z",
+  "transcriptLines": 123,
+  "swept": {
+   "formFields": 24,
+   "frames": 0,
+   "graphics": 12,
+   "headings": 24,
+   "landmarks": 4,
+   "links": 34,
+   "lists": 3,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Adobe: Creative, marketing and document management solutions",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:40:38Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:44:03.401Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:40:38Z"
+  }
+ },
+ {
+  "url": "https://www.atlassian.com/",
+  "role": "field",
+  "split": "dev",
+  "worker": "a11y-worker-7",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:33:59.277Z",
+  "transcriptLines": 96,
+  "swept": {
+   "formFields": 19,
+   "frames": 0,
+   "graphics": 14,
+   "headings": 20,
+   "landmarks": 4,
+   "links": 62,
+   "lists": 7,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Collaboration software for software, IT and business teams Atlassian",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:08:52Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:12:19.703Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:08:52Z"
+  }
+ },
+ {
+  "url": "https://www.british-history.ac.uk/catalogue",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-4",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:36:09.105Z",
+  "transcriptLines": 260,
+  "swept": {
+   "formFields": 0,
+   "frames": 0,
+   "graphics": 1,
+   "headings": 6,
+   "landmarks": 9,
+   "links": 228,
+   "lists": 5,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Catalogue British History Online",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:00:24Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:03:53.001Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:00:24Z"
+  }
+ },
+ {
+  "url": "https://www.cqc.org.uk/about-us",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-13",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:35:13.991Z",
+  "transcriptLines": 80,
+  "swept": {
+   "formFields": 11,
+   "frames": 0,
+   "graphics": 5,
+   "headings": 29,
+   "landmarks": 8,
+   "links": 89,
+   "lists": 9,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "About us - Care Quality Commission",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:49:16Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:52:44.156Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:49:16Z"
+  }
+ },
+ {
+  "url": "https://www.cqc.org.uk/search/all?query=hospital",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-12",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:36:39.203Z",
+  "transcriptLines": 53,
+  "swept": {
+   "formFields": 82,
+   "frames": 0,
+   "graphics": 5,
+   "headings": 44,
+   "landmarks": 10,
+   "links": 116,
+   "lists": 19,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Search Results - Care Quality Commission",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:40:09Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:43:47.037Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:40:09Z"
+  }
+ },
+ {
+  "url": "https://www.dropbox.com/",
+  "role": "field",
+  "split": "held",
+  "worker": "a11y-worker-14",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:35:30.026Z",
+  "transcriptLines": 182,
+  "swept": {
+   "formFields": 6,
+   "frames": 0,
+   "graphics": 18,
+   "headings": 33,
+   "landmarks": 3,
+   "links": 68,
+   "lists": 8,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Dropbox: Secure cloud storage, file sharing and more",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:03:35Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:07:05.522Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:03:35Z"
+  }
+ },
+ {
+  "url": "https://www.financial-ombudsman.org.uk/businesses/resolving-complaint/ombudsman-decisions",
+  "role": "training",
+  "split": "dev",
+  "worker": "a11y-worker-16",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:33:11.001Z",
+  "transcriptLines": 84,
+  "swept": {
+   "formFields": 24,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 7,
+   "landmarks": 7,
+   "links": 51,
+   "lists": 8,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Ombudsman decisions \u2013 Financial Ombudsman service",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:24:11Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:27:40.123Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:24:11Z"
+  }
+ },
+ {
+  "url": "https://www.gla.ac.uk/undergraduate/degrees/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-15",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:37:16.902Z",
+  "transcriptLines": 252,
+  "swept": {
+   "formFields": 11,
+   "frames": 0,
+   "graphics": 12,
+   "headings": 14,
+   "landmarks": 8,
+   "links": 257,
+   "lists": 15,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "University of Glasgow - Undergraduate study - 2027 Degree programmes A\u2010Z",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:12:33Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:16:12.576Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:12:33Z"
+  }
+ },
+ {
+  "url": "https://www.gov.scot/about/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-3",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:35:17.308Z",
+  "transcriptLines": 72,
+  "swept": {
+   "formFields": 12,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 3,
+   "landmarks": 7,
+   "links": 67,
+   "lists": 10,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "About the Scottish Government - gov dot scot",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:51:02Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:54:30.136Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:51:02Z"
+  }
+ },
+ {
+  "url": "https://www.gov.scot/publications/",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-9",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:36:31.894Z",
+  "transcriptLines": 65,
+  "swept": {
+   "formFields": 79,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 21,
+   "landmarks": 8,
+   "links": 0,
+   "lists": 0,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Publications - gov dot scot",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:45:53Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:49:18.786Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:45:53Z"
+  }
+ },
+ {
+  "url": "https://www.gov.uk/browse/benefits",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-2",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:36:21.074Z",
+  "transcriptLines": 59,
+  "swept": {
+   "formFields": 11,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 19,
+   "landmarks": 5,
+   "links": 53,
+   "lists": 7,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Benefits - GOV dot UK",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:40:38Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:44:03.401Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:40:38Z"
+  }
+ },
+ {
+  "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-8",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:37:32.596Z",
+  "transcriptLines": 78,
+  "swept": {
+   "formFields": 15,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 43,
+   "landmarks": 10,
+   "links": 108,
+   "lists": 15,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Rates and thresholds for employers 2025 to 2026 - GOV dot UK",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:35:50Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:39:18.469Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:35:50Z"
+  }
+ },
+ {
+  "url": "https://www.gov.uk/search/news-and-communications",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-16",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:40:17.862Z",
+  "transcriptLines": 103,
+  "swept": {
+   "formFields": 262,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 14,
+   "landmarks": 9,
+   "links": 63,
+   "lists": 10,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "News and communications - GOV dot UK",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:24:11Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:27:40.123Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:24:11Z"
+  }
+ },
+ {
+  "url": "https://www.gov.uk/search/research-and-statistics",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-10",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:41:05.816Z",
+  "transcriptLines": 137,
+  "swept": {
+   "formFields": 264,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 15,
+   "landmarks": 9,
+   "links": 64,
+   "lists": 22,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Research and statistics - GOV dot UK",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:59:07Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T11:02:35.874Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:59:07Z"
+  }
+ },
+ {
+  "url": "https://www.gov.uk/vehicle-tax",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-7",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:39:03.501Z",
+  "transcriptLines": 89,
+  "swept": {
+   "formFields": 12,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 15,
+   "landmarks": 7,
+   "links": 63,
+   "lists": 12,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Tax your vehicle - GOV dot UK - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:08:52Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:12:19.703Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:08:52Z"
+  }
+ },
+ {
+  "url": "https://www.gov.wales/statistics-and-research",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-13",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:42:47.783Z",
+  "transcriptLines": 316,
+  "swept": {
+   "formFields": 254,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 9,
+   "landmarks": 13,
+   "links": 46,
+   "lists": 0,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Statistics and research Released GOV dot WALES - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:49:16Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:52:44.156Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:49:16Z"
+  }
+ },
+ {
+  "url": "https://www.historicenvironment.scot/visit/all/edinburgh-castle/",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-3",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:37:06.961Z",
+  "transcriptLines": 7,
+  "swept": {
+   "formFields": 3,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 1,
+   "landmarks": 0,
+   "links": 1,
+   "lists": 0,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Edinburgh Castle Historic Scotland",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:51:02Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:54:30.136Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:51:02Z"
+  }
+ },
+ {
+  "url": "https://www.hubspot.com/",
+  "role": "field",
+  "split": "held",
+  "worker": "a11y-worker-14",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:40:48.749Z",
+  "transcriptLines": 31,
+  "swept": {
+   "formFields": 19,
+   "frames": 1,
+   "graphics": 22,
+   "headings": 29,
+   "landmarks": 7,
+   "links": 76,
+   "lists": 19,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Hub Spot Software and Tools for your Business - Homepage",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:03:35Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:07:05.522Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:03:35Z"
+  }
+ },
+ {
+  "url": "https://www.lbhf.gov.uk/council-tax",
+  "role": "training",
+  "split": "dev",
+  "worker": "a11y-worker-4",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:41:38.194Z",
+  "transcriptLines": 108,
+  "swept": {
+   "formFields": 16,
+   "frames": 0,
+   "graphics": 2,
+   "headings": 19,
+   "landmarks": 5,
+   "links": 53,
+   "lists": 5,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Council tax London Borough of Hammersmith and Fulham",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:00:24Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:03:53.001Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:00:24Z"
+  }
+ },
+ {
+  "url": "https://www.leeds.ac.uk/undergraduate",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-2",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:39:11.222Z",
+  "transcriptLines": 5,
+  "swept": {
+   "formFields": 2,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 1,
+   "landmarks": 0,
+   "links": 1,
+   "lists": 0,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Undergraduate courses University of Leeds",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:40:38Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:44:03.401Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:40:38Z"
+  }
+ },
+ {
+  "url": "https://www.mygov.scot/browse/benefits",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-9",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:39:53.109Z",
+  "transcriptLines": 66,
+  "swept": {
+   "formFields": 11,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 21,
+   "landmarks": 6,
+   "links": 37,
+   "lists": 3,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Benefits - mygov dot scot",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:45:53Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:49:18.786Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:45:53Z"
+  }
+ },
+ {
+  "url": "https://www.mygov.scot/scottish-child-payment",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-12",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:39:45.755Z",
+  "transcriptLines": 58,
+  "swept": {
+   "formFields": 11,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 4,
+   "landmarks": 9,
+   "links": 36,
+   "lists": 5,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Scottish Child Payment - mygov dot scot",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:40:09Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:43:47.037Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:40:09Z"
+  }
+ },
+ {
+  "url": "https://www.nationalarchives.gov.uk/about-us/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-3",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:40:55.133Z",
+  "transcriptLines": 82,
+  "swept": {
+   "formFields": 2,
+   "frames": 0,
+   "graphics": 5,
+   "headings": 16,
+   "landmarks": 12,
+   "links": 55,
+   "lists": 8,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "About us - The National Archives - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:51:02Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:54:30.136Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:51:02Z"
+  }
+ },
+ {
+  "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/",
+  "role": "training",
+  "split": "dev",
+  "worker": "a11y-worker-15",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:44:50.689Z",
+  "transcriptLines": 562,
+  "swept": {
+   "formFields": 3,
+   "frames": 0,
+   "graphics": 2,
+   "headings": 31,
+   "landmarks": 11,
+   "links": 162,
+   "lists": 0,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Research guides - The National Archives",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:12:33Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:16:12.576Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:12:33Z"
+  }
+ },
+ {
+  "url": "https://www.networkrail.co.uk/careers/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-8",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:40:31.258Z",
+  "transcriptLines": 66,
+  "swept": {
+   "formFields": 7,
+   "frames": 0,
+   "graphics": 7,
+   "headings": 10,
+   "landmarks": 6,
+   "links": 22,
+   "lists": 2,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Careers - Network Rail",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:35:50Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:39:18.469Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:35:50Z"
+  }
+ },
+ {
+  "url": "https://www.nhs.uk/conditions/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-7",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:46:23.770Z",
+  "transcriptLines": 590,
+  "swept": {
+   "formFields": 4,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 29,
+   "landmarks": 8,
+   "links": 249,
+   "lists": 33,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Conditions A to Z - NHS - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:08:52Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:12:19.703Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:08:52Z"
+  }
+ },
+ {
+  "url": "https://www.nhs.uk/service-search/find-a-gp",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-2",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:42:00.099Z",
+  "transcriptLines": 44,
+  "swept": {
+   "formFields": 5,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 3,
+   "landmarks": 7,
+   "links": 29,
+   "lists": 7,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Find a GP - NHS",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:40:38Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:44:03.401Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:40:38Z"
+  }
+ },
+ {
+  "url": "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-12",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:42:08.491Z",
+  "transcriptLines": 9,
+  "swept": {
+   "formFields": 4,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 1,
+   "landmarks": 0,
+   "links": 0,
+   "lists": 0,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "MOT and vehicle testing nidirect",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:40:09Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:43:47.037Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:40:09Z"
+  }
+ },
+ {
+  "url": "https://www.nls.uk/join/",
+  "role": "training",
+  "split": "dev",
+  "worker": "a11y-worker-9",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:42:28.067Z",
+  "transcriptLines": 62,
+  "swept": {
+   "formFields": 6,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 10,
+   "landmarks": 6,
+   "links": 2,
+   "lists": 0,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Join the National Library of Scotland National Library of Scotland",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:45:53Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:49:18.786Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:45:53Z"
+  }
+ },
+ {
+  "url": "https://www.notion.com/",
+  "role": "field",
+  "split": "held",
+  "worker": "a11y-worker-14",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:55:48.140Z",
+  "transcriptLines": 95,
+  "swept": {
+   "formFields": 9,
+   "frames": 0,
+   "graphics": 7,
+   "headings": 15,
+   "landmarks": 8,
+   "links": 46,
+   "lists": 4,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "The AI workspace that works for you. Notion",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:03:35Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:07:05.522Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:03:35Z"
+  }
+ },
+ {
+  "url": "https://www.nrscotland.gov.uk/publications/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-8",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:44:19.944Z",
+  "transcriptLines": 12,
+  "swept": {
+   "formFields": 14,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 1,
+   "landmarks": 1,
+   "links": 23,
+   "lists": 13,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Publications - National Records of Scotland (NRS)",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:35:50Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:39:18.469Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:35:50Z"
+  }
+ },
+ {
+  "url": "https://www.nrscotland.gov.uk/statistics-and-data/",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-14",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:44:40.674Z",
+  "transcriptLines": 12,
+  "swept": {
+   "formFields": 14,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 1,
+   "landmarks": 1,
+   "links": 23,
+   "lists": 13,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Statistics and data - National Records of Scotland (NRS)",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:03:35Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:07:05.522Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:03:35Z"
+  }
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-16",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:44:17.690Z",
+  "transcriptLines": 4,
+  "swept": {
+   "formFields": 3,
+   "frames": 0,
+   "graphics": 0,
+   "headings": 1,
+   "landmarks": 0,
+   "links": 0,
+   "lists": 0,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Energy price cap and standing charges explained Ofgem",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:24:11Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:27:40.123Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:24:11Z"
+  }
+ },
+ {
+  "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-3",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:46:53.926Z",
+  "transcriptLines": 189,
+  "swept": {
+   "formFields": 4,
+   "frames": 0,
+   "graphics": 8,
+   "headings": 51,
+   "landmarks": 10,
+   "links": 109,
+   "lists": 16,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Inflation and price indices - Office for National Statistics - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:51:02Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:54:30.136Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:51:02Z"
+  }
+ },
+ {
+  "url": "https://www.scotcourts.gov.uk/judgments/",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-10",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:44:54.114Z",
+  "transcriptLines": 100,
+  "swept": {
+   "formFields": 23,
+   "frames": 0,
+   "graphics": 1,
+   "headings": 5,
+   "landmarks": 5,
+   "links": 1,
+   "lists": 6,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Judgments Scottish Courts and Tribunals Service",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:59:07Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T11:02:35.874Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:59:07Z"
+  }
+ },
+ {
+  "url": "https://www.sportengland.org/research-and-data/data/active-lives",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-4",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:45:21.645Z",
+  "transcriptLines": 57,
+  "swept": {
+   "formFields": 15,
+   "frames": 0,
+   "graphics": 6,
+   "headings": 8,
+   "landmarks": 8,
+   "links": 48,
+   "lists": 6,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Active Lives Sport England - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:00:24Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:03:53.001Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:00:24Z"
+  }
+ },
+ {
+  "url": "https://www.transport.gov.scot/publications/",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-2",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:48:23.474Z",
+  "transcriptLines": 72,
+  "swept": {
+   "formFields": 197,
+   "frames": 0,
+   "graphics": 7,
+   "headings": 13,
+   "landmarks": 6,
+   "links": 51,
+   "lists": 13,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Publications Transport Scotland",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:40:38Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:44:03.401Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:40:38Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/after/news.html",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-12",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:45:42.927Z",
+  "transcriptLines": 89,
+  "swept": {
+   "formFields": 2,
+   "frames": 0,
+   "graphics": 7,
+   "headings": 11,
+   "landmarks": 1,
+   "links": 53,
+   "lists": 4,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Citylights News Accessible News Page",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:40:09Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:43:47.037Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:40:09Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/after/survey.html",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-9",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:46:06.708Z",
+  "transcriptLines": 89,
+  "swept": {
+   "formFields": 15,
+   "frames": 0,
+   "graphics": 4,
+   "headings": 5,
+   "landmarks": 2,
+   "links": 47,
+   "lists": 4,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Citylights Survey Accessible Survey Page",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:45:53Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:49:18.786Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:45:53Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/after/template.html",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-13",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:46:12.986Z",
+  "transcriptLines": 49,
+  "swept": {
+   "formFields": 2,
+   "frames": 0,
+   "graphics": 4,
+   "headings": 4,
+   "landmarks": 1,
+   "links": 48,
+   "lists": 4,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Citylights Template Accessible Template Page - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:49:16Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:52:44.156Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:49:16Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/after/tickets.html",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-16",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:47:31.366Z",
+  "transcriptLines": 63,
+  "swept": {
+   "formFields": 2,
+   "frames": 0,
+   "graphics": 4,
+   "headings": 4,
+   "landmarks": 1,
+   "links": 47,
+   "lists": 5,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Citylights Tickets Accessible Tickets Page",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:24:11Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:27:40.123Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:24:11Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/before/news.html",
+  "role": "calibration",
+  "split": "held",
+  "worker": "a11y-worker-8",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:47:28.746Z",
+  "transcriptLines": 103,
+  "swept": {
+   "formFields": 1,
+   "frames": 0,
+   "graphics": 10,
+   "headings": 1,
+   "landmarks": 0,
+   "links": 47,
+   "lists": 2,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Welcome to City Lights! Inaccessible News Page",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:35:50Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:39:18.469Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:35:50Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/before/template.html",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-14",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:47:36.585Z",
+  "transcriptLines": 64,
+  "swept": {
+   "formFields": 1,
+   "frames": 0,
+   "graphics": 8,
+   "headings": 1,
+   "landmarks": 0,
+   "links": 45,
+   "lists": 2,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Welcome to City Lights! Inaccessible Template Page",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:03:35Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:07:05.522Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:03:35Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/before/tickets.html",
+  "role": "calibration",
+  "split": "dev",
+  "worker": "a11y-worker-15",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:47:43.245Z",
+  "transcriptLines": 58,
+  "swept": {
+   "formFields": 1,
+   "frames": 0,
+   "graphics": 9,
+   "headings": 1,
+   "landmarks": 0,
+   "links": 44,
+   "lists": 2,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Welcome to City Lights! Inaccessible Tickets Page",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:12:33Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:16:12.576Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:12:33Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/carousels/structure/",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-10",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:49:10.453Z",
+  "transcriptLines": 123,
+  "swept": {
+   "formFields": 3,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 4,
+   "landmarks": 18,
+   "links": 75,
+   "lists": 13,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Carousel Structure Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:59:07Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T11:02:35.874Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:59:07Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-4",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:51:50.307Z",
+  "transcriptLines": 228,
+  "swept": {
+   "formFields": 26,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 9,
+   "landmarks": 23,
+   "links": 78,
+   "lists": 16,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Grouping Controls Web Accessibility Initiative (WAI) W 3C - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:00:24Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:03:53.001Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:00:24Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/instructions/",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-12",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:51:06.154Z",
+  "transcriptLines": 187,
+  "swept": {
+   "formFields": 7,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 11,
+   "landmarks": 22,
+   "links": 88,
+   "lists": 18,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Form Instructions Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:40:09Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:43:47.037Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:40:09Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-9",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:51:53.998Z",
+  "transcriptLines": 222,
+  "swept": {
+   "formFields": 8,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 14,
+   "landmarks": 23,
+   "links": 97,
+   "lists": 16,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Labeling Controls Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:45:53Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:49:18.786Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:45:53Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/multi-page/",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-13",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:51:31.166Z",
+  "transcriptLines": 182,
+  "swept": {
+   "formFields": 3,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 8,
+   "landmarks": 20,
+   "links": 85,
+   "lists": 17,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Multi-page Forms Web Accessibility Initiative (WAI) W 3C - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:49:16Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:52:44.156Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:49:16Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/validation/",
+  "role": "training",
+  "split": "dev",
+  "worker": "a11y-worker-7",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:52:23.041Z",
+  "transcriptLines": 228,
+  "swept": {
+   "formFields": 11,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 12,
+   "landmarks": 23,
+   "links": 85,
+   "lists": 18,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Validating Input Web Accessibility Initiative (WAI) W 3C - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:08:52Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:12:19.703Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:08:52Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/complex/",
+  "role": "training",
+  "split": "dev",
+  "worker": "a11y-worker-3",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:52:07.052Z",
+  "transcriptLines": 164,
+  "swept": {
+   "formFields": 3,
+   "frames": 0,
+   "graphics": 5,
+   "headings": 10,
+   "landmarks": 20,
+   "links": 91,
+   "lists": 15,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Complex Images Web Accessibility Initiative (WAI) W 3C - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:51:02Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:54:30.136Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:51:02Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/decorative/",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-8",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:52:03.942Z",
+  "transcriptLines": 137,
+  "swept": {
+   "formFields": 3,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 7,
+   "landmarks": 20,
+   "links": 77,
+   "lists": 14,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Decorative Images Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:35:50Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:39:18.469Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:35:50Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-16",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:52:45.012Z",
+  "transcriptLines": 146,
+  "swept": {
+   "formFields": 5,
+   "frames": 0,
+   "graphics": 6,
+   "headings": 8,
+   "landmarks": 21,
+   "links": 92,
+   "lists": 14,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Functional Images Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:24:11Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:27:40.123Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:24:11Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/groups/",
+  "role": "training",
+  "split": "dev",
+  "worker": "a11y-worker-14",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:52:21.826Z",
+  "transcriptLines": 142,
+  "swept": {
+   "formFields": 3,
+   "frames": 0,
+   "graphics": 7,
+   "headings": 5,
+   "landmarks": 19,
+   "links": 85,
+   "lists": 13,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Groups of Images Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:03:35Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:07:05.522Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:03:35Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/informative/",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-15",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:53:01.894Z",
+  "transcriptLines": 170,
+  "swept": {
+   "formFields": 3,
+   "frames": 0,
+   "graphics": 11,
+   "headings": 8,
+   "landmarks": 21,
+   "links": 95,
+   "lists": 14,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Informative Images Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:12:33Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:16:12.576Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:12:33Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/menus/flyout/",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-2",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:53:02.845Z",
+  "transcriptLines": 114,
+  "swept": {
+   "formFields": 4,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 9,
+   "landmarks": 25,
+   "links": 80,
+   "lists": 18,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Fly-out Menus Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:40:38Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:44:03.401Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:40:38Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/menus/structure/",
+  "role": "training",
+  "split": "dev",
+  "worker": "a11y-worker-10",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:53:56.917Z",
+  "transcriptLines": 160,
+  "swept": {
+   "formFields": 3,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 12,
+   "landmarks": 20,
+   "links": 80,
+   "lists": 16,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Menu Structure Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:59:07Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T11:02:35.874Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:59:07Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-12",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:55:57.092Z",
+  "transcriptLines": 126,
+  "swept": {
+   "formFields": 3,
+   "frames": 0,
+   "graphics": 6,
+   "headings": 9,
+   "landmarks": 18,
+   "links": 95,
+   "lists": 16,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Headings Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:40:09Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:43:47.037Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:40:09Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/regions/",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-13",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:56:28.871Z",
+  "transcriptLines": 155,
+  "swept": {
+   "formFields": 3,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 10,
+   "landmarks": 20,
+   "links": 82,
+   "lists": 15,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Page Regions Web Accessibility Initiative (WAI) W 3C - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:49:16Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:52:44.156Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:49:16Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/tables/irregular/",
+  "role": "training",
+  "split": "dev",
+  "worker": "a11y-worker-4",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:56:40.752Z",
+  "transcriptLines": 173,
+  "swept": {
+   "formFields": 3,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 5,
+   "landmarks": 20,
+   "links": 70,
+   "lists": 15,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Tables with Irregular Headers Web Accessibility Initiative (WAI) W 3C - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T09:00:24Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T09:03:53.001Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T09:00:24Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/tables/multi-level/",
+  "role": "training",
+  "split": "dev",
+  "worker": "a11y-worker-9",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:56:53.893Z",
+  "transcriptLines": 232,
+  "swept": {
+   "formFields": 3,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 6,
+   "landmarks": 20,
+   "links": 74,
+   "lists": 14,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Tables with Multi-Level Headers Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:45:53Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:49:18.786Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:45:53Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/tables/one-header/",
+  "role": "training",
+  "split": "held",
+  "worker": "a11y-worker-8",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:56:44.213Z",
+  "transcriptLines": 178,
+  "swept": {
+   "formFields": 3,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 6,
+   "landmarks": 20,
+   "links": 73,
+   "lists": 13,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Tables with One Header Web Accessibility Initiative (WAI) W 3C",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T10:35:50Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T10:39:18.469Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T10:35:50Z"
+  }
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/tables/two-headers/",
+  "role": "training",
+  "split": "dev",
+  "worker": "a11y-worker-3",
+  "status": 200,
+  "capturedAt": "2026-10-21T11:56:17.179Z",
+  "transcriptLines": 76,
+  "swept": {
+   "formFields": 3,
+   "frames": 0,
+   "graphics": 3,
+   "headings": 5,
+   "landmarks": 19,
+   "links": 73,
+   "lists": 13,
+   "tableCells": 0
+  },
+  "documentReadyTitle": "Tables with Two Headers Web Accessibility Initiative (WAI) W 3C - Profile 1 - Microsoft\u200b Edge",
+  "browserReused": true,
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "windowsBuild": "26300.9711",
+   "provisionRevision": "a20963f766666de8",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-21T08:51:02Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-21T08:54:30.136Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-21T08:51:02Z"
+  }
+ }
+]

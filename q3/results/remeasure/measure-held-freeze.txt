@@ -1,0 +1,60 @@
+pages 60 (held)  comparable: 44   unstable: 3   not comparable: 12   emulator fault: 1
+   unstable: https://data.southwark.gov.uk/data-catalog-explorer/  [unstable: the two emulator runs differ]
+   unstable: https://www.leeds.ac.uk/undergraduate  [unstable: the two emulator runs differ]
+   unstable: https://www.notion.com/  [unstable: the two emulator runs differ]
+   not comparable: https://european-union.europa.eu/index_en  [not comparable: link fleet 32 / emulator 31]
+   not comparable: https://sheffield.ac.uk/postgraduate/taught/courses/2027  [not comparable: heading fleet 24 / emulator 25]
+   not comparable: https://tfl.gov.uk/plan-a-journey/  [not comparable: link fleet 41 / emulator 42]
+   not comparable: https://weather.metoffice.gov.uk/warnings-and-advice/uk-warnings  [not comparable: heading fleet 0 / emulator 24, link fleet 7 / emulator 9]
+   not comparable: https://www.adobe.com/  [not comparable: heading fleet 25 / emulator 1, link fleet 30 / emulator 0, document title fleet 'Adobe: Creative, marketing and document ' / emulator 'Access Denied', headings read fleet fleet names 24, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.historicenvironment.scot/visit/all/edinburgh-castle/  [not comparable: document title fleet 'Edinburgh Castle Historic Scotland' / emulator 'You do not have permission to view this ', headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.hubspot.com/  [not comparable: link fleet 80 / emulator 81, document title fleet 'Hub Spot Software and Tools for your Bus' / emulator 'HubSpot | Software & Tools for your Busi']
+   not comparable: https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing  [not comparable: headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.nrscotland.gov.uk/publications/  [not comparable: heading fleet 20 / emulator 1, link fleet 45 / emulator 1, headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.nrscotland.gov.uk/statistics-and-data/  [not comparable: heading fleet 3 / emulator 1, link fleet 37 / emulator 1, headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained  [not comparable: headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.w3.org/WAI/demos/bad/before/news.html  [not comparable: document title fleet 'Welcome to City Lights! Inaccessible New' / emulator 'Welcome to CityLights! [Inaccessible New']
+   emulator fault: https://ico.org.uk/action-weve-taken/enforcement/  [emulator fault: timeout 900s]
+
+agreement by element kind (44 comparable pages)
+     exact / total       %  positional
+      664 / 707       93.9%         583  headings
+     3439 / 3470      99.1%        3370  links
+      248 / 250       99.2%         240  buttons
+      572 / 609       93.9%         554  formFields
+      474 / 479       99.0%         465  landmarks
+      479 / 482       99.4%         479  lists
+      124 / 127       97.6%         108  graphics
+       47 / 60        78.3%          47  frames
+
+agreement by swept channel
+     exact / total       %  positional
+      664 / 707       93.9%         583  headings
+      474 / 479       99.0%         465  landmarks
+      820 / 859       95.5%         794  formFields
+      124 / 127       97.6%         108  graphics
+     3439 / 3470      99.1%        3370  links
+      479 / 482       99.4%         479  lists
+       47 / 60        78.3%          47  frames
+
+shapes: 6124 announcements in 249 distinct shapes; top 10 cover 4480 = 73.2% (the fleet's script quotes 33 shapes, top 10 = 94.3%)
+
+agreement by shape (top 10, ranked in this run)
+     exact / total       %  positional
+     2220 / 2234      99.4%        2164  NAME + ROLE
+      438 / 449       97.6%         373  NAME + ROLE + LEVEL
+      418 / 424       98.6%         413  NAME + ROLE + STATE
+      309 / 309      100.0%         304  NAME + ROLE + ROLE + COUNT + NAME + ROLE
+      282 / 283       99.6%         275  ROLE + COUNT + NAME + ROLE
+      244 / 259       94.2%         240  NAME + NAME + ROLE
+      185 / 185      100.0%         183  NAME + STATE + ROLE
+      117 / 117      100.0%         117  NAME + ROLE + ROLE
+      104 / 111       93.7%          96  NAME + ROLE + NAME + ROLE
+      109 / 109      100.0%         107  NAME + ROLE + ROLE + LEVEL
+
+GATE: 4426 of 4480 = 98.79% exact on the top 10 shapes   (positional: 4272 of 4480)   [AT OR ABOVE 98%]
+      with the not-comparable pages kept in: 4924 of 5057 = 97.37%
+      emulator announcements with no counterpart in the fleet's lists (extras): 92
+      top-10 misses by cause: unexplained 48, language 6
+      the same, with the pages' `history` misses not counted as misses against us: 4426 of 4480 = 98.79%   (an upper bound if the fleet's browser history could be reproduced)
+      misses over all channels: 137 of 6184; on top-10 shapes: 54

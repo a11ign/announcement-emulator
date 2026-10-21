@@ -1,0 +1,14 @@
+misses on the top-10 shapes at the freeze: 149 {'unexplained': 11, 'language': 138}
+all channels: 216 {'unexplained': 55, 'bug-fixed': 3, 'language': 158}
+  left: design-system.service.gov.uk/components/accordion/ formFields 'Show all sections, button, collapsed' -> 'Accordion example, frame, How people read , Show this section, button, collapsed'
+  left: design-system.service.gov.uk/components/checkboxes/ formFields 'Irish, check box, not checked' -> ''
+  left: design-system.service.gov.uk/components/checkboxes/ formFields 'Employment Tribunal, check box, not checked' -> ''
+  left: design-system.service.gov.uk/components/checkboxes/ formFields 'Ministry of Defence, check box, not checked' -> ''
+  left: design-system.service.gov.uk/components/radios/ formFields 'Phone, radio button, not checked' -> ''
+  left: design-system.service.gov.uk/components/radios/ formFields 'Wales, radio button, not checked' -> ''
+  left: design-system.service.gov.uk/components/radios/ formFields 'Scotland, radio button, not checked' -> ''
+  left: design-system.service.gov.uk/components/radios/ formFields 'England, radio button, not checked' -> ''
+  left: design-system.service.gov.uk/components/tabs/ formFields 'Past week, tab' -> ''
+  left: design-system.service.gov.uk/components/tabs/ formFields 'Past month, tab' -> ''
+  left: www.nidirect.gov.uk/information-and-services/motorin links 'English, Zulu —, isi Zulu (not supported), Isi Zulu, link' -> ''
+fixes: {'toggle button state': 2, 'lazily loaded content': 1}

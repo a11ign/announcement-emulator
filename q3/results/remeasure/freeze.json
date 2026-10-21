@@ -1,0 +1,6 @@
+{
+ "gate": {"commit": "5fbd7269783eaa81f3e27e6b47b7e1a8af0702ee", "note": "the last emulator commit fitted to the dev half only (docs(q2): the system tests at the freeze); the Gate figure"},
+ "head": {"commit": "43b7fc1358f345a721f3bdfa84a3e0fc339d471a", "note": "the emulator at the plan's branch point, after the held-out reading fixed two faults: reported beside the Gate figure and marked not held out"},
+ "namedAt": "2026-10-21T08:54:39Z",
+ "note": "Named before any fresh record was read. No emulator fix is made in this ticket."
+}

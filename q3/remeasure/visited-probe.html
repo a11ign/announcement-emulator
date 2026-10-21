@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>History probe</title>
+</head>
+<body>
+<!-- A control page of ours (A11-155), served from capture-host and captured on each box with q3/fleet_capture.mjs, to read whether the box's Edge keeps history.
+     A link is announced "visited" when its address is in the browser's history. Chromium keys that by the link's address AND the top-level site, so a link to another
+     site could not read as visited from this page; both links here are on capture-host.
+     "self" is this page's own address: a browser that stores history has recorded it by the time of a second capture (the first records it, the second reads it).
+     "other" is a page that is never opened: it must never read visited, in any stage. -->
+<main>
+  <h1>History probe</h1>
+  <p><a href="visited-probe.html">History probe self</a></p>
+  <p><a href="visited-probe-other.html">History probe other</a></p>
+</main>
+</body>
+</html>

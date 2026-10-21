@@ -1,0 +1,136 @@
+{
+ "what": "the form-field sweeps of the four GOV.UK Design System component pages with unexplained misses, in the figures run (fleet on the static copy, emulator frozen at 5fbd726, run 1): how many entries each holds and where the example-frame headers fall; the frame headers are the entries that contain \", frame,\"",
+ "accordion": {
+  "fleetEntries": 18,
+  "emulatorEntries": 20,
+  "fleetFrameHeaderIndexes": [
+   2,
+   10,
+   12,
+   13
+  ],
+  "emulatorFrameHeaderIndexes": [
+   2,
+   7,
+   11,
+   15,
+   17,
+   18
+  ],
+  "fleetFirstFrame": "Accordion example, frame, How people read , Show this section, button,",
+  "emulatorFirstFrame": "Accordion with summary sections \u2013 Accordion example, frame, Phases of ",
+  "onlyInFleet": [],
+  "onlyInEmulator": [
+   "Accordion with summary sections \u2013 Accordion example, frame, Phases of an agile p",
+   "Accordion second example, frame, How people read , Show this section, button, co"
+  ]
+ },
+ "checkboxes": {
+  "fleetEntries": 34,
+  "emulatorEntries": 36,
+  "fleetFrameHeaderIndexes": [
+   2,
+   5,
+   9,
+   11,
+   14,
+   17,
+   18,
+   22,
+   29,
+   33
+  ],
+  "emulatorFrameHeaderIndexes": [
+   2,
+   5,
+   9,
+   12,
+   16,
+   18,
+   19,
+   22,
+   23,
+   27,
+   34
+  ],
+  "fleetFirstFrame": "Checkboxes with conditionally revealing content \u2013 Checkboxes example, ",
+  "emulatorFirstFrame": "Checkbox items with error \u2013 Checkboxes example, frame, What is your na",
+  "onlyInFleet": [
+   "Checkbox items with error \u2013 Checkboxes example, frame, What is your nationality?"
+  ],
+  "onlyInEmulator": [
+   "Checkbox items with error \u2013 Checkboxes example, frame, What is your nationality?",
+   "Small checkboxes \u2013 Checkboxes example, frame, Organisation, grouping, Department",
+   "HM Revenue and Customs (HMRC), check box, not checked"
+  ]
+ },
+ "radios": {
+  "fleetEntries": 34,
+  "emulatorEntries": 35,
+  "fleetFrameHeaderIndexes": [
+   2,
+   4,
+   7,
+   12,
+   14,
+   16,
+   17,
+   18,
+   22,
+   23,
+   24,
+   29,
+   31,
+   32
+  ],
+  "emulatorFrameHeaderIndexes": [
+   2,
+   6,
+   10,
+   12,
+   14,
+   16,
+   18,
+   20,
+   21,
+   22,
+   26,
+   27,
+   28,
+   33
+  ],
+  "fleetFirstFrame": "Small radios \u2013 Radios example, frame, Filter, grouping, Yearly, radio ",
+  "emulatorFirstFrame": "Radios with conditionally revealing content showing an error \u2013 Radios ",
+  "onlyInFleet": [
+   "Inline radios with error \u2013 Radios example, frame, Where do you live?, grouping, ",
+   "Radios with conditionally revealing content showing an error \u2013 Radios example, f"
+  ],
+  "onlyInEmulator": [
+   "Radios with conditionally revealing content showing an error \u2013 Radios example, f",
+   "Email, radio button, checked",
+   "Inline radios with error \u2013 Radios example, frame, Where do you live?, grouping, "
+  ]
+ },
+ "tabs": {
+  "fleetEntries": 10,
+  "emulatorEntries": 13,
+  "fleetFrameHeaderIndexes": [
+   5,
+   9
+  ],
+  "emulatorFrameHeaderIndexes": [
+   2,
+   6,
+   10,
+   12
+  ],
+  "fleetFirstFrame": "main landmark, Tabs example, frame, Past day, tab, selected",
+  "emulatorFirstFrame": "Tabs second example, frame, Past year, tab",
+  "onlyInFleet": [],
+  "onlyInEmulator": [
+   "Tabs second example, frame, Past year, tab",
+   "Past day, tab, selected",
+   "Tabs example, frame, Past year, tab"
+  ]
+ }
+}

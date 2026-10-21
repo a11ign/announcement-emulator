@@ -472,6 +472,89 @@ the agreement is 97.1%. It was measured against twelve boxes of one fleet on one
 **Below the gate, the spike stops here.** Nothing beyond the spike is built: no CI engine, no listen mode, no extension. The repository, its name, its licence wording ("only" or "or later") and the
 absorption of `nvda-speech` (ADR 0047, Decision 3) are the chairman's and are untouched.
 
+## Re-measure
+
+**Re-measured on 2026-10-21, with the fleet's browsers keeping no history: the held-out figure at the freeze is 4,426 of 4,480 = 98.79%, at or above 98%, and `history` is 0 of its 54 misses (it was 61 of 110). On the reading used above (at least 98% and no unexplained miss) the Gate is still not passed: 13 of the 54 misses are unexplained.** Nothing above this section is changed, and no emulator fix was made.
+
+**The set-up.** The twelve boxes that agree on every version `fleet:status` prints (Edge 155.0.4283.62, Windows build 26300.9711): `a11y-worker-2`, `-3`, `-4`, `-7`, `-8`, `-9`, `-10`, `-12`, `-13`, `-14`, `-15`, `-16`; the page server is `capture-host`. (`a11y-worker-5`, `-6` and `-11` read other Edge or Windows builds and were not used.)
+Each box, one at a time and the first alone, was given Edge's `SavingBrowserHistoryDisabled=1` through the fleet's own play, `provision-role.yml --tags policy`, with an extra-vars file that restates the declared `worker_edge_policy` and adds the one value
+(`q3/remeasure/policy_override.py`; control is unchanged). The play's own task `Refuse to call this provisioned if a policy value did not land` was `ok` and its recap `failed=0` on every box (`fleet/plays/`); `win_reg_stat` then read the value `1`; the box's `History` and `History-journal` were removed by `win_file` as the worker's own account
+(Edge was stopped first, by ad-hoc Ansible on the idle box: the worker keeps it alive between captures, which the plan had not expected; `q3/remeasure/RUNBOOK.md` has every command). The same play also converged the values the role already declares (the screensaver, OneDrive's run entries; `Evict OneDrive itself` reports `changed` on every run). The profile directory was kept: a new one brings back the first-run surface.
+**The read-back is a capture:** `q3/remeasure/visited-probe.html`, a page of ours with a link to itself and a link to a page nobody opens, captured by each box before (the first capture visits the page, a later one reads it) and after the policy (a visit, then a read), and again after the corpus.
+Before the policy the probe read the self link as `visited` on ten of the twelve boxes (not on `a11y-worker-10` or `-14`, in three reads each, `fleet/run-log.txt`: Edge writes its history in batches), so it can see history; after it, on **all twelve** boxes, at the end of the run too, it read neither link as `visited`.
+Every reading is in `q3/results/remeasure/history-readback.json` (the probe records, with `capture-host` for the server, are in `fleet/probes/`), and every record of the new oracle carries a `history` block (the policy value, when it was read back, that the store was emptied, the probe) in `q3/results/remeasure/oracle-summary.json`.
+
+**The capture.** The same 102 addresses (`q3/results/corpus.json`), the same request as before, by `q3/corpus_capture.py`: **102 captured, 0 failed, 11:03Z to 11:57Z.** The first attempt (11:03Z to 11:13Z) kept 3 records and lost the rest to the capture client, whose `fetch` gives up on a worker's answer after 300 s;
+`fleet_capture.mjs` now waits with `node:http`, and the other 99 were captured from 11:14Z (`capture-run.json`, `capture-run-attempt1.json`, which counts 13 `UND_ERR_HEADERS_TIMEOUT` and 185 `429 a capture is already in progress` among its failures). The records name their worker and `capture-host`, never an address.
+Two things the plan did not foresee. The worker **keeps Edge alive across captures** (`browserReused` in all 102 records, `oracle-summary.json`) rather than launching it once per page. And **7 `visited` announcements remain, on 4 pages** (`design-patterns.service.justice.gov.uk/components/filter/`, `european-union.europa.eu/index_en`,
+`reports.ofsted.gov.uk/search?q=school`, `www.ons.gov.uk/economy/inflationandpriceindices`); each is a link that points at the page itself or into it (five of the seven are announced `same page`). The plan said a non-zero count stops the run. They are not history carried between captures: the emulator's Chrome, fresh, with no history model
+and nothing visited before, announces **the same seven strings** (`q3/remeasure/explain_visited.py`, `visited-explained.json`), so the browser marks the page it is on, whatever its history holds. The check was made to say so rather than to count to zero, and it refuses any `visited` the emulator does not make.
+
+**The figures** (`q3/results/remeasure/`, the split rule unchanged, `measure.py` at head with the corrected comparability rules, the emulator run without `--history`, two runs a page; the freezes were named in `freeze.json` and committed, at 08:54Z, before any record of the new oracle existed (the first was captured at 11:05Z)):
+
+| | exact / total | | pages compared | not comparable |
+|---|---|---|---|---|
+| **Gate figure: held out, the emulator frozen at `5fbd726`** | **4,426 of 4,480 = 98.79%** | at or above 98% | 44 of 60 | 12, and 3 unstable, 1 timed out |
+| the same, with the not-comparable pages kept in | 4,924 of 5,057 = 97.37% | | | |
+| the emulator at head (`43b7fc1`, after the held-out reading fixed two faults; **not held out**) | 4,389 of 4,407 = 99.59% | at or above | 44 of 60 | 10, and 5 unstable, 1 timed out |
+| for comparison, the spike's reading at the freeze (before) | 4,497 of 4,607 = 97.61% | below | 47 of 60 | 9, and 3 unstable, 1 timed out |
+
+The shape that history had broken is now clean: `NAME + STATE + ROLE` is **185 of 185** (it was 189 of 248, 76.2%). The page population differs from the spike's (44 pages compared, not 47: pages changed in a day), so the rise from 97.61% is the removal of `visited` and the change of pages together; the `visited` misses alone were 61.
+
+**The misses by cause**, the ten shapes at the freeze, 54 (`attribute.txt`, `misses-held-freeze-attributed.json`; the spike's classes):
+
+| cause | now | spike |
+|---|---|---|
+| emulator bug, shown by a fix that already exists (agreed at head on the same page) | 35, all lazily loaded content | 34 |
+| Windows-only (language names) | 6 | 6 |
+| **history (`visited`)** | **0** | 61 |
+| unexplained | **13** | 9 |
+
+The 13 unexplained are 11 on `caselaw.nationalarchives.gov.uk/search?query=`, a live search page whose rows and page numbers moved between the fleet's capture and the emulator's run (a miss on a page that changed is unexplained under the rule above), 1 on `bathingwaters.sepa.org.uk` (the fleet's tree has a cookie-banner `region` before the logo, the emulator's does not) and 1 on `www.dropbox.com` (a graphic the fleet found and the emulator did not); the last two were not investigated. At head the ten shapes have 18 misses: the 6 Windows-only and 12 unexplained (`measure-held-head.txt`; the attribution above is of the freeze).
+
+**Is the Gate passed?** On the number, yes: 98.79% is at or above 98% on a held-out half, and the browser's history, which made the first reading fail, accounts for none of the misses. On the reading this page has used (at least 98% and no unexplained miss), **no**: 13 misses are unexplained, 11 of them one page that changed.
+Whether a page that moved between two captures counts against the emulator is the same call the Gate section left to the chairman; this section does not make it.
+
+**The fleet was restored** through the same play on 12:04Z to 12:13Z, one box at a time: the play only sets values, so `SavingBrowserHistoryDisabled` was set to `0`, Edge's default (history is saved again), the play was `failed=0`, and `win_reg_stat` read `0` on all twelve boxes. The value stays in the registry, as 0, on those twelve boxes, which the role does not declare.
+`fleet:status` read all twelve `ready` afterwards (`fleet-readings.txt`, before and after). `provisionRevision` was `a20963f766666de8` in all 102 records and in the first and the last probe of every box, so the setting did not move it; the split `fleet:status` reports across fifteen boxes (Edge and Windows builds, and one code hash on `a11y-worker-5`) is made of the boxes that were not used. Whether production captures should run with history off for good (declaring the value in `worker_edge_policy` and reporting it in `/diagnostics`) is a control and worker change and the chairman's call, not made here.
+
+### Drift-free re-score: the same bytes on both sides
+
+The 13 unexplained misses above include 11 on a live page that moved between the fleet's capture and the emulator's run, so a second comparison was made in which **nothing can move**: each page was saved once, the copy was served from `capture-host`, and **the fleet's NVDA and the emulator read that same file.** This was done for **all 102 pages**, not only those with an unexplained miss (the copying is cheap; the fleet run is the same length as the first).
+`q3/remeasure/snapshot.mjs` loads the page in the emulator's own Chrome 155, as the emulator asks (Edge on Windows, the 1008x872 window), scrolls it to its end and back, and writes its DOM with the scripts, `<noscript>`, preloads and inline event handlers removed, every stylesheet inlined, every URL absolute, a link to the page's own address pointing at the copy (`index.html`, so "same page" stays "same page"), same-origin iframes written into their `srcdoc` and form values into attributes
+(`q3/results/remeasure/static/static-pages.json`: 102 copies made 13:42Z to 13:47Z with the defaults `--frames srcdoc --lazy keep`; 39 of the pages have iframes). **What it does not freeze:** images, fonts and other-origin iframes are still fetched live, and shadow DOM is not serialised. Three of the copies are of sites that were down for maintenance that day (`primary-authority.beis.gov.uk`, `www.leeds.ac.uk/undergraduate`, `www.sportengland.org`), so those three are not the pages the first run read.
+
+**On the fleet:** the same twelve boxes, with `SavingBrowserHistoryDisabled` set again through the same play, the first box alone and read back (assert task `ok`, `failed=0`, value 1, store emptied, `after` probe clean), 13:46Z to 15:00Z; `after-run` probes clean on all twelve at 15:50Z; **102 of 102 captured, none failed, 15:05Z to 15:48Z**; restored through the same play at 15:51Z to 16:01Z, `0` read back on all twelve (`q3/results/remeasure/static/`; `provisionRevision` `a20963f766666de8` in all 102 records again).
+The emulator was frozen at `5fbd726` as before and read the copies from the same server on `capture-host`, two runs a page, no history; `measure.py` and `attribute.py` are unchanged, and the split is still that of the original address (`q3/remeasure/make_views.py`). 7 `visited` announcements remain on 4 pages and the emulator announces the same 7 (`static/visited-explained.json`).
+
+| | exact / total | | pages compared | not comparable |
+|---|---|---|---|---|
+| **Gate figure, drift-free: held out, emulator frozen at `5fbd726`** | **4,828 of 4,977 = 97.01%** | below 98% | 57 of 60 | 2 (document titles differ in spelling: `hubspot.com`, a W3C demo), and 1 timed out (`ico.org.uk`) |
+| the same, with the not-comparable pages kept in | 4,989 of 5,146 = 96.95% | | | |
+| the emulator at head (not held out) | 4,828 of 4,977 = 97.01% | below | 57 of 60 | 2, and 1 timed out |
+| for comparison, the live reading at the freeze (above) | 4,426 of 4,480 = 98.79% | at or above | 44 of 60 | 12, and 3 unstable, 1 timed out |
+
+**The misses by cause**, the ten shapes at the freeze, 149 (`static/attribute.txt`, `static/misses-held-freeze-attributed.json`):
+
+| cause | count | |
+|---|---|---|
+| history (`visited`) | 0 | |
+| emulator bug, shown by a fix that already exists | 0 | |
+| **Windows-only (language names)** | **138** | 133 on one page, `nidirect.gov.uk`, a list of its languages (132 of them in the shape `NAME + NAME + NAME + NAME + ROLE`, which is 14 of 147; the fleet says `English, Yoruba —, Yoruba (not supported), Yorùbá, link` where the emulator has `Yoruba —, yo (not supported), Yorùbá, link`); 2 + 2 on `www.gov.uk` and 1 on `ons.gov.uk` |
+| **unexplained** | **11** | 10 form-field announcements on four GOV.UK Design System component pages (`accordion` 1, `checkboxes` 3, `radios` 4, `tabs` 2), 1 link on `nidirect.gov.uk` |
+
+**The 11 unexplained.** On each of the four component pages the fleet's form-field sweep and the emulator's hold the same example frames, but not in the same order and not with the same entries: the frame headers fall at other places in the two lists, and the emulator's has one to three entries more (`static/evidence-form-field-order.json`: `checkboxes` 34 fleet entries against 36, `radios` 34 against 35, `accordion` 18 against 20, `tabs` 10 against 13).
+On `checkboxes` the fleet reaches `Checkboxes with conditionally revealing content` first and `Checkbox items with error` last, where the emulator reaches the latter first; the matching is order-preserving, so a block that moved costs its fields. The frame lists, the headings and the links are identical.
+Tried on that page (`static/diagnostic-checkboxes.json`, another box): the frames written as separate documents instead of `srcdoc`, and lazy loading taken off: the same five form-field differences (and two link differences once lazy loading was off), so it is neither of those.
+On the live pages the two sweeps agreed on these frames. What differs is that the copy has no scripts, and GOV.UK's error-summary component is built to move focus to itself on load, which would start a sweep there; **I did not establish that this is the cause**, nor whether the fleet's NVDA or the emulator is the one that departs from NVDA's order, so these 11 stay unexplained, as the rule requires.
+(Over all channels, not only the ten shapes, the 216 misses are 158 language, 55 unexplained and 3 emulator bugs already fixed; the ten shapes are the Gate's.)
+
+**Is the Gate passed?** By the page's own reading (at least 98% and no unexplained miss), on the drift-free set: **no, on both counts**: 97.01% is below 98%, and 11 misses are unexplained. 138 of the 149 misses are the Windows-only language names, 133 of them on one page the first run could not compare; counting those as agreements, as this page did for `visited`, the figure is 4,966 of 4,977 = 99.78% (an upper bound, not the Gate's number). The Gate's number counts them as misses, and making the emulator say Windows' language names is an emulator change this ticket does not make.
+
+**The other two misses of the live reading**, each shown by the same bytes: `www.dropbox.com` and `bathingwaters.sepa.org.uk` have **0 misses** on the copies at the freeze.
+- *Dropbox*: an **emulator bug, the lazily loaded content already found in the first reading** (fixed at `529e4ec`, which the frozen emulator lacks). The frozen emulator's graphics list on the live page starts at `Security screen in Dropbox` and its census is 18 and 21 graphics in its two runs; the emulator at head lists `main landmark, Family taking a photo at a birthday party, graphic` and `Race car, graphic` first in both its runs, and the fleet's list has them there too (`static/evidence-sepa-dropbox.json`); the images load on scroll. `attribute.py` did not class it as fixed because the page is unstable between head's two runs (a different channel), not because the miss is still there.
+- *sepa*: **neither an emulator bug nor Windows-only, as far as the evidence goes: a difference in the page's own state between the two live sessions.** Both live lists hold the same cookie-banner region (`This website uses cookies`) and logo; the fleet's landmark list has seven entries including `complementary landmark, Back to top, button` that the emulator's six lack, and its graphics sweep enters the banner from outside (`This website uses cookies, region, logo, graphic`) where the emulator's is already inside it (`logo, graphic`). Those are what a script-built banner and a back-to-top control do when a session differs; on the copy (no scripts) the fleet has six landmarks, the emulator six, and every channel agrees (`static/evidence-sepa-dropbox.json`). I did not trace which script. It is neither of the Gate's two classes, so it was unexplained at the first reading and the drift-free reading shows why it was not an emulator fault.
+
 ## What this page does not settle, and follow-ups
 
 - **ADR 0047 quotes `51 tests, about 220 exact-speech assertions`** for Q2 and layer 1 as `getTree`; the checkout has 47 and 193 (227 as executed), and layer 1 is `getDesktop`. The ADR's "after #2568" wording

@@ -1,0 +1,34 @@
+{
+ "explained": 7,
+ "oracleVisitedAnnouncements": 7,
+ "pages": {
+  "http://capture-host:8001/design-patterns-service-justice-gov-uk-components-filter-002b6441/index.html": {
+   "announcements": [
+    "Clear filters, visited, same page, link",
+    "Filter (example), frame, Clear filters, visited, same page, link"
+   ],
+   "worker": "a11y-worker-8"
+  },
+  "http://capture-host:8001/european-union-europa-eu-index-en-4c1683aa/index.html": {
+   "announcements": [
+    "search landmark, index, collapsed, visited, same page, link",
+    "banner landmark, search landmark, index, collapsed, visited, same page, link"
+   ],
+   "worker": "a11y-worker-14"
+  },
+  "http://capture-host:8001/reports-ofsted-gov-uk-search-q-school-6d4721f3/index.html": {
+   "announcements": [
+    "list, with 1 item, Open, visited, same page, link",
+    "main landmark, list, with 1 item, Open, visited, same page, link"
+   ],
+   "worker": "a11y-worker-2"
+  },
+  "http://capture-host:8001/www-ons-gov-uk-economy-inflationandpriceindices-8ee43205/index.html": {
+   "announcements": [
+    "Read this statistical bulletin, visited, same page, link"
+   ],
+   "worker": "a11y-worker-16"
+  }
+ },
+ "unexplained": []
+}

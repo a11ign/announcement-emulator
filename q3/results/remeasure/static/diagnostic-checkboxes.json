@@ -1,0 +1,59 @@
+{
+ "what": "a diagnostic, not part of the figures: the GOV.UK Design System checkboxes page, saved with --frames files --lazy eager, served from capture-host, read by a11y-worker-4 (after its restore, so with history on: the form-field sweep does not depend on it) and by the emulator (head, no history)",
+ "capturedAt": "2026-10-21T16:05:31.382Z",
+ "worker": "a11y-worker-4",
+ "channels": {
+  "headings": {
+   "fleet": 31,
+   "emulator": 31,
+   "fleetNotMatched": 0
+  },
+  "landmarks": {
+   "fleet": 7,
+   "emulator": 7,
+   "fleetNotMatched": 0
+  },
+  "formFields": {
+   "fleet": 34,
+   "emulator": 36,
+   "fleetNotMatched": 5
+  },
+  "graphics": {
+   "fleet": 1,
+   "emulator": 1,
+   "fleetNotMatched": 0
+  },
+  "links": {
+   "fleet": 87,
+   "emulator": 87,
+   "fleetNotMatched": 2
+  },
+  "lists": {
+   "fleet": 8,
+   "emulator": 8,
+   "fleetNotMatched": 1
+  },
+  "frames": {
+   "fleet": 9,
+   "emulator": 9,
+   "fleetNotMatched": 0
+  }
+ },
+ "fleetFormFieldsFirst6": [
+  "main landmark, Nunjucks, tab, collapsed",
+  "HTML, tab, collapsed",
+  "Checkboxes with conditionally revealing content \u2013 Checkboxes example, frame, How would you",
+  "Phone, check box, not checked, collapsed",
+  "Email, check box, not checked, collapsed",
+  "Checkboxes with and number 8216 none and number 8217; option showing an error \u2013 Checkboxes"
+ ],
+ "emulatorFormFieldsFirst6": [
+  "main landmark, Nunjucks, tab, collapsed",
+  "HTML, tab, collapsed",
+  "Checkbox items with error \u2013 Checkboxes example, frame, What is your nationality?, grouping",
+  "Irish, check box, not checked",
+  "British, check box, not checked, including English, Scottish, Welsh and Northern Irish",
+  "Small checkboxes \u2013 Checkboxes example, frame, Organisation, grouping, Department for Trans"
+ ],
+ "earlierVariant": "--frames files with lazy loading kept (a11y-worker-4, same page): formFields fleet 34 / emulator 36, 5 not matched; the same as the figures run with srcdoc frames"
+}

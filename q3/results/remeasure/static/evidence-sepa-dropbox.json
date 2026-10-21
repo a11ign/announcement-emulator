@@ -1,0 +1,200 @@
+{
+ "what": "the strings the section cites for the two live-reading misses (sepa, dropbox): the first reading's fleet capture, the emulator frozen at 5fbd726 (two runs) and at head (two runs); and the same pages on the static copies",
+ "bathingwaters.sepa.org.uk": {
+  "fleetLive": {
+   "landmarks": [
+    "Scotland's Bathing Waters, region, Scotland's Bathing Waters, heading, level 1",
+    "complementary landmark, Back to top, button",
+    "navigation landmark, list, with 8 items, Home, same page, link, current page",
+    "banner landmark, Return to the homepage, same page, link",
+    "This website uses cookies, region, logo, graphic",
+    "main landmark, Live Update Information, heading, level 2",
+    "content info landmark, list, with 4 items, X Twitter, link"
+   ],
+   "graphics": [
+    "This website uses cookies, region, logo, graphic"
+   ]
+  },
+  "frozenEmulatorRun1": {
+   "landmarks": [
+    "Scotland's Bathing Waters, region, Scotland's Bathing Waters, heading, level 1",
+    "navigation landmark, list, with 8 items, Home, same page, link, current page",
+    "banner landmark, Return to the homepage, same page, link",
+    "This website uses cookies, region, logo, graphic",
+    "main landmark, Live Update Information, heading, level 2",
+    "content info landmark, list, with 4 items, X Twitter, link"
+   ],
+   "graphics": [
+    "logo, graphic"
+   ],
+   "census": {
+    "heading": 8,
+    "link": 32,
+    "graphic": 3
+   }
+  },
+  "frozenEmulatorRun2": {
+   "landmarks": [
+    "Scotland's Bathing Waters, region, Scotland's Bathing Waters, heading, level 1",
+    "navigation landmark, list, with 8 items, Home, same page, link, current page",
+    "banner landmark, Return to the homepage, same page, link",
+    "This website uses cookies, region, logo, graphic",
+    "main landmark, Live Update Information, heading, level 2",
+    "content info landmark, list, with 4 items, X Twitter, link"
+   ],
+   "graphics": [
+    "logo, graphic"
+   ],
+   "census": {
+    "heading": 8,
+    "link": 32,
+    "graphic": 3
+   }
+  },
+  "headEmulatorRun1": {
+   "landmarks": [
+    "Scotland's Bathing Waters, region, Scotland's Bathing Waters, heading, level 1",
+    "navigation landmark, list, with 8 items, Home, same page, link, current page",
+    "banner landmark, Return to the homepage, same page, link",
+    "This website uses cookies, region, logo, graphic",
+    "main landmark, Live Update Information, heading, level 2",
+    "content info landmark, list, with 4 items, X Twitter, link"
+   ],
+   "graphics": [
+    "logo, graphic"
+   ],
+   "census": {
+    "heading": 8,
+    "link": 32,
+    "graphic": 3
+   }
+  },
+  "headEmulatorRun2": {
+   "landmarks": [
+    "Scotland's Bathing Waters, region, Scotland's Bathing Waters, heading, level 1",
+    "navigation landmark, list, with 8 items, Home, same page, link, current page",
+    "banner landmark, Return to the homepage, same page, link",
+    "This website uses cookies, region, logo, graphic",
+    "main landmark, Live Update Information, heading, level 2",
+    "content info landmark, list, with 4 items, X Twitter, link"
+   ],
+   "graphics": [
+    "logo, graphic"
+   ],
+   "census": {
+    "heading": 8,
+    "link": 32,
+    "graphic": 3
+   }
+  },
+  "staticCopy": {
+   "fleetLandmarks": 6,
+   "emulatorLandmarks": 6,
+   "fleetGraphics": 1,
+   "emulatorGraphics": 1
+  }
+ },
+ "www.dropbox.com": {
+  "fleetLive": {
+   "landmarks": [
+    "main landmark, Get to work, with a lot less work, heading, level 1",
+    "navigation landmark, Dropbox, same page, link",
+    "content info landmark, Dropbox, heading, level 3"
+   ],
+   "graphics": [
+    "main landmark, Family taking a photo at a birthday party, graphic",
+    "Race car, graphic",
+    "Security screen in Dropbox, graphic",
+    "Squiggly M icon from Meta Muse, graphic",
+    "Space X AI logo, graphic",
+    "Gemini logo, graphic"
+   ]
+  },
+  "frozenEmulatorRun1": {
+   "landmarks": [
+    "main landmark, Get to work, with a lot less work, heading, level 1",
+    "navigation landmark, Dropbox, same page, link",
+    "content info landmark, Dropbox, heading, level 3"
+   ],
+   "graphics": [
+    "Security screen in Dropbox, graphic",
+    "Squiggly M icon from Meta Muse, graphic",
+    "Space X AI logo, graphic",
+    "Gemini logo, graphic",
+    "Anthropic logo, graphic",
+    "Open AI logo, graphic"
+   ],
+   "census": {
+    "heading": 32,
+    "link": 85,
+    "graphic": 18
+   }
+  },
+  "frozenEmulatorRun2": {
+   "landmarks": [
+    "main landmark, Get to work, with a lot less work, heading, level 1",
+    "navigation landmark, Dropbox, same page, link",
+    "content info landmark, Dropbox, heading, level 3"
+   ],
+   "graphics": [
+    "Security screen in Dropbox, graphic",
+    "Squiggly M icon from Meta Muse, graphic",
+    "Space X AI logo, graphic",
+    "Gemini logo, graphic",
+    "Anthropic logo, graphic",
+    "Open AI logo, graphic"
+   ],
+   "census": {
+    "heading": 32,
+    "link": 85,
+    "graphic": 21
+   }
+  },
+  "headEmulatorRun1": {
+   "landmarks": [
+    "main landmark, Get to work, with a lot less work, heading, level 1",
+    "navigation landmark, Dropbox, same page, link",
+    "content info landmark, Dropbox, heading, level 3"
+   ],
+   "graphics": [
+    "main landmark, Family taking a photo at a birthday party, graphic",
+    "Race car, graphic",
+    "Security screen in Dropbox, graphic",
+    "Squiggly M icon from Meta Muse, graphic",
+    "Space X AI logo, graphic",
+    "Gemini logo, graphic"
+   ],
+   "census": {
+    "heading": 32,
+    "link": 85,
+    "graphic": 18
+   }
+  },
+  "headEmulatorRun2": {
+   "landmarks": [
+    "main landmark, Get to work, with a lot less work, heading, level 1",
+    "navigation landmark, Dropbox, same page, link",
+    "content info landmark, Dropbox, heading, level 3"
+   ],
+   "graphics": [
+    "main landmark, Family taking a photo at a birthday party, graphic",
+    "Race car, graphic",
+    "Security screen in Dropbox, graphic",
+    "Squiggly M icon from Meta Muse, graphic",
+    "Space X AI logo, graphic",
+    "Gemini logo, graphic"
+   ],
+   "census": {
+    "heading": 32,
+    "link": 85,
+    "graphic": 18
+   }
+  },
+  "staticCopy": {
+   "fleetLandmarks": 3,
+   "emulatorLandmarks": 3,
+   "fleetGraphics": 18,
+   "emulatorGraphics": 18
+  }
+ }
+}

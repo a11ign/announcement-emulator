@@ -1,0 +1,34 @@
+{
+ "explained": 7,
+ "oracleVisitedAnnouncements": 7,
+ "pages": {
+  "https://design-patterns.service.justice.gov.uk/components/filter/": {
+   "announcements": [
+    "Clear filters, visited, link",
+    "Filter (example), frame, Clear filters, visited, link"
+   ],
+   "worker": "a11y-worker-2"
+  },
+  "https://european-union.europa.eu/index_en": {
+   "announcements": [
+    "search landmark, index en, collapsed, visited, same page, link",
+    "banner landmark, search landmark, index en, collapsed, visited, same page, link"
+   ],
+   "worker": "a11y-worker-16"
+  },
+  "https://reports.ofsted.gov.uk/search?q=school": {
+   "announcements": [
+    "list, with 1 item, Open, visited, same page, link",
+    "main landmark, list, with 1 item, Open, visited, same page, link"
+   ],
+   "worker": "a11y-worker-4"
+  },
+  "https://www.ons.gov.uk/economy/inflationandpriceindices": {
+   "announcements": [
+    "Read this statistical bulletin, visited, same page, link"
+   ],
+   "worker": "a11y-worker-3"
+  }
+ },
+ "unexplained": []
+}
