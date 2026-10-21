@@ -17,6 +17,7 @@ d = None
 try:
     d = LivePage(url=a.url, port=a.port, history=json.load(open(a.history)) if a.history else None)
     res['firstLink'] = next((pn.raw.get('url') for ix, pn in sorted(d.world.by_ix.items()) if pn.raw.get('role') == 'link' and pn.raw.get('url')), None)
+    res['title'] = d.world.root.raw.get('name')
     res['viewport'] = d.s.eval("innerWidth+'x'+innerHeight"); res['href'] = d.navigated.get('href'); res['nodes'] = len(d.world.by_ix); res['census'] = d.census()
     w = sweep.Walker(d, driver)
     deadline = time.time() + a.budget

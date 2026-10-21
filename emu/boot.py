@@ -17,6 +17,8 @@ def _message(text, speechPriority=None, brailleText=None):
     import speech; speech.speakMessage(text, priority=speechPriority)
 _ui.message = _message
 sys.modules['ui'] = _ui
+import watchdog as _wd      # stubbed module; NVDA runs a native call through it so a hung call can be cancelled: here the call is just made
+_wd.cancellableExecute = lambda func, *args, **kwargs: func(*args, **kwargs)
 import appModuleHandler as _amh      # stubbed module; give it the one function NVDAObjects call, answered for a single Chrome process
 class FakeAppModule:
     appName = 'chrome'; appModuleName = 'chrome'; processID = 1; helperLocalBindingHandle = 1; isAlive = True

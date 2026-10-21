@@ -15,7 +15,7 @@ Definitions, fixed before any figure existed (docs/announcement-emulator-spike.m
   comparable the page's accessibility census in the oracle (heading, link, graphic counts) equals the emulator tree's. A page that is not is listed, with
             its URL and the counts, and kept out of the denominator; the Gate also prints the figure with them in.
 Held pages' strings are not printed unless --final."""
-import sys, os, json, glob, argparse, difflib, collections
+import sys, os, json, glob, argparse, difflib, collections, re
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from split import split_of
 from shapes import shape_of, FIELDS, vocabularies
@@ -70,6 +70,10 @@ for p in pages:
     else:
         oc, ec = p['census'] or {}, r1['census']
         diff = {k: (oc.get(k), ec.get(k)) for k in ('heading', 'link', 'graphic') if oc.get(k) != ec.get(k)}
+        ot = next((e.get('title') for e in p['oracle'].get('diagnostics', []) if e.get('event') == 'documentReady'), None)      # what the fleet's browser reported as the document's title when NVDA was asked
+        et = r1.get('title')
+        norm = lambda t: re.sub(r'[^a-z0-9]+', ' ', (t or '').lower().replace('\u200b', '')).strip()
+        if ot and et and norm(ot)[:25] not in norm(et) and norm(et)[:25] not in norm(ot): diff['document title'] = (repr(ot[:40]), repr(et[:40]))
         oh, eh = set(p['oracle']['structure']['headings']), set(r1['structure']['headings'])
         names = lambda L: {x.split(', heading')[0].split(', ')[-1] for x in L}
         overlap = len(names(oh) & names(eh)) / max(1, len(names(oh)))

@@ -1012,6 +1012,11 @@ class LocalLib:
         b = self._b(h); n = node.value if hasattr(node, 'value') else node
         c = b.by_id_ref[n]; _set(docRef, c.id[0]); _set(idRef, c.id[1])
 
+    def displayModel_getWindowTextInRect(self, *args):
+        """The display model (screen-scraped text, nvdaHelper/remote/displayModel): not modelled. NVDA reaches it for a focused object with no text of its own (a menu button
+        that took focus), and asks for the text drawn in its rectangle; the answer here is none, as getWindowTextInRect's own `if not text` branch handles."""
+        return '', ''
+
     def calculateWordOffsets(self, text, length, offset, sRef, eRef):
         r = _calc_offsets('word', text, length, offset)
         if r is None: return False
