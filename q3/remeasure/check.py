@@ -4,7 +4,8 @@
 
   readback    every box in history-readback.json carries a `passed` flag equal to its readings (policy value 1, emptied store, clean `after` probe), and the `before`
               positive control read `visited` on at least one box, the readings are in the order of the steps, and at least three boxes pass
-  oracle      the fresh oracle holds exactly the corpus addresses, each a good capture stamped by a box that held a clean read-back through the run (`after-run` too), and no announcement in any swept channel carries the `visited` token (count 0)
+  summary     oracle-summary.json (what is committed of the oracle) has the corpus addresses once each, every one stamped by a box that held a clean read-back through the run
+  oracle      the fresh oracle holds exactly the corpus addresses, each a good capture stamped by a box that held a clean read-back through the run (`after-run` too), and no announcement in a swept channel carries `visited` unless explain_visited.py shows the emulator, with no history, announces it too (the browser's own mark on a link to the page it is on)
   figures     each misses-*.json's gate.exact/total equals the GATE line of its measure-*.txt
   addresses   nothing under the results directory or in the doc holds an IPv4 literal
   doc         the diff against the base touches the spike page only by adding one `## Re-measure` section after `## Gate`
@@ -12,6 +13,7 @@ Exit 1 on any failure; with --require-complete, also on anything pending."""
 import sys, os, re, json, glob, argparse, subprocess
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import readback as rb
+import explain_visited
 
 CHANNELS = ('headings', 'landmarks', 'formFields', 'graphics', 'links', 'lists', 'frames', 'tableCells')
 IPV4 = re.compile(r'(?<![\w.])(?:(?:25[0-5]|2[0-4]\d|1?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|1?\d?\d)(?![\w]|\.\d)')
@@ -27,27 +29,54 @@ def check_readback(path):
     if not os.path.exists(path): return PENDING, 'no history-readback.json yet'
     data = rb.load(path); boxes = data['workers']; bad = []
     if not boxes: return PENDING, 'no box read back yet'
-    if len(rb.passed_workers(data)) < MIN_BOXES: bad.append(f'fewer than {MIN_BOXES} boxes pass')
+    if len(rb.cleared_workers(data)) < MIN_BOXES: bad.append(f'fewer than {MIN_BOXES} boxes pass')
     if not rb.control_workers(data): bad.append('no box has a `before` probe that read visited: the probe has not been shown to see history')
     for w, box in sorted(boxes.items()):
         if box.get('passed') != rb.box_passes(box): bad.append(f'{w}: stored `passed` disagrees with its readings')
-    return (FAIL, '; '.join(bad)) if bad else (OK, f'{len(rb.passed_workers(data))} of {len(boxes)} boxes pass: {", ".join(rb.passed_workers(data))}; the probe saw history on {", ".join(rb.control_workers(data))}')
+    return (FAIL, '; '.join(bad)) if bad else (OK, f'{len(rb.cleared_workers(data))} of {len(boxes)} boxes cleared ({len(rb.held_workers(data))} held to the end, {sum(1 for b in boxes.values() if b.get("restored"))} restored): {", ".join(rb.cleared_workers(data))}; the probe saw history on {", ".join(rb.control_workers(data))}')
 
 
-def check_oracle(directory, readback_path, corpus_path):
+def visited_problems(directory, visited, explained_path):
+    """`visited` in the oracle is explained or it is a history that was not clean: explain_visited.py's output must account for every one, with the emulator's no-history run as the witness."""
+    if not explained_path or not os.path.exists(explained_path): return [f'{visited} announcements carry `visited` and nothing explains them (explain_visited.py): the history was not clean, measure nothing']
+    got = rb.read_json(explained_path)
+    if got['oracleVisitedAnnouncements'] != visited: return [f'{visited} announcements carry `visited` but the explanation covers {got["oracleVisitedAnnouncements"]}: it is stale']
+    if got['unexplained']: return [f'{len(got["unexplained"])} of {visited} `visited` announcements are not explained: the history was not clean, measure nothing']
+    return []
+
+
+def record_problems(name, rec, held):
+    """What is wrong with one oracle record on its own: its stamp, the box that captured it, whether it is a capture at all."""
+    h, cap = rec.get('history'), rec.get('capture') or {}
+    if not h or (h.get('policy') or {}).get('value') != 1 or not h.get('storeEmptied') or (h.get('probeAfter') or {}).get('visited') is not False: return [f'{name}: no clean history block']
+    problems = [] if rec.get('worker') in held else [f'{name}: captured by {rec.get("worker")}, which did not hold a clean read-back through the run']
+    if rec.get('status') != 200 or cap.get('error') or not cap.get('structure'): problems.append(f'{name}: not a capture')
+    return problems
+
+
+def check_oracle(directory, readback_path, corpus_path, explained_path=None):
     files = sorted(glob.glob(os.path.join(directory, '*.json'))) if directory and os.path.isdir(directory) else []
     if not files: return PENDING, 'no fresh oracle yet'
     held = set(rb.held_workers(rb.load(readback_path))); bad = []; visited = 0; urls = set()
     for f in files:
-        rec = rb.read_json(f); h = rec.get('history'); cap = rec.get('capture') or {}; name = os.path.basename(f)
-        urls.add(cap.get('url')); visited += rb.announced_visited(cap)
-        if not h or (h.get('policy') or {}).get('value') != 1 or not h.get('storeEmptied') or (h.get('probeAfter') or {}).get('visited') is not False: bad.append(f'{name}: no clean history block')
-        elif rec.get('worker') not in held: bad.append(f'{name}: captured by {rec.get("worker")}, which did not hold a clean read-back through the run')
-        if rec.get('status') != 200 or cap.get('error') or not cap.get('structure'): bad.append(f'{name}: not a capture')
+        rec = rb.read_json(f); cap = rec.get('capture') or {}; name = os.path.basename(f)
+        swept = explain_visited.visited_in(cap); visited += len(swept); urls.add(cap.get('url'))
+        if not swept and rb.announced_visited(cap): bad.append(f'{name}: `visited` is spoken in the read-through but in no swept channel')
+        bad += record_problems(name, rec, held)
     expected = {e if isinstance(e, str) else e['url'] for e in rb.read_json(corpus_path)}
     if urls != expected: bad.append(f'{len(expected - urls)} corpus addresses missing, {len(urls - expected)} not in the corpus')
-    if visited: bad.append(f'{visited} announcements carry `visited`: the history was not clean, measure nothing')
-    return (FAIL, '; '.join(bad[:5]) + (f' (+{len(bad) - 5} more)' if len(bad) > 5 else '')) if bad else (OK, f'{len(files)} records, all stamped, visited count 0')
+    if visited: bad += visited_problems(directory, visited, explained_path)
+    return (FAIL, '; '.join(bad[:5]) + (f' (+{len(bad) - 5} more)' if len(bad) > 5 else '')) if bad else (OK, f'{len(files)} records, all stamped, {visited} `visited` announcements, {"all explained" if visited else "none"}')
+
+
+def check_summary(path, readback_path, corpus_path):
+    """oracle-summary.json is what is committed of the oracle (its pages are third-party's): one entry per corpus address, each stamped, each from a box that held."""
+    if not os.path.exists(path): return PENDING, 'no oracle summary yet'
+    held = set(rb.held_workers(rb.load(readback_path))); entries = rb.read_json(path); bad = []
+    for e in entries: bad += record_problems(e['url'], {**e, 'status': 200, 'capture': {'structure': {'x': [1]}}}, held)
+    expected = {e['url'] for e in rb.read_json(corpus_path)}
+    if {e['url'] for e in entries} != expected or len(entries) != len(expected): bad.append(f'the summary is not the {len(expected)} corpus addresses, once each')
+    return (FAIL, '; '.join(bad[:5])) if bad else (OK, f'{len(entries)} entries, all stamped by a box that held')
 
 
 def gate_of(misses_path):
@@ -99,10 +128,10 @@ def check_doc(doc, base):
 
 
 def main(argv):
-    ap = argparse.ArgumentParser(); ap.add_argument('--results', default='q3/results/remeasure'); ap.add_argument('--oracle'); ap.add_argument('--corpus', default='q3/results/corpus.json'); ap.add_argument('--doc', default='docs/announcement-emulator-spike.md')
+    ap = argparse.ArgumentParser(); ap.add_argument('--results', default='q3/results/remeasure'); ap.add_argument('--oracle'); ap.add_argument('--corpus', default='q3/results/corpus.json'); ap.add_argument('--explained'); ap.add_argument('--doc', default='docs/announcement-emulator-spike.md')
     ap.add_argument('--base', default='origin/main'); ap.add_argument('--require-complete', action='store_true'); a = ap.parse_args(argv)
     readback = os.path.join(a.results, 'history-readback.json')
-    results = [('readback', check_readback(readback)), ('oracle', check_oracle(a.oracle, readback, a.corpus)), ('figures', check_figures(a.results)),
+    results = [('readback', check_readback(readback)), ('summary', check_summary(os.path.join(a.results, 'oracle-summary.json'), readback, a.corpus)), ('oracle', check_oracle(a.oracle, readback, a.corpus, a.explained or os.path.join(a.results, 'visited-explained.json'))), ('figures', check_figures(a.results)),
                ('addresses', check_addresses([a.results, a.doc])), ('doc', check_doc(a.doc, a.base))]
     for name, (state, msg) in results: print(f'{state:>8}  {name}: {msg}')
     states = {s for _, (s, _) in results}

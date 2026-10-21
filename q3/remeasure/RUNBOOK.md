@@ -1,145 +1,128 @@
 # Re-measure the Gate on a clean-history oracle (A11-155)
 
-Run from the control plane (the host with the fleet inventory), in a checkout of this branch beside a checkout of `control`. Every fleet step is Ansible, one box first and then one at a time, with a read-back after each.
-Nothing here is changed by hand on a box, and no step names a worker's address: workers are `a11y-worker-N`, the page server is `capture-host`.
+This is how the re-measure was run, and how to run it again. Every fleet step is Ansible from the control plane, one box first and then one at a time, with a read-back after each; nothing is changed by hand on a box.
+Workers are `a11y-worker-N` and the page server is `capture-host`: no step writes an address into a result.
 
 ```sh
-EMU=$PWD                      # this checkout
-CONTROL=~/control             # the control checkout the fleet is run from
-export ANSIBLE_CONFIG=$CONTROL/ansible/ansible.cfg
-R=$EMU/q3/results/remeasure
-mkdir -p $R /tmp/remeasure
-FIRST=a11y-worker-2           # the box that goes first
-```
-
-`worker_url NAME` below is the worker's own URL (`http://<its inventory address>:8765`), read from the inventory and never written down:
-
-```sh
-worker_url() { ansible-inventory --host "$1" | python3 -c 'import json,sys; print("http://%s:8765" % json.load(sys.stdin)["ansible_host"])'; }
+EMU=$PWD                                  # this checkout (it is also capture-host, where the probe page is served)
+R=$EMU/q3/results/remeasure; W=/tmp/remeasure; mkdir -p $R $W
+PY=$EMU_DOWNLOADS/q2/venv/bin/python      # the emulator's Python (setup.sh builds it); the Q3 steps run under it
+export A11Y_CONTROL_HOST=$(cat ~/.config/a11ign/control-host) A11Y_PVE_KEY=~/.ssh/agents-fleet_ed25519      # control's own commands (fleet:status) reach the plane with these
+plane() { ssh -i $A11Y_PVE_KEY -o StrictHostKeyChecking=no root@$A11Y_CONTROL_HOST "$@"; }                  # ansible runs ON the plane, which holds the fleet key; /root/control is its checkout
+worker_url() { python3 -c 'import yaml,sys; inv=yaml.safe_load(open("/home/agent/.config/a11ign/inventory.yml")); print("http://%s:8765" % inv["all"]["children"]["a11y_workers"]["hosts"][sys.argv[1]]["ansible_host"])' "$1"; }
+PROBE=http://<capture-host address>:8000/visited-probe.html
 ```
 
 ## 0. Before anything
 
-Serve the probe page from `capture-host` and take the fleet's state:
+Serve the probe page from `capture-host`, take the fleet's state, and choose the boxes:
 
 ```sh
-python3 -m http.server 8000 --directory $EMU/q3/remeasure &        # on capture-host (a shell there; the commands below are run from the control plane); the page is http://capture-host:8000/visited-probe.html
-( cd $CONTROL && npm run fleet:status ) | tee /tmp/remeasure/status-before.txt
+mkdir $W/probe && cp q3/remeasure/visited-probe*.html $W/probe && (cd $W/probe && nohup python3 -m http.server 8000 --bind 0.0.0.0 &)
+( cd ~/repos/control && pnpm run fleet:status ) > $W/status-before.raw         # then replace every address by its worker's name before it is kept
 ```
 
-**Pass:** `fleet:status` lists the boxes `ready`, none `busy`, and prints the versions. Choose the run's boxes as the spike did: the largest group that agrees on every version, and at least three. Name them in `BOXES`.
+**Pass:** the boxes are `ready`, none `busy`. The run's boxes are the largest group that agrees on every version `fleet:status` prints (browser, Windows build) and has at least three.
+
+## 1. One box at a time: probe, stop Edge, policy, empty, probe
+
+For each box `B`, the first one alone first. Nothing runs on a box that is not idle (`/health` `busy: false`).
 
 ```sh
-BOXES="a11y-worker-2 a11y-worker-3 a11y-worker-4 a11y-worker-7 a11y-worker-8"      # example: edit to the group fleet:status shows
-```
+python3 q3/remeasure/policy_override.py <the plane's control>/ansible/roles/worker/defaults/main.yml > $W/override.yml      # the plane's own list plus SavingBrowserHistoryDisabled=1; copy to the plane
+python3 q3/remeasure/policy_override.py <the same file> --restore > $W/restore.yml                                           # the same list with it at 0; step 6
 
-## 1. One box at a time: probe, policy, empty, probe
+# BEFORE: the first capture visits the probe page, a later one reads it back. Edge writes its history in batches, so allow up to three reads, thirty seconds apart.
+node q3/fleet_capture.mjs $B=$(worker_url $B) $PROBE $W/$B.before0.json
+node q3/fleet_capture.mjs $B=$(worker_url $B) $PROBE $W/$B.before1.json
+python3 q3/remeasure/readback.py probe $R/history-readback.json $B before $W/$B.before1.json
 
-For each box `B` in `BOXES`, `$FIRST` first. Nothing is run on a box that is not idle.
-
-```sh
-set -o pipefail
-CAPTURE_HOST=<capture-host's address>                              # typed here, never written to a result: fleet_capture.mjs records it as capture-host
-PROBE=http://$CAPTURE_HOST:8000/visited-probe.html
-python3 $EMU/q3/remeasure/policy_override.py $CONTROL/ansible/roles/worker/defaults/main.yml > /tmp/remeasure/override.yml      # once; read it: the declared list plus SavingBrowserHistoryDisabled=1
-
-cd $CONTROL
-# idle: both must hold, because --tags skips the play's own busy check
-curl -s "http://$(ansible-inventory --host $B | python3 -c 'import json,sys; print(json.load(sys.stdin)["ansible_host"])'):8765/health" | python3 -c 'import json,sys; assert json.load(sys.stdin)["busy"] is False'
-ansible $B -m ansible.windows.win_shell -a '(Get-Process msedge -ErrorAction SilentlyContinue | Measure-Object).Count'          # must print 0
-cd $EMU
-
-# BEFORE: the probe is captured twice. The first capture visits the page, which a browser that keeps history records; the second reads it back. The second is the positive control.
-node q3/fleet_capture.mjs $B=$(worker_url $B) $PROBE /tmp/remeasure/$B.before0.json
-node q3/fleet_capture.mjs $B=$(worker_url $B) $PROBE /tmp/remeasure/$B.before.json
-python3 q3/remeasure/readback.py probe $R/history-readback.json $B before /tmp/remeasure/$B.before.json
-```
-
-**Pass:** `before ... visited: True ... as expected`. This proves the probe sees history on this box, and it leaves the probe page in the box's store for step "empty" to remove. If it prints `NOT AS REQUIRED`, the box is not on the run
-(its browser already keeps no history, or the probe could not read it); name it in the write-up and go on with the others. The probe's two links are on `capture-host`: Chromium keys `visited` by the top-level site, so a link to another site could not read as visited from this page.
-
-```sh
-cd $CONTROL
-# the policy, through the fleet's own play. (No --check: the play's last task asserts the value landed, so a dry run fails by design, and win_powershell shows no diff.)
-ansible-playbook ansible/provision-role.yml --tags policy -l $B -e @/tmp/remeasure/override.yml | tee /tmp/remeasure/$B.policy.txt
-ansible $B -b -m ansible.windows.win_reg_stat -a 'path=HKLM:\SOFTWARE\Policies\Microsoft\Edge name=SavingBrowserHistoryDisabled'      # "value": 1
+# The worker keeps Edge alive between captures, and a running Edge holds its History file: stop it (ad hoc Ansible on the idle box), then the policy through the fleet's own play
+plane "cd /root/control/ansible && ansible $B -m ansible.windows.win_shell -a 'Get-Process msedge -ErrorAction SilentlyContinue | Stop-Process -Force; Start-Sleep 3; (Get-Process msedge -ErrorAction SilentlyContinue | Measure-Object).Count'"      # 0
+plane "cd /root/control/ansible && ANSIBLE_CONFIG=ansible.cfg ansible-playbook provision-role.yml --tags policy -l $B -e @/tmp/remeasure/override.yml" | tee $W/$B.policy.txt
+plane "cd /root/control/ansible && ansible $B -b -m ansible.windows.win_reg_stat -a 'path=HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge name=SavingBrowserHistoryDisabled'"                     # "value": 1
 
 # empty the history the box already has: as the worker's own account, no -b. JSON arguments, because a backslash-a in key=value form is read as a bell character.
 for f in History History-journal 'Visited Links'; do
-  ansible $B -m ansible.windows.win_file -a "{\"path\": \"%LOCALAPPDATA%\\\\a11y-witness\\\\edge-profile\\\\Default\\\\$f\", \"state\": \"absent\"}"
+  plane "cd /root/control/ansible && ansible $B -m ansible.windows.win_file -a '{\"path\": \"%LOCALAPPDATA%\\\\a11y-witness\\\\edge-profile\\\\Default\\\\$f\", \"state\": \"absent\"}'"
 done
-cd $EMU
 
 python3 q3/remeasure/readback.py policy $R/history-readback.json $B 1 "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1"
-python3 q3/remeasure/readback.py emptied $R/history-readback.json $B "Default/History, History-journal, Visited Links: win_file changed=true"
-node q3/fleet_capture.mjs $B=$(worker_url $B) $PROBE /tmp/remeasure/$B.after.json
-python3 q3/remeasure/readback.py probe $R/history-readback.json $B after /tmp/remeasure/$B.after.json
+python3 q3/remeasure/readback.py emptied $R/history-readback.json $B "Default/History, History-journal removed by win_file"
+node q3/fleet_capture.mjs $B=$(worker_url $B) $PROBE $W/$B.after0.json                       # the visit
+node q3/fleet_capture.mjs $B=$(worker_url $B) $PROBE $W/$B.after1.json                       # the read
+python3 q3/remeasure/readback.py probe $R/history-readback.json $B after $W/$B.after1.json
 ```
 
-**Pass, per box:** the policy task `Refuse to call this provisioned if a policy value did not land` is `ok` and says `all N policy values verified`; `win_reg_stat` shows `"value": 1`; `win_file` reports `changed` for `History` (a box that has run captures has one); the `after` probe prints `visited: False ... as expected`
-and `readback.py` ends with `<box> passes` (`before`, policy, emptying and `after`, in that order). The box is counted as having held only once its `after-run` probe is recorded (step 3). The values `policy` and `emptied` are typed from the Ansible output above; the machine does not parse them.
-**A box that does not pass stays off the run**; name it in the write-up and go on with the others.
-Then read `fleet:status` again: the boxes still `ready`, and `provisionRevision` unchanged (it hashes the role's files, so it does not move; that is why the capture records the setting).
+**Pass, per box:** the policy play's recap is `failed=0` and its `Refuse to call this provisioned if a policy value did not land` task is `ok`; `win_reg_stat` shows `"value": 1`; `win_file` reports `changed` for `History`; the `after` probe prints
+`visited: False ... as expected` and `readback.py` ends with `<box> passes`. **A box that does not pass stays off the run**; name it in the write-up. `before` is the positive control **of the method**: it must read `visited` on at least one box
+(`check.py` fails otherwise); on a box where three reads do not show it, the box goes on and the write-up says so. The two probe links are on `capture-host`: Chromium keys `visited` by the top-level site, so a link to another site could not read as visited from this page.
 
-## 3. Capture the same 102 addresses
+## 2. Capture the same 102 addresses
 
 ```sh
 WORKERS=$(for B in $BOXES; do printf '%s=%s,' $B $(worker_url $B); done | sed 's/,$//')
-python3 q3/corpus_capture.py q3/results/corpus.json /tmp/remeasure/oracle --workers "$WORKERS" --readback $R/history-readback.json --summary $R/capture-run.json
+python3 q3/corpus_capture.py q3/results/corpus.json $W/oracle --workers "$WORKERS" --readback $R/history-readback.json --summary $R/capture-run.json
 ```
 
-**Pass:** exit 0 (every page captured, none failed), `capture-run.json` shows `captured: 102, failed: []`, and the box names are the passing ones (a worker without a passing read-back is refused by name). Then, per box, capture the probe once more into `/tmp/remeasure/$B.after-run.json` and record it with `readback.py probe $R/history-readback.json $B after-run ...` (a box without it is not counted as having held, and `check.py` refuses its records),
-and read `fleet:status` and `/health` again (the spike kept both readings in `fleet-readings.txt`; keep these in `$R/fleet-readings.txt`).
-
-## 4. The visited count: the run stops here if it is not 0
+**Pass:** exit 0, `capture-run.json` shows `captured: 102, failed: []`, and the boxes are the passing ones (a worker without a passing read-back is refused by name). A capture takes minutes: `fleet_capture.mjs` waits for the worker with `node:http`
+(600 s idle limit); with `fetch` it gave up after 300 s and the retries met `429 a capture is already in progress`. Then, per box, capture the probe once more and record it as `after-run` (a box without it is not counted as having held, and `check.py` refuses its records):
 
 ```sh
-python3 q3/remeasure/check.py --oracle /tmp/remeasure/oracle      # --corpus q3/results/corpus.json is the default: the oracle must hold exactly those addresses
+node q3/fleet_capture.mjs $B=$(worker_url $B) $PROBE $W/$B.afterrun.json
+python3 q3/remeasure/readback.py probe $R/history-readback.json $B after-run $W/$B.afterrun.json
 ```
 
-**Pass:** `ok  oracle: 102 records, all stamped, visited count 0` and no `FAIL` line. A non-zero count means the history was not clean: record why in the write-up and measure nothing.
-
-## 5. Freeze, then measure (needs `setup.sh`'s `$EMU_DOWNLOADS`)
-
-Name both freezes in `$R/freeze.json` and commit it **before** the held output exists:
+## 3. The `visited` announcements: explained, or the run stops
 
 ```sh
-git worktree add /tmp/remeasure/emu-gate 5fbd726                  # the Gate figure: the last emulator commit fitted to the dev half only
-HEAD_SHA=$(git rev-parse 43b7fc1)                                  # the head figure: the emulator at the plan's branch point
-printf '{"gate": {"commit": "%s"}, "head": {"commit": "%s", "note": "not held out: fitted to the held half"}}\n' $(git rev-parse 5fbd726) $HEAD_SHA > $R/freeze.json
-git add $R/freeze.json && git commit -m "docs(q3): the two freezes of the re-measure, named before the held reading"
-
-( cd /tmp/remeasure/emu-gate && python3 q3/run_all.py /tmp/remeasure/oracle /tmp/remeasure/emu-gate-out --split held --runs 2 )          # no --history
-python3 q3/run_all.py /tmp/remeasure/oracle /tmp/remeasure/emu-head-out --split held --runs 2                                              # at head
-python3 q3/measure.py /tmp/remeasure/oracle /tmp/remeasure/emu-gate-out --split held --final --json $R/misses-held-freeze.json > $R/measure-held-freeze.txt
-python3 q3/measure.py /tmp/remeasure/oracle /tmp/remeasure/emu-head-out --split held --final --json $R/misses-held-head.json > $R/measure-held-head.txt
-python3 q3/attribute.py $R/misses-held-freeze.json $R/misses-held-head.json $R/misses-held-freeze-attributed.json
+python3 q3/remeasure/check.py --oracle $W/oracle
 ```
 
-`measure.py` is run from head in both cases (its rules are the corrected ones); only the emulator differs. No emulator fix is made in this ticket. The held half only; the dev half is not needed for the Gate figure.
-
-## 6. Put the fleet back, one box at a time
+If the oracle carries `visited`, run the emulator (no history) on those pages and explain them:
 
 ```sh
-cd $CONTROL
-for B in $BOXES; do
-  ansible $B -b -m ansible.windows.win_regedit -a 'path=HKLM:\SOFTWARE\Policies\Microsoft\Edge name=SavingBrowserHistoryDisabled state=absent'
-  ansible $B -b -m ansible.windows.win_reg_stat -a 'path=HKLM:\SOFTWARE\Policies\Microsoft\Edge name=SavingBrowserHistoryDisabled'      # "exists": false
-  ( cd $EMU && python3 q3/remeasure/readback.py restored $R/history-readback.json $B "win_regedit state=absent; win_reg_stat exists false" )
-done
-npm run fleet:status
+$PY q3/run_all.py $W/oracle $W/emu-visited --split all --runs 2 --only <the page's address>            # for each page that carries it
+$PY q3/remeasure/explain_visited.py $W/oracle $W/emu-visited $R/visited-explained.json
 ```
 
-**Pass:** `"exists": false` on every box that was changed, and `fleet:status` shows them `ready`. A box that fails the read-back is not carried on from; the others continue.
+**Pass:** `explain_visited.py` exits 0 (every one is announced identically by the emulator with no history: the browser's own mark on a link to the page it is on) and `check.py --oracle` has no `FAIL`. An unexplained one is a history that was not clean:
+record why in the write-up and measure nothing.
 
-## 7. Write it up and check
+## 4. Freeze, then measure
 
-Append one `## Re-measure` section to `docs/announcement-emulator-spike.md`, after `## Gate` (the Gate section's own text is not changed): the date and boxes by name, the policy, the read-back and probe results, the capture window
-(`capture-run.json`), the `visited` count, both figures with their populations, the misses by cause, whether the Gate is passed on the spike's reading (at least 98% and no unexplained miss; a miss on a page that changed is unexplained),
-and that the fleet was restored. Then:
+`freeze.json` names both freezes and is committed **before** any fresh record is read:
 
 ```sh
-python3 q3/remeasure/check.py --oracle /tmp/remeasure/oracle --require-complete      # a restored box no longer passes, but still counts as having held, so this holds after step 6
+git worktree add $W/emu-gate 5fbd726                  # the Gate figure: the last emulator commit fitted to the dev half only
+( cd $W/emu-gate && $PY q3/run_all.py $W/oracle $W/emu-gate-out --split held --runs 2 --jobs 6 --port-base 9100 )      # no --history
+$PY q3/run_all.py $W/oracle $W/emu-head-out --split held --runs 2 --jobs 6 --port-base 9300                              # at head (not held out)
+$PY q3/measure.py $W/oracle $W/emu-gate-out --split held --final --json $R/misses-held-freeze.json > $R/measure-held-freeze.txt
+$PY q3/measure.py $W/oracle $W/emu-head-out --split held --final --json $R/misses-held-head.json > $R/measure-held-head.txt
+$PY q3/attribute.py $R/misses-held-freeze.json $R/misses-held-head.json $R/misses-held-freeze-attributed.json
+```
+
+`measure.py` is run from head for both (its rules are the corrected ones); only the emulator differs. No emulator fix is made. The oracle (third-party pages) is not committed; the figures, the misses and the stamps are.
+
+## 5. Put the fleet back, one box at a time, through the same route
+
+The policy play only sets values, so putting history back is setting `SavingBrowserHistoryDisabled` to 0, the browser's default (the value stays in the registry, as 0):
+
+```sh
+plane "cd /root/control/ansible && ANSIBLE_CONFIG=ansible.cfg ansible-playbook provision-role.yml --tags policy -l $B -e @/tmp/remeasure/restore.yml"
+plane "cd /root/control/ansible && ansible $B -b -m ansible.windows.win_reg_stat -a 'path=HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge name=SavingBrowserHistoryDisabled'"      # "value": 0
+python3 q3/remeasure/readback.py restored $R/history-readback.json $B "restore play failed=0; win_reg_stat read value 0"
+( cd ~/repos/control && pnpm run fleet:status )
+```
+
+**Pass:** `"value": 0` on every box that was changed; `fleet:status` shows them `ready`. A restored box no longer passes `box_passes` (it cannot be captured from) but still counts as having held for the run's records.
+
+## 6. Write it up and check
+
+Append one `## Re-measure` section to `docs/announcement-emulator-spike.md`, between `## Gate` and `## What this page does not settle`, and change nothing else on the page. Then:
+
+```sh
+python3 q3/remeasure/check.py --oracle $W/oracle --require-complete
 python3 -m unittest discover -s q3/remeasure -t q3/remeasure
 ```
 

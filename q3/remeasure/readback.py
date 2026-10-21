@@ -70,12 +70,17 @@ def box_passes(box):
             and in_order(box) and not box.get('restored'))
 
 
+def box_cleared(box):
+    """The box's readings, as they stood before the fleet was put back: `restored` does not undo them."""
+    return box_passes({**box, 'restored': None})
+
+
 def has_control(box): return stage_passes('before', box.get('before'))
 
 
 def box_held(box):
     """Did the box stay clean for the whole run: it passed, and the probe read again once the corpus was captured (`after-run`) still shows no history. Restoring the fleet afterwards does not undo it."""
-    return box_passes({**box, 'restored': None}) and stage_passes('after-run', box.get('after-run'))
+    return box_cleared(box) and stage_passes('after-run', box.get('after-run'))
 
 
 def load(path):
@@ -87,6 +92,7 @@ def save(path, data):
     write_json(path, data)
 
 
+def cleared_workers(data): return sorted(w for w, box in data.get('workers', {}).items() if box_cleared(box))
 def passed_workers(data): return sorted(w for w, box in data.get('workers', {}).items() if box_passes(box))
 def control_workers(data): return sorted(w for w, box in data.get('workers', {}).items() if has_control(box))
 def held_workers(data): return sorted(w for w, box in data.get('workers', {}).items() if box_held(box))

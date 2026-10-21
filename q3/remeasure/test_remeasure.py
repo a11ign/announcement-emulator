@@ -1,8 +1,8 @@
 """python3 -m unittest discover -s q3/remeasure -t q3/remeasure   (from the repository root; needs node, as the capture does)"""
-import sys, os, json, tempfile, subprocess, unittest, io, contextlib
+import sys, os, json, tempfile, subprocess, unittest, io, contextlib, threading, time, http.server
 HERE = os.path.dirname(os.path.abspath(__file__)); Q3 = os.path.dirname(HERE)
 sys.path.insert(0, HERE); sys.path.insert(0, Q3)
-import readback as rb, check, corpus_capture as cc, policy_override as po
+import readback as rb, check, corpus_capture as cc, policy_override as po, explain_visited as ev
 
 def write(path, text):
     with open(path, 'w') as f: f.write(text)
@@ -132,6 +132,31 @@ class PolicyOverride(unittest.TestCase):
         with self.assertRaises(SystemExit): po.override(self.DEFAULTS + "  - { name: SavingBrowserHistoryDisabled, value: 1 }\n")
 
 
+class FleetCapture(unittest.TestCase):
+    """fleet_capture.mjs against a worker that answers late, as a real one does (the answer comes when the capture is done)."""
+    def serve(self, status, body, delay):
+        class H(http.server.BaseHTTPRequestHandler):
+            def do_POST(self):
+                self.rfile.read(int(self.headers['content-length'])); time.sleep(delay)
+                self.send_response(status); self.end_headers(); self.wfile.write(body.encode())
+            def log_message(self, *a): pass
+        server = http.server.HTTPServer(('127.0.0.1', 0), H); threading.Thread(target=server.serve_forever, daemon=True).start(); self.addCleanup(server.shutdown); self.addCleanup(server.server_close)
+        return f'http://127.0.0.1:{server.server_port}'
+    def capture(self, worker_url, address='http://127.0.0.1:8000/page.html'):
+        out = tempfile.NamedTemporaryFile(suffix='.json', delete=False); out.close(); self.addCleanup(os.remove, out.name)
+        done = subprocess.run(['node', os.path.join(Q3, 'fleet_capture.mjs'), f'a11y-worker-2={worker_url}', address, out.name], capture_output=True, text=True, timeout=60)
+        return done, rb.read_json(out.name)
+    def test_a_late_answer_is_written_as_the_workers_record(self):
+        done, rec = self.capture(self.serve(200, json.dumps({'url': 'http://127.0.0.1:8000/page.html', 'transcript': ['a'], 'structure': {}}), delay=2))
+        self.assertEqual((rec['status'], rec['worker'], rec['capture']['transcript']), (200, 'a11y-worker-2', ['a']))
+    def test_a_busy_worker_is_a_record_with_its_status_and_reason(self):
+        done, rec = self.capture(self.serve(429, 'a capture is already in progress', delay=0))
+        self.assertEqual((rec['status'], rec['capture']['error']), (429, 'a capture is already in progress'))
+    def test_the_server_is_written_by_name_when_given_as_an_address(self):
+        done, rec = self.capture(self.serve(200, json.dumps({'url': 'http://192.0.2.7:8000/p.html', 'structure': {}}), delay=0), address='http://192.0.2.7:8000/p.html')
+        self.assertEqual(rec['capture']['url'], 'http://capture-host:8000/p.html')
+
+
 class Check(unittest.TestCase):
     def setUp(self): self.tmp = tempfile.TemporaryDirectory(); self.dir = self.tmp.name
     def tearDown(self): self.tmp.cleanup()
@@ -153,6 +178,10 @@ class Check(unittest.TestCase):
         boxes = self.three()
         for b in boxes.values(): b['before'] = rb.probe_outcome(record() | {'capturedAt': '2026-10-21T08:00:00.000Z'})
         state, msg = check.check_readback(self.write_readback(boxes)); self.assertEqual(state, check.FAIL); self.assertIn('has not been shown to see history', msg)
+    def test_readback_counts_restored_boxes_as_cleared(self):
+        boxes = self.three()
+        for b in boxes.values(): b['restored'] = {'at': '2026-10-21T13:00:00Z'}
+        self.assertEqual(check.check_readback(self.write_readback(boxes))[0], check.OK)
     def test_readback_passes_with_three_clean_boxes(self):
         self.assertEqual(check.check_readback(self.write_readback(self.three()))[0], check.OK)
     def test_one_visited_announcement_in_the_oracle_fails_the_check(self):
@@ -162,6 +191,37 @@ class Check(unittest.TestCase):
     def test_a_visited_in_the_spoken_transcript_alone_fails_the_check(self):
         rb_path = self.write_readback(self.three()); a = 'https://example.org/a'
         self.assertEqual(check.check_oracle(self.oracle(a=self.stamped(url=a, transcript=['Cookies, visited, link'])), rb_path, self.corpus(a))[0], check.FAIL)
+    def explained(self, found, unexplained=()):
+        path = os.path.join(self.dir, 'visited-explained.json'); rb.write_json(path, {'oracleVisitedAnnouncements': found, 'explained': found - len(unexplained), 'unexplained': list(unexplained), 'pages': {}}); return path
+    def test_visited_announcements_the_emulator_with_no_history_also_makes_are_accepted(self):
+        rb_path = self.write_readback(self.three()); a = 'https://example.org/a'
+        oracle = self.oracle(a=self.stamped(url=a, links=('Clear filters, visited, link',), transcript=['visited, link, Clear filters']))
+        self.assertEqual(check.check_oracle(oracle, rb_path, self.corpus(a), self.explained(1))[0], check.OK)
+    def test_visited_announcements_the_emulator_does_not_make_fail_the_check(self):
+        rb_path = self.write_readback(self.three()); a = 'https://example.org/a'
+        oracle = self.oracle(a=self.stamped(url=a, links=('Cookies, visited, link',)))
+        self.assertEqual(check.check_oracle(oracle, rb_path, self.corpus(a), self.explained(1, [{'announcement': 'Cookies, visited, link'}]))[0], check.FAIL)
+    def test_an_explanation_of_another_count_is_stale_and_fails_the_check(self):
+        rb_path = self.write_readback(self.three()); a = 'https://example.org/a'
+        oracle = self.oracle(a=self.stamped(url=a, links=('Cookies, visited, link',)))
+        self.assertEqual(check.check_oracle(oracle, rb_path, self.corpus(a), self.explained(0))[0], check.FAIL)
+    def test_the_explanation_names_what_the_emulator_with_no_history_does_not_say(self):
+        d = os.path.join(self.dir, 'o'); os.makedirs(d); e = os.path.join(self.dir, 'e'); os.makedirs(e)
+        rb.write_json(os.path.join(d, 'p.json'), record(url='https://example.org/p', links=('Same, visited, same page, link', 'Other, visited, link')))
+        rb.write_json(os.path.join(e, 'p.run1.json'), {'structure': {'links': ['Same, visited, same page, link', 'Other, link']}})
+        out = ev.explain(d, e)
+        self.assertEqual((out['oracleVisitedAnnouncements'], out['explained'], [u['announcement'] for u in out['unexplained']]), (2, 1, ['Other, visited, link']))
+    def test_a_visited_page_with_no_emulator_run_is_unexplained(self):
+        d = os.path.join(self.dir, 'o'); os.makedirs(d); e = os.path.join(self.dir, 'e'); os.makedirs(e)
+        rb.write_json(os.path.join(d, 'p.json'), record(url='https://example.org/p', links=('A, visited, link', 'B, link')))
+        self.assertEqual(ev.explain(d, e)['unexplained'][0]['why'], 'no emulator run')
+    def test_the_committed_summary_must_be_the_corpus_once_each_and_stamped(self):
+        rb_path = self.write_readback(self.three()); a, b = 'https://example.org/a', 'https://example.org/b'
+        path = os.path.join(self.dir, 'oracle-summary.json'); entry = lambda u, w='a11y-worker-2': {'url': u, 'worker': w, 'history': cc.history_block(passing_box())}
+        rb.write_json(path, [entry(a), entry(b)]); self.assertEqual(check.check_summary(path, rb_path, self.corpus(a, b))[0], check.OK)
+        rb.write_json(path, [entry(a), entry(a)]); self.assertEqual(check.check_summary(path, rb_path, self.corpus(a, b))[0], check.FAIL)
+        rb.write_json(path, [entry(a), entry(b, 'a11y-worker-99')]); self.assertEqual(check.check_summary(path, rb_path, self.corpus(a, b))[0], check.FAIL)
+        rb.write_json(path, [entry(a), {'url': b, 'worker': 'a11y-worker-2'}]); self.assertEqual(check.check_summary(path, rb_path, self.corpus(a, b))[0], check.FAIL)
     def test_a_record_without_the_history_block_fails_the_check(self):
         rb_path = self.write_readback(self.three()); a = 'https://example.org/a'
         self.assertEqual(check.check_oracle(self.oracle(a=record(url=a)), rb_path, self.corpus(a))[0], check.FAIL)
