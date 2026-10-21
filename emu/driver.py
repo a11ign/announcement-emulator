@@ -120,25 +120,19 @@ def _flush():
 
 
 def press(b, key):
-    """Press `key` on the buffer: NVDA's own browse-mode script bound to it, or (for NVDA+upArrow, a global command) the same
-    lines as globalCommands.script_reportCurrentLine:268-275. Returns what the spy saw."""
+    """Press `key` on the buffer: NVDA's own browse-mode script bound to it, or a global command's own script (NVDA+upArrow is
+    globalCommands.script_reportCurrentLine, which reads the focus object in focus mode). Returns what the spy saw."""
     i = len(SPY.sequences)
     g = Gesture(key)
     if key.lower() == 'nvda+downarrow':      # globalCommands.script_sayAll: read from the caret
         import speech.sayAll as _sa
         _sa.SayAllHandler.readText(_sa.CURSOR.CARET); _flush(); return SPY.text_since(i)
-    GLOBAL = {'nvda+d': 'reportDetailsSummary', 'nvda+tab': 'reportCurrentFocus', 'numpad8': 'review_currentLine', 'numpad6': 'review_nextWord'}      # global commands: the real script on the real GlobalCommands instance
+    GLOBAL = {'nvda+d': 'reportDetailsSummary', 'nvda+tab': 'reportCurrentFocus', 'numpad8': 'review_currentLine', 'numpad6': 'review_nextWord', 'nvda+uparrow': 'reportCurrentLine'}      # global commands: the real script on the real GlobalCommands instance
     if key.lower() in GLOBAL:
         import globalCommands; getattr(globalCommands.commands, 'script_' + GLOBAL[key.lower()])(g)
         _flush(); return SPY.text_since(i)
     if False:      # globalCommands.script_reportDetailsSummary, the real script on the real GlobalCommands instance
         import globalCommands; globalCommands.commands.script_reportDetailsSummary(g)
-        _flush(); return SPY.text_since(i)
-    if key.lower() == 'nvda+uparrow':
-        try: info = b.makeTextInfo(textInfos.POSITION_CARET)
-        except (NotImplementedError, RuntimeError): info = b.makeTextInfo(textInfos.POSITION_FIRST)
-        info.expand(textInfos.UNIT_LINE)
-        import speech; speech.speakTextInfo(info, unit=textInfos.UNIT_LINE, reason=controlTypes.OutputReason.CARET)
         _flush(); return SPY.text_since(i)
     if key.lower() == 'nvda+space':      # globalCommands.script_toggleVirtualBufferPassThrough, the part after the tree interceptor exists (2483-2492)
         import browseMode

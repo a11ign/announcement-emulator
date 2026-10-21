@@ -1,0 +1,88 @@
+pages 102 (all)  comparable: 76   unstable: 4   not comparable: 19   emulator fault: 2   second run fault: 1
+   unstable: https://data.southwark.gov.uk/data-catalog-explorer/  [unstable: the two emulator runs differ]
+   unstable: https://design-system.service.gov.uk/components/radios/  [unstable: the two emulator runs differ]
+   unstable: https://www.dropbox.com/  [unstable: the two emulator runs differ]
+   unstable: https://www.leeds.ac.uk/undergraduate  [unstable: the two emulator runs differ]
+   not comparable: https://design-system.service.gov.uk/components/error-message/  [not comparable: document title fleet 'Microsoft Terms of Use Microsoft Legal -' / emulator 'Error message – GOV.UK Design System', headings read fleet fleet names 24, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://design-system.service.gov.uk/components/error-summary/  [not comparable: document title fleet 'Microsoft Terms of Use Microsoft Legal -' / emulator 'Error summary – GOV.UK Design System', headings read fleet fleet names 24, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://events.bl.uk/  [not comparable: heading fleet 24 / emulator 28, link fleet 44 / emulator 45, document title fleet 'Upcoming events and exhibitions, The Bri' / emulator 'Upcoming events & exhibitions, The Briti']
+   not comparable: https://ico.org.uk/for-the-public/  [not comparable: heading fleet 26 / emulator 30, link fleet 67 / emulator 68]
+   not comparable: https://mailchimp.com/  [not comparable: link fleet 89 / emulator 90, document title fleet 'Email and SMS Marketing Platform Mailchi' / emulator 'Email & SMS Marketing Platform | Mailchi']
+   not comparable: https://sheffield.ac.uk/postgraduate/taught/courses/2027  [not comparable: heading fleet 24 / emulator 25]
+   not comparable: https://tfl.gov.uk/modes/tube/  [not comparable: link fleet 64 / emulator 63]
+   not comparable: https://weather.metoffice.gov.uk/warnings-and-advice/uk-warnings  [not comparable: heading fleet 0 / emulator 24, link fleet 6 / emulator 8]
+   not comparable: https://www.historicenvironment.scot/visit/all/edinburgh-castle/  [not comparable: headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.hubspot.com/  [not comparable: link fleet 80 / emulator 81, document title fleet 'Hub Spot Software and Tools for your Bus' / emulator 'HubSpot | Software & Tools for your Busi']
+   not comparable: https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing  [not comparable: headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.nrscotland.gov.uk/publications/  [not comparable: heading fleet 20 / emulator 1, link fleet 45 / emulator 1, headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.nrscotland.gov.uk/statistics-and-data/  [not comparable: heading fleet 3 / emulator 1, link fleet 37 / emulator 1, headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.w3.org/WAI/demos/bad/after/survey.html  [not comparable: document title fleet 'Copilot' / emulator 'Citylights Survey [Accessible Survey Pag', headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.w3.org/WAI/demos/bad/before/news.html  [not comparable: document title fleet 'Copilot' / emulator 'Welcome to CityLights! [Inaccessible New', headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.w3.org/WAI/demos/bad/before/template.html  [not comparable: document title fleet 'Welcome to City Lights! Inaccessible Tem' / emulator 'Welcome to CityLights! [Inaccessible Tem']
+   not comparable: https://www.w3.org/WAI/demos/bad/before/tickets.html  [not comparable: document title fleet 'Welcome to City Lights! Inaccessible Tic' / emulator 'Welcome to CityLights! [Inaccessible Tic']
+   not comparable: https://www.w3.org/WAI/tutorials/tables/multi-level/  [not comparable: document title fleet 'C: WINDOWS SYSTEM 32 cmd dot exe' / emulator 'Tables with Multi-Level Headers | Web Ac']
+   not comparable: https://www.w3.org/WAI/tutorials/tables/two-headers/  [not comparable: document title fleet 'C: WINDOWS SYSTEM 32 cmd dot exe' / emulator 'Tables with Two Headers | Web Accessibil']
+   emulator fault: https://ico.org.uk/action-weve-taken/enforcement/  [emulator fault: timeout 600s]
+   emulator fault: https://weather.metoffice.gov.uk/forecast/gcpvj0v07  [emulator fault: timeout 600s]
+   second run fault: https://www.adobe.com/  [second run fault: timeout 600s]
+
+agreement by element kind (76 comparable pages)
+     exact / total       %  positional
+     1097 / 1100      99.7%        1094  headings
+     5180 / 5352      96.8%        5079  links
+      503 / 521       96.5%         490  buttons
+     1534 / 1537      99.8%        1523  formFields
+      712 / 770       92.5%         700  landmarks
+      770 / 789       97.6%         765  lists
+      176 / 203       86.7%         176  graphics
+       77 / 77       100.0%          77  frames
+
+agreement by swept channel
+     exact / total       %  positional
+     1097 / 1100      99.7%        1094  headings
+      712 / 770       92.5%         700  landmarks
+     2037 / 2058      99.0%        2013  formFields
+      176 / 203       86.7%         176  graphics
+     5180 / 5352      96.8%        5079  links
+      770 / 789       97.6%         765  lists
+       77 / 77       100.0%          77  frames
+
+shapes: 10272 announcements in 384 distinct shapes; top 10 cover 7477 = 72.8% (the fleet's script quotes 33 shapes, top 10 = 94.3%)
+
+agreement by shape (top 10, ranked in this run)
+     exact / total       %  positional
+     3371 / 3378      99.8%        3299  NAME + ROLE
+     1229 / 1232      99.8%        1225  NAME + ROLE + STATE
+      645 / 647       99.7%         643  NAME + ROLE + LEVEL
+      463 / 465       99.6%         453  ROLE + COUNT + NAME + ROLE
+      449 / 449      100.0%         441  NAME + ROLE + ROLE + COUNT + NAME + ROLE
+      254 / 348       73.0%         250  NAME + STATE + ROLE
+      300 / 312       96.2%         294  NAME + NAME + ROLE
+      249 / 249      100.0%         247  NAME + ROLE + ROLE + LEVEL
+      244 / 244      100.0%         244  NAME + ROLE + NAME
+      153 / 153      100.0%         151  NAME + ROLE + NAME + ROLE + LEVEL
+
+GATE: 7357 of 7477 = 98.40% exact on the top 10 shapes   (positional: 7247 of 7477)   [AT OR ABOVE 98%]
+      with the not-comparable pages kept in: 8046 of 8530 = 94.33%
+      emulator announcements with no counterpart in the fleet's lists (extras): 373
+      top-10 misses by cause: history 95, unexplained 13, language 12
+      the same, with the pages' `history` misses not counted as misses against us: 7452 of 7477 = 99.67%   (an upper bound if the fleet's browser history could be reproduced)
+      misses over all channels: 300 of 10349; on top-10 shapes: 120
+
+what the misses differ in (all channels; only the dev split is ever printed without --final):
+    160  fleet has ['visited'] | emulator has -
+     47  fleet has - | emulator has ['visited']
+     32  MISSING (no counterpart in the emulator list)
+     17  fleet has ['Welsh (not supported)'] | emulator has ['cy (not supported)']
+     17  fleet has - | emulator has -
+     12  fleet has ['English'] | emulator has -
+      3  MANY tokens differ
+      3  fleet has ['Skip to content (within demo page)', 'link', 'same page'] | emulator has -
+      2  fleet has ['092 results'] | emulator has ['095 results']
+      1  fleet has ['This website uses cookies', 'region'] | emulator has -
+      1  fleet has ['Pause video', 'pressed'] | emulator has ['Play video', 'not pressed']
+      1  fleet has ['Last week (10)'] | emulator has ['Last week (9)']
+      1  fleet has ['Normalisation of relations between Kosovo and Serbia remains essential to long term stability: UK statement at the UN Security Council'] | emulator has ["000 young people to get foot in the door of Britain's tech sector as work placements rolled out across the country", '10']
+      1  fleet has ['Normalisation of relations between Kosovo and Serbia remains essential to long term stability: UK'] | emulator has ["000 young people to get foot in the door of Britain's tech sector as work placements rolled out", '10']
+      1  fleet has ['link'] | emulator has -
+      1  fleet has ['Where teams and agents Build together.'] | emulator has ['Where teams and agents Jam together.']

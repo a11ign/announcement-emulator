@@ -1,0 +1,50 @@
+pages 160 (all)  comparable: 159   not comparable: 1
+   not comparable: http://capture-host:8898/custom-control-bulk-concert-hall-016/good.html  [not comparable: document title fleet 'C: WINDOWS SYSTEM 32 cmd dot exe' / emulator 'Concert hall 016 controls']
+
+agreement by element kind (159 comparable pages)
+     exact / total       %  positional
+      702 / 702      100.0%         702  headings
+      916 / 938       97.7%         908  links
+       92 / 92       100.0%          92  buttons
+      107 / 107      100.0%         107  formFields
+      184 / 184      100.0%         184  landmarks
+      162 / 162      100.0%         162  lists
+       23 / 33        69.7%          23  graphics
+
+agreement by swept channel
+     exact / total       %  positional
+      702 / 702      100.0%         702  headings
+      184 / 184      100.0%         184  landmarks
+      199 / 199      100.0%         199  formFields
+       23 / 33        69.7%          23  graphics
+      916 / 938       97.7%         908  links
+      162 / 162      100.0%         162  lists
+
+shapes: 2218 announcements in 28 distinct shapes; top 10 cover 2122 = 95.7% (the fleet's script quotes 33 shapes, top 10 = 94.3%)
+
+agreement by shape (top 10, ranked in this run)
+     exact / total       %  positional
+      707 / 721       98.1%         699  NAME + STATE + ROLE
+      616 / 616      100.0%         616  NAME + ROLE + LEVEL
+      211 / 211      100.0%         211  ROLE + NAME + ROLE + LEVEL
+      192 / 192      100.0%         192  NAME + ROLE
+      137 / 143       95.8%         137  ROLE + COUNT + NAME + STATE + ROLE
+      142 / 142      100.0%         142  ROLE + COUNT + NAME + NAME
+       38 / 38       100.0%          38  NAME + ROLE + STATE
+       31 / 31       100.0%          31  ROLE + ROLE + NAME
+       15 / 15       100.0%          15  ROLE + COUNT + NAME
+       13 / 13       100.0%          13  ROLE
+
+GATE: 2102 of 2122 = 99.06% exact on the top 10 shapes   (positional: 2094 of 2122)   [AT OR ABOVE 98%]
+      with the not-comparable pages kept in: 2102 of 2122 = 99.06%
+      emulator announcements with no counterpart in the fleet's lists (extras): 26
+      top-10 misses by cause: prompt-downstream 16, history 4
+      the same, with the pages' `history` misses not counted as misses against us: 2106 of 2122 = 99.25%   (an upper bound if the fleet's browser history could be reproduced)
+      misses over all channels: 32 of 2218; on top-10 shapes: 20
+
+what the misses differ in (all channels; only the dev split is ever printed without --final):
+     18  MISSING (no counterpart in the emulator list)
+      5  fleet has ['visited'] | emulator has -
+      4  fleet has ['Opening times for the north entrance 01'] | emulator has ['Room hire rates 06']
+      4  fleet has ['Accessibility statement 03'] | emulator has ['Opening times for the north entrance 01']
+      1  fleet has ['main landmark'] | emulator has -

@@ -12,11 +12,17 @@ ARROWS = {'upArrow': ('ArrowUp', 0), 'downArrow': ('ArrowDown', 0), 'leftArrow':
           'control+leftArrow': ('ArrowLeft', 2), 'control+rightArrow': ('ArrowRight', 2), 'home': ('Home', 0), 'end': ('End', 0), 'control+home': ('Home', 2), 'control+end': ('End', 2)}
 
 class LiveDoc:
-    def __init__(self, case_html):
-        key = hashlib.sha1(case_html.encode()).hexdigest()[:12]
-        page = capture.CACHE / f'live-{key}.html'
-        page.write_text(capture.WRAP.format(title='NVDA Browser Test Case', case=case_html))
-        self.s = session.Session(page); time.sleep(1.5)
+    def __init__(self, case_html=None, url=None, port=8765, history=None):
+        """A system test's page (`case_html`, wrapped as ChromeLib._writeTestFile wraps it), or a live address (`url`)."""
+        if url is None:
+            key = hashlib.sha1(case_html.encode()).hexdigest()[:12]
+            page = capture.CACHE / f'live-{key}.html'
+            page.write_text(capture.WRAP.format(title='NVDA Browser Test Case', case=case_html))
+            self.s = session.Session(page, port=port); time.sleep(1.5)
+        else:
+            self.s = session.Session(url=url, port=port); self.navigated = self.s.navigate(url)
+            if history:      # addresses the browser has visited before: a link to one is announced `visited`. The page is loaded again so that its links are styled by them.
+                self.s.add_history(history); self.s.reload()
         self.b = None; self.world = None; self.focus_ix = None; self._scrolled = False
         boot.click_hook = self._click_cb
         self.refresh()
@@ -139,7 +145,10 @@ class LiveDoc:
         loc = self.world.root.raw.get('location') or {}
         self._focus_requested = True; self._acted = True; self.s.click(x - loc.get('left', 0), y - loc.get('top', 0))
 
+    scroll_browser = True      # False: NVDA's scrollIntoView (IA2 scrollTo) is not delivered to the browser; the Q3 sweeps do that to run in seconds, not minutes
+
     def _scroll_cb(self, ix):
+        if not self.scroll_browser: return
         self.s.scroll(ix); self._scrolled = True
 
     def _action_cb(self, ix):

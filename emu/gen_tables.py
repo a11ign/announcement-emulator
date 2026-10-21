@@ -3,7 +3,7 @@
  - Chromium third_party/iaccessible2/ia2_api_all.idl (IA2_ROLE_*, IA2_STATE_* values)
  - NVDA release-2026.1.1 source/oleacc.py (ROLE_SYSTEM_*, STATE_SYSTEM_* values)"""
 import re, json, ast, pathlib
-R = pathlib.Path.home() / 'spikes/announcement-emulator-5661'
+from paths import DOWNLOADS as R
 cc = (R / 'chromium-src/ax_platform_node_win.cc').read_text().splitlines()
 
 def func_range(sig):

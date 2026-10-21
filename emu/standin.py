@@ -17,6 +17,7 @@ HERE = pathlib.Path(__file__).parent
 T = json.loads((HERE / 'tables.json').read_text())
 CONST = {**T['ole'], **T['ia2_role'], **T['ia2_state']}
 XML_ROLES = {'article': 'article', 'figure': 'figure', 'region': 'region', 'switch': 'switch', 'main': 'main', 'navigation': 'navigation',
+             'header': 'banner', 'footer': 'contentinfo',      # Q3 (a11y-worker oracle, 2026-10-20): NVDA says "banner landmark" and "content info landmark" for a page-level <header> and <footer> with no role attribute, which chrome.automation reports as 'header' and 'footer'; a nested <header> is 'sectionHeader'. Inferred from the dev split's fleet transcripts, not read in Chromium's source.
              'banner': 'banner', 'treeGrid': 'treegrid', 'gridCell': 'gridcell', 'complementary': 'complementary', 'contentInfo': 'contentinfo', 'form': 'form', 'search': 'search'}
 EMBED = '￼'
 EMPTY_TEXT = ' '
@@ -54,7 +55,7 @@ class PN:
         if self.atomic_text_field or self.is_text: return True
         if self.role == 'textField' or self.state.get('richlyEditable'): return False
         if self.role == 'button': return False
-        if self.role == 'image': return self.raw.get('htmlTag') == 'img' and False  # role=img/image attribute not exposed by the API: NOT PORTED
+        if self.role == 'image': return self.raw.get('htmlTag') != 'img'      # ax_node.cc:2449: a leaf when role="img"/"image" is the author's. chrome.automation does not expose the role attribute, so it is RECONSTRUCTED: an image that is not an <img> element is an ARIA image (an <img> with children is an image map, which is not a leaf)
         if self.role in ('docCover', 'graphicsSymbol', 'meter', 'scrollBar', 'spinButton', 'slider', 'splitter', 'progressIndicator'): return True
         if self.role in ('checkBox', 'listBoxOption', 'menuListOption', 'menuItem', 'menuItemCheckBox', 'menuItemRadio', 'popUpButton',
                          'toggleButton', 'radioButton', 'switch', 'tab'):
@@ -186,9 +187,12 @@ class PN:
         r = self.role
         conditional = {'form': 'IA2_ROLE_FORM' if self.raw.get('name') else 'IA2_ROLE_SECTION'}
         c = conditional.get(r) or T['ia2'].get(r) or T['msaa'].get(r)
+        if r in ('disclosureTriangle', 'disclosureTriangleGrouped'): c = T['msaa'].get(r)      # ax_platform_node_win.cc:7298: IA2_ROLE_HEADING only when features::IsAccessibilityExposeSummaryAsHeadingEnabled(); the fleet's Edge announces a <summary> as `button`, so the feature is off (the generated table took the guarded branch as unconditional)
+        if r in ('embeddedObject', 'pluginObject'): c = 'IA2_ROLE_SECTION' if self.pkids else 'IA2_ROLE_EMBEDDED_OBJECT'      # ax_platform_node_win.cc:7363 / 7433: GetChildCount() ? SECTION : EMBEDDED_OBJECT (the generated table has neither)
+        if r == 'canvas': c = 'IA2_ROLE_CANVAS' if self.pkids else T['msaa'].get(r)      # :7269: only a canvas with fallback content (kCanvasHasFallback; approximated by having children) is IA2_ROLE_CANVAS
+        if r == 'image': c = 'IA2_ROLE_IMAGE_MAP' if self.pkids else T['msaa'].get(r)      # ax_platform_node_win.cc:7389: `if (IsImageWithMap())`; the generated table took the conditional branch for every image
         if r == 'row': c = 'ROLE_SYSTEM_ROW'      # the generated table missed it: kRow is a braced conditional case (ax_platform_node_win.cc:6999), outline item inside a treegrid below
         if c is None: return 0
-        if r in ('image',) and self.pkids: c = 'IA2_ROLE_IMAGE_MAP'
         if r == 'row':      # ax_platform_node_win.cc:6999 / IsInTreeGrid: a row whose parent (or grandparent, past a row group) is a treegrid is an outline item
             par = self.parent
             if par is not None and par.role == 'rowGroup': par = par.parent
@@ -211,8 +215,8 @@ class PN:
         if self.raw.get('selected'): out |= CONST['STATE_SYSTEM_SELECTED']
         if s.get('visited'): out |= CONST['STATE_SYSTEM_TRAVERSED']
         ch = self.raw.get('checked')
-        if ch == 'true':
-            out |= CONST['STATE_SYSTEM_CHECKED']
+        if ch == 'true':      # ax_platform_node_win.cc:8161 MSAAState: a toggle button is PRESSED, a switch is both, anything else CHECKED
+            if r != 'toggleButton': out |= CONST['STATE_SYSTEM_CHECKED']
             if r in ('toggleButton', 'switch'): out |= CONST['STATE_SYSTEM_PRESSED']
         elif ch == 'mixed': out |= CONST['STATE_SYSTEM_MIXED']
         rs = self.raw.get('restriction')
@@ -261,6 +265,12 @@ class PN:
         if raw.get('posInSet'): a['posinset'] = str(raw['posInSet'])
         if raw.get('checked') is not None: a['checkable'] = 'true'
         if self.state.get('invisible'): a['hidden'] = 'true'
+        if raw.get('ariaCurrentState') in ('false', 'true', 'page', 'step', 'location', 'date', 'time'): a['current'] = raw['ariaCurrentState']      # ax_platform_node_base.cc:1301
+        if self.role == 'image' and raw.get('url'): a['src'] = raw['url']      # ax_platform_node_base.cc:1459: IsImage(role) && kUrl; gecko_ia2.cpp:1264 names an unlabelled graphic from it
+        if self.role in ('cell', 'gridCell', 'columnHeader', 'rowHeader', 'layoutTableCell'):      # ax_platform_node_base.cc:1349: aria-rowindex / aria-colindex, exposed only where they differ from the physical position
+            ar, pr, ac, pc = raw.get('tableCellAriaRowIndex'), raw.get('tableCellRowIndex'), raw.get('tableCellAriaColumnIndex'), raw.get('tableCellColumnIndex')
+            if ar is not None and pr is not None and ar - 1 != pr: a['rowindex'] = str(ar)
+            if ac is not None and pc is not None and ac - 1 != pc: a['colindex'] = str(ac)
         if raw.get('liveStatus'): a['live'] = raw['liveStatus']
         if raw.get('liveRelevant'): a['relevant'] = raw['liveRelevant']
         if raw.get('liveAtomic'): a['atomic'] = 'true'
@@ -433,62 +443,73 @@ class Buffer:
         return p
 
     def line_offsets(self, offset, max_len, screen_layout):
-        """VBufStorage_buffer_t::getLineOffsets (storage.cpp:1068-1200), ported without the maxLineLength refinement's
-        'possibleBreaks' preference for the common case max_len == 0; with max_len > 0 the same refinement is applied."""
+        """VBufStorage_buffer_t::getLineOffsets (nvdaHelper/vbufBase/storage.cpp:1066-1198), line for line: search forward and backward from the text node at
+        `offset` through the tree (control nodes included, so an empty block ends a line), collecting the places a line may be cut, then apply maxLineLength."""
         if self.root is None or offset >= self.root.length: return None
-        flat = []  # (node, start, end) of every text node in order
-        def walk(n, base):
-            if isinstance(n, TextField): flat.append((n, base, base + n.length)); return
-            for k in n.kids: walk(k, base); base += k.length
-        walk(self.root, 0)
-        idx = next(i for i, (n, s, e) in enumerate(flat) if s <= offset < e)
-        init = flat[idx][0]
+        r = self.text_node_at(offset)
+        if r is None: return None
+        init, init_s, init_e = r
+        possible = set()
         limit = init.parent
         while limit is not None and not limit.is_block: limit = limit.parent
-        def block_of(n):
-            p = n.parent
-            while p is not None and not p.is_block: p = p.parent
-            return p
+        is_break = lambda t, i: t[i] == '\n' or (t[i] == '\r' and (i + 1 >= len(t) or t[i + 1] != '\n'))
         # forward
-        end = flat[idx][2]; j = idx; hard = False
-        text = init.text; rel = offset - flat[idx][1]
-        for i in range(rel, len(text)):
-            if text[i] == '\n' or (text[i] == '\r' and (i + 1 >= len(text) or text[i + 1] != '\n')):
-                end = flat[idx][1] + i + 1; hard = True; break
-        while not hard:
-            j += 1
-            if j >= len(flat): break
-            n, s, e = flat[j]
-            if block_of(n) is not limit: break          # moved out of the block
-            if not screen_layout and _crosses_control(flat[j - 1][0], n): break
-            end = e
-            nl = n.text.find('\n')
-            if nl >= 0: end = s + nl + 1; hard = True
+        node, rel, bs, be = init, offset - init_s, init_s, init_e
+        line_end, hard = init_e, False
+        while True:
+            possible.add(bs); possible.add(be)
+            if node.length > 0 and not node.kids:
+                text = node.text; line_end = be; last_space = False
+                for i in range(rel, node.length):
+                    if is_break(text, i): line_end = bs + i + 1; hard = True; break
+                    if text[i].isspace(): last_space = True
+                    else:
+                        if last_space: possible.add(bs + i)
+                        last_space = False
+                if hard: break
+            nxt, trel = next_in_tree(node, FORWARD, limit)
+            if nxt is not None and ((not screen_layout and nxt.kids) or nxt.is_block): nxt = None
+            if nxt is None: break
+            bs += trel; be = bs + nxt.length; rel = 0; node = nxt
         # backward
-        start = flat[idx][1]; j = idx; hard = False
-        for i in range(rel - 1, -1, -1):
-            if text[i] == '\n' or (text[i] == '\r' and (i + 1 >= len(text) or text[i + 1] != '\n')):
-                start = flat[idx][1] + i + 1; hard = True; break
-        while not hard:
-            j -= 1
-            if j < 0: break
-            n, s, e = flat[j]
-            if block_of(n) is not block_of(init) if not screen_layout else block_of(n) is not limit: break
-            if not screen_layout and _crosses_control(n, flat[j + 1][0]): break
-            start = s
-            nl = n.text.rfind('\n')
-            if nl >= 0: start = s + nl + 1; hard = True
-        return start, end
+        node, rel, bs, be = init, offset - init_s, init_s, init_e
+        line_start, hard = init_s, False
+        while True:
+            possible.add(bs); possible.add(be)
+            if node.length > 0 and not node.kids:
+                text = node.text; line_start = bs; last_space = False
+                for i in range(rel - 1, -1, -1):
+                    if is_break(text, i): line_start = bs + i + 1; hard = True; break
+                    if text[i].isspace():
+                        if not last_space: possible.add(bs + i + 1)
+                        last_space = True
+                    else: last_space = False
+                if hard: break
+            nxt, trel = next_in_tree(node, SYMBACK, limit if screen_layout else node.parent)
+            if nxt is not None and nxt.is_block: nxt = None
+            if nxt is None: break
+            bs += trel; be = bs + nxt.length; rel = nxt.length; node = nxt
+        # finally take maxLineLength into account
+        if max_len > 0:
+            import bisect
+            ordered = sorted(possible); real = {line_start, line_end}
+            i, count = line_start, 0
+            while i < line_end:
+                if count == max_len:
+                    if ordered:
+                        pos = bisect.bisect_right(ordered, i)      # upper_bound
+                        if pos > 0 and ordered[pos - 1] > i - max_len: i = ordered[pos - 1]
+                    real.add(i); count = 0
+                i += 1; count += 1
+            rs = sorted(real); hi = bisect.bisect_right(rs, offset)
+            line_end, line_start = rs[hi], rs[hi - 1]
+        return line_start, line_end
 
-
-def _crosses_control(a, b):
-    """Not using screen layout, line search stops at a control field boundary (storage.cpp: `node->firstChild`)."""
-    return a.parent is not b.parent
 
 
 # ---------------------------------------------------------------- storage.cpp: nextNodeInTree / matchAttributes / findNodeByAttributes
 
-FORWARD, BACK, UP = 0, 1, 2          # VBufStorage_findDirection_* (virtualBuffers/__init__.py)
+FORWARD, BACK, UP, SYMBACK = 0, 1, 2, 3          # VBufStorage_findDirection_* (virtualBuffers/__init__.py)
 
 
 def _prev(n): return n.parent.kids[n.parent.kids.index(n) - 1] if n.parent and n.parent.kids.index(n) > 0 else None
@@ -506,6 +527,14 @@ def next_in_tree(node, direction, limit=None):
                 if t is limit: t = None
             if t is None or _next(t) is None: return None, 0
             rel = node.length; t = _next(t)
+    elif direction == SYMBACK:      # TREEDIRECTION_SYMMETRICAL_BACK: the pre-order walked backwards, last child first
+        if t.kids: t = t.kids[-1]; rel = node.length - t.length
+        else:
+            while t is not None and _prev(t) is None:
+                t = t.parent
+                if t is limit: t = None
+            if t is None or _prev(t) is None: return None, 0
+            t = _prev(t); rel -= t.length
     elif direction == BACK:
         p = _prev(t)
         if p is not None:
@@ -609,7 +638,17 @@ class Builder:
     @staticmethod
     def add_text(parent, previous, text):
         if not text: return None
-        t = TextField(text); t.parent = parent
+        # VBufStorage_buffer_t::addTextFieldNode (storage.cpp:586-614, #2963): private-use characters (U+E000-U+F8FF, icon fonts) and U+200B are stripped from the
+        # start and end of every text node; the count stripped from the start is kept for IA2Text offsets.
+        priv = lambda ch: '\ue000' <= ch <= '\uf8ff' or ch == '\u200b'
+        i = 0
+        while i < len(text) and priv(text[i]): i += 1
+        start = i
+        j = 0
+        while j < len(text) and priv(text[len(text) - 1 - j]): j += 1
+        stripped = text[start:max(len(text) - j, start)] if (start or j) else text
+        t = TextField(stripped); t.parent = parent
+        if start: t.attrs['strippedCharsFromStart'] = str(start)
         if previous is None: parent.kids.insert(0, t)
         else: parent.kids.insert(parent.kids.index(previous) + 1, t)
         return t
@@ -617,7 +656,7 @@ class Builder:
     TABLE_ROLES = ('table', 'grid', 'treeGrid', 'layoutTable')
     CELL_ROLES = ('cell', 'gridCell', 'columnHeader', 'rowHeader', 'layoutTableCell')
 
-    def fill(self, pn, parent, previous, table_pn=None, table_id=0):
+    def fill(self, pn, parent, previous, table_pn=None, table_id=0, ign=False):
         C = CONST
         ID = pn.ix
         if (self.doc_handle, ID) in self.buf.by_id: return None            # loop guard
@@ -677,6 +716,13 @@ class Builder:
             render_children = False
         # NOT PORTED: renderSelectedItemOnly for ROLE_SYSTEM_LIST (non-readonly) and ROLE_SYSTEM_OUTLINE
         # NOT PORTED: table information (IAccessibleTable2 / TableCell), presentational row/column attributes
+        # presentational table attributes (gecko_ia2.cpp:984-1002): what the page says (aria-rowindex, aria-colindex, aria-rowcount, aria-colcount) where Chromium
+        # exposes it, i.e. where it differs from the physical position; NVDA reports these and navigates by the physical table-rownumber and table-columnnumber.
+        # Only the cell's rowindex and colindex are produced (ia2_attrs); a row's rowindex, a table's rowcount/colcount and the row-level propagation of
+        # table-rownumber-presentational to cells are NOT ported.
+        for ia2, buf_attr in (('rowindex', 'table-rownumber-presentational'), ('colindex', 'table-columnnumber-presentational')):
+            v = a.get(f'IAccessible2::attribute_{ia2}')
+            if v is not None: node.attrs[buf_attr] = v
         # --- table cell and table information (gecko_ia2.cpp:906-1005); physical coordinates only
         raw = pn.raw
         if pn.role in self.CELL_ROLES and raw.get('tableCellRowIndex') is not None:
@@ -707,6 +753,7 @@ class Builder:
         value = pn.value()
         if role == C['ROLE_SYSTEM_LINK'] and value is not None: a['IAccessible::value'] = value
         if not value: value = None
+        if interactive and not ign: ign = name is not None      # gecko_ia2.cpp:1034: an interactive node with a name makes the unlabelled graphics under it uninteresting
         if text and render_children:
             # The loop of gecko_ia2.cpp:1067-1150: a chunk ends at the end of the text, at the end of an attribute run, or at an embedded
             # object character; each chunk carries its run's text attributes.
@@ -734,13 +781,19 @@ class Builder:
                     chunk_start = i + 1
                     child = next((k for k in kids if not k.is_text), None)
                     if child is not None:
-                        sub = self.fill(child, node, previous, table_pn, table_id)
+                        sub = self.fill(child, node, previous, table_pn, table_id, ign)
                         if sub is not None:
                             previous = sub
                             sub.attrs['ia2TextStartOffset'] = str(i); sub.attrs['ia2TextWindowHandle'] = str(self.doc_handle); sub.attrs['ia2TextUniqueID'] = str(ID)
                 i += 1
-        elif role == C['ROLE_SYSTEM_GRAPHIC']:
-            pass  # NOT PORTED: graphics (alt, URL-derived names)
+        elif role == C['ROLE_SYSTEM_GRAPHIC']:      # gecko_ia2.cpp:1248
+            if name:
+                previous = self.add_text(node, previous, name)
+            elif name == '' or ign:
+                interactive = False
+            elif interactive:
+                if in_link and value: previous = self.add_text(node, previous, _name_for_url(value))
+                elif 'IAccessible2::attribute_src' in a: previous = self.add_text(node, previous, _name_for_url(a['IAccessible2::attribute_src']))
         elif not name_is_content and value is not None:
             previous = self.add_text(node, previous, value)
         if not is_editable and (name_is_content or role in (C['IA2_ROLE_SECTION'], C['IA2_ROLE_TEXT_FRAME'])) and not self._useful_content(node):
@@ -798,11 +851,15 @@ class Builder:
 
     @staticmethod
     def _useful_content(node):
-        """nodeHasUsefulContent (gecko_ia2.cpp): any non-whitespace text under the node."""
-        def walk(n):
-            if isinstance(n, TextField): return n.text.strip() != ''
-            return any(walk(k) for k in n.kids)
-        return walk(node)
+        """nodeHasUsefulContent (nvdaHelper/vbufBase/utils.cpp:148): false for an empty node, true for more than three characters, otherwise true if any of
+        them is neither white space nor a private-use character."""
+        def text(n):
+            if isinstance(n, TextField): return n.text
+            return ''.join(text(k) for k in n.kids)
+        content = text(node)
+        if len(content) == 0: return False
+        if len(content) > 3: return True
+        return any(not c.isspace() and not ('\ue000' <= c <= '\uf8ff' or c == '\u200b') for c in content)
 
     @staticmethod
     def _content_matches(node, s):
@@ -817,7 +874,34 @@ def _is_descendant(parent, d):
     return False
 
 
-def _name_for_url(u): return u.rsplit('/', 1)[-1] or u
+def _name_for_url(url):
+    """getNameForURL, nvdaHelper/vbufBase/utils.cpp:21 (a size_t that steps below zero is npos there, None here)."""
+    if not url: return url
+    colon = url.find(':')
+    if colon != -1 and url[colon:colon + 3] != '://':
+        if url[:11].lower() == 'data:image/': return ''
+        return url[colon + 1:]
+    q, a = url.rfind('?'), url.rfind('#')
+    qlen = a - q - 1 if a != -1 and q != -1 else None
+    strip = True
+    path_end = q if q != -1 else (a if a != -1 else len(url))
+    path_end = path_end - 1 if path_end >= 1 else None
+    if path_end is not None and url[path_end] == '/':
+        path_end = path_end - 1 if path_end >= 1 else None; strip = False
+    start = 0
+    if path_end is not None:
+        start = url.rfind('/', 0, path_end + 1)
+        if start == -1: start = 0
+        else:
+            start += 1
+            if strip and start == (colon + 3 if colon != -1 else 2): strip = False
+        if strip:
+            e = url.rfind('.', 0, path_end + 1)
+            if e != -1 and e > start: path_end = e - 1
+    name = url[start:path_end + 1] if path_end is not None else ''
+    if q != -1: name += ' ' + (url[q + 1:] if qlen is None or qlen < 0 else url[q + 1:q + 1 + qlen])
+    if a != -1: name += ' ' + url[a + 1:]
+    return name[:30] + '\u2026' if len(name) > 30 else name
 
 
 # ---------------------------------------------------------------- nvdaHelper/local/textUtils.cpp (word / character offsets)
@@ -923,6 +1007,11 @@ class LocalLib:
     def VBuf_getIdentifierFromControlFieldNode(self, h, node, docRef, idRef):
         b = self._b(h); n = node.value if hasattr(node, 'value') else node
         c = b.by_id_ref[n]; _set(docRef, c.id[0]); _set(idRef, c.id[1])
+
+    def displayModel_getWindowTextInRect(self, *args):
+        """The display model (screen-scraped text, nvdaHelper/remote/displayModel): not modelled. NVDA reaches it for a focused object with no text of its own (a menu button
+        that took focus), and asks for the text drawn in its rectangle; the answer here is none, as getWindowTextInRect's own `if not text` branch handles."""
+        return '', ''
 
     def calculateWordOffsets(self, text, length, offset, sRef, eRef):
         r = _calc_offsets('word', text, length, offset)

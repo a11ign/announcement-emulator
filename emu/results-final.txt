@@ -1,0 +1,297 @@
+in scope: 44 of 47 ['announce_list_item_when_moving_by_word_or_character', 'test_i7562', 'test_pr11606', 'test_focus_mode_on_focusable_read_only_lists', 'test_mark_aria_details', 'test_mark_aria_details_FreeReviewCursor', 'test_aria_details_noVBufNoTextInterface', 'test_aria_details_noVBufNoTextInterface', 'test_ariaDescription_focusMode', 'test_ariaDescription_browseMode', 'test_ariaDescription_sayAll', 'test_mark_aria_details_role', 'test_annotations_multi_target', 'test_i13307', 'test_tableNavigationWithMergedColumns', 'test_tableSayAllCommands', 'test_tableSpeakAllCommands', 'test_tableSayAllAxisCachingForMergedCells', 'test_tableInStyleDisplayTable', 'test_i10840', 'test_i10890', 'test_reportLanguageDisabled', 'test_reportNotSupportedLanguageWithoutOtherLanguages', 'test_ariaRoleDescription_focus', 'test_ariaRoleDescription_inline_browseMode', 'test_ariaRoleDescription_block_browseMode', 'test_ariaRoleDescription_inline_contentEditable', 'test_ariaRoleDescription_block_contentEditable', 'test_ariaTreeGrid_browseMode', 'ARIAInvalid_spellingAndGrammar', 'test_ariaErrorMessage', 'test_ariaCheckbox_browseMode', 'test_ARIASwitchRole', 'test_mark_browse', 'test_mark_focus', 'checkbox_labelled_by_inner_element', 'test_i12147', 'preventDuplicateSpeechFromDescription_focus', 'test_preventDuplicateSpeechFromDescription_browse_tab', 'test_ensureNoBrowseModeDescription', 'test_quickNavTargetReporting', 'test_focusTargetReporting', 'test_textParagraphNavigation', 'test_styleNav']
+== announce_list_item_when_moving_by_word_or_character NVDA+space PASS
+== announce_list_item_when_moving_by_word_or_character tab PASS
+== announce_list_item_when_moving_by_word_or_character downArrow PASS
+== announce_list_item_when_moving_by_word_or_character control+rightArrow FAIL
+   expected: 'cat'
+   actual:   'small'
+== announce_list_item_when_moving_by_word_or_character rightArrow FAIL
+   expected: 'a'
+   actual:   'c'
+== announce_list_item_when_moving_by_word_or_character end PASS
+== announce_list_item_when_moving_by_word_or_character rightArrow PASS
+== announce_list_item_when_moving_by_word_or_character leftArrow PASS
+== announce_list_item_when_moving_by_word_or_character control+rightArrow PASS
+== announce_list_item_when_moving_by_word_or_character control+leftArrow PASS
+== test_i7562 NVDA+space PASS
+== test_i7562 tab PASS
+== test_i7562 downArrow PASS
+== test_i7562 downArrow PASS
+== test_i7562 downArrow PASS
+== test_pr11606 NVDA+space PASS
+== test_pr11606 tab PASS
+== test_pr11606 rightArrow PASS
+== test_pr11606 end PASS
+== test_pr11606 NVDA+upArrow PASS
+== test_focus_mode_on_focusable_read_only_lists tab PASS
+== test_focus_mode_on_focusable_read_only_lists tab PASS
+== test_mark_aria_details downArrow PASS
+== test_mark_aria_details control+rightArrow PASS
+== test_mark_aria_details NVDA+d PASS
+== test_mark_aria_details control+rightArrow PASS
+== test_mark_aria_details NVDA+d PASS
+== test_mark_aria_details downArrow PASS
+== test_mark_aria_details k PASS
+== test_mark_aria_details upArrow PASS
+== test_mark_aria_details k PASS
+== test_mark_aria_details NVDA+d PASS
+== test_mark_aria_details upArrow PASS
+== test_mark_aria_details NVDA+space PASS
+== test_mark_aria_details tab PASS
+== test_mark_aria_details NVDA+d PASS
+== test_mark_aria_details control+rightArrow FAIL
+   expected: 'highlighted  has comment  cat  out of highlighted'
+   actual:   'word'
+== test_mark_aria_details NVDA+d FAIL
+   expected: "Cats go woof BTW —Jonathon Commentor No they don't —Zara"
+   actual:   'No additional details'
+== test_mark_aria_details tab PASS
+== test_mark_aria_details NVDA+d PASS
+== test_mark_aria_details_FreeReviewCursor downArrow PASS
+== test_mark_aria_details_FreeReviewCursor control+rightArrow PASS
+== test_mark_aria_details_FreeReviewCursor NVDA+d PASS
+== test_mark_aria_details_FreeReviewCursor control+rightArrow PASS
+== test_mark_aria_details_FreeReviewCursor NVDA+d PASS
+== test_mark_aria_details_FreeReviewCursor downArrow PASS
+== test_mark_aria_details_FreeReviewCursor k PASS
+== test_mark_aria_details_FreeReviewCursor upArrow PASS
+== test_mark_aria_details_FreeReviewCursor k PASS
+== test_mark_aria_details_FreeReviewCursor NVDA+d PASS
+== test_mark_aria_details_FreeReviewCursor upArrow PASS
+== test_mark_aria_details_FreeReviewCursor NVDA+space PASS
+== test_mark_aria_details_FreeReviewCursor tab PASS
+== test_mark_aria_details_FreeReviewCursor NVDA+d PASS
+== test_mark_aria_details_FreeReviewCursor control+rightArrow FAIL
+   expected: 'highlighted  has comment  cat  out of highlighted'
+   actual:   'word'
+== test_mark_aria_details_FreeReviewCursor NVDA+d FAIL
+   expected: "Cats go woof BTW —Jonathon Commentor No they don't —Zara"
+   actual:   'No additional details'
+== test_mark_aria_details_FreeReviewCursor tab PASS
+== test_mark_aria_details_FreeReviewCursor NVDA+d PASS
+== test_aria_details_noVBufNoTextInterface tab PASS
+== test_aria_details_noVBufNoTextInterface NVDA+d PASS
+== test_aria_details_noVBufNoTextInterface tab PASS
+== test_aria_details_noVBufNoTextInterface NVDA+d PASS
+== test_ariaDescription_focusMode tab PASS
+== test_ariaDescription_focusMode downArrow PASS
+== test_ariaDescription_focusMode downArrow PASS
+== test_ariaDescription_focusMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_ariaDescription_browseMode downArrow PASS
+== test_ariaDescription_sayAll NVDA+downArrow PASS
+== test_mark_aria_details_role downArrow PASS
+== test_mark_aria_details_role upArrow PASS
+== test_mark_aria_details_role NVDA+space PASS
+== test_mark_aria_details_role tab PASS
+== test_annotations_multi_target downArrow PASS
+== test_annotations_multi_target upArrow PASS
+== test_annotations_multi_target NVDA+space PASS
+== test_annotations_multi_target tab PASS
+== test_i13307 tab PASS
+== test_i13307 tab PASS
+== test_i13307 tab PASS
+== test_i13307 tab PASS
+== test_tableNavigationWithMergedColumns downArrow PASS
+== test_tableNavigationWithMergedColumns downArrow PASS
+== test_tableNavigationWithMergedColumns downArrow PASS
+== test_tableNavigationWithMergedColumns control+alt+downArrow PASS
+== test_tableNavigationWithMergedColumns control+alt+upArrow PASS
+== test_tableSayAllCommands t PASS
+== test_tableSayAllCommands control+alt+downArrow PASS
+== test_tableSayAllCommands NVDA+control+alt+downArrow PASS
+== test_tableSayAllCommands NVDA+upArrow PASS
+== test_tableSayAllCommands control+alt+downArrow PASS
+== test_tableSayAllCommands NVDA+control+alt+rightArrow PASS
+== test_tableSayAllCommands NVDA+upArrow PASS
+== test_tableSayAllCommands control+alt+downArrow PASS
+== test_tableSayAllCommands NVDA+control+alt+rightArrow PASS
+== test_tableSayAllCommands NVDA+upArrow PASS
+== test_tableSpeakAllCommands t PASS
+== test_tableSpeakAllCommands control+alt+downArrow PASS
+== test_tableSpeakAllCommands NVDA+control+alt+upArrow PASS
+== test_tableSpeakAllCommands NVDA+upArrow PASS
+== test_tableSpeakAllCommands NVDA+control+alt+leftArrow PASS
+== test_tableSpeakAllCommands NVDA+upArrow PASS
+== test_tableSayAllAxisCachingForMergedCells t PASS
+== test_tableSayAllAxisCachingForMergedCells control+alt+downArrow PASS
+== test_tableSayAllAxisCachingForMergedCells NVDA+control+alt+upArrow PASS
+== test_tableInStyleDisplayTable t PASS
+== test_tableInStyleDisplayTable control+alt+downArrow PASS
+== test_i10840 t PASS
+== test_i10840 control+alt+rightArrow PASS
+== test_i10890 3 PASS
+== test_i10890 t PASS
+== test_i10890 space PASS
+== test_reportLanguageDisabled downArrow PASS
+== test_reportNotSupportedLanguageWithoutOtherLanguages downArrow PASS
+== test_ariaRoleDescription_focus tab PASS
+== test_ariaRoleDescription_focus NVDA+space PASS
+== test_ariaRoleDescription_focus tab PASS
+== test_ariaRoleDescription_inline_browseMode downArrow FAIL
+   expected: 'Start  Unlabeled graphic  Our logo. To get missing image descriptions, open the context menu.  End'
+   actual:   'Start  drawing  Our logo  End'
+== test_ariaRoleDescription_inline_browseMode control+rightArrow FAIL
+   expected: 'Unlabeled graphic  Our'
+   actual:   'drawing  Our'
+== test_ariaRoleDescription_inline_browseMode control+rightArrow FAIL
+   expected: 'logo.'
+   actual:   'logo  out of drawing'
+== test_ariaRoleDescription_block_browseMode downArrow PASS
+== test_ariaRoleDescription_block_browseMode downArrow PASS
+== test_ariaRoleDescription_block_browseMode downArrow PASS
+== test_ariaRoleDescription_inline_contentEditable NVDA+space PASS
+== test_ariaRoleDescription_inline_contentEditable tab PASS
+== test_ariaRoleDescription_inline_contentEditable downArrow FAIL
+   expected: 'Start  Unlabeled graphic  Our logo. To get missing image descriptions, open the context menu.    End'
+   actual:   'Start  drawing  End'
+== test_ariaRoleDescription_inline_contentEditable control+rightArrow FAIL
+   expected: 'Unlabeled graphic  Our logo. To get missing image descriptions, open the context menu.    out of Unlabeled graphic'
+   actual:   'Start'
+== test_ariaRoleDescription_inline_contentEditable control+rightArrow FAIL
+   expected: 'End'
+   actual:   'space'
+== test_ariaRoleDescription_block_contentEditable NVDA+space PASS
+== test_ariaRoleDescription_block_contentEditable tab PASS
+== test_ariaRoleDescription_block_contentEditable downArrow PASS
+== test_ariaRoleDescription_block_contentEditable downArrow PASS
+== test_ariaRoleDescription_block_contentEditable downArrow PASS
+== test_ariaTreeGrid_browseMode h PASS
+== test_ariaTreeGrid_browseMode tab PASS
+== test_ariaTreeGrid_browseMode t PASS
+== test_ariaTreeGrid_browseMode downArrow PASS
+== test_ariaTreeGrid_browseMode control+alt+downArrow PASS
+== test_ariaTreeGrid_browseMode enter PASS
+== ARIAInvalid_spellingAndGrammar downArrow PASS
+== ARIAInvalid_spellingAndGrammar downArrow PASS
+== test_ariaErrorMessage NVDA+space PASS
+== test_ariaErrorMessage tab PASS
+== test_ariaErrorMessage tab PASS
+== test_ariaErrorMessage tab PASS
+== test_ariaErrorMessage tab PASS
+== test_ariaErrorMessage NVDA+space PASS
+== test_ariaErrorMessage e PASS
+== test_ariaErrorMessage e PASS
+== test_ariaErrorMessage e PASS
+== test_ariaErrorMessage e PASS
+== test_ariaCheckbox_browseMode h PASS
+== test_ariaCheckbox_browseMode x PASS
+== test_ARIASwitchRole 2 PASS
+== test_ARIASwitchRole tab PASS
+== test_ARIASwitchRole numpad8 PASS
+== test_ARIASwitchRole NVDA+tab PASS
+== test_ARIASwitchRole space PASS
+== test_ARIASwitchRole numpad8 PASS
+== test_ARIASwitchRole NVDA+tab PASS
+== test_ARIASwitchRole space PASS
+== test_ARIASwitchRole numpad8 PASS
+== test_ARIASwitchRole NVDA+tab PASS
+== test_mark_browse downArrow PASS
+== test_mark_browse numpad6 PASS
+== test_mark_browse numpad6 PASS
+== test_mark_focus NVDA+space PASS
+== test_mark_focus tab PASS
+== checkbox_labelled_by_inner_element tab PASS
+== test_i12147 tab PASS
+== test_i12147 enter PASS
+== preventDuplicateSpeechFromDescription_focus NVDA+space PASS
+== preventDuplicateSpeechFromDescription_focus tab PASS
+== preventDuplicateSpeechFromDescription_focus tab PASS
+== test_preventDuplicateSpeechFromDescription_browse_tab tab PASS
+== test_preventDuplicateSpeechFromDescription_browse_tab tab PASS
+== test_ensureNoBrowseModeDescription downArrow PASS
+== test_ensureNoBrowseModeDescription downArrow PASS
+== test_ensureNoBrowseModeDescription nvda+space PASS
+== test_ensureNoBrowseModeDescription tab PASS
+== test_ensureNoBrowseModeDescription tab PASS
+== test_quickNavTargetReporting h PASS
+== test_quickNavTargetReporting control+home PASS
+== test_quickNavTargetReporting h PASS
+== test_focusTargetReporting tab PASS
+== test_focusTargetReporting tab PASS
+== test_focusTargetReporting shift+tab PASS
+== test_focusTargetReporting tab PASS
+== test_focusTargetReporting shift+tab PASS
+== test_focusTargetReporting NVDA+space PASS
+== test_focusTargetReporting tab PASS
+== test_focusTargetReporting shift+tab PASS
+== test_focusTargetReporting tab PASS
+== test_textParagraphNavigation p PASS
+== test_textParagraphNavigation p PASS
+== test_textParagraphNavigation p PASS
+== test_textParagraphNavigation p PASS
+== test_textParagraphNavigation p PASS
+== test_textParagraphNavigation p PASS
+== test_textParagraphNavigation p PASS
+== test_textParagraphNavigation p PASS
+== test_textParagraphNavigation shift+p PASS
+== test_textParagraphNavigation shift+p PASS
+== test_textParagraphNavigation shift+p PASS
+== test_textParagraphNavigation shift+p PASS
+== test_textParagraphNavigation shift+p PASS
+== test_textParagraphNavigation shift+p PASS
+== test_textParagraphNavigation shift+p PASS
+== test_styleNav shift+d PASS
+== test_styleNav s PASS
+== test_styleNav shift+d PASS
+== test_styleNav s PASS
+== test_styleNav s PASS
+== test_styleNav d PASS
+== test_styleNav d PASS
+== test_styleNav shift+s PASS
+== test_styleNav shift+s PASS
+== test_styleNav shift+s PASS
+== test_styleNav d PASS
+== test_styleNav shift+s PASS
+== test_styleNav s PASS
+== test_styleNav d PASS
+== test_styleNav d PASS
+== test_styleNav shift+s PASS
+== test_styleNav s PASS
+RESULT 215 / 227
+  8/10  announce_list_item_when_moving_by_word_or_character
+  5/5  test_i7562
+  5/5  test_pr11606
+  2/2  test_focus_mode_on_focusable_read_only_lists
+  16/18  test_mark_aria_details
+  16/18  test_mark_aria_details_FreeReviewCursor
+  2/2  test_aria_details_noVBufNoTextInterface
+  2/2  test_aria_details_noVBufNoTextInterface
+  4/4  test_ariaDescription_focusMode
+  4/4  test_ariaDescription_browseMode
+  1/1  test_ariaDescription_sayAll
+  4/4  test_mark_aria_details_role
+  4/4  test_annotations_multi_target
+  4/4  test_i13307
+  5/5  test_tableNavigationWithMergedColumns
+  10/10  test_tableSayAllCommands
+  6/6  test_tableSpeakAllCommands
+  3/3  test_tableSayAllAxisCachingForMergedCells
+  2/2  test_tableInStyleDisplayTable
+  2/2  test_i10840
+  3/3  test_i10890
+  1/1  test_reportLanguageDisabled
+  1/1  test_reportNotSupportedLanguageWithoutOtherLanguages
+  3/3  test_ariaRoleDescription_focus
+  0/3  test_ariaRoleDescription_inline_browseMode
+  3/3  test_ariaRoleDescription_block_browseMode
+  2/5  test_ariaRoleDescription_inline_contentEditable
+  5/5  test_ariaRoleDescription_block_contentEditable
+  6/6  test_ariaTreeGrid_browseMode
+  2/2  ARIAInvalid_spellingAndGrammar
+  10/10  test_ariaErrorMessage
+  2/2  test_ariaCheckbox_browseMode
+  10/10  test_ARIASwitchRole
+  3/3  test_mark_browse
+  2/2  test_mark_focus
+  1/1  checkbox_labelled_by_inner_element
+  2/2  test_i12147
+  3/3  preventDuplicateSpeechFromDescription_focus
+  2/2  test_preventDuplicateSpeechFromDescription_browse_tab
+  5/5  test_ensureNoBrowseModeDescription
+  3/3  test_quickNavTargetReporting
+  9/9  test_focusTargetReporting
+  15/15  test_textParagraphNavigation
+  17/17  test_styleNav

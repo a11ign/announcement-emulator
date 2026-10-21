@@ -1,11 +1,18 @@
 // A live Chrome 155 session for the emulator spike: serves one page, accepts JSON commands on stdin (dump, key, eval), answers on stdout.
-import http from 'node:http'; import {readFileSync} from 'node:fs'; import {spawn, execSync} from 'node:child_process'; import readline from 'node:readline';
-const [,, pageFile, extDir, chromeBin] = process.argv;
-const R = process.env.HOME + '/spikes/announcement-emulator-5661';
-const id = readFileSync(R + '/q1/ext-id.txt', 'utf8').trim();
-let pending = null, want = null, wantFocus, wantAction, wantScroll;
+import {fileURLToPath} from 'node:url'; import http from 'node:http'; import {readFileSync, mkdirSync, writeFileSync, cpSync} from 'node:fs'; import {spawn, execSync} from 'node:child_process'; import readline from 'node:readline';
+const [,, pageFile, extDir0, chromeBin] = process.argv;
+// A live URL instead of a served file: pageFile is 'url:<address>'. Ports are per session so several can run side by side (EMU_PORT, EMU_CDP).
+const PORT = Number(process.env.EMU_PORT || 8765), CDP = Number(process.env.EMU_CDP || 9333);
+const LIVE = pageFile.startsWith('url:'), LIVE_URL = LIVE ? pageFile.slice(4) : null;
+// headless=new puts 143 px of browser UI inside the window: 1008x872 gives a page the 1008x729 the fleet's Edge reports (environment.innerWidth/innerHeight)
+const [VW, VH] = (process.env.EMU_VIEWPORT || (LIVE ? '1008x872' : '1280x3000')).split('x').map(Number);
+const UA = process.env.EMU_UA || null; let target = LIVE ? '' : 'http://127.0.0.1:' + PORT + '/page.html';
+const R = process.env.EMU_DOWNLOADS || process.env.HOME + '/spikes/announcement-emulator-5661';
+const CODE = fileURLToPath(new URL('..', import.meta.url));
+const id = readFileSync(CODE + 'q1/ext-id.txt', 'utf8').trim();
+let pending = null, want = null, wantFocus, wantAction, wantScroll, wantHistory;
 const srv = http.createServer((req, res) => {
-  if (req.url === '/page.html') { res.setHeader('content-type', 'text/html'); return res.end(readFileSync(pageFile)); }
+  if (req.url === '/page.html' && !LIVE) { res.setHeader('content-type', 'text/html'); return res.end(readFileSync(pageFile)); }
   if (req.url.startsWith('/aria/')) {      // NVDA's include/w3c-aria-practices submodule (pinned 84b921a0), served over http because the tests' file:// iframes cannot load from this origin
     const rel = req.url.slice(6).split('?')[0]; if (rel.includes('..')) { res.statusCode = 400; return res.end(); }
     // Under file:// Chrome refuses a page's XHR to other files, which is why NVDA's real run never gets the "Open In CodePen" buttons examples.js adds only after
@@ -14,14 +21,17 @@ const srv = http.createServer((req, res) => {
     try { const body = readFileSync(R + '/aria-practices/' + rel); res.setHeader('content-type', rel.endsWith('.html') ? 'text/html' : rel.endsWith('.css') ? 'text/css' : rel.endsWith('.js') ? 'text/javascript' : 'application/octet-stream'); return res.end(body); }
     catch (e) { res.statusCode = 404; return res.end(); }
   }
-  if (req.url === '/poll') { res.end(JSON.stringify(want ? {dump: want} : wantFocus !== undefined ? {focus: wantFocus} : wantAction !== undefined ? {action: wantAction} : wantScroll !== undefined ? {scroll: wantScroll} : {})); want = null; wantFocus = undefined; wantAction = undefined; wantScroll = undefined; return; }
+  if (req.url === '/poll') { res.end(JSON.stringify({target, ...(wantHistory ? {history: wantHistory} : {}), ...(want ? {dump: want} : wantFocus !== undefined ? {focus: wantFocus} : wantAction !== undefined ? {action: wantAction} : wantScroll !== undefined ? {scroll: wantScroll} : {})})); want = null; wantHistory = undefined; wantFocus = undefined; wantAction = undefined; wantScroll = undefined; return; }
   let b = ''; req.on('data', d => b += d);
   req.on('end', () => { if (req.url === '/dump' && pending) { const p = pending; pending = null; p(JSON.parse(b)); } res.end('ok'); });
-}).listen(8765);
-execSync('rm -rf /tmp/emu-profile');
-const ch = spawn(chromeBin, ['--headless=new', '--no-sandbox', '--force-renderer-accessibility', '--window-size=1280,3000', '--user-data-dir=/tmp/emu-profile', '--no-first-run',
-  '--remote-debugging-port=9333', '--allowlisted-extension-id=' + id, '--load-extension=' + extDir, '--disable-features=DisableLoadExtensionCommandLineSwitch',
-  'http://127.0.0.1:8765/page.html'], {env: {...process.env, LD_LIBRARY_PATH: R + '/libs/root/usr/lib/x86_64-linux-gnu'}, stdio: ['ignore', 'ignore', 'ignore']});
+}).listen(PORT);
+const PROFILE = '/tmp/emu-profile-' + PORT; execSync('rm -rf ' + PROFILE);
+// the companion extension, with this session's collector port written into a private copy
+const extDir = PROFILE + '-ext'; execSync('rm -rf ' + extDir); mkdirSync(extDir, {recursive: true}); cpSync(extDir0, extDir, {recursive: true});
+writeFileSync(extDir + '/bg.js', readFileSync(extDir0 + '/bg.js', 'utf8').replaceAll('__PORT__', String(PORT)));
+const ch = spawn(chromeBin, ['--headless=new', '--no-sandbox', '--force-renderer-accessibility', `--window-size=${VW},${VH}`, '--user-data-dir=' + PROFILE, '--no-first-run',
+  '--remote-debugging-port=' + CDP, '--allowlisted-extension-id=' + id, '--load-extension=' + extDir, '--disable-features=DisableLoadExtensionCommandLineSwitch',
+  LIVE ? LIVE_URL : 'http://127.0.0.1:' + PORT + '/page.html'], {env: {...process.env, LD_LIBRARY_PATH: R + '/libs/root/usr/lib/x86_64-linux-gnu'}, stdio: ['ignore', 'ignore', 'ignore']});
 process.on('exit', () => { try { ch.kill('SIGKILL'); } catch (e) {} });
 process.stdin.on('end', () => process.exit(0));
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -29,8 +39,8 @@ let ws, msgId = 0; const waiters = new Map();
 async function connect() {
   for (let i = 0; i < 60; i++) {
     try {
-      const list = await (await fetch('http://127.0.0.1:9333/json/list')).json();
-      const t = list.find(t => t.url.startsWith('http://127.0.0.1:8765/page.html'));
+      const list = await (await fetch('http://127.0.0.1:' + CDP + '/json/list')).json();
+      const t = list.find(t => t.type === 'page' && (LIVE ? t.url.startsWith('http') : t.url.startsWith('http://127.0.0.1:' + PORT + '/page.html')));
       if (t) { ws = new WebSocket(t.webSocketDebuggerUrl); await new Promise((ok, no) => { ws.onopen = ok; ws.onerror = no; });
         ws.onmessage = m => { const d = JSON.parse(m.data); if (d.id && waiters.has(d.id)) { waiters.get(d.id)(d); waiters.delete(d.id); } }; return; }
     } catch (e) {}
@@ -48,6 +58,11 @@ async function key(name, mods = 0) {
 function dump(timeout = 45000) { return new Promise((ok, no) => { const t = setTimeout(() => no(new Error('dump timeout')), timeout); pending = d => { clearTimeout(t); ok(d); }; want = Date.now(); }); }
 await connect();
 await cdp('Page.enable'); await cdp('Runtime.enable');
+if (LIVE) {      // the fleet's browser is Microsoft Edge on Windows: say so to the sites we ask (the tree is Chrome's either way)
+  const ver = '155.0.4283.62';
+  await cdp('Emulation.setUserAgentOverride', {userAgent: UA || `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0`, platform: 'Win32',
+    userAgentMetadata: {brands: [{brand: 'Microsoft Edge', version: '155'}, {brand: 'Chromium', version: '155'}, {brand: 'Not?A_Brand', version: '99'}], fullVersion: ver, platform: 'Windows', platformVersion: '19.0.0', architecture: 'x86', model: '', mobile: false}});
+}
 console.log(JSON.stringify({ready: true}));
 const rl = readline.createInterface({input: process.stdin});
 for await (const line of rl) {
@@ -55,6 +70,20 @@ for await (const line of rl) {
   try {
     if (c.cmd === 'dump') console.log(JSON.stringify({ok: true, dump: await dump()}));
     else if (c.cmd === 'key') { await key(c.key, c.mods || 0); await sleep(c.wait || 400); console.log(JSON.stringify({ok: true})); }
+    else if (c.cmd === 'navigate') {      // the page was opened by the command line (so the browser puts focus in it, as it does on the fleet); wait for it to load
+      let ready = false; const t0 = Date.now();
+      while (Date.now() - t0 < (c.timeout || 40000)) { const r = await cdp('Runtime.evaluate', {expression: 'document.readyState', returnByValue: true}); if (r.result?.result?.value === 'complete') { ready = true; break; } await sleep(250); }
+      await sleep(c.settle || 2500);
+      const href = (await cdp('Runtime.evaluate', {expression: 'location.href', returnByValue: true})).result?.result?.value || c.url;
+      target = href.split('#')[0]; console.log(JSON.stringify({ok: true, loaded: ready, href}));
+    }
+    else if (c.cmd === 'history') { wantHistory = c.urls; await sleep(1500); console.log(JSON.stringify({ok: true})); }
+    else if (c.cmd === 'reload') {
+      await cdp('Page.reload', {}); await sleep(1000);
+      let ready = false; const t0 = Date.now();
+      while (Date.now() - t0 < 40000) { const r = await cdp('Runtime.evaluate', {expression: 'document.readyState', returnByValue: true}); if (r.result?.result?.value === 'complete') { ready = true; break; } await sleep(250); }
+      await sleep(c.settle || 2500); console.log(JSON.stringify({ok: true, loaded: ready}));
+    }
     else if (c.cmd === 'focus') { wantFocus = c.ix; await sleep(c.wait || 700); console.log(JSON.stringify({ok: true})); }
     else if (c.cmd === 'action') { wantAction = c.ix; await sleep(c.wait || 700); console.log(JSON.stringify({ok: true})); }
     else if (c.cmd === 'scroll') { wantScroll = c.ix; await sleep(c.wait || 500); console.log(JSON.stringify({ok: true})); }

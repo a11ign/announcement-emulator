@@ -1,271 +1,498 @@
-# Announcement-emulator spike (row #5661)
+# Announcement-emulator spike (row A11-13, a11ign#5661)
 
-**Status: in progress. Q1 answered (yes, with gaps). Q2 stage 1 passed (NVDA's own Python imports and speaks on Linux); Q2 stage 2 is
-running: 44 of the 47 system tests, 227 exact-speech assertions, 206 exact, 34 tests exact on every assertion (see Q2; a fit to fixtures read, not the gate number). Q3 not run.** This page is the spike's deliverable ([ADR 0047](./adr/0047-an-nvda-faithful-announcement-emulator-is-a-separate-repository-and-its-predictions-are-advisory.md), Decision 7). The spike's code
-lives **outside any a11ign repository**, on the host that ran it at `~/spikes/announcement-emulator-5661`; nothing here is a prediction
-and nothing was written to an evidence field.
+**Status: finished. The Gate is not passed. The spike stops here and this page is the write-up.**
 
-**Where a number comes from is marked on the number:** *measured* (run in this row, output pasted), *quoted* (copied, not re-run) or *not
-checked*. A reading is a moment.
+- **Q1: yes**, with named gaps. A Chrome 155 launched on Linux gives the full tree through `chrome.automation.getDesktop()` once a companion extension is allowlisted.
+- **Q2: yes.** NVDA 2026.1.1's own Python runs unmodified on Linux with its Windows modules stubbed. 44 of the checkout's 47 system tests run, and **215 of 227 exact-speech
+  assertions are exact**. The 12 that are not have two causes, both attributed to the Windows side (one read in Chromium's source, one measured on the fleet); no assertion is unexplained.
+- **Q3: measured**, against 102 real pages the fleet captured on 2026-10-20, on the 12 boxes that agree on every version. Over the held-out half of the corpus the exact agreement on
+  the ten commonest shapes is **97.61%** (4,497 of 4,607), below the 98% bar. After fixing the two emulator faults that reading revealed (so no longer held out) it is **98.37%** (4,341 of 4,413).
+- **Why the Gate is not passed even where a figure clears 98%:** the Gate requires every miss to be explained as an emulator bug or a Windows-only behaviour, and the largest group of misses is
+  neither: the word `visited`. The fleet's browsers keep their history, a link is announced `visited` when its address is in it, and the emulator cannot know a box's history (61 of the 110 held-out misses on the ten shapes at the freeze, 64 of 72 after the fixes). Section "Gate" has the figures and the evidence.
+
+The spike's code is in this repository, not in any a11ign repository; nothing here is a prediction written into an evidence record. **The repository existed before this row's Gate, which the
+ticket says should create it; that tension is the chairman's to resolve and nothing here moves, renames or publishes it.**
+
+**Where a number comes from is marked on the number:** *measured* (run in this row, output pasted or committed under `q3/results/`), *quoted* (copied, not re-run) or *not checked*. A reading is
+a moment. The architecture is [a11ign ADR 0047](https://github.com/a11ign/a11ign/blob/main/docs/adr/0047-an-nvda-faithful-announcement-emulator-is-a-separate-repository-and-its-predictions-are-advisory.md).
 
 ## Dates
 
 | | |
 |---|---|
-| Row claimed, first command run | 2026-10-17 |
+| First commit (the import of the spike's code, `fbd0dd9`) | 2026-10-17 |
 | Chairman's direction dropping the wait on #2568 | 2026-10-17, on #5661 |
 | Budget | 3 weeks from the first commit: until 2026-11-07 |
-| Q3 start | when the fleet captures on one build and one Edge version (#4405, #5311) |
+| Q1 answered; Q2 stage 2 first measured (206 of 227) | 2026-10-17 |
+| A11-31 (#5311, the staged 25H2) completed | 2026-10-19 16:36 UTC (Linear) |
+| Readiness first read: 12 of 15 boxes agree on every version | 2026-10-20 21:12 UTC (see Q3); the whole fleet never agreed, and has not since |
+| The fleet's real-page capture (102 pages, 12 boxes) | 2026-10-20 21:16 to 22:09 UTC |
+| Stage A finished: Q2 at 215 of 227, every miss attributed | 2026-10-21 |
+| The emulator frozen for the held-out reading (`5fbd726`) | 2026-10-21 00:44 UTC |
+| Q3 finished; Gate measured | 2026-10-21 |
+| **Days from the first commit to the Gate** | **4 (17 to 21 October), against a budget of 21** |
+
+**The clock.** A11-13 carries no `blockedBy` edge in Linear (read 2026-10-20), so the product-manager ruling that the clock pauses while an edge is open has nothing to pause. The row did wait
+for #5311 and the fleet: from 2026-10-17 to the readiness reading above. Counted as waiting, the work took **under 1 day**; counted from the first commit, **4 days**. Either way it is inside 3 weeks,
+and the page does not claim a pause it has no edge for.
 
 ## Q1. Can a browser we launch on Linux give the full tree through `chrome.automation`?
 
-**Yes, in a build with the allowlist switch, through `chrome.automation.getDesktop()`. Not through `getTree()`.**
+**Yes, in a build with the allowlist switch, through `chrome.automation.getDesktop()`. Not through `getTree()`.** (*measured* 2026-10-17, unchanged since)
 
-- **Browser.** Chrome for Testing **149.0.7827.55** (*measured*, `--version`) and **155.0.8059.84** (*measured*; 155 is the milestone of the fleet's
-  Edge **155.0.4283.45**, `worker_edge_version`; the build numbers differ because Edge and Chrome for Testing number their builds
-  separately). Launched with `--headless=new`, so no X server is needed. **Chrome 155 and 149 expose the same set of node fields** (*measured*:
-  union of enumerable fields over the same fixture, no field in one and not the other).
-- **Does the allowlist switch work?** Yes, and it is required. The companion extension declares a top-level `automation` manifest key (not a
-  `permissions` entry, which silently gives no API: `chrome.automation` was `undefined`). Launched with
-  `--allowlisted-extension-id=<id>` (the id fixed by a manifest `key`), the service worker sees `chrome.automation`. **Without the switch
-  the extension loads but `chrome.automation` is `undefined`** (*measured*, fresh profile, same extension: the service worker throws
-  `Cannot read properties of undefined (reading 'getDesktop')` and posts nothing).
-- **`getTree(tabId)` is not in this build's API surface** (*measured*: `Object.keys(chrome.automation)` lists `addTreeChangeObserver,
-  getAccessibilityFocus, getDesktop, getFocus, removeTreeChangeObserver, setDocumentSelection` and the enums; no `getTree`). **`getDesktop()`
-  with `"desktop": true` returns the whole browser, and the page's `rootWebArea` hangs under it** with its full subtree. The ADR's layer 1
-  should say `getDesktop`, not `getTree`.
-- **Fixture size.** A 10-element page gave 107 desktop nodes, 73 of them in the web area; a 30-element page with forms, a grid, a tree, live
-  regions, an iframe and a contenteditable gave 127 web nodes (149) and 131 (155). Roles seen include `heading, link, button, textField,
-  checkBox, popUpButton, slider, treeItem, table, row, cell, columnHeader, navigation, main, form, region, alert, legend, list, listItem,
-  image, inlineTextBox, staticText`.
-- **Fields present** (enumerated on the live nodes): `role, name, nameFrom, value, description, descriptionFrom, state{focusable, focused,
-  linked, editable, required, expanded, collapsed, multiline, multiselectable, richlyEditable, invisible, offscreen, ...}, checked,
-  hierarchicalLevel, setSize, posInSet, htmlTag, htmlId, inputType, display, language, detectedLanguage, placeholder, roleDescription,
-  ariaCurrentState, invalidState, hasPopup, sortDirection, valueForRange/min/max, liveStatus, liveAtomic, liveRelevant, containerLive*,
-  tableRowCount, tableColumnCount, tableCellRowIndex, tableCellColumnIndex, tableCellRowSpan/ColumnSpan, tableCellAria*Index,
-  tableCellRowHeaders/ColumnHeaders, lineStartOffsets, wordStarts/Ends, sentenceStarts/Ends, activeDescendantFor, controlledBy,
-  describedBy, labelFor, indexInParent, bold, italic, underline, lineThrough, fontFamily, fontSize, color, backgroundColor, location,
-  url, selected, textSelStart/End` and events through `addEventListener`. **These are the table indices, set position and size, `lang`
-  and `display` that the ADR says `getFullAXTree` lacks.**
-- **Fields NOT present** (*measured*: `'x' in node` false or the member undefined on every node): a general `htmlAttributes` map (so the
-  IA2 object attributes NVDA reads from ARIA, such as `xml-roles`, must be rebuilt from `role` plus the typed fields),
-  `textAlign`/`textDirection`/`textPosition`/`textStyle`/`listStyle`, `keyShortcuts`, `ariaAtomic` as such (`liveAtomic` exists), `readOnly`
-  as such (`restriction` exists). **There is no `hypertext` string**: layer 2 has to build it from `children`, `name` and `value`.
-- **Sufficiency for layers 2 and 3, reading so far** (*measured* in Q2 stage 2, 44 tests): for roles, states, names, descriptions,
-  levels, links, landmarks, relations (labelled-by, error message, details), table coordinates, spelling/grammar markers and text-field state
-  the fields were enough to match 206 of 227 exact-speech assertions. What the run found missing or different: (1) node identity is not exposed (`node.id` is undefined), so relations
-  are resolved by object identity within one walk (the extractor numbers nodes and emits `labelledByIx`, `labelForIx`, `errorMessageForIx`);
-  (2) there is no author `role` string, so IA2 `xml-roles` cannot be read and is reconstructed (see Q2); (3) the API has no text-attribute
-  runs as IAccessibleText gives them, but `markers` (spelling, grammar) and per-node `language` were enough to rebuild the two attributes
-  the suite reads; (4)
-  `textSelStart`/`textSelEnd` give the caret in a text field, but line and word boundaries across a rich editable's embedded children
-  have to be composed from per-node offsets; (5) the tree differs from what Chrome gives NVDA on Windows where the browser consults the OS (the image-description
-  prompt). The 507-test check against `ax_platform_node_win.cc` has **not** been run.
+- **Browser.** Chrome for Testing **149.0.7827.55** and **155.0.8059.84** (*measured*, `--version`; 155 is the milestone of the fleet's Edge **155.0.4283.62**, whose build numbers differ because
+  Edge and Chrome for Testing number their builds separately). Launched with `--headless=new`, so no X server is needed. Chrome 155 and 149 expose the same set of node fields
+  (*measured*: union of enumerable fields over the same fixture).
+- **The allowlist switch works, and is required.** The companion extension declares a top-level `automation` manifest key (a `permissions` entry silently gives no API). Launched with
+  `--allowlisted-extension-id=<id>` the service worker sees `chrome.automation`; without it the extension loads and `chrome.automation` is `undefined` (*measured*, same extension, fresh profile).
+- **`getTree(tabId)` is not in this build's API.** `Object.keys(chrome.automation)` lists `addTreeChangeObserver, getAccessibilityFocus, getDesktop, getFocus, removeTreeChangeObserver,
+  setDocumentSelection` and the enums. `getDesktop()` with `"desktop": true` returns the whole browser, and the page's `rootWebArea` hangs under it with its full subtree, **including the
+  documents of its iframes**. The ADR's layer 1 should say `getDesktop`, not `getTree`.
+- **Fixture size.** A 10-element page gave 107 desktop nodes, 73 in the web area; a 30-element page with forms, a grid, a tree, live regions, an iframe and a contenteditable gave 127 (149) and 131 (155).
+  On the real corpus a page is 600 to 2,500 nodes.
+- **Fields present** (enumerated on live nodes): `role, name, nameFrom, value, description, descriptionFrom, state{focusable, focused, linked, visited, editable, required, expanded, collapsed,
+  multiline, richlyEditable, invisible, offscreen, ...}, checked, hierarchicalLevel, setSize, posInSet, htmlTag, htmlId, inputType, display, language, detectedLanguage, placeholder,
+  roleDescription, ariaCurrentState, invalidState, hasPopup, sortDirection, valueForRange/min/max, liveStatus, liveAtomic, liveRelevant, tableRowCount, tableColumnCount,
+  tableCellRowIndex, tableCellColumnIndex, tableCellRowSpan/ColumnSpan, tableCellAriaRowIndex, tableCellAriaColumnIndex, tableCellRowHeaders/ColumnHeaders, lineStartOffsets,
+  wordStarts/Ends, activeDescendantFor, controlledBy, describedBy, labelFor, indexInParent, bold, italic, underline, lineThrough, fontFamily, fontSize, color, backgroundColor, location,
+  url (links and images), selected, textSelStart/End`, and events through `addEventListener`. These are the table indices, set position and size, `lang` and `display` that the ADR says
+  `getFullAXTree` lacks.
+- **Fields NOT present** (*measured*): a general `htmlAttributes` map (turning the browser's HTML accessibility mode on at `chrome://accessibility`, 2026-10-21, added none), so the author's `role`
+  attribute, which IA2 exposes as `xml-roles`, is not available and is **reconstructed** (below); `textAlign`, `textDirection`, `keyShortcuts`, and a `hypertext` string (layer 2 builds it from
+  `children`, `name` and `value`). `node.id` is not exposed either, so relations are resolved by object identity within one walk.
+- **Sufficiency for layers 2 and 3.** For roles, states, names, descriptions, levels, links, landmarks, relations, table coordinates, spelling and grammar markers and text-field state the fields
+  were enough to reproduce 215 of 227 exact-speech assertions (Q2) and, on real pages, the announcements of Q3. What the work found missing or different:
+  1. **The author's `role` string** (no `htmlAttributes`). Three things were reconstructed from the automation role and are inferences, not reads: IA2 `xml-roles` for the landmark, article, figure,
+     region and switch roles (and `header`, `footer`, below); whether an `image` is an ARIA image and so a leaf (`ax_node.cc:2449` looks at `role="img"`; an image that is not an `<img>` is
+     taken to be one); and a canvas's fallback content (approximated by having children).
+  2. **A page-level `<header>` and `<footer>` come through as roles `header` and `footer`**, and NVDA says "banner landmark" and "content info landmark" for them on Windows. The tree has no
+     `banner` for them, so `xml-roles` banner and contentinfo are supplied for those two roles (read from the fleet's transcripts and a control page, not from Chromium's source).
+  3. **Windows hands NVDA what Linux does not**: Chromium's image-description prompt and role text (Q2, Q3), the language names of the OS (Q3), and the browser's history (Q3).
+- **Not run (as before):** the 507-test check of the Windows mapping against Chromium's `-expected-win.txt` files. It is not needed for the Gate and was not done.
 
 ## Q2. Does NVDA's own Python, at the fleet's release, run on Linux with stubs?
 
-**Stage 1 (import and speak): yes.** NVDA **2026.1.1** (the fleet's release, *quoted* from `docs/capture-cost.md`) at tag
-`release-2026.1.1`, commit `5d92106f17e461dac62aa48257bbbf4183e033d0` (2026-05-18), **unmodified** (*measured*: `git status` over the checkout shows
-0 changed files after the runs). CPython **3.13.16**; NVDA's `pyproject.toml` requires `>=3.13,<3.14`, which is why the host's 3.14.4 was
-not used.
+**Yes.** NVDA **2026.1.1** (the release every one of the fleet's boxes reports in `/health.environment.screenReaderVersion`, *measured* 2026-10-20) at tag `release-2026.1.1`, commit
+`5d92106f17e461dac62aa48257bbbf4183e033d0`, **unmodified** (`git status` over the checkout is clean after every run). CPython **3.13.16**, which NVDA's `pyproject.toml` requires (`>=3.13,<3.14`).
 
-*Measured*, one run:
+**Stage 1 (import and speak)** passed on 2026-10-17: the Windows standard-library modules, `comtypes`, `wx`, NVDA's own Windows bindings, the generated COM interfaces, braille and GUI stack and the
+object layer are replaced by a permissive stub (33 names, kept in `q2/stubs.py`'s ledger); `speech`, `browseMode`, `virtualBuffers`, `textInfos`, `documentBase`, `controlTypes`,
+`characterProcessing`, `speechDictHandler` and `config` are NVDA's real code.
+
+**Stage 2 (NVDA's own Chrome system tests).** The oracle is the tests' own: each test's page, keys and expected strings are read from `tests/system/robot/chromeTests.py` by AST, the page wrapper
+is `ChromeLib._writeTestFile`, the settings are `standard-dontShowWelcomeDialog.ini`, speech is captured as `speechSpyGlobalPlugin` does, each test runs in a fresh process, and keys reach a live
+Chrome 155 over the DevTools protocol.
+
+**The population.** The ticket and the ADR quote *51 tests, about 220 exact-speech assertions*. The checkout (*measured*) holds **47** test cases in `chromeTests.robot` and **43** `def test_`
+functions in `chromeTests.py`, and 219 assertion calls (160 `strings_match`, 31 `speech_matches`, 2 `speech_contains`, 24 `braille_matches`, 2 `braille_contains`): **193 speech assertions and 26 braille**,
+against the quoted 220. The 51 may be another release; **this row's numbers are the checkout's.** The extractor unrolls a test's `for` loops, so it evaluates **227** assertion executions.
+
+**How it is built** (the code is `emu/`):
+- **Layer 0, driver:** a live Chrome 155 launched with the allowlisted companion extension, keys sent over the DevTools protocol (`Input.dispatchKeyEvent`), the tree and `getFocus()` re-read after each key
+  that can change them.
+- **Layer 2, Windows mapping** (`standin.py`): maps a `chrome.automation` node to what Chromium's `AXPlatformNodeWin` gives NVDA. The role tables are **generated** from Chromium 155.0.8059.84
+  `ax_platform_node_win.cc` (`gen_tables.py`), the IA2 constants from `ia2_api_all.idl`, and the leaf, hypertext, state and attribute rules are ported with the C++ line cited. It is also presented
+  as an IAccessible/IAccessible2 object (`objlayer.py`) so that NVDA's own `NVDAObjects.IAccessible` Chrome classes instantiate unmodified.
+- **Layer 3, buffer builder:** a port of `gecko_ia2.cpp` `fillVBuf` and `vbufBase/storage.cpp` (markup, offsets, `getLineOffsets`, `findNodeByAttributes`, `nextNodeInTree`).
+- **Layer 4, NVDA unmodified:** `ChromeVBuf`, `virtualBuffers`, `textInfos`, `cursorManager`, `browseMode`, `speech`, `speechDictHandler` and `characterProcessing` with the pinned `nvda-cldr` data.
+- **Layer 5, event bridge, minimal:** after a key that moves focus the new tree is read, the buffer is rebuilt (not updated incrementally; the caret offset is carried over), and NVDA's own
+  `event_gainFocus` runs.
+- **Added after reading the expected strings** (so the Q2 figure is a fit to fixtures that were read, not a prediction, and not the Gate): the tests' NVDA settings, `description-from`, the `ChromeVBuf`
+  buffer class, the pinned `cldr.dic`, related-element lookups, aria details and error messages, `IAccessibleText` and `IAccessibleHypertext`, non-atomic text fields, list markers, layout tables,
+  spelling and grammar markers, the tree-selection caret, Chromium's text style attributes, `IAccessibleAction`, and the harness changes listed under "What was wrong" below. Faults the work found were
+  in the stand-in or the harness, none in NVDA.
 
 ```
-OK   controlTypes   OK   characterProcessing   OK   speech   OK   speech.speech   OK   speech.commands
-OK   textInfos      OK   browseMode            OK   virtualBuffers   OK   documentBase   OK   speechDictHandler
-heading1 -> ['Welcome', 'heading']        link -> ['Home', 'link']        button -> ['Send', 'button']
-checkbox -> ['Agree', 'check box', 'checked']        edit-required -> ['Name', 'edit', 'required']
+RESULT 215 / 227        44 of 47 tests run; 227 exact-speech assertion executions, 215 exact           (emu/results-final.txt, 2026-10-21)
 ```
 
-The last five lines are NVDA's own `speech.speech.getPropertiesSpeech`, called with the properties of nodes from the Q1 fixture. They show
-the speech code **executes**; they are not a comparison against anything, and `heading1` omits its level because the call did not pass one.
+| | tests | assertions |
+|---|---|---|
+| in the checkout | 47 | 193 speech by grep, 227 as executed |
+| **run** | **44** | **227** |
+| every assertion exact | 39 | |
+| with a miss | 5 | **12** |
+| not run, language names from Windows (`reportLanguage*`, 3 tests) | 3 | not counted |
+| braille assertions | | 26 by grep, 43 as executed; not checked, there is no braille in the emulator |
 
-- **What was stubbed, and nothing else.** An import hook returns a permissive empty module for 33 names, kept in a ledger: the Windows
-  standard-library modules (`winreg`, `winsound`, `msvcrt`, `ctypes.windll` and its siblings), the Windows packages (`comtypes`, `wx`),
-  NVDA's own Windows-binding modules (`winBindings`, `winUser`, `winKernel`, `NVDAHelper`, `easeOfAccess`, `wasapi`), the generated COM
-  interfaces (`comInterfaces`, absent from the source tree because scons generates them), the braille and GUI stack (`braille`, `louisHelper`,
-  `gui`, `tones`, `nvwave`, `ui`, `vision`, `bdDetect`, `brailleInput`, `brailleViewer`, `mouseHandler`) and the object layer
-  (`IAccessibleHandler`, `UIAHandler`, `JABHandler`, `oleacc`, `oleTypes`, `objidl`, `eventHandler`, `api`, `review`, `NVDAObjects`,
-  `appModuleHandler`). **Speech, `browseMode`, `virtualBuffers`, `textInfos`, `documentBase`, `controlTypes`, `characterProcessing`,
-  `speechDictHandler` and `config` are NVDA's real code.** `config.initialize()` and `languageHandler.setLanguage("en")` ran as NVDA's own
-  unit-test bootstrap does.
-- **What this does not show.** Four of the stubbed names are not inert for the real work: `NVDAObjects`, `eventHandler`, `api` and the
-  virtual-buffer text source are where layers 3 and 5 plug in. Stubbed, `virtualBuffers` imports but builds no buffer. **Stage 2 is the
-  buffer builder**, and it is what the 51 (below: 47) system tests need.
-- **The system-test population does not match the ADR's quote** (*measured* on the checkout): `tests/system/robot/chromeTests.robot` holds
-  **47** test cases and `chromeTests.py` **43** `def test_` functions, against the ADR's quoted **51**; assertion calls in `chromeTests.py`
-  are **219** by grep (160 `strings_match`, 31 `speech_matches`, 2 `speech_contains`, 24 `braille_matches`, 2 `braille_contains`), so
-  **193 speech and 26 braille**, against the quoted "about 220 exact-speech". The 51 may be another release; **the row's number is the
-  checkout's, 47 tests and 193 speech assertions, until shown otherwise.**
-- **The seam is 13 native functions plus one handle type** (*measured*: `grep -o "localLib\.VBuf[A-Za-z_]*"` over
-  `source/virtualBuffers/__init__.py`): `VBuf_createBuffer, destroyBuffer, getTextLength, getTextInRange` (called with `useMarkup` true and
-  false), `getLineOffsets, getFieldNodeOffsets, getSelectionOffsets, setSelectionOffsets, locateControlFieldNodeAtOffset,
-  locateTextFieldNodeAtOffset, getControlFieldNodeWithIdentifier, getIdentifierFromControlFieldNode, findNodeByAttributes` and
-  `VBufRemote_bufferHandle_t`. `gecko_ia2.py` itself calls none of them: everything NVDA does with a buffer goes through that one module
-  object, so **stage 2 is a Python stand-in for `NVDAHelper.localLib` that builds its buffer from the Q1 tree**, and the XML parsing,
-  field handling and speech above it stay NVDA's.
-- **The seam is wider than the 13 above** (*measured* while building stage 2). Running a key press through NVDA's real browse-mode scripts
-  also reaches `localLib.calculateWordOffsets` and `calculateCharacterOffsets` (`textInfos/offsets.py`), so the native surface is **15
-  functions** (and `getTextFromIAccessible`, `findContentDescendant` for objects), and two of the pieces the first count treated as stubs are not inert: `IAccessibleHandler`'s role and state tables
-  (`_normalizeControlField` calls them, so the stand-in has to feed NVDA the real `oleacc`/`IAccessible2` constants and let that module
-  import), and the speech synth (`getSynth().name` is read by spelling speech). Three build artefacts are absent from the source tree
-  and had to be supplied: the generated `comInterfaces`, `locale/en/cldr.dic` (an **empty** file in the spike's overlay `appDir`, so
-  emoji and CLDR symbol names are not covered), and the test run's NVDA settings.
-- **Stage 2 (*measured*, 2026-10-17): 44 of the 47 system tests run, 227 exact-speech assertions, 206 exact; 34 tests agree on every assertion.**
-  What runs, layer by layer (the code is `~/spikes/announcement-emulator-5661/emu/` on the spike host, outside every a11ign repository):
-  - **Layer 0, driver:** a live Chrome 155 launched with the allowlisted companion extension, keys sent over the DevTools protocol
-    (`Input.dispatchKeyEvent`: Tab, Shift+Tab, Enter, Space move focus in the real browser), the tree and `getFocus()` re-read after each key.
-  - **Layer 2, Windows mapping:** `standin.py` maps a `chrome.automation` node to what Chromium's `AXPlatformNodeWin` gives NVDA. Role
-    tables are **generated** from Chromium 155.0.8059.84 `ax_platform_node_win.cc` (205 MSAA roles, 83 IA2 overrides) and the IA2 constants
-    from `ia2_api_all.idl`; leaf, hypertext, state and attribute rules are ported with the C++ line cited. It is also presented as an
-    IAccessible/IAccessible2 object (27 members, `objlayer.py`) so that **NVDA's own `NVDAObjects.IAccessible` Chrome classes
-    (`chromium`, `ia2Web`) instantiate unmodified** and pick the same overlay classes (`Document`, `Editor`, `Ia2Web`).
-  - **Layer 3, buffer builder:** a port of `gecko_ia2.cpp` `fillVBuf` (including aria details and error message) and `storage.cpp`
-    (markup, offsets, line offsets, `findNodeByAttributes`).
-  - **Layer 4, NVDA unmodified** (*measured*: `git status` over the checkout is clean): `ChromeVBuf`, `virtualBuffers`, `textInfos`,
-    `cursorManager`, `browseMode` (including `event_gainFocus` and `_set_selection`), `speech` and `speechDictHandler`, `characterProcessing`
-    with the pinned `nvda-cldr` `cldr.dic`, and the tests' own speech spy synth driver.
-  - **Focus-mode keys (added 2026-10-17, slice 10):** in focus mode an arrow, Ctrl+arrow, Home or End goes to the page. NVDA's own
-    `EditableText` script on the focused object runs, its `gesture.send()` sends the key to Chrome over the DevTools protocol, the tree is
-    re-read, the focused `NVDAObject` is pointed at the new tree's node, and NVDA's own `_hasCaretMoved` and caret-moved helper compare the
-    caret and speak it. The caret of a richly editable root comes from the tree selection (`rootWebArea.focusObject`/`focusOffset`), mapped
-    to an offset in the container's hypertext; a text child's offset 0 no longer counts as a line start when it sits on the previous inline
-    sibling's line (the dump drops `previousOnLine`, so the boxes' vertical extents stand in for it).
-  - **Layer 5, event bridge, minimal:** after Tab the new tree is read, the buffer is rebuilt, the focus line is worked out as
-    `api.setFocusObject` does (ported), and NVDA's own `event_gainFocus` runs. The buffer is **rebuilt per tree rather than updated
-    incrementally**, and the caret offset is carried over by offset.
-  - **The oracle** is the tests' own: pages, keys and expected strings are read from `tests/system/robot/chromeTests.py` by AST (the 47
-    cases listed in `chromeTests.robot`), the page wrapper is `ChromeLib._writeTestFile`, the settings are
-    `standard-dontShowWelcomeDialog.ini`, speech is captured as `speechSpyGlobalPlugin` does, and **each test runs in a fresh process**
-    because NVDA is restarted for each test.
+The 12 misses, each listed (full output: `emu/results-final.txt`):
 
-  | test | exact / asserted | what a miss is |
-  |---|---|---|
-  | `test_ariaErrorMessage` | 10 / 10 | |
-  | `test_focusTargetReporting` | 9 / 9 | |
-  | `test_tableNavigationWithMergedColumns`, `test_ensureNoBrowseModeDescription`, `test_ariaRoleDescription_block_contentEditable` | 5 / 5 each | |
-  | `test_i13307`, `test_ariaDescription_browseMode`, `test_ariaDescription_focusMode` | 4 / 4 each | |
-  | `test_ariaRoleDescription_focus`, `_block_browseMode`, `preventDuplicateSpeechFromDescription_focus`, `test_quickNavTargetReporting` | 3 / 3 each | |
-  | `test_mark_focus`, `test_i12147`, `test_focus_mode_on_focusable_read_only_lists`, `test_preventDuplicateSpeechFromDescription_browse_tab`, `test_tableInStyleDisplayTable`, `test_i10840`, `ARIAInvalid_spellingAndGrammar` | 2 / 2 each | |
-  | `test_reportLanguageDisabled`, `test_reportNotSupportedLanguageWithoutOtherLanguages`, `checkbox_labelled_by_inner_element` | 1 / 1 each | |
-  | `test_mark_aria_details_role`, `test_annotations_multi_target` | 4 / 4 each | |
-  | `test_ARIASwitchRole` | 10 / 10 | |
-  | `test_ariaDescription_sayAll` | 1 / 1 | |
-  | `test_tableSayAllCommands` | 9 / 10 | after a row-spanning cell, NVDA's expectation numbers the following cells one column lower than the browser's tree does (see below) |
-  | `test_tableSpeakAllCommands` | 5 / 6 | the same |
-  | `test_tableSayAllAxisCachingForMergedCells` | 2 / 3 | the same |
-  | `test_mark_browse` | 2 / 3 | the review cursor's second word, "Kangaroo", is spoken without "out of highlighted" that the expectation has; not isolated |
-  | `test_ariaTreeGrid_browseMode` | 6 / 6 | |
-  | `test_i10890` | 3 / 3 | |
-  | `test_ariaCheckbox_browseMode` | 2 / 2 | |
-  | `test_aria_details_noVBufNoTextInterface` (two cases) | 2 / 2 each | |
-  | `test_mark_aria_details`, `test_mark_aria_details_FreeReviewCursor` | 14 / 18 each | four per test follow from the same Ctrl+Right difference (below): the caret lands one word earlier, so the next announcements and the `NVDA+d` at the wrong place differ |
-  | `test_i7562` | 5 / 5 | |
-  | `test_styleNav` | 17 / 17 | |
-  | `test_textParagraphNavigation` | 15 / 15 | |
-  | `test_ariaRoleDescription_inline_contentEditable` | 2 / 5 | the image prompt (three) |
-  | `announce_list_item_when_moving_by_word_or_character` | 8 / 10 | **Ctrl+Right** from the start of \"small cat\" lands at the end of \"small\" in Linux Chrome (NVDA reads \"small\", expected \"cat\"), and the next Right follows from it; cause **read in Chromium's source** (2026-10-17): `EditingBehavior::ShouldSkipSpaceWhenMovingRight()` is true only for `kEditingWindowsBehavior`; the header's own comment says Ctrl+Right moves to "abc |def" on Windows and to "abc| def" on Mac and Linux (`third_party/blink/renderer/core/editing/editing_behavior.h`, main). The second miss is the same move: the caret sits one word earlier, so the next Right reads "c" not "a" |
-  | `test_pr11606` | 4 / 5 | `NVDA+upArrow` speaks \"list\" before the bullet line where the expectation does not (emulator incomplete; not isolated) |
-  | `test_ariaRoleDescription_inline_browseMode` | 0 / 3 | the image prompt |
-  | **total, 44 tests** | **206 / 227** | |
+| test | assertion | cause |
+|---|---|---|
+| `announce_list_item_when_moving_by_word_or_character` | Ctrl+Right from "small cat" (expected `cat`, got `small`); the next Right (`a`, got `c`) | **Windows-only editing behaviour of Chromium**, read in source (below) |
+| `test_mark_aria_details`, `test_mark_aria_details_FreeReviewCursor` | Ctrl+Right (expected `highlighted  has comment  cat  out of highlighted`, got `word`); the `NVDA+d` after it (`No additional details`) | the same: the caret sits one word earlier, so the details are looked up at the wrong place |
+| `test_ariaRoleDescription_inline_browseMode` (3 assertions) | the line with the image: expected `Start  Unlabeled graphic  Our logo. To get missing image descriptions, open the context menu.  End`, got `Start  drawing  Our logo  End` | **Chromium's image-description prompt and the role text `Unlabeled graphic`, present in the fleet's tree and absent from this Linux one** |
+| `test_ariaRoleDescription_inline_contentEditable` (3 of 5) | the same line in a contenteditable, and the two Ctrl+Right steps that count from it | the same |
 
-  **The 21 misses are of four kinds, and the largest is a Windows-only behaviour of Chromium, read in its source.** (a) **6 are the browser's
-  output differing**: the expected line carries Chrome's image-description prompt ("To get missing image descriptions, open the context menu."),
-  which the headless Linux tree does not (its cause, probably Chrome's screen-reader detection and an image-label preference, is not isolated).
-  (b) **10 follow from one Windows-only editing behaviour of Chromium** (Ctrl+Right skips the space on Windows only; the source is read, but the
-  Windows result itself is not reproduced here, since there is no Windows Chrome in this spike): 2 in `announce_list_item_when_moving_by_word_or_character`
-  and 4 in each `test_mark_aria_details` case, where the later steps are measured from a caret one word earlier. The ten are attributed to that
-  one cause by reading each, not proven by a Windows run. (c) **1 is the emulator being incomplete** (`test_pr11606`, `NVDA+upArrow` speaks "list"
-  where the expectation does not; not isolated). (d) **4 are not explained**: three table say-all steps, where after a cell that spans two rows the expectation (NVDA on Windows Chrome) numbers the next cells one column lower than the tree from Linux Chrome (`row 2  D 2  column 4  E 2` expected against `row 2  column 4  D 2  column 5  E 2`; the expectation reads as though a cell spanning from above is not counted in its row, which `AXPlatformNodeWin::get_columnIndex` does not suggest, so this may be Chromium-version or platform dependent, or a difference in what `chrome.automation` reports), and one review-cursor word step in `test_mark_browse`. The earlier reading of 89 counted focus-mode arrow keys as moves of the
-  browse-mode buffer, which is not what NVDA does: they passed `test_ariaDescription_focusMode` by that wrong route, and the real route
-  (page caret, NVDA's `EditableText`) needed the line-composition fix above before it agreed again.
-
-  **Slice 17 (2026-10-17): +5 tests, +23 assertions, 19 exact; no earlier assertion changed.** The say-all test is exact once the speech spy behaves like a
-  synth: a synth runs a `CallbackCommand` when it reaches it, after `speak()` has returned, and say-all re-enters itself from that callback
-  (running them inside `speak()` made `reader` still `None`). `numpad6` is the review cursor's own `script_review_nextWord`, and the four
-  `NVDA+control+alt+arrows` are the document's own table say-all scripts. The three tests still out of scope compare speech against the OS's
-  locale names (`languageHandler.getLanguageDescription` on Windows), which have no Linux equivalent to compare to.
-
-  **Slices 15 and 16 (2026-10-17): +4 tests, +21 assertions, all exact; one regression found and fixed on the way (`test_i12147`).** The four tests
-  that load pages from NVDA's pinned `w3c/aria-practices` checkout (`84b921a0`, fetched into the spike host and served over http) run: the ARIA
-  switch, the treegrid, the checkbox and the sortable data grid. They needed the harness to do what NVDA does, not the tests to be bent:
-  (1) **Tab, Enter and Space in browse mode are NVDA's own scripts** (`script_tab`, `_tabOverride`, `script_activatePosition`): focus is moved by
-  `obj.setFocus()` through `IAccessible::accSelect`, which the harness hands to the browser (`AutomationNode.focus()`), and an action by
-  `IAccessibleAction::doAction` (`doDefault()`); (2) **Chromium does implement `IAccessibleAction`**: the name of action 0 is the node's default action
-  verb, and NVDA's `click` makes a node clickable (my earlier note in the stand-in that it did not was wrong; it was read from the Chromium source in `browser_accessibility_com_win.cc`);
-  (3) NVDA's fallback for an object with no action is a mouse click at its centre, delivered with `Input.dispatchMouseEvent` after converting the node's
-  screen coordinates to viewport ones; (4) `scrollTo` scrolls the browser (`makeVisible()`), because a node outside a 300x150 iframe is offscreen and
-  then has no action; (5) after an input that does not move focus, Chromium's state-change events are raised on the focused node and its ancestors
-  (`NVDAObject.event_stateChange` speaks "on", "sorted descending"); (6) the review cursor module is NVDA's own (`numpad8`, `NVDA+tab`).
-  Faults in the harness this found, none in NVDA: the generated role table missed `kRow` (a braced conditional case), so every row read as role 0; an ARIA
-  treegrid is forced from outline to table early in `fillVBuf` (ported); `gridcell` has to appear in `xml-roles` for NVDA to treat it as focusable; and
-  header `sort` was not produced. **Two deviations from the real run, both to reproduce what `file://` does:** the example scripts add "Open In CodePen"
-  buttons only if their XHR for the example's files succeeds, which Chrome refuses under `file://`, so the page server refuses fetch/XHR
-  (`Sec-Fetch-Dest: empty`); and the pages are served over http at `/aria/...`.
-
-  **Slice 14 (2026-10-17): +5 tests, +44 assertions, 37 of them exact; no earlier assertion changed.** `NVDA+d` runs NVDA's real
-  `script_reportDetailsSummary`. Three emulator faults found: (1) Chromium's `details-roles` attribute was not produced (`ComputeDetailsRoles`,
-  `ax_platform_node_base.cc:2706`), so a rich editable's spans had no "has details"; (2) `IAccessibleText::caretOffset` answered -1 for a node
-  without a visible caret, where Chromium answers 0 with S_FALSE (`get_caretOffset`, `ax_platform_node_win.cc:4459`; `AXNode::HasVisibleCaretOrSelection`
-  is true only when the selection focus is inside the node and either a text field holds it or the selection is not collapsed); (3) the harness
-  set every object's tree interceptor to the buffer, where NVDA asks `ChromeVBuf.__contains__`, which is false for anything inside `role=application`;
-  that is now NVDA's own answer.
-
-  **Slice 13 (2026-10-17): +2 tests, +32 assertions, all exact, no earlier assertion changed.** `test_styleNav` and `test_textParagraphNavigation` run
-  NVDA's own style and paragraph navigation. Getting there found four emulator faults, none in NVDA: (1) the page wrapper declared no charset, so
-  Cyrillic and Chinese text reached the buffer as mojibake (`ChromeLib._writeTestFile` writes UTF-8 without one and Windows Chrome detects it;
-  the emulator's wrapper now carries `<meta charset="UTF-8">`, a deliberate deviation); (2) `textUtils.WideStringOffsetConverter` sizes an index by
-  `ctypes.sizeof(c_wchar)`, 2 on Windows and 4 on Linux, so every wide offset came out halved on Linux (`moveToCodepointOffset(3)` gave 1); the
-  boot restores the Windows 2; (3) the stand-in produced no font, size, colour or style text attributes, so every paragraph read as one style;
-  they are now Chromium's `ComputeTextAttributes` (`ax_platform_node_base.cc:2516`: `font-family`, `font-size` in points rounded to 0.5,
-  `font-weight`, `font-style`, `color`, `background-color`, the line-through and underline styles); (4) the extractor did not unroll `for` loops
-  nor apply `spy.assignGesture` (the user gesture map NVDA's own `scriptHandler` reads). Three Windows-only imports are stubbed to get past
-  `appModules.kindle` and `NVDAObjects.UIA.wordDocument` (`pycaw`, `cffi`, `cryptography`); the stub ledger lists them.
-
-  **206 of 227 is a fit to fixtures I read, not a prediction, and it is not the gate.** Everything below was added or changed **after
-  reading the expected strings**: the tests' NVDA settings, `description-from`, the `ChromeVBuf` buffer class (the first runs used the
-  Firefox class), the real `cldr.dic` (an empty one gave "list    frogs" for a bullet), related-element lookups, aria details and error
-  messages, `IAccessibleText`, `IAccessibleHypertext` and the content-descendant search, non-atomic text fields counting as text fields,
-  list markers counting as text, layout tables and the table half of `fillVBuf`, and spelling/grammar markers as text attributes, the tree-selection caret and the same-line rule for line starts, and (slice 13) Chromium's text style attributes.
-  Forty-four tests is 44 of 47, and 206 of the 227 assertion executions the extractor evaluates (it now unrolls a test's `for` loops, which is why the
-  denominator grew from 217; a helper that asserts is counted once per call); the gate is exact agreement on real pages' top 10 shapes against fleet transcripts, which is Q3 and is not
-  started.
-- **Reconstructed, not read:** IA2 `xml-roles` is Chromium's `kRole` string, `chrome.automation` does not expose it, and NVDA reads it to
-  tell an article, figure, region, switch or landmark from a plain document or group (`gecko_ia2.py:180-200`). The stand-in fills it from
-  the automation role for those roles, which over-reports where Chromium sets no `kRole` for a native element; it is an inference, and
-  `test_quickNavTargetReporting` needs it. `getTextFromIAccessible` (the error message's text) and `findContentDescendant` are
-  approximations of native routines, flagged in the code.
-- **What the other 19 tests need** (*measured*, `run_cases.py` scope check over the AST): table say-all and table speak-all
-  (`NVDA+control+alt+arrows`, 3 tests, asynchronous say-all generators); say-all (1); the W3C ARIA-practices example pages the tests load by
-  file path (4 tests; the pages are not fetched); the review cursor and `NVDA+tab` (2); the details command `NVDA+d` and the tests built
-  around it, with free review (5, whose braille assertions are also not checked: 43 braille assertions in the suite have no emulator
-  counterpart); expectations that are Windows' own names for languages (3 `reportLanguage*` tests: `languageHandler.getLanguageDescription`
-  reads the OS's locale names, which Linux does not have); and two whose expectation the extractor cannot yet unroll (a loop).
-- **A new OS dependency the ADR does not list:** word movement uses Uniscribe's `ScriptBreak` (`nvdaHelper/local/textUtils.cpp`). The
-  control flow of `_calculateUniscribeOffsets` is ported; the break attributes are an approximation of Unicode word stops. Any word-unit
-  result is therefore Windows-OS-dependent when it differs.
+- **Ctrl+Right (6 assertions).** `EditingBehavior::ShouldSkipSpaceWhenMovingRight()` is true only for `kEditingWindowsBehavior`; the header's own comment says Ctrl+Right moves to "abc |def" on Windows and to
+  "abc| def" on Mac and Linux (`third_party/blink/renderer/core/editing/editing_behavior.h`, main; *read* 2026-10-17, not reproduced on a Windows Chrome, and the fleet's capture has no Ctrl+Right to reproduce it with).
+- **The image-description prompt (6 assertions).** *Measured on the fleet*: the control pages of Q3 (a link whose only content is an `<img>` with no `alt`) are announced
+  `To get missing image descriptions, open the context menu., Unlabelled graphic` by Edge 155 on Windows, and the same pages in Chrome 155 on Linux have neither. With `--force-renderer-accessibility`
+  the browser's accessibility mode already includes `SCREEN_READER` (locked on at `chrome://accessibility`), so that is not the difference; **the switch that produces the prompt was not isolated.**
+- **What was wrong on 2026-10-17 and is not now.** The earlier page counted **21** misses and attributed **10** to Ctrl+Right, **1** to the emulator being incomplete and **4** to causes it could not
+  name. Re-measured: 12 misses. (a) `test_pr11606` (`NVDA+UpArrow` spoke `list`): the harness read the line from the browse-mode buffer, where NVDA's own `script_reportCurrentLine` reads the focus object in
+  focus mode; the harness now runs that script (+1). (b) `getLineOffsets` was ported without its `maxLineLength` refinement and without walking control nodes, so an empty block did not end a line; ported as
+  written (`storage.cpp:1066-1198`) it fixes `test_mark_browse`'s review-cursor step and **four** of the ten steps attributed to Ctrl+Right (+5): they were this, not a Windows behaviour. (c) The three
+  table say-all steps were missing Chromium's `colindex`/`rowindex` attributes, which it exposes where the ARIA index differs from the physical one (`ax_platform_node_base.cc:1349`) and which NVDA reports as
+  `table-columnnumber-presentational` (`gecko_ia2.cpp:984`): **after a cell that spans rows the Windows column is the ARIA one**, and the fleet confirms it (*measured* 2026-10-21: NVDA's own test table,
+  captured by a worker with the table probe, reads `row 2, column 1, A 2; column 2, B 2; column 3, D 2`), +3. Total +9 on the 206 of 2026-10-17 (+1, +5, +3), 215.
+- **No test was bent.** Every change above is to the stand-in or the harness, none to NVDA's source or to an expectation; `emu/results-final.txt` is the unedited run, and a clean build from `setup.sh`
+  (below) reproduces it.
+- **A fit to fixtures that were read, not a prediction, and not the Gate.** Everything listed under "Added after reading the expected strings" above still applies.
+- **Reconstructed, not read:** `xml-roles` (above), `getTextFromIAccessible` and `findContentDescendant` (approximations of native routines), the Uniscribe word-break table (`textUtils.cpp`'s
+  `ScriptBreak` is an OS text service; the break attributes are an approximation of Unicode word stops, so any word-unit result that differs is Windows-OS-dependent), and `cldr.dic`, which is the
+  pinned `nvda-cldr` data and not an empty file.
+- **What is not covered.** Three tests compare speech with Windows' own language names (`languageHandler.getLanguageDescription` calls `GetLocaleInfo`, `languageHandler.py:164`) and are out of scope;
+  the braille assertions have no emulator counterpart.
 
 ## Q3. How closely does it agree with fleet transcripts on the real-page corpus?
 
-**Not run.** It needs a consistent oracle: the fleet has taken no capture since 2026-10-12 and #5311 is open (the chairman's direction on
-#5661). It also needs the Q2 stage 2 buffer. Q3 starts when the fleet captures on one build and one Edge version.
+**Measured: 97.61% exact on the ten commonest shapes over the held-out half of the corpus (4,497 of 4,607), 98.37% after the fixes the reading revealed (4,341 of 4,413). Figures, populations,
+definitions and every miss follow. The Gate section says what that does and does not pass.**
+
+### What was compared
+
+- **The oracle** is the fleet's own capture record of a real page: the `structure` lists, one per quick-navigation sweep (`headings`, `landmarks`, `formFields`, `graphics`, `links`, `lists`, `frames`),
+  each the phrases Guidepup logged for NVDA's answer to the next-element key, in the order the worker met them. (`tableCells` is not swept for real pages: the table probe is opt-in and the worker's
+  own comment says not to use it as evidence yet.)
+- **The emulator** repeats the worker's procedure on the same address (`q3/sweep.py`, a re-implementation of `capture-probes.mjs` and `capture-pure.mjs`, not an import): load the page, `Escape` and
+  `Ctrl+Home`, read it line by line with Down Arrow until the worker's own stop rules end the read (page bottom, a wrap, silence, 600 lines), then sweep headings, landmarks, form fields (activating a
+  control announced `collapsed` with Enter, `NVDA+Tab` and `Escape`, and none else, as `probeForms` off allows), graphics, links, then, after another `Escape`+`Ctrl+Home`, lists and frames, each
+  backwards from where the caret stands and then forwards, deduplicating by the worker's `dedupeKey`, stopping on "no next", silence, 25 identical phrases or 250 steps. **What is logged for a key is
+  what Guidepup 0.31.0 logs**: the strings of the *first* speech message NVDA's Remote Access sends after the key (capture mode `initial`, the default; `CAPTURE_OPTIONS` is undefined in
+  `capture-setup.mjs`), trimmed, runs of white space collapsed, joined with `, `.
+- **Exact** is byte-equal strings. Nothing else is applied: both sides are already what the worker records.
+- **Unit and agreement.** One announcement is one entry of one channel of one page. It is **agreed** when it lies in the longest order-preserving matching of the fleet's list and the emulator's list by
+  exact equality (so one element the emulator misses, or adds, costs one, not every element after it). The count of announcements that agree *by position* is printed beside it and is lower.
+- **A shape** is the tuple of token kinds (ROLE, STATE, LEVEL, COUNT, POSITION, NAME) of an announcement split on `,`, by `classify()` of the fleet's `measure_announcement_shapes.py`, re-implemented in
+  `q3/shapes.py` (not imported: ADR 0045) with the role and state words read from the NVDA source this spike runs. **The ten commonest are ranked over the comparable pages of the run measured**, in
+  the channels that script reads (not frames).
+- **Fixed before any figure existed:** these definitions, the dev/held split (below), and the rule that a page is compared only if its two emulator runs agree and its census matches.
+
+### The oracle: the fleet, and the day it was read
+
+Read-only, 2026-10-20 21:12 UTC, `fleet:status` and each box's `/health` (`q3/results/fleet-readings.txt`):
+
+| | boxes | Windows | Edge | NVDA | worker code |
+|---|---|---|---|---|---|
+| **used** (workers 2 3 4 7 8 9 10 12 13 14 15 16) | **12** | 11 Pro 26300.9711 | 155.0.4283.62 | 2026.1.1 | `25bb45d9b38d7a62` |
+| left out: worker 6 | 1 | 26300.9711 | **155.0.4283.45** | 2026.1.1 | `25bb45d9b38d7a62` |
+| left out: worker 11 | 1 | **26200.9457** | **155.0.4283.45** | 2026.1.1 | `25bb45d9b38d7a62` |
+| left out: worker 5 | 1 | **22631.6199** (23H2, a CPU limit) | **155.0.4283.45** | 2026.1.1 | **`8f07fd23dc694ef3`** |
+
+The whole fleet never agreed (A11-31 closed on 2026-10-19 with the pin still at `.45` on three boxes; the Edge pin is control#116's, and this row changes none of it), so the rule set for this row applied: capture on
+the largest group that agrees (at least three), name it, and say what was left out. Twelve boxes agree on build, Edge, NVDA release, provision revision (`a20963f766666de8`), Guidepup (0.31.0), capture protocol (24) and
+window (1024x768, which the browser reports as 1008x729 inside). **Read again after the capture, unchanged** (the same table, `/health`, 2026-10-21 00:5x UTC). The NVDA settings, from the worker's
+`/diagnostics`: the voice is the OneCore `MSTTS_V110_enGB_GeorgeM`, `documentFormatting.reportEmphasis` and `reportLanguage` are on, `autoLanguageSwitching` on, `autoDialectSwitching` off, the Speech
+Viewer off, and everything else is NVDA's default (`q3/nvda-fleet.ini`). The system tests of Q2 use another file (`reportLinkType` off), which is why Q2 and Q3 are run under different settings.
+
+**The capture.** `capture-real-pages.mjs --role=calibration`, `--role=training`, `--role=field` (the roles `lab:pipeline --pipeline=real-pages` names), from the a11ign checkout on this host, with
+`A11Y_WORKERS` set to the twelve and the output kept outside every repository. The script's `assertFleetRunsThisCheckout` refused (this host's checkout expects worker code `dbe7c8cf55f930ba` from a layer
+clone older than what control deploys), so **`--allow-stale-workers` was passed**; the script says so in its output, the fleet serves one code hash on all twelve, and the script is the same as
+`a11ign/lab`'s apart from one import path. `lab:pipeline` itself could not be used: it runs from the control plane, which this host is not. Request body as the script sends it: `probeForms` false,
+`probeFocus`, `probeNavigation`, `probeFocusContext`, `probeFocusReveal` on, `steps` 600. **102 pages (55 calibration, 41 training, 6 field), 21:16 to 22:09 UTC, 0 failed.** The lab's own identity check
+found 101 of 102 described the page requested (not matched: `mailchimp.com`). Nothing was changed on any box.
+
+**Two oracle faults found.** (1) **On four pages the fleet's browser was not on the requested page** when NVDA read it: `documentReady` reports the title `Microsoft Terms of Use ... Microsoft Edge` for
+`components/error-message/` and `components/error-summary/` (every announcement of both records is Microsoft's), and `Copilot` for two W3C demo pages. A fifth, a control page of ours (below), came back as the page titled `Copilot` on its first request after a quiet period. Those pages are *not comparable*. (2) **The fleet's browser keeps its history**, and Chromium announces a link `visited` when its address is in it.
+That is the largest source of misses (below), and it is not something this host can read: the Ansible route is not available here (no inventory on this host), and a worker's `/diagnostics`
+reports only the profile's size.
+
+### The emulator, as run for Q3
+
+The code is Q2's, with the harness of `q3/` around it, **frozen at commit `5fbd726` before the held-out half was measured** (`q3/results/` has the runs; the Q2 suite at that commit is 215 of 227). What
+differs from Windows, all of it deliberate and listed so a miss can be read against it: (a) Chrome 155.0.8059.84 for Testing on Linux, `--headless=new`, a Windows Edge user agent and a 1008x872 window
+(the page gets the fleet's 1008x729); (b) the fleet's NVDA settings; (c) NVDA's `scrollIntoView` is **not** delivered to the browser per key (it costs a second a key; `LivePage.scroll_browser`); at the freeze nothing stood in for it, and
+the **scroll pass** that now does (the page is scrolled to its end and back before the sweeps, so what loads on scroll has loaded) was added after the held-out reading; (d) the display model answers empty; (e) the browser's
+history is modelled as the first link of each page of the corpus (`q3/make_history.py`: the route-change probe follows it), which is a guess about the fleet and is wrong in both directions (below);
+(f) no OS language names, no Chromium image-description prompt, no `Ctrl+Right` quirk (Q2).
+
+### The protocol: development half and held-out half
+
+A page is **dev** when the SHA-256 of its address, read as a number, is even (42 pages) and **held** when odd (60 pages) (`q3/split.py`), a function of the address alone, fixed before any figure existed.
+The emulator was fixed against the dev pages' fleet strings only (`measure.py` refuses to print a held page's strings without `--final`). At commit `5fbd726` it was frozen and run once on the held
+pages, twice per page. Fixes made *after* reading the held-out misses (two) are marked and measured separately: that second figure is **no longer held out**.
+
+| run | dev pages | held pages |
+|---|---|---|
+| first full dev reading, after the first fixes (`2341750`) | 97.02% (2,965 of 3,056, 32 comparable pages) | not read |
+| **at the freeze** (`5fbd726`) | 98.37% (3,023 of 3,073, 30 pages) | **97.61% (4,497 of 4,607, 47 pages)** |
+| after the held-out reading (`529e4ec`) | 98.37% (3,023 of 3,073) | 98.37% (4,341 of 4,413, 46 pages), **not held out** |
+
+### The results
+
+**At the freeze, held-out half** (`q3/results/measure-held-freeze.txt`; pasted):
+
+```
+pages 60 (held)  comparable: 47   unstable: 3   not comparable: 9   emulator fault: 1
+   unstable: https://data.southwark.gov.uk/data-catalog-explorer/  [unstable: the two emulator runs differ]
+   unstable: https://www.hubspot.com/  [unstable: the two emulator runs differ]
+   unstable: https://www.leeds.ac.uk/undergraduate  [unstable: the two emulator runs differ]
+   not comparable: https://european-union.europa.eu/index_en  [not comparable: link fleet 32 / emulator 31]
+   not comparable: https://sheffield.ac.uk/postgraduate/taught/courses/2027  [not comparable: heading fleet 24 / emulator 25]
+   not comparable: https://weather.metoffice.gov.uk/warnings-and-advice/uk-warnings  [not comparable: heading fleet 0 / emulator 24, link fleet 6 / emulator 8]
+   not comparable: https://www.adobe.com/  [not comparable: heading fleet 25 / emulator 24, link fleet 30 / emulator 24]
+   not comparable: https://www.historicenvironment.scot/visit/all/edinburgh-castle/  [not comparable: headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing  [not comparable: headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.nrscotland.gov.uk/publications/  [not comparable: heading fleet 20 / emulator 1, link fleet 45 / emulator 1, headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.nrscotland.gov.uk/statistics-and-data/  [not comparable: heading fleet 3 / emulator 1, link fleet 37 / emulator 1, headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.w3.org/WAI/demos/bad/before/news.html  [not comparable: document title fleet 'Copilot' / emulator 'Welcome to CityLights! [Inaccessible New', headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   emulator fault: https://ico.org.uk/action-weve-taken/enforcement/  [emulator fault: timeout 900s]
+agreement by element kind (47 comparable pages)
+     exact / total       %  positional
+      695 / 739       94.0%         614  headings
+     3491 / 3602      96.9%        3406  links
+      265 / 267       99.3%         252  buttons
+      583 / 620       94.0%         565  formFields
+      472 / 508       92.9%         460  landmarks
+      494 / 503       98.2%         494  lists
+      120 / 138       87.0%         104  graphics
+       47 / 60        78.3%          47  frames
+
+agreement by swept channel
+     exact / total       %  positional
+      695 / 739       94.0%         614  headings
+      472 / 508       92.9%         460  landmarks
+      848 / 887       95.6%         817  formFields
+      120 / 138       87.0%         104  graphics
+     3491 / 3602      96.9%        3406  links
+      494 / 503       98.2%         494  lists
+       47 / 60        78.3%          47  frames
+
+shapes: 6377 announcements in 283 distinct shapes; top 10 cover 4607 = 72.2% (the fleet's script quotes 33 shapes, top 10 = 94.3%)
+
+agreement by shape (top 10, ranked in this run)
+     exact / total       %  positional
+     2260 / 2274      99.4%        2191  NAME + ROLE
+      455 / 467       97.4%         390  NAME + ROLE + LEVEL
+      421 / 427       98.6%         416  NAME + ROLE + STATE
+      321 / 321      100.0%         313  NAME + ROLE + ROLE + COUNT + NAME + ROLE
+      286 / 286      100.0%         277  ROLE + COUNT + NAME + ROLE
+      255 / 261       97.7%         251  NAME + NAME + ROLE
+      189 / 248       76.2%         185  NAME + STATE + ROLE
+      106 / 111       95.5%          96  NAME + ROLE + NAME + ROLE + LEVEL
+      109 / 109      100.0%         107  NAME + ROLE + ROLE + LEVEL
+       95 / 103       92.2%          86  NAME + ROLE + NAME + ROLE
+
+GATE: 4497 of 4607 = 97.61% exact on the top 10 shapes   (positional: 4312 of 4607)   [BELOW 98%]
+      with the not-comparable pages kept in: 4797 of 4955 = 96.81%
+      emulator announcements with no counterpart in the fleet's lists (extras): 222
+      top-10 misses by cause: history 61, unexplained 43, language 6
+      the same, with the pages' `history` misses not counted as misses against us: 4558 of 4607 = 98.94%   (an upper bound if the fleet's browser history could be reproduced)
+      misses over all channels: 270 of 6437; on top-10 shapes: 110
+```
+
+The measure's `unexplained 43` is split by `q3/attribute.py` (below) into 34 shown to be emulator bugs and 9 left; its `history` and `language` are rules in `measure.py`'s `classify`.
+
+**After the held-out reading** (`q3/results/measure-held-post.txt`; pasted; not held out):
+
+```
+pages 60 (held)  comparable: 46   unstable: 4   emulator fault: 1   not comparable: 8   second run fault: 1
+   unstable: https://data.southwark.gov.uk/data-catalog-explorer/  [unstable: the two emulator runs differ]
+   unstable: https://design-system.service.gov.uk/components/radios/  [unstable: the two emulator runs differ]
+   unstable: https://www.dropbox.com/  [unstable: the two emulator runs differ]
+   unstable: https://www.leeds.ac.uk/undergraduate  [unstable: the two emulator runs differ]
+   emulator fault: https://ico.org.uk/action-weve-taken/enforcement/  [emulator fault: timeout 600s]
+   not comparable: https://sheffield.ac.uk/postgraduate/taught/courses/2027  [not comparable: heading fleet 24 / emulator 25]
+   not comparable: https://weather.metoffice.gov.uk/warnings-and-advice/uk-warnings  [not comparable: heading fleet 0 / emulator 24, link fleet 6 / emulator 8]
+   not comparable: https://www.historicenvironment.scot/visit/all/edinburgh-castle/  [not comparable: headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.hubspot.com/  [not comparable: link fleet 80 / emulator 81, document title fleet 'Hub Spot Software and Tools for your Bus' / emulator 'HubSpot | Software & Tools for your Busi']
+   not comparable: https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing  [not comparable: headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.nrscotland.gov.uk/publications/  [not comparable: heading fleet 20 / emulator 1, link fleet 45 / emulator 1, headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.nrscotland.gov.uk/statistics-and-data/  [not comparable: heading fleet 3 / emulator 1, link fleet 37 / emulator 1, headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   not comparable: https://www.w3.org/WAI/demos/bad/before/news.html  [not comparable: document title fleet 'Copilot' / emulator 'Welcome to CityLights! [Inaccessible New', headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document]
+   second run fault: https://www.adobe.com/  [second run fault: timeout 600s]
+agreement by element kind (46 comparable pages)
+     exact / total       %  positional
+      675 / 676       99.9%         675  headings
+     3367 / 3480      96.8%        3282  links
+      261 / 262       99.6%         253  buttons
+      593 / 593      100.0%         588  formFields
+      468 / 505       92.7%         456  landmarks
+      483 / 492       98.2%         483  lists
+      107 / 123       87.0%         107  graphics
+       50 / 50       100.0%          50  frames
+
+agreement by swept channel
+     exact / total       %  positional
+      675 / 676       99.9%         675  headings
+      468 / 505       92.7%         456  landmarks
+      854 / 855       99.9%         841  formFields
+      107 / 123       87.0%         107  graphics
+     3367 / 3480      96.8%        3282  links
+      483 / 492       98.2%         483  lists
+       50 / 50       100.0%          50  frames
+
+shapes: 6131 announcements in 281 distinct shapes; top 10 cover 4413 = 72.0% (the fleet's script quotes 33 shapes, top 10 = 94.3%)
+
+agreement by shape (top 10, ranked in this run)
+     exact / total       %  positional
+     2154 / 2155     100.0%        2102  NAME + ROLE
+      419 / 420       99.8%         419  NAME + ROLE + LEVEL
+      417 / 417      100.0%         414  NAME + ROLE + STATE
+      316 / 316      100.0%         308  NAME + ROLE + ROLE + COUNT + NAME + ROLE
+      280 / 280      100.0%         271  ROLE + COUNT + NAME + ROLE
+      252 / 258       97.7%         248  NAME + NAME + ROLE
+      187 / 249       75.1%         183  NAME + STATE + ROLE
+      109 / 109      100.0%         107  NAME + ROLE + ROLE + LEVEL
+      107 / 107      100.0%         105  NAME + ROLE + NAME + ROLE + LEVEL
+      100 / 102       98.0%          96  NAME + ROLE + NAME + ROLE
+
+GATE: 4341 of 4413 = 98.37% exact on the top 10 shapes   (positional: 4253 of 4413)   [AT OR ABOVE 98%]
+      with the not-comparable pages kept in: 4695 of 4798 = 97.85%
+      emulator announcements with no counterpart in the fleet's lists (extras): 191
+      top-10 misses by cause: history 64, language 6, unexplained 2
+      the same, with the pages' `history` misses not counted as misses against us: 4405 of 4413 = 99.82%   (an upper bound if the fleet's browser history could be reproduced)
+      misses over all channels: 177 of 6181; on top-10 shapes: 72
+```
+
+**The whole corpus**, both halves, comparable pages: after the fixes **98.40% (7,357 of 7,477)**; at the freeze 98.02% (7,522 of 7,674). The dev half was developed against, so this is not a held-out figure.
+On the ten shapes the corpus is not what the quoted 94.3% describes: on real pages the ten commonest shapes cover **72.8%** of announcements (384 distinct shapes, against 33 on the fleet's synthetic
+dataset), so the Gate speaks for about three quarters of what NVDA says on these pages. Over **every** announcement of every channel (frames included) on the comparable pages, the agreement after the
+fixes is **10,049 of 10,349 = 97.1%**.
+
+**Not comparable, listed** (kept out of the denominators; with them in, the held-out figure at the freeze is 96.81% and after the fixes 97.85%): the pages in the headers above. Their reasons, as the
+measure states them: the document title or the heading/link census differs from the emulator's (a live page that changed, or the fleet's browser on another document, or a bot-protection page for the
+headless browser: `nrscotland.gov.uk` gave the emulator one heading and one link: probably a bot-protection page, not checked), or the two emulator runs disagree (a carousel or a feed). **Two comparability rules were corrected after the first held-out
+reading** and both corrections are in the figures above, with the first reading kept: the title test compared what the fleet's NVDA *spoke* (`GOV dot UK Design System`) with the document's (`GOV.UK Design
+System`), which excluded nine pages whose identity is not in doubt, and the graphic count was used although the fleet's census and the emulator count images differently (on W3C's demo pages, which do
+not change, they differ by two), which excluded four more. **As first frozen, the held-out figure was 98.12% (3,071 of 3,130) over 34 pages**, and after the fixes 98.00% (2,995 of 3,056); the corrected rules put 13 more pages in
+and the figure lower, not higher (`q3/results/measure-held-freeze-as-frozen.txt`, `measure-held-post-as-frozen.txt`).
+
+**The control: static pages, no drift.** The control this row set is the synthetic dataset pages (1,715 cases, 3,430 pages, `runs/screenreader-dataset/pages`). Its fleet captures are not on disk, so a fixed
+sample was captured on the fleet for this row: every 21st page of the sorted list, **160 pages**, served from `capture-host` (the machine this work ran on) and captured by the twelve boxes with the same request as the real pages
+(`q3/control_capture.py`). The emulator, unchanged, on them (`q3/results/measure-control-freeze.txt`). Their strings were read while the emulator was developed, to see what the misses were (the image prompt, `visited`, and the order that follows a missing graphic), but **nothing in the emulator was changed because of them**:
+
+```
+agreement by element kind (159 comparable pages)
+     exact / total       %  positional
+      702 / 702      100.0%         702  headings
+      916 / 938       97.7%         908  links
+       92 / 92       100.0%          92  buttons
+      107 / 107      100.0%         107  formFields
+      184 / 184      100.0%         184  landmarks
+      162 / 162      100.0%         162  lists
+       23 / 33        69.7%          23  graphics
+
+agreement by swept channel
+     exact / total       %  positional
+      702 / 702      100.0%         702  headings
+      184 / 184      100.0%         184  landmarks
+      199 / 199      100.0%         199  formFields
+       23 / 33        69.7%          23  graphics
+      916 / 938       97.7%         908  links
+      162 / 162      100.0%         162  lists
+
+shapes: 2218 announcements in 28 distinct shapes; top 10 cover 2122 = 95.7% (the fleet's script quotes 33 shapes, top 10 = 94.3%)
+
+agreement by shape (top 10, ranked in this run)
+     exact / total       %  positional
+      707 / 721       98.1%         699  NAME + STATE + ROLE
+      616 / 616      100.0%         616  NAME + ROLE + LEVEL
+      211 / 211      100.0%         211  ROLE + NAME + ROLE + LEVEL
+      192 / 192      100.0%         192  NAME + ROLE
+      137 / 143       95.8%         137  ROLE + COUNT + NAME + STATE + ROLE
+      142 / 142      100.0%         142  ROLE + COUNT + NAME + NAME
+       38 / 38       100.0%          38  NAME + ROLE + STATE
+       31 / 31       100.0%          31  ROLE + ROLE + NAME
+       15 / 15       100.0%          15  ROLE + COUNT + NAME
+       13 / 13       100.0%          13  ROLE
+
+GATE: 2102 of 2122 = 99.06% exact on the top 10 shapes   (positional: 2094 of 2122)   [AT OR ABOVE 98%]
+      with the not-comparable pages kept in: 2102 of 2122 = 99.06%
+      emulator announcements with no counterpart in the fleet's lists (extras): 26
+      top-10 misses by cause: prompt-downstream 16, history 4
+      the same, with the pages' `history` misses not counted as misses against us: 2106 of 2122 = 99.25%   (an upper bound if the fleet's browser history could be reproduced)
+      misses over all channels: 32 of 2218; on top-10 shapes: 20
+```
+
+All 20 misses on the ten shapes are accounted for: **16 are downstream of one prompt** (a page with an unlabelled image: the fleet's graphic sweep finds it, the emulator's does not, the link sweep begins
+where the graphic sweep ended and so reaches the links in another order; inferred from the same page carrying the prompt miss) and **4 are `visited`**. On static pages the emulator agrees with the fleet
+on every other announcement of the ten shapes.
+
+### What the held-out reading found, and what was done
+
+The 270 held-out misses of all channels at the freeze, and the 110 on the ten shapes (`q3/results/misses-held-freeze-attributed.json` has every one: page, channel, expected, predicted, cause):
+
+| cause | on the ten shapes | all channels | evidence |
+|---|---|---|---|
+| **emulator bug, shown** by fixing it | 34 | 71 | agreed after the fix on the same page, comparable in both runs. Of the 71: 69 are **lazily loaded content** (four GOV.UK Design System component pages, and one line of `ofgem.gov.uk`, load what they show on scroll; the emulator read the page before it existed, and the fleet's NVDA scrolls the browser as the caret moves), 2 are a **toggle button announced `checked`** as well as `pressed` (`ax_platform_node_win.cc:8161`) |
+| **history** (`visited`) | 61 | 137 | the only difference is where the word `visited` stands; below |
+| **Windows-only: language names** | 6 | 20 | the fleet says `Welsh (not supported)`, the emulator `cy (not supported)`, or the fleet says `English` where the emulator says nothing; `languageHandler.getLanguageDescription` calls `GetLocaleInfo` (`languageHandler.py:164`) for the name; the fleet's transcripts show the Windows names |
+| **unexplained** | 9 | 42 | below |
+
+The unexplained nine at the freeze: six on `components/radios/` (the same missing frame contents as the lazy-loading group, but the page's two runs disagreed after the fix, so it is not shown), one each on
+`bathingwaters.sepa.org.uk` (a cookie region the fleet's browser had and the emulator's did not), `dropbox.com` (an image the fleet announces, the emulator misses; unstable) and `notion.com`
+(a hero line that rotates: the fleet read `Build together.`, the two emulator runs `Create` and `Jam`). **A miss that is explained by a live page is not accepted as an explanation** (a rule set for this row before anything was measured), so
+these stay unexplained.
+
+**After the fixes** (held, not held out), the 72 misses on the ten shapes are **64 history, 6 language names, 2 unexplained** (`bathingwaters` and `notion`, above).
+
+### `visited`: the largest source of misses, and neither of the Gate's two classes
+
+A link whose address is in the browser's history is announced with `visited`. The fleet's browsers keep their history across captures. It is **not an emulator bug** (a fresh Chrome has no history; the
+emulator can only guess) and **not Windows-only** (any Chromium would say it with the same history). Of the held-out misses on the ten shapes, `visited` is 61 of 110 at the freeze and 64 of 72 after the fixes;
+it alone makes the shape `NAME + STATE + ROLE` agree 73.0% (254 of 348) over the corpus, and every other shape of the ten at least 96.2%. The emulator's guess (a profile that has visited the first link of
+each corpus page) is right on many pages (the cookie-settings link every GOV.UK Design System page opens) and wrong in both directions (W3C's home link is `visited` on the fleet and cannot be derived from
+the corpus; a skip link is `visited` in the emulator and not on the fleet). **Leaving `visited` out of the comparison would put the held-out figure after the fixes at 99.82% (4,405 of 4,413) and the
+whole corpus at 99.67%**; that is a statement about the emulator and not a Gate figure, because the Gate says nothing is left out.
+
+### Reproduction of the measurement
+
+`python q3/run_all.py <oracle_dir> <out_dir> --split held --runs 2 --history <history.json>` runs the emulator, `python q3/measure.py <oracle_dir> <out_dir> --split held --final` measures. The oracle
+records are third-party pages and are not committed; `q3/results/` has the derived data: the corpus list with each page's split, the measure's output for each run, every miss with its two strings, the
+fleet readings, and the control pages with the fleet's records of them.
 
 ## Gate
 
-**Not measured.** Gate: at least 98% exact agreement on the 10 most common announcement shapes, every miss explained as an emulator bug or a
-Windows-only behaviour. Measured exact agreement: **none yet; denominator: none yet.** Below the gate the spike stops and this page is the
-write-up. Nothing beyond the spike is built before the gate passes.
+**Measured exact agreement on the ten commonest announcement shapes, held-out half of the real-page corpus, at the freeze: 4,497 of 4,607 = 97.61%. Below 98%. The Gate is not passed.**
 
-## Reproduction (on the spike host)
+| | exact / total | | pages compared | not comparable |
+|---|---|---|---|---|
+| **at the freeze (`5fbd726`), held out, rules as corrected** | **4,497 of 4,607 = 97.61%** | below 98% | 47 of 60 | 9, and 3 unstable, 1 timed out |
+| the same, rules as first frozen | 3,071 of 3,130 = 98.12% | at or above | 34 of 60 | 22 |
+| after fixing what the held-out reading showed (not held out) | 4,341 of 4,413 = 98.37% | at or above | 46 of 60 | 8, and 4 unstable, 2 timed out |
+| the whole corpus, after the fixes (the dev half was developed against) | 7,357 of 7,477 = 98.40% | at or above | 76 of 102 | 19 |
+| the control: 160 static synthetic pages (read, nothing fitted to it) | 2,102 of 2,122 = 99.06% | at or above | 159 of 160 | 1 |
 
-- Q1: `~/spikes/announcement-emulator-5661/q1/run.mjs allow <out.json>` launches the browser with the extension and the allowlist switch
-  and writes what the extension heard. The negative control is `run.mjs noallow`. Chrome needs libraries the host lacks (`libatk`,
-  `libasound`, `libXdamage`, `libavahi`, ...), unpacked without root under `libs/root` and put on `LD_LIBRARY_PATH`.
-- Q2: `~/spikes/announcement-emulator-5661/q2/run-import.sh <modules and script>` (the stub list is in the script).
-- Q2 stage 2: `cd ~/spikes/announcement-emulator-5661/emu && ../q2/venv/bin/python run_cases.py` runs each in-scope test in its own process:
-  it starts a live Chrome 155 (`session.py`, `session.mjs`, the companion extension in `ext2/`), loads the test's wrapped page, replays the
-  test's keys (`live.py`, `driver.py`), builds the buffer from the tree (`standin.py`, `objlayer.py`) and prints each exact-string comparison.
-  `run_cases.py --one <test>` runs one; `classify.py` prints what the others need; `gen_tables.py` regenerates the role tables from the
-  Chromium and NVDA sources. Needs `nvda-appdir/` (a symlink overlay of `source/` whose `locale/en/cldr.dic` is the pinned `nvda-cldr`
-  data) and the settings file from the checkout. The code is outside every a11ign repository.
+**Each miss, as the ticket asks:** the ten shapes' 110 misses at the freeze are classed above and in `q3/results/misses-held-freeze-attributed.json` with their expected and predicted strings and addresses.
+The ticket's Gate is "at least 98% exact agreement ... every miss explained as an emulator bug or a Windows-only behaviour"; this row read that as *at least 98% and no unexplained miss*, and took a miss on a page that changed as unexplained, not explained:
+
+- **At the freeze, the Gate is not passed on the number (97.61%) and on the rule**: 34 misses are emulator bugs (fixed afterwards, shown by the same strings agreeing), 6 are Windows-only (language names, with
+  the source line and the fleet's transcripts), **61 are `visited`, which fit neither class, and 9 are unexplained.**
+- **After the fixes the number is 98.37% and the rule still fails**: 6 Windows-only, **64 `visited`**, 2 unexplained. That figure is not a held-out figure (the two faults were found by reading the held-out misses), and the rule fails on `visited`, which the two classes do not cover, whatever the number.
+- **What a pass would need.** Either the Gate's wording accepts a third class for the oracle's own state (the fleet's browser history), or the oracle is re-captured on a browser with no history, which
+  is a worker change (a clean or private profile) and not this row's, and which this host cannot do: the fleet is changed through Ansible from the control plane, and no inventory is available here.
+  With `visited` removed the emulator is at 99.8% on the held-out half. **That decision is the chairman's, and this page does not make it.**
+
+**What the number means.** After the two faults were fixed the emulator reproduces the exact words NVDA speaks for about 98.4% of the announcements of the ten commonest shapes on these real pages
+(98.37% held out, 98.40% over the corpus), and 99.1% on static pages. It is not 98% of everything NVDA says: the ten shapes are 72.8% of the announcements on these pages, and over every announcement
+the agreement is 97.1%. It was measured against twelve boxes of one fleet on one day, on pages that change, with a state of the fleet's own (browser history) that the Gate's two classes cannot absorb.
+
+**Below the gate, the spike stops here.** Nothing beyond the spike is built: no CI engine, no listen mode, no extension. The repository, its name, its licence wording ("only" or "or later") and the
+absorption of `nvda-speech` (ADR 0047, Decision 3) are the chairman's and are untouched.
+
+## What this page does not settle, and follow-ups
+
+- **ADR 0047 quotes `51 tests, about 220 exact-speech assertions`** for Q2 and layer 1 as `getTree`; the checkout has 47 and 193 (227 as executed), and layer 1 is `getDesktop`. The ADR's "after #2568" wording
+  is also stale. These are edits to an a11ign document, not made here.
+- **The fleet's oracle has two faults a Gate would need removed**: browser history (above) and a first request that sometimes lands on the browser's own pages (Microsoft Terms, Copilot; 4 of 102, and 1
+  of 4 on a control page). Both are worker-side. The Edge split on three boxes is control#116's.
+- **The image-description prompt** (`To get missing image descriptions, open the context menu., Unlabelled graphic`) is in the fleet's tree and not the Linux one, and the switch that produces it was not
+  isolated (Q2, Q3). It is the one Windows-side behaviour that moves a shape the Gate counts, on pages with unlabelled images.
+- **Not run:** the 507-test check of the Windows mapping against Chromium's `-expected-win.txt` files; the 3 language-name tests; braille; the Ctrl+Right behaviour on a Windows Chrome.
+- **The emulator's known gaps seen in the misses**: a modal dialog opened by the sweep's own activation seals NVDA's quick navigation inside it on Windows and the emulator has no tree interceptor
+  for that (`gov.scot/publications`: a date picker; the dev half); the fleet's `visited` history; time-varying text.
+
+## Reproduction
+
+- **Build the downloads:** `EMU_DOWNLOADS=/some/dir ./setup.sh` (git, curl, python3, dpkg-deb, apt-get download; about 2.5 GB). It fetches NVDA `release-2026.1.1` (`5d92106f...`), `nvda-cldr` (`6d3ba86c...`), the
+  W3C ARIA examples (`84b921a0`), the six Chromium files the tables are generated from (tag `155.0.8059.84`), Chrome for Testing 155.0.8059.84, the Chrome libraries as `.deb`s unpacked under `libs/root`,
+  and Python 3.13.16 with its virtualenv. A clean build from this script, with the repository's code, runs the Q2 suite to the same 215 of 227 (*measured* 2026-10-21, `emu/results-final.txt`).
+- **Q1:** `q1/run.mjs allow <out.json>` launches the browser with the extension and the allowlist switch and writes what the extension heard; the negative control is `run.mjs noallow`.
+- **Q2:** `cd emu && $EMU_DOWNLOADS/q2/venv/bin/python run_cases.py` runs each in-scope test in its own process (`--one <test>` runs one; `classify.py` prints what the others need; `gen_tables.py`
+  regenerates the role tables from the Chromium and NVDA sources).
+- **Q3:** `q3/emulate.py <url> <out.json> [--history h.json]` is one page; `q3/run_all.py` is a directory of fleet records; `q3/measure.py` measures; `q3/attribute.py` joins two runs; `q3/fleet_capture.mjs`
+  and `q3/control_capture.py` ask the fleet for a capture of an address of ours (they change nothing on a worker); `q3/firstlinks.py` and `q3/make_history.py` build the history guess.
+- **The environment variables:** `EMU_DOWNLOADS` (where `setup.sh` put things), `EMU_NVDA_INI` (the settings file: `q3/nvda-fleet.ini` for Q3, the tests' own by default), `EMU_PORT`/`EMU_CDP` (per-session ports).
+

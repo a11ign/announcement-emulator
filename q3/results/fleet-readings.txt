@@ -1,0 +1,39 @@
+# fleet:status and each worker's /health, read 2026-10-20T21:12Z (before the capture) and 2026-10-21T00:5xZ (after it); 'environment' fields as the worker reports them
+# the 12 boxes the capture used: a11y-worker-2 a11y-worker-3 a11y-worker-4 a11y-worker-7 a11y-worker-8 a11y-worker-9 a11y-worker-10 a11y-worker-12 a11y-worker-13 a11y-worker-14 a11y-worker-15 a11y-worker-16
+
+## after
+  a11y-worker-2  ready  25bb45d9b38d7a62  28 captures, 1 recoveries
+  a11y-worker-3  ready  25bb45d9b38d7a62  23 captures, 1 recoveries
+  a11y-worker-4  ready  25bb45d9b38d7a62  25 captures, 0 recoveries
+  a11y-worker-5  ready  8f07fd23dc694ef3  0 captures, 0 recoveries
+  a11y-worker-6  ready  25bb45d9b38d7a62  3 captures, 0 recoveries
+  a11y-worker-7  ready  25bb45d9b38d7a62  24 captures, 1 recoveries
+  a11y-worker-8  ready  25bb45d9b38d7a62  21 captures, 1 recoveries
+  a11y-worker-9  ready  25bb45d9b38d7a62  22 captures, 1 recoveries
+  a11y-worker-10  ready  25bb45d9b38d7a62  22 captures, 1 recoveries
+  a11y-worker-11  ready  25bb45d9b38d7a62  0 captures, 0 recoveries
+  a11y-worker-12  ready  25bb45d9b38d7a62  23 captures, 1 recoveries
+  a11y-worker-13  ready  25bb45d9b38d7a62  24 captures, 0 recoveries
+  a11y-worker-14  ready  25bb45d9b38d7a62  23 captures, 0 recoveries
+  a11y-worker-15  ready  25bb45d9b38d7a62  22 captures, 0 recoveries
+  a11y-worker-16  ready  25bb45d9b38d7a62  23 captures, 1 recoveries
+  15/15 serving /health (the capture channel)
+  fleet INCONSISTENT across 15 of 15 — browserVersion: a11y-worker-2=155.0.4283.62 a11y-worker-3=155.0.4283.62 a11y-worker-4=155.0.4283.62 a11y-worker-5=155.0.4283.45 a11y-worker-6=155.0.4283.45 a11y-worker-7=155.0.4283.62 a11y-worker-8=155.0.4283.62 a11y-worker-9=155.0.4
+  fleet SPLIT — 2 different code hashes: 25bb45d9b38d on 14, 8f07fd23dc69 on 1.
+
+worker code nvda edge windows provisionRevision guidepup window
+a11y-worker-2 25bb45d9b38d7a62 2026.1.1 155.0.4283.62 26300.9711 a20963f766666de8 0.31.0 1024x768
+a11y-worker-3 25bb45d9b38d7a62 2026.1.1 155.0.4283.62 26300.9711 a20963f766666de8 0.31.0 1024x768
+a11y-worker-4 25bb45d9b38d7a62 2026.1.1 155.0.4283.62 26300.9711 a20963f766666de8 0.31.0 1024x768
+a11y-worker-5 8f07fd23dc694ef3 2026.1.1 155.0.4283.45 22631.6199 a20963f766666de8 0.31.0 1024x768
+a11y-worker-6 25bb45d9b38d7a62 2026.1.1 155.0.4283.45 26300.9711 a20963f766666de8 0.31.0 1024x768
+a11y-worker-7 25bb45d9b38d7a62 2026.1.1 155.0.4283.62 26300.9711 a20963f766666de8 0.31.0 1024x768
+a11y-worker-8 25bb45d9b38d7a62 2026.1.1 155.0.4283.62 26300.9711 a20963f766666de8 0.31.0 1024x768
+a11y-worker-9 25bb45d9b38d7a62 2026.1.1 155.0.4283.62 26300.9711 a20963f766666de8 0.31.0 1024x768
+a11y-worker-10 25bb45d9b38d7a62 2026.1.1 155.0.4283.62 26300.9711 a20963f766666de8 0.31.0 1024x768
+a11y-worker-11 25bb45d9b38d7a62 2026.1.1 155.0.4283.45 26200.9457 a20963f766666de8 0.31.0 1024x768
+a11y-worker-12 25bb45d9b38d7a62 2026.1.1 155.0.4283.62 26300.9711 a20963f766666de8 0.31.0 1024x768
+a11y-worker-13 25bb45d9b38d7a62 2026.1.1 155.0.4283.62 26300.9711 a20963f766666de8 0.31.0 1024x768
+a11y-worker-14 25bb45d9b38d7a62 2026.1.1 155.0.4283.62 26300.9711 a20963f766666de8 0.31.0 1024x768
+a11y-worker-15 25bb45d9b38d7a62 2026.1.1 155.0.4283.62 26300.9711 a20963f766666de8 0.31.0 1024x768
+a11y-worker-16 25bb45d9b38d7a62 2026.1.1 155.0.4283.62 26300.9711 a20963f766666de8 0.31.0 1024x768

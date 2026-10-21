@@ -1,7 +1,7 @@
 import http from 'node:http'; import {readFileSync, writeFileSync} from 'node:fs'; import {spawn} from 'node:child_process';
 const [,, mode, outFile] = process.argv; // mode: allow | noallow
 const id = readFileSync('ext-id.txt','utf8').trim();
-const R = process.env.HOME + '/spikes/announcement-emulator-5661';
+const R = process.env.EMU_DOWNLOADS || process.env.HOME + '/spikes/announcement-emulator-5661';
 let want = false, got = null;
 const srv = http.createServer((req, res) => {
   const u = req.url;
