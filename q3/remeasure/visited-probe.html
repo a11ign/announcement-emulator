@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>History probe</title>
+</head>
+<body>
+<!-- A control page of ours (A11-155), served from capture-host and captured on each box with q3/fleet_capture.mjs, to read whether the box's Edge keeps history.
+     Both links are announced "visited" when the address is in the browser's history and plainly otherwise (q3/results/misses-held-freeze-attributed.json).
+     "self" is this page's own address, which a browser that stores history has recorded by the time the sweep reads it.
+     "cookies" is an address the spike's fleet announced "visited" from a GOV.UK Design System page, so a box that was in the spike's corpus run holds it in its history. -->
+<main>
+  <h1>History probe</h1>
+  <p><a href="visited-probe.html">History probe self</a></p>
+  <p><a href="https://design-system.service.gov.uk/cookies/">History probe cookies</a></p>
+</main>
+</body>
+</html>
