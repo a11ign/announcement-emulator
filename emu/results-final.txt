@@ -104,9 +104,7 @@ in scope: 44 of 47 ['announce_list_item_when_moving_by_word_or_character', 'test
 == test_tableSayAllCommands NVDA+control+alt+downArrow PASS
 == test_tableSayAllCommands NVDA+upArrow PASS
 == test_tableSayAllCommands control+alt+downArrow PASS
-== test_tableSayAllCommands NVDA+control+alt+rightArrow FAIL
-   expected: 'B 2\nrow 1  through 2  column 3  C 1 plus C 2\nrow 2  D 2\ncolumn 4  E 2'
-   actual:   'B 2\nrow 1  through 2  column 3  C 1 plus C 2\nrow 2  column 4  D 2\ncolumn 5  E 2'
+== test_tableSayAllCommands NVDA+control+alt+rightArrow PASS
 == test_tableSayAllCommands NVDA+upArrow PASS
 == test_tableSayAllCommands control+alt+downArrow PASS
 == test_tableSayAllCommands NVDA+control+alt+rightArrow PASS
@@ -115,15 +113,11 @@ in scope: 44 of 47 ['announce_list_item_when_moving_by_word_or_character', 'test
 == test_tableSpeakAllCommands control+alt+downArrow PASS
 == test_tableSpeakAllCommands NVDA+control+alt+upArrow PASS
 == test_tableSpeakAllCommands NVDA+upArrow PASS
-== test_tableSpeakAllCommands NVDA+control+alt+leftArrow FAIL
-   expected: 'column 1  A 2\ncolumn 2  B 2\nrow 1  through 2  column 3  C 1 plus C 2\nrow 2  D 2\ncolumn 4  E 2'
-   actual:   'column 1  A 2\ncolumn 2  B 2\nrow 1  through 2  column 3  C 1 plus C 2\nrow 2  column 4  D 2\ncolumn 5  E 2'
+== test_tableSpeakAllCommands NVDA+control+alt+leftArrow PASS
 == test_tableSpeakAllCommands NVDA+upArrow PASS
 == test_tableSayAllAxisCachingForMergedCells t PASS
 == test_tableSayAllAxisCachingForMergedCells control+alt+downArrow PASS
-== test_tableSayAllAxisCachingForMergedCells NVDA+control+alt+upArrow FAIL
-   expected: 'row 1  column 4  D 1\nrow 2  column 3  D 2\nrow 3  column 4  through 5  D 3 plus E 3\nrow 4  column 3  through row 5 column 4  C 4 plus D 4 plus  C 5 plus D 5'
-   actual:   'row 1  column 4  D 1\nrow 2  D 2\nrow 3  column 4  through 5  D 3 plus E 3\nrow 4  column 3  through row 5 column 4  C 4 plus D 4 plus  C 5 plus D 5'
+== test_tableSayAllAxisCachingForMergedCells NVDA+control+alt+upArrow PASS
 == test_tableInStyleDisplayTable t PASS
 == test_tableInStyleDisplayTable control+alt+downArrow PASS
 == test_i10840 t PASS
@@ -256,7 +250,7 @@ in scope: 44 of 47 ['announce_list_item_when_moving_by_word_or_character', 'test
 == test_styleNav d PASS
 == test_styleNav shift+s PASS
 == test_styleNav s PASS
-RESULT 212 / 227
+RESULT 215 / 227
   8/10  announce_list_item_when_moving_by_word_or_character
   5/5  test_i7562
   5/5  test_pr11606
@@ -272,9 +266,9 @@ RESULT 212 / 227
   4/4  test_annotations_multi_target
   4/4  test_i13307
   5/5  test_tableNavigationWithMergedColumns
-  9/10  test_tableSayAllCommands
-  5/6  test_tableSpeakAllCommands
-  2/3  test_tableSayAllAxisCachingForMergedCells
+  10/10  test_tableSayAllCommands
+  6/6  test_tableSpeakAllCommands
+  3/3  test_tableSayAllAxisCachingForMergedCells
   2/2  test_tableInStyleDisplayTable
   2/2  test_i10840
   3/3  test_i10890
