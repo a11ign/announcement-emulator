@@ -1,0 +1,5023 @@
+{
+ "browserOwn": [
+  "clients2.google.com",
+  "update.googleapis.com",
+  "mtalk.google.com",
+  "android.clients.google.com",
+  "optimizationguide-pa.googleapis.com",
+  "content-autofill.googleapis.com",
+  "safebrowsing.googleapis.com",
+  "edge.microsoft.com",
+  "config.edge.microsoft.com",
+  "msedge.api.cdp.microsoft.com",
+  "edgedl.me.gvt1.com",
+  "redirector.gvt1.com",
+  "nav-edge.smartscreen.microsoft.com",
+  "xpaywalletcdn-prod.azureedge.net"
+ ],
+ "pages": [
+  {
+   "archiveSha256": "433f184e93a6e62ca1b3fd9ac39c91a98e090ab91ab0905296ad7c123dbe0ec1",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "433f184e93a6e62ca1b3fd9ac39c91a98e090ab91ab0905296ad7c123dbe0ec1",
+     "browserOwn": 10,
+     "exact": 39,
+     "fuzzy": 1,
+     "miss": 0,
+     "requests": 40
+    },
+    "gate.run2": {
+     "archiveSha256": "433f184e93a6e62ca1b3fd9ac39c91a98e090ab91ab0905296ad7c123dbe0ec1",
+     "browserOwn": 10,
+     "exact": 39,
+     "fuzzy": 1,
+     "miss": 0,
+     "requests": 40
+    },
+    "head.run1": {
+     "archiveSha256": "433f184e93a6e62ca1b3fd9ac39c91a98e090ab91ab0905296ad7c123dbe0ec1",
+     "browserOwn": 10,
+     "exact": 40,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 42
+    },
+    "head.run2": {
+     "archiveSha256": "433f184e93a6e62ca1b3fd9ac39c91a98e090ab91ab0905296ad7c123dbe0ec1",
+     "browserOwn": 10,
+     "exact": 40,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 42
+    }
+   },
+   "fleet": {
+    "archiveSha256": "433f184e93a6e62ca1b3fd9ac39c91a98e090ab91ab0905296ad7c123dbe0ec1",
+    "browserOwn": 0,
+    "exact": 35,
+    "fuzzy": 1,
+    "miss": 3,
+    "requests": 39,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "bathingwaters-sepa-org-uk-fd91d003",
+   "url": "https://bathingwaters.sepa.org.uk/"
+  },
+  {
+   "archiveSha256": "3d519aff4c964feb0af33dc6b8defe7fdcbb5afe08c346817a014fd4de08bfca",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "3d519aff4c964feb0af33dc6b8defe7fdcbb5afe08c346817a014fd4de08bfca",
+     "browserOwn": 10,
+     "exact": 17,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 17
+    },
+    "gate.run2": {
+     "archiveSha256": "3d519aff4c964feb0af33dc6b8defe7fdcbb5afe08c346817a014fd4de08bfca",
+     "browserOwn": 10,
+     "exact": 17,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 17
+    },
+    "head.run1": {
+     "archiveSha256": "3d519aff4c964feb0af33dc6b8defe7fdcbb5afe08c346817a014fd4de08bfca",
+     "browserOwn": 10,
+     "exact": 17,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 17
+    },
+    "head.run2": {
+     "archiveSha256": "3d519aff4c964feb0af33dc6b8defe7fdcbb5afe08c346817a014fd4de08bfca",
+     "browserOwn": 10,
+     "exact": 17,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 17
+    }
+   },
+   "fleet": {
+    "archiveSha256": "3d519aff4c964feb0af33dc6b8defe7fdcbb5afe08c346817a014fd4de08bfca",
+    "browserOwn": 0,
+    "exact": 12,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 14,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "caselaw-nationalarchives-gov-uk-search-query-381a308b",
+   "url": "https://caselaw.nationalarchives.gov.uk/search?query="
+  },
+  {
+   "archiveSha256": "f1c1c11d29ab6014bbb83b786700fd1f73297a5917d161f13b9540e50d0a03fd",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "f1c1c11d29ab6014bbb83b786700fd1f73297a5917d161f13b9540e50d0a03fd",
+     "browserOwn": 12,
+     "exact": 16,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 16
+    },
+    "gate.run2": {
+     "archiveSha256": "f1c1c11d29ab6014bbb83b786700fd1f73297a5917d161f13b9540e50d0a03fd",
+     "browserOwn": 12,
+     "exact": 17,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 17
+    },
+    "head.run1": {
+     "archiveSha256": "f1c1c11d29ab6014bbb83b786700fd1f73297a5917d161f13b9540e50d0a03fd",
+     "browserOwn": 12,
+     "exact": 16,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 16
+    },
+    "head.run2": {
+     "archiveSha256": "f1c1c11d29ab6014bbb83b786700fd1f73297a5917d161f13b9540e50d0a03fd",
+     "browserOwn": 12,
+     "exact": 17,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 17
+    }
+   },
+   "fleet": {
+    "archiveSha256": "f1c1c11d29ab6014bbb83b786700fd1f73297a5917d161f13b9540e50d0a03fd",
+    "browserOwn": 0,
+    "exact": 11,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 13,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "check-for-flooding-service-gov-uk-river-and-sea-levels-02ac4374",
+   "url": "https://check-for-flooding.service.gov.uk/river-and-sea-levels"
+  },
+  {
+   "archiveSha256": "dcee963c1f17b580ac2f962ec7af499ef5685124f73ddfe8381fa4b7f1214567",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "dcee963c1f17b580ac2f962ec7af499ef5685124f73ddfe8381fa4b7f1214567",
+     "browserOwn": 5,
+     "exact": 48,
+     "fuzzy": 122,
+     "miss": 2,
+     "requests": 172
+    },
+    "gate.run2": {
+     "archiveSha256": "dcee963c1f17b580ac2f962ec7af499ef5685124f73ddfe8381fa4b7f1214567",
+     "browserOwn": 5,
+     "exact": 48,
+     "fuzzy": 143,
+     "miss": 2,
+     "requests": 193
+    },
+    "head.run1": {
+     "archiveSha256": "dcee963c1f17b580ac2f962ec7af499ef5685124f73ddfe8381fa4b7f1214567",
+     "browserOwn": 5,
+     "exact": 48,
+     "fuzzy": 134,
+     "miss": 1,
+     "requests": 183
+    },
+    "head.run2": {
+     "archiveSha256": "dcee963c1f17b580ac2f962ec7af499ef5685124f73ddfe8381fa4b7f1214567",
+     "browserOwn": 5,
+     "exact": 48,
+     "fuzzy": 133,
+     "miss": 2,
+     "requests": 183
+    }
+   },
+   "fleet": {
+    "archiveSha256": "dcee963c1f17b580ac2f962ec7af499ef5685124f73ddfe8381fa4b7f1214567",
+    "browserOwn": 0,
+    "exact": 132,
+    "fuzzy": 1008,
+    "miss": 0,
+    "requests": 1140,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "data-southwark-gov-uk-data-catalog-explorer-6cf9be6d",
+   "url": "https://data.southwark.gov.uk/data-catalog-explorer/"
+  },
+  {
+   "archiveSha256": "65fd2977a48d1391d4126cdbf028d9dc15e82142ff21a81684fb2c482ccbb284",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "65fd2977a48d1391d4126cdbf028d9dc15e82142ff21a81684fb2c482ccbb284",
+     "browserOwn": 15,
+     "exact": 25,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 25
+    },
+    "gate.run2": {
+     "archiveSha256": "65fd2977a48d1391d4126cdbf028d9dc15e82142ff21a81684fb2c482ccbb284",
+     "browserOwn": 15,
+     "exact": 25,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 25
+    },
+    "head.run1": {
+     "archiveSha256": "65fd2977a48d1391d4126cdbf028d9dc15e82142ff21a81684fb2c482ccbb284",
+     "browserOwn": 17,
+     "exact": 25,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 25
+    },
+    "head.run2": {
+     "archiveSha256": "65fd2977a48d1391d4126cdbf028d9dc15e82142ff21a81684fb2c482ccbb284",
+     "browserOwn": 15,
+     "exact": 25,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 25
+    }
+   },
+   "fleet": {
+    "archiveSha256": "65fd2977a48d1391d4126cdbf028d9dc15e82142ff21a81684fb2c482ccbb284",
+    "browserOwn": 0,
+    "exact": 20,
+    "fuzzy": 0,
+    "miss": 0,
+    "requests": 20,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "design-patterns-service-justice-gov-uk-components-filter-002b6441",
+   "url": "https://design-patterns.service.justice.gov.uk/components/filter/"
+  },
+  {
+   "archiveSha256": "5fe3d3455d76c6eafefa2e4a9a2b14089da1e43499731e7a2acf4ab93a35a1c8",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "5fe3d3455d76c6eafefa2e4a9a2b14089da1e43499731e7a2acf4ab93a35a1c8",
+     "browserOwn": 14,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    },
+    "gate.run2": {
+     "archiveSha256": "5fe3d3455d76c6eafefa2e4a9a2b14089da1e43499731e7a2acf4ab93a35a1c8",
+     "browserOwn": 14,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    },
+    "head.run1": {
+     "archiveSha256": "5fe3d3455d76c6eafefa2e4a9a2b14089da1e43499731e7a2acf4ab93a35a1c8",
+     "browserOwn": 16,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    },
+    "head.run2": {
+     "archiveSha256": "5fe3d3455d76c6eafefa2e4a9a2b14089da1e43499731e7a2acf4ab93a35a1c8",
+     "browserOwn": 16,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    }
+   },
+   "fleet": {
+    "archiveSha256": "5fe3d3455d76c6eafefa2e4a9a2b14089da1e43499731e7a2acf4ab93a35a1c8",
+    "browserOwn": 0,
+    "exact": 17,
+    "fuzzy": 0,
+    "miss": 0,
+    "requests": 17,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "design-patterns-service-justice-gov-uk-components-scrollable-pane-e7133af0",
+   "url": "https://design-patterns.service.justice.gov.uk/components/scrollable-pane/"
+  },
+  {
+   "archiveSha256": "70bfa6d0fbaea87b1c2db6a80703601f468dc9600f95c68691da50e460b2c986",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "70bfa6d0fbaea87b1c2db6a80703601f468dc9600f95c68691da50e460b2c986",
+     "browserOwn": 12,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    },
+    "gate.run2": {
+     "archiveSha256": "70bfa6d0fbaea87b1c2db6a80703601f468dc9600f95c68691da50e460b2c986",
+     "browserOwn": 12,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    },
+    "head.run1": {
+     "archiveSha256": "70bfa6d0fbaea87b1c2db6a80703601f468dc9600f95c68691da50e460b2c986",
+     "browserOwn": 12,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    },
+    "head.run2": {
+     "archiveSha256": "70bfa6d0fbaea87b1c2db6a80703601f468dc9600f95c68691da50e460b2c986",
+     "browserOwn": 12,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    }
+   },
+   "fleet": {
+    "archiveSha256": "70bfa6d0fbaea87b1c2db6a80703601f468dc9600f95c68691da50e460b2c986",
+    "browserOwn": 0,
+    "exact": 17,
+    "fuzzy": 0,
+    "miss": 0,
+    "requests": 17,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "design-patterns-service-justice-gov-uk-components-sortable-table-5ac086b9",
+   "url": "https://design-patterns.service.justice.gov.uk/components/sortable-table/"
+  },
+  {
+   "archiveSha256": "caedb4337685542004daad6537b2893441fa7a1e44a4d8e842f0894d59478415",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "caedb4337685542004daad6537b2893441fa7a1e44a4d8e842f0894d59478415",
+     "browserOwn": 16,
+     "exact": 24,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 24
+    },
+    "gate.run2": {
+     "archiveSha256": "caedb4337685542004daad6537b2893441fa7a1e44a4d8e842f0894d59478415",
+     "browserOwn": 16,
+     "exact": 24,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 24
+    },
+    "head.run1": {
+     "archiveSha256": "caedb4337685542004daad6537b2893441fa7a1e44a4d8e842f0894d59478415",
+     "browserOwn": 18,
+     "exact": 24,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 24
+    },
+    "head.run2": {
+     "archiveSha256": "caedb4337685542004daad6537b2893441fa7a1e44a4d8e842f0894d59478415",
+     "browserOwn": 18,
+     "exact": 24,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 24
+    }
+   },
+   "fleet": {
+    "archiveSha256": "caedb4337685542004daad6537b2893441fa7a1e44a4d8e842f0894d59478415",
+    "browserOwn": 0,
+    "exact": 18,
+    "fuzzy": 0,
+    "miss": 0,
+    "requests": 18,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "design-patterns-service-justice-gov-uk-patterns-filter-a-list-7258a6ec",
+   "url": "https://design-patterns.service.justice.gov.uk/patterns/filter-a-list/"
+  },
+  {
+   "archiveSha256": "80375816e0d800e504514d35f047e755dea345584f81cab3f665eb000f8e6d21",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "80375816e0d800e504514d35f047e755dea345584f81cab3f665eb000f8e6d21",
+     "browserOwn": 12,
+     "exact": 26,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 26
+    },
+    "gate.run2": {
+     "archiveSha256": "80375816e0d800e504514d35f047e755dea345584f81cab3f665eb000f8e6d21",
+     "browserOwn": 11,
+     "exact": 26,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 26
+    },
+    "head.run1": {
+     "archiveSha256": "80375816e0d800e504514d35f047e755dea345584f81cab3f665eb000f8e6d21",
+     "browserOwn": 12,
+     "exact": 26,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 26
+    },
+    "head.run2": {
+     "archiveSha256": "80375816e0d800e504514d35f047e755dea345584f81cab3f665eb000f8e6d21",
+     "browserOwn": 12,
+     "exact": 26,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 26
+    }
+   },
+   "fleet": {
+    "archiveSha256": "80375816e0d800e504514d35f047e755dea345584f81cab3f665eb000f8e6d21",
+    "browserOwn": 0,
+    "exact": 21,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 23,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "design-system-service-gov-uk-components-accordion-b4437d78",
+   "url": "https://design-system.service.gov.uk/components/accordion/"
+  },
+  {
+   "archiveSha256": "357df0009af09b469412e7987899333e68d0e2c22bb90f052e816696996298e5",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "357df0009af09b469412e7987899333e68d0e2c22bb90f052e816696996298e5",
+     "browserOwn": 15,
+     "exact": 61,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 61
+    },
+    "gate.run2": {
+     "archiveSha256": "357df0009af09b469412e7987899333e68d0e2c22bb90f052e816696996298e5",
+     "browserOwn": 15,
+     "exact": 61,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 61
+    },
+    "head.run1": {
+     "archiveSha256": "357df0009af09b469412e7987899333e68d0e2c22bb90f052e816696996298e5",
+     "browserOwn": 18,
+     "exact": 61,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 61
+    },
+    "head.run2": {
+     "archiveSha256": "357df0009af09b469412e7987899333e68d0e2c22bb90f052e816696996298e5",
+     "browserOwn": 18,
+     "exact": 61,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 61
+    }
+   },
+   "fleet": {
+    "archiveSha256": "357df0009af09b469412e7987899333e68d0e2c22bb90f052e816696996298e5",
+    "browserOwn": 0,
+    "exact": 56,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 58,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "design-system-service-gov-uk-components-checkboxes-c8b8459e",
+   "url": "https://design-system.service.gov.uk/components/checkboxes/"
+  },
+  {
+   "archiveSha256": "6883dad42c9dd2178fb27782695a3c0392147e4a3c346bb097e167cc504772b4",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "6883dad42c9dd2178fb27782695a3c0392147e4a3c346bb097e167cc504772b4",
+     "browserOwn": 24,
+     "exact": 43,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 43
+    },
+    "gate.run2": {
+     "archiveSha256": "6883dad42c9dd2178fb27782695a3c0392147e4a3c346bb097e167cc504772b4",
+     "browserOwn": 24,
+     "exact": 43,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 43
+    },
+    "head.run1": {
+     "archiveSha256": "6883dad42c9dd2178fb27782695a3c0392147e4a3c346bb097e167cc504772b4",
+     "browserOwn": 24,
+     "exact": 43,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 43
+    },
+    "head.run2": {
+     "archiveSha256": "6883dad42c9dd2178fb27782695a3c0392147e4a3c346bb097e167cc504772b4",
+     "browserOwn": 24,
+     "exact": 43,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 43
+    }
+   },
+   "fleet": {
+    "archiveSha256": "6883dad42c9dd2178fb27782695a3c0392147e4a3c346bb097e167cc504772b4",
+    "browserOwn": 0,
+    "exact": 87,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 89,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "design-system-service-gov-uk-components-date-input-1b727a81",
+   "url": "https://design-system.service.gov.uk/components/date-input/"
+  },
+  {
+   "archiveSha256": "19f19c8b71da323f3fd1c7d53a882e2b8e66e33084248a6745b169b36712ef94",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "19f19c8b71da323f3fd1c7d53a882e2b8e66e33084248a6745b169b36712ef94",
+     "browserOwn": 11,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "gate.run2": {
+     "archiveSha256": "19f19c8b71da323f3fd1c7d53a882e2b8e66e33084248a6745b169b36712ef94",
+     "browserOwn": 11,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run1": {
+     "archiveSha256": "19f19c8b71da323f3fd1c7d53a882e2b8e66e33084248a6745b169b36712ef94",
+     "browserOwn": 11,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run2": {
+     "archiveSha256": "19f19c8b71da323f3fd1c7d53a882e2b8e66e33084248a6745b169b36712ef94",
+     "browserOwn": 12,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    }
+   },
+   "fleet": {
+    "archiveSha256": "19f19c8b71da323f3fd1c7d53a882e2b8e66e33084248a6745b169b36712ef94",
+    "browserOwn": 0,
+    "exact": 14,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 16,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "design-system-service-gov-uk-components-details-4ebdbf5f",
+   "url": "https://design-system.service.gov.uk/components/details/"
+  },
+  {
+   "archiveSha256": "5877a516b945c3de7f99817e917031a55c28f4406c89369bc5aea42c96f82f8d",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "5877a516b945c3de7f99817e917031a55c28f4406c89369bc5aea42c96f82f8d",
+     "browserOwn": 16,
+     "exact": 31,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 31
+    },
+    "gate.run2": {
+     "archiveSha256": "5877a516b945c3de7f99817e917031a55c28f4406c89369bc5aea42c96f82f8d",
+     "browserOwn": 18,
+     "exact": 31,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 31
+    },
+    "head.run1": {
+     "archiveSha256": "5877a516b945c3de7f99817e917031a55c28f4406c89369bc5aea42c96f82f8d",
+     "browserOwn": 20,
+     "exact": 31,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 31
+    },
+    "head.run2": {
+     "archiveSha256": "5877a516b945c3de7f99817e917031a55c28f4406c89369bc5aea42c96f82f8d",
+     "browserOwn": 20,
+     "exact": 31,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 31
+    }
+   },
+   "fleet": {
+    "archiveSha256": "5877a516b945c3de7f99817e917031a55c28f4406c89369bc5aea42c96f82f8d",
+    "browserOwn": 0,
+    "exact": 26,
+    "fuzzy": 0,
+    "miss": 7,
+    "requests": 33,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "design-system-service-gov-uk-components-error-message-47373b64",
+   "url": "https://design-system.service.gov.uk/components/error-message/"
+  },
+  {
+   "archiveSha256": "7215c24f07e82bcbd6c4f0da1f9e9753b5f755161d2749919cfd758ee5b1895b",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "7215c24f07e82bcbd6c4f0da1f9e9753b5f755161d2749919cfd758ee5b1895b",
+     "browserOwn": 21,
+     "exact": 44,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 44
+    },
+    "gate.run2": {
+     "archiveSha256": "7215c24f07e82bcbd6c4f0da1f9e9753b5f755161d2749919cfd758ee5b1895b",
+     "browserOwn": 21,
+     "exact": 44,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 44
+    },
+    "head.run1": {
+     "archiveSha256": "7215c24f07e82bcbd6c4f0da1f9e9753b5f755161d2749919cfd758ee5b1895b",
+     "browserOwn": 22,
+     "exact": 44,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 44
+    },
+    "head.run2": {
+     "archiveSha256": "7215c24f07e82bcbd6c4f0da1f9e9753b5f755161d2749919cfd758ee5b1895b",
+     "browserOwn": 22,
+     "exact": 44,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 44
+    }
+   },
+   "fleet": {
+    "archiveSha256": "7215c24f07e82bcbd6c4f0da1f9e9753b5f755161d2749919cfd758ee5b1895b",
+    "browserOwn": 0,
+    "exact": 39,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 41,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "design-system-service-gov-uk-components-error-summary-4af8cc43",
+   "url": "https://design-system.service.gov.uk/components/error-summary/"
+  },
+  {
+   "archiveSha256": "bdb32cac64172070775d0113cd4df3b1b26073da273a326f0e86dcf88c1794e0",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "bdb32cac64172070775d0113cd4df3b1b26073da273a326f0e86dcf88c1794e0",
+     "browserOwn": 16,
+     "exact": 43,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 43
+    },
+    "gate.run2": {
+     "archiveSha256": "bdb32cac64172070775d0113cd4df3b1b26073da273a326f0e86dcf88c1794e0",
+     "browserOwn": 16,
+     "exact": 43,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 43
+    },
+    "head.run1": {
+     "archiveSha256": "bdb32cac64172070775d0113cd4df3b1b26073da273a326f0e86dcf88c1794e0",
+     "browserOwn": 18,
+     "exact": 67,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 67
+    },
+    "head.run2": {
+     "archiveSha256": "bdb32cac64172070775d0113cd4df3b1b26073da273a326f0e86dcf88c1794e0",
+     "browserOwn": 18,
+     "exact": 67,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 67
+    }
+   },
+   "fleet": {
+    "archiveSha256": "bdb32cac64172070775d0113cd4df3b1b26073da273a326f0e86dcf88c1794e0",
+    "browserOwn": 0,
+    "exact": 62,
+    "fuzzy": 0,
+    "miss": 0,
+    "requests": 62,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "design-system-service-gov-uk-components-radios-b9e8f450",
+   "url": "https://design-system.service.gov.uk/components/radios/"
+  },
+  {
+   "archiveSha256": "4f7a1a6a3f467563a81d910922a5625990bdf7c80558bddc34d1a7636aa43931",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "4f7a1a6a3f467563a81d910922a5625990bdf7c80558bddc34d1a7636aa43931",
+     "browserOwn": 18,
+     "exact": 30,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 30
+    },
+    "gate.run2": {
+     "archiveSha256": "4f7a1a6a3f467563a81d910922a5625990bdf7c80558bddc34d1a7636aa43931",
+     "browserOwn": 19,
+     "exact": 30,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 30
+    },
+    "head.run1": {
+     "archiveSha256": "4f7a1a6a3f467563a81d910922a5625990bdf7c80558bddc34d1a7636aa43931",
+     "browserOwn": 21,
+     "exact": 30,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 30
+    },
+    "head.run2": {
+     "archiveSha256": "4f7a1a6a3f467563a81d910922a5625990bdf7c80558bddc34d1a7636aa43931",
+     "browserOwn": 20,
+     "exact": 30,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 30
+    }
+   },
+   "fleet": {
+    "archiveSha256": "4f7a1a6a3f467563a81d910922a5625990bdf7c80558bddc34d1a7636aa43931",
+    "browserOwn": 0,
+    "exact": 25,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 26,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "design-system-service-gov-uk-components-select-195aaca8",
+   "url": "https://design-system.service.gov.uk/components/select/"
+  },
+  {
+   "archiveSha256": "cd998982c291cfd90a1a699dadcd6b4b3b216487971353a4abeb429b759b2e14",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "cd998982c291cfd90a1a699dadcd6b4b3b216487971353a4abeb429b759b2e14",
+     "browserOwn": 11,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "gate.run2": {
+     "archiveSha256": "cd998982c291cfd90a1a699dadcd6b4b3b216487971353a4abeb429b759b2e14",
+     "browserOwn": 11,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run1": {
+     "archiveSha256": "cd998982c291cfd90a1a699dadcd6b4b3b216487971353a4abeb429b759b2e14",
+     "browserOwn": 14,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run2": {
+     "archiveSha256": "cd998982c291cfd90a1a699dadcd6b4b3b216487971353a4abeb429b759b2e14",
+     "browserOwn": 13,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    }
+   },
+   "fleet": {
+    "archiveSha256": "cd998982c291cfd90a1a699dadcd6b4b3b216487971353a4abeb429b759b2e14",
+    "browserOwn": 0,
+    "exact": 14,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 16,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "design-system-service-gov-uk-components-skip-link-ea2d81bd",
+   "url": "https://design-system.service.gov.uk/components/skip-link/"
+  },
+  {
+   "archiveSha256": "3394ce936d88ac051af3c97263a761e544c7fd69c18664cbd2f0cb363428ef01",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "3394ce936d88ac051af3c97263a761e544c7fd69c18664cbd2f0cb363428ef01",
+     "browserOwn": 14,
+     "exact": 51,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 51
+    },
+    "gate.run2": {
+     "archiveSha256": "3394ce936d88ac051af3c97263a761e544c7fd69c18664cbd2f0cb363428ef01",
+     "browserOwn": 12,
+     "exact": 51,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 51
+    },
+    "head.run1": {
+     "archiveSha256": "3394ce936d88ac051af3c97263a761e544c7fd69c18664cbd2f0cb363428ef01",
+     "browserOwn": 14,
+     "exact": 51,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 51
+    },
+    "head.run2": {
+     "archiveSha256": "3394ce936d88ac051af3c97263a761e544c7fd69c18664cbd2f0cb363428ef01",
+     "browserOwn": 14,
+     "exact": 51,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 51
+    }
+   },
+   "fleet": {
+    "archiveSha256": "3394ce936d88ac051af3c97263a761e544c7fd69c18664cbd2f0cb363428ef01",
+    "browserOwn": 0,
+    "exact": 46,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 48,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "design-system-service-gov-uk-components-table-55d6c624",
+   "url": "https://design-system.service.gov.uk/components/table/"
+  },
+  {
+   "archiveSha256": "09011d60ef7a37684e442410d779d5724fd72300e57349524ee55e24cafaf260",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "09011d60ef7a37684e442410d779d5724fd72300e57349524ee55e24cafaf260",
+     "browserOwn": 14,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "gate.run2": {
+     "archiveSha256": "09011d60ef7a37684e442410d779d5724fd72300e57349524ee55e24cafaf260",
+     "browserOwn": 14,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "head.run1": {
+     "archiveSha256": "09011d60ef7a37684e442410d779d5724fd72300e57349524ee55e24cafaf260",
+     "browserOwn": 16,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "head.run2": {
+     "archiveSha256": "09011d60ef7a37684e442410d779d5724fd72300e57349524ee55e24cafaf260",
+     "browserOwn": 17,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    }
+   },
+   "fleet": {
+    "archiveSha256": "09011d60ef7a37684e442410d779d5724fd72300e57349524ee55e24cafaf260",
+    "browserOwn": 0,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 17,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "design-system-service-gov-uk-components-tabs-0a2a18f0",
+   "url": "https://design-system.service.gov.uk/components/tabs/"
+  },
+  {
+   "archiveSha256": "2a2da91c47c53b115898b2b4b9bd9268e4cd320a15a3d51645ea14134684efd4",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "2a2da91c47c53b115898b2b4b9bd9268e4cd320a15a3d51645ea14134684efd4",
+     "browserOwn": 22,
+     "exact": 37,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 37
+    },
+    "gate.run2": {
+     "archiveSha256": "2a2da91c47c53b115898b2b4b9bd9268e4cd320a15a3d51645ea14134684efd4",
+     "browserOwn": 22,
+     "exact": 37,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 37
+    },
+    "head.run1": {
+     "archiveSha256": "2a2da91c47c53b115898b2b4b9bd9268e4cd320a15a3d51645ea14134684efd4",
+     "browserOwn": 44,
+     "exact": 87,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 87
+    },
+    "head.run2": {
+     "archiveSha256": "2a2da91c47c53b115898b2b4b9bd9268e4cd320a15a3d51645ea14134684efd4",
+     "browserOwn": 44,
+     "exact": 87,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 87
+    }
+   },
+   "fleet": {
+    "archiveSha256": "2a2da91c47c53b115898b2b4b9bd9268e4cd320a15a3d51645ea14134684efd4",
+    "browserOwn": 0,
+    "exact": 82,
+    "fuzzy": 0,
+    "miss": 0,
+    "requests": 82,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "design-system-service-gov-uk-components-text-input-cb5ea0d7",
+   "url": "https://design-system.service.gov.uk/components/text-input/"
+  },
+  {
+   "archiveSha256": "f3d75a1853ef8fbbbb24bad7c4a6a9829b54e14e41f6ae5cb2aae9dbc2f69ed9",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "f3d75a1853ef8fbbbb24bad7c4a6a9829b54e14e41f6ae5cb2aae9dbc2f69ed9",
+     "browserOwn": 20,
+     "exact": 12,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 12
+    },
+    "gate.run2": {
+     "archiveSha256": "f3d75a1853ef8fbbbb24bad7c4a6a9829b54e14e41f6ae5cb2aae9dbc2f69ed9",
+     "browserOwn": 20,
+     "exact": 12,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 12
+    },
+    "head.run1": {
+     "archiveSha256": "f3d75a1853ef8fbbbb24bad7c4a6a9829b54e14e41f6ae5cb2aae9dbc2f69ed9",
+     "browserOwn": 21,
+     "exact": 12,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 12
+    },
+    "head.run2": {
+     "archiveSha256": "f3d75a1853ef8fbbbb24bad7c4a6a9829b54e14e41f6ae5cb2aae9dbc2f69ed9",
+     "browserOwn": 20,
+     "exact": 12,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 12
+    }
+   },
+   "fleet": {
+    "archiveSha256": "f3d75a1853ef8fbbbb24bad7c4a6a9829b54e14e41f6ae5cb2aae9dbc2f69ed9",
+    "browserOwn": 0,
+    "exact": 8,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 10,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "disinfectants-defra-gov-uk-75500efa",
+   "url": "https://disinfectants.defra.gov.uk/"
+  },
+  {
+   "archiveSha256": "d15b637af9944c64d24234672d3f98a818ebd6e9de40a0eed659582a6c66fa23",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "d15b637af9944c64d24234672d3f98a818ebd6e9de40a0eed659582a6c66fa23",
+     "browserOwn": 13,
+     "exact": 47,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 48
+    },
+    "gate.run2": {
+     "archiveSha256": "d15b637af9944c64d24234672d3f98a818ebd6e9de40a0eed659582a6c66fa23",
+     "browserOwn": 13,
+     "exact": 47,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 48
+    },
+    "head.run1": {
+     "archiveSha256": "d15b637af9944c64d24234672d3f98a818ebd6e9de40a0eed659582a6c66fa23",
+     "browserOwn": 14,
+     "exact": 53,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 54
+    },
+    "head.run2": {
+     "archiveSha256": "d15b637af9944c64d24234672d3f98a818ebd6e9de40a0eed659582a6c66fa23",
+     "browserOwn": 14,
+     "exact": 53,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 54
+    }
+   },
+   "fleet": {
+    "archiveSha256": "d15b637af9944c64d24234672d3f98a818ebd6e9de40a0eed659582a6c66fa23",
+    "browserOwn": 0,
+    "exact": 47,
+    "fuzzy": 0,
+    "miss": 3,
+    "requests": 50,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "european-union-europa-eu-index-en-4c1683aa",
+   "url": "https://european-union.europa.eu/index_en"
+  },
+  {
+   "archiveSha256": "eb396eb102f0ecbdbb6ff8da1c55268ed63782a7d09a39505cb6c98701fd8fe3",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "eb396eb102f0ecbdbb6ff8da1c55268ed63782a7d09a39505cb6c98701fd8fe3",
+     "browserOwn": 11,
+     "exact": 69,
+     "fuzzy": 6,
+     "miss": 3,
+     "requests": 78
+    },
+    "gate.run2": {
+     "archiveSha256": "eb396eb102f0ecbdbb6ff8da1c55268ed63782a7d09a39505cb6c98701fd8fe3",
+     "browserOwn": 11,
+     "exact": 69,
+     "fuzzy": 6,
+     "miss": 3,
+     "requests": 78
+    },
+    "head.run1": {
+     "archiveSha256": "eb396eb102f0ecbdbb6ff8da1c55268ed63782a7d09a39505cb6c98701fd8fe3",
+     "browserOwn": 14,
+     "exact": 70,
+     "fuzzy": 6,
+     "miss": 4,
+     "requests": 80
+    },
+    "head.run2": {
+     "archiveSha256": "eb396eb102f0ecbdbb6ff8da1c55268ed63782a7d09a39505cb6c98701fd8fe3",
+     "browserOwn": 15,
+     "exact": 70,
+     "fuzzy": 6,
+     "miss": 3,
+     "requests": 79
+    }
+   },
+   "fleet": {
+    "archiveSha256": "eb396eb102f0ecbdbb6ff8da1c55268ed63782a7d09a39505cb6c98701fd8fe3",
+    "browserOwn": 1,
+    "exact": 78,
+    "fuzzy": 6,
+    "miss": 8,
+    "requests": 92,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "events-bl-uk-154717fe",
+   "url": "https://events.bl.uk/"
+  },
+  {
+   "archiveSha256": "795fbc4124fe998a3e6be72cdd98ac85fd99edf01a606098d1f323ebb5f074c8",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "795fbc4124fe998a3e6be72cdd98ac85fd99edf01a606098d1f323ebb5f074c8",
+     "browserOwn": 10,
+     "exact": 38,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 38
+    },
+    "gate.run2": {
+     "archiveSha256": "795fbc4124fe998a3e6be72cdd98ac85fd99edf01a606098d1f323ebb5f074c8",
+     "browserOwn": 10,
+     "exact": 38,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 38
+    },
+    "head.run1": {
+     "archiveSha256": "795fbc4124fe998a3e6be72cdd98ac85fd99edf01a606098d1f323ebb5f074c8",
+     "browserOwn": 10,
+     "exact": 38,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 39
+    },
+    "head.run2": {
+     "archiveSha256": "795fbc4124fe998a3e6be72cdd98ac85fd99edf01a606098d1f323ebb5f074c8",
+     "browserOwn": 10,
+     "exact": 38,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 38
+    }
+   },
+   "fleet": {
+    "archiveSha256": "795fbc4124fe998a3e6be72cdd98ac85fd99edf01a606098d1f323ebb5f074c8",
+    "browserOwn": 0,
+    "exact": 34,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 36,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "find-and-update-company-information-service-gov-uk-company-00000006-081efa96",
+   "url": "https://find-and-update.company-information.service.gov.uk/company/00000006"
+  },
+  {
+   "archiveSha256": "fc58814a7088c943ad2747298213a9f51ff81af69d034347149527496963560f",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "fc58814a7088c943ad2747298213a9f51ff81af69d034347149527496963560f",
+     "browserOwn": 12,
+     "exact": 71,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 71
+    },
+    "gate.run2": {
+     "archiveSha256": "fc58814a7088c943ad2747298213a9f51ff81af69d034347149527496963560f",
+     "browserOwn": 12,
+     "exact": 71,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 71
+    },
+    "head.run1": {
+     "archiveSha256": "fc58814a7088c943ad2747298213a9f51ff81af69d034347149527496963560f",
+     "browserOwn": 12,
+     "exact": 71,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 71
+    },
+    "head.run2": {
+     "archiveSha256": "fc58814a7088c943ad2747298213a9f51ff81af69d034347149527496963560f",
+     "browserOwn": 12,
+     "exact": 71,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 71
+    }
+   },
+   "fleet": {
+    "archiveSha256": "fc58814a7088c943ad2747298213a9f51ff81af69d034347149527496963560f",
+    "browserOwn": 0,
+    "exact": 67,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 68,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "forms-charitycommission-gov-uk-raising-concerns-4243756f",
+   "url": "https://forms.charitycommission.gov.uk/raising-concerns/"
+  },
+  {
+   "archiveSha256": "b04c21ebc17fbf4d3535201433f6bcfc35156d7d016db42fd4850ce7b1ec37d3",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "b04c21ebc17fbf4d3535201433f6bcfc35156d7d016db42fd4850ce7b1ec37d3",
+     "browserOwn": 36,
+     "exact": 16,
+     "fuzzy": 0,
+     "miss": 7,
+     "requests": 23
+    },
+    "gate.run2": {
+     "archiveSha256": "b04c21ebc17fbf4d3535201433f6bcfc35156d7d016db42fd4850ce7b1ec37d3",
+     "browserOwn": 36,
+     "exact": 16,
+     "fuzzy": 0,
+     "miss": 7,
+     "requests": 23
+    },
+    "head.run1": {
+     "archiveSha256": "b04c21ebc17fbf4d3535201433f6bcfc35156d7d016db42fd4850ce7b1ec37d3",
+     "browserOwn": 35,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 6,
+     "requests": 27
+    },
+    "head.run2": {
+     "archiveSha256": "b04c21ebc17fbf4d3535201433f6bcfc35156d7d016db42fd4850ce7b1ec37d3",
+     "browserOwn": 34,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 6,
+     "requests": 27
+    }
+   },
+   "fleet": {
+    "archiveSha256": "b04c21ebc17fbf4d3535201433f6bcfc35156d7d016db42fd4850ce7b1ec37d3",
+    "browserOwn": 1,
+    "exact": 16,
+    "fuzzy": 0,
+    "miss": 10,
+    "requests": 26,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "ico-org-uk-action-weve-taken-enforcement-a3b207f5",
+   "url": "https://ico.org.uk/action-weve-taken/enforcement/"
+  },
+  {
+   "archiveSha256": "b3aee31e84b3a8c44a67272575ccb8a741865a483e49455111de4dc95d408299",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "b3aee31e84b3a8c44a67272575ccb8a741865a483e49455111de4dc95d408299",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 25
+    },
+    "gate.run2": {
+     "archiveSha256": "b3aee31e84b3a8c44a67272575ccb8a741865a483e49455111de4dc95d408299",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 25
+    },
+    "head.run1": {
+     "archiveSha256": "b3aee31e84b3a8c44a67272575ccb8a741865a483e49455111de4dc95d408299",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 25
+    },
+    "head.run2": {
+     "archiveSha256": "b3aee31e84b3a8c44a67272575ccb8a741865a483e49455111de4dc95d408299",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 24
+    }
+   },
+   "fleet": {
+    "archiveSha256": "b3aee31e84b3a8c44a67272575ccb8a741865a483e49455111de4dc95d408299",
+    "browserOwn": 1,
+    "exact": 18,
+    "fuzzy": 0,
+    "miss": 11,
+    "requests": 29,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "ico-org-uk-for-the-public-bb4f5511",
+   "url": "https://ico.org.uk/for-the-public/"
+  },
+  {
+   "archiveSha256": "4407e5f24ccdfc11007b2547e39f091076a1821331879a6b16b67229ffcff7e5",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "4407e5f24ccdfc11007b2547e39f091076a1821331879a6b16b67229ffcff7e5",
+     "browserOwn": 6,
+     "exact": 186,
+     "fuzzy": 20,
+     "miss": 24,
+     "requests": 230
+    },
+    "gate.run2": {
+     "archiveSha256": "4407e5f24ccdfc11007b2547e39f091076a1821331879a6b16b67229ffcff7e5",
+     "browserOwn": 6,
+     "exact": 186,
+     "fuzzy": 19,
+     "miss": 32,
+     "requests": 237
+    },
+    "head.run1": {
+     "archiveSha256": "4407e5f24ccdfc11007b2547e39f091076a1821331879a6b16b67229ffcff7e5",
+     "browserOwn": 6,
+     "exact": 191,
+     "fuzzy": 13,
+     "miss": 39,
+     "requests": 243
+    },
+    "head.run2": {
+     "archiveSha256": "4407e5f24ccdfc11007b2547e39f091076a1821331879a6b16b67229ffcff7e5",
+     "browserOwn": 6,
+     "exact": 192,
+     "fuzzy": 18,
+     "miss": 27,
+     "requests": 237
+    }
+   },
+   "fleet": {
+    "archiveSha256": "4407e5f24ccdfc11007b2547e39f091076a1821331879a6b16b67229ffcff7e5",
+    "browserOwn": 0,
+    "exact": 197,
+    "fuzzy": 20,
+    "miss": 33,
+    "requests": 250,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "mailchimp-com-0d3e3795",
+   "url": "https://mailchimp.com/"
+  },
+  {
+   "archiveSha256": "0ac607dc0ee4562744ded7d21186a1f4103e08675a5c4784a1d6d50550c384b5",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "0ac607dc0ee4562744ded7d21186a1f4103e08675a5c4784a1d6d50550c384b5",
+     "browserOwn": 10,
+     "exact": 9,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 9
+    },
+    "gate.run2": {
+     "archiveSha256": "0ac607dc0ee4562744ded7d21186a1f4103e08675a5c4784a1d6d50550c384b5",
+     "browserOwn": 10,
+     "exact": 9,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 9
+    },
+    "head.run1": {
+     "archiveSha256": "0ac607dc0ee4562744ded7d21186a1f4103e08675a5c4784a1d6d50550c384b5",
+     "browserOwn": 10,
+     "exact": 9,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 9
+    },
+    "head.run2": {
+     "archiveSha256": "0ac607dc0ee4562744ded7d21186a1f4103e08675a5c4784a1d6d50550c384b5",
+     "browserOwn": 10,
+     "exact": 9,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 9
+    }
+   },
+   "fleet": {
+    "archiveSha256": "0ac607dc0ee4562744ded7d21186a1f4103e08675a5c4784a1d6d50550c384b5",
+    "browserOwn": 0,
+    "exact": 5,
+    "fuzzy": 0,
+    "miss": 0,
+    "requests": 5,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "primary-authority-beis-gov-uk-par-9695d2e4",
+   "url": "https://primary-authority.beis.gov.uk/par"
+  },
+  {
+   "archiveSha256": "9b2aad39a30998e700a8c57ff00354f5f924f69f1da49db854e12b664aed095e",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "9b2aad39a30998e700a8c57ff00354f5f924f69f1da49db854e12b664aed095e",
+     "browserOwn": 14,
+     "exact": 54,
+     "fuzzy": 1,
+     "miss": 7,
+     "requests": 62
+    },
+    "gate.run2": {
+     "archiveSha256": "9b2aad39a30998e700a8c57ff00354f5f924f69f1da49db854e12b664aed095e",
+     "browserOwn": 15,
+     "exact": 54,
+     "fuzzy": 1,
+     "miss": 6,
+     "requests": 61
+    },
+    "head.run1": {
+     "archiveSha256": "9b2aad39a30998e700a8c57ff00354f5f924f69f1da49db854e12b664aed095e",
+     "browserOwn": 16,
+     "exact": 54,
+     "fuzzy": 1,
+     "miss": 7,
+     "requests": 62
+    },
+    "head.run2": {
+     "archiveSha256": "9b2aad39a30998e700a8c57ff00354f5f924f69f1da49db854e12b664aed095e",
+     "browserOwn": 15,
+     "exact": 54,
+     "fuzzy": 1,
+     "miss": 8,
+     "requests": 63
+    }
+   },
+   "fleet": {
+    "archiveSha256": "9b2aad39a30998e700a8c57ff00354f5f924f69f1da49db854e12b664aed095e",
+    "browserOwn": 0,
+    "exact": 51,
+    "fuzzy": 1,
+    "miss": 11,
+    "requests": 63,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "ratings-food-gov-uk-search-a-local-authority-area-7a48362e",
+   "url": "https://ratings.food.gov.uk/search-a-local-authority-area"
+  },
+  {
+   "archiveSha256": "8977d296bbbd61d848d29e81728b27374f1a5d018bdeac8178495b3beef5a950",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "8977d296bbbd61d848d29e81728b27374f1a5d018bdeac8178495b3beef5a950",
+     "browserOwn": 14,
+     "exact": 36,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 36
+    },
+    "gate.run2": {
+     "archiveSha256": "8977d296bbbd61d848d29e81728b27374f1a5d018bdeac8178495b3beef5a950",
+     "browserOwn": 14,
+     "exact": 36,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 36
+    },
+    "head.run1": {
+     "archiveSha256": "8977d296bbbd61d848d29e81728b27374f1a5d018bdeac8178495b3beef5a950",
+     "browserOwn": 14,
+     "exact": 36,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 36
+    },
+    "head.run2": {
+     "archiveSha256": "8977d296bbbd61d848d29e81728b27374f1a5d018bdeac8178495b3beef5a950",
+     "browserOwn": 14,
+     "exact": 36,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 36
+    }
+   },
+   "fleet": {
+    "archiveSha256": "8977d296bbbd61d848d29e81728b27374f1a5d018bdeac8178495b3beef5a950",
+    "browserOwn": 0,
+    "exact": 31,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 33,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "reports-ofsted-gov-uk-search-q-school-6d4721f3",
+   "url": "https://reports.ofsted.gov.uk/search?q=school"
+  },
+  {
+   "archiveSha256": "8d83604e3118276d3705881d4da1f1fabd8e25fedee5527f8a87b70cb11e24b1",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "8d83604e3118276d3705881d4da1f1fabd8e25fedee5527f8a87b70cb11e24b1",
+     "browserOwn": 14,
+     "exact": 104,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 104
+    },
+    "gate.run2": {
+     "archiveSha256": "8d83604e3118276d3705881d4da1f1fabd8e25fedee5527f8a87b70cb11e24b1",
+     "browserOwn": 14,
+     "exact": 102,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 102
+    },
+    "head.run1": {
+     "archiveSha256": "8d83604e3118276d3705881d4da1f1fabd8e25fedee5527f8a87b70cb11e24b1",
+     "browserOwn": 18,
+     "exact": 104,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 104
+    },
+    "head.run2": {
+     "archiveSha256": "8d83604e3118276d3705881d4da1f1fabd8e25fedee5527f8a87b70cb11e24b1",
+     "browserOwn": 16,
+     "exact": 102,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 102
+    }
+   },
+   "fleet": {
+    "archiveSha256": "8d83604e3118276d3705881d4da1f1fabd8e25fedee5527f8a87b70cb11e24b1",
+    "browserOwn": 14,
+    "exact": 100,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 102,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "service-manual-nhs-uk-design-system-components-table-1332f01c",
+   "url": "https://service-manual.nhs.uk/design-system/components/table"
+  },
+  {
+   "archiveSha256": "039ee3e2e91f5d70737796af376dc1199b96949f995cfb679e22edc6862d386b",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "039ee3e2e91f5d70737796af376dc1199b96949f995cfb679e22edc6862d386b",
+     "browserOwn": 38,
+     "exact": 98,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 98
+    },
+    "gate.run2": {
+     "archiveSha256": "039ee3e2e91f5d70737796af376dc1199b96949f995cfb679e22edc6862d386b",
+     "browserOwn": 38,
+     "exact": 97,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 97
+    },
+    "head.run1": {
+     "archiveSha256": "039ee3e2e91f5d70737796af376dc1199b96949f995cfb679e22edc6862d386b",
+     "browserOwn": 40,
+     "exact": 97,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 97
+    },
+    "head.run2": {
+     "archiveSha256": "039ee3e2e91f5d70737796af376dc1199b96949f995cfb679e22edc6862d386b",
+     "browserOwn": 40,
+     "exact": 98,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 98
+    }
+   },
+   "fleet": {
+    "archiveSha256": "039ee3e2e91f5d70737796af376dc1199b96949f995cfb679e22edc6862d386b",
+    "browserOwn": 14,
+    "exact": 92,
+    "fuzzy": 0,
+    "miss": 0,
+    "requests": 92,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "service-manual-nhs-uk-design-system-components-text-input-3bb2a902",
+   "url": "https://service-manual.nhs.uk/design-system/components/text-input"
+  },
+  {
+   "archiveSha256": "010016c8786a821691b861beb0fbd2f1372ea43846adcc2db904ff66119cc227",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "010016c8786a821691b861beb0fbd2f1372ea43846adcc2db904ff66119cc227",
+     "browserOwn": 18,
+     "exact": 26,
+     "fuzzy": 9,
+     "miss": 7,
+     "requests": 42
+    },
+    "gate.run2": {
+     "archiveSha256": "010016c8786a821691b861beb0fbd2f1372ea43846adcc2db904ff66119cc227",
+     "browserOwn": 18,
+     "exact": 26,
+     "fuzzy": 8,
+     "miss": 9,
+     "requests": 43
+    },
+    "head.run1": {
+     "archiveSha256": "010016c8786a821691b861beb0fbd2f1372ea43846adcc2db904ff66119cc227",
+     "browserOwn": 18,
+     "exact": 35,
+     "fuzzy": 10,
+     "miss": 9,
+     "requests": 54
+    },
+    "head.run2": {
+     "archiveSha256": "010016c8786a821691b861beb0fbd2f1372ea43846adcc2db904ff66119cc227",
+     "browserOwn": 18,
+     "exact": 35,
+     "fuzzy": 11,
+     "miss": 5,
+     "requests": 51
+    }
+   },
+   "fleet": {
+    "archiveSha256": "010016c8786a821691b861beb0fbd2f1372ea43846adcc2db904ff66119cc227",
+    "browserOwn": 0,
+    "exact": 31,
+    "fuzzy": 13,
+    "miss": 6,
+    "requests": 50,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "sheffield-ac-uk-postgraduate-taught-courses-2027-309878b8",
+   "url": "https://sheffield.ac.uk/postgraduate/taught/courses/2027"
+  },
+  {
+   "archiveSha256": "25764ebe554058ed72be0daafc9e54e7e74788b14e4a521813383e2ba09ee14c",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "25764ebe554058ed72be0daafc9e54e7e74788b14e4a521813383e2ba09ee14c",
+     "browserOwn": 21,
+     "exact": 45,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 47
+    },
+    "gate.run2": {
+     "archiveSha256": "25764ebe554058ed72be0daafc9e54e7e74788b14e4a521813383e2ba09ee14c",
+     "browserOwn": 21,
+     "exact": 45,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 47
+    },
+    "head.run1": {
+     "archiveSha256": "25764ebe554058ed72be0daafc9e54e7e74788b14e4a521813383e2ba09ee14c",
+     "browserOwn": 21,
+     "exact": 45,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 47
+    },
+    "head.run2": {
+     "archiveSha256": "25764ebe554058ed72be0daafc9e54e7e74788b14e4a521813383e2ba09ee14c",
+     "browserOwn": 22,
+     "exact": 45,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 47
+    }
+   },
+   "fleet": {
+    "archiveSha256": "25764ebe554058ed72be0daafc9e54e7e74788b14e4a521813383e2ba09ee14c",
+    "browserOwn": 0,
+    "exact": 44,
+    "fuzzy": 0,
+    "miss": 9,
+    "requests": 53,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "tfl-gov-uk-modes-tube-f19815f0",
+   "url": "https://tfl.gov.uk/modes/tube/"
+  },
+  {
+   "archiveSha256": "8e350da0c4777c6dd58c386ce9b05a9c765d3ff3b5bf49333f9424279945bfef",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "8e350da0c4777c6dd58c386ce9b05a9c765d3ff3b5bf49333f9424279945bfef",
+     "browserOwn": 12,
+     "exact": 46,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 47
+    },
+    "gate.run2": {
+     "archiveSha256": "8e350da0c4777c6dd58c386ce9b05a9c765d3ff3b5bf49333f9424279945bfef",
+     "browserOwn": 12,
+     "exact": 46,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 47
+    },
+    "head.run1": {
+     "archiveSha256": "8e350da0c4777c6dd58c386ce9b05a9c765d3ff3b5bf49333f9424279945bfef",
+     "browserOwn": 13,
+     "exact": 46,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 47
+    },
+    "head.run2": {
+     "archiveSha256": "8e350da0c4777c6dd58c386ce9b05a9c765d3ff3b5bf49333f9424279945bfef",
+     "browserOwn": 12,
+     "exact": 46,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 47
+    }
+   },
+   "fleet": {
+    "archiveSha256": "8e350da0c4777c6dd58c386ce9b05a9c765d3ff3b5bf49333f9424279945bfef",
+    "browserOwn": 0,
+    "exact": 44,
+    "fuzzy": 0,
+    "miss": 6,
+    "requests": 50,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "tfl-gov-uk-plan-a-journey-0f85db50",
+   "url": "https://tfl.gov.uk/plan-a-journey/"
+  },
+  {
+   "archiveSha256": "68fc3b62e9052e439780f4963d6724cf85581bc0c69e1b8f01d3e7e2dcdcac5c",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "68fc3b62e9052e439780f4963d6724cf85581bc0c69e1b8f01d3e7e2dcdcac5c",
+     "browserOwn": 12,
+     "exact": 18,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 19
+    },
+    "gate.run2": {
+     "archiveSha256": "68fc3b62e9052e439780f4963d6724cf85581bc0c69e1b8f01d3e7e2dcdcac5c",
+     "browserOwn": 12,
+     "exact": 18,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 19
+    },
+    "head.run1": {
+     "archiveSha256": "68fc3b62e9052e439780f4963d6724cf85581bc0c69e1b8f01d3e7e2dcdcac5c",
+     "browserOwn": 12,
+     "exact": 18,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 19
+    },
+    "head.run2": {
+     "archiveSha256": "68fc3b62e9052e439780f4963d6724cf85581bc0c69e1b8f01d3e7e2dcdcac5c",
+     "browserOwn": 12,
+     "exact": 18,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 19
+    }
+   },
+   "fleet": {
+    "archiveSha256": "68fc3b62e9052e439780f4963d6724cf85581bc0c69e1b8f01d3e7e2dcdcac5c",
+    "browserOwn": 3,
+    "exact": 27,
+    "fuzzy": 0,
+    "miss": 6,
+    "requests": 33,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "the-internet-herokuapp-com-login-5de190cf",
+   "url": "https://the-internet.herokuapp.com/login"
+  },
+  {
+   "archiveSha256": "3d83fdd53ac9c5b7775dd1de49136b68f61626fb43f6e3958cd6385ecd345861",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "3d83fdd53ac9c5b7775dd1de49136b68f61626fb43f6e3958cd6385ecd345861",
+     "browserOwn": 22,
+     "exact": 61,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 62
+    },
+    "gate.run2": {
+     "archiveSha256": "3d83fdd53ac9c5b7775dd1de49136b68f61626fb43f6e3958cd6385ecd345861",
+     "browserOwn": 22,
+     "exact": 61,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 62
+    },
+    "head.run1": {
+     "archiveSha256": "3d83fdd53ac9c5b7775dd1de49136b68f61626fb43f6e3958cd6385ecd345861",
+     "browserOwn": 22,
+     "exact": 94,
+     "fuzzy": 5,
+     "miss": 1,
+     "requests": 100
+    },
+    "head.run2": {
+     "archiveSha256": "3d83fdd53ac9c5b7775dd1de49136b68f61626fb43f6e3958cd6385ecd345861",
+     "browserOwn": 22,
+     "exact": 94,
+     "fuzzy": 5,
+     "miss": 1,
+     "requests": 100
+    }
+   },
+   "fleet": {
+    "archiveSha256": "3d83fdd53ac9c5b7775dd1de49136b68f61626fb43f6e3958cd6385ecd345861",
+    "browserOwn": 0,
+    "exact": 82,
+    "fuzzy": 0,
+    "miss": 20,
+    "requests": 102,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "weather-metoffice-gov-uk-forecast-gcpvj0v07-9862e379",
+   "url": "https://weather.metoffice.gov.uk/forecast/gcpvj0v07"
+  },
+  {
+   "archiveSha256": "5d30bff40b17773353897a512fab45bb8b5f57dc8abf2692e1ce92d7c5063366",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "5d30bff40b17773353897a512fab45bb8b5f57dc8abf2692e1ce92d7c5063366",
+     "browserOwn": 10,
+     "exact": 49,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 50
+    },
+    "gate.run2": {
+     "archiveSha256": "5d30bff40b17773353897a512fab45bb8b5f57dc8abf2692e1ce92d7c5063366",
+     "browserOwn": 10,
+     "exact": 49,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 50
+    },
+    "head.run1": {
+     "archiveSha256": "5d30bff40b17773353897a512fab45bb8b5f57dc8abf2692e1ce92d7c5063366",
+     "browserOwn": 10,
+     "exact": 49,
+     "fuzzy": 0,
+     "miss": 5,
+     "requests": 54
+    },
+    "head.run2": {
+     "archiveSha256": "5d30bff40b17773353897a512fab45bb8b5f57dc8abf2692e1ce92d7c5063366",
+     "browserOwn": 10,
+     "exact": 49,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 50
+    }
+   },
+   "fleet": {
+    "archiveSha256": "5d30bff40b17773353897a512fab45bb8b5f57dc8abf2692e1ce92d7c5063366",
+    "browserOwn": 0,
+    "exact": 45,
+    "fuzzy": 0,
+    "miss": 3,
+    "requests": 48,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "weather-metoffice-gov-uk-warnings-and-advice-uk-warnings-c995e390",
+   "url": "https://weather.metoffice.gov.uk/warnings-and-advice/uk-warnings"
+  },
+  {
+   "archiveSha256": "2932554718d2d504af4f386ecb58930daf6018b3f90429041922fe0449e9b08c",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "2932554718d2d504af4f386ecb58930daf6018b3f90429041922fe0449e9b08c",
+     "browserOwn": 7,
+     "exact": 282,
+     "fuzzy": 23,
+     "miss": 23,
+     "requests": 328
+    },
+    "gate.run2": {
+     "archiveSha256": "2932554718d2d504af4f386ecb58930daf6018b3f90429041922fe0449e9b08c",
+     "browserOwn": 7,
+     "exact": 282,
+     "fuzzy": 23,
+     "miss": 22,
+     "requests": 327
+    },
+    "head.run1": {
+     "archiveSha256": "2932554718d2d504af4f386ecb58930daf6018b3f90429041922fe0449e9b08c",
+     "browserOwn": 7,
+     "exact": 284,
+     "fuzzy": 24,
+     "miss": 13,
+     "requests": 321
+    },
+    "head.run2": {
+     "archiveSha256": "2932554718d2d504af4f386ecb58930daf6018b3f90429041922fe0449e9b08c",
+     "browserOwn": 7,
+     "exact": 285,
+     "fuzzy": 24,
+     "miss": 13,
+     "requests": 322
+    }
+   },
+   "fleet": {
+    "archiveSha256": "2932554718d2d504af4f386ecb58930daf6018b3f90429041922fe0449e9b08c",
+    "browserOwn": 0,
+    "exact": 796,
+    "fuzzy": 63,
+    "miss": 48,
+    "requests": 907,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "www-adobe-com-200ae71a",
+   "url": "https://www.adobe.com/"
+  },
+  {
+   "archiveSha256": "05813f4b42b3ff774213dee5db91bd5e8197f57ea628444e1fd9435b56691a7f",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "05813f4b42b3ff774213dee5db91bd5e8197f57ea628444e1fd9435b56691a7f",
+     "browserOwn": 8,
+     "exact": 138,
+     "fuzzy": 6,
+     "miss": 0,
+     "requests": 144
+    },
+    "gate.run2": {
+     "archiveSha256": "05813f4b42b3ff774213dee5db91bd5e8197f57ea628444e1fd9435b56691a7f",
+     "browserOwn": 8,
+     "exact": 138,
+     "fuzzy": 6,
+     "miss": 0,
+     "requests": 144
+    },
+    "head.run1": {
+     "archiveSha256": "05813f4b42b3ff774213dee5db91bd5e8197f57ea628444e1fd9435b56691a7f",
+     "browserOwn": 8,
+     "exact": 179,
+     "fuzzy": 6,
+     "miss": 0,
+     "requests": 185
+    },
+    "head.run2": {
+     "archiveSha256": "05813f4b42b3ff774213dee5db91bd5e8197f57ea628444e1fd9435b56691a7f",
+     "browserOwn": 8,
+     "exact": 179,
+     "fuzzy": 6,
+     "miss": 0,
+     "requests": 185
+    }
+   },
+   "fleet": {
+    "archiveSha256": "05813f4b42b3ff774213dee5db91bd5e8197f57ea628444e1fd9435b56691a7f",
+    "browserOwn": 3,
+    "exact": 176,
+    "fuzzy": 8,
+    "miss": 9,
+    "requests": 193,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-atlassian-com-4368508f",
+   "url": "https://www.atlassian.com/"
+  },
+  {
+   "archiveSha256": "cb1946087745b10f8f4bb6a2233a971d321ffdab89e05c1b9f6cb39c3cc6ce43",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "cb1946087745b10f8f4bb6a2233a971d321ffdab89e05c1b9f6cb39c3cc6ce43",
+     "browserOwn": 16,
+     "exact": 43,
+     "fuzzy": 4,
+     "miss": 0,
+     "requests": 47
+    },
+    "gate.run2": {
+     "archiveSha256": "cb1946087745b10f8f4bb6a2233a971d321ffdab89e05c1b9f6cb39c3cc6ce43",
+     "browserOwn": 16,
+     "exact": 43,
+     "fuzzy": 4,
+     "miss": 0,
+     "requests": 47
+    },
+    "head.run1": {
+     "archiveSha256": "cb1946087745b10f8f4bb6a2233a971d321ffdab89e05c1b9f6cb39c3cc6ce43",
+     "browserOwn": 16,
+     "exact": 43,
+     "fuzzy": 4,
+     "miss": 1,
+     "requests": 48
+    },
+    "head.run2": {
+     "archiveSha256": "cb1946087745b10f8f4bb6a2233a971d321ffdab89e05c1b9f6cb39c3cc6ce43",
+     "browserOwn": 14,
+     "exact": 43,
+     "fuzzy": 4,
+     "miss": 8,
+     "requests": 55
+    }
+   },
+   "fleet": {
+    "archiveSha256": "cb1946087745b10f8f4bb6a2233a971d321ffdab89e05c1b9f6cb39c3cc6ce43",
+    "browserOwn": 0,
+    "exact": 38,
+    "fuzzy": 5,
+    "miss": 1,
+    "requests": 44,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "www-british-history-ac-uk-catalogue-9d6b1d9d",
+   "url": "https://www.british-history.ac.uk/catalogue"
+  },
+  {
+   "archiveSha256": "349ac864f4c92c16ccadcd153a7ff0596eaca7dbbd89d03de027def5366ffdb4",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "349ac864f4c92c16ccadcd153a7ff0596eaca7dbbd89d03de027def5366ffdb4",
+     "browserOwn": 10,
+     "exact": 8,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 8
+    },
+    "gate.run2": {
+     "archiveSha256": "349ac864f4c92c16ccadcd153a7ff0596eaca7dbbd89d03de027def5366ffdb4",
+     "browserOwn": 10,
+     "exact": 8,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 8
+    },
+    "head.run1": {
+     "archiveSha256": "349ac864f4c92c16ccadcd153a7ff0596eaca7dbbd89d03de027def5366ffdb4",
+     "browserOwn": 10,
+     "exact": 8,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 8
+    },
+    "head.run2": {
+     "archiveSha256": "349ac864f4c92c16ccadcd153a7ff0596eaca7dbbd89d03de027def5366ffdb4",
+     "browserOwn": 10,
+     "exact": 8,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 8
+    }
+   },
+   "fleet": {
+    "archiveSha256": "349ac864f4c92c16ccadcd153a7ff0596eaca7dbbd89d03de027def5366ffdb4",
+    "browserOwn": 1,
+    "exact": 3,
+    "fuzzy": 0,
+    "miss": 0,
+    "requests": 3,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-cqc-org-uk-about-us-f2523eca",
+   "url": "https://www.cqc.org.uk/about-us"
+  },
+  {
+   "archiveSha256": "a4f87ea42bdc262685d8d7b77bb4919c19a02efad11796e99fea95c2c32fb972",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "a4f87ea42bdc262685d8d7b77bb4919c19a02efad11796e99fea95c2c32fb972",
+     "browserOwn": 19,
+     "exact": 67,
+     "fuzzy": 11,
+     "miss": 4,
+     "requests": 82
+    },
+    "gate.run2": {
+     "archiveSha256": "a4f87ea42bdc262685d8d7b77bb4919c19a02efad11796e99fea95c2c32fb972",
+     "browserOwn": 19,
+     "exact": 67,
+     "fuzzy": 9,
+     "miss": 3,
+     "requests": 79
+    },
+    "head.run1": {
+     "archiveSha256": "a4f87ea42bdc262685d8d7b77bb4919c19a02efad11796e99fea95c2c32fb972",
+     "browserOwn": 19,
+     "exact": 67,
+     "fuzzy": 11,
+     "miss": 4,
+     "requests": 82
+    },
+    "head.run2": {
+     "archiveSha256": "a4f87ea42bdc262685d8d7b77bb4919c19a02efad11796e99fea95c2c32fb972",
+     "browserOwn": 19,
+     "exact": 68,
+     "fuzzy": 11,
+     "miss": 4,
+     "requests": 83
+    }
+   },
+   "fleet": {
+    "archiveSha256": "a4f87ea42bdc262685d8d7b77bb4919c19a02efad11796e99fea95c2c32fb972",
+    "browserOwn": 1,
+    "exact": 78,
+    "fuzzy": 32,
+    "miss": 16,
+    "requests": 126,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-cqc-org-uk-search-all-query-hospital-f323052d",
+   "url": "https://www.cqc.org.uk/search/all?query=hospital"
+  },
+  {
+   "archiveSha256": "de141a2f26092cf0a91fa802cdf3bc18e798fa302f03cdb961508c2fb7ef1e45",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "de141a2f26092cf0a91fa802cdf3bc18e798fa302f03cdb961508c2fb7ef1e45",
+     "blocked": 2,
+     "browserOwn": 10,
+     "exact": 242,
+     "fuzzy": 1,
+     "miss": 12,
+     "requests": 257
+    },
+    "gate.run2": {
+     "archiveSha256": "de141a2f26092cf0a91fa802cdf3bc18e798fa302f03cdb961508c2fb7ef1e45",
+     "blocked": 2,
+     "browserOwn": 10,
+     "exact": 235,
+     "fuzzy": 1,
+     "miss": 11,
+     "requests": 249
+    },
+    "head.run1": {
+     "archiveSha256": "de141a2f26092cf0a91fa802cdf3bc18e798fa302f03cdb961508c2fb7ef1e45",
+     "blocked": 2,
+     "browserOwn": 13,
+     "exact": 308,
+     "fuzzy": 1,
+     "miss": 11,
+     "requests": 322
+    },
+    "head.run2": {
+     "archiveSha256": "de141a2f26092cf0a91fa802cdf3bc18e798fa302f03cdb961508c2fb7ef1e45",
+     "blocked": 2,
+     "browserOwn": 11,
+     "exact": 308,
+     "fuzzy": 1,
+     "miss": 11,
+     "requests": 322
+    }
+   },
+   "fleet": {
+    "archiveSha256": "de141a2f26092cf0a91fa802cdf3bc18e798fa302f03cdb961508c2fb7ef1e45",
+    "blocked": 2,
+    "browserOwn": 4,
+    "exact": 304,
+    "fuzzy": 1,
+    "miss": 3,
+    "requests": 310,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "www-dropbox-com-8f9fb359",
+   "url": "https://www.dropbox.com/"
+  },
+  {
+   "archiveSha256": "a5b5d90e8885810a8a4eeeb20692dfdf843ad3e0e0bd6a15da8ca1a7675efbc9",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "a5b5d90e8885810a8a4eeeb20692dfdf843ad3e0e0bd6a15da8ca1a7675efbc9",
+     "browserOwn": 10,
+     "exact": 8,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 8
+    },
+    "gate.run2": {
+     "archiveSha256": "a5b5d90e8885810a8a4eeeb20692dfdf843ad3e0e0bd6a15da8ca1a7675efbc9",
+     "browserOwn": 10,
+     "exact": 8,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 8
+    },
+    "head.run1": {
+     "archiveSha256": "a5b5d90e8885810a8a4eeeb20692dfdf843ad3e0e0bd6a15da8ca1a7675efbc9",
+     "browserOwn": 10,
+     "exact": 8,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 8
+    },
+    "head.run2": {
+     "archiveSha256": "a5b5d90e8885810a8a4eeeb20692dfdf843ad3e0e0bd6a15da8ca1a7675efbc9",
+     "browserOwn": 10,
+     "exact": 8,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 8
+    }
+   },
+   "fleet": {
+    "archiveSha256": "a5b5d90e8885810a8a4eeeb20692dfdf843ad3e0e0bd6a15da8ca1a7675efbc9",
+    "browserOwn": 3,
+    "exact": 4,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 6,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "www-financial-ombudsman-org-uk-businesses-resolving-complaint-ombudsma-6ce973ea",
+   "url": "https://www.financial-ombudsman.org.uk/businesses/resolving-complaint/ombudsman-decisions"
+  },
+  {
+   "archiveSha256": "6abda14ee663922b7072c971aed5e71c3b313c40f8870374bd47846b14d895ef",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "6abda14ee663922b7072c971aed5e71c3b313c40f8870374bd47846b14d895ef",
+     "browserOwn": 14,
+     "exact": 27,
+     "fuzzy": 3,
+     "miss": 0,
+     "requests": 30
+    },
+    "gate.run2": {
+     "archiveSha256": "6abda14ee663922b7072c971aed5e71c3b313c40f8870374bd47846b14d895ef",
+     "browserOwn": 14,
+     "exact": 26,
+     "fuzzy": 3,
+     "miss": 0,
+     "requests": 29
+    },
+    "head.run1": {
+     "archiveSha256": "6abda14ee663922b7072c971aed5e71c3b313c40f8870374bd47846b14d895ef",
+     "browserOwn": 14,
+     "exact": 38,
+     "fuzzy": 3,
+     "miss": 0,
+     "requests": 41
+    },
+    "head.run2": {
+     "archiveSha256": "6abda14ee663922b7072c971aed5e71c3b313c40f8870374bd47846b14d895ef",
+     "browserOwn": 14,
+     "exact": 38,
+     "fuzzy": 3,
+     "miss": 0,
+     "requests": 41
+    }
+   },
+   "fleet": {
+    "archiveSha256": "6abda14ee663922b7072c971aed5e71c3b313c40f8870374bd47846b14d895ef",
+    "browserOwn": 0,
+    "exact": 33,
+    "fuzzy": 3,
+    "miss": 0,
+    "requests": 36,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "www-gla-ac-uk-undergraduate-degrees-5e5eb747",
+   "url": "https://www.gla.ac.uk/undergraduate/degrees/"
+  },
+  {
+   "archiveSha256": "52b1dd445fa50fc761b0a0cb5e7faf76d03fa284072774b6ddc4690e785f66a1",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "52b1dd445fa50fc761b0a0cb5e7faf76d03fa284072774b6ddc4690e785f66a1",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 23
+    },
+    "gate.run2": {
+     "archiveSha256": "52b1dd445fa50fc761b0a0cb5e7faf76d03fa284072774b6ddc4690e785f66a1",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 26
+    },
+    "head.run1": {
+     "archiveSha256": "52b1dd445fa50fc761b0a0cb5e7faf76d03fa284072774b6ddc4690e785f66a1",
+     "browserOwn": 10,
+     "exact": 26,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 27
+    },
+    "head.run2": {
+     "archiveSha256": "52b1dd445fa50fc761b0a0cb5e7faf76d03fa284072774b6ddc4690e785f66a1",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 26
+    }
+   },
+   "fleet": {
+    "archiveSha256": "52b1dd445fa50fc761b0a0cb5e7faf76d03fa284072774b6ddc4690e785f66a1",
+    "browserOwn": 0,
+    "exact": 22,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 24,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "www-gov-scot-about-eef02a93",
+   "url": "https://www.gov.scot/about/"
+  },
+  {
+   "archiveSha256": "83fe36a5aeb7a629ad63e389f6e5f38f58c7c9bc75d1192938d218b6c2ccc8ae",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "83fe36a5aeb7a629ad63e389f6e5f38f58c7c9bc75d1192938d218b6c2ccc8ae",
+     "browserOwn": 14,
+     "exact": 25,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 26
+    },
+    "gate.run2": {
+     "archiveSha256": "83fe36a5aeb7a629ad63e389f6e5f38f58c7c9bc75d1192938d218b6c2ccc8ae",
+     "browserOwn": 15,
+     "exact": 26,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 27
+    },
+    "head.run1": {
+     "archiveSha256": "83fe36a5aeb7a629ad63e389f6e5f38f58c7c9bc75d1192938d218b6c2ccc8ae",
+     "browserOwn": 16,
+     "exact": 27,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 28
+    },
+    "head.run2": {
+     "archiveSha256": "83fe36a5aeb7a629ad63e389f6e5f38f58c7c9bc75d1192938d218b6c2ccc8ae",
+     "browserOwn": 16,
+     "exact": 25,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 26
+    }
+   },
+   "fleet": {
+    "archiveSha256": "83fe36a5aeb7a629ad63e389f6e5f38f58c7c9bc75d1192938d218b6c2ccc8ae",
+    "browserOwn": 0,
+    "exact": 21,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 22,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "www-gov-scot-publications-8f32015c",
+   "url": "https://www.gov.scot/publications/"
+  },
+  {
+   "archiveSha256": "676d5fa31b230d3f27b3d2e4d3e8be12ee600d645627c0324779d8023b49ec0b",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "676d5fa31b230d3f27b3d2e4d3e8be12ee600d645627c0324779d8023b49ec0b",
+     "browserOwn": 12,
+     "exact": 16,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 17
+    },
+    "gate.run2": {
+     "archiveSha256": "676d5fa31b230d3f27b3d2e4d3e8be12ee600d645627c0324779d8023b49ec0b",
+     "browserOwn": 12,
+     "exact": 16,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 17
+    },
+    "head.run1": {
+     "archiveSha256": "676d5fa31b230d3f27b3d2e4d3e8be12ee600d645627c0324779d8023b49ec0b",
+     "browserOwn": 13,
+     "exact": 16,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 17
+    },
+    "head.run2": {
+     "archiveSha256": "676d5fa31b230d3f27b3d2e4d3e8be12ee600d645627c0324779d8023b49ec0b",
+     "browserOwn": 12,
+     "exact": 16,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 17
+    }
+   },
+   "fleet": {
+    "archiveSha256": "676d5fa31b230d3f27b3d2e4d3e8be12ee600d645627c0324779d8023b49ec0b",
+    "browserOwn": 0,
+    "exact": 12,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 14,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "www-gov-uk-browse-benefits-78b1819d",
+   "url": "https://www.gov.uk/browse/benefits"
+  },
+  {
+   "archiveSha256": "006f8a56a777b1b9febc5dafa2da705d17ed7fbde78a79d65cb988325033f934",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "006f8a56a777b1b9febc5dafa2da705d17ed7fbde78a79d65cb988325033f934",
+     "browserOwn": 18,
+     "exact": 18,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 19
+    },
+    "gate.run2": {
+     "archiveSha256": "006f8a56a777b1b9febc5dafa2da705d17ed7fbde78a79d65cb988325033f934",
+     "browserOwn": 19,
+     "exact": 18,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 19
+    },
+    "head.run1": {
+     "archiveSha256": "006f8a56a777b1b9febc5dafa2da705d17ed7fbde78a79d65cb988325033f934",
+     "browserOwn": 19,
+     "exact": 18,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 19
+    },
+    "head.run2": {
+     "archiveSha256": "006f8a56a777b1b9febc5dafa2da705d17ed7fbde78a79d65cb988325033f934",
+     "browserOwn": 19,
+     "exact": 18,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 19
+    }
+   },
+   "fleet": {
+    "archiveSha256": "006f8a56a777b1b9febc5dafa2da705d17ed7fbde78a79d65cb988325033f934",
+    "browserOwn": 0,
+    "exact": 13,
+    "fuzzy": 0,
+    "miss": 3,
+    "requests": 16,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "www-gov-uk-guidance-rates-and-thresholds-for-employers-2025-to-2026-9ec7aaf8",
+   "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026"
+  },
+  {
+   "archiveSha256": "014ef9b8b30e79ffb9fac09c8d64e9232fe0772ee3e2cc88bb2b14b76a706e23",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "014ef9b8b30e79ffb9fac09c8d64e9232fe0772ee3e2cc88bb2b14b76a706e23",
+     "browserOwn": 18,
+     "exact": 16,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 17
+    },
+    "gate.run2": {
+     "archiveSha256": "014ef9b8b30e79ffb9fac09c8d64e9232fe0772ee3e2cc88bb2b14b76a706e23",
+     "browserOwn": 18,
+     "exact": 16,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 17
+    },
+    "head.run1": {
+     "archiveSha256": "014ef9b8b30e79ffb9fac09c8d64e9232fe0772ee3e2cc88bb2b14b76a706e23",
+     "browserOwn": 20,
+     "exact": 16,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 17
+    },
+    "head.run2": {
+     "archiveSha256": "014ef9b8b30e79ffb9fac09c8d64e9232fe0772ee3e2cc88bb2b14b76a706e23",
+     "browserOwn": 18,
+     "exact": 16,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 17
+    }
+   },
+   "fleet": {
+    "archiveSha256": "014ef9b8b30e79ffb9fac09c8d64e9232fe0772ee3e2cc88bb2b14b76a706e23",
+    "browserOwn": 1,
+    "exact": 12,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 13,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "www-gov-uk-search-news-and-communications-50c56c4e",
+   "url": "https://www.gov.uk/search/news-and-communications"
+  },
+  {
+   "archiveSha256": "147a7b526205a758de032d844295b7ef89c66203ed29d54f49efebd98a3743ea",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "147a7b526205a758de032d844295b7ef89c66203ed29d54f49efebd98a3743ea",
+     "browserOwn": 21,
+     "exact": 16,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 17
+    },
+    "gate.run2": {
+     "archiveSha256": "147a7b526205a758de032d844295b7ef89c66203ed29d54f49efebd98a3743ea",
+     "browserOwn": 21,
+     "exact": 16,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 17
+    },
+    "head.run1": {
+     "archiveSha256": "147a7b526205a758de032d844295b7ef89c66203ed29d54f49efebd98a3743ea",
+     "browserOwn": 21,
+     "exact": 16,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 17
+    },
+    "head.run2": {
+     "archiveSha256": "147a7b526205a758de032d844295b7ef89c66203ed29d54f49efebd98a3743ea",
+     "browserOwn": 20,
+     "exact": 16,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 17
+    }
+   },
+   "fleet": {
+    "archiveSha256": "147a7b526205a758de032d844295b7ef89c66203ed29d54f49efebd98a3743ea",
+    "browserOwn": 0,
+    "exact": 11,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 12,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "www-gov-uk-search-research-and-statistics-47a9f349",
+   "url": "https://www.gov.uk/search/research-and-statistics"
+  },
+  {
+   "archiveSha256": "27a4fa6166bd27e70d64a05b2490ffe58ecdfaec232e023ceaa3bf18fe8570b0",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "27a4fa6166bd27e70d64a05b2490ffe58ecdfaec232e023ceaa3bf18fe8570b0",
+     "browserOwn": 12,
+     "exact": 15,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 16
+    },
+    "gate.run2": {
+     "archiveSha256": "27a4fa6166bd27e70d64a05b2490ffe58ecdfaec232e023ceaa3bf18fe8570b0",
+     "browserOwn": 12,
+     "exact": 15,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 16
+    },
+    "head.run1": {
+     "archiveSha256": "27a4fa6166bd27e70d64a05b2490ffe58ecdfaec232e023ceaa3bf18fe8570b0",
+     "browserOwn": 14,
+     "exact": 15,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 16
+    },
+    "head.run2": {
+     "archiveSha256": "27a4fa6166bd27e70d64a05b2490ffe58ecdfaec232e023ceaa3bf18fe8570b0",
+     "browserOwn": 12,
+     "exact": 15,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 16
+    }
+   },
+   "fleet": {
+    "archiveSha256": "27a4fa6166bd27e70d64a05b2490ffe58ecdfaec232e023ceaa3bf18fe8570b0",
+    "browserOwn": 0,
+    "exact": 10,
+    "fuzzy": 0,
+    "miss": 8,
+    "requests": 18,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "www-gov-uk-vehicle-tax-7ba39163",
+   "url": "https://www.gov.uk/vehicle-tax"
+  },
+  {
+   "archiveSha256": "f51592e05191d5868dc4d739db47c29a8bad747000a60ce20b09f83e9001bbf3",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "f51592e05191d5868dc4d739db47c29a8bad747000a60ce20b09f83e9001bbf3",
+     "browserOwn": 22,
+     "exact": 19,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 23
+    },
+    "gate.run2": {
+     "archiveSha256": "f51592e05191d5868dc4d739db47c29a8bad747000a60ce20b09f83e9001bbf3",
+     "browserOwn": 22,
+     "exact": 19,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 23
+    },
+    "head.run1": {
+     "archiveSha256": "f51592e05191d5868dc4d739db47c29a8bad747000a60ce20b09f83e9001bbf3",
+     "browserOwn": 22,
+     "exact": 19,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 23
+    },
+    "head.run2": {
+     "archiveSha256": "f51592e05191d5868dc4d739db47c29a8bad747000a60ce20b09f83e9001bbf3",
+     "browserOwn": 22,
+     "exact": 19,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 23
+    }
+   },
+   "fleet": {
+    "archiveSha256": "f51592e05191d5868dc4d739db47c29a8bad747000a60ce20b09f83e9001bbf3",
+    "browserOwn": 0,
+    "exact": 15,
+    "fuzzy": 1,
+    "miss": 3,
+    "requests": 19,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "www-gov-wales-statistics-and-research-bb6c408a",
+   "url": "https://www.gov.wales/statistics-and-research"
+  },
+  {
+   "archiveSha256": "8ea2ccc4b6b9d70aa49c6bb2dd5c962b803491b8672c36a7efaa72135daca4d8",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "8ea2ccc4b6b9d70aa49c6bb2dd5c962b803491b8672c36a7efaa72135daca4d8",
+     "browserOwn": 11,
+     "exact": 29,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 29
+    },
+    "gate.run2": {
+     "archiveSha256": "8ea2ccc4b6b9d70aa49c6bb2dd5c962b803491b8672c36a7efaa72135daca4d8",
+     "browserOwn": 12,
+     "exact": 30,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 30
+    },
+    "head.run1": {
+     "archiveSha256": "8ea2ccc4b6b9d70aa49c6bb2dd5c962b803491b8672c36a7efaa72135daca4d8",
+     "browserOwn": 12,
+     "exact": 37,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 37
+    },
+    "head.run2": {
+     "archiveSha256": "8ea2ccc4b6b9d70aa49c6bb2dd5c962b803491b8672c36a7efaa72135daca4d8",
+     "browserOwn": 12,
+     "exact": 37,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 37
+    }
+   },
+   "fleet": {
+    "archiveSha256": "8ea2ccc4b6b9d70aa49c6bb2dd5c962b803491b8672c36a7efaa72135daca4d8",
+    "browserOwn": 2,
+    "exact": 27,
+    "fuzzy": 0,
+    "miss": 5,
+    "requests": 32,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "www-historicenvironment-scot-visit-all-edinburgh-castle-ba403e32",
+   "url": "https://www.historicenvironment.scot/visit/all/edinburgh-castle/"
+  },
+  {
+   "archiveSha256": "7a183f139dc1e4a8f624c227cac444012ae3e038ebdbd8b0684425743d9b24d7",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "7a183f139dc1e4a8f624c227cac444012ae3e038ebdbd8b0684425743d9b24d7",
+     "browserOwn": 14,
+     "exact": 159,
+     "fuzzy": 16,
+     "miss": 17,
+     "requests": 192
+    },
+    "gate.run2": {
+     "archiveSha256": "7a183f139dc1e4a8f624c227cac444012ae3e038ebdbd8b0684425743d9b24d7",
+     "browserOwn": 12,
+     "exact": 158,
+     "fuzzy": 16,
+     "miss": 16,
+     "requests": 190
+    },
+    "head.run1": {
+     "archiveSha256": "7a183f139dc1e4a8f624c227cac444012ae3e038ebdbd8b0684425743d9b24d7",
+     "browserOwn": 15,
+     "exact": 175,
+     "fuzzy": 17,
+     "miss": 16,
+     "requests": 208
+    },
+    "head.run2": {
+     "archiveSha256": "7a183f139dc1e4a8f624c227cac444012ae3e038ebdbd8b0684425743d9b24d7",
+     "browserOwn": 12,
+     "exact": 173,
+     "fuzzy": 18,
+     "miss": 31,
+     "requests": 222
+    }
+   },
+   "fleet": {
+    "archiveSha256": "7a183f139dc1e4a8f624c227cac444012ae3e038ebdbd8b0684425743d9b24d7",
+    "browserOwn": 0,
+    "exact": 355,
+    "fuzzy": 32,
+    "miss": 30,
+    "requests": 417,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-hubspot-com-31d11f63",
+   "url": "https://www.hubspot.com/"
+  },
+  {
+   "archiveSha256": "3e0d775228ec8fa109f18fb372b63945b5f9634a59d69a51c1ffbad2c12a8ea9",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "3e0d775228ec8fa109f18fb372b63945b5f9634a59d69a51c1ffbad2c12a8ea9",
+     "browserOwn": 10,
+     "exact": 52,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 54
+    },
+    "gate.run2": {
+     "archiveSha256": "3e0d775228ec8fa109f18fb372b63945b5f9634a59d69a51c1ffbad2c12a8ea9",
+     "browserOwn": 10,
+     "exact": 52,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 54
+    },
+    "head.run1": {
+     "archiveSha256": "3e0d775228ec8fa109f18fb372b63945b5f9634a59d69a51c1ffbad2c12a8ea9",
+     "browserOwn": 10,
+     "exact": 52,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 54
+    },
+    "head.run2": {
+     "archiveSha256": "3e0d775228ec8fa109f18fb372b63945b5f9634a59d69a51c1ffbad2c12a8ea9",
+     "browserOwn": 10,
+     "exact": 52,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 54
+    }
+   },
+   "fleet": {
+    "archiveSha256": "3e0d775228ec8fa109f18fb372b63945b5f9634a59d69a51c1ffbad2c12a8ea9",
+    "browserOwn": 0,
+    "exact": 48,
+    "fuzzy": 1,
+    "miss": 7,
+    "requests": 56,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "www-lbhf-gov-uk-council-tax-98a15f69",
+   "url": "https://www.lbhf.gov.uk/council-tax"
+  },
+  {
+   "archiveSha256": "1ef4e3293c305a16d26b5668f833f365ac55fdf556f1393c8266065080c9ac43",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "1ef4e3293c305a16d26b5668f833f365ac55fdf556f1393c8266065080c9ac43",
+     "browserOwn": 10,
+     "exact": 6,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 6
+    },
+    "gate.run2": {
+     "archiveSha256": "1ef4e3293c305a16d26b5668f833f365ac55fdf556f1393c8266065080c9ac43",
+     "browserOwn": 10,
+     "exact": 6,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 6
+    },
+    "head.run1": {
+     "archiveSha256": "1ef4e3293c305a16d26b5668f833f365ac55fdf556f1393c8266065080c9ac43",
+     "browserOwn": 10,
+     "exact": 6,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 6
+    },
+    "head.run2": {
+     "archiveSha256": "1ef4e3293c305a16d26b5668f833f365ac55fdf556f1393c8266065080c9ac43",
+     "browserOwn": 10,
+     "exact": 6,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 6
+    }
+   },
+   "fleet": {
+    "archiveSha256": "1ef4e3293c305a16d26b5668f833f365ac55fdf556f1393c8266065080c9ac43",
+    "browserOwn": 0,
+    "exact": 2,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 4,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "www-leeds-ac-uk-undergraduate-ba978a50",
+   "url": "https://www.leeds.ac.uk/undergraduate"
+  },
+  {
+   "archiveSha256": "fd61bc39befc84e3b12851491a7e480e97714ad1bd3e1bb30b0bf2324380d618",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "fd61bc39befc84e3b12851491a7e480e97714ad1bd3e1bb30b0bf2324380d618",
+     "browserOwn": 10,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 24
+    },
+    "gate.run2": {
+     "archiveSha256": "fd61bc39befc84e3b12851491a7e480e97714ad1bd3e1bb30b0bf2324380d618",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 22
+    },
+    "head.run1": {
+     "archiveSha256": "fd61bc39befc84e3b12851491a7e480e97714ad1bd3e1bb30b0bf2324380d618",
+     "browserOwn": 10,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 24
+    },
+    "head.run2": {
+     "archiveSha256": "fd61bc39befc84e3b12851491a7e480e97714ad1bd3e1bb30b0bf2324380d618",
+     "browserOwn": 10,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 24
+    }
+   },
+   "fleet": {
+    "archiveSha256": "fd61bc39befc84e3b12851491a7e480e97714ad1bd3e1bb30b0bf2324380d618",
+    "browserOwn": 0,
+    "exact": 19,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 21,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "www-mygov-scot-browse-benefits-7b51164a",
+   "url": "https://www.mygov.scot/browse/benefits"
+  },
+  {
+   "archiveSha256": "a404ffbfb402c36e5dfd7c8a868f42f2f4a26db9ed91dec80b175f74fc912004",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "a404ffbfb402c36e5dfd7c8a868f42f2f4a26db9ed91dec80b175f74fc912004",
+     "browserOwn": 10,
+     "exact": 31,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 32
+    },
+    "gate.run2": {
+     "archiveSha256": "a404ffbfb402c36e5dfd7c8a868f42f2f4a26db9ed91dec80b175f74fc912004",
+     "browserOwn": 10,
+     "exact": 34,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 35
+    },
+    "head.run1": {
+     "archiveSha256": "a404ffbfb402c36e5dfd7c8a868f42f2f4a26db9ed91dec80b175f74fc912004",
+     "browserOwn": 10,
+     "exact": 33,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 34
+    },
+    "head.run2": {
+     "archiveSha256": "a404ffbfb402c36e5dfd7c8a868f42f2f4a26db9ed91dec80b175f74fc912004",
+     "browserOwn": 10,
+     "exact": 34,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 35
+    }
+   },
+   "fleet": {
+    "archiveSha256": "a404ffbfb402c36e5dfd7c8a868f42f2f4a26db9ed91dec80b175f74fc912004",
+    "browserOwn": 3,
+    "exact": 31,
+    "fuzzy": 0,
+    "miss": 9,
+    "requests": 40,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-mygov-scot-scottish-child-payment-3b6a0f8b",
+   "url": "https://www.mygov.scot/scottish-child-payment"
+  },
+  {
+   "archiveSha256": "8e290d681101157bb4c868aede1df95343b778c235af52e6c62b3c23c4ba35f5",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "8e290d681101157bb4c868aede1df95343b778c235af52e6c62b3c23c4ba35f5",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    },
+    "gate.run2": {
+     "archiveSha256": "8e290d681101157bb4c868aede1df95343b778c235af52e6c62b3c23c4ba35f5",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    },
+    "head.run1": {
+     "archiveSha256": "8e290d681101157bb4c868aede1df95343b778c235af52e6c62b3c23c4ba35f5",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    },
+    "head.run2": {
+     "archiveSha256": "8e290d681101157bb4c868aede1df95343b778c235af52e6c62b3c23c4ba35f5",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    }
+   },
+   "fleet": {
+    "archiveSha256": "8e290d681101157bb4c868aede1df95343b778c235af52e6c62b3c23c4ba35f5",
+    "browserOwn": 0,
+    "exact": 18,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 20,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "www-nationalarchives-gov-uk-about-us-21b112f0",
+   "url": "https://www.nationalarchives.gov.uk/about-us/"
+  },
+  {
+   "archiveSha256": "835f04d92c1a5578cf20922203e9a4f8216af1350978368fbd000723b16727b5",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "835f04d92c1a5578cf20922203e9a4f8216af1350978368fbd000723b16727b5",
+     "browserOwn": 10,
+     "exact": 17,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 17
+    },
+    "gate.run2": {
+     "archiveSha256": "835f04d92c1a5578cf20922203e9a4f8216af1350978368fbd000723b16727b5",
+     "browserOwn": 10,
+     "exact": 17,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 17
+    },
+    "head.run1": {
+     "archiveSha256": "835f04d92c1a5578cf20922203e9a4f8216af1350978368fbd000723b16727b5",
+     "browserOwn": 10,
+     "exact": 17,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 17
+    },
+    "head.run2": {
+     "archiveSha256": "835f04d92c1a5578cf20922203e9a4f8216af1350978368fbd000723b16727b5",
+     "browserOwn": 10,
+     "exact": 17,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 17
+    }
+   },
+   "fleet": {
+    "archiveSha256": "835f04d92c1a5578cf20922203e9a4f8216af1350978368fbd000723b16727b5",
+    "browserOwn": 0,
+    "exact": 13,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 15,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "www-nationalarchives-gov-uk-help-with-your-research-research-guides-b4968d51",
+   "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/"
+  },
+  {
+   "archiveSha256": "a4eaea7dd208ad712081b1106793fe815c84550ca4446ff95c350bb63af6a3aa",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "a4eaea7dd208ad712081b1106793fe815c84550ca4446ff95c350bb63af6a3aa",
+     "browserOwn": 11,
+     "exact": 43,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 43
+    },
+    "gate.run2": {
+     "archiveSha256": "a4eaea7dd208ad712081b1106793fe815c84550ca4446ff95c350bb63af6a3aa",
+     "browserOwn": 12,
+     "exact": 43,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 43
+    },
+    "head.run1": {
+     "archiveSha256": "a4eaea7dd208ad712081b1106793fe815c84550ca4446ff95c350bb63af6a3aa",
+     "browserOwn": 11,
+     "exact": 48,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 48
+    },
+    "head.run2": {
+     "archiveSha256": "a4eaea7dd208ad712081b1106793fe815c84550ca4446ff95c350bb63af6a3aa",
+     "browserOwn": 11,
+     "exact": 48,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 48
+    }
+   },
+   "fleet": {
+    "archiveSha256": "a4eaea7dd208ad712081b1106793fe815c84550ca4446ff95c350bb63af6a3aa",
+    "browserOwn": 0,
+    "exact": 42,
+    "fuzzy": 0,
+    "miss": 0,
+    "requests": 42,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "www-networkrail-co-uk-careers-f59c9ccc",
+   "url": "https://www.networkrail.co.uk/careers/"
+  },
+  {
+   "archiveSha256": "44dc62c14e8ae5eace6f4341906462a86ad9c6f4583757c6a46edb6fb341d745",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "44dc62c14e8ae5eace6f4341906462a86ad9c6f4583757c6a46edb6fb341d745",
+     "browserOwn": 19,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "gate.run2": {
+     "archiveSha256": "44dc62c14e8ae5eace6f4341906462a86ad9c6f4583757c6a46edb6fb341d745",
+     "browserOwn": 18,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run1": {
+     "archiveSha256": "44dc62c14e8ae5eace6f4341906462a86ad9c6f4583757c6a46edb6fb341d745",
+     "browserOwn": 19,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run2": {
+     "archiveSha256": "44dc62c14e8ae5eace6f4341906462a86ad9c6f4583757c6a46edb6fb341d745",
+     "browserOwn": 19,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    }
+   },
+   "fleet": {
+    "archiveSha256": "44dc62c14e8ae5eace6f4341906462a86ad9c6f4583757c6a46edb6fb341d745",
+    "browserOwn": 1,
+    "exact": 16,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 17,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "www-nhs-uk-conditions-796584b1",
+   "url": "https://www.nhs.uk/conditions/"
+  },
+  {
+   "archiveSha256": "d782bb7a6dde5e2e7402fcdd80d0cb2575e9b17d722e0753baff5fd420b08eeb",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "d782bb7a6dde5e2e7402fcdd80d0cb2575e9b17d722e0753baff5fd420b08eeb",
+     "browserOwn": 12,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 23
+    },
+    "gate.run2": {
+     "archiveSha256": "d782bb7a6dde5e2e7402fcdd80d0cb2575e9b17d722e0753baff5fd420b08eeb",
+     "browserOwn": 12,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 23
+    },
+    "head.run1": {
+     "archiveSha256": "d782bb7a6dde5e2e7402fcdd80d0cb2575e9b17d722e0753baff5fd420b08eeb",
+     "browserOwn": 12,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 23
+    },
+    "head.run2": {
+     "archiveSha256": "d782bb7a6dde5e2e7402fcdd80d0cb2575e9b17d722e0753baff5fd420b08eeb",
+     "browserOwn": 12,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 23
+    }
+   },
+   "fleet": {
+    "archiveSha256": "d782bb7a6dde5e2e7402fcdd80d0cb2575e9b17d722e0753baff5fd420b08eeb",
+    "browserOwn": 0,
+    "exact": 24,
+    "fuzzy": 0,
+    "miss": 3,
+    "requests": 27,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "www-nhs-uk-service-search-find-a-gp-44065862",
+   "url": "https://www.nhs.uk/service-search/find-a-gp"
+  },
+  {
+   "archiveSha256": "2b120f60517c035a8774d625426752fe24370f6c7ac67df40dec1630e3385feb",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "2b120f60517c035a8774d625426752fe24370f6c7ac67df40dec1630e3385feb",
+     "browserOwn": 14,
+     "exact": 30,
+     "fuzzy": 2,
+     "miss": 0,
+     "requests": 32
+    },
+    "gate.run2": {
+     "archiveSha256": "2b120f60517c035a8774d625426752fe24370f6c7ac67df40dec1630e3385feb",
+     "browserOwn": 13,
+     "exact": 30,
+     "fuzzy": 2,
+     "miss": 0,
+     "requests": 32
+    },
+    "head.run1": {
+     "archiveSha256": "2b120f60517c035a8774d625426752fe24370f6c7ac67df40dec1630e3385feb",
+     "browserOwn": 14,
+     "exact": 30,
+     "fuzzy": 2,
+     "miss": 0,
+     "requests": 32
+    },
+    "head.run2": {
+     "archiveSha256": "2b120f60517c035a8774d625426752fe24370f6c7ac67df40dec1630e3385feb",
+     "browserOwn": 14,
+     "exact": 30,
+     "fuzzy": 2,
+     "miss": 0,
+     "requests": 32
+    }
+   },
+   "fleet": {
+    "archiveSha256": "2b120f60517c035a8774d625426752fe24370f6c7ac67df40dec1630e3385feb",
+    "browserOwn": 0,
+    "exact": 26,
+    "fuzzy": 2,
+    "miss": 0,
+    "requests": 28,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "www-nidirect-gov-uk-information-and-services-motoring-mot-and-vehicle--24af12a3",
+   "url": "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing"
+  },
+  {
+   "archiveSha256": "493fd7b8355d4f439febc79608ff9f460188ec45f3402bbe181d147a8c805c27",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "493fd7b8355d4f439febc79608ff9f460188ec45f3402bbe181d147a8c805c27",
+     "browserOwn": 12,
+     "exact": 22,
+     "fuzzy": 3,
+     "miss": 1,
+     "requests": 26
+    },
+    "gate.run2": {
+     "archiveSha256": "493fd7b8355d4f439febc79608ff9f460188ec45f3402bbe181d147a8c805c27",
+     "browserOwn": 12,
+     "exact": 22,
+     "fuzzy": 3,
+     "miss": 1,
+     "requests": 26
+    },
+    "head.run1": {
+     "archiveSha256": "493fd7b8355d4f439febc79608ff9f460188ec45f3402bbe181d147a8c805c27",
+     "browserOwn": 12,
+     "exact": 23,
+     "fuzzy": 4,
+     "miss": 2,
+     "requests": 29
+    },
+    "head.run2": {
+     "archiveSha256": "493fd7b8355d4f439febc79608ff9f460188ec45f3402bbe181d147a8c805c27",
+     "browserOwn": 12,
+     "exact": 23,
+     "fuzzy": 4,
+     "miss": 2,
+     "requests": 29
+    }
+   },
+   "fleet": {
+    "archiveSha256": "493fd7b8355d4f439febc79608ff9f460188ec45f3402bbe181d147a8c805c27",
+    "browserOwn": 2,
+    "exact": 39,
+    "fuzzy": 8,
+    "miss": 4,
+    "requests": 51,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "www-nls-uk-join-dba4d4bc",
+   "url": "https://www.nls.uk/join/"
+  },
+  {
+   "archiveSha256": "fb9c5e5bfe087b63323a46468003bedaa764903bdcb597ee9f1cf01a026ba33b",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "fb9c5e5bfe087b63323a46468003bedaa764903bdcb597ee9f1cf01a026ba33b",
+     "browserOwn": 12,
+     "exact": 230,
+     "fuzzy": 4,
+     "miss": 2,
+     "requests": 236
+    },
+    "gate.run2": {
+     "archiveSha256": "fb9c5e5bfe087b63323a46468003bedaa764903bdcb597ee9f1cf01a026ba33b",
+     "browserOwn": 12,
+     "exact": 231,
+     "fuzzy": 4,
+     "miss": 2,
+     "requests": 237
+    },
+    "head.run1": {
+     "archiveSha256": "fb9c5e5bfe087b63323a46468003bedaa764903bdcb597ee9f1cf01a026ba33b",
+     "browserOwn": 12,
+     "exact": 234,
+     "fuzzy": 6,
+     "miss": 2,
+     "requests": 242
+    },
+    "head.run2": {
+     "archiveSha256": "fb9c5e5bfe087b63323a46468003bedaa764903bdcb597ee9f1cf01a026ba33b",
+     "browserOwn": 12,
+     "exact": 234,
+     "fuzzy": 6,
+     "miss": 2,
+     "requests": 242
+    }
+   },
+   "fleet": {
+    "archiveSha256": "fb9c5e5bfe087b63323a46468003bedaa764903bdcb597ee9f1cf01a026ba33b",
+    "browserOwn": 3,
+    "exact": 391,
+    "fuzzy": 17,
+    "miss": 4,
+    "requests": 412,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "www-notion-com-b04d19f2",
+   "url": "https://www.notion.com/"
+  },
+  {
+   "archiveSha256": "5ccfb741671943826a2ada95e3132a7e49b407d47da48b498311e62eb15d92ef",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "5ccfb741671943826a2ada95e3132a7e49b407d47da48b498311e62eb15d92ef",
+     "browserOwn": 12,
+     "exact": 20,
+     "fuzzy": 1,
+     "miss": 0,
+     "requests": 21
+    },
+    "gate.run2": {
+     "archiveSha256": "5ccfb741671943826a2ada95e3132a7e49b407d47da48b498311e62eb15d92ef",
+     "browserOwn": 12,
+     "exact": 22,
+     "fuzzy": 1,
+     "miss": 0,
+     "requests": 23
+    },
+    "head.run1": {
+     "archiveSha256": "5ccfb741671943826a2ada95e3132a7e49b407d47da48b498311e62eb15d92ef",
+     "browserOwn": 13,
+     "exact": 22,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 24
+    },
+    "head.run2": {
+     "archiveSha256": "5ccfb741671943826a2ada95e3132a7e49b407d47da48b498311e62eb15d92ef",
+     "browserOwn": 12,
+     "exact": 22,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 24
+    }
+   },
+   "fleet": {
+    "archiveSha256": "5ccfb741671943826a2ada95e3132a7e49b407d47da48b498311e62eb15d92ef",
+    "browserOwn": 0,
+    "exact": 18,
+    "fuzzy": 1,
+    "miss": 4,
+    "requests": 23,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-nrscotland-gov-uk-publications-a6d1fded",
+   "url": "https://www.nrscotland.gov.uk/publications/"
+  },
+  {
+   "archiveSha256": "14327034b6f9544d096ab443ca49879491ff0c4ba66d4a04dcfb624ba7d9b9e5",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "14327034b6f9544d096ab443ca49879491ff0c4ba66d4a04dcfb624ba7d9b9e5",
+     "browserOwn": 13,
+     "exact": 35,
+     "fuzzy": 2,
+     "miss": 0,
+     "requests": 37
+    },
+    "gate.run2": {
+     "archiveSha256": "14327034b6f9544d096ab443ca49879491ff0c4ba66d4a04dcfb624ba7d9b9e5",
+     "browserOwn": 13,
+     "exact": 36,
+     "fuzzy": 2,
+     "miss": 0,
+     "requests": 38
+    },
+    "head.run1": {
+     "archiveSha256": "14327034b6f9544d096ab443ca49879491ff0c4ba66d4a04dcfb624ba7d9b9e5",
+     "browserOwn": 13,
+     "exact": 37,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 40
+    },
+    "head.run2": {
+     "archiveSha256": "14327034b6f9544d096ab443ca49879491ff0c4ba66d4a04dcfb624ba7d9b9e5",
+     "browserOwn": 13,
+     "exact": 37,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 40
+    }
+   },
+   "fleet": {
+    "archiveSha256": "14327034b6f9544d096ab443ca49879491ff0c4ba66d4a04dcfb624ba7d9b9e5",
+    "browserOwn": 0,
+    "exact": 33,
+    "fuzzy": 2,
+    "miss": 4,
+    "requests": 39,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "www-nrscotland-gov-uk-statistics-and-data-e4c34d42",
+   "url": "https://www.nrscotland.gov.uk/statistics-and-data/"
+  },
+  {
+   "archiveSha256": "f381a4e9b351f9d63721a435a406015c21c82bda3f6b9eeac732afbd4563bcab",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "f381a4e9b351f9d63721a435a406015c21c82bda3f6b9eeac732afbd4563bcab",
+     "browserOwn": 10,
+     "exact": 6,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 6
+    },
+    "gate.run2": {
+     "archiveSha256": "f381a4e9b351f9d63721a435a406015c21c82bda3f6b9eeac732afbd4563bcab",
+     "browserOwn": 10,
+     "exact": 6,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 6
+    },
+    "head.run1": {
+     "archiveSha256": "f381a4e9b351f9d63721a435a406015c21c82bda3f6b9eeac732afbd4563bcab",
+     "browserOwn": 10,
+     "exact": 6,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 6
+    },
+    "head.run2": {
+     "archiveSha256": "f381a4e9b351f9d63721a435a406015c21c82bda3f6b9eeac732afbd4563bcab",
+     "browserOwn": 10,
+     "exact": 6,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 6
+    }
+   },
+   "fleet": {
+    "archiveSha256": "f381a4e9b351f9d63721a435a406015c21c82bda3f6b9eeac732afbd4563bcab",
+    "browserOwn": 0,
+    "exact": 8,
+    "fuzzy": 0,
+    "miss": 0,
+    "requests": 8,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "www-ofgem-gov-uk-your-energy-supply-your-energy-bill-energy-price-cap--c1317dbc",
+   "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained"
+  },
+  {
+   "archiveSha256": "b26d56ed66848e326b891e3c35d97d2ec39dd19534dd2d21d21936eafd9785aa",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "b26d56ed66848e326b891e3c35d97d2ec39dd19534dd2d21d21936eafd9785aa",
+     "browserOwn": 10,
+     "exact": 37,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 37
+    },
+    "gate.run2": {
+     "archiveSha256": "b26d56ed66848e326b891e3c35d97d2ec39dd19534dd2d21d21936eafd9785aa",
+     "browserOwn": 10,
+     "exact": 37,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 37
+    },
+    "head.run1": {
+     "archiveSha256": "b26d56ed66848e326b891e3c35d97d2ec39dd19534dd2d21d21936eafd9785aa",
+     "browserOwn": 10,
+     "exact": 37,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 37
+    },
+    "head.run2": {
+     "archiveSha256": "b26d56ed66848e326b891e3c35d97d2ec39dd19534dd2d21d21936eafd9785aa",
+     "browserOwn": 10,
+     "exact": 37,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 37
+    }
+   },
+   "fleet": {
+    "archiveSha256": "b26d56ed66848e326b891e3c35d97d2ec39dd19534dd2d21d21936eafd9785aa",
+    "browserOwn": 0,
+    "exact": 32,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 33,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "www-ons-gov-uk-economy-inflationandpriceindices-8ee43205",
+   "url": "https://www.ons.gov.uk/economy/inflationandpriceindices"
+  },
+  {
+   "archiveSha256": "d20743a3649bbf5a27ec04d7c50a494659869880836c3b32e39ddad10d9f7717",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "d20743a3649bbf5a27ec04d7c50a494659869880836c3b32e39ddad10d9f7717",
+     "browserOwn": 16,
+     "exact": 54,
+     "fuzzy": 1,
+     "miss": 0,
+     "requests": 55
+    },
+    "gate.run2": {
+     "archiveSha256": "d20743a3649bbf5a27ec04d7c50a494659869880836c3b32e39ddad10d9f7717",
+     "browserOwn": 16,
+     "exact": 54,
+     "fuzzy": 1,
+     "miss": 0,
+     "requests": 55
+    },
+    "head.run1": {
+     "archiveSha256": "d20743a3649bbf5a27ec04d7c50a494659869880836c3b32e39ddad10d9f7717",
+     "browserOwn": 18,
+     "exact": 54,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 56
+    },
+    "head.run2": {
+     "archiveSha256": "d20743a3649bbf5a27ec04d7c50a494659869880836c3b32e39ddad10d9f7717",
+     "browserOwn": 16,
+     "exact": 54,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 56
+    }
+   },
+   "fleet": {
+    "archiveSha256": "d20743a3649bbf5a27ec04d7c50a494659869880836c3b32e39ddad10d9f7717",
+    "browserOwn": 0,
+    "exact": 50,
+    "fuzzy": 1,
+    "miss": 4,
+    "requests": 55,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "www-scotcourts-gov-uk-judgments-97a29bab",
+   "url": "https://www.scotcourts.gov.uk/judgments/"
+  },
+  {
+   "archiveSha256": "1e00f3450f2f819be2f3629f69e4a99be04bef1a3429218e1031856b10c7cba8",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "1e00f3450f2f819be2f3629f69e4a99be04bef1a3429218e1031856b10c7cba8",
+     "browserOwn": 10,
+     "exact": 62,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 62
+    },
+    "gate.run2": {
+     "archiveSha256": "1e00f3450f2f819be2f3629f69e4a99be04bef1a3429218e1031856b10c7cba8",
+     "browserOwn": 10,
+     "exact": 62,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 62
+    },
+    "head.run1": {
+     "archiveSha256": "1e00f3450f2f819be2f3629f69e4a99be04bef1a3429218e1031856b10c7cba8",
+     "browserOwn": 10,
+     "exact": 62,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 62
+    },
+    "head.run2": {
+     "archiveSha256": "1e00f3450f2f819be2f3629f69e4a99be04bef1a3429218e1031856b10c7cba8",
+     "browserOwn": 10,
+     "exact": 62,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 62
+    }
+   },
+   "fleet": {
+    "archiveSha256": "1e00f3450f2f819be2f3629f69e4a99be04bef1a3429218e1031856b10c7cba8",
+    "browserOwn": 1,
+    "exact": 58,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 59,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "www-sportengland-org-research-and-data-data-active-lives-2288ef1f",
+   "url": "https://www.sportengland.org/research-and-data/data/active-lives"
+  },
+  {
+   "archiveSha256": "8d33e76f03740bef522fdb35e5a7b417998f20e03dee20b683b2b5d0f5edb9e6",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "8d33e76f03740bef522fdb35e5a7b417998f20e03dee20b683b2b5d0f5edb9e6",
+     "browserOwn": 16,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "gate.run2": {
+     "archiveSha256": "8d33e76f03740bef522fdb35e5a7b417998f20e03dee20b683b2b5d0f5edb9e6",
+     "browserOwn": 16,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "head.run1": {
+     "archiveSha256": "8d33e76f03740bef522fdb35e5a7b417998f20e03dee20b683b2b5d0f5edb9e6",
+     "browserOwn": 16,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "head.run2": {
+     "archiveSha256": "8d33e76f03740bef522fdb35e5a7b417998f20e03dee20b683b2b5d0f5edb9e6",
+     "browserOwn": 16,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    }
+   },
+   "fleet": {
+    "archiveSha256": "8d33e76f03740bef522fdb35e5a7b417998f20e03dee20b683b2b5d0f5edb9e6",
+    "browserOwn": 0,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 16,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "www-transport-gov-scot-publications-842dc3ed",
+   "url": "https://www.transport.gov.scot/publications/"
+  },
+  {
+   "archiveSha256": "1c1d39fa792037e2912fcc7b48bd253fd1be7a263466aeef4994a18bf2ee2b82",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "1c1d39fa792037e2912fcc7b48bd253fd1be7a263466aeef4994a18bf2ee2b82",
+     "browserOwn": 10,
+     "exact": 34,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 34
+    },
+    "gate.run2": {
+     "archiveSha256": "1c1d39fa792037e2912fcc7b48bd253fd1be7a263466aeef4994a18bf2ee2b82",
+     "browserOwn": 10,
+     "exact": 34,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 34
+    },
+    "head.run1": {
+     "archiveSha256": "1c1d39fa792037e2912fcc7b48bd253fd1be7a263466aeef4994a18bf2ee2b82",
+     "browserOwn": 10,
+     "exact": 34,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 34
+    },
+    "head.run2": {
+     "archiveSha256": "1c1d39fa792037e2912fcc7b48bd253fd1be7a263466aeef4994a18bf2ee2b82",
+     "browserOwn": 10,
+     "exact": 34,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 34
+    }
+   },
+   "fleet": {
+    "archiveSha256": "1c1d39fa792037e2912fcc7b48bd253fd1be7a263466aeef4994a18bf2ee2b82",
+    "browserOwn": 1,
+    "exact": 30,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 32,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "www-w3-org-wai-demos-bad-after-news-html-9474a366",
+   "url": "https://www.w3.org/WAI/demos/bad/after/news.html"
+  },
+  {
+   "archiveSha256": "c0dcbc96ae58cd241b34ff6eea27744573bcab9c334c83b28411e224af3cadd4",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "c0dcbc96ae58cd241b34ff6eea27744573bcab9c334c83b28411e224af3cadd4",
+     "browserOwn": 12,
+     "exact": 30,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 30
+    },
+    "gate.run2": {
+     "archiveSha256": "c0dcbc96ae58cd241b34ff6eea27744573bcab9c334c83b28411e224af3cadd4",
+     "browserOwn": 12,
+     "exact": 30,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 30
+    },
+    "head.run1": {
+     "archiveSha256": "c0dcbc96ae58cd241b34ff6eea27744573bcab9c334c83b28411e224af3cadd4",
+     "browserOwn": 12,
+     "exact": 30,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 30
+    },
+    "head.run2": {
+     "archiveSha256": "c0dcbc96ae58cd241b34ff6eea27744573bcab9c334c83b28411e224af3cadd4",
+     "browserOwn": 12,
+     "exact": 30,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 30
+    }
+   },
+   "fleet": {
+    "archiveSha256": "c0dcbc96ae58cd241b34ff6eea27744573bcab9c334c83b28411e224af3cadd4",
+    "browserOwn": 1,
+    "exact": 25,
+    "fuzzy": 0,
+    "miss": 7,
+    "requests": 32,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-w3-org-wai-demos-bad-after-survey-html-2bf69a89",
+   "url": "https://www.w3.org/WAI/demos/bad/after/survey.html"
+  },
+  {
+   "archiveSha256": "fc1ad36ea90de16d8fd8e0889d536b43350fdeec1beaa6d71c2eccb216a0a88a",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "fc1ad36ea90de16d8fd8e0889d536b43350fdeec1beaa6d71c2eccb216a0a88a",
+     "browserOwn": 10,
+     "exact": 32,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 32
+    },
+    "gate.run2": {
+     "archiveSha256": "fc1ad36ea90de16d8fd8e0889d536b43350fdeec1beaa6d71c2eccb216a0a88a",
+     "browserOwn": 10,
+     "exact": 32,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 32
+    },
+    "head.run1": {
+     "archiveSha256": "fc1ad36ea90de16d8fd8e0889d536b43350fdeec1beaa6d71c2eccb216a0a88a",
+     "browserOwn": 10,
+     "exact": 32,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 32
+    },
+    "head.run2": {
+     "archiveSha256": "fc1ad36ea90de16d8fd8e0889d536b43350fdeec1beaa6d71c2eccb216a0a88a",
+     "browserOwn": 10,
+     "exact": 32,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 32
+    }
+   },
+   "fleet": {
+    "archiveSha256": "fc1ad36ea90de16d8fd8e0889d536b43350fdeec1beaa6d71c2eccb216a0a88a",
+    "browserOwn": 2,
+    "exact": 27,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 28,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "www-w3-org-wai-demos-bad-after-template-html-17215e94",
+   "url": "https://www.w3.org/WAI/demos/bad/after/template.html"
+  },
+  {
+   "archiveSha256": "ba13c344b0ee28b0cd43d5181a156b14e14c797553d332a651013554c1e2e4cb",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "ba13c344b0ee28b0cd43d5181a156b14e14c797553d332a651013554c1e2e4cb",
+     "browserOwn": 10,
+     "exact": 30,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 30
+    },
+    "gate.run2": {
+     "archiveSha256": "ba13c344b0ee28b0cd43d5181a156b14e14c797553d332a651013554c1e2e4cb",
+     "browserOwn": 10,
+     "exact": 30,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 30
+    },
+    "head.run1": {
+     "archiveSha256": "ba13c344b0ee28b0cd43d5181a156b14e14c797553d332a651013554c1e2e4cb",
+     "browserOwn": 10,
+     "exact": 30,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 30
+    },
+    "head.run2": {
+     "archiveSha256": "ba13c344b0ee28b0cd43d5181a156b14e14c797553d332a651013554c1e2e4cb",
+     "browserOwn": 10,
+     "exact": 30,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 30
+    }
+   },
+   "fleet": {
+    "archiveSha256": "ba13c344b0ee28b0cd43d5181a156b14e14c797553d332a651013554c1e2e4cb",
+    "browserOwn": 1,
+    "exact": 25,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 27,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "www-w3-org-wai-demos-bad-after-tickets-html-6813234a",
+   "url": "https://www.w3.org/WAI/demos/bad/after/tickets.html"
+  },
+  {
+   "archiveSha256": "a426bc0daf2157d362b07269fcad49ddd557532a524ffef8b6c569e8860042e5",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "a426bc0daf2157d362b07269fcad49ddd557532a524ffef8b6c569e8860042e5",
+     "browserOwn": 10,
+     "exact": 42,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 42
+    },
+    "gate.run2": {
+     "archiveSha256": "a426bc0daf2157d362b07269fcad49ddd557532a524ffef8b6c569e8860042e5",
+     "browserOwn": 10,
+     "exact": 42,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 42
+    },
+    "head.run1": {
+     "archiveSha256": "a426bc0daf2157d362b07269fcad49ddd557532a524ffef8b6c569e8860042e5",
+     "browserOwn": 10,
+     "exact": 42,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 42
+    },
+    "head.run2": {
+     "archiveSha256": "a426bc0daf2157d362b07269fcad49ddd557532a524ffef8b6c569e8860042e5",
+     "browserOwn": 10,
+     "exact": 42,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 42
+    }
+   },
+   "fleet": {
+    "archiveSha256": "a426bc0daf2157d362b07269fcad49ddd557532a524ffef8b6c569e8860042e5",
+    "browserOwn": 1,
+    "exact": 37,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 39,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "www-w3-org-wai-demos-bad-before-news-html-b62f1af0",
+   "url": "https://www.w3.org/WAI/demos/bad/before/news.html"
+  },
+  {
+   "archiveSha256": "ceb402e1999fad6f48671935bd3360462f0bd0e44369e181f936a931233efdb9",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "ceb402e1999fad6f48671935bd3360462f0bd0e44369e181f936a931233efdb9",
+     "browserOwn": 10,
+     "exact": 38,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 38
+    },
+    "gate.run2": {
+     "archiveSha256": "ceb402e1999fad6f48671935bd3360462f0bd0e44369e181f936a931233efdb9",
+     "browserOwn": 10,
+     "exact": 38,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 38
+    },
+    "head.run1": {
+     "archiveSha256": "ceb402e1999fad6f48671935bd3360462f0bd0e44369e181f936a931233efdb9",
+     "browserOwn": 10,
+     "exact": 38,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 38
+    },
+    "head.run2": {
+     "archiveSha256": "ceb402e1999fad6f48671935bd3360462f0bd0e44369e181f936a931233efdb9",
+     "browserOwn": 10,
+     "exact": 38,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 38
+    }
+   },
+   "fleet": {
+    "archiveSha256": "ceb402e1999fad6f48671935bd3360462f0bd0e44369e181f936a931233efdb9",
+    "browserOwn": 1,
+    "exact": 33,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 35,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "www-w3-org-wai-demos-bad-before-template-html-97a76173",
+   "url": "https://www.w3.org/WAI/demos/bad/before/template.html"
+  },
+  {
+   "archiveSha256": "26cc2ae17cd07b18cf2a24bef7ccc3575df187d57a608483841a170e8e7b137c",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "26cc2ae17cd07b18cf2a24bef7ccc3575df187d57a608483841a170e8e7b137c",
+     "browserOwn": 6,
+     "exact": 41,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 41
+    },
+    "gate.run2": {
+     "archiveSha256": "26cc2ae17cd07b18cf2a24bef7ccc3575df187d57a608483841a170e8e7b137c",
+     "browserOwn": 6,
+     "exact": 41,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 41
+    },
+    "head.run1": {
+     "archiveSha256": "26cc2ae17cd07b18cf2a24bef7ccc3575df187d57a608483841a170e8e7b137c",
+     "browserOwn": 6,
+     "exact": 41,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 41
+    },
+    "head.run2": {
+     "archiveSha256": "26cc2ae17cd07b18cf2a24bef7ccc3575df187d57a608483841a170e8e7b137c",
+     "browserOwn": 6,
+     "exact": 41,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 41
+    }
+   },
+   "fleet": {
+    "archiveSha256": "26cc2ae17cd07b18cf2a24bef7ccc3575df187d57a608483841a170e8e7b137c",
+    "browserOwn": 1,
+    "exact": 37,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 38,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "www-w3-org-wai-demos-bad-before-tickets-html-d3cb5968",
+   "url": "https://www.w3.org/WAI/demos/bad/before/tickets.html"
+  },
+  {
+   "archiveSha256": "2e4609fa85af36ec1c7b780d0fbe18537b5ca61df753b57c7a130ef88e3f1c76",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "2e4609fa85af36ec1c7b780d0fbe18537b5ca61df753b57c7a130ef88e3f1c76",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "gate.run2": {
+     "archiveSha256": "2e4609fa85af36ec1c7b780d0fbe18537b5ca61df753b57c7a130ef88e3f1c76",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run1": {
+     "archiveSha256": "2e4609fa85af36ec1c7b780d0fbe18537b5ca61df753b57c7a130ef88e3f1c76",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run2": {
+     "archiveSha256": "2e4609fa85af36ec1c7b780d0fbe18537b5ca61df753b57c7a130ef88e3f1c76",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    }
+   },
+   "fleet": {
+    "archiveSha256": "2e4609fa85af36ec1c7b780d0fbe18537b5ca61df753b57c7a130ef88e3f1c76",
+    "browserOwn": 2,
+    "exact": 14,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 16,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-w3-org-wai-tutorials-carousels-structure-0630a3a5",
+   "url": "https://www.w3.org/WAI/tutorials/carousels/structure/"
+  },
+  {
+   "archiveSha256": "0a1f4dcfe95b732b053bd0cd8c00a84cbd949e9f344bed1ccbb78543b29f417a",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "0a1f4dcfe95b732b053bd0cd8c00a84cbd949e9f344bed1ccbb78543b29f417a",
+     "browserOwn": 9,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "gate.run2": {
+     "archiveSha256": "0a1f4dcfe95b732b053bd0cd8c00a84cbd949e9f344bed1ccbb78543b29f417a",
+     "browserOwn": 9,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "head.run1": {
+     "archiveSha256": "0a1f4dcfe95b732b053bd0cd8c00a84cbd949e9f344bed1ccbb78543b29f417a",
+     "browserOwn": 9,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "head.run2": {
+     "archiveSha256": "0a1f4dcfe95b732b053bd0cd8c00a84cbd949e9f344bed1ccbb78543b29f417a",
+     "browserOwn": 8,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    }
+   },
+   "fleet": {
+    "archiveSha256": "0a1f4dcfe95b732b053bd0cd8c00a84cbd949e9f344bed1ccbb78543b29f417a",
+    "browserOwn": 0,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 16,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "www-w3-org-wai-tutorials-forms-grouping-29b6f2dc",
+   "url": "https://www.w3.org/WAI/tutorials/forms/grouping/"
+  },
+  {
+   "archiveSha256": "0e7d62d998c4542224e835dec0fd94074f7a8b2985406cadefefdec20bc55bb9",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "0e7d62d998c4542224e835dec0fd94074f7a8b2985406cadefefdec20bc55bb9",
+     "browserOwn": 12,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "gate.run2": {
+     "archiveSha256": "0e7d62d998c4542224e835dec0fd94074f7a8b2985406cadefefdec20bc55bb9",
+     "browserOwn": 12,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run1": {
+     "archiveSha256": "0e7d62d998c4542224e835dec0fd94074f7a8b2985406cadefefdec20bc55bb9",
+     "browserOwn": 12,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run2": {
+     "archiveSha256": "0e7d62d998c4542224e835dec0fd94074f7a8b2985406cadefefdec20bc55bb9",
+     "browserOwn": 12,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    }
+   },
+   "fleet": {
+    "archiveSha256": "0e7d62d998c4542224e835dec0fd94074f7a8b2985406cadefefdec20bc55bb9",
+    "browserOwn": 1,
+    "exact": 14,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 16,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "www-w3-org-wai-tutorials-forms-instructions-9c2d8b72",
+   "url": "https://www.w3.org/WAI/tutorials/forms/instructions/"
+  },
+  {
+   "archiveSha256": "e73691ef8804f6aa6f389b363565ff70a4f3a1512136884e71cc8270149c5c98",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "e73691ef8804f6aa6f389b363565ff70a4f3a1512136884e71cc8270149c5c98",
+     "browserOwn": 12,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "gate.run2": {
+     "archiveSha256": "e73691ef8804f6aa6f389b363565ff70a4f3a1512136884e71cc8270149c5c98",
+     "browserOwn": 12,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run1": {
+     "archiveSha256": "e73691ef8804f6aa6f389b363565ff70a4f3a1512136884e71cc8270149c5c98",
+     "browserOwn": 13,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run2": {
+     "archiveSha256": "e73691ef8804f6aa6f389b363565ff70a4f3a1512136884e71cc8270149c5c98",
+     "browserOwn": 12,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    }
+   },
+   "fleet": {
+    "archiveSha256": "e73691ef8804f6aa6f389b363565ff70a4f3a1512136884e71cc8270149c5c98",
+    "browserOwn": 2,
+    "exact": 14,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 15,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "www-w3-org-wai-tutorials-forms-labels-8a8502f7",
+   "url": "https://www.w3.org/WAI/tutorials/forms/labels/"
+  },
+  {
+   "archiveSha256": "564f8b136e0d5a1ad963e4073fcfefd01e90ad911fd959b4ffb71c51052c9d88",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "564f8b136e0d5a1ad963e4073fcfefd01e90ad911fd959b4ffb71c51052c9d88",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "gate.run2": {
+     "archiveSha256": "564f8b136e0d5a1ad963e4073fcfefd01e90ad911fd959b4ffb71c51052c9d88",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run1": {
+     "archiveSha256": "564f8b136e0d5a1ad963e4073fcfefd01e90ad911fd959b4ffb71c51052c9d88",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run2": {
+     "archiveSha256": "564f8b136e0d5a1ad963e4073fcfefd01e90ad911fd959b4ffb71c51052c9d88",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    }
+   },
+   "fleet": {
+    "archiveSha256": "564f8b136e0d5a1ad963e4073fcfefd01e90ad911fd959b4ffb71c51052c9d88",
+    "browserOwn": 1,
+    "exact": 14,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 15,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-w3-org-wai-tutorials-forms-multi-page-da75bd08",
+   "url": "https://www.w3.org/WAI/tutorials/forms/multi-page/"
+  },
+  {
+   "archiveSha256": "a7cb76441667a654ad9b499e526601567ffe429e343d58175f8e983eb7f12984",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "a7cb76441667a654ad9b499e526601567ffe429e343d58175f8e983eb7f12984",
+     "browserOwn": 12,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "gate.run2": {
+     "archiveSha256": "a7cb76441667a654ad9b499e526601567ffe429e343d58175f8e983eb7f12984",
+     "browserOwn": 12,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run1": {
+     "archiveSha256": "a7cb76441667a654ad9b499e526601567ffe429e343d58175f8e983eb7f12984",
+     "browserOwn": 12,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run2": {
+     "archiveSha256": "a7cb76441667a654ad9b499e526601567ffe429e343d58175f8e983eb7f12984",
+     "browserOwn": 12,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    }
+   },
+   "fleet": {
+    "archiveSha256": "a7cb76441667a654ad9b499e526601567ffe429e343d58175f8e983eb7f12984",
+    "browserOwn": 1,
+    "exact": 14,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 15,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "www-w3-org-wai-tutorials-forms-validation-c8d0426c",
+   "url": "https://www.w3.org/WAI/tutorials/forms/validation/"
+  },
+  {
+   "archiveSha256": "0cf5960e5b96cb4ba11e0ff5443c085114ef33f36ac17850f4f0523410e680aa",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "0cf5960e5b96cb4ba11e0ff5443c085114ef33f36ac17850f4f0523410e680aa",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    },
+    "gate.run2": {
+     "archiveSha256": "0cf5960e5b96cb4ba11e0ff5443c085114ef33f36ac17850f4f0523410e680aa",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    },
+    "head.run1": {
+     "archiveSha256": "0cf5960e5b96cb4ba11e0ff5443c085114ef33f36ac17850f4f0523410e680aa",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    },
+    "head.run2": {
+     "archiveSha256": "0cf5960e5b96cb4ba11e0ff5443c085114ef33f36ac17850f4f0523410e680aa",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    }
+   },
+   "fleet": {
+    "archiveSha256": "0cf5960e5b96cb4ba11e0ff5443c085114ef33f36ac17850f4f0523410e680aa",
+    "browserOwn": 1,
+    "exact": 17,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 18,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "www-w3-org-wai-tutorials-images-complex-0241a132",
+   "url": "https://www.w3.org/WAI/tutorials/images/complex/"
+  },
+  {
+   "archiveSha256": "da121515fc23606f78e7314e897a38904404791e949f1ff49143713d6938dc16",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "da121515fc23606f78e7314e897a38904404791e949f1ff49143713d6938dc16",
+     "browserOwn": 10,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 23
+    },
+    "gate.run2": {
+     "archiveSha256": "da121515fc23606f78e7314e897a38904404791e949f1ff49143713d6938dc16",
+     "browserOwn": 10,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 23
+    },
+    "head.run1": {
+     "archiveSha256": "da121515fc23606f78e7314e897a38904404791e949f1ff49143713d6938dc16",
+     "browserOwn": 10,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 23
+    },
+    "head.run2": {
+     "archiveSha256": "da121515fc23606f78e7314e897a38904404791e949f1ff49143713d6938dc16",
+     "browserOwn": 10,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 23
+    }
+   },
+   "fleet": {
+    "archiveSha256": "da121515fc23606f78e7314e897a38904404791e949f1ff49143713d6938dc16",
+    "browserOwn": 0,
+    "exact": 18,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 19,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "www-w3-org-wai-tutorials-images-decorative-421989ee",
+   "url": "https://www.w3.org/WAI/tutorials/images/decorative/"
+  },
+  {
+   "archiveSha256": "073ceeb00e2da2a62d27e3f3c6a7d86ecaf432758e0343d5bcd77635352e4b8f",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "073ceeb00e2da2a62d27e3f3c6a7d86ecaf432758e0343d5bcd77635352e4b8f",
+     "browserOwn": 12,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 23
+    },
+    "gate.run2": {
+     "archiveSha256": "073ceeb00e2da2a62d27e3f3c6a7d86ecaf432758e0343d5bcd77635352e4b8f",
+     "browserOwn": 12,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 23
+    },
+    "head.run1": {
+     "archiveSha256": "073ceeb00e2da2a62d27e3f3c6a7d86ecaf432758e0343d5bcd77635352e4b8f",
+     "browserOwn": 12,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 23
+    },
+    "head.run2": {
+     "archiveSha256": "073ceeb00e2da2a62d27e3f3c6a7d86ecaf432758e0343d5bcd77635352e4b8f",
+     "browserOwn": 12,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 23
+    }
+   },
+   "fleet": {
+    "archiveSha256": "073ceeb00e2da2a62d27e3f3c6a7d86ecaf432758e0343d5bcd77635352e4b8f",
+    "browserOwn": 1,
+    "exact": 18,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 19,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "www-w3-org-wai-tutorials-images-functional-2015b7a1",
+   "url": "https://www.w3.org/WAI/tutorials/images/functional/"
+  },
+  {
+   "archiveSha256": "f2f1448532b6856e2ceab9c7c73f2d059b2abcb63a742c7347fce114a6448963",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "f2f1448532b6856e2ceab9c7c73f2d059b2abcb63a742c7347fce114a6448963",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 25
+    },
+    "gate.run2": {
+     "archiveSha256": "f2f1448532b6856e2ceab9c7c73f2d059b2abcb63a742c7347fce114a6448963",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 25
+    },
+    "head.run1": {
+     "archiveSha256": "f2f1448532b6856e2ceab9c7c73f2d059b2abcb63a742c7347fce114a6448963",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 25
+    },
+    "head.run2": {
+     "archiveSha256": "f2f1448532b6856e2ceab9c7c73f2d059b2abcb63a742c7347fce114a6448963",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 25
+    }
+   },
+   "fleet": {
+    "archiveSha256": "f2f1448532b6856e2ceab9c7c73f2d059b2abcb63a742c7347fce114a6448963",
+    "browserOwn": 1,
+    "exact": 20,
+    "fuzzy": 0,
+    "miss": 3,
+    "requests": 23,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "www-w3-org-wai-tutorials-images-groups-172a21fc",
+   "url": "https://www.w3.org/WAI/tutorials/images/groups/"
+  },
+  {
+   "archiveSha256": "12f703e33070f708a0821673ed2344ff8bde3eb5fb62467aae54728f43a4c9a5",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "12f703e33070f708a0821673ed2344ff8bde3eb5fb62467aae54728f43a4c9a5",
+     "browserOwn": 10,
+     "exact": 27,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 27
+    },
+    "gate.run2": {
+     "archiveSha256": "12f703e33070f708a0821673ed2344ff8bde3eb5fb62467aae54728f43a4c9a5",
+     "browserOwn": 10,
+     "exact": 27,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 27
+    },
+    "head.run1": {
+     "archiveSha256": "12f703e33070f708a0821673ed2344ff8bde3eb5fb62467aae54728f43a4c9a5",
+     "browserOwn": 10,
+     "exact": 27,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 27
+    },
+    "head.run2": {
+     "archiveSha256": "12f703e33070f708a0821673ed2344ff8bde3eb5fb62467aae54728f43a4c9a5",
+     "browserOwn": 10,
+     "exact": 27,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 27
+    }
+   },
+   "fleet": {
+    "archiveSha256": "12f703e33070f708a0821673ed2344ff8bde3eb5fb62467aae54728f43a4c9a5",
+    "browserOwn": 2,
+    "exact": 22,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 23,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "www-w3-org-wai-tutorials-images-informative-f5c3b9f0",
+   "url": "https://www.w3.org/WAI/tutorials/images/informative/"
+  },
+  {
+   "archiveSha256": "ec337b61c6a5ebb694c9040d61bfefa8de5bc6320130b20a2bbfe695e23e7044",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "ec337b61c6a5ebb694c9040d61bfefa8de5bc6320130b20a2bbfe695e23e7044",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    },
+    "gate.run2": {
+     "archiveSha256": "ec337b61c6a5ebb694c9040d61bfefa8de5bc6320130b20a2bbfe695e23e7044",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    },
+    "head.run1": {
+     "archiveSha256": "ec337b61c6a5ebb694c9040d61bfefa8de5bc6320130b20a2bbfe695e23e7044",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    },
+    "head.run2": {
+     "archiveSha256": "ec337b61c6a5ebb694c9040d61bfefa8de5bc6320130b20a2bbfe695e23e7044",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    }
+   },
+   "fleet": {
+    "archiveSha256": "ec337b61c6a5ebb694c9040d61bfefa8de5bc6320130b20a2bbfe695e23e7044",
+    "browserOwn": 2,
+    "exact": 16,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 18,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "www-w3-org-wai-tutorials-menus-flyout-d3e65f97",
+   "url": "https://www.w3.org/WAI/tutorials/menus/flyout/"
+  },
+  {
+   "archiveSha256": "5da3b8622f2284fc80d1f94b80bde65166b2fbf336b83d62d07161455b40815e",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "5da3b8622f2284fc80d1f94b80bde65166b2fbf336b83d62d07161455b40815e",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "gate.run2": {
+     "archiveSha256": "5da3b8622f2284fc80d1f94b80bde65166b2fbf336b83d62d07161455b40815e",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run1": {
+     "archiveSha256": "5da3b8622f2284fc80d1f94b80bde65166b2fbf336b83d62d07161455b40815e",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "head.run2": {
+     "archiveSha256": "5da3b8622f2284fc80d1f94b80bde65166b2fbf336b83d62d07161455b40815e",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    }
+   },
+   "fleet": {
+    "archiveSha256": "5da3b8622f2284fc80d1f94b80bde65166b2fbf336b83d62d07161455b40815e",
+    "browserOwn": 1,
+    "exact": 14,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 15,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-w3-org-wai-tutorials-menus-structure-fd6383c1",
+   "url": "https://www.w3.org/WAI/tutorials/menus/structure/"
+  },
+  {
+   "archiveSha256": "374989a76311f7920a57e927601cb0ab9161854eeddfa357bc23eca250ecdd6f",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "374989a76311f7920a57e927601cb0ab9161854eeddfa357bc23eca250ecdd6f",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    },
+    "gate.run2": {
+     "archiveSha256": "374989a76311f7920a57e927601cb0ab9161854eeddfa357bc23eca250ecdd6f",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    },
+    "head.run1": {
+     "archiveSha256": "374989a76311f7920a57e927601cb0ab9161854eeddfa357bc23eca250ecdd6f",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    },
+    "head.run2": {
+     "archiveSha256": "374989a76311f7920a57e927601cb0ab9161854eeddfa357bc23eca250ecdd6f",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    }
+   },
+   "fleet": {
+    "archiveSha256": "374989a76311f7920a57e927601cb0ab9161854eeddfa357bc23eca250ecdd6f",
+    "browserOwn": 0,
+    "exact": 17,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 18,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "www-w3-org-wai-tutorials-page-structure-headings-52ef9e1e",
+   "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/"
+  },
+  {
+   "archiveSha256": "f7057fae7c50bd331c428e28859a7c9e8d421eef64c56057768d6383d5cefe8b",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "f7057fae7c50bd331c428e28859a7c9e8d421eef64c56057768d6383d5cefe8b",
+     "browserOwn": 10,
+     "exact": 24,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 24
+    },
+    "gate.run2": {
+     "archiveSha256": "f7057fae7c50bd331c428e28859a7c9e8d421eef64c56057768d6383d5cefe8b",
+     "browserOwn": 10,
+     "exact": 24,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 24
+    },
+    "head.run1": {
+     "archiveSha256": "f7057fae7c50bd331c428e28859a7c9e8d421eef64c56057768d6383d5cefe8b",
+     "browserOwn": 10,
+     "exact": 24,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 24
+    },
+    "head.run2": {
+     "archiveSha256": "f7057fae7c50bd331c428e28859a7c9e8d421eef64c56057768d6383d5cefe8b",
+     "browserOwn": 10,
+     "exact": 24,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 24
+    }
+   },
+   "fleet": {
+    "archiveSha256": "f7057fae7c50bd331c428e28859a7c9e8d421eef64c56057768d6383d5cefe8b",
+    "browserOwn": 1,
+    "exact": 19,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 20,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-w3-org-wai-tutorials-page-structure-regions-cae76404",
+   "url": "https://www.w3.org/WAI/tutorials/page-structure/regions/"
+  },
+  {
+   "archiveSha256": "9514958151214a8d93ae055baa24f4df343ce28f014adf5089134752f712e2b0",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "9514958151214a8d93ae055baa24f4df343ce28f014adf5089134752f712e2b0",
+     "browserOwn": 10,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "gate.run2": {
+     "archiveSha256": "9514958151214a8d93ae055baa24f4df343ce28f014adf5089134752f712e2b0",
+     "browserOwn": 10,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "head.run1": {
+     "archiveSha256": "9514958151214a8d93ae055baa24f4df343ce28f014adf5089134752f712e2b0",
+     "browserOwn": 10,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "head.run2": {
+     "archiveSha256": "9514958151214a8d93ae055baa24f4df343ce28f014adf5089134752f712e2b0",
+     "browserOwn": 10,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    }
+   },
+   "fleet": {
+    "archiveSha256": "9514958151214a8d93ae055baa24f4df343ce28f014adf5089134752f712e2b0",
+    "browserOwn": 2,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 16,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "www-w3-org-wai-tutorials-tables-irregular-48d24dd7",
+   "url": "https://www.w3.org/WAI/tutorials/tables/irregular/"
+  },
+  {
+   "archiveSha256": "99fb5114a7a239c16005abd1bb3727e05f90890f51c05c1f904e1576a547e76b",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "99fb5114a7a239c16005abd1bb3727e05f90890f51c05c1f904e1576a547e76b",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    },
+    "gate.run2": {
+     "archiveSha256": "99fb5114a7a239c16005abd1bb3727e05f90890f51c05c1f904e1576a547e76b",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    },
+    "head.run1": {
+     "archiveSha256": "99fb5114a7a239c16005abd1bb3727e05f90890f51c05c1f904e1576a547e76b",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    },
+    "head.run2": {
+     "archiveSha256": "99fb5114a7a239c16005abd1bb3727e05f90890f51c05c1f904e1576a547e76b",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    }
+   },
+   "fleet": {
+    "archiveSha256": "99fb5114a7a239c16005abd1bb3727e05f90890f51c05c1f904e1576a547e76b",
+    "browserOwn": 1,
+    "exact": 16,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 17,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "www-w3-org-wai-tutorials-tables-multi-level-0ecc1b74",
+   "url": "https://www.w3.org/WAI/tutorials/tables/multi-level/"
+  },
+  {
+   "archiveSha256": "6b61f89e02e2928210f294bb8de1ad5793b98412f538ab9403146390c18e64ae",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "6b61f89e02e2928210f294bb8de1ad5793b98412f538ab9403146390c18e64ae",
+     "browserOwn": 10,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "gate.run2": {
+     "archiveSha256": "6b61f89e02e2928210f294bb8de1ad5793b98412f538ab9403146390c18e64ae",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    },
+    "head.run1": {
+     "archiveSha256": "6b61f89e02e2928210f294bb8de1ad5793b98412f538ab9403146390c18e64ae",
+     "browserOwn": 10,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "head.run2": {
+     "archiveSha256": "6b61f89e02e2928210f294bb8de1ad5793b98412f538ab9403146390c18e64ae",
+     "browserOwn": 10,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    }
+   },
+   "fleet": {
+    "archiveSha256": "6b61f89e02e2928210f294bb8de1ad5793b98412f538ab9403146390c18e64ae",
+    "browserOwn": 1,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 16,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "www-w3-org-wai-tutorials-tables-one-header-9d641601",
+   "url": "https://www.w3.org/WAI/tutorials/tables/one-header/"
+  },
+  {
+   "archiveSha256": "243c59292c63e35023f88d47d103f985d8a4f4d8365225bcf8d532dd4d8766ab",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "243c59292c63e35023f88d47d103f985d8a4f4d8365225bcf8d532dd4d8766ab",
+     "browserOwn": 10,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "gate.run2": {
+     "archiveSha256": "243c59292c63e35023f88d47d103f985d8a4f4d8365225bcf8d532dd4d8766ab",
+     "browserOwn": 10,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "head.run1": {
+     "archiveSha256": "243c59292c63e35023f88d47d103f985d8a4f4d8365225bcf8d532dd4d8766ab",
+     "browserOwn": 10,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "head.run2": {
+     "archiveSha256": "243c59292c63e35023f88d47d103f985d8a4f4d8365225bcf8d532dd4d8766ab",
+     "browserOwn": 10,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    }
+   },
+   "fleet": {
+    "archiveSha256": "243c59292c63e35023f88d47d103f985d8a4f4d8365225bcf8d532dd4d8766ab",
+    "browserOwn": 1,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 16,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "www-w3-org-wai-tutorials-tables-two-headers-664c9932",
+   "url": "https://www.w3.org/WAI/tutorials/tables/two-headers/"
+  }
+ ]
+}

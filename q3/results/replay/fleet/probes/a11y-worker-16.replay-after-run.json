@@ -1,0 +1,1199 @@
+{
+ "capturedAt": "2026-10-21T19:00:58.275Z",
+ "worker": "a11y-worker-16",
+ "status": 200,
+ "capture": {
+  "url": "https://replay-probe.test/",
+  "screenReader": "NVDA",
+  "capturedAt": "2026-10-21T19:00:58.254Z",
+  "transcript": [
+   "heading, level 1, replay probe elder lagoon summit",
+   "This page is in the replay archive and nowhere else.",
+   "same page, link, Replay probe, itself, , link, Replay probe, other"
+  ],
+  "structure": {
+   "headings": [
+    "replay probe elder lagoon summit, heading, level 1"
+   ],
+   "landmarks": [],
+   "formFields": [],
+   "graphics": [],
+   "links": [
+    "Replay probe, itself, same page, link",
+    "Replay probe, other, link"
+   ],
+   "lists": [],
+   "tableCells": [],
+   "frames": []
+  },
+  "interaction": {
+   "controls": [],
+   "stateChanges": [],
+   "formChanges": [],
+   "postSubmitFields": [],
+   "focusOrder": [
+    "Replay probe, itself, link, focused, linked, same page",
+    "Replay probe, other, link, focused, linked",
+    "Search tabs, button, focused, collapsed",
+    "Replay probe - Memory usage - 45.3 MB, tab, focused, selected, replay-probe dot test, 1 of 1",
+    "New Tab, button, focused, New tab (Ctrl plus T), Ctrl plus, T",
+    "Back, button, focused, Press to go back (Alt plus Left arrow), or open context menu to see history",
+    "Refresh, button, focused, Refresh (Ctrl plus R)",
+    "View site information, button, focused, collapsed, Secure",
+    "Address and search bar, search landmark, focused, collapsed, Search or enter web address, Ctrl plus, L, selected https: slash slash replay-probe dot test",
+    "Add this page to favourites (Ctrl plus D), button, focused, collapsed",
+    "Favourites, button, focused, Favourites (Ctrl plus Shift plus O)",
+    "Profile 1 Profile, button, focused, collapsed, Profile 1",
+    "Settings and more (Alt plus F), button, focused",
+    "Chat, button, focused, Copilot (Ctrl plus Shift plus .)",
+    "Copilot menu, button, focused",
+    "Replay probe, itself, link, focused, linked, same page",
+    "Replay probe, other, link, focused, linked",
+    "Search tabs, button, focused, collapsed"
+   ],
+   "routeChange": {
+    "control": null,
+    "titleBefore": "Replay probe",
+    "titleAfter": "Replay probe",
+    "headingBefore": "",
+    "headingAfter": "",
+    "nextFocusAfter": null,
+    "announced": "",
+    "navigated": false
+   },
+   "focusContext": {
+    "focused": true,
+    "control": "View site information, button, focused, collapsed, Secure",
+    "titleBefore": "Replay probe",
+    "titleAfter": "Replay probe"
+   },
+   "focusReveal": {
+    "asked": true,
+    "revealed": null,
+    "why": "a control held focus from an earlier probe, so the baseline was not the untouched document -- content already revealed before this probe began cannot appear in its delta"
+   },
+   "focusEvents": {
+    "asked": true,
+    "checked": true,
+    "events": 8,
+    "log": [
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 3549
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 4949
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 4950
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 5588
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 17939
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 19920
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 19920
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 20559
+     }
+    ],
+    "truncated": false
+   }
+  },
+  "media": [],
+  "formInputs": [],
+  "observed": {
+   "headings": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "landmarks": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "formFields": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "graphics": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "links": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "lists": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "frames": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "tableCells": {
+    "asked": false,
+    "why": "probeTables is opt-in and this capture did not request it"
+   },
+   "formChanges": {
+    "asked": false,
+    "why": "probeForms is off and no formState was configured, so no control was activated"
+   },
+   "postSubmitFields": {
+    "asked": false,
+    "why": "probeForms is off and no formState was configured"
+   },
+   "focusOrder": {
+    "asked": true
+   },
+   "dialogEscape": {
+    "asked": false,
+    "why": "probeDialog is opt-in: it presses Escape, which changes state on a page we do not own"
+   },
+   "arrowNavigation": {
+    "asked": false,
+    "why": "probeArrows is opt-in: it presses keys inside whatever widget focus last landed on"
+   },
+   "typedFeedback": {
+    "asked": false,
+    "why": "probeTyping is opt-in: it enters characters into a field, changing the page under measurement"
+   },
+   "focusContext": {
+    "asked": true
+   },
+   "routeChange": {
+    "asked": true
+   }
+  },
+  "diagnostics": [
+   {
+    "event": "browserSelected",
+    "atMs": 0,
+    "id": "edge",
+    "name": "Microsoft Edge"
+   },
+   {
+    "event": "browserReused",
+    "atMs": 800,
+    "url": "https://replay-probe.test/",
+    "captures": 17
+   },
+   {
+    "event": "landedOnRequested",
+    "atMs": 804,
+    "ok": true,
+    "actual": "https://replay-probe.test/",
+    "attempts": 1,
+    "waitedMs": 4,
+    "requested": "https://replay-probe.test/"
+   },
+   {
+    "event": "pageServed",
+    "atMs": 823,
+    "requested": "https://replay-probe.test/",
+    "waitedMs": 19,
+    "polls": 1,
+    "status": 200,
+    "type": "navigate",
+    "url": "https://replay-probe.test/",
+    "responseEnd": 15.100000023841858,
+    "readyState": "complete",
+    "settled": true
+   },
+   {
+    "event": "pageSettled",
+    "atMs": 1265,
+    "reads": 2,
+    "waitedMs": 442,
+    "shape": "1/2/0/1"
+   },
+   {
+    "event": "viewport",
+    "atMs": 1274,
+    "innerWidth": 1000,
+    "innerHeight": 676,
+    "devicePixelRatio": 1,
+    "targetMatch": "matched"
+   },
+   {
+    "event": "windowsActivate",
+    "atMs": 1610,
+    "ok": true,
+    "via": "cdpBringToFront",
+    "waitedMs": 335
+   },
+   {
+    "event": "pointerParked",
+    "atMs": 2117,
+    "x": 0,
+    "y": 0,
+    "attempts": 1,
+    "ms": 507
+   },
+   {
+    "event": "nvdaStart",
+    "atMs": 2118,
+    "ok": true,
+    "reused": true,
+    "captures": 5
+   },
+   {
+    "event": "speechChannel",
+    "atMs": 2689,
+    "alive": true,
+    "heard": "heading, level 1, replay probe elder lagoon summit"
+   },
+   {
+    "event": "documentReady",
+    "atMs": 3396,
+    "ok": true,
+    "title": "Replay probe - Profile 1 - Microsoft​ Edge",
+    "attempt": 1
+   },
+   {
+    "event": "focusEventListenerEarlyInstall",
+    "atMs": 3405,
+    "installed": true,
+    "targetMatch": "matched",
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/",
+    "already": false
+   },
+   {
+    "event": "bufferReady",
+    "atMs": 3696,
+    "sawLoading": false,
+    "refreshed": true,
+    "waitedMs": 0
+   },
+   {
+    "event": "browseBufferRefreshed",
+    "atMs": 3996,
+    "reason": "navigated an already-open window",
+    "ready": true,
+    "refreshed": true
+   },
+   {
+    "event": "afterStart",
+    "atMs": 10435,
+    "lastSpoken": "heading, level 1, replay probe elder lagoon summit"
+   },
+   {
+    "event": "readBudget",
+    "atMs": 10435,
+    "readDeadlineInMs": 352254,
+    "reservedMs": 60000
+   },
+   {
+    "event": "readThrough",
+    "atMs": 12071,
+    "count": 3,
+    "stopReason": "repeatBottom",
+    "firstStepError": null
+   },
+   {
+    "event": "probeOrder",
+    "atMs": 12124,
+    "order": "sweep,focus",
+    "requested": "default"
+   },
+   {
+    "event": "pageState",
+    "atMs": 12139,
+    "beforeProbe": "sweep",
+    "tookMs": 15,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "https://www.historicenvironment.scot/visit/all/edinburgh-castle/"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "focusRestore",
+    "atMs": 12139,
+    "attempted": false,
+    "why": "focus is in the top document"
+   },
+   {
+    "event": "pageState",
+    "atMs": 12152,
+    "beforeProbe": "sweep:heading",
+    "tookMs": 13,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "https://www.historicenvironment.scot/visit/all/edinburgh-castle/"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "sweep",
+    "atMs": 13048,
+    "type": "heading",
+    "found": 1,
+    "prevMs": 629,
+    "nextMs": 267,
+    "prevTrips": 5,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "replay probe elder lagoon summit, heading, level 1",
+    "nextStopPhrase": "",
+    "prevCount": 1,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": [
+     "replay probe elder lagoon summit, heading, level 1"
+    ]
+   },
+   {
+    "event": "pageState",
+    "atMs": 13054,
+    "beforeProbe": "sweep:landmark",
+    "tookMs": 6,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "https://www.historicenvironment.scot/visit/all/edinburgh-castle/"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "sweep",
+    "atMs": 13600,
+    "type": "landmark",
+    "found": 0,
+    "prevMs": 280,
+    "nextMs": 266,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "pageState",
+    "atMs": 13616,
+    "beforeProbe": "sweep:formField",
+    "tookMs": 16,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "https://www.historicenvironment.scot/visit/all/edinburgh-castle/"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "sweep",
+    "atMs": 14458,
+    "type": "formField",
+    "found": 0,
+    "prevMs": 281,
+    "nextMs": 561,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "structural",
+    "atMs": 14458,
+    "headings": 1,
+    "landmarks": 0,
+    "formFields": 0,
+    "roundTrips": 20
+   },
+   {
+    "event": "pageState",
+    "atMs": 14970,
+    "beforeProbe": "sweep:graphic",
+    "tookMs": 512,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "https://www.historicenvironment.scot/visit/all/edinburgh-castle/"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "sweep",
+    "atMs": 15523,
+    "type": "graphic",
+    "found": 0,
+    "prevMs": 285,
+    "nextMs": 268,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "pageState",
+    "atMs": 15537,
+    "beforeProbe": "sweep:link",
+    "tookMs": 14,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "https://www.historicenvironment.scot/visit/all/edinburgh-castle/"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "sweep",
+    "atMs": 16765,
+    "type": "link",
+    "found": 2,
+    "prevMs": 275,
+    "nextMs": 953,
+    "prevTrips": 3,
+    "nextTrips": 7,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "Replay probe, other, link",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": [
+     "Replay probe, itself, same page, link",
+     "Replay probe, other, link"
+    ]
+   },
+   {
+    "event": "pageState",
+    "atMs": 19619,
+    "beforeProbe": "sweep:list",
+    "tookMs": 8,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "https://www.historicenvironment.scot/visit/all/edinburgh-castle/"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "sweep",
+    "atMs": 20173,
+    "type": "list",
+    "found": 0,
+    "prevMs": 274,
+    "nextMs": 280,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "pageState",
+    "atMs": 23135,
+    "beforeProbe": "sweep:frame",
+    "tookMs": 107,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "https://www.historicenvironment.scot/visit/all/edinburgh-castle/"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "sweep",
+    "atMs": 24532,
+    "type": "frame",
+    "found": 0,
+    "prevMs": 1127,
+    "nextMs": 270,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "establishBrowseMode",
+    "atMs": 30385,
+    "applied": 3,
+    "caretAnchored": true
+   },
+   {
+    "event": "pageState",
+    "atMs": 30391,
+    "beforeProbe": "focus",
+    "tookMs": 6,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "https://www.historicenvironment.scot/visit/all/edinburgh-castle/"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "titleSource",
+    "atMs": 34157,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 35930,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 37163,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 41122,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 44576,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 46462,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 49806,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 51675,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 52853,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "focusContext",
+    "atMs": 52853,
+    "focused": true,
+    "control": "View site information, button, focused, collapsed, Secure",
+    "stops": 8,
+    "titleBefore": "Replay probe",
+    "titleAfter": "Replay probe",
+    "startedFrom": "Replay probe, document, focused, read only",
+    "focusReset": {
+     "applied": true,
+     "logSuppressed": false,
+     "why": "confirmed nothing held focus already"
+    }
+   },
+   {
+    "event": "bufferReady",
+    "atMs": 53352,
+    "sawLoading": false,
+    "refreshed": false,
+    "waitedMs": 0
+   },
+   {
+    "event": "browseBufferRefreshed",
+    "atMs": 53652,
+    "reason": "navigated an already-open window",
+    "ready": true,
+    "refreshed": false
+   },
+   {
+    "event": "focusContextBrowseRestored",
+    "atMs": 60034,
+    "via": "anchorToTop"
+   },
+   {
+    "event": "focusReveal",
+    "atMs": 78665,
+    "asked": true,
+    "revealed": null,
+    "why": "a control held focus from an earlier probe, so the baseline was not the untouched document -- content already revealed before this probe began cannot appear in its delta",
+    "tabs": 8,
+    "revealedAt": -1,
+    "focusBefore": "View site information, button, focused, collapsed, Secure",
+    "focusAfter": "View site information, button, focused, collapsed, Secure",
+    "startedFrom": "Replay probe, document, focused, read only",
+    "focusReset": {
+     "applied": true,
+     "logSuppressed": false,
+     "why": "confirmed nothing held focus already"
+    }
+   },
+   {
+    "event": "bufferReady",
+    "atMs": 79011,
+    "sawLoading": false,
+    "refreshed": false,
+    "waitedMs": 0
+   },
+   {
+    "event": "browseBufferRefreshed",
+    "atMs": 79311,
+    "reason": "navigated an already-open window",
+    "ready": true,
+    "refreshed": false
+   },
+   {
+    "event": "focusRevealBrowseRestored",
+    "atMs": 84388,
+    "via": "anchorToTop"
+   },
+   {
+    "event": "focusOrder",
+    "atMs": 106566,
+    "stops": 18,
+    "cycled": true,
+    "stalled": false,
+    "truncated": false,
+    "stop": "cycled",
+    "walkedUrl": "https://replay-probe.test/",
+    "startedFrom": "Replay probe, document, focused, read only",
+    "focusReset": {
+     "applied": true,
+     "logSuppressed": false,
+     "why": "confirmed nothing held focus already"
+    }
+   },
+   {
+    "event": "focusConfinement",
+    "atMs": 106566,
+    "confined": false,
+    "cycled": true,
+    "ring": 15,
+    "controlsOnPage": 0
+   },
+   {
+    "event": "focusEventLog",
+    "atMs": 106570,
+    "installed": true,
+    "installTargetMatch": "matched",
+    "installTargetUrl": "https://replay-probe.test/",
+    "installError": null,
+    "collectTargetMatch": "matched",
+    "collectTargetUrl": "https://replay-probe.test/",
+    "collectCandidates": 2,
+    "eventCount": 8,
+    "events": [
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 3549
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 4949
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 4950
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 5588
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 17939
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 19920
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 19920
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 20559
+     }
+    ],
+    "collectError": null,
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "titleSource",
+    "atMs": 119318,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": true,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "routeChange",
+    "atMs": 120599,
+    "found": false,
+    "reason": "no-link"
+   },
+   {
+    "event": "interaction",
+    "atMs": 120615,
+    "controls": 0,
+    "stateChanges": 0,
+    "formChanges": 0,
+    "postSubmit": 0,
+    "sweepLog": [
+     "routeChange no-link"
+    ]
+   },
+   {
+    "event": "structureCensus",
+    "atMs": 120615,
+    "landmark": 1,
+    "heading": 1,
+    "link": 2,
+    "graphic": 0,
+    "formControl": 0,
+    "graphicUnnamed": 0,
+    "graphicUnnamedDetail": [],
+    "graphicExempted": 0,
+    "graphicExemptedDetail": [],
+    "names": [
+     "Replay probe",
+     "replay probe elder lagoon summit",
+     "Replay probe, itself",
+     "Replay probe, other",
+     "replay probe elder lagoon summit",
+     "This page is in the replay archive and nowhere else.",
+     "Replay probe, itself",
+     "Replay probe, other",
+     "replay probe elder lagoon summit",
+     "This page is in the replay archive and nowhere else.",
+     "Replay probe, itself",
+     "Replay probe, other"
+    ],
+    "distinct": {
+     "landmark": 1,
+     "heading": 1,
+     "link": 2,
+     "graphic": 0,
+     "formControl": 0
+    },
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "https://www.historicenvironment.scot/visit/all/edinburgh-castle/"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/",
+    "readAt": {
+     "startedAtMs": 12071,
+     "tookMs": 6
+    }
+   },
+   {
+    "event": "domCensus",
+    "atMs": 120615,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "https://www.historicenvironment.scot/visit/all/edinburgh-castle/"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/",
+    "readAt": {
+     "startedAtMs": 12077,
+     "tookMs": 20
+    }
+   },
+   {
+    "event": "mediaCensus",
+    "atMs": 120615,
+    "count": 0,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/",
+    "readAt": {
+     "startedAtMs": 12097,
+     "tookMs": 4
+    }
+   },
+   {
+    "event": "formInputCensus",
+    "atMs": 120615,
+    "count": 0,
+    "total": 0,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/",
+    "readAt": {
+     "startedAtMs": 12101,
+     "tookMs": 12
+    }
+   },
+   {
+    "event": "truncatedAnnouncements",
+    "atMs": 120616,
+    "truncated": [],
+    "checked": true
+   },
+   {
+    "event": "structureCrossCheck",
+    "atMs": 120616,
+    "sameCounts": false,
+    "compared": 4,
+    "differsOn": [
+     {
+      "type": "landmark",
+      "sweepEntries": 0,
+      "oracleDistinctNames": 1
+     }
+    ],
+    "basis": "distinct-names"
+   },
+   {
+    "event": "done",
+    "atMs": 120616,
+    "transcript": 3
+   },
+   {
+    "event": "browserKeptAlive",
+    "atMs": 120616
+   }
+  ],
+  "task": null,
+  "environment": {
+   "measuredAt": "2026-10-21T19:00:58.254Z",
+   "screenReader": "NVDA",
+   "browser": "Microsoft Edge",
+   "guidepupVersion": "0.31.0",
+   "screenReaderSettings": "speech.autoLanguageSwitching=True,speech.reportLanguage=True,speech.reportNotSupportedLanguage=speech",
+   "browserProfile": "adopted",
+   "nodeVersion": "v24.20.0",
+   "architecture": "x64",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24,
+   "provisionRevision": "a20963f766666de8",
+   "windowSize": "1024x768",
+   "displayMode": "1024x768",
+   "displayAdapter": "Intel(R) UHD Graphics 630",
+   "displaySampledMsAgo": 4646,
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "screenReaderVersion": "2026.1.1",
+   "browserVersion": "155.0.4283.62",
+   "versionsSampledMsAgo": 3382,
+   "windowsBuild": "26300.9711",
+   "innerWidth": 1000,
+   "innerHeight": 676,
+   "devicePixelRatio": 1
+  }
+ }
+}

@@ -1,0 +1,512 @@
+{
+ "marker": "replay probe elder lagoon summit",
+ "probeAddress": "https://replay-probe.test/",
+ "runId": "a11-165-2026-10-21",
+ "thumbprint": "D48FA1A141C8FCBF01781DE3485FCEE6CE5DD304",
+ "workers": {
+  "a11y-worker-10": {
+   "after-run": {
+    "capturedAt": "2026-10-21T19:00:12.364Z",
+    "headings": 1,
+    "read": true
+   },
+   "certificate": {
+    "evidence": "replay-on.yml found the run's certificate once in LocalMachine\\Root and asserted it",
+    "readAt": "2026-10-21T17:48:03Z",
+    "thumbprint": "D48FA1A141C8FCBF01781DE3485FCEE6CE5DD304"
+   },
+   "heldRun": true,
+   "off": {
+    "capturedAt": "2026-10-21T19:25:29.822Z",
+    "headings": 0,
+    "read": false
+   },
+   "on": {
+    "capturedAt": "2026-10-21T17:54:36.045Z",
+    "headings": 1,
+    "read": true
+   },
+   "passed": false,
+   "proxy": {
+    "evidence": "replay-on.yml read ProxyMode, ProxyServer and ProxyBypassList back with win_reg_stat and asserted them",
+    "readAt": "2026-10-21T17:48:03Z",
+    "server": "capture-host:3210"
+   },
+   "removed": {
+    "at": "2026-10-21T19:24:37Z",
+    "evidence": "replay-off.yml read the three proxy values back as absent and the certificate as not in LocalMachine\\Root, and asserted both"
+   },
+   "restored": {
+    "at": "2026-10-21T19:24:37Z"
+   },
+   "restoredOk": true,
+   "status": {
+    "at": "2026-10-21T19:25:30Z",
+    "evidence": "fleet:status after the restore:   a11y-worker-10  a11y-worker-10:8765   ready  25bb45d9b38d7a62  67 captures, 1 recoveries",
+    "state": "ready"
+   }
+  },
+  "a11y-worker-12": {
+   "after-run": {
+    "capturedAt": "2026-10-21T19:00:10.362Z",
+    "headings": 1,
+    "read": true
+   },
+   "certificate": {
+    "evidence": "replay-on.yml found the run's certificate once in LocalMachine\\Root and asserted it",
+    "readAt": "2026-10-21T17:50:18Z",
+    "thumbprint": "D48FA1A141C8FCBF01781DE3485FCEE6CE5DD304"
+   },
+   "heldRun": true,
+   "off": {
+    "capturedAt": "2026-10-21T19:27:06.237Z",
+    "headings": 0,
+    "read": false
+   },
+   "on": {
+    "capturedAt": "2026-10-21T17:56:48.292Z",
+    "headings": 1,
+    "read": true
+   },
+   "passed": false,
+   "proxy": {
+    "evidence": "replay-on.yml read ProxyMode, ProxyServer and ProxyBypassList back with win_reg_stat and asserted them",
+    "readAt": "2026-10-21T17:50:18Z",
+    "server": "capture-host:3212"
+   },
+   "removed": {
+    "at": "2026-10-21T19:26:11Z",
+    "evidence": "replay-off.yml read the three proxy values back as absent and the certificate as not in LocalMachine\\Root, and asserted both"
+   },
+   "restored": {
+    "at": "2026-10-21T19:26:11Z"
+   },
+   "restoredOk": true,
+   "status": {
+    "at": "2026-10-21T19:27:07Z",
+    "evidence": "fleet:status after the restore:   a11y-worker-12  a11y-worker-12:8765   ready  25bb45d9b38d7a62  66 captures, 1 recoveries",
+    "state": "ready"
+   }
+  },
+  "a11y-worker-13": {
+   "after-run": {
+    "capturedAt": "2026-10-21T19:00:12.302Z",
+    "headings": 1,
+    "read": true
+   },
+   "certificate": {
+    "evidence": "replay-on.yml found the run's certificate once in LocalMachine\\Root and asserted it",
+    "readAt": "2026-10-21T17:52:25Z",
+    "thumbprint": "D48FA1A141C8FCBF01781DE3485FCEE6CE5DD304"
+   },
+   "heldRun": true,
+   "off": {
+    "capturedAt": "2026-10-21T19:28:35.300Z",
+    "headings": 0,
+    "read": false
+   },
+   "on": {
+    "capturedAt": "2026-10-21T17:58:57.657Z",
+    "headings": 1,
+    "read": true
+   },
+   "passed": false,
+   "proxy": {
+    "evidence": "replay-on.yml read ProxyMode, ProxyServer and ProxyBypassList back with win_reg_stat and asserted them",
+    "readAt": "2026-10-21T17:52:25Z",
+    "server": "capture-host:3213"
+   },
+   "removed": {
+    "at": "2026-10-21T19:27:44Z",
+    "evidence": "replay-off.yml read the three proxy values back as absent and the certificate as not in LocalMachine\\Root, and asserted both"
+   },
+   "restored": {
+    "at": "2026-10-21T19:27:44Z"
+   },
+   "restoredOk": true,
+   "status": {
+    "at": "2026-10-21T19:28:36Z",
+    "evidence": "fleet:status after the restore:   a11y-worker-13  a11y-worker-13:8765   ready  25bb45d9b38d7a62  65 captures, 0 recoveries",
+    "state": "ready"
+   }
+  },
+  "a11y-worker-14": {
+   "after-run": {
+    "capturedAt": "2026-10-21T19:00:12.580Z",
+    "headings": 1,
+    "read": true
+   },
+   "certificate": {
+    "evidence": "replay-on.yml found the run's certificate once in LocalMachine\\Root and asserted it",
+    "readAt": "2026-10-21T17:54:33Z",
+    "thumbprint": "D48FA1A141C8FCBF01781DE3485FCEE6CE5DD304"
+   },
+   "heldRun": true,
+   "off": {
+    "capturedAt": "2026-10-21T19:30:06.142Z",
+    "headings": 0,
+    "read": false
+   },
+   "on": {
+    "capturedAt": "2026-10-21T18:01:05.410Z",
+    "headings": 1,
+    "read": true
+   },
+   "passed": false,
+   "proxy": {
+    "evidence": "replay-on.yml read ProxyMode, ProxyServer and ProxyBypassList back with win_reg_stat and asserted them",
+    "readAt": "2026-10-21T17:54:33Z",
+    "server": "capture-host:3214"
+   },
+   "removed": {
+    "at": "2026-10-21T19:29:15Z",
+    "evidence": "replay-off.yml read the three proxy values back as absent and the certificate as not in LocalMachine\\Root, and asserted both"
+   },
+   "restored": {
+    "at": "2026-10-21T19:29:15Z"
+   },
+   "restoredOk": true,
+   "status": {
+    "at": "2026-10-21T19:30:07Z",
+    "evidence": "fleet:status after the restore:   a11y-worker-14  a11y-worker-14:8765  ready  25bb45d9b38d7a62  70 captures, 1 recoveries",
+    "state": "ready"
+   }
+  },
+  "a11y-worker-15": {
+   "after-run": {
+    "capturedAt": "2026-10-21T19:00:13.705Z",
+    "headings": 1,
+    "read": true
+   },
+   "certificate": {
+    "evidence": "replay-on.yml found the run's certificate once in LocalMachine\\Root and asserted it",
+    "readAt": "2026-10-21T17:56:49Z",
+    "thumbprint": "D48FA1A141C8FCBF01781DE3485FCEE6CE5DD304"
+   },
+   "heldRun": true,
+   "off": {
+    "capturedAt": "2026-10-21T19:31:43.832Z",
+    "headings": 0,
+    "read": false
+   },
+   "on": {
+    "capturedAt": "2026-10-21T18:03:18.971Z",
+    "headings": 1,
+    "read": true
+   },
+   "passed": false,
+   "proxy": {
+    "evidence": "replay-on.yml read ProxyMode, ProxyServer and ProxyBypassList back with win_reg_stat and asserted them",
+    "readAt": "2026-10-21T17:56:49Z",
+    "server": "capture-host:3215"
+   },
+   "removed": {
+    "at": "2026-10-21T19:30:48Z",
+    "evidence": "replay-off.yml read the three proxy values back as absent and the certificate as not in LocalMachine\\Root, and asserted both"
+   },
+   "restored": {
+    "at": "2026-10-21T19:30:48Z"
+   },
+   "restoredOk": true,
+   "status": {
+    "at": "2026-10-21T19:31:44Z",
+    "evidence": "fleet:status after the restore:   a11y-worker-15  a11y-worker-15:8765  ready  25bb45d9b38d7a62  59 captures, 1 recoveries",
+    "state": "ready"
+   }
+  },
+  "a11y-worker-16": {
+   "after-run": {
+    "capturedAt": "2026-10-21T19:00:58.275Z",
+    "headings": 1,
+    "read": true
+   },
+   "certificate": {
+    "evidence": "replay-on.yml found the run's certificate once in LocalMachine\\Root and asserted it",
+    "readAt": "2026-10-21T17:58:54Z",
+    "thumbprint": "D48FA1A141C8FCBF01781DE3485FCEE6CE5DD304"
+   },
+   "heldRun": true,
+   "off": {
+    "capturedAt": "2026-10-21T19:33:14.358Z",
+    "headings": 0,
+    "read": false
+   },
+   "on": {
+    "capturedAt": "2026-10-21T18:05:25.253Z",
+    "headings": 1,
+    "read": true
+   },
+   "passed": false,
+   "proxy": {
+    "evidence": "replay-on.yml read ProxyMode, ProxyServer and ProxyBypassList back with win_reg_stat and asserted them",
+    "readAt": "2026-10-21T17:58:54Z",
+    "server": "capture-host:3216"
+   },
+   "removed": {
+    "at": "2026-10-21T19:32:22Z",
+    "evidence": "replay-off.yml read the three proxy values back as absent and the certificate as not in LocalMachine\\Root, and asserted both"
+   },
+   "restored": {
+    "at": "2026-10-21T19:32:22Z"
+   },
+   "restoredOk": true,
+   "status": {
+    "at": "2026-10-21T19:33:15Z",
+    "evidence": "fleet:status after the restore:   a11y-worker-16  a11y-worker-16:8765  ready  25bb45d9b38d7a62  65 captures, 1 recoveries",
+    "state": "ready"
+   }
+  },
+  "a11y-worker-2": {
+   "after-run": {
+    "capturedAt": "2026-10-21T19:00:39.450Z",
+    "headings": 1,
+    "read": true
+   },
+   "certificate": {
+    "evidence": "replay-on.yml found the run's certificate once in LocalMachine\\Root and asserted it",
+    "readAt": "2026-10-21T17:26:21Z",
+    "thumbprint": "D48FA1A141C8FCBF01781DE3485FCEE6CE5DD304"
+   },
+   "heldRun": true,
+   "off": {
+    "capturedAt": "2026-10-21T19:04:26.997Z",
+    "headings": 0,
+    "read": false
+   },
+   "on": {
+    "capturedAt": "2026-10-21T17:35:21.057Z",
+    "headings": 1,
+    "read": true
+   },
+   "passed": false,
+   "proxy": {
+    "evidence": "replay-on.yml read ProxyMode, ProxyServer and ProxyBypassList back with win_reg_stat and asserted them",
+    "readAt": "2026-10-21T17:26:21Z",
+    "server": "capture-host:3202"
+   },
+   "removed": {
+    "at": "2026-10-21T19:03:37Z",
+    "evidence": "replay-off.yml read the three proxy values back as absent and the certificate as not in LocalMachine\\Root, and asserted both"
+   },
+   "restored": {
+    "at": "2026-10-21T19:03:37Z"
+   },
+   "restoredOk": true,
+   "status": {
+    "at": "2026-10-21T19:33:26Z",
+    "evidence": "fleet:status after the restore, read again once the box's own line was misread by the first run's script:   a11y-worker-2  a11y-worker-2:8765   ready  25bb45d9b38d7a62  73 captures, 1 recoveries",
+    "state": "ready"
+   }
+  },
+  "a11y-worker-3": {
+   "after-run": {
+    "capturedAt": "2026-10-21T19:01:05.095Z",
+    "headings": 1,
+    "read": true
+   },
+   "certificate": {
+    "evidence": "replay-on.yml found the run's certificate once in LocalMachine\\Root and asserted it",
+    "readAt": "2026-10-21T17:37:29Z",
+    "thumbprint": "D48FA1A141C8FCBF01781DE3485FCEE6CE5DD304"
+   },
+   "heldRun": true,
+   "off": {
+    "capturedAt": "2026-10-21T19:18:01.864Z",
+    "headings": 0,
+    "read": false
+   },
+   "on": {
+    "capturedAt": "2026-10-21T17:43:55.937Z",
+    "headings": 1,
+    "read": true
+   },
+   "passed": false,
+   "proxy": {
+    "evidence": "replay-on.yml read ProxyMode, ProxyServer and ProxyBypassList back with win_reg_stat and asserted them",
+    "readAt": "2026-10-21T17:37:29Z",
+    "server": "capture-host:3203"
+   },
+   "removed": {
+    "at": "2026-10-21T19:17:15Z",
+    "evidence": "replay-off.yml read the three proxy values back as absent and the certificate as not in LocalMachine\\Root, and asserted both"
+   },
+   "restored": {
+    "at": "2026-10-21T19:17:15Z"
+   },
+   "restoredOk": true,
+   "status": {
+    "at": "2026-10-21T19:18:02Z",
+    "evidence": "fleet:status after the restore:   a11y-worker-3  a11y-worker-3:8765   ready  25bb45d9b38d7a62  65 captures, 1 recoveries",
+    "state": "ready"
+   }
+  },
+  "a11y-worker-4": {
+   "after-run": {
+    "capturedAt": "2026-10-21T19:00:10.077Z",
+    "headings": 1,
+    "read": true
+   },
+   "certificate": {
+    "evidence": "replay-on.yml found the run's certificate once in LocalMachine\\Root and asserted it",
+    "readAt": "2026-10-21T17:39:29Z",
+    "thumbprint": "D48FA1A141C8FCBF01781DE3485FCEE6CE5DD304"
+   },
+   "heldRun": true,
+   "off": {
+    "capturedAt": "2026-10-21T19:19:26.691Z",
+    "headings": 0,
+    "read": false
+   },
+   "on": {
+    "capturedAt": "2026-10-21T17:46:02.784Z",
+    "headings": 1,
+    "read": true
+   },
+   "passed": false,
+   "proxy": {
+    "evidence": "replay-on.yml read ProxyMode, ProxyServer and ProxyBypassList back with win_reg_stat and asserted them",
+    "readAt": "2026-10-21T17:39:29Z",
+    "server": "capture-host:3204"
+   },
+   "removed": {
+    "at": "2026-10-21T19:18:38Z",
+    "evidence": "replay-off.yml read the three proxy values back as absent and the certificate as not in LocalMachine\\Root, and asserted both"
+   },
+   "restored": {
+    "at": "2026-10-21T19:18:38Z"
+   },
+   "restoredOk": true,
+   "status": {
+    "at": "2026-10-21T19:19:27Z",
+    "evidence": "fleet:status after the restore:   a11y-worker-4  a11y-worker-4:8765   ready  25bb45d9b38d7a62  68 captures, 0 recoveries",
+    "state": "ready"
+   }
+  },
+  "a11y-worker-7": {
+   "after-run": {
+    "capturedAt": "2026-10-21T19:00:08.353Z",
+    "headings": 1,
+    "read": true
+   },
+   "certificate": {
+    "evidence": "replay-on.yml found the run's certificate once in LocalMachine\\Root and asserted it",
+    "readAt": "2026-10-21T17:41:40Z",
+    "thumbprint": "D48FA1A141C8FCBF01781DE3485FCEE6CE5DD304"
+   },
+   "heldRun": true,
+   "off": {
+    "capturedAt": "2026-10-21T19:20:57.778Z",
+    "headings": 0,
+    "read": false
+   },
+   "on": {
+    "capturedAt": "2026-10-21T17:47:18.761Z",
+    "headings": 1,
+    "read": true
+   },
+   "passed": false,
+   "proxy": {
+    "evidence": "replay-on.yml read ProxyMode, ProxyServer and ProxyBypassList back with win_reg_stat and asserted them",
+    "readAt": "2026-10-21T17:41:40Z",
+    "server": "capture-host:3207"
+   },
+   "removed": {
+    "at": "2026-10-21T19:20:06Z",
+    "evidence": "replay-off.yml read the three proxy values back as absent and the certificate as not in LocalMachine\\Root, and asserted both"
+   },
+   "restored": {
+    "at": "2026-10-21T19:20:06Z"
+   },
+   "restoredOk": true,
+   "status": {
+    "at": "2026-10-21T19:20:58Z",
+    "evidence": "fleet:status after the restore:   a11y-worker-7  a11y-worker-7:8765    ready  25bb45d9b38d7a62  66 captures, 1 recoveries",
+    "state": "ready"
+   }
+  },
+  "a11y-worker-8": {
+   "after-run": {
+    "capturedAt": "2026-10-21T19:00:10.515Z",
+    "headings": 1,
+    "read": true
+   },
+   "certificate": {
+    "evidence": "replay-on.yml found the run's certificate once in LocalMachine\\Root and asserted it",
+    "readAt": "2026-10-21T17:43:48Z",
+    "thumbprint": "D48FA1A141C8FCBF01781DE3485FCEE6CE5DD304"
+   },
+   "heldRun": true,
+   "off": {
+    "capturedAt": "2026-10-21T19:22:28.217Z",
+    "headings": 0,
+    "read": false
+   },
+   "on": {
+    "capturedAt": "2026-10-21T17:49:27.916Z",
+    "headings": 1,
+    "read": true
+   },
+   "passed": false,
+   "proxy": {
+    "evidence": "replay-on.yml read ProxyMode, ProxyServer and ProxyBypassList back with win_reg_stat and asserted them",
+    "readAt": "2026-10-21T17:43:48Z",
+    "server": "capture-host:3208"
+   },
+   "removed": {
+    "at": "2026-10-21T19:21:36Z",
+    "evidence": "replay-off.yml read the three proxy values back as absent and the certificate as not in LocalMachine\\Root, and asserted both"
+   },
+   "restored": {
+    "at": "2026-10-21T19:21:36Z"
+   },
+   "restoredOk": true,
+   "status": {
+    "at": "2026-10-21T19:22:29Z",
+    "evidence": "fleet:status after the restore:   a11y-worker-8  a11y-worker-8:8765   ready  25bb45d9b38d7a62  66 captures, 1 recoveries",
+    "state": "ready"
+   }
+  },
+  "a11y-worker-9": {
+   "after-run": {
+    "capturedAt": "2026-10-21T19:00:11.196Z",
+    "headings": 1,
+    "read": true
+   },
+   "certificate": {
+    "evidence": "replay-on.yml found the run's certificate once in LocalMachine\\Root and asserted it",
+    "readAt": "2026-10-21T17:45:56Z",
+    "thumbprint": "D48FA1A141C8FCBF01781DE3485FCEE6CE5DD304"
+   },
+   "heldRun": true,
+   "off": {
+    "capturedAt": "2026-10-21T19:23:58.191Z",
+    "headings": 0,
+    "read": false
+   },
+   "on": {
+    "capturedAt": "2026-10-21T17:52:21.682Z",
+    "headings": 1,
+    "read": true
+   },
+   "passed": false,
+   "proxy": {
+    "evidence": "replay-on.yml read ProxyMode, ProxyServer and ProxyBypassList back with win_reg_stat and asserted them",
+    "readAt": "2026-10-21T17:45:56Z",
+    "server": "capture-host:3209"
+   },
+   "removed": {
+    "at": "2026-10-21T19:23:06Z",
+    "evidence": "replay-off.yml read the three proxy values back as absent and the certificate as not in LocalMachine\\Root, and asserted both"
+   },
+   "restored": {
+    "at": "2026-10-21T19:23:06Z"
+   },
+   "restoredOk": true,
+   "status": {
+    "at": "2026-10-21T19:23:59Z",
+    "evidence": "fleet:status after the restore:   a11y-worker-9  a11y-worker-9:8765   ready  25bb45d9b38d7a62  65 captures, 1 recoveries",
+    "state": "ready"
+   }
+  }
+ }
+}

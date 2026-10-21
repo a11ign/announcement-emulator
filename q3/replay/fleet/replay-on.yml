@@ -1,0 +1,107 @@
+---
+# Put one fleet box behind the replay server (A11-165): Edge's proxy policy, the run's CA in the machine's Trusted Root store, and a clean browser profile. Run from the control plane's checkout, one box at a time:
+#
+#     cd /root/control/ansible && ANSIBLE_CONFIG=ansible.cfg ansible-playbook /tmp/replay/<run>/replay-on.yml -l a11y-worker-2 -e @/tmp/replay/<run>/vars.json
+#
+# vars.json holds `replay_proxy` (host:port of THIS box's replay proxy), `replay_bypass` (what Edge does not send through it: our own probe pages), `replay_thumbprint` (the run's CA, upper-case SHA-1 hex)
+# and `replay_cert_src` (the CA's public certificate, on the plane). The CA's private key is never on the plane. control's `provision-role.yml` writes DWORDs only and the proxy policy is a string,
+# so this repository's own play carries it; control is not changed. `replay-off.yml` takes all of it away. Both end with a read-back of what they did and fail if it did not land.
+- name: Put one box behind the replay server
+  hosts: a11y_workers
+  gather_facts: false
+  vars:
+    edge_policy_key: 'HKLM:\SOFTWARE\Policies\Microsoft\Edge'
+    edge_default_profile: '%LOCALAPPDATA%\a11y-witness\edge-profile\Default'
+    # What a page left in the profile that a later page of the same site could read: the HTTP cache, cookies, and script-held storage. The history store is the history play's, not this one's.
+    profile_state: [Cache, Code Cache, GPUCache, Network\Cookies, Network\Cookies-journal, Service Worker, Local Storage, Session Storage, IndexedDB]
+  tasks:
+    - name: Exactly one box, and its replay variables
+      ansible.builtin.assert:
+        that:
+          - ansible_play_hosts_all | length == 1
+          - replay_proxy is match('^[A-Za-z0-9.-]+:[0-9]+$')
+          - replay_thumbprint is match('^[0-9A-F]{40}$')
+          - replay_cert_src is defined
+          - replay_bypass is defined
+        fail_msg: replay-on.yml takes one box (-l) and the four replay_* variables (see the header)
+      run_once: true
+
+    - name: The box is idle, as the worker says
+      ansible.windows.win_uri:
+        url: http://127.0.0.1:8765/health
+        return_content: true
+      register: health
+      failed_when: (health.content | from_json).busy | default(true)
+
+    - name: Edge is stopped (the worker keeps it alive between captures, and a running Edge holds its profile and its policy)
+      ansible.windows.win_shell: |
+        Get-Process msedge -ErrorAction SilentlyContinue | Stop-Process -Force
+        Start-Sleep 3
+        (Get-Process msedge -ErrorAction SilentlyContinue | Measure-Object).Count
+      register: edge_stopped
+      changed_when: false
+      failed_when: edge_stopped.stdout | trim != '0'
+
+    - name: The run's CA certificate is on the box
+      ansible.windows.win_copy:
+        src: "{{ replay_cert_src }}"
+        dest: 'C:\Windows\Temp\a11y-replay-ca.pem'
+
+    - name: The CA is a trusted root of the machine, for this run
+      become: true
+      ansible.windows.win_certificate_store:
+        path: 'C:\Windows\Temp\a11y-replay-ca.pem'
+        store_location: LocalMachine
+        store_name: Root
+        state: present
+
+    - name: The certificate file is removed again (the store holds it)
+      ansible.windows.win_file:
+        path: 'C:\Windows\Temp\a11y-replay-ca.pem'
+        state: absent
+
+    - name: Edge's proxy policy, three string values
+      become: true
+      ansible.windows.win_regedit:
+        path: "{{ edge_policy_key }}"
+        name: "{{ item.name }}"
+        data: "{{ item.data }}"
+        type: string
+      loop:
+        - { name: ProxyMode, data: fixed_servers }
+        - { name: ProxyServer, data: "{{ replay_proxy }}" }
+        - { name: ProxyBypassList, data: "{{ replay_bypass }}" }
+      loop_control: { label: "{{ item.name }}" }
+
+    - name: The browser profile holds nothing an earlier page left (as the worker's own account, Edge being stopped)
+      ansible.windows.win_file:
+        path: "{{ edge_default_profile }}\\{{ item }}"
+        state: absent
+      loop: "{{ profile_state }}"
+
+    # --- the read-back: what the box says, not what this play wrote ---
+    - name: Read the proxy values back
+      become: true
+      ansible.windows.win_reg_stat:
+        path: "{{ edge_policy_key }}"
+        name: "{{ item }}"
+      loop: [ProxyMode, ProxyServer, ProxyBypassList]
+      register: proxy_values
+
+    - name: Read the certificate store back
+      become: true
+      ansible.windows.win_powershell:
+        parameters: { Thumbprint: "{{ replay_thumbprint }}" }
+        script: |
+          param($Thumbprint)
+          $Ansible.Changed = $false
+          @(Get-ChildItem Cert:\LocalMachine\Root | Where-Object { $_.Thumbprint -eq $Thumbprint }).Count
+      register: cert_count
+
+    - name: Refuse to call this box ready if a value or the certificate did not land
+      ansible.builtin.assert:
+        that:
+          - (proxy_values.results | map(attribute='value') | list) == ['fixed_servers', replay_proxy, replay_bypass]
+          - cert_count.output | map('int') | list == [1]
+        fail_msg: "the proxy values or the certificate are not as written: {{ proxy_values.results | map(attribute='value') | list }}, certificate count {{ cert_count.output }}"
+        success_msg: "replay on: ProxyMode={{ proxy_values.results[0].value }} ProxyServer={{ proxy_values.results[1].value }} ProxyBypassList={{ proxy_values.results[2].value }}; certificate {{ replay_thumbprint }} found once in LocalMachine\\Root"

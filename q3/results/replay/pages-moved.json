@@ -1,0 +1,279 @@
+{
+ "after": {
+  "gate": {
+   "exact": 4437,
+   "total": 4470
+  },
+  "pages": {
+   "comparable": 47,
+   "emulator fault": 1,
+   "not comparable": 8,
+   "unstable": 4
+  }
+ },
+ "before": {
+  "gate": {
+   "exact": 4828,
+   "total": 4977
+  },
+  "pages": {
+   "comparable": 57,
+   "emulator fault": 1,
+   "not comparable": 2
+  }
+ },
+ "moved": [
+  {
+   "after": "not comparable: heading fleet 1 / emulator 4, link fleet 5 / emulator 6",
+   "before": "comparable",
+   "fleet": {
+    "firstLines": [
+     "button, collapsed, Set cookie preferences",
+     "out of region, same page, link, Skip to content",
+     "banner landmark, link, graphic, Southwark Data"
+    ],
+    "swept": {
+     "formFields": 3,
+     "frames": 0,
+     "graphics": 1,
+     "headings": 1,
+     "landmarks": 6,
+     "links": 5,
+     "lists": 1,
+     "tableCells": 0
+    },
+    "transcriptLines": 30
+   },
+   "url": "https://data.southwark.gov.uk/data-catalog-explorer/"
+  },
+  {
+   "after": "not comparable: link fleet 32 / emulator 31",
+   "before": "comparable",
+   "fleet": {
+    "firstLines": [
+     "same page, link, Skip to main content",
+     "Cookies policy, region, This site uses cookies. Visit our, link, cookies policy page, or click the link in any footer for more",
+     "information and to change your preferences."
+    ],
+    "swept": {
+     "formFields": 10,
+     "frames": 0,
+     "graphics": 3,
+     "headings": 4,
+     "landmarks": 7,
+     "links": 32,
+     "lists": 7,
+     "tableCells": 0
+    },
+    "transcriptLines": 90
+   },
+   "url": "https://european-union.europa.eu/index_en"
+  },
+  {
+   "after": "not comparable: heading fleet 24 / emulator 25",
+   "before": "comparable",
+   "fleet": {
+    "firstLines": [
+     "blank",
+     "out of region, same page, link, Skip to main content",
+     "MUSE menu, navigation landmark, list, with 2 items, link, graphic, Home"
+    ],
+    "swept": {
+     "formFields": 14,
+     "frames": 0,
+     "graphics": 11,
+     "headings": 24,
+     "landmarks": 14,
+     "links": 229,
+     "lists": 12,
+     "tableCells": 0
+    },
+    "transcriptLines": 233
+   },
+   "url": "https://sheffield.ac.uk/postgraduate/taught/courses/2027"
+  },
+  {
+   "after": "not comparable: heading fleet 0 / emulator 24, link fleet 7 / emulator 9",
+   "before": "comparable",
+   "fleet": {
+    "firstLines": [
+     "Cookie preferences, region",
+     "out of region, navigation landmark, same page, link, Skip to main content",
+     "list, with 2 items, link, graphic, Met Office"
+    ],
+    "swept": {
+     "formFields": 4,
+     "frames": 0,
+     "graphics": 5,
+     "headings": 0,
+     "landmarks": 3,
+     "links": 9,
+     "lists": 2,
+     "tableCells": 0
+    },
+    "transcriptLines": 29
+   },
+   "url": "https://weather.metoffice.gov.uk/warnings-and-advice/uk-warnings"
+  },
+  {
+   "after": "unstable: the two emulator runs differ",
+   "before": "comparable",
+   "fleet": {
+    "firstLines": [
+     "same page, link, Skip to main content",
+     "button, collapsed, Navigation menu",
+     "same page, link, Adobe"
+    ],
+    "swept": {
+     "formFields": 24,
+     "frames": 0,
+     "graphics": 12,
+     "headings": 24,
+     "landmarks": 4,
+     "links": 37,
+     "lists": 3,
+     "tableCells": 0
+    },
+    "transcriptLines": 128
+   },
+   "url": "https://www.adobe.com/"
+  },
+  {
+   "after": "not comparable: heading fleet 0 / emulator 32, link fleet 0 / emulator 85",
+   "before": "comparable",
+   "fleet": {
+    "firstLines": [
+     "blank",
+     "blank"
+    ],
+    "swept": {
+     "formFields": 0,
+     "frames": 0,
+     "graphics": 0,
+     "headings": 0,
+     "landmarks": 0,
+     "links": 0,
+     "lists": 0,
+     "tableCells": 0
+    },
+    "transcriptLines": 2
+   },
+   "url": "https://www.dropbox.com/"
+  },
+  {
+   "after": "not comparable: headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document",
+   "before": "comparable",
+   "fleet": {
+    "firstLines": [
+     "heading, level 2, Manage your cookie preferences",
+     "We use cookies to ensure our website functions properly, gather data to help improve your",
+     "experience on our site, and to show you personalised advertising."
+    ],
+    "swept": {
+     "formFields": 3,
+     "frames": 0,
+     "graphics": 0,
+     "headings": 1,
+     "landmarks": 0,
+     "links": 1,
+     "lists": 0,
+     "tableCells": 0
+    },
+    "transcriptLines": 7
+   },
+   "url": "https://www.historicenvironment.scot/visit/all/edinburgh-castle/"
+  },
+  {
+   "after": "unstable: the two emulator runs differ",
+   "before": "not comparable: document title fleet 'Hub Spot Software and Tools for your Bus' / emulator 'HubSpot | Software & Tools for your Busi'",
+   "fleet": {
+    "firstLines": [
+     "same page, link, Skip to content",
+     "Primary Navigation, navigation landmark, same page, link, Hub Spot",
+     "link, Get a demoof Hub Spot's premium software"
+    ],
+    "swept": {
+     "formFields": 18,
+     "frames": 1,
+     "graphics": 22,
+     "headings": 29,
+     "landmarks": 7,
+     "links": 75,
+     "lists": 19,
+     "tableCells": 0
+    },
+    "transcriptLines": 200
+   },
+   "url": "https://www.hubspot.com/"
+  },
+  {
+   "after": "not comparable: headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document",
+   "before": "comparable",
+   "fleet": {
+    "firstLines": [
+     "button, Cookie settings",
+     "heading, level 2, How nidirect uses cookies",
+     "The nidirect website uses some essential cookies to make this service work. nidirect would like to"
+    ],
+    "swept": {
+     "formFields": 4,
+     "frames": 0,
+     "graphics": 0,
+     "headings": 1,
+     "landmarks": 0,
+     "links": 0,
+     "lists": 0,
+     "tableCells": 0
+    },
+    "transcriptLines": 9
+   },
+   "url": "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing"
+  },
+  {
+   "after": "unstable: the two emulator runs differ",
+   "before": "comparable",
+   "fleet": {
+    "firstLines": [
+     "heading, level 1, Cookie settings",
+     "We use cookies to collect anonymous data to help us improve your site browsing experience.",
+     "Click Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the"
+    ],
+    "swept": {
+     "formFields": 14,
+     "frames": 0,
+     "graphics": 0,
+     "headings": 1,
+     "landmarks": 1,
+     "links": 23,
+     "lists": 13,
+     "tableCells": 0
+    },
+    "transcriptLines": 12
+   },
+   "url": "https://www.nrscotland.gov.uk/publications/"
+  },
+  {
+   "after": "unstable: the two emulator runs differ",
+   "before": "comparable",
+   "fleet": {
+    "firstLines": [
+     "heading, level 1, Cookie settings",
+     "We use cookies to collect anonymous data to help us improve your site browsing experience.",
+     "Click Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the"
+    ],
+    "swept": {
+     "formFields": 14,
+     "frames": 0,
+     "graphics": 0,
+     "headings": 1,
+     "landmarks": 1,
+     "links": 23,
+     "lists": 13,
+     "tableCells": 0
+    },
+    "transcriptLines": 12
+   },
+   "url": "https://www.nrscotland.gov.uk/statistics-and-data/"
+  }
+ ]
+}

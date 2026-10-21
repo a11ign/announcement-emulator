@@ -1,0 +1,172 @@
+{
+ "capturedAt": "2026-10-21T18:19:14.460Z",
+ "channel": "formFields",
+ "emulator": {
+  "gate.run1": {
+   "entries": 13,
+   "first": [
+    "main landmark, Nunjucks, tab, collapsed",
+    "HTML, tab, collapsed",
+    "Tabs example, frame, Past year, tab"
+   ],
+   "frameHeaderIndexes": [
+    2,
+    9
+   ],
+   "onlyInEmulator": [],
+   "onlyInFleet": [],
+   "order": "agree",
+   "start": {
+    "readThrough": {
+     "count": 195,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 13,
+     "nextSteps": 11,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Copy code, button",
+     "prevCount": 9,
+     "prevSteps": 11,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Accept analytics cookies, button",
+     "type": "formField"
+    }
+   }
+  },
+  "gate.run2": {
+   "entries": 13,
+   "first": [
+    "main landmark, Nunjucks, tab, collapsed",
+    "HTML, tab, collapsed",
+    "Tabs example, frame, Past year, tab"
+   ],
+   "frameHeaderIndexes": [
+    2,
+    9
+   ],
+   "onlyInEmulator": [],
+   "onlyInFleet": [],
+   "order": "agree",
+   "start": {
+    "readThrough": {
+     "count": 195,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 13,
+     "nextSteps": 11,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Copy code, button",
+     "prevCount": 9,
+     "prevSteps": 11,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Accept analytics cookies, button",
+     "type": "formField"
+    }
+   }
+  },
+  "head.run1": {
+   "entries": 13,
+   "first": [
+    "main landmark, Nunjucks, tab, collapsed",
+    "HTML, tab, collapsed",
+    "Tabs example, frame, Past year, tab"
+   ],
+   "frameHeaderIndexes": [
+    2,
+    9
+   ],
+   "onlyInEmulator": [],
+   "onlyInFleet": [],
+   "order": "agree",
+   "start": {
+    "readThrough": {
+     "count": 195,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 13,
+     "nextSteps": 11,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Copy code, button",
+     "prevCount": 9,
+     "prevSteps": 11,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Accept analytics cookies, button",
+     "type": "formField"
+    }
+   }
+  },
+  "head.run2": {
+   "entries": 13,
+   "first": [
+    "main landmark, Nunjucks, tab, collapsed",
+    "HTML, tab, collapsed",
+    "Tabs example, frame, Past year, tab"
+   ],
+   "frameHeaderIndexes": [
+    2,
+    9
+   ],
+   "onlyInEmulator": [],
+   "onlyInFleet": [],
+   "order": "agree",
+   "start": {
+    "readThrough": {
+     "count": 195,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 13,
+     "nextSteps": 11,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Copy code, button",
+     "prevCount": 9,
+     "prevSteps": 11,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Accept analytics cookies, button",
+     "type": "formField"
+    }
+   }
+  }
+ },
+ "fleet": {
+  "entries": 13,
+  "first": [
+   "main landmark, Nunjucks, tab, collapsed",
+   "HTML, tab, collapsed",
+   "Tabs example, frame, Past year, tab"
+  ],
+  "frameHeaderIndexes": [
+   2,
+   9
+  ]
+ },
+ "fleetObserved": {
+  "asked": true,
+  "complete": true,
+  "focusInFrame": null,
+  "stop": {
+   "next": "exhausted",
+   "prev": "exhausted"
+  }
+ },
+ "fleetStart": {
+  "firstFocusIn": {
+   "atMs": 99377,
+   "id": 0,
+   "name": "A",
+   "type": "focusin"
+  },
+  "focusBeforeReadThroughEnded": false,
+  "focusFrameBeforeSweep": null,
+  "readThrough": {
+   "atMs": 83673,
+   "count": 196,
+   "stopReason": "repeatBottom"
+  }
+ },
+ "url": "https://design-system.service.gov.uk/components/tabs/",
+ "worker": "a11y-worker-9"
+}

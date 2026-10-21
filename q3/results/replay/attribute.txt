@@ -1,0 +1,6 @@
+misses on the top-10 shapes at the freeze: 33 {'unexplained': 3, 'bug-fixed': 24, 'language': 6}
+all channels: 114 {'unexplained': 24, 'bug-fixed': 73, 'language': 17}
+  left: bathingwaters.sepa.org.uk/ graphics 'This website uses cookies, region, logo, graphic' -> 'logo, graphic'
+  left: service-manual.nhs.uk/design-system/components/table links 'list, with 2 items, Page 6, link' -> 'list, with 6 items, Page 6, link'
+  left: www.notion.com/ headings 'Where teams and agents Create together., heading, level 1' -> 'Where teams and agents Ship together., heading, level 1'
+fixes: {'lazily loaded content': 71, 'toggle button state': 2}

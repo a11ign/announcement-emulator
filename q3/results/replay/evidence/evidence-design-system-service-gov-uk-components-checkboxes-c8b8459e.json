@@ -1,0 +1,202 @@
+{
+ "capturedAt": "2026-10-21T18:15:04.872Z",
+ "channel": "formFields",
+ "emulator": {
+  "gate.run1": {
+   "entries": 38,
+   "first": [
+    "main landmark, Nunjucks, tab, collapsed",
+    "HTML, tab, collapsed",
+    "Checkbox items with error \u2013 Checkboxes example, frame, What is your nationality?, grouping, clickable, Citizen of another country, check box, not checked"
+   ],
+   "frameHeaderIndexes": [
+    2,
+    5,
+    9,
+    12,
+    16,
+    18,
+    19,
+    22
+   ],
+   "onlyInEmulator": [],
+   "onlyInFleet": [],
+   "order": "agree",
+   "start": {
+    "readThrough": {
+     "count": 106,
+     "stopReason": "wrap"
+    },
+    "sweep": {
+     "found": 38,
+     "nextSteps": 51,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Copy code, button",
+     "prevCount": 26,
+     "prevSteps": 48,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Accept analytics cookies, button",
+     "type": "formField"
+    }
+   }
+  },
+  "gate.run2": {
+   "entries": 38,
+   "first": [
+    "main landmark, Nunjucks, tab, collapsed",
+    "HTML, tab, collapsed",
+    "Checkbox items with error \u2013 Checkboxes example, frame, What is your nationality?, grouping, clickable, Citizen of another country, check box, not checked"
+   ],
+   "frameHeaderIndexes": [
+    2,
+    5,
+    9,
+    12,
+    16,
+    18,
+    19,
+    22
+   ],
+   "onlyInEmulator": [],
+   "onlyInFleet": [],
+   "order": "agree",
+   "start": {
+    "readThrough": {
+     "count": 106,
+     "stopReason": "wrap"
+    },
+    "sweep": {
+     "found": 38,
+     "nextSteps": 51,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Copy code, button",
+     "prevCount": 26,
+     "prevSteps": 48,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Accept analytics cookies, button",
+     "type": "formField"
+    }
+   }
+  },
+  "head.run1": {
+   "entries": 38,
+   "first": [
+    "main landmark, Nunjucks, tab, collapsed",
+    "HTML, tab, collapsed",
+    "Checkbox items with error \u2013 Checkboxes example, frame, What is your nationality?, grouping, clickable, Citizen of another country, check box, not checked"
+   ],
+   "frameHeaderIndexes": [
+    2,
+    5,
+    9,
+    12,
+    16,
+    18,
+    19,
+    22
+   ],
+   "onlyInEmulator": [],
+   "onlyInFleet": [],
+   "order": "agree",
+   "start": {
+    "readThrough": {
+     "count": 106,
+     "stopReason": "wrap"
+    },
+    "sweep": {
+     "found": 38,
+     "nextSteps": 51,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Copy code, button",
+     "prevCount": 26,
+     "prevSteps": 48,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Accept analytics cookies, button",
+     "type": "formField"
+    }
+   }
+  },
+  "head.run2": {
+   "entries": 38,
+   "first": [
+    "main landmark, Nunjucks, tab, collapsed",
+    "HTML, tab, collapsed",
+    "Checkbox items with error \u2013 Checkboxes example, frame, What is your nationality?, grouping, clickable, Citizen of another country, check box, not checked"
+   ],
+   "frameHeaderIndexes": [
+    2,
+    5,
+    9,
+    12,
+    16,
+    18,
+    19,
+    22
+   ],
+   "onlyInEmulator": [],
+   "onlyInFleet": [],
+   "order": "agree",
+   "start": {
+    "readThrough": {
+     "count": 106,
+     "stopReason": "wrap"
+    },
+    "sweep": {
+     "found": 38,
+     "nextSteps": 51,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Copy code, button",
+     "prevCount": 26,
+     "prevSteps": 48,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Accept analytics cookies, button",
+     "type": "formField"
+    }
+   }
+  }
+ },
+ "fleet": {
+  "entries": 38,
+  "first": [
+   "main landmark, Nunjucks, tab, collapsed",
+   "HTML, tab, collapsed",
+   "Checkbox items with error \u2013 Checkboxes example, frame, What is your nationality?, grouping, clickable, Citizen of another country, check box, not checked"
+  ],
+  "frameHeaderIndexes": [
+   2,
+   5,
+   9,
+   12,
+   16,
+   18,
+   19,
+   22
+  ]
+ },
+ "fleetObserved": {
+  "asked": true,
+  "complete": true,
+  "focusInFrame": null,
+  "stop": {
+   "next": "exhausted",
+   "prev": "exhausted"
+  }
+ },
+ "fleetStart": {
+  "firstFocusIn": {
+   "atMs": 66387,
+   "id": 0,
+   "name": "A",
+   "type": "focusin"
+  },
+  "focusBeforeReadThroughEnded": false,
+  "focusFrameBeforeSweep": null,
+  "readThrough": {
+   "atMs": 50595,
+   "count": 107,
+   "stopReason": "wrap"
+  }
+ },
+ "url": "https://design-system.service.gov.uk/components/checkboxes/",
+ "worker": "a11y-worker-14"
+}

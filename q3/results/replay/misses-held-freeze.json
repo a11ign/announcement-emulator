@@ -1,0 +1,2368 @@
+{
+ "split": "held",
+ "pages": [
+  {
+   "url": "https://bathingwaters.sepa.org.uk/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "status": "comparable"
+  },
+  {
+   "url": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "status": "comparable"
+  },
+  {
+   "url": "https://data.southwark.gov.uk/data-catalog-explorer/",
+   "status": "not comparable: heading fleet 1 / emulator 4, link fleet 5 / emulator 6"
+  },
+  {
+   "url": "https://design-patterns.service.justice.gov.uk/components/filter/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-patterns.service.justice.gov.uk/components/scrollable-pane/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/accordion/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/checkboxes/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/date-input/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/skip-link/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/tabs/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://european-union.europa.eu/index_en",
+   "status": "not comparable: link fleet 32 / emulator 31"
+  },
+  {
+   "url": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "status": "comparable"
+  },
+  {
+   "url": "https://ico.org.uk/action-weve-taken/enforcement/",
+   "status": "emulator fault: timeout 900s"
+  },
+  {
+   "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+   "status": "comparable"
+  },
+  {
+   "url": "https://reports.ofsted.gov.uk/search?q=school",
+   "status": "comparable"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/components/table",
+   "status": "comparable"
+  },
+  {
+   "url": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "status": "not comparable: heading fleet 24 / emulator 25"
+  },
+  {
+   "url": "https://tfl.gov.uk/plan-a-journey/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://the-internet.herokuapp.com/login",
+   "status": "comparable"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/warnings-and-advice/uk-warnings",
+   "status": "not comparable: heading fleet 0 / emulator 24, link fleet 7 / emulator 9"
+  },
+  {
+   "url": "https://www.adobe.com/",
+   "status": "unstable: the two emulator runs differ"
+  },
+  {
+   "url": "https://www.british-history.ac.uk/catalogue",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.dropbox.com/",
+   "status": "not comparable: heading fleet 0 / emulator 32, link fleet 0 / emulator 85"
+  },
+  {
+   "url": "https://www.gla.ac.uk/undergraduate/degrees/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.scot/about/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.uk/vehicle-tax",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/edinburgh-castle/",
+   "status": "not comparable: headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document"
+  },
+  {
+   "url": "https://www.hubspot.com/",
+   "status": "unstable: the two emulator runs differ"
+  },
+  {
+   "url": "https://www.leeds.ac.uk/undergraduate",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.mygov.scot/browse/benefits",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.mygov.scot/scottish-child-payment",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nationalarchives.gov.uk/about-us/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.networkrail.co.uk/careers/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nhs.uk/conditions/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nhs.uk/service-search/find-a-gp",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing",
+   "status": "not comparable: headings read fleet fleet names 1, 0% of them found in the emulator's / emulator a different document"
+  },
+  {
+   "url": "https://www.notion.com/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nrscotland.gov.uk/publications/",
+   "status": "unstable: the two emulator runs differ"
+  },
+  {
+   "url": "https://www.nrscotland.gov.uk/statistics-and-data/",
+   "status": "unstable: the two emulator runs differ"
+  },
+  {
+   "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/after/tickets.html",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/before/news.html",
+   "status": "not comparable: document title fleet 'Welcome to City Lights! Inaccessible New' / emulator 'Welcome to CityLights! [Inaccessible New'"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/carousels/structure/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/forms/instructions/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/forms/multi-page/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/decorative/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/informative/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/menus/flyout/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/page-structure/regions/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/tables/one-header/",
+   "status": "comparable"
+  }
+ ],
+ "gate": {
+  "exact": 4437,
+  "total": 4470
+ },
+ "top": [
+  "NAME + ROLE",
+  "NAME + ROLE + LEVEL",
+  "NAME + ROLE + STATE",
+  "NAME + ROLE + ROLE + COUNT + NAME + ROLE",
+  "ROLE + COUNT + NAME + ROLE",
+  "NAME + NAME + ROLE",
+  "NAME + STATE + ROLE",
+  "NAME + ROLE + ROLE",
+  "NAME + ROLE + NAME + ROLE",
+  "NAME + ROLE + ROLE + LEVEL"
+ ],
+ "misses": [
+  {
+   "url": "https://bathingwaters.sepa.org.uk/",
+   "channel": "landmarks",
+   "i": 1,
+   "expected": "complementary landmark, Back to top, button",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://bathingwaters.sepa.org.uk/",
+   "channel": "formFields",
+   "i": 0,
+   "expected": "complementary landmark, Back to top, button",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://bathingwaters.sepa.org.uk/",
+   "channel": "graphics",
+   "i": 0,
+   "expected": "This website uses cookies, region, logo, graphic",
+   "predicted": "logo, graphic",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "graphics",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/accordion/",
+   "channel": "headings",
+   "i": 10,
+   "expected": "Accordion with summary sections – Accordion example, frame, clickable, Phases of an agile project , Discovery, alpha, beta, live and retirement. , Show this section, button, collapsed, heading, level 2",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/accordion/",
+   "channel": "headings",
+   "i": 11,
+   "expected": "clickable, Governing agile services , Principles, measuring progress, spending money. , Show this section, button, collapsed, heading, level 2",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "STATE",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/accordion/",
+   "channel": "headings",
+   "i": 12,
+   "expected": "clickable, Working with agile methods , Workspaces, tools and techniques, user stories, planning. , Show this section, button, collapsed, heading, level 2",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "STATE",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/accordion/",
+   "channel": "headings",
+   "i": 13,
+   "expected": "clickable, Understanding agile project management , Introductions, methods, core features. , Show this section, button, collapsed, heading, level 2",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "STATE",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/accordion/",
+   "channel": "headings",
+   "i": 30,
+   "expected": "Accordion with summary sections – Accordion example, frame, clickable, Understanding agile project management , Introductions, methods, core features. , Show this section, button, collapsed, heading, level 2",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/accordion/",
+   "channel": "headings",
+   "i": 31,
+   "expected": "clickable, Phases of an agile project , Discovery, alpha, beta, live and retirement. , Show this section, button, collapsed, heading, level 2",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "STATE",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/checkboxes/",
+   "channel": "headings",
+   "i": 10,
+   "expected": "Checkbox items with hint – Checkboxes example, frame, What is your nationality?, grouping, What is your nationality?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/checkboxes/",
+   "channel": "headings",
+   "i": 12,
+   "expected": "Checkboxes with and number 8216 none and number 8217; option – Checkboxes example, frame, Will you be travelling to any of these countries?, grouping, Will you be travelling to any of these countries?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/checkboxes/",
+   "channel": "headings",
+   "i": 13,
+   "expected": "Checkboxes with and number 8216 none and number 8217; option showing an error – Checkboxes example, frame, Will you be travelling to any of these countries?, grouping, Will you be travelling to any of these countries?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/checkboxes/",
+   "channel": "headings",
+   "i": 15,
+   "expected": "Checkboxes with conditionally revealing content – Checkboxes example, frame, How would you like to be contacted?, grouping, How would you like to be contacted?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/checkboxes/",
+   "channel": "headings",
+   "i": 18,
+   "expected": "Small checkboxes – Checkboxes example, frame, Organisation, grouping, Organisation, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/checkboxes/",
+   "channel": "headings",
+   "i": 20,
+   "expected": "Checkbox items with error – Checkboxes example, frame, What is your nationality?, grouping, What is your nationality?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "headings",
+   "i": 17,
+   "expected": "Dates with errors – Date input example, frame, When was your passport issued?, grouping, When was your passport issued?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "headings",
+   "i": 18,
+   "expected": "Date input with errors – Date input example, frame, When was your passport issued?, grouping, When was your passport issued?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "headings",
+   "i": 20,
+   "expected": "Date input to ask for date of birth – Date input example, frame, What is your date of birth?, grouping, What is your date of birth?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "frames",
+   "i": 0,
+   "expected": "main landmark, Date input example, frame",
+   "predicted": "main landmark, Date input example, frame, When was your passport issued?, grouping, When was your passport issued?, heading, level 1",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "frames",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "headings",
+   "i": 10,
+   "expected": "Inline radios – Radios example, frame, Have you changed your name?, grouping, Have you changed your name?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "headings",
+   "i": 12,
+   "expected": "Radio items with hint – Radios example, frame, How do you want to sign in?, grouping, How do you want to sign in?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "headings",
+   "i": 14,
+   "expected": "Radios with a text divider – Radios example, frame, Where do you live?, grouping, Where do you live?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "headings",
+   "i": 16,
+   "expected": "Radios with conditionally revealing content – Radios example, frame, How would you prefer to be contacted?, grouping, How would you prefer to be contacted?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "headings",
+   "i": 19,
+   "expected": "Small radios – Radios example, frame, Filter, grouping, Filter, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "headings",
+   "i": 21,
+   "expected": "Inline radios with error – Radios example, frame, Where do you live?, grouping, Where do you live?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "headings",
+   "i": 26,
+   "expected": "Radios with conditionally revealing content showing an error – Radios example, frame, How would you prefer to be contacted?, grouping, How would you prefer to be contacted?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "formFields",
+   "i": 12,
+   "expected": "Radios with conditionally revealing content – Radios example, frame, How would you prefer to be contacted?, grouping, clickable, Text message, radio button, not checked",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "formFields",
+   "i": 13,
+   "expected": "Email, radio button, not checked",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "formFields",
+   "i": 14,
+   "expected": "Radios with a text divider – Radios example, frame, Where do you live?, grouping, clickable, I am a British citizen living abroad, radio button, not checked",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "formFields",
+   "i": 15,
+   "expected": "Northern Ireland, radio button, not checked",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "formFields",
+   "i": 16,
+   "expected": "Radio items with hint – Radios example, frame, How do you want to sign in?, grouping, clickable, Sign in with GOV dot UK One Login, radio button, not checked, If you don’t have a GOV dot UK One Login, you can create one",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "formFields",
+   "i": 17,
+   "expected": "Sign in with Government Gateway, radio button, not checked, You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "formFields",
+   "i": 18,
+   "expected": "Inline radios – Radios example, frame, Have you changed your name?, grouping, clickable, No, radio button, not checked",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "formFields",
+   "i": 19,
+   "expected": "Yes, radio button, not checked",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "formFields",
+   "i": 26,
+   "expected": "No, radio button, not checked",
+   "predicted": "Northern Ireland, radio button, not checked",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "formFields",
+   "i": 27,
+   "expected": "Sign in with GOV dot UK One Login, radio button, not checked, If you don’t have a GOV dot UK One Login, you can create one",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "formFields",
+   "i": 28,
+   "expected": "I am a British citizen living abroad, radio button, not checked",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "formFields",
+   "i": 29,
+   "expected": "Text message, radio button, not checked",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "frames",
+   "i": 3,
+   "expected": "Inline radios – Radios example, frame, Have you changed your name?, grouping, Have you changed your name?, heading, level 1",
+   "predicted": "Inline radios – Radios example, frame",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "frames",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "frames",
+   "i": 4,
+   "expected": "Radio items with hint – Radios example, frame, How do you want to sign in?, grouping, How do you want to sign in?, heading, level 1",
+   "predicted": "Radio items with hint – Radios example, frame",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "frames",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "frames",
+   "i": 5,
+   "expected": "Radios with a text divider – Radios example, frame, Where do you live?, grouping, Where do you live?, heading, level 1",
+   "predicted": "Radios with a text divider – Radios example, frame",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "frames",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "channel": "frames",
+   "i": 6,
+   "expected": "Radios with conditionally revealing content – Radios example, frame, How would you prefer to be contacted?, grouping, How would you prefer to be contacted?, heading, level 1",
+   "predicted": "Radios with conditionally revealing content – Radios example, frame",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "frames",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "headings",
+   "i": 18,
+   "expected": "Text input with prefix and suffix with error – Text input example, frame, What is the cost per item, in pounds?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "headings",
+   "i": 20,
+   "expected": "Text input with errors – Text input example, frame, What is the name of the event?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "headings",
+   "i": 26,
+   "expected": "Text input with suffix – Text input example, frame, What is the weight in kilograms?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "headings",
+   "i": 28,
+   "expected": "Text input with prefix – Text input example, frame, What is the cost in pounds?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "headings",
+   "i": 30,
+   "expected": "Text input with prefix and suffix – Text input example, frame, What is the cost per item, in pounds?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "headings",
+   "i": 35,
+   "expected": "Number input – Text input example, frame, What is your account number?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "headings",
+   "i": 40,
+   "expected": "Hint text – Text input example, frame, What is the name of the event?, heading, level 1",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 6,
+   "expected": "Text input with suffix – Text input example, frame, What is the weight in kilograms?, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 7,
+   "expected": "Text input with prefix – Text input example, frame, What is the cost in pounds?, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 8,
+   "expected": "Text input with prefix and suffix – Text input example, frame, What is the cost per item, in pounds?, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 9,
+   "expected": "Example of a text input asking for a code or sequence – Text input example, frame, Company authentication code, edit, This is on the company incorporation letter sent to the registered office address, NC 1701",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 10,
+   "expected": "Example of an input asking for numbers with decimal places – Text input example, frame, Weight, in kilograms, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 11,
+   "expected": "Number input – Text input example, frame, What is your account number?, edit, Must be between 6 and 8 digits long",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 12,
+   "expected": "Hint text – Text input example, frame, What is the name of the event?, edit, The name you’ll use on promotional material",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 13,
+   "expected": "Fluid width inputs – Text input example, frame, One-quarter width, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 14,
+   "expected": "One-third width, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 15,
+   "expected": "One-half width, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 16,
+   "expected": "Two-thirds width, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 17,
+   "expected": "Three-quarters width, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 18,
+   "expected": "Full width, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 19,
+   "expected": "Fixed width inputs – Text input example, frame, 2 character width, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 20,
+   "expected": "3 character width, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 21,
+   "expected": "4 character width, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 22,
+   "expected": "5 character width, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 23,
+   "expected": "10 character width, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 24,
+   "expected": "20 character width, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 30,
+   "expected": "Fixed width inputs – Text input example, frame, 20 character width, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 31,
+   "expected": "2 character width, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 32,
+   "expected": "Fluid width inputs – Text input example, frame, Full width, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "formFields",
+   "i": 33,
+   "expected": "One-quarter width, edit",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "frames",
+   "i": 3,
+   "expected": "Fixed width inputs – Text input example, frame, 20 character width",
+   "predicted": "Fixed width inputs – Text input example, frame",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "frames",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "frames",
+   "i": 4,
+   "expected": "Fluid width inputs – Text input example, frame, Full width",
+   "predicted": "Fluid width inputs – Text input example, frame",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "frames",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "frames",
+   "i": 5,
+   "expected": "Hint text – Text input example, frame, What is the name of the event?, heading, level 1",
+   "predicted": "Hint text – Text input example, frame",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "frames",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "frames",
+   "i": 6,
+   "expected": "Number input – Text input example, frame, What is your account number?, heading, level 1",
+   "predicted": "Number input – Text input example, frame",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "frames",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "frames",
+   "i": 7,
+   "expected": "Example of an input asking for numbers with decimal places – Text input example, frame, Weight, in kilograms",
+   "predicted": "Example of an input asking for numbers with decimal places – Text input example, frame",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "frames",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "frames",
+   "i": 8,
+   "expected": "Example of a text input asking for a code or sequence – Text input example, frame, Company authentication code",
+   "predicted": "Example of a text input asking for a code or sequence – Text input example, frame",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "frames",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "frames",
+   "i": 9,
+   "expected": "Text input with prefix and suffix – Text input example, frame, What is the cost per item, in pounds?, heading, level 1",
+   "predicted": "Text input with prefix and suffix – Text input example, frame",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "frames",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "frames",
+   "i": 10,
+   "expected": "Text input with prefix – Text input example, frame, What is the cost in pounds?, heading, level 1",
+   "predicted": "Text input with prefix – Text input example, frame",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "frames",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "channel": "frames",
+   "i": 11,
+   "expected": "Text input with suffix – Text input example, frame, What is the weight in kilograms?, heading, level 1",
+   "predicted": "Text input with suffix – Text input example, frame",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "frames",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+   "channel": "links",
+   "i": 4,
+   "expected": "banner landmark, Language switcher, navigation landmark, list, with 2 items, Welsh (not supported), Cymraeg, link",
+   "predicted": "banner landmark, Language switcher, navigation landmark, list, with 2 items, cy (not supported), Cymraeg, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+   "channel": "links",
+   "i": 5,
+   "expected": "English, English, same page, link",
+   "predicted": "English, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+   "channel": "links",
+   "i": 17,
+   "expected": "Welsh (not supported), Cymraeg, link",
+   "predicted": "cy (not supported), Cymraeg, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+   "channel": "links",
+   "i": 18,
+   "expected": "main landmark, English, Expand breadcrumb navigation, collapsed, same page, link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "NAME",
+    "STATE",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "landmarks",
+   "i": 0,
+   "expected": "main landmark, sortable-server-side-last-login-descending, frame, clickable, Pagination, navigation landmark, list, with 2 items, Page 1, link, current page",
+   "predicted": "main landmark, sortable-server-side-last-login-descending, frame, clickable, Pagination, navigation landmark, list, with 6 items, Page 1, link, current page",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "landmarks",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "formFields",
+   "i": 14,
+   "expected": "On, toggle button, pressed",
+   "predicted": "On, toggle button, pressed, checked",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "STATE",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "formFields",
+   "i": 38,
+   "expected": "Toggle Java Script, grouping, On, toggle button, pressed",
+   "predicted": "Toggle Java Script, grouping, On, toggle button, pressed, checked",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "links",
+   "i": 7,
+   "expected": "list, with 2 items, Page 6, link",
+   "predicted": "list, with 6 items, Page 6, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "links",
+   "i": 114,
+   "expected": "Pagination, navigation landmark, list, with 2 items, Page 1, link, current page",
+   "predicted": "Pagination, navigation landmark, list, with 6 items, Page 1, link, current page",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "lists",
+   "i": 18,
+   "expected": "sortable-server-side-last-login-descending, frame, clickable, Pagination, navigation landmark, list, with 2 items, Page 1, link, current page",
+   "predicted": "sortable-server-side-last-login-descending, frame, clickable, Pagination, navigation landmark, list, with 6 items, Page 1, link, current page",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "lists",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+   "channel": "links",
+   "i": 54,
+   "expected": "Translations, navigation landmark, list, with 2 items, Welsh (not supported), Cymraeg, link",
+   "predicted": "Translations, navigation landmark, list, with 2 items, cy (not supported), Cymraeg, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+   "channel": "links",
+   "i": 55,
+   "expected": "Breadcrumb, navigation landmark, list, with 4 items, English, National Insurance, link",
+   "predicted": "Breadcrumb, navigation landmark, list, with 4 items, National Insurance, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+   "channel": "links",
+   "i": 64,
+   "expected": "list, with 6 items, English, HM Revenue and Customs, link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+   "channel": "links",
+   "i": 104,
+   "expected": "Welsh (not supported), Rhestr o Wasanaethau Cymraeg, link",
+   "predicted": "cy (not supported), Rhestr o Wasanaethau Cymraeg, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+   "channel": "links",
+   "i": 105,
+   "expected": "English, Government Digital Service, link",
+   "predicted": "Government Digital Service, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+   "channel": "lists",
+   "i": 14,
+   "expected": "list, with 8 items, Help, link, Privacy, link, Cookies, link, Accessibility statement, link, Contact, link, Terms and conditions, link, Welsh (not supported), Rhestr o Wasanaethau Cymraeg",
+   "predicted": "list, with 8 items, Help, link, Privacy, link, Cookies, link, Accessibility statement, link, Contact, link, Terms and conditions, link, cy (not supported), Rhestr o Wasanaethau Cymraeg",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "lists",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/vehicle-tax",
+   "channel": "links",
+   "i": 59,
+   "expected": "Welsh (not supported), Rhestr o Wasanaethau Cymraeg, link",
+   "predicted": "cy (not supported), Rhestr o Wasanaethau Cymraeg, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/vehicle-tax",
+   "channel": "links",
+   "i": 60,
+   "expected": "English, Government Digital Service, link",
+   "predicted": "Government Digital Service, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.uk/vehicle-tax",
+   "channel": "lists",
+   "i": 11,
+   "expected": "list, with 8 items, Help, link, Privacy, link, Cookies, link, Accessibility statement, link, Contact, link, Terms and conditions, link, Welsh (not supported), Rhestr o Wasanaethau Cymraeg",
+   "predicted": "list, with 8 items, Help, link, Privacy, link, Cookies, link, Accessibility statement, link, Contact, link, Terms and conditions, link, cy (not supported), Rhestr o Wasanaethau Cymraeg",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "lists",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "channel": "landmarks",
+   "i": 4,
+   "expected": "Language, navigation landmark, list, with 1 item, Welsh (not supported), Cymraeg, link",
+   "predicted": "Language, navigation landmark, list, with 1 item, cy (not supported), Cymraeg, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "channel": "landmarks",
+   "i": 5,
+   "expected": "English, Home, link, Welsh Government",
+   "predicted": "Home, link, Welsh Government",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "landmarks",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "channel": "landmarks",
+   "i": 7,
+   "expected": "banner landmark, Home, link, Welsh Government",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "landmarks",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "channel": "landmarks",
+   "i": 8,
+   "expected": "Search GOV dot WALES, search landmark, section, English, Search",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "landmarks",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "channel": "links",
+   "i": 38,
+   "expected": "banner landmark, Language, navigation landmark, list, with 1 item, Welsh (not supported), Cymraeg, link",
+   "predicted": "banner landmark, Language, navigation landmark, list, with 1 item, cy (not supported), Cymraeg, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "channel": "links",
+   "i": 39,
+   "expected": "English, Home, link, Welsh Government",
+   "predicted": "Home, link, Welsh Government",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "channel": "links",
+   "i": 42,
+   "expected": "banner landmark, Home, link, Welsh Government",
+   "predicted": "list, with 3 items, About statistics and research, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.gov.wales/statistics-and-research",
+   "channel": "links",
+   "i": 43,
+   "expected": "main landmark, Breadcrumb links, navigation landmark, list, with 2 items, English, Home, link",
+   "predicted": "Sign up for newsletters on statistics and research, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.notion.com/",
+   "channel": "headings",
+   "i": 13,
+   "expected": "Where teams and agents Create together., heading, level 1",
+   "predicted": "Where teams and agents Ship together., heading, level 1",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+   "channel": "links",
+   "i": 76,
+   "expected": "Welsh (not supported), Cymraeg (CY), link",
+   "predicted": "cy (not supported), Cymraeg (CY), link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+   "channel": "links",
+   "i": 78,
+   "expected": "English, Skip to main content, same page, link",
+   "predicted": "Skip to main content, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "language"
+  },
+  {
+   "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+   "channel": "links",
+   "i": 81,
+   "expected": "banner landmark, Skip to main content, same page, link",
+   "predicted": "list, with 5 items, Release calendar, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+   "channel": "links",
+   "i": 82,
+   "expected": "list, with 5 items, English, Release calendar, link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.w3.org/WAI/demos/bad/after/tickets.html",
+   "channel": "lists",
+   "i": 2,
+   "expected": "list, with 2 items, Skip to content (within demo page), same page, link",
+   "predicted": "list, with 2 items",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "lists",
+   "class": "unexplained"
+  }
+ ]
+}

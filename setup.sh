@@ -3,7 +3,7 @@
 #
 #   EMU_DOWNLOADS=/some/dir ./setup.sh
 #
-# Needs node 22 or later as well (emu/session.mjs uses the global WebSocket). Every address and revision below is the one the spike was measured with (docs/announcement-emulator-spike.md, Reproduction). Needs git, curl, python3, dpkg-deb,
+# Needs node 22 or later as well (emu/session.mjs uses the global WebSocket). Every address and revision below is the one the spike was measured with (docs/announcement-emulator-spike.md, Reproduction), and step 8 is mitmproxy, pinned, for the scripted replay (q3/replay/RUNBOOK.md). Needs git, curl, python3, dpkg-deb,
 # apt-get download (the Chrome libraries are fetched as .deb files and unpacked under libs/root; nothing is installed), and about 2.5 GB.
 set -eu
 D="${EMU_DOWNLOADS:-$HOME/spikes/announcement-emulator-5661}"
@@ -59,4 +59,7 @@ if [ ! -x tools/uv ]; then curl -fsSL "$UV_REL" | tar -xz -C tools --strip-compo
 tools/uv python install 3.13.16
 [ -x q2/venv/bin/python ] || tools/uv venv --python 3.13.16 q2/venv
 tools/uv pip install --python q2/venv/bin/python configobj==5.0.9 fast-diff-match-patch==2.1.0 nh3==0.3.2 pyserial==3.5 requests==2.32.5 rpyc==6.0.2 schedule==1.2.2 url-normalize==2.2.1 plumbum==2.0.2
+# 8. the replay proxy (A11-165, q3/replay/RUNBOOK.md): mitmproxy, pinned, in a virtualenv of its own (it records a page once and answers every request of a replay from the recording)
+[ -x replay/venv/bin/python ] || tools/uv venv --python 3.13.16 replay/venv
+tools/uv pip install --python replay/venv/bin/python mitmproxy==12.2.3
 echo "ready: EMU_DOWNLOADS=$D"

@@ -1,0 +1,1632 @@
+{
+ "capturedAt": "2026-10-21T19:00:39.450Z",
+ "worker": "a11y-worker-2",
+ "status": 200,
+ "capture": {
+  "url": "https://replay-probe.test/",
+  "screenReader": "NVDA",
+  "capturedAt": "2026-10-21T19:00:39.433Z",
+  "transcript": [
+   "heading, level 1, replay probe elder lagoon summit",
+   "This page is in the replay archive and nowhere else.",
+   "same page, link, Replay probe, itself, , link, Replay probe, other"
+  ],
+  "structure": {
+   "headings": [
+    "replay probe elder lagoon summit, heading, level 1"
+   ],
+   "landmarks": [],
+   "formFields": [],
+   "graphics": [],
+   "links": [
+    "Replay probe, itself, same page, link",
+    "Replay probe, other, link"
+   ],
+   "lists": [],
+   "tableCells": [],
+   "frames": []
+  },
+  "interaction": {
+   "controls": [],
+   "stateChanges": [],
+   "formChanges": [
+    {
+     "control": "Replay probe, itself, same page, link",
+     "kind": "route",
+     "after": "Replay probe, document",
+     "baselineQuiet": true,
+     "baselineWaitedMs": 300
+    }
+   ],
+   "postSubmitFields": [],
+   "focusOrder": [
+    "Replay probe, itself, link, focused, linked, same page",
+    "Replay probe, other, link, focused, linked",
+    "Replay probe, itself, link, focused, linked, same page",
+    "Replay probe, other, link, focused, linked",
+    "Replay probe, itself, link, focused, linked, same page",
+    "Replay probe, other, link, focused, linked",
+    "Replay probe, itself, link, focused, linked, same page"
+   ],
+   "routeChange": {
+    "control": "Replay probe, itself, same page, link",
+    "titleBefore": "Replay probe",
+    "titleAfter": "Replay probe",
+    "headingBefore": "no next heading",
+    "headingAfter": "no next heading",
+    "nextFocusAfter": "Replay probe, other, link, focused, linked",
+    "announced": "Replay probe, document",
+    "navigated": true
+   },
+   "focusContext": {
+    "focused": true,
+    "control": "Replay probe, other, link, focused, linked",
+    "titleBefore": "Replay probe",
+    "titleAfter": "Replay probe"
+   },
+   "focusReveal": {
+    "asked": true,
+    "revealed": null,
+    "why": "a control held focus from an earlier probe, so the baseline was not the untouched document -- content already revealed before this probe began cannot appear in its delta"
+   },
+   "focusEvents": {
+    "asked": true,
+    "checked": true,
+    "events": 43,
+    "log": [
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 31599
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 32819
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 32819
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 36110
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 36113
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 38145
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 38145
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 39329
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 39332
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 41507
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 41507
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 44419
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 44421
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 46532
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 46532
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 58373
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 59960
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 59960
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 60602
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 60605
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 61246
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 61246
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 62792
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 62795
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 63427
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 63427
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 64019
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 64020
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 64659
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 64659
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 79222
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 80513
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 80513
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 81113
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 81117
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 81741
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 81741
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 82322
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 82325
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 83844
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 83844
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 84435
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 84439
+     }
+    ],
+    "truncated": false
+   }
+  },
+  "media": [],
+  "formInputs": [],
+  "observed": {
+   "headings": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "landmarks": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "formFields": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "graphics": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "links": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "lists": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "frames": {
+    "asked": true,
+    "complete": true,
+    "stop": {
+     "prev": "exhausted",
+     "next": "exhausted"
+    },
+    "focusInFrame": null
+   },
+   "tableCells": {
+    "asked": false,
+    "why": "probeTables is opt-in and this capture did not request it"
+   },
+   "formChanges": {
+    "asked": false,
+    "why": "probeForms is off and no formState was configured, so no control was activated"
+   },
+   "postSubmitFields": {
+    "asked": false,
+    "why": "probeForms is off and no formState was configured"
+   },
+   "focusOrder": {
+    "asked": true
+   },
+   "dialogEscape": {
+    "asked": false,
+    "why": "probeDialog is opt-in: it presses Escape, which changes state on a page we do not own"
+   },
+   "arrowNavigation": {
+    "asked": false,
+    "why": "probeArrows is opt-in: it presses keys inside whatever widget focus last landed on"
+   },
+   "typedFeedback": {
+    "asked": false,
+    "why": "probeTyping is opt-in: it enters characters into a field, changing the page under measurement"
+   },
+   "focusContext": {
+    "asked": true
+   },
+   "routeChange": {
+    "asked": true
+   }
+  },
+  "diagnostics": [
+   {
+    "event": "browserSelected",
+    "atMs": 0,
+    "id": "edge",
+    "name": "Microsoft Edge"
+   },
+   {
+    "event": "browserReused",
+    "atMs": 145,
+    "url": "https://replay-probe.test/",
+    "captures": 19
+   },
+   {
+    "event": "landedOnRequested",
+    "atMs": 274,
+    "ok": true,
+    "actual": "https://replay-probe.test/",
+    "attempts": 1,
+    "waitedMs": 129,
+    "requested": "https://replay-probe.test/"
+   },
+   {
+    "event": "pageServed",
+    "atMs": 1396,
+    "requested": "https://replay-probe.test/",
+    "waitedMs": 1122,
+    "polls": 1,
+    "status": 200,
+    "type": "navigate",
+    "url": "https://replay-probe.test/",
+    "responseEnd": 14.5,
+    "readyState": "complete",
+    "settled": true
+   },
+   {
+    "event": "pageSettled",
+    "atMs": 1849,
+    "reads": 2,
+    "waitedMs": 453,
+    "shape": "1/2/0/1"
+   },
+   {
+    "event": "viewport",
+    "atMs": 1861,
+    "innerWidth": 1008,
+    "innerHeight": 729,
+    "devicePixelRatio": 1,
+    "targetMatch": "matched"
+   },
+   {
+    "event": "windowsActivate",
+    "atMs": 2184,
+    "ok": true,
+    "via": "cdpBringToFront",
+    "waitedMs": 323
+   },
+   {
+    "event": "pointerParked",
+    "atMs": 2712,
+    "x": 0,
+    "y": 0,
+    "attempts": 1,
+    "ms": 528
+   },
+   {
+    "event": "nvdaStart",
+    "atMs": 2713,
+    "ok": true,
+    "reused": true,
+    "captures": 4
+   },
+   {
+    "event": "speechChannel",
+    "atMs": 3299,
+    "alive": true,
+    "heard": "heading, level 1, replay probe elder lagoon summit"
+   },
+   {
+    "event": "documentReady",
+    "atMs": 3872,
+    "ok": true,
+    "title": "Replay probe",
+    "attempt": 1
+   },
+   {
+    "event": "focusEventListenerEarlyInstall",
+    "atMs": 3879,
+    "installed": true,
+    "targetMatch": "matched",
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/",
+    "already": false
+   },
+   {
+    "event": "bufferReady",
+    "atMs": 4163,
+    "sawLoading": false,
+    "refreshed": true,
+    "waitedMs": 0
+   },
+   {
+    "event": "browseBufferRefreshed",
+    "atMs": 4482,
+    "reason": "navigated an already-open window",
+    "ready": true,
+    "refreshed": true
+   },
+   {
+    "event": "afterStart",
+    "atMs": 10623,
+    "lastSpoken": "heading, level 1, replay probe elder lagoon summit"
+   },
+   {
+    "event": "readBudget",
+    "atMs": 10623,
+    "readDeadlineInMs": 352676,
+    "reservedMs": 60000
+   },
+   {
+    "event": "readThrough",
+    "atMs": 12139,
+    "count": 3,
+    "stopReason": "repeatBottom",
+    "firstStepError": null
+   },
+   {
+    "event": "probeOrder",
+    "atMs": 12179,
+    "order": "sweep,focus",
+    "requested": "default"
+   },
+   {
+    "event": "pageState",
+    "atMs": 12196,
+    "beforeProbe": "sweep",
+    "tookMs": 17,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "http://capture-host:8000/visited-probe.html"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "focusRestore",
+    "atMs": 12196,
+    "attempted": false,
+    "why": "focus is in the top document"
+   },
+   {
+    "event": "pageState",
+    "atMs": 12211,
+    "beforeProbe": "sweep:heading",
+    "tookMs": 15,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "http://capture-host:8000/visited-probe.html"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "sweep",
+    "atMs": 13054,
+    "type": "heading",
+    "found": 1,
+    "prevMs": 572,
+    "nextMs": 271,
+    "prevTrips": 5,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "replay probe elder lagoon summit, heading, level 1",
+    "nextStopPhrase": "",
+    "prevCount": 1,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": [
+     "replay probe elder lagoon summit, heading, level 1"
+    ]
+   },
+   {
+    "event": "pageState",
+    "atMs": 13064,
+    "beforeProbe": "sweep:landmark",
+    "tookMs": 10,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "http://capture-host:8000/visited-probe.html"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "sweep",
+    "atMs": 13614,
+    "type": "landmark",
+    "found": 0,
+    "prevMs": 280,
+    "nextMs": 270,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "pageState",
+    "atMs": 13624,
+    "beforeProbe": "sweep:formField",
+    "tookMs": 10,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "http://capture-host:8000/visited-probe.html"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "sweep",
+    "atMs": 14174,
+    "type": "formField",
+    "found": 0,
+    "prevMs": 278,
+    "nextMs": 272,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "structural",
+    "atMs": 14174,
+    "headings": 1,
+    "landmarks": 0,
+    "formFields": 0,
+    "roundTrips": 20
+   },
+   {
+    "event": "pageState",
+    "atMs": 14183,
+    "beforeProbe": "sweep:graphic",
+    "tookMs": 9,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "http://capture-host:8000/visited-probe.html"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "sweep",
+    "atMs": 15632,
+    "type": "graphic",
+    "found": 0,
+    "prevMs": 1179,
+    "nextMs": 270,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "pageState",
+    "atMs": 15649,
+    "beforeProbe": "sweep:link",
+    "tookMs": 17,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "http://capture-host:8000/visited-probe.html"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "sweep",
+    "atMs": 16790,
+    "type": "link",
+    "found": 2,
+    "prevMs": 272,
+    "nextMs": 869,
+    "prevTrips": 3,
+    "nextTrips": 7,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "Replay probe, other, link",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": [
+     "Replay probe, itself, same page, link",
+     "Replay probe, other, link"
+    ]
+   },
+   {
+    "event": "pageState",
+    "atMs": 19647,
+    "beforeProbe": "sweep:list",
+    "tookMs": 8,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "http://capture-host:8000/visited-probe.html"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "sweep",
+    "atMs": 20195,
+    "type": "list",
+    "found": 0,
+    "prevMs": 279,
+    "nextMs": 269,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "pageState",
+    "atMs": 23063,
+    "beforeProbe": "sweep:frame",
+    "tookMs": 4,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "http://capture-host:8000/visited-probe.html"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "sweep",
+    "atMs": 24254,
+    "type": "frame",
+    "found": 0,
+    "prevMs": 264,
+    "nextMs": 927,
+    "prevTrips": 3,
+    "nextTrips": 3,
+    "prevStop": "exhausted",
+    "nextStop": "exhausted",
+    "prevStopPhrase": "",
+    "nextStopPhrase": "",
+    "prevCount": 0,
+    "scope": {
+     "openDialog": null
+    },
+    "phrases": []
+   },
+   {
+    "event": "establishBrowseMode",
+    "atMs": 30349,
+    "applied": 3,
+    "caretAnchored": true
+   },
+   {
+    "event": "pageState",
+    "atMs": 30385,
+    "beforeProbe": "focus",
+    "tookMs": 36,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "http://capture-host:8000/visited-probe.html"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "titleSource",
+    "atMs": 34117,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 36431,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 39726,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 41740,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 42937,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 45130,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 48012,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 50140,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "titleSource",
+    "atMs": 51298,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "focusContext",
+    "atMs": 51298,
+    "focused": true,
+    "control": "Replay probe, other, link, focused, linked",
+    "stops": 8,
+    "titleBefore": "Replay probe",
+    "titleAfter": "Replay probe",
+    "startedFrom": "Replay probe, document, focused, read only",
+    "focusReset": {
+     "applied": true,
+     "logSuppressed": false,
+     "why": "confirmed nothing held focus already"
+    }
+   },
+   {
+    "event": "bufferReady",
+    "atMs": 51576,
+    "sawLoading": false,
+    "refreshed": true,
+    "waitedMs": 0
+   },
+   {
+    "event": "browseBufferRefreshed",
+    "atMs": 51900,
+    "reason": "navigated an already-open window",
+    "ready": true,
+    "refreshed": true
+   },
+   {
+    "event": "focusContextBrowseRestored",
+    "atMs": 58803,
+    "via": "anchorToTop"
+   },
+   {
+    "event": "focusReveal",
+    "atMs": 74004,
+    "asked": true,
+    "revealed": null,
+    "why": "a control held focus from an earlier probe, so the baseline was not the untouched document -- content already revealed before this probe began cannot appear in its delta",
+    "tabs": 8,
+    "revealedAt": -1,
+    "focusBefore": "Replay probe, other, link, focused, linked",
+    "focusAfter": "Replay probe, other, link, focused, linked",
+    "startedFrom": "Replay probe, other, link, focused, linked",
+    "focusReset": {
+     "applied": true,
+     "logSuppressed": true,
+     "why": "a control held focus from an earlier probe and was blurred; the resulting focusout was kept out of the focus-event log"
+    }
+   },
+   {
+    "event": "bufferReady",
+    "atMs": 74296,
+    "sawLoading": false,
+    "refreshed": true,
+    "waitedMs": 0
+   },
+   {
+    "event": "browseBufferRefreshed",
+    "atMs": 74596,
+    "reason": "navigated an already-open window",
+    "ready": true,
+    "refreshed": true
+   },
+   {
+    "event": "focusRevealBrowseRestored",
+    "atMs": 79649,
+    "via": "anchorToTop"
+   },
+   {
+    "event": "focusOrder",
+    "atMs": 88686,
+    "stops": 7,
+    "cycled": true,
+    "stalled": false,
+    "truncated": false,
+    "stop": "cycled",
+    "walkedUrl": "https://replay-probe.test/",
+    "startedFrom": "Replay probe, other, link, focused, linked",
+    "focusReset": {
+     "applied": true,
+     "logSuppressed": true,
+     "why": "a control held focus from an earlier probe and was blurred; the resulting focusout was kept out of the focus-event log"
+    }
+   },
+   {
+    "event": "focusConfinement",
+    "atMs": 88686,
+    "confined": false,
+    "cycled": true,
+    "ring": 2,
+    "controlsOnPage": 0
+   },
+   {
+    "event": "focusEventLog",
+    "atMs": 88691,
+    "installed": true,
+    "installTargetMatch": "matched",
+    "installTargetUrl": "https://replay-probe.test/",
+    "installError": null,
+    "collectTargetMatch": "matched",
+    "collectTargetUrl": "https://replay-probe.test/",
+    "collectCandidates": 2,
+    "eventCount": 43,
+    "events": [
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 31599
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 32819
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 32819
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 36110
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 36113
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 38145
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 38145
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 39329
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 39332
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 41507
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 41507
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 44419
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 44421
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 46532
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 46532
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 58373
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 59960
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 59960
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 60602
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 60605
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 61246
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 61246
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 62792
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 62795
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 63427
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 63427
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 64019
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 64020
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 64659
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 64659
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 79222
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 80513
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 80513
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 81113
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 81117
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 81741
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 81741
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 82322
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 82325
+     },
+     {
+      "type": "focusout",
+      "id": 0,
+      "name": "A",
+      "atMs": 83844
+     },
+     {
+      "type": "focusin",
+      "id": 1,
+      "name": "A",
+      "atMs": 83844
+     },
+     {
+      "type": "focusout",
+      "id": 1,
+      "name": "A",
+      "atMs": 84435
+     },
+     {
+      "type": "focusin",
+      "id": 0,
+      "name": "A",
+      "atMs": 84439
+     }
+    ],
+    "collectError": null,
+    "expectedUrl": "https://replay-probe.test/"
+   },
+   {
+    "event": "titleSource",
+    "atMs": 95346,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "routeChange",
+    "atMs": 96488,
+    "activating": "Replay probe, itself, same page, link"
+   },
+   {
+    "event": "titleSource",
+    "atMs": 101729,
+    "title": "Replay probe",
+    "source": "document",
+    "diverged": false,
+    "targetMatch": "matched",
+    "candidates": 2
+   },
+   {
+    "event": "routeChange",
+    "atMs": 104846,
+    "found": true,
+    "titleChanged": false,
+    "viewChanged": false,
+    "announcedChars": 22
+   },
+   {
+    "event": "interaction",
+    "atMs": 104848,
+    "controls": 0,
+    "stateChanges": 0,
+    "formChanges": 1,
+    "postSubmit": 0,
+    "sweepLog": [
+     "route \"Replay probe, itself, same page, link\" -> \"Replay probe, document\""
+    ]
+   },
+   {
+    "event": "structureCensus",
+    "atMs": 104848,
+    "landmark": 1,
+    "heading": 1,
+    "link": 2,
+    "graphic": 0,
+    "formControl": 0,
+    "graphicUnnamed": 0,
+    "graphicUnnamedDetail": [],
+    "graphicExempted": 0,
+    "graphicExemptedDetail": [],
+    "names": [
+     "Replay probe",
+     "replay probe elder lagoon summit",
+     "Replay probe, itself",
+     "Replay probe, other",
+     "replay probe elder lagoon summit",
+     "This page is in the replay archive and nowhere else.",
+     "Replay probe, itself",
+     "Replay probe, other",
+     "replay probe elder lagoon summit",
+     "This page is in the replay archive and nowhere else.",
+     "Replay probe, itself",
+     "Replay probe, other"
+    ],
+    "distinct": {
+     "landmark": 1,
+     "heading": 1,
+     "link": 2,
+     "graphic": 0,
+     "formControl": 0
+    },
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "http://capture-host:8000/visited-probe.html"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/",
+    "readAt": {
+     "startedAtMs": 12139,
+     "tookMs": 7
+    }
+   },
+   {
+    "event": "domCensus",
+    "atMs": 104848,
+    "heading": 1,
+    "headingHidden": 0,
+    "link": 2,
+    "documentLang": "en",
+    "partLangs": [],
+    "partLangCount": 0,
+    "graphic": 0,
+    "unnamedGraphics": [],
+    "unnamedGraphicCount": 0,
+    "landmark": 1,
+    "formField": 0,
+    "tabbable": 2,
+    "openDialog": null,
+    "focusFrame": null,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "candidateUrls": [
+     "https://replay-probe.test/",
+     "http://capture-host:8000/visited-probe.html"
+    ],
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/",
+    "readAt": {
+     "startedAtMs": 12146,
+     "tookMs": 6
+    }
+   },
+   {
+    "event": "mediaCensus",
+    "atMs": 104848,
+    "count": 0,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/",
+    "readAt": {
+     "startedAtMs": 12152,
+     "tookMs": 5
+    }
+   },
+   {
+    "event": "formInputCensus",
+    "atMs": 104848,
+    "count": 0,
+    "total": 0,
+    "targetMatch": "matched",
+    "candidates": 2,
+    "targetUrl": "https://replay-probe.test/",
+    "expectedUrl": "https://replay-probe.test/",
+    "readAt": {
+     "startedAtMs": 12157,
+     "tookMs": 9
+    }
+   },
+   {
+    "event": "truncatedAnnouncements",
+    "atMs": 104848,
+    "truncated": [],
+    "checked": true
+   },
+   {
+    "event": "structureCrossCheck",
+    "atMs": 104848,
+    "sameCounts": false,
+    "compared": 4,
+    "differsOn": [
+     {
+      "type": "landmark",
+      "sweepEntries": 0,
+      "oracleDistinctNames": 1
+     }
+    ],
+    "basis": "distinct-names"
+   },
+   {
+    "event": "done",
+    "atMs": 104848,
+    "transcript": 3
+   },
+   {
+    "event": "browserKeptAlive",
+    "atMs": 104848
+   }
+  ],
+  "task": null,
+  "environment": {
+   "measuredAt": "2026-10-21T19:00:39.433Z",
+   "screenReader": "NVDA",
+   "browser": "Microsoft Edge",
+   "guidepupVersion": "0.31.0",
+   "screenReaderSettings": "speech.autoLanguageSwitching=True,speech.reportLanguage=True,speech.reportNotSupportedLanguage=speech",
+   "browserProfile": "adopted",
+   "nodeVersion": "v24.20.0",
+   "architecture": "x64",
+   "workerCode": "25bb45d9b38d7a62",
+   "captureProtocol": 24,
+   "provisionRevision": "a20963f766666de8",
+   "windowSize": "1024x768",
+   "displayMode": "1024x768",
+   "displayAdapter": "Intel(R) UHD Graphics 630",
+   "displaySampledMsAgo": 2657,
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "screenReaderVersion": "2026.1.1",
+   "browserVersion": "155.0.4283.62",
+   "versionsSampledMsAgo": 2314,
+   "windowsBuild": "26300.9711",
+   "innerWidth": 1008,
+   "innerHeight": 729,
+   "devicePixelRatio": 1
+  }
+ }
+}
