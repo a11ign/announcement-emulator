@@ -40,12 +40,12 @@ class Replay:
     def use(self, name):
         path = os.path.realpath(os.path.join(self.root, name))
         if os.path.commonpath([path, self.root]) != self.root: raise ValueError('an archive is a file under the archive directory')
-        with open(path, 'rb') as f: self.sha = hashlib.sha256(f.read()).hexdigest()
-        self.archive = Archive(entries_of(path)); self.name = name; self.log = []
-        sidecar = path + '.served.json'; self.served_as = None
+        with open(path, 'rb') as f: sha = hashlib.sha256(f.read()).hexdigest()
+        sidecar = path + '.served.json'; served_as = None
         if os.path.exists(sidecar):
-            with open(sidecar) as f: self.served_as = json.load(f)
-        self.consent = consent.read_sidecar(path)
+            with open(sidecar) as f: served_as = json.load(f)
+        sidecars = (consent.read_sidecar(path), served_as)      # read before anything is switched: a sidecar that cannot be read leaves the archive in use, and its cookies, as they were
+        self.archive = Archive(entries_of(path)); self.name = name; self.sha = sha; self.log = []; self.consent, self.served_as = sidecars
 
     def control(self, flow):
         q = parse_qs(urlsplit(flow.request.pretty_url).query); path = urlsplit(flow.request.pretty_url).path

@@ -340,7 +340,10 @@ def git(repo, *args):
 def git_ok(repo, *args): return subprocess.run(['git', '-C', repo, *args], capture_output=True).returncode == 0
 
 
-def instant(stamp): return datetime.datetime.fromisoformat(stamp.replace('Z', '+00:00'))
+def instant(stamp):
+    """A timestamp as a moment; one with no zone is read as UTC, so two records can always be compared."""
+    at = datetime.datetime.fromisoformat(stamp.replace('Z', '+00:00'))
+    return at if at.tzinfo else at.replace(tzinfo=datetime.timezone.utc)
 
 
 def capture_times(oracle_dir, summary_path):
@@ -447,26 +450,35 @@ def check_labels(results, doc):
     for name, label in (('measure-old60-freeze.txt', 'not held out'), ('measure-dev-freeze.txt', 'dev half')):
         path = os.path.join(results, name)
         if not os.path.exists(path): continue
-        line = re.search(r'^GATE: (\d+) of (\d+)', read_text(path), re.M); figure = f'{thousands(line[1])} of {thousands(line[2])}'; found += 1
-        rows = [l for l in page if figure in l]
-        if not rows: bad.append(f'{name}: {figure} is not on the page')
-        elif not any(label in l for l in rows): bad.append(f'{name}: {figure} is on the page, on no line that says "{label}"')
+        line = re.search(r'^GATE: (\d+) of (\d+)', read_text(path), re.M); found += 1
+        if not line: bad.append(f'{name}: no GATE line'); continue
+        figure = re.compile(r'(?<![\d,])' + re.escape(f'{thousands(line[1])} of {thousands(line[2])}') + r'(?![\d,])')      # `60 of 60` is not found in `160 of 160`
+        rows = [l for l in page if figure.search(l)]
+        if not rows: bad.append(f'{name}: {thousands(line[1])} of {thousands(line[2])} is not on the page')
+        elif not any(label in l for l in rows): bad.append(f'{name}: {thousands(line[1])} of {thousands(line[2])} is on the page, on no line that says "{label}"')
     if not found: return PENDING, 'no figures to label yet'
     return (FAIL, '; '.join(bad)) if bad else (OK, f'{found} labelled figures')
+
+
+def check_gate_explained(results, explained_path, doc):
+    """`explained` for the Gate's run: against the Gate figure's own misses file, and pending (not the old eleven) until that file is there."""
+    misses = os.path.join(results, 'misses-held-freeze.json')
+    if not os.path.exists(misses): return PENDING, 'no Gate figure yet, so no misses to attribute'
+    return check_explained(explained_path, results, doc, rb.read_json(misses))
 
 
 def main(argv):
     ap = argparse.ArgumentParser(); ap.add_argument('--results', default='q3/results/remeasure'); ap.add_argument('--oracle'); ap.add_argument('--corpus', default='q3/results/corpus.json'); ap.add_argument('--explained'); ap.add_argument('--control-from', help='another run\'s history-readback.json whose `before` probes show the method (a run that took none of its own)'); ap.add_argument('--doc', default='docs/announcement-emulator-spike.md')
     ap.add_argument('--base', default='origin/main'); ap.add_argument('--require-complete', action='store_true'); ap.add_argument('--replay', action='store_true', help='a scripted-replay run (A11-165): the results hold replay-readback.json, archive-manifest.json, served-identically.json and misses-explained.json, and the oracle\'s records carry a `replay` block')
     ap.add_argument('--gate', action='store_true', help='the Gate on new pages (A11-166): with --replay, the results hold freeze.json, consent-report.json, comparability.json, misses-held-freeze.json and misses-attributed.json, and the manifest carries each page\'s consent outcome'); ap.add_argument('--repo', default='.'); a = ap.parse_args(argv)
+    if a.gate: a.replay = True      # the Gate's run is a replay run: --gate alone would run none of its checks
     readback = os.path.join(a.results, 'history-readback.json')
     results = [('readback', check_readback(readback, a.control_from)), ('summary', check_summary(os.path.join(a.results, 'oracle-summary.json'), readback, a.corpus)), ('oracle', check_oracle(a.oracle, readback, a.corpus, a.explained or os.path.join(a.results, 'visited-explained.json'))), ('figures', check_figures(a.results, a.doc)),
                ('addresses', check_addresses([a.results, a.doc])), ('doc', check_doc(a.doc, a.base))]
     if a.replay:
         manifest = os.path.join(a.results, 'archive-manifest.json'); explained = os.path.join(a.results, 'misses-attributed.json' if a.gate else 'misses-explained.json'); misses = os.path.join(a.results, 'misses-held-freeze.json')
-        gate_figure = rb.read_json(misses) if a.gate and os.path.exists(misses) else None
         results += [('replay-readback', check_replay_readback(os.path.join(a.results, 'replay-readback.json'))), ('manifest', check_manifest(manifest, a.corpus, require_consent=a.gate)), ('replay-stamps', check_replay_stamps(a.oracle, manifest, os.path.join(a.results, 'replay-readback.json'))),
-                    ('served', check_served(os.path.join(a.results, 'served-identically.json'), manifest)), ('explained', check_explained(explained, a.results, a.doc, gate_figure if a.gate else None))]
+                    ('served', check_served(os.path.join(a.results, 'served-identically.json'), manifest)), ('explained', check_gate_explained(a.results, explained, a.doc) if a.gate else check_explained(explained, a.results, a.doc))]
         if a.gate:
             results += [('freeze', check_freeze(os.path.join(a.results, 'freeze.json'), a.repo, a.oracle, os.path.join(a.results, 'oracle-summary.json'))), ('consent', check_consent(os.path.join(a.results, 'consent-report.json'), manifest)),
                         ('comparable', check_comparable(os.path.join(a.results, 'comparability.json'), misses)), ('verdict', check_verdict(misses, explained, a.doc)), ('labels', check_labels(a.results, a.doc))]

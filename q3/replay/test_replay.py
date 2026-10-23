@@ -490,6 +490,16 @@ class ConsentSidecar(unittest.TestCase):
         self.assertEqual(consent.counts([{'consent': 'given'}, {'consent': 'given'}, {'consent': 'not-matched'}]), {'given': 2, 'no-dialog': 0, 'not-matched': 1})
 
 
+class RecordAllKept(unittest.TestCase):
+    def test_an_archive_of_an_earlier_batch_is_kept_only_if_it_was_recorded_with_the_consent_pass(self):
+        with tempfile.TemporaryDirectory() as d:
+            dest = os.path.join(d, 'p.flows'); meta = dest + '.meta.json'
+            self.assertFalse(record_all.is_kept(dest, meta))
+            write(dest, 'x'); write(meta, json.dumps({'url': 'https://e.org/'})); self.assertFalse(record_all.is_kept(dest, meta))      # an archive from before consent: recorded again
+            write(meta, json.dumps({'url': 'https://e.org/', 'consent': 'given'})); self.assertFalse(record_all.is_kept(dest, meta))      # a record that says consent and no sidecar beside the archive
+            consent.write_sidecar(dest, consent.make_sidecar('https://e.org/', 'no-dialog', 'w')); self.assertTrue(record_all.is_kept(dest, meta))
+
+
 class RecordAllConsent(unittest.TestCase):
     def test_what_the_recorder_found_becomes_the_sidecar_beside_the_archive_and_its_temporary_file_goes(self):
         with tempfile.TemporaryDirectory() as d:
@@ -595,6 +605,14 @@ with open(%r, 'wb') as f: io.FlowWriter(f).add(tflow.tflow(req=http.Request.make
         consent.write_sidecar(os.path.join(self.archives, 'cookied.flows'), consent.make_sidecar('https://replay-probe.test/', 'given', 'unit test', None, [{'name': 'cookies_policy', 'value': 'accepted', 'domain': 'replay-probe.test', 'path': '/', 'session': True}]))
         self.proxy.control('/use?archive=cookied.flows'); head, _ = self.fetch('https://replay-probe.test/', ['Sec-Fetch-Dest: document'])
         self.assertEqual([l for l in head.splitlines() if l.startswith('set-cookie')], ['set-cookie: cookies_policy=declined; path=/', 'set-cookie: session=1; path=/', 'set-cookie: cookies_policy=accepted; path=/'])
+
+    def test_a_sidecar_that_cannot_be_read_leaves_the_archive_in_use_and_its_cookies_as_they_were(self):
+        self.consenting_archive('consent-a.flows', 'given')
+        subprocess.run([str(px.VENV / 'python'), '-c', "import sys; sys.path.insert(0, %r); import make_probe; make_probe.write(%r, 'unused', name='consent-b.flows')" % (HERE, self.archives)], check=True, capture_output=True)
+        write(os.path.join(self.archives, 'consent-b.flows.consent.json'), json.dumps({'outcome': 'declined'}))
+        with self.assertRaises(RuntimeError): self.proxy.control('/use?archive=consent-b.flows')
+        self.assertEqual(self.proxy.control('/log')['archive'], 'consent-a.flows')      # not switched to b
+        head, _ = self.fetch('https://replay-probe.test/', ['Sec-Fetch-Dest: document']); self.assertIn('set-cookie: cookies_policy=accepted', head)      # a's cookies are a's, still
 
     def test_with_replay_gives_the_command_a_proxy_that_answers_and_keeps_the_log(self):
         run = os.path.join(self.dir, 'run'); os.makedirs(run); shutil.copytree(self.ca, os.path.join(run, 'ca')); shutil.copytree(self.archives, os.path.join(run, 'archives'))

@@ -54,10 +54,15 @@ def write_consent(archive, found):
     return sidecar
 
 
+def is_kept(dest, meta):
+    """An archive of an earlier batch is kept only if it was recorded with the consent pass: its sidecar and the `consent` of its record are there. An archive from before consent is recorded again."""
+    return os.path.exists(dest) and os.path.exists(meta) and os.path.exists(consent.sidecar_path(dest)) and 'consent' in rb.read_json(meta)
+
+
 def record_one(url, run_dir, spki, timeout=420):
     """('ok', info) or ('failed: why', None). The archive is moved into place only when the page's own address got a response."""
     slug = cc.slug_of(url); archives = os.path.join(run_dir, 'archives'); dest = os.path.join(archives, slug + '.flows'); part = dest + '.part'; meta = dest + '.meta.json'
-    if os.path.exists(dest) and os.path.exists(meta): return 'kept', rb.read_json(meta)
+    if is_kept(dest, meta): return 'kept', rb.read_json(meta)
     p = px.start_record(os.path.join(run_dir, 'ca'), part)
     try:
         p.wait_listening()
@@ -70,8 +75,9 @@ def record_one(url, run_dir, spki, timeout=420):
     page = rb.read_json(meta + '.page') if os.path.exists(meta + '.page') else {}
     if info['mainStatus'] is None: os.remove(part); return f'failed: the page\'s own address got no response ({done.stderr.strip()[-100:] or page.get("navigateError")})', None
     if not os.path.exists(meta + '.consent'): os.remove(part); return 'failed: record.mjs wrote no consent outcome (a recording without the consent pass is not kept)', None
+    try: sidecar = write_consent(dest, meta + '.consent')
+    except (KeyError, ValueError) as e: os.remove(part); return f'failed: the consent outcome could not be kept ({e})', None
     os.replace(part, dest)
-    sidecar = write_consent(dest, meta + '.consent')
     record = {'url': url, 'slug': slug, 'archive': f'archives/{slug}.flows', 'sha256': sha256_of(dest), 'bytes': os.path.getsize(dest), **{k: info[k] for k in ('requests', 'hosts', 'mainStatus', 'endedAt')},
               'finalAddress': page.get('finalAddress'), 'title': page.get('title'), 'recordedAt': page.get('recordedAt'),
               'consent': sidecar['outcome'], 'consentWhy': sidecar['why'], 'consentCookies': len(sidecar.get('cookies') or [])}

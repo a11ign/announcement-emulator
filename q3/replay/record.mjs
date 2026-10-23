@@ -23,8 +23,10 @@ class Browser {
       ...(proxy ? ["--proxy-server=" + proxy, "--ignore-certificate-errors-spki-list=" + spki] : []), "--disable-background-networking", "--remote-debugging-port=0", "about:blank"],
       { env: { ...process.env, LD_LIBRARY_PATH: R + "/libs/root/usr/lib/x86_64-linux-gnu" }, stdio: "ignore" });
     b.id = 0; b.waiters = new Map();
-    await b.connect();
-    await b.cdp("Page.enable"); await b.cdp("Runtime.enable"); await b.cdp("Emulation.setUserAgentOverride", USER_AGENT);
+    try {
+      await b.connect();
+      await b.cdp("Page.enable"); await b.cdp("Runtime.enable"); await b.cdp("Emulation.setUserAgentOverride", USER_AGENT);
+    } catch (e) { b.close(); throw e; }      // a browser that never offered a page is not left running
     return b;
   }
   async connect() {
@@ -118,7 +120,10 @@ try {
   const consent = consentPath ? await givenConsent(address) : null;
   if (consentPath) writeFileSync(consentPath, JSON.stringify(consent, null, 1));
   b = await Browser.launch({ proxy, spki });
-  if (consent?.outcome === "given" && consent.cookies.length) await b.cdp("Network.setCookies", { cookies: consent.cookies.map(cdpCookie) });
+  if (consent?.outcome === "given" && consent.cookies.length) {
+    const set = await b.cdp("Network.setCookies", { cookies: consent.cookies.map(cdpCookie) });
+    if (set.error) throw new Error(`the recording browser refused the consent cookies: ${JSON.stringify(set.error).slice(0, 160)}`);      // a page recorded without them would be filed as `given`
+  }
   const navigateError = await b.load(address);
   await sleep(2500);
   for (let i = 0; i < 120; i++) {

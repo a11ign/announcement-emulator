@@ -657,6 +657,26 @@ class GateChecks(unittest.TestCase):
         rb.write_json(path, {'pages': [page]}); self.assertEqual(check.check_manifest(path, corpus, require_consent=True)[0], check.FAIL); self.assertEqual(check.check_manifest(path, corpus)[0], check.OK)      # the earlier run's manifest has none
         rb.write_json(path, {'pages': [page | {'consent': 'declined'}]}); self.assertEqual(check.check_manifest(path, corpus, require_consent=True)[0], check.FAIL)
 
+    def test_a_figure_is_found_as_a_whole_number_and_a_measure_file_without_a_gate_line_is_a_failure(self):
+        page = os.path.join(self.dir, 'page.md'); write(os.path.join(self.dir, 'measure-old60-freeze.txt'), 'GATE: 60 of 60 = 100.00%\n')
+        write(page, '| the earlier 60 pages (not held out) | 160 of 160 |\n'); self.assertEqual(check.check_labels(self.dir, page)[0], check.FAIL)      # `60 of 60` is not inside `160 of 160`
+        write(page, '| the earlier 60 pages (not held out) | 60 of 60 |\n'); self.assertEqual(check.check_labels(self.dir, page)[0], check.OK)
+        write(os.path.join(self.dir, 'measure-old60-freeze.txt'), 'no figure here\n'); self.assertEqual(check.check_labels(self.dir, page)[0], check.FAIL)
+
+    def test_a_time_with_no_zone_is_read_as_utc_and_compares_with_one_that_has_one(self):
+        self.assertEqual(check.instant('2026-10-23T10:00:00'), check.instant('2026-10-23T10:00:00Z')); self.assertLess(check.instant('2026-10-23T09:59:59.5'), check.instant('2026-10-23T10:00:00Z'))
+
+    def test_the_gates_attribution_is_pending_until_the_gate_figure_is_there_and_never_the_old_eleven(self):
+        path = os.path.join(self.dir, 'misses-attributed.json'); rb.write_json(path, {'misses': [{'page': 'p', 'channel': 'links', 'i': 0, 'expected': 'x', 'class': 'unexplained', 'tried': 't'}] * 11})
+        self.assertEqual(check.check_gate_explained(self.dir, path, None)[0], check.PENDING)      # eleven entries and no figure: not the A11-165 check by the back door
+        rb.write_json(os.path.join(self.dir, 'misses-held-freeze.json'), {'gate': {'exact': 9, 'total': 10}, 'top': ['a'], 'misses': [{'url': 'p', 'channel': 'links', 'i': 0, 'expected': 'x', 'shape': ['a']}]})
+        self.assertEqual(check.check_gate_explained(self.dir, path, None)[0], check.FAIL)      # against the figure: one miss, eleven attributed
+
+    def test_gate_alone_runs_the_replay_checks_too(self):
+        root = os.path.dirname(Q3)
+        done = subprocess.run([sys.executable, os.path.join(HERE, 'check.py'), '--gate', '--results', self.dir, '--base', 'HEAD', '--repo', root], capture_output=True, text=True, cwd=root)
+        self.assertIn('freeze:', done.stdout); self.assertIn('verdict:', done.stdout); self.assertEqual(done.returncode, 0)      # nothing there yet: pending, not a failure
+
     def test_the_earlier_figure_is_labelled_not_held_out_and_the_dev_half_dev_half_on_the_page(self):
         page = os.path.join(self.dir, 'page.md'); write(os.path.join(self.dir, 'measure-old60-freeze.txt'), 'GATE: 4488 of 4491 = 99.93%\n'); write(os.path.join(self.dir, 'measure-dev-freeze.txt'), 'GATE: 3000 of 3100 = 96.77%\n')
         write(page, '| the earlier 60 pages at this freeze (not held out) | 4,488 of 4,491 | \n| the other pages of batch 2 | 3,000 of 3,100 |\n'); self.assertEqual(check.check_labels(self.dir, page)[0], check.FAIL)
