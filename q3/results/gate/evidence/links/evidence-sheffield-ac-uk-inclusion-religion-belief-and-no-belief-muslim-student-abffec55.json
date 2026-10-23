@@ -1,0 +1,133 @@
+{
+ "capturedAt": "2026-10-23T16:15:53.679Z",
+ "channel": "links",
+ "emulator": {
+  "gate.run1": {
+   "entries": 124,
+   "first": [
+    "figure, Threads logo, graphic, link",
+    "figure, We Chat, graphic, link",
+    "figure, Tik Tok, graphic, link"
+   ],
+   "frameHeaderIndexes": [],
+   "onlyInEmulator": [
+    "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link",
+    "Log in to MUSE, link",
+    "main landmark, You are here, navigation landmark, list, with 5 items, Home, link"
+   ],
+   "onlyInFleet": [
+    "External online support, link, heading, level 2",
+    "Financial support, link, heading, level 2",
+    "Events and opportunities, link, heading, level 2",
+    "Student\u2019s Union committees and societies, link, heading, level 2",
+    "Halal food on campus, link, heading, level 2",
+    "Prayer rooms, link, heading, level 2",
+    "Jummah (Friday) Prayer, link, heading, level 2",
+    "Religious observance and assessments, link, heading, level 2",
+    "link",
+    "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+    "Log in to MUSE, link, Alt plus, m",
+    "You are here, navigation landmark, list, with 5 items, Home, link"
+   ],
+   "order": "differentEntries",
+   "start": {
+    "readThrough": {
+     "count": 234,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 124,
+     "nextSteps": 108,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Modern slavery statement, link",
+     "prevCount": 100,
+     "prevSteps": 103,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Skip to main content, same page, link",
+     "type": "link"
+    }
+   }
+  },
+  "gate.run2": {
+   "entries": 124,
+   "first": [
+    "figure, Threads logo, graphic, link",
+    "figure, We Chat, graphic, link",
+    "figure, Tik Tok, graphic, link"
+   ],
+   "frameHeaderIndexes": [],
+   "onlyInEmulator": [
+    "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link",
+    "Log in to MUSE, link",
+    "main landmark, You are here, navigation landmark, list, with 5 items, Home, link"
+   ],
+   "onlyInFleet": [
+    "External online support, link, heading, level 2",
+    "Financial support, link, heading, level 2",
+    "Events and opportunities, link, heading, level 2",
+    "Student\u2019s Union committees and societies, link, heading, level 2",
+    "Halal food on campus, link, heading, level 2",
+    "Prayer rooms, link, heading, level 2",
+    "Jummah (Friday) Prayer, link, heading, level 2",
+    "Religious observance and assessments, link, heading, level 2",
+    "link",
+    "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+    "Log in to MUSE, link, Alt plus, m",
+    "You are here, navigation landmark, list, with 5 items, Home, link"
+   ],
+   "order": "differentEntries",
+   "start": {
+    "readThrough": {
+     "count": 234,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 124,
+     "nextSteps": 108,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Modern slavery statement, link",
+     "prevCount": 100,
+     "prevSteps": 103,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Skip to main content, same page, link",
+     "type": "link"
+    }
+   }
+  }
+ },
+ "fleet": {
+  "entries": 133,
+  "first": [
+   "figure, Threads logo, graphic, link",
+   "figure, We Chat, graphic, link",
+   "figure, Tik Tok, graphic, link"
+  ],
+  "frameHeaderIndexes": []
+ },
+ "fleetObserved": {
+  "asked": true,
+  "complete": true,
+  "focusInFrame": null,
+  "stop": {
+   "next": "exhausted",
+   "prev": "exhausted"
+  }
+ },
+ "fleetStart": {
+  "firstFocusIn": {
+   "atMs": 119761,
+   "id": 0,
+   "name": "SPAN",
+   "type": "focusin"
+  },
+  "focusBeforeReadThroughEnded": false,
+  "focusFrameBeforeSweep": null,
+  "readThrough": {
+   "atMs": 96010,
+   "count": 236,
+   "stopReason": "repeatBottom"
+  }
+ },
+ "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+ "worker": "a11y-worker-15"
+}

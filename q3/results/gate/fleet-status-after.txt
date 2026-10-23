@@ -1,0 +1,37 @@
+
+> @a11ign/control@0.1.8 fleet:status /home/agent/repos/control
+> node src/fleet-status.ts
+
+
+  switch: unread (no switch configured: set A11Y_SWITCH_HOST and A11Y_SWITCH_COMMUNITY, or A11Y_SWITCH_FILE); the worker readings below are unaffected
+
+  worker                              state  code              vitals / doing
+  ----------------------------------  -----  ----------------  ------------------------------
+  a11y-worker-2  a11y-worker-2:8765   ready  25bb45d9b38d7a62  93 captures, 1 recoveries
+  a11y-worker-3  a11y-worker-3:8765   ready  25bb45d9b38d7a62  87 captures, 1 recoveries
+  a11y-worker-4  a11y-worker-4:8765   ready  25bb45d9b38d7a62  90 captures, 0 recoveries
+  a11y-worker-5  a11y-worker-5:8765   ready  8f07fd23dc694ef3  0 captures, 0 recoveries
+  a11y-worker-6  a11y-worker-6:8765    ready  25bb45d9b38d7a62  3 captures, 0 recoveries
+  a11y-worker-7  a11y-worker-7:8765    ready  25bb45d9b38d7a62  88 captures, 1 recoveries
+  a11y-worker-8  a11y-worker-8:8765   ready  25bb45d9b38d7a62  86 captures, 1 recoveries
+  a11y-worker-9  a11y-worker-9:8765   ready  25bb45d9b38d7a62  85 captures, 1 recoveries
+  a11y-worker-10  a11y-worker-10:8765   ready  25bb45d9b38d7a62  88 captures, 1 recoveries
+  a11y-worker-11  a11y-worker-11:8765   ready  25bb45d9b38d7a62  0 captures, 0 recoveries
+  a11y-worker-12  a11y-worker-12:8765   ready  25bb45d9b38d7a62  87 captures, 1 recoveries
+  a11y-worker-13  a11y-worker-13:8765   ready  25bb45d9b38d7a62  83 captures, 0 recoveries
+  a11y-worker-14  a11y-worker-14:8765  ready  25bb45d9b38d7a62  94 captures, 1 recoveries
+  a11y-worker-15  a11y-worker-15:8765  ready  25bb45d9b38d7a62  80 captures, 1 recoveries
+  a11y-worker-16  a11y-worker-16:8765  ready  25bb45d9b38d7a62  86 captures, 1 recoveries
+
+  15/15 serving /health (the capture channel)
+  This says nothing about whether you can DEPLOY to them — that is SSH, and it is
+  a separate channel with separate access. `npm run worker:code` compares what they serve
+  against this checkout.
+  fleet INCONSISTENT across 15 of 15 — browserVersion: .107=155.0.4283.62 .105=155.0.4283.62 .175=156.0.4314.42 .224=155.0.4283.45 .90=155.0.4283.45 .21=155.0.4283.62 .146=155.0.4283.62 .217=155.0.4283.62 .80=155.0.4283.62 .74=155.0.4283.45 .48=155.0.4283.62 .70=155.0.4283.62 .122=155.0.4283.62 .147=156.0.4314.42 .156=155.0.4283.62 — Edge renders and announces differently across releases; it is in the cache key; windowsVersion: .107=Microsoft Windows 11 Pro 10.0.26300 .105=Microsoft Windows 11 Pro 10.0.26300 .175=Microsoft Windows 11 Pro 10.0.26300 .224=Microsoft Windows 11 Pro 10.0.22631 .90=Microsoft Windows 11 Pro 10.0.26300 .21=Microsoft Windows 11 Pro 10.0.26300 .146=Microsoft Windows 11 Pro 10.0.26300 .217=Microsoft Windows 11 Pro 10.0.26300 .80=Microsoft Windows 11 Pro 10.0.26300 .74=Microsoft Windows 11 Pro 10.0.26200 .48=Microsoft Windows 11 Pro 10.0.26300 .70=Microsoft Windows 11 Pro 10.0.26300 .122=Microsoft Windows 11 Pro 10.0.26300 .147=Microsoft Windows 11 Pro 10.0.26300 .156=Microsoft Windows 11 Pro 10.0.26300 — a second OS image would blend two corpora into one. Reported, never gated (#2063): displayAdapter: .107=Intel(R) UHD Graphics 630 .105=Intel(R) UHD Graphics 630 .175=Intel(R) UHD Graphics 630 .224=Intel(R) HD Graphics 630 .90=Intel(R) UHD Graphics 630 .21=Intel(R) UHD Graphics 630 .146=Intel(R) UHD Graphics 630 .217=Intel(R) UHD Graphics 630 .80=Intel(R) UHD Graphics 630 .74=Intel(R) UHD Graphics 630 .48=Intel(R) UHD Graphics 630 .70=Intel(R) UHD Graphics 630 .122=Intel(R) UHD Graphics 630 .147=Intel(R) UHD Graphics 630 .156=Intel(R) UHD Graphics 630 — the adapter is what decides whether a pinned display mode can be held at all -- on 2026-09-22 workers 7-11 were on Microsoft's Basic Display Adapter and captured at 640x480 under a `provisionRevision` identical to their peers' (#1955); the pinned Intel driver install resolved that, and all ten read an Intel adapter at CM_PROB_NONE on 2026-09-23. NOT a gate, and no longer because nobody reports it: 10 of 10 guests report it since 2026-09-23T18:02Z, reading `Intel(R) UHD Graphics 630` on nine and `Intel(R) HD Graphics 630` on one as of 2026-09-23. That single letter is a real hardware difference rather than a driver fallback, so no provisioning run can converge it and a gate would refuse that guest for ever (#2063, reading on #2170); windowsBuild: .107=26300.9711 .105=26300.9711 .175=26300.9711 .224=22631.6199 .90=26300.9711 .21=26300.9711 .146=26300.9711 .217=26300.9711 .80=26300.9711 .74=26200.9457 .48=26300.9711 .70=26300.9711 .122=26300.9711 .147=26300.9711 .156=26300.9711 — two boxes one cumulative update apart share a `windowsVersion` and are not the same Windows; the revision (`CurrentBuild.UBR`) is what tells them apart. NOT a gate yet: it graduates to MUST_MATCH once the fleet reads one value (#4433, #4405); edgeUpdaterGuard.state: .224=ok (1 of 15 guests reported it) — a box whose Edge updater came back is one auto-update away from a different browser than its peers: the guard task re-disables it every 15 minutes and records what it had to change, and `stale` or `absent` is a guard that is not running or not yet provisioned. NOT a gate yet: reported until the fleet's workers carry the field and the guard (#5021, #4405). A run is not refused for this
+  These guests are NOT interchangeable for capture, so a corpus run must not start: two
+  workers on different values would share a cache key while producing different evidence.
+  Re-provision the WHOLE fleet together — `npm run fleet:provision -- --serial=0`. Never one
+  box alone: a lone re-provision splits the fleet rather than converging it.
+  fleet SPLIT — 2 different code hashes: 25bb45d9b38d on 14, 8f07fd23dc69 on 1.
+  A deploy did not finish. Nothing is broken and no evidence is invalid, but a capture will
+  REFUSE until it is fixed. Re-run `npm run fleet:deploy` — it is idempotent.

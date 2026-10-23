@@ -1,0 +1,3886 @@
+{
+ "outcomes": {
+  "given": 159,
+  "no-dialog": 19,
+  "not-matched": 2
+ },
+ "pages": [
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "lines": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "lines": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://data.southwark.gov.uk/economy-and-employment/map/",
+   "why": "a button named \"I Accept Cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 2,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://caselaw.nationalarchives.gov.uk/accessibility-statement",
+   "why": "a button named \"Accept cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 10,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nhs.uk/conditions/dementia/living-with-dementia/communication/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://design-patterns.service.justice.gov.uk/components/pagination/examples/prev-next/",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.historicenvironment.scot/visit/all/biggar-gasworks-museum/",
+   "why": "a button named \"Accept all and close\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nrscotland.gov.uk/learning-and-events/research-guides/census-1841/",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 9,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://service-manual.nhs.uk/design-system/components/warning-callout",
+   "why": "a button named \"I'm OK with analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 43,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://weather.metoffice.gov.uk/observations/tcby0ekf5",
+   "why": "a button named \"Accept All\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://european-union.europa.eu/principles-countries-history/eu-countries/slovakia_en",
+   "why": "a link named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.ofgem.gov.uk/energy-policy-and-regulation/engagement/forums-and-working-groups/extension-contestability-sub-group",
+   "why": "a button named \"Accept all\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 2,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Accept all cookies, button",
+     "Accept all cookies, button"
+    ],
+    "lines": [
+     "Accept all cookies, button",
+     "Accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [
+     "We use cookies to collect anonymous data to help us improve your site browsing experience.",
+     "Click Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the"
+    ],
+    "contains": [
+     "Accept all cookies, button"
+    ],
+    "lines": [
+     "We use cookies to collect anonymous data to help us improve your site browsing experience.",
+     "Click Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.scotcourts.gov.uk/about-us/news/news/2026/april/debt-actions-make-up-over-a-quarter-of-civil-business",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 10,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://events.bl.uk/events/refugees-journey-a-drama-workshop",
+   "why": "a button named \"I accept\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 3,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookies on name of service, heading, level 2",
+     "Server-side implementation \u2013 Cookie banner example, frame, Cookies on name of service, region, Cooki"
+    ],
+    "lines": [
+     "Cookies on name of service, heading, level 2",
+     "Server-side implementation \u2013 Cookie banner example, frame, Cookies on name of service, region, Cooki"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [
+     "Cookies on name of service, heading, level 2",
+     "Server-side implementation \u2013 Cookie banner example, frame, Cookies on name of service, region, Cooki"
+    ],
+    "lines": [
+     "Cookies on name of service, heading, level 2",
+     "Server-side implementation \u2013 Cookie banner example, frame, Cookies on name of service, region, Cooki"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://design-system.service.gov.uk/components/cookie-banner/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 17,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nls.uk/about-us/plans-and-policies/corporate-documents/enquiry-policy/",
+   "why": "a button named \"Accept Cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 21,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.gov.scot/publications/greenhouse-gas-emissions-reporting-local-authorities-scottish-public-bodies-research-scope-3-group-3-emissions/pages/2/",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 14,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.transport.gov.scot/news/improved-road-safety-measures-for-charleston/",
+   "why": "a button named \"Accept and close\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.gov.uk/employment-tribunal-decisions/e-peers-v-a-collins-2414201-slash-2021",
+   "why": "a button named \"Accept additional cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 27,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [
+     "tab, selected, Consent"
+    ],
+    "contains": [],
+    "lines": [
+     "tab, selected, Consent"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q1/philpot-square",
+   "why": "a button named \"Allow all\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 1,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/using-an-exception/what-are-the-exceptions/",
+   "why": "a button named \"Accept non-essential cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.mygov.scot/energy-performance-certificates",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [
+     "Cookie compliance banner"
+    ],
+    "contains": [],
+    "lines": [
+     "Cookie compliance banner"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.nidirect.gov.uk/services/broadband-and-mobile-checker",
+   "why": "a button named \"Accept cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, link"
+    ],
+    "lines": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, link"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [
+     "Cookies on GOV dot WALES, banner landmark"
+    ],
+    "contains": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, link"
+    ],
+    "lines": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, banner landmark"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.gov.wales/written-statement-provision-veterans-mental-health-wales",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 6,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nationalarchives.gov.uk/explore-the-collection/stories/medieval-irish-roll-with-hidden-grievances/",
+   "why": "a button named \"Accept cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 13,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.networkrail.co.uk/stories/love-the-railway-heritage-railways/",
+   "why": "a button named \"Allow all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "lines": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "lines": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://data.southwark.gov.uk/population-and-equalities/map/",
+   "why": "a button named \"I Accept Cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 2,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38",
+   "why": "a button named \"Accept cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 10,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nhs.uk/nhs-services/gps/health-services-for-someone-else-family-carer-access/apply-for-family-carer-access-nhs-app/accessibility-statement/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 2,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2",
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2"
+    ],
+    "lines": [
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2",
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [
+     "Cookies on MOJ Design System, region, heading, level 2, Cookies on MOJ Design System",
+     "button, Accept analytics cookies"
+    ],
+    "contains": [
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2",
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2"
+    ],
+    "lines": [
+     "Cookies on MOJ Design System, region, heading, level 2, Cookies on MOJ Design System",
+     "button, Accept analytics cookies"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://design-patterns.service.justice.gov.uk/production/moj-frontend/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.historicenvironment.scot/visit/all/blackhammer-chambered-cairn/",
+   "why": "a button named \"Accept all and close\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nrscotland.gov.uk/registration/",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://service-manual.nhs.uk/content/how-to-write-good-questions-for-forms/test-your-questions",
+   "why": "a button named \"I'm OK with analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 80,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://weather.metoffice.gov.uk/observations/r1qbtmxef",
+   "why": "a button named \"Accept All\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookies policy, region, This site uses cookies. Visit our, cookies policy page, link, or click the l",
+     "Cookies policy, region, Accept only essential cookies, same page, link"
+    ],
+    "lines": [
+     "Cookies policy, region, This site uses cookies. Visit our, cookies policy page, link, or click the l",
+     "Cookies policy, region, Accept only essential cookies, same page, link"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [
+     "Cookies policy, region, This site uses cookies. Visit our, link, cookies policy page, or click the l",
+     "same page, link, Accept all cookies"
+    ],
+    "contains": [
+     "Cookies policy, region, This site uses cookies. Visit our, cookies policy page, link, or click the l",
+     "Cookies policy, region, Accept only essential cookies, same page, link"
+    ],
+    "lines": [
+     "Cookies policy, region, This site uses cookies. Visit our, link, cookies policy page, or click the l",
+     "same page, link, Accept all cookies"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://european-union.europa.eu/principles-countries-history/eu-enlargement_en",
+   "why": "a link named \"Accept all cookies\", activated by mouse; the control is still there after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.ofgem.gov.uk/energy-policy-and-regulation/engagement/forums-and-working-groups/citizens-energy-forum",
+   "why": "a button named \"Accept all\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 2,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Accept all cookies, button",
+     "Accept all cookies, button"
+    ],
+    "lines": [
+     "Accept all cookies, button",
+     "Accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [
+     "We use cookies to collect anonymous data to help us improve your site browsing experience.",
+     "Click Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the"
+    ],
+    "contains": [
+     "Accept all cookies, button"
+    ],
+    "lines": [
+     "We use cookies to collect anonymous data to help us improve your site browsing experience.",
+     "Click Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.scotcourts.gov.uk/about-us/news/news/2023/december/prohibition-of-dropped-footway-parking-double-parking-and-pavement-parking",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 10,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://events.bl.uk/sitemap",
+   "why": "a button named \"I accept\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 3,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://design-system.service.gov.uk/patterns/bank-details/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 17,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nls.uk/collections/stories/scottish-history/james-vi-and-the-union-of-the-crowns/",
+   "why": "a button named \"Accept Cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 21,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.gov.scot/publications/january-2026-open-market-review-superfast-ultrafast-gigabit-capable-broadband-infrastructure-scotland-outcome-report/pages/4/",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 14,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.transport.gov.scot/news/m74-junction-3a-daldowie-weekend-closure/",
+   "why": "a button named \"Accept and close\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.gov.uk/government/publications/treaties-monthly-bulletin-february-2013",
+   "why": "a button named \"Accept additional cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 27,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [
+     "tab, selected, Consent"
+    ],
+    "contains": [],
+    "lines": [
+     "tab, selected, Consent"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q2/lytton-estate-burne-jones-samuel-richardson-glenallen-houses-the-grange",
+   "why": "a button named \"Allow all\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 1,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/when-can-an-exemption-apply-to-information-about-other-people-in-a-sar/",
+   "why": "a button named \"Accept non-essential cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.mygov.scot/seafarer-rights",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [
+     "Cookie compliance banner"
+    ],
+    "contains": [],
+    "lines": [
+     "Cookie compliance banner"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.nidirect.gov.uk/articles/safety-workplace-pension-schemes",
+   "why": "a button named \"Accept cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, link"
+    ],
+    "lines": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, link"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [
+     "Cookies on GOV dot WALES, banner landmark"
+    ],
+    "contains": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, link"
+    ],
+    "lines": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, banner landmark"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.gov.wales/written-statement-accessibility-welsh-law",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 6,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nationalarchives.gov.uk/professional-guidance-and-services/our-research-and-academic-collaboration/our-research-projects/research-projects/from-our-students/lgbtq-histories-and-colonial-office-records/",
+   "why": "a button named \"Accept cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 13,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.networkrail.co.uk/stories/winning-design-to-improve-smaller-stations/",
+   "why": "a button named \"Allow all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "lines": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "lines": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://data.southwark.gov.uk/news/",
+   "why": "a button named \"I Accept Cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 2,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/26",
+   "why": "a button named \"Accept cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 10,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nhs.uk/medicines/insulin/biphasic-insulin/how-and-when-to-take-biphasic-insulin/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://design-patterns.service.justice.gov.uk/components/badge/examples/urgent/",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.historicenvironment.scot/visit/all/doune-castle/shop/",
+   "why": "a button named \"Accept all and close\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nrscotland.gov.uk/learning-and-events/first-world-war/battle-of-the-somme-1916/",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://service-manual.nhs.uk/standards-and-technology/service-standard-points/10-define-what-success-looks-like-and-be-open-about-how-your-service-is-performing",
+   "why": "a button named \"I'm OK with analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 76,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://weather.metoffice.gov.uk/observations/xcbzchbyz",
+   "why": "a button named \"Accept All\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://european-union.europa.eu/languages-our-websites_en",
+   "why": "a link named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 9,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.ofgem.gov.uk/cy/feed-tariffs-fit/contacts-guidance-and-resources/public-reports-and-data-fit/feed-tariffs-quarterly-report",
+   "why": "a button named \"Accept all\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 2,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Accept all cookies, button",
+     "Accept all cookies, button"
+    ],
+    "lines": [
+     "Accept all cookies, button",
+     "Accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [
+     "We use cookies to collect anonymous data to help us improve your site browsing experience.",
+     "Click Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the"
+    ],
+    "contains": [
+     "Accept all cookies, button"
+    ],
+    "lines": [
+     "We use cookies to collect anonymous data to help us improve your site browsing experience.",
+     "Click Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.scotcourts.gov.uk/about-us/news/news/2023/march/new-local-taxation-chamber-to-be-established-on-1st-april",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 10,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://events.bl.uk/events/making-artists-books",
+   "why": "a button named \"I accept\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 3,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, link",
+     "Cookie banner, link"
+    ],
+    "lines": [
+     "Cookie banner, link",
+     "Cookie banner, link"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, link"
+    ],
+    "lines": [
+     "Cookie banner, link"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://design-system.service.gov.uk/components/inset-text/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 17,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nls.uk/privacy/fundraising/",
+   "why": "a button named \"Accept Cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 21,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://sheffield.ac.uk/smph/people/academic/clinical-medicine/david-g-kiely",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.gov.scot/publications/children-young-peoples-neurodevelopment-support-fund-2026-27-supporting-guidance/pages/10/",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 14,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.transport.gov.scot/news/a9-safety-camera-data-published/",
+   "why": "a button named \"Accept and close\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.gov.uk/government/news/culture-secretary-appoints-four-new-board-members-at-the-sports-grounds-safety-authority",
+   "why": "a button named \"Accept additional cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 27,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [
+     "tab, selected, Consent"
+    ],
+    "contains": [],
+    "lines": [
+     "tab, selected, Consent"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q1/bellamy-close",
+   "why": "a button named \"Allow all\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 1,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://ico.org.uk/for-the-public/your-right-to-get-your-data-deleted/",
+   "why": "a button named \"Accept non-essential cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.mygov.scot/non-disclosure-agreements-nda",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [
+     "Cookie compliance banner"
+    ],
+    "contains": [],
+    "lines": [
+     "Cookie compliance banner"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.nidirect.gov.uk/articles/using-scaffolding-safely",
+   "why": "a button named \"Accept cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, link"
+    ],
+    "lines": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, link"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [
+     "Cookies on GOV dot WALES, banner landmark"
+    ],
+    "contains": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, link"
+    ],
+    "lines": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, banner landmark"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.gov.wales/written-statement-publication-national-school-categorisation-system-categories-year-four",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 6,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-time-period/second-world-war/operation-overlord-and-d-day/",
+   "why": "a button named \"Accept cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 13,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.networkrail.co.uk/stories/rail-companies-urge-customers-to-re-plan-journeys-as-storms-threaten-major-disruption/",
+   "why": "a button named \"Allow all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "lines": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "lines": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://data.southwark.gov.uk/economy-and-employment/reports/",
+   "why": "a button named \"I Accept Cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 2,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://caselaw.nationalarchives.gov.uk/permissions-and-licensing",
+   "why": "a button named \"Accept cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 10,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nhs.uk/contraception/methods-of-contraception/contraceptive-diaphragm-or-cap/side-effects-and-risks/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://design-patterns.service.justice.gov.uk/components/pagination/examples/all-variants/",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.historicenvironment.scot/visit/all/chesters-hill-fort/history-and-stories/",
+   "why": "a button named \"Accept all and close\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nrscotland.gov.uk/statistics-and-data/nhs-central-register/",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://service-manual.nhs.uk/community-and-contribution/feed-back-or-share-insights",
+   "why": "a button named \"I'm OK with analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 83,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://weather.metoffice.gov.uk/observations/ub1fk8vf1",
+   "why": "a button named \"Accept All\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/search-all-eu-institutions-and-bodies/european-central-bank-ecb_en",
+   "why": "a link named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.ofgem.gov.uk/energy-company-obligation-eco/contacts-guidance-and-resources/eco-public-reports-and-data",
+   "why": "a button named \"Accept all\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 2,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Accept all cookies, button",
+     "Accept all cookies, button"
+    ],
+    "lines": [
+     "Accept all cookies, button",
+     "Accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [
+     "We use cookies to collect anonymous data to help us improve your site browsing experience.",
+     "Click Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the"
+    ],
+    "contains": [
+     "Accept all cookies, button"
+    ],
+    "lines": [
+     "We use cookies to collect anonymous data to help us improve your site browsing experience.",
+     "Click Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.scotcourts.gov.uk/about-us/news/news/2024/may/scts-gender-pay-gap-report-published",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 10,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://events.bl.uk/profile/fernando-pizarro",
+   "why": "a button named \"I accept\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Do you want to accept analytics cookies?, grouping, No, radio button, checked",
+     "main landmark, section, Do you want to accept analytics cookies?, grouping, Yes, radio button, not c"
+    ],
+    "lines": [
+     "Do you want to accept analytics cookies?, grouping, No, radio button, checked",
+     "main landmark, section, Do you want to accept analytics cookies?, grouping, Yes, radio button, not c"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [
+     "Do you want to accept analytics cookies?, grouping, No, radio button, checked",
+     "main landmark, section, Do you want to accept analytics cookies?, grouping, Yes, radio button, not c"
+    ],
+    "lines": [
+     "Do you want to accept analytics cookies?, grouping, No, radio button, checked",
+     "main landmark, section, Do you want to accept analytics cookies?, grouping, Yes, radio button, not c"
+    ],
+    "surface": true
+   },
+   "outcome": "not-matched",
+   "url": "https://design-system.service.gov.uk/cookies/",
+   "why": "1 dialog or cookie region (group \"Do you want to accept analytics cookies?\") and no control in the list; controls that look like a choice: [\"how to manage cookies\",\"Save cookie settings\",\"Cookies\"]"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 17,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nls.uk/collections/stories/printing-and-publishing/the-scotsman/",
+   "why": "a button named \"Accept Cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 21,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.gov.scot/publications/benefit-take-up-strategy-2026-2031-icia/pages/3/",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 15,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.transport.gov.scot/news/major-progress-on-haudagain-improvement-scheme/",
+   "why": "a button named \"Accept and close\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.gov.uk/government/news/paralympic-sculpture-presented-to-competition-winner",
+   "why": "a button named \"Accept additional cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 28,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [
+     "tab, selected, Consent"
+    ],
+    "contains": [],
+    "lines": [
+     "tab, selected, Consent"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q1/emlyn-gardens-beverley-crane-lea-longford-mole-wandle-courts",
+   "why": "a button named \"Allow all\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 1,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/exemptions/a-guide-to-the-data-protection-exemptions/",
+   "why": "a button named \"Accept non-essential cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.mygov.scot/apply-for-blue-badge",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [
+     "Cookie compliance banner"
+    ],
+    "contains": [],
+    "lines": [
+     "Cookie compliance banner"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.nidirect.gov.uk/articles/making-planning-application",
+   "why": "a button named \"Accept cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, link"
+    ],
+    "lines": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, link"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [
+     "Cookies on GOV dot WALES, banner landmark"
+    ],
+    "contains": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, link"
+    ],
+    "lines": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, banner landmark"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.gov.wales/written-statement-independent-qc-investigation",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 6,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nationalarchives.gov.uk/explore-the-collection/stories/revealing-the-corrupt-record-in-14th-century-ireland/",
+   "why": "a button named \"Accept cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 13,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.networkrail.co.uk/stories/four-years-on-im-reminded-by-that-one-decision-to-go-on-the-railway/",
+   "why": "a button named \"Allow all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "lines": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "lines": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://data.southwark.gov.uk/resources/",
+   "why": "a button named \"I Accept Cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 2,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://caselaw.nationalarchives.gov.uk/courts-and-tribunals/ukftt/credit",
+   "why": "a button named \"Accept cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 10,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nhs.uk/medicines/nystatin/taking-or-using-nystatin-with-other-medicines-and-herbal-supplements/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 2,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2",
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2"
+    ],
+    "lines": [
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2",
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [
+     "Cookies on MOJ Design System, region, heading, level 2, Cookies on MOJ Design System",
+     "button, Accept analytics cookies"
+    ],
+    "contains": [
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2",
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2"
+    ],
+    "lines": [
+     "Cookies on MOJ Design System, region, heading, level 2, Cookies on MOJ Design System",
+     "button, Accept analytics cookies"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://design-patterns.service.justice.gov.uk/components/search/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/",
+   "why": "a button named \"Accept all and close\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nrscotland.gov.uk/learning-and-events/research-guides/",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 9,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://service-manual.nhs.uk/design-system/patterns/hub-page",
+   "why": "a button named \"I'm OK with analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 87,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://weather.metoffice.gov.uk/observations/u1h1et5j1",
+   "why": "a button named \"Accept All\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://european-union.europa.eu/contact-eu/social-media-channels_en",
+   "why": "a link named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.ofgem.gov.uk/cy/energy-policy-and-regulation/engagement/forums-and-working-groups/riio-ed1-online-stakeholder-forum",
+   "why": "a button named \"Accept all\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 2,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Accept all cookies, button",
+     "Accept all cookies, button"
+    ],
+    "lines": [
+     "Accept all cookies, button",
+     "Accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [
+     "We use cookies to collect anonymous data to help us improve your site browsing experience.",
+     "Click Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the"
+    ],
+    "contains": [
+     "Accept all cookies, button"
+    ],
+    "lines": [
+     "We use cookies to collect anonymous data to help us improve your site browsing experience.",
+     "Click Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.scotcourts.gov.uk/about-us/news/news/2024/february/success-for-scts-at-international-technology-awards",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 10,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://events.bl.uk/events/self-guided-school-visits",
+   "why": "a button named \"I accept\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 3,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://design-system.service.gov.uk/patterns/interruption-pages/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 17,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nls.uk/tools-for-research/introduction-to-estate-papers/",
+   "why": "a button named \"Accept Cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 21,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.gov.scot/publications/enhancing-accessibility-adaptability-usability-scotlands-homes-consultation-analysis-report/pages/5/",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 15,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.transport.gov.scot/news/forth-road-bridge-reopens/",
+   "why": "a button named \"Accept and close\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.gov.uk/government/news/support-to-the-uks-regulators",
+   "why": "a button named \"Accept additional cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 27,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [
+     "tab, selected, Consent"
+    ],
+    "contains": [],
+    "lines": [
+     "tab, selected, Consent"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q2/lintaine-court",
+   "why": "a button named \"Allow all\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 1,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/appropriate-safeguards/what-are-standard-data-protection-clauses-the-uk-idta-and-the-addendum/",
+   "why": "a button named \"Accept non-essential cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 3,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://bathingwaters.sepa.org.uk/",
+   "why": "a button named \"Allow all\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 2,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "why": "a button named \"Accept cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 7,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "lines": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "lines": [
+     "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+     "form, OK, I accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://data.southwark.gov.uk/data-catalog-explorer/",
+   "why": "a button named \"I Accept Cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 2,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2",
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2"
+    ],
+    "lines": [
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2",
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [
+     "Cookies on MOJ Design System, region, heading, level 2, Cookies on MOJ Design System",
+     "button, Accept analytics cookies"
+    ],
+    "contains": [
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2",
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2"
+    ],
+    "lines": [
+     "Cookies on MOJ Design System, region, heading, level 2, Cookies on MOJ Design System",
+     "button, Accept analytics cookies"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://design-patterns.service.justice.gov.uk/components/filter/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 2,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2",
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2"
+    ],
+    "lines": [
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2",
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [
+     "Cookies on MOJ Design System, region, heading, level 2, Cookies on MOJ Design System",
+     "button, Accept analytics cookies"
+    ],
+    "contains": [
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2",
+     "Cookies on MOJ Design System, region, Cookies on MOJ Design System, heading, level 2"
+    ],
+    "lines": [
+     "Cookies on MOJ Design System, region, heading, level 2, Cookies on MOJ Design System",
+     "button, Accept analytics cookies"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://design-patterns.service.justice.gov.uk/components/scrollable-pane/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 3,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, link",
+     "Cookie banner, link"
+    ],
+    "lines": [
+     "Cookie banner, link",
+     "Cookie banner, link"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, link"
+    ],
+    "lines": [
+     "Cookie banner, link"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://design-system.service.gov.uk/components/accordion/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 3,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, link",
+     "Cookie banner, link"
+    ],
+    "lines": [
+     "Cookie banner, link",
+     "Cookie banner, link"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, link"
+    ],
+    "lines": [
+     "Cookie banner, link"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://design-system.service.gov.uk/components/checkboxes/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 3,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, link",
+     "Cookie banner, link"
+    ],
+    "lines": [
+     "Cookie banner, link",
+     "Cookie banner, link"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, link"
+    ],
+    "lines": [
+     "Cookie banner, link"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://design-system.service.gov.uk/components/date-input/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 3,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, link",
+     "Cookie banner, link"
+    ],
+    "lines": [
+     "Cookie banner, link",
+     "Cookie banner, link"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, link"
+    ],
+    "lines": [
+     "Cookie banner, link"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://design-system.service.gov.uk/components/radios/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 3,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, link",
+     "Cookie banner component, link"
+    ],
+    "lines": [
+     "Cookie banner, link",
+     "Cookie banner component, link"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, link",
+     "Cookie banner component, link"
+    ],
+    "lines": [
+     "Cookie banner, link",
+     "Cookie banner component, link"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://design-system.service.gov.uk/components/skip-link/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 3,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, link",
+     "Cookie banner, link"
+    ],
+    "lines": [
+     "Cookie banner, link",
+     "Cookie banner, link"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, link"
+    ],
+    "lines": [
+     "Cookie banner, link"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://design-system.service.gov.uk/components/tabs/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 3,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, link",
+     "Cookie banner, link"
+    ],
+    "lines": [
+     "Cookie banner, link",
+     "Cookie banner, link"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, link"
+    ],
+    "lines": [
+     "Cookie banner, link"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://design-system.service.gov.uk/components/text-input/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://european-union.europa.eu/index_en",
+   "why": "a link named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 1,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false,
+    "unread": "no record of this side to read (the emulator timed out, or the fleet has none)"
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://ico.org.uk/action-weve-taken/enforcement/",
+   "why": "a button named \"Accept non-essential cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 6,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+   "why": "a button named \"Accept cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 7,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://reports.ofsted.gov.uk/search?q=school",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 9,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://service-manual.nhs.uk/design-system/components/table",
+   "why": "a button named \"I'm OK with analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 21,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 11,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Your cookie settings, heading, level 2",
+     "Accept all cookies, button"
+    ],
+    "lines": [
+     "Your cookie settings, heading, level 2",
+     "Accept all cookies, button"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [
+     "heading, level 2, Your cookie settings"
+    ],
+    "contains": [
+     "Your cookie settings, heading, level 2",
+     "Accept all cookies, button"
+    ],
+    "lines": [
+     "heading, level 2, Your cookie settings",
+     "Your cookie settings, heading, level 2"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://tfl.gov.uk/plan-a-journey/",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://the-internet.herokuapp.com/login",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 62,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://weather.metoffice.gov.uk/warnings-and-advice/uk-warnings",
+   "why": "a button named \"Accept All\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, region, Make It Your Own, dialog",
+     "Cookie banner, region, Make It Your Own, dialog"
+    ],
+    "lines": [
+     "Cookie banner, region, Make It Your Own, dialog",
+     "Cookie banner, region, Make It Your Own, dialog"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [
+     "Cookie banner, region, Make It Your Own, dialog"
+    ],
+    "lines": [
+     "Cookie banner, region, Make It Your Own, dialog"
+    ],
+    "surface": true
+   },
+   "outcome": "not-matched",
+   "url": "https://www.adobe.com/",
+   "why": "2 dialog or cookie region (region \"Cookie banner\", dialog \"Make It Your Own\") and no control in the list; controls that look like a choice: [\"Cookie Settings\"]"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.british-history.ac.uk/catalogue",
+   "why": "a button named \"Accept All Cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://www.dropbox.com/",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 38,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.gla.ac.uk/undergraduate/degrees/",
+   "why": "a button named \"accept all\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.gov.scot/about/",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+   "why": "a button named \"Accept additional cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.gov.uk/vehicle-tax",
+   "why": "a button named \"Accept additional cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, link"
+    ],
+    "lines": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, link"
+    ],
+    "surface": true
+   },
+   "fleet": {
+    "begins": [
+     "Cookies on GOV dot WALES, banner landmark"
+    ],
+    "contains": [
+     "Cookies on GOV dot WALES, banner landmark"
+    ],
+    "lines": [
+     "Cookies on GOV dot WALES, banner landmark",
+     "Cookies on GOV dot WALES, banner landmark"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.gov.wales/statistics-and-research",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.historicenvironment.scot/visit/all/edinburgh-castle/",
+   "why": "a button named \"Accept all and close\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 24,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.hubspot.com/",
+   "why": "a button named \"Accept all\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 31,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.leeds.ac.uk/undergraduate",
+   "why": "a button named \"I'm ok with that\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.mygov.scot/browse/benefits",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 4,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.mygov.scot/scottish-child-payment",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 6,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nationalarchives.gov.uk/about-us/",
+   "why": "a button named \"Accept cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 13,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.networkrail.co.uk/careers/",
+   "why": "a button named \"Allow all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 10,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nhs.uk/conditions/",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 11,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nhs.uk/service-search/find-a-gp",
+   "why": "a button named \"Accept analytics cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [
+     "Cookie compliance banner"
+    ],
+    "contains": [],
+    "lines": [
+     "Cookie compliance banner"
+    ],
+    "surface": true
+   },
+   "outcome": "given",
+   "url": "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing",
+   "why": "a button named \"Accept cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 7,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.notion.com/",
+   "why": "a button named \"Accept all\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nrscotland.gov.uk/publications/",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 5,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.nrscotland.gov.uk/statistics-and-data/",
+   "why": "a button named \"Accept all cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 8,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained",
+   "why": "a button named \"Accept all\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 9,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "given",
+   "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+   "why": "a button named \"Accept additional cookies\", activated by mouse; the control is gone after it"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://www.w3.org/WAI/demos/bad/after/tickets.html",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://www.w3.org/WAI/demos/bad/before/news.html",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://www.w3.org/WAI/tutorials/carousels/structure/",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://www.w3.org/WAI/tutorials/forms/instructions/",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://www.w3.org/WAI/tutorials/forms/multi-page/",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://www.w3.org/WAI/tutorials/images/decorative/",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://www.w3.org/WAI/tutorials/images/informative/",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://www.w3.org/WAI/tutorials/menus/flyout/",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://www.w3.org/WAI/tutorials/page-structure/regions/",
+   "why": "no dialog and no cookie region"
+  },
+  {
+   "asymmetric": false,
+   "cookies": 0,
+   "emulator": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "fleet": {
+    "begins": [],
+    "contains": [],
+    "lines": [],
+    "surface": false
+   },
+   "outcome": "no-dialog",
+   "url": "https://www.w3.org/WAI/tutorials/tables/one-header/",
+   "why": "no dialog and no cookie region"
+  }
+ ]
+}

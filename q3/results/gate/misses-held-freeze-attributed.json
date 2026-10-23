@@ -1,0 +1,1745 @@
+[
+ {
+  "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38",
+  "channel": "headings",
+  "i": 5,
+  "expected": "RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38",
+  "channel": "graphics",
+  "i": 0,
+  "expected": "main landmark, To get missing image descriptions, open the context menu., Unlabelled graphic",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "graphics",
+  "class": "prompt"
+ },
+ {
+  "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38",
+  "channel": "links",
+  "i": 21,
+  "expected": "Skip to end, same page, link",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "prompt-downstream"
+ },
+ {
+  "url": "https://european-union.europa.eu/contact-eu/social-media-channels_en",
+  "channel": "formFields",
+  "i": 27,
+  "expected": "section, Filter by type of account, list, clickable, Any type of account",
+  "predicted": "Filter by type of account, list, clickable",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://european-union.europa.eu/contact-eu/social-media-channels_en",
+  "channel": "formFields",
+  "i": 28,
+  "expected": "Filter by topic, list, clickable, Any EU topic",
+  "predicted": "Filter by topic, list, clickable",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://european-union.europa.eu/contact-eu/social-media-channels_en",
+  "channel": "formFields",
+  "i": 29,
+  "expected": "Filter by institution or agency, list, clickable, Any institution or agency",
+  "predicted": "Filter by institution or agency, list, clickable",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://european-union.europa.eu/contact-eu/social-media-channels_en",
+  "channel": "lists",
+  "i": 1,
+  "expected": "main landmark, section, Filter by institution or agency, list, clickable, Any institution or agency",
+  "predicted": "main landmark, section, Filter by institution or agency, list, clickable",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME"
+  ],
+  "kind": "lists",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://european-union.europa.eu/contact-eu/social-media-channels_en",
+  "channel": "lists",
+  "i": 2,
+  "expected": "Filter by topic, list, clickable, Any EU topic",
+  "predicted": "Filter by topic, list, clickable",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME"
+  ],
+  "kind": "lists",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://european-union.europa.eu/contact-eu/social-media-channels_en",
+  "channel": "lists",
+  "i": 3,
+  "expected": "Filter by type of account, list, clickable, Any type of account",
+  "predicted": "Filter by type of account, list, clickable",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME"
+  ],
+  "kind": "lists",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/search-all-eu-institutions-and-bodies/european-central-bank-ecb_en",
+  "channel": "lists",
+  "i": 1,
+  "expected": "main landmark, Page contents, navigation landmark, list, with 8 items, Overview, same page, link",
+  "predicted": "main landmark, Page contents, navigation landmark, list, with 8 items",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "lists",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://european-union.europa.eu/principles-countries-history/eu-countries/slovakia_en",
+  "channel": "landmarks",
+  "i": 0,
+  "expected": "clickable, Slovakia's imports and exports in 2025. Interactive Highcharts chart., region, Exports, bar series 2 of 2 with 2 bars., region, With EU Member States, 78.3. Exports., graphic, With the rest of the world, 21.7. Exports., Interactive chart, graphic, Created with Highcharts 13.0.2",
+  "predicted": "clickable, Slovakia's imports and exports in 2025. Interactive Highcharts chart., region, Exports, bar series 2 of 2 with 2 bars., region, With EU Member, graphic, Interactive chart, graphic, Created with Highcharts 13.0.2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://european-union.europa.eu/principles-countries-history/eu-countries/slovakia_en",
+  "channel": "landmarks",
+  "i": 9,
+  "expected": "Exports, bar series 2 of 2 with 2 bars., region, With EU Member States, 78.3. Exports., graphic, With the rest of the world, 21.7. Exports., Interactive chart, graphic, Created with Highcharts 13.0.2",
+  "predicted": "Exports, bar series 2 of 2 with 2 bars., region, With EU Member, graphic, Interactive chart, graphic, Created with Highcharts 13.0.2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "landmarks",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://european-union.europa.eu/principles-countries-history/eu-countries/slovakia_en",
+  "channel": "graphics",
+  "i": 4,
+  "expected": "Interactive chart, Imports, bar series 1 of 2 with 2 bars., region, With EU Member States, 80.7. Imports., graphic, With the rest of the world, 19.3. Imports., graphic, out of region, Exports, bar series 2 of 2 with 2 bars., region, With EU Member States, 78.3. Exports., graphic, With the rest of the world, 21.7. Exports., Interactive chart, graphic, Created with Highcharts 13.0.2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "graphics",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://european-union.europa.eu/principles-countries-history/eu-countries/slovakia_en",
+  "channel": "graphics",
+  "i": 6,
+  "expected": "Imports, bar series 1 of 2 with 2 bars., region, With EU Member States, 80.7. Imports., graphic, Interactive chart, graphic, Created with Highcharts 13.0.2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "graphics",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://european-union.europa.eu/principles-countries-history/eu-countries/slovakia_en",
+  "channel": "graphics",
+  "i": 7,
+  "expected": "With the rest of the world, 19.3. Imports., graphic, Interactive chart, graphic, Created with Highcharts 13.0.2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME"
+  ],
+  "kind": "graphics",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://events.bl.uk/events/making-artists-books",
+  "channel": "landmarks",
+  "i": 2,
+  "expected": "main landmark, complementary landmark, clickable, Book now, link",
+  "predicted": "main landmark, complementary landmark, clickable, Book Now, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "ROLE",
+   "STATE",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://events.bl.uk/events/making-artists-books",
+  "channel": "links",
+  "i": 6,
+  "expected": "complementary landmark, clickable, Book now, link",
+  "predicted": "complementary landmark, clickable, Book Now, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "STATE",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://events.bl.uk/events/self-guided-school-visits",
+  "channel": "landmarks",
+  "i": 2,
+  "expected": "main landmark, complementary landmark, clickable, Book now, link",
+  "predicted": "main landmark, complementary landmark, clickable, Book Now, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "ROLE",
+   "STATE",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://events.bl.uk/events/self-guided-school-visits",
+  "channel": "links",
+  "i": 6,
+  "expected": "complementary landmark, clickable, Book now, link",
+  "predicted": "complementary landmark, clickable, Book Now, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "STATE",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/when-can-an-exemption-apply-to-information-about-other-people-in-a-sar/",
+  "channel": "links",
+  "i": 31,
+  "expected": "Back to top, same page, link",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/appropriate-safeguards/what-are-standard-data-protection-clauses-the-uk-idta-and-the-addendum/",
+  "channel": "links",
+  "i": 31,
+  "expected": "Back to top, same page, link",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+  "channel": "headings",
+  "i": 0,
+  "expected": "content info landmark, Footer menu, navigation landmark, Footer menu, heading, level 2",
+  "predicted": "Footer menu, navigation landmark, Footer menu, heading, level 2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+  "channel": "landmarks",
+  "i": 3,
+  "expected": "link",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+  "channel": "links",
+  "i": 34,
+  "expected": "link",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+  "channel": "links",
+  "i": 63,
+  "expected": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+  "predicted": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+  "channel": "links",
+  "i": 67,
+  "expected": "Log in to MUSE, link, Alt plus, m",
+  "predicted": "Log in to MUSE, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+  "channel": "links",
+  "i": 78,
+  "expected": "You are here, navigation landmark, list, with 5 items, Home, link",
+  "predicted": "main landmark, You are here, navigation landmark, list, with 5 items, Home, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "headings",
+  "i": 0,
+  "expected": "content info landmark, Footer menu, navigation landmark, Footer menu, heading, level 2",
+  "predicted": "Footer menu, navigation landmark, Footer menu, heading, level 2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "headings",
+  "i": 4,
+  "expected": "External online support, link, heading, level 2",
+  "predicted": "External online support, heading, level 2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "headings",
+  "i": 10,
+  "expected": "Financial support, link, heading, level 2",
+  "predicted": "Financial support, heading, level 2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "headings",
+  "i": 16,
+  "expected": "Events and opportunities, link, heading, level 2",
+  "predicted": "Events and opportunities, heading, level 2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "headings",
+  "i": 17,
+  "expected": "Student’s Union committees and societies, link, heading, level 2",
+  "predicted": "Student’s Union committees and societies, heading, level 2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "headings",
+  "i": 21,
+  "expected": "Halal food on campus, link, heading, level 2",
+  "predicted": "Halal food on campus, heading, level 2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "headings",
+  "i": 22,
+  "expected": "Prayer rooms, link, heading, level 2",
+  "predicted": "Prayer rooms, heading, level 2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "headings",
+  "i": 23,
+  "expected": "Jummah (Friday) Prayer, link, heading, level 2",
+  "predicted": "Jummah (Friday) Prayer, heading, level 2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "headings",
+  "i": 24,
+  "expected": "Religious observance and assessments, link, heading, level 2",
+  "predicted": "Religious observance and assessments, heading, level 2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "landmarks",
+  "i": 3,
+  "expected": "link",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "links",
+  "i": 35,
+  "expected": "External online support, link, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "links",
+  "i": 44,
+  "expected": "Financial support, link, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "links",
+  "i": 53,
+  "expected": "Events and opportunities, link, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "links",
+  "i": 56,
+  "expected": "Student’s Union committees and societies, link, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "links",
+  "i": 60,
+  "expected": "Halal food on campus, link, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "links",
+  "i": 62,
+  "expected": "Prayer rooms, link, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "links",
+  "i": 64,
+  "expected": "Jummah (Friday) Prayer, link, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "links",
+  "i": 66,
+  "expected": "Religious observance and assessments, link, heading, level 2",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "links",
+  "i": 79,
+  "expected": "link",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "links",
+  "i": 106,
+  "expected": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+  "predicted": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "links",
+  "i": 110,
+  "expected": "Log in to MUSE, link, Alt plus, m",
+  "predicted": "Log in to MUSE, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "links",
+  "i": 121,
+  "expected": "You are here, navigation landmark, list, with 5 items, Home, link",
+  "predicted": "main landmark, You are here, navigation landmark, list, with 5 items, Home, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+  "channel": "headings",
+  "i": 0,
+  "expected": "content info landmark, Footer menu, navigation landmark, Footer menu, heading, level 2",
+  "predicted": "Footer menu, navigation landmark, Footer menu, heading, level 2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+  "channel": "landmarks",
+  "i": 3,
+  "expected": "link",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+  "channel": "links",
+  "i": 32,
+  "expected": "link",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+  "channel": "links",
+  "i": 60,
+  "expected": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+  "predicted": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+  "channel": "links",
+  "i": 64,
+  "expected": "Log in to MUSE, link, Alt plus, m",
+  "predicted": "Log in to MUSE, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+  "channel": "links",
+  "i": 75,
+  "expected": "You are here, navigation landmark, list, with 3 items, Home, link",
+  "predicted": "main landmark, You are here, navigation landmark, list, with 3 items, Home, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+  "channel": "headings",
+  "i": 0,
+  "expected": "content info landmark, Footer menu, navigation landmark, Footer menu, heading, level 2",
+  "predicted": "Footer menu, navigation landmark, Footer menu, heading, level 2",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+  "channel": "landmarks",
+  "i": 3,
+  "expected": "link",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE"
+  ],
+  "kind": "landmarks",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+  "channel": "links",
+  "i": 64,
+  "expected": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+  "predicted": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+  "channel": "links",
+  "i": 68,
+  "expected": "Log in to MUSE, link, Alt plus, m",
+  "predicted": "Log in to MUSE, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+  "channel": "links",
+  "i": 81,
+  "expected": "You are here, navigation landmark, list, with 3 items, Home, link",
+  "predicted": "main landmark, You are here, navigation landmark, list, with 3 items, Home, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "NAME",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/u1h1et5j1",
+  "channel": "headings",
+  "i": 2,
+  "expected": "list, with 3 items, clickable, Fri 23 Oct., heading, level 3",
+  "predicted": "list, with 3 items, clickable, Fri 23 Oct., heading, level 3, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "COUNT",
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/u1h1et5j1",
+  "channel": "headings",
+  "i": 4,
+  "expected": "clickable, Wed 21 Oct., heading, level 3, same page, link",
+  "predicted": "clickable, Wed 21 Oct., heading, level 3",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/u1h1et5j1",
+  "channel": "headings",
+  "i": 8,
+  "expected": "list, with 3 items, clickable, Wed 21 Oct., heading, level 3, same page, link",
+  "predicted": "list, with 3 items, clickable, Wed 21 Oct., heading, level 3",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "COUNT",
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/u1h1et5j1",
+  "channel": "headings",
+  "i": 9,
+  "expected": "clickable, Fri 23 Oct., heading, level 3",
+  "predicted": "clickable, Fri 23 Oct., heading, level 3, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/u1h1et5j1",
+  "channel": "formFields",
+  "i": 1,
+  "expected": "row 5, Temperature degrees C Wind gust (mph) Visibilitydescription Humidity Pressure (h Pa) Pressure tendency, column 1, Choose wind speed units, combo box, collapsed, mph",
+  "predicted": "row 5, Choose wind speed units, combo box, collapsed, mph",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/u1h1et5j1",
+  "channel": "formFields",
+  "i": 2,
+  "expected": "row 3, Wind direction and speedmph Wind gust (mph) Visibilitydescription Humidity Pressure (h Pa) Pressure tendency, column 1, Choose temperature units, combo box, collapsed, degrees C",
+  "predicted": "row 3, Choose temperature units, combo box, collapsed, degrees C",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/u1h1et5j1",
+  "channel": "formFields",
+  "i": 10,
+  "expected": "row 5, Choose wind speed units, combo box, collapsed, mph",
+  "predicted": "row 9, Choose visibility units, combo box, collapsed, description",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/u1h1et5j1",
+  "channel": "formFields",
+  "i": 11,
+  "expected": "row 9, Temperature degrees C Wind direction and speedmph Wind gust (mph) Humidity Pressure (h Pa) Pressure tendency, column 1, Choose visibility units, combo box, collapsed, description",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/u1h1et5j1",
+  "channel": "links",
+  "i": 45,
+  "expected": "list, with 3 items, clickable, Thu 22 Oct., heading, level 3, same page, link",
+  "predicted": "list, with 3 items, clickable, Fri 23 Oct., heading, level 3, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "COUNT",
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/u1h1et5j1",
+  "channel": "links",
+  "i": 46,
+  "expected": "clickable, Wed 21 Oct., heading, level 3, same page, link",
+  "predicted": "clickable, Thu 22 Oct., heading, level 3, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/u1h1et5j1",
+  "channel": "links",
+  "i": 49,
+  "expected": "Maastricht Zuid Limburg (Netherlands) last 24 hours weather, main landmark, list, with 3 items, clickable, Wed 21 Oct., heading, level 3, same page, link",
+  "predicted": "Maastricht Zuid Limburg (Netherlands) last 24 hours weather, main landmark, list, with 3 items, clickable, Thu 22 Oct., heading, level 3, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/u1h1et5j1",
+  "channel": "links",
+  "i": 50,
+  "expected": "clickable, Thu 22 Oct., heading, level 3, same page, link",
+  "predicted": "clickable, Fri 23 Oct., heading, level 3, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/u1h1et5j1",
+  "channel": "lists",
+  "i": 1,
+  "expected": "Maastricht Zuid Limburg (Netherlands) last 24 hours weather, main landmark, list, with 3 items, clickable, Wed 21 Oct., heading, level 3, same page, link",
+  "predicted": "Maastricht Zuid Limburg (Netherlands) last 24 hours weather, main landmark, list, with 3 items, clickable, Wed 21 Oct., heading, level 3",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "lists",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/ub1fk8vf1",
+  "channel": "headings",
+  "i": 0,
+  "expected": "list, with 3 items, clickable, Fri 23 Oct., heading, level 3",
+  "predicted": "list, with 3 items, clickable, Fri 23 Oct., heading, level 3, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "COUNT",
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/ub1fk8vf1",
+  "channel": "headings",
+  "i": 2,
+  "expected": "clickable, Wed 21 Oct., heading, level 3, same page, link",
+  "predicted": "clickable, Wed 21 Oct., heading, level 3",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/ub1fk8vf1",
+  "channel": "headings",
+  "i": 6,
+  "expected": "list, with 3 items, clickable, Wed 21 Oct., heading, level 3, same page, link",
+  "predicted": "list, with 3 items, clickable, Wed 21 Oct., heading, level 3",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "COUNT",
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/ub1fk8vf1",
+  "channel": "headings",
+  "i": 7,
+  "expected": "clickable, Fri 23 Oct., heading, level 3",
+  "predicted": "clickable, Fri 23 Oct., heading, level 3, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL"
+  ],
+  "kind": "headings",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/ub1fk8vf1",
+  "channel": "formFields",
+  "i": 1,
+  "expected": "row 5, Temperature degrees C Wind gust (mph) Visibilitydescription Humidity Pressure (h Pa) Pressure tendency, column 1, Choose wind speed units, combo box, collapsed, mph",
+  "predicted": "row 5, Choose wind speed units, combo box, collapsed, mph",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/ub1fk8vf1",
+  "channel": "formFields",
+  "i": 2,
+  "expected": "row 3, Wind direction and speedmph Wind gust (mph) Visibilitydescription Humidity Pressure (h Pa) Pressure tendency, column 1, Choose temperature units, combo box, collapsed, degrees C",
+  "predicted": "row 3, Choose temperature units, combo box, collapsed, degrees C",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/ub1fk8vf1",
+  "channel": "formFields",
+  "i": 10,
+  "expected": "row 5, Choose wind speed units, combo box, collapsed, mph",
+  "predicted": "row 9, Choose visibility units, combo box, collapsed, description",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/ub1fk8vf1",
+  "channel": "formFields",
+  "i": 11,
+  "expected": "row 9, Temperature degrees C Wind direction and speedmph Wind gust (mph) Humidity Pressure (h Pa) Pressure tendency, column 1, Choose visibility units, combo box, collapsed, description",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/ub1fk8vf1",
+  "channel": "links",
+  "i": 45,
+  "expected": "list, with 3 items, clickable, Thu 22 Oct., heading, level 3, same page, link",
+  "predicted": "list, with 3 items, clickable, Fri 23 Oct., heading, level 3, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "COUNT",
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/ub1fk8vf1",
+  "channel": "links",
+  "i": 46,
+  "expected": "clickable, Wed 21 Oct., heading, level 3, same page, link",
+  "predicted": "clickable, Thu 22 Oct., heading, level 3, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/ub1fk8vf1",
+  "channel": "links",
+  "i": 49,
+  "expected": "Kerch (Ukraine) last 24 hours weather, main landmark, list, with 3 items, clickable, Wed 21 Oct., heading, level 3, same page, link",
+  "predicted": "Kerch (Ukraine) last 24 hours weather, main landmark, list, with 3 items, clickable, Thu 22 Oct., heading, level 3, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/ub1fk8vf1",
+  "channel": "links",
+  "i": 50,
+  "expected": "clickable, Thu 22 Oct., heading, level 3, same page, link",
+  "predicted": "clickable, Fri 23 Oct., heading, level 3, same page, link",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "links",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/ub1fk8vf1",
+  "channel": "lists",
+  "i": 1,
+  "expected": "Kerch (Ukraine) last 24 hours weather, main landmark, list, with 3 items, clickable, Wed 21 Oct., heading, level 3, same page, link",
+  "predicted": "Kerch (Ukraine) last 24 hours weather, main landmark, list, with 3 items, clickable, Wed 21 Oct., heading, level 3",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "COUNT",
+   "STATE",
+   "NAME",
+   "ROLE",
+   "LEVEL",
+   "STATE",
+   "ROLE"
+  ],
+  "kind": "lists",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/",
+  "channel": "formFields",
+  "i": 1,
+  "expected": "search landmark, Open search, button, collapsed",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "buttons",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/",
+  "channel": "formFields",
+  "i": 2,
+  "expected": "Close search, button, expanded",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "buttons",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.historicenvironment.scot/visit/all/doune-castle/shop/",
+  "channel": "formFields",
+  "i": 4,
+  "expected": "search landmark, Open search, button, collapsed",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "buttons",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.historicenvironment.scot/visit/all/doune-castle/shop/",
+  "channel": "formFields",
+  "i": 5,
+  "expected": "Close search, button, expanded",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "buttons",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.nrscotland.gov.uk/learning-and-events/first-world-war/battle-of-the-somme-1916/",
+  "channel": "formFields",
+  "i": 0,
+  "expected": "main landmark, Breadcrumb, navigation landmark, main landmark, section, re CAPTCHA, grouping, re CAPTCHA, grouping, I'm not a robot, check box, not checked",
+  "predicted": "main landmark, Breadcrumb, navigation landmark, main landmark, section, re CAPTCHA, grouping, I'm not a robot, check box, not checked",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "ROLE",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.nrscotland.gov.uk/learning-and-events/first-world-war/battle-of-the-somme-1916/",
+  "channel": "formFields",
+  "i": 8,
+  "expected": "re CAPTCHA, grouping, re CAPTCHA, grouping, I'm not a robot, check box, not checked",
+  "predicted": "re CAPTCHA, grouping, I'm not a robot, check box, not checked",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/cy/feed-tariffs-fit/contacts-guidance-and-resources/public-reports-and-data-fit/feed-tariffs-quarterly-report",
+  "channel": "formFields",
+  "i": 16,
+  "expected": "main landmark, Publications and updates, region, English, Date year, menu button, opens list",
+  "predicted": "English, Apply, button",
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE",
+   "NAME",
+   "NAME",
+   "ROLE",
+   "STATE"
+  ],
+  "kind": "formFields",
+  "class": "unexplained"
+ },
+ {
+  "url": "https://www.scotcourts.gov.uk/about-us/news/news/2024/february/success-for-scts-at-international-technology-awards",
+  "channel": "graphics",
+  "i": 4,
+  "expected": "To get missing image descriptions, open the context menu., Unlabelled graphic",
+  "predicted": null,
+  "ok": false,
+  "positional": false,
+  "shape": [
+   "NAME",
+   "NAME",
+   "NAME"
+  ],
+  "kind": "graphics",
+  "class": "prompt"
+ }
+]

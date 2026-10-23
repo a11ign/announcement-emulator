@@ -1,0 +1,86 @@
+{
+ "explained": 19,
+ "oracleVisitedAnnouncements": 19,
+ "pages": {
+  "https://design-patterns.service.justice.gov.uk/components/filter/": {
+   "announcements": [
+    "Clear filters, visited, link",
+    "Filter (example), frame, Clear filters, visited, link"
+   ],
+   "worker": "a11y-worker-16"
+  },
+  "https://european-union.europa.eu/contact-eu/social-media-channels_en": {
+   "announcements": [
+    "search landmark, social-media-channels en, collapsed, visited, same page, link",
+    "banner landmark, search landmark, social-media-channels en, collapsed, visited, same page, link"
+   ],
+   "worker": "a11y-worker-16"
+  },
+  "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/search-all-eu-institutions-and-bodies/european-central-bank-ecb_en": {
+   "announcements": [
+    "search landmark, european-central-bank-ecb en, collapsed, visited, same page, link",
+    "banner landmark, search landmark, european-central-bank-ecb en, collapsed, visited, same page, link"
+   ],
+   "worker": "a11y-worker-13"
+  },
+  "https://european-union.europa.eu/languages-our-websites_en": {
+   "announcements": [
+    "search landmark, languages-our-websites en, collapsed, visited, same page, link",
+    "banner landmark, search landmark, languages-our-websites en, collapsed, visited, same page, link"
+   ],
+   "worker": "a11y-worker-7"
+  },
+  "https://european-union.europa.eu/principles-countries-history/eu-countries/slovakia_en": {
+   "announcements": [
+    "search landmark, slovakia en, collapsed, visited, same page, link",
+    "banner landmark, search landmark, slovakia en, collapsed, visited, same page, link"
+   ],
+   "worker": "a11y-worker-13"
+  },
+  "https://european-union.europa.eu/principles-countries-history/eu-enlargement_en": {
+   "announcements": [
+    "search landmark, eu-enlargement en, collapsed, visited, same page, link",
+    "banner landmark, search landmark, eu-enlargement en, collapsed, visited, same page, link"
+   ],
+   "worker": "a11y-worker-15"
+  },
+  "https://reports.ofsted.gov.uk/search?q=school": {
+   "announcements": [
+    "list, with 1 item, Open, visited, same page, link",
+    "main landmark, list, with 1 item, Open, visited, same page, link"
+   ],
+   "worker": "a11y-worker-16"
+  },
+  "https://weather.metoffice.gov.uk/observations/tcby0ekf5": {
+   "announcements": [
+    "Weather and Climate, visited, same page, link"
+   ],
+   "worker": "a11y-worker-12"
+  },
+  "https://weather.metoffice.gov.uk/observations/u1h1et5j1": {
+   "announcements": [
+    "Weather and Climate, visited, same page, link"
+   ],
+   "worker": "a11y-worker-2"
+  },
+  "https://weather.metoffice.gov.uk/observations/ub1fk8vf1": {
+   "announcements": [
+    "Weather and Climate, visited, same page, link"
+   ],
+   "worker": "a11y-worker-2"
+  },
+  "https://weather.metoffice.gov.uk/observations/xcbzchbyz": {
+   "announcements": [
+    "Weather and Climate, visited, same page, link"
+   ],
+   "worker": "a11y-worker-2"
+  },
+  "https://www.ons.gov.uk/economy/inflationandpriceindices": {
+   "announcements": [
+    "Read this statistical bulletin, visited, same page, link"
+   ],
+   "worker": "a11y-worker-15"
+  }
+ },
+ "unexplained": []
+}

@@ -1,0 +1,103 @@
+{
+ "capturedAt": "2026-10-23T16:16:09.693Z",
+ "channel": "links",
+ "emulator": {
+  "gate.run1": {
+   "entries": 89,
+   "first": [
+    "list, with 7 items, copyright Copyright, link",
+    "Disclaimer, link",
+    "Cymraeg, link"
+   ],
+   "frameHeaderIndexes": [],
+   "onlyInEmulator": [],
+   "onlyInFleet": [
+    "Back to top, same page, link"
+   ],
+   "order": "differentEntries",
+   "start": {
+    "readThrough": {
+     "count": 335,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 89,
+     "nextSteps": 74,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Open Government Licence v 3.0, link",
+     "prevCount": 63,
+     "prevSteps": 74,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Skip to main content, same page, link",
+     "type": "link"
+    }
+   }
+  },
+  "gate.run2": {
+   "entries": 89,
+   "first": [
+    "list, with 7 items, copyright Copyright, link",
+    "Disclaimer, link",
+    "Cymraeg, link"
+   ],
+   "frameHeaderIndexes": [],
+   "onlyInEmulator": [],
+   "onlyInFleet": [
+    "Back to top, same page, link"
+   ],
+   "order": "differentEntries",
+   "start": {
+    "readThrough": {
+     "count": 335,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 89,
+     "nextSteps": 74,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Open Government Licence v 3.0, link",
+     "prevCount": 63,
+     "prevSteps": 74,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Skip to main content, same page, link",
+     "type": "link"
+    }
+   }
+  }
+ },
+ "fleet": {
+  "entries": 90,
+  "first": [
+   "list, with 7 items, copyright Copyright, link",
+   "Disclaimer, link",
+   "Cymraeg, link"
+  ],
+  "frameHeaderIndexes": []
+ },
+ "fleetObserved": {
+  "asked": true,
+  "complete": true,
+  "focusInFrame": null,
+  "stop": {
+   "next": "exhausted",
+   "prev": "exhausted"
+  }
+ },
+ "fleetStart": {
+  "firstFocusIn": {
+   "atMs": 152093,
+   "id": 0,
+   "name": "Cookie options",
+   "type": "focusin"
+  },
+  "focusBeforeReadThroughEnded": false,
+  "focusFrameBeforeSweep": null,
+  "readThrough": {
+   "atMs": 140597,
+   "count": 337,
+   "stopReason": "repeatBottom"
+  }
+ },
+ "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/using-an-exception/what-are-the-exceptions/",
+ "worker": "a11y-worker-16"
+}

@@ -1,0 +1,21 @@
+{
+ "captured": 180,
+ "endedAt": "2026-10-23T17:13:29Z",
+ "failed": [],
+ "pages": 180,
+ "startedAt": "2026-10-23T16:05:37Z",
+ "workers": [
+  "a11y-worker-10",
+  "a11y-worker-12",
+  "a11y-worker-13",
+  "a11y-worker-14",
+  "a11y-worker-15",
+  "a11y-worker-16",
+  "a11y-worker-2",
+  "a11y-worker-3",
+  "a11y-worker-4",
+  "a11y-worker-7",
+  "a11y-worker-8",
+  "a11y-worker-9"
+ ]
+}

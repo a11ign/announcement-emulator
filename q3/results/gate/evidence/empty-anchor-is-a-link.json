@@ -1,0 +1,137 @@
+{
+ "class": "emulator bug",
+ "how NVDA then speaks the breadcrumb": "NVDA announces a landmark only when it is new to the control-field stack of what it spoke last (speech/speech.py:1584-1620, controlFieldStackCache). On the fleet the empty link inside <main> has just been spoken, so \"main landmark\" is not said again at the breadcrumb; in the emulator the empty link is not in the buffer, the previous link is the header menu, and \"main landmark\" is said.",
+ "miss": "You are here, navigation landmark, list, with N items, Home, link (the fleet) / main landmark, You are here, ... (the emulator)",
+ "pages": [
+  "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+  "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+  "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year"
+ ],
+ "probe": {
+  "change": "standin.py line: `or r == 'link'`",
+  "note": "with the one change the empty link and the breadcrumb agree on every page; what is left on each page is the `Alt plus, m` access key, outside the ten shapes",
+  "results": [
+   {
+    "links": {
+     "frozen": [
+      "link",
+      "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+      "Log in to MUSE, link, Alt plus, m",
+      "You are here, navigation landmark, list, with 5 items, Home, link"
+     ],
+     "probe": [
+      "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+      "Log in to MUSE, link, Alt plus, m"
+     ]
+    },
+    "page": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab"
+   },
+   {
+    "links": {
+     "frozen": [
+      "External online support, link, heading, level 2",
+      "Financial support, link, heading, level 2",
+      "Events and opportunities, link, heading, level 2",
+      "Student\u2019s Union committees and societies, link, heading, level 2",
+      "Halal food on campus, link, heading, level 2",
+      "Prayer rooms, link, heading, level 2",
+      "Jummah (Friday) Prayer, link, heading, level 2",
+      "Religious observance and assessments, link, heading, level 2",
+      "link",
+      "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+      "Log in to MUSE, link, Alt plus, m",
+      "You are here, navigation landmark, list, with 5 items, Home, link"
+     ],
+     "probe": [
+      "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+      "Log in to MUSE, link, Alt plus, m"
+     ]
+    },
+    "page": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support"
+   },
+   {
+    "links": {
+     "frozen": [
+      "link",
+      "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+      "Log in to MUSE, link, Alt plus, m",
+      "You are here, navigation landmark, list, with 3 items, Home, link"
+     ],
+     "probe": [
+      "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+      "Log in to MUSE, link, Alt plus, m"
+     ]
+    },
+    "page": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference"
+   },
+   {
+    "links": {
+     "frozen": [
+      "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+      "Log in to MUSE, link, Alt plus, m",
+      "You are here, navigation landmark, list, with 3 items, Home, link"
+     ],
+     "probe": [
+      "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+      "Log in to MUSE, link, Alt plus, m"
+     ]
+    },
+    "page": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year"
+   }
+  ],
+  "variant": "linked"
+ },
+ "what the emulator has": {
+  "node of <a id=\"main-content\">": [
+   {
+    "htmlId": "main-content",
+    "location": {
+     "height": 452,
+     "left": 139,
+     "top": 430,
+     "width": 752
+    },
+    "name": null,
+    "nameFrom": "none",
+    "role": "link",
+    "state": {
+     "offscreen": true
+    },
+    "tag": "a"
+   }
+  ],
+  "note": "role link, no name, no `linked` state (Chromium sets the AX state kLinked only for an anchor with an href)"
+ },
+ "what the fleet read": {
+  "note": "line 19 is a link with no name, which the fleet speaks as \"out of list, main landmark, link\": the first thing in <main> is an <a id=\"main-content\"></a> with no href; the next line is the breadcrumb",
+  "page": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+  "read-through lines 17 to 21": [
+   "button, collapsed, People",
+   "button, collapsed, School",
+   "out of list, main landmark, link",
+   "navigation landmark, heading, level 2, You are here"
+  ]
+ },
+ "why the emulator lacks the link": {
+  "cause": "Chromium on Windows reports STATE_SYSTEM_LINKED for every node whose role is a link; the emulator reports it only when the AX state `linked` is set, so an anchor with no href is not \"in a link\" (gecko_ia2 fillVBuf: in_link, interactive), is not interactive, and an empty node of no text leaves no line in the buffer",
+  "chromium": {
+   "file": "ax_platform_node_win.cc",
+   "lines": [
+    8242,
+    8245
+   ],
+   "text": [
+    "  // Handle STATE_SYSTEM_LINKED",
+    "  if (role == ax::mojom::Role::kLink) {",
+    "    msaa_state |= STATE_SYSTEM_LINKED;",
+    "  }"
+   ]
+  },
+  "emulator": {
+   "file": "emu/standin.py",
+   "line": 211,
+   "text": "if s.get('linked'): out |= CONST['STATE_SYSTEM_LINKED']"
+  }
+ }
+}

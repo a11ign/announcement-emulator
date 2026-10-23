@@ -1,0 +1,107 @@
+{
+ "capturedAt": "2026-10-23T16:17:52.496Z",
+ "channel": "headings",
+ "emulator": {
+  "gate.run1": {
+   "entries": 7,
+   "first": [
+    "Re-use and licensing, heading, level 3",
+    "Terms and policies, heading, level 3",
+    "Footer, heading, level 2"
+   ],
+   "frameHeaderIndexes": [],
+   "onlyInEmulator": [
+    "RTS Flexible Systems Limited v Molkerei Alois M\u00fcller Gmbh and Company KG (UK Production), heading, level 1"
+   ],
+   "onlyInFleet": [
+    "RTS Flexible Systems Limited v Molkerei Alois M\u00fcller Gmbh and Company KG (UK Production), heading, level 2"
+   ],
+   "order": "differentEntries",
+   "start": {
+    "readThrough": {
+     "count": 200,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 7,
+     "nextSteps": 6,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Re-use and licensing, heading, level 3",
+     "prevCount": 7,
+     "prevSteps": 7,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "RTS Flexible Systems Limited v Molkerei Alois M\u00fcller Gmbh and Company KG (UK Production), heading, level 1",
+     "type": "heading"
+    }
+   }
+  },
+  "gate.run2": {
+   "entries": 7,
+   "first": [
+    "Re-use and licensing, heading, level 3",
+    "Terms and policies, heading, level 3",
+    "Footer, heading, level 2"
+   ],
+   "frameHeaderIndexes": [],
+   "onlyInEmulator": [
+    "RTS Flexible Systems Limited v Molkerei Alois M\u00fcller Gmbh and Company KG (UK Production), heading, level 1"
+   ],
+   "onlyInFleet": [
+    "RTS Flexible Systems Limited v Molkerei Alois M\u00fcller Gmbh and Company KG (UK Production), heading, level 2"
+   ],
+   "order": "differentEntries",
+   "start": {
+    "readThrough": {
+     "count": 200,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 7,
+     "nextSteps": 6,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Re-use and licensing, heading, level 3",
+     "prevCount": 7,
+     "prevSteps": 7,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "RTS Flexible Systems Limited v Molkerei Alois M\u00fcller Gmbh and Company KG (UK Production), heading, level 1",
+     "type": "heading"
+    }
+   }
+  }
+ },
+ "fleet": {
+  "entries": 7,
+  "first": [
+   "Re-use and licensing, heading, level 3",
+   "Terms and policies, heading, level 3",
+   "Footer, heading, level 2"
+  ],
+  "frameHeaderIndexes": []
+ },
+ "fleetObserved": {
+  "asked": true,
+  "complete": true,
+  "focusInFrame": null,
+  "stop": {
+   "next": "exhausted",
+   "prev": "exhausted"
+  }
+ },
+ "fleetStart": {
+  "firstFocusIn": {
+   "atMs": 128300,
+   "id": 0,
+   "name": "DIV",
+   "type": "focusin"
+  },
+  "focusBeforeReadThroughEnded": false,
+  "focusFrameBeforeSweep": null,
+  "readThrough": {
+   "atMs": 79489,
+   "count": 202,
+   "stopReason": "repeatBottom"
+  }
+ },
+ "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38",
+ "worker": "a11y-worker-2"
+}

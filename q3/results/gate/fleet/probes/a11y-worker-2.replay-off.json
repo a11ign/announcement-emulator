@@ -1,0 +1,46 @@
+{
+ "capturedAt": "2026-10-23T17:21:57.009Z",
+ "worker": "a11y-worker-2",
+ "status": 500,
+ "capture": {
+  "error": "nothing is serving \"https://replay-probe.test/\" — the browser got no HTTP response at all, so what it displayed is its own error page, not the site",
+  "fault": "page-unreachable",
+  "diagnostics": [
+   {
+    "event": "browserSelected",
+    "atMs": 0,
+    "id": "edge",
+    "name": "Microsoft Edge"
+   },
+   {
+    "event": "browserReady",
+    "atMs": 602,
+    "type": "browserReady",
+    "pid": 4728
+   },
+   {
+    "event": "landedOnRequested",
+    "atMs": 683,
+    "ok": true,
+    "actual": "https://replay-probe.test/",
+    "attempts": 1,
+    "waitedMs": 81,
+    "requested": "https://replay-probe.test/"
+   },
+   {
+    "event": "pageServed",
+    "atMs": 808,
+    "requested": "https://replay-probe.test/",
+    "waitedMs": 125,
+    "polls": 1,
+    "status": 0,
+    "type": "navigate",
+    "url": "chrome-error://chromewebdata/",
+    "responseEnd": 392.10000002384186,
+    "readyState": "loading",
+    "settled": true
+   }
+  ],
+  "reachedPhase": "pageServed"
+ }
+}

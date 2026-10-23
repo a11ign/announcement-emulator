@@ -1,0 +1,12 @@
+misses on the top-10 shapes at the freeze: 10 {'unexplained': 9, 'prompt-downstream': 1}
+all channels: 94 {'unexplained': 91, 'prompt': 2, 'prompt-downstream': 1}
+  left: caselaw.nationalarchives.gov.uk/uksc/2010/38 headings 'RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Pro' -> ''
+  left: ico.org.uk/for-organisations/uk-gdpr-guidance-and-re links 'Back to top, same page, link' -> ''
+  left: ico.org.uk/for-organisations/uk-gdpr-guidance-and-re links 'Back to top, same page, link' -> ''
+  left: sheffield.ac.uk/ijc/people/professional-services-sta links 'You are here, navigation landmark, list, with 5 items, Home, link' -> 'main landmark, You are here, navigation landmark, list, with 5 items, Home, link'
+  left: sheffield.ac.uk/inclusion/religion-belief-and-no-bel links 'You are here, navigation landmark, list, with 5 items, Home, link' -> 'main landmark, You are here, navigation landmark, list, with 5 items, Home, link'
+  left: sheffield.ac.uk/mac/news/one-watch-engineering-stude links 'You are here, navigation landmark, list, with 3 items, Home, link' -> 'main landmark, You are here, navigation landmark, list, with 3 items, Home, link'
+  left: sheffield.ac.uk/speri/news/our-doctoral-researchers- links 'You are here, navigation landmark, list, with 3 items, Home, link' -> 'main landmark, You are here, navigation landmark, list, with 3 items, Home, link'
+  left: www.historicenvironment.scot/visit/all/cnoc-freicead formFields 'Close search, button, expanded' -> ''
+  left: www.historicenvironment.scot/visit/all/doune-castle/ formFields 'Close search, button, expanded' -> ''
+fixes: {}

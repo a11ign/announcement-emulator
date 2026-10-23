@@ -1,0 +1,149 @@
+{
+ "class": "emulator bug",
+ "miss": "Close search, button, expanded (the fleet lists it between Open search and Close notification; the emulator does not reach it)",
+ "pages": [
+  "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/",
+  "https://www.historicenvironment.scot/visit/all/doune-castle/shop/"
+ ],
+ "probe": {
+  "change": "the caret put back on the line of the control that was probed once the probe is over (probe_caret_back.py: a probe of the cause, not an implementation of storage.cpp)",
+  "note": "\"Close search, button, expanded\" agrees on both pages; what is left is the emulator's \"banner landmark\" prefix on \"Open search\", which is not a Gate miss (a shape outside the ten)",
+  "results": [
+   {
+    "formFields": {
+     "frozen": [
+      "search landmark, Open search, button, collapsed",
+      "Close search, button, expanded"
+     ],
+     "probe": [
+      "search landmark, Open search, button, collapsed"
+     ]
+    },
+    "page": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/"
+   },
+   {
+    "formFields": {
+     "frozen": [
+      "search landmark, Open search, button, collapsed",
+      "Close search, button, expanded"
+     ],
+     "probe": [
+      "search landmark, Open search, button, collapsed"
+     ]
+    },
+    "page": "https://www.historicenvironment.scot/visit/all/doune-castle/shop/"
+   }
+  ],
+  "variant": "caret-back"
+ },
+ "what the emulator did": {
+  "keys from the probe on Open menu (key, announced, caret, line of the buffer the caret is on, focus)": [
+   {
+    "caret": 216,
+    "focus": "BODY.|",
+    "key": "shift+f",
+    "lineText": "Open menu",
+    "said": "banner landmark, Primary navigation, navigation landmark, Open menu, button, collapsed"
+   },
+   {
+    "caret": 206,
+    "focus": "UL.mobile-navigation__list js-mob|",
+    "key": "enter",
+    "lineText": "Visit",
+    "said": "banner landmark, Primary navigation, navigation landmark, Visit What's on Learn Protect an"
+   },
+   {
+    "caret": 206,
+    "focus": "UL.mobile-navigation__list js-mob|",
+    "key": "nvda+tab",
+    "lineText": "Visit",
+    "said": "Visit What's on Learn Protect and care About us, list, focused, read only"
+   },
+   {
+    "caret": 206,
+    "focus": "BODY.|",
+    "key": "escape",
+    "lineText": "Open search",
+    "said": ""
+   },
+   {
+    "caret": 141,
+    "focus": "BODY.|",
+    "key": "shift+f",
+    "lineText": "Close notification",
+    "said": "Close notification, button"
+   }
+  ],
+  "note": "Enter moves the caret into the opened menu (offset 206); Escape closes it and the menu's text leaves the buffer; the caret is still at offset 206, which is now the line of \"Open search\"; the next backward step starts before that line and passes \"Open search\"",
+  "page": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/"
+ },
+ "what the fleet did": {
+  "focus events of the probes (page order)": [
+   {
+    "atMs": 46194,
+    "id": 0,
+    "name": "Open menu",
+    "type": "focusin"
+   },
+   {
+    "atMs": 46232,
+    "id": 0,
+    "name": "Open menu",
+    "type": "focusout"
+   },
+   {
+    "atMs": 46235,
+    "id": 1,
+    "name": "UL",
+    "type": "focusin"
+   },
+   {
+    "atMs": 47526,
+    "id": 1,
+    "name": "UL",
+    "type": "focusout"
+   },
+   {
+    "atMs": 50518,
+    "id": 2,
+    "name": "Open search",
+    "type": "focusin"
+   },
+   {
+    "atMs": 50554,
+    "id": 2,
+    "name": "Open search",
+    "type": "focusout"
+   }
+  ],
+  "form fields it listed": [
+   "Close notification, button",
+   "section, Search site by keyword, combo box, collapsed, has auto complete, editable, opens list, Search site by keyword...",
+   "Search, button"
+  ],
+  "note": "after the probe on \"Open menu\" (Enter opens the menu and focus goes into it; Escape closes it) the next backward step stops on \"Open search\""
+ },
+ "why": {
+  "emulator": {
+   "file": "emu/live.py",
+   "line": 55,
+   "note": "refresh builds a new buffer and keeps the old selection as a number; node identifiers are renumbered at every read, so no field can be found again",
+   "text": "sel = (0, 0) if first else L.buffers[self.b._h].sel"
+  },
+  "nvda": {
+   "file": "nvdaHelper/vbufBase/storage.cpp",
+   "lines": [
+    742,
+    760
+   ],
+   "note": "replaceSubtree corrects the selection to \"the deepest field the selection started in that still exists\", relative to that field",
+   "text": [
+    "\t//Find the deepest field the selection started in that still exists,",
+    "\t//and correct the selection so its still positioned accurately relative to that field.",
+    "\tif(!identifierList.empty()) {",
+    "...",
+    "\t\t\tthis->selectionStart=lastAncestorStartOffset+min(lastRelativeSelectionStart,max(lastAncestorNode->length-1,0));"
+   ]
+  }
+ }
+}

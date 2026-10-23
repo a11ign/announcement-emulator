@@ -1,0 +1,500 @@
+{
+ "comparable": 62,
+ "comparableInASurface": 14,
+ "comparableInASurfaceForOneSideOnly": 0,
+ "pages": [
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://caselaw.nationalarchives.gov.uk/courts-and-tribunals/ukftt/credit"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38"
+  },
+  {
+   "asymmetric": false,
+   "comparable": true,
+   "consent": "given",
+   "inASurface": [
+    "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+    "form, OK, I accept all cookies, button"
+   ],
+   "status": "comparable",
+   "url": "https://data.southwark.gov.uk/news/"
+  },
+  {
+   "asymmetric": false,
+   "comparable": true,
+   "consent": "given",
+   "inASurface": [
+    "form, Southwark Data, uses cookies to enhance your use of this site., You can read about the cookies",
+    "form, OK, I accept all cookies, button"
+   ],
+   "status": "comparable",
+   "url": "https://data.southwark.gov.uk/population-and-equalities/map/"
+  },
+  {
+   "comparable": true,
+   "consent": "no-dialog",
+   "status": "comparable",
+   "url": "https://design-patterns.service.justice.gov.uk/components/pagination/examples/prev-next/"
+  },
+  {
+   "asymmetric": false,
+   "comparable": true,
+   "consent": "given",
+   "inASurface": [
+    "Cookies on MOJ Design System, region, heading, level 2, Cookies on MOJ Design System",
+    "button, Accept analytics cookies"
+   ],
+   "status": "comparable",
+   "url": "https://design-patterns.service.justice.gov.uk/components/search/"
+  },
+  {
+   "asymmetric": false,
+   "comparable": true,
+   "consent": "given",
+   "inASurface": [
+    "Cookies on MOJ Design System, region, heading, level 2, Cookies on MOJ Design System",
+    "button, Accept analytics cookies"
+   ],
+   "status": "comparable",
+   "url": "https://design-patterns.service.justice.gov.uk/production/moj-frontend/"
+  },
+  {
+   "asymmetric": false,
+   "comparable": true,
+   "consent": "given",
+   "inASurface": [
+    "Cookie banner, link",
+    "Cookie banner, link"
+   ],
+   "status": "comparable",
+   "url": "https://design-system.service.gov.uk/components/inset-text/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://design-system.service.gov.uk/patterns/bank-details/"
+  },
+  {
+   "comparable": false,
+   "consent": "given",
+   "detail": "not comparable: heading fleet 0 / emulator 14, link fleet 0 / emulator 60, document title fleet 'smartsurvey dot co dot uk slash s slash ' / emulator 'Interruption pages \u2013 GOV.UK Design Syste'",
+   "reason": "document differs",
+   "status": "not comparable: heading fleet 0 / emulator 14, link fleet 0 / emulator 60, document title fleet 'smartsurvey dot co dot uk slash s slash ' / emulator 'Interruption pages \u2013 GOV.UK Design Syste'",
+   "url": "https://design-system.service.gov.uk/patterns/interruption-pages/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://european-union.europa.eu/contact-eu/social-media-channels_en"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/search-all-eu-institutions-and-bodies/european-central-bank-ecb_en"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://european-union.europa.eu/languages-our-websites_en"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://european-union.europa.eu/principles-countries-history/eu-countries/slovakia_en"
+  },
+  {
+   "asymmetric": false,
+   "comparable": true,
+   "consent": "given",
+   "inASurface": [
+    "Cookies policy, region, This site uses cookies. Visit our, link, cookies policy page, or click the l",
+    "same page, link, Accept all cookies"
+   ],
+   "status": "comparable",
+   "url": "https://european-union.europa.eu/principles-countries-history/eu-enlargement_en"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://events.bl.uk/events/making-artists-books"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://events.bl.uk/events/self-guided-school-visits"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://events.bl.uk/profile/fernando-pizarro"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://events.bl.uk/sitemap"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/when-can-an-exemption-apply-to-information-about-other-people-in-a-sar/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/appropriate-safeguards/what-are-standard-data-protection-clauses-the-uk-idta-and-the-addendum/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://service-manual.nhs.uk/content/how-to-write-good-questions-for-forms/test-your-questions"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://service-manual.nhs.uk/standards-and-technology/service-standard-points/10-define-what-success-looks-like-and-be-open-about-how-your-service-is-performing"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://weather.metoffice.gov.uk/observations/u1h1et5j1"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://weather.metoffice.gov.uk/observations/ub1fk8vf1"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.gov.scot/publications/benefit-take-up-strategy-2026-2031-icia/pages/3/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.gov.scot/publications/enhancing-accessibility-adaptability-usability-scotlands-homes-consultation-analysis-report/pages/5/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.gov.uk/employment-tribunal-decisions/e-peers-v-a-collins-2414201-slash-2021"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.gov.uk/government/publications/treaties-monthly-bulletin-february-2013"
+  },
+  {
+   "asymmetric": false,
+   "comparable": true,
+   "consent": "given",
+   "inASurface": [
+    "Cookies on GOV dot WALES, banner landmark",
+    "Cookies on GOV dot WALES, banner landmark"
+   ],
+   "status": "comparable",
+   "url": "https://www.gov.wales/written-statement-independent-qc-investigation"
+  },
+  {
+   "asymmetric": false,
+   "comparable": true,
+   "consent": "given",
+   "inASurface": [
+    "Cookies on GOV dot WALES, banner landmark",
+    "Cookies on GOV dot WALES, banner landmark"
+   ],
+   "status": "comparable",
+   "url": "https://www.gov.wales/written-statement-provision-veterans-mental-health-wales"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.historicenvironment.scot/visit/all/doune-castle/shop/"
+  },
+  {
+   "comparable": false,
+   "consent": "given",
+   "detail": "not comparable: document title fleet 'Lintaine Court Q 2 - 2025 to 2026 Estate' / emulator 'Lintaine Court Q2 - 2025 to 2026 Estate '; a cookie or consent surface is also there: tab, selected, Consent",
+   "reason": "title spoken differently",
+   "status": "not comparable: document title fleet 'Lintaine Court Q 2 - 2025 to 2026 Estate' / emulator 'Lintaine Court Q2 - 2025 to 2026 Estate '",
+   "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q2/lintaine-court"
+  },
+  {
+   "comparable": false,
+   "consent": "given",
+   "detail": "not comparable: document title fleet 'Bellamy Close Q 1 - 2025 to 2026 Estate ' / emulator 'Bellamy Close Q1 - 2025 to 2026 Estate i'; a cookie or consent surface is also there: tab, selected, Consent",
+   "reason": "title spoken differently",
+   "status": "not comparable: document title fleet 'Bellamy Close Q 1 - 2025 to 2026 Estate ' / emulator 'Bellamy Close Q1 - 2025 to 2026 Estate i'",
+   "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q1/bellamy-close"
+  },
+  {
+   "asymmetric": false,
+   "comparable": true,
+   "consent": "given",
+   "inASurface": [
+    "tab, selected, Consent"
+   ],
+   "status": "comparable",
+   "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q1/emlyn-gardens-beverley-crane-lea-longford-mole-wandle-courts"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.mygov.scot/apply-for-blue-badge"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.mygov.scot/energy-performance-certificates"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.mygov.scot/non-disclosure-agreements-nda"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.mygov.scot/seafarer-rights"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-time-period/second-world-war/operation-overlord-and-d-day/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.nationalarchives.gov.uk/explore-the-collection/stories/medieval-irish-roll-with-hidden-grievances/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.nationalarchives.gov.uk/professional-guidance-and-services/our-research-and-academic-collaboration/our-research-projects/research-projects/from-our-students/lgbtq-histories-and-colonial-office-records/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.networkrail.co.uk/stories/four-years-on-im-reminded-by-that-one-decision-to-go-on-the-railway/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.networkrail.co.uk/stories/love-the-railway-heritage-railways/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.nhs.uk/conditions/dementia/living-with-dementia/communication/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.nhs.uk/contraception/methods-of-contraception/contraceptive-diaphragm-or-cap/side-effects-and-risks/"
+  },
+  {
+   "asymmetric": false,
+   "comparable": true,
+   "consent": "given",
+   "inASurface": [
+    "Cookie compliance banner"
+   ],
+   "status": "comparable",
+   "url": "https://www.nidirect.gov.uk/services/broadband-and-mobile-checker"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.nls.uk/collections/stories/printing-and-publishing/the-scotsman/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.nls.uk/collections/stories/scottish-history/james-vi-and-the-union-of-the-crowns/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.nls.uk/privacy/fundraising/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.nls.uk/tools-for-research/introduction-to-estate-papers/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.nrscotland.gov.uk/learning-and-events/first-world-war/battle-of-the-somme-1916/"
+  },
+  {
+   "comparable": false,
+   "consent": "given",
+   "detail": "not comparable: document title fleet 'RIIO-ED 1 online stakeholder forum Ofgem' / emulator 'RIIO-ED1 online stakeholder forum | Ofge'",
+   "reason": "title spoken differently",
+   "status": "not comparable: document title fleet 'RIIO-ED 1 online stakeholder forum Ofgem' / emulator 'RIIO-ED1 online stakeholder forum | Ofge'",
+   "url": "https://www.ofgem.gov.uk/cy/energy-policy-and-regulation/engagement/forums-and-working-groups/riio-ed1-online-stakeholder-forum"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.ofgem.gov.uk/cy/feed-tariffs-fit/contacts-guidance-and-resources/public-reports-and-data-fit/feed-tariffs-quarterly-report"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.ofgem.gov.uk/energy-policy-and-regulation/engagement/forums-and-working-groups/citizens-energy-forum"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.ofgem.gov.uk/energy-policy-and-regulation/engagement/forums-and-working-groups/extension-contestability-sub-group"
+  },
+  {
+   "asymmetric": false,
+   "comparable": true,
+   "consent": "given",
+   "inASurface": [
+    "We use cookies to collect anonymous data to help us improve your site browsing experience.",
+    "Click Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the"
+   ],
+   "status": "comparable",
+   "url": "https://www.scotcourts.gov.uk/about-us/news/news/2023/december/prohibition-of-dropped-footway-parking-double-parking-and-pavement-parking"
+  },
+  {
+   "asymmetric": false,
+   "comparable": true,
+   "consent": "given",
+   "inASurface": [
+    "We use cookies to collect anonymous data to help us improve your site browsing experience.",
+    "Click Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the"
+   ],
+   "status": "comparable",
+   "url": "https://www.scotcourts.gov.uk/about-us/news/news/2023/march/new-local-taxation-chamber-to-be-established-on-1st-april"
+  },
+  {
+   "asymmetric": false,
+   "comparable": true,
+   "consent": "given",
+   "inASurface": [
+    "We use cookies to collect anonymous data to help us improve your site browsing experience.",
+    "Click Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the"
+   ],
+   "status": "comparable",
+   "url": "https://www.scotcourts.gov.uk/about-us/news/news/2024/february/success-for-scts-at-international-technology-awards"
+  },
+  {
+   "asymmetric": false,
+   "comparable": true,
+   "consent": "given",
+   "inASurface": [
+    "We use cookies to collect anonymous data to help us improve your site browsing experience.",
+    "Click Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the"
+   ],
+   "status": "comparable",
+   "url": "https://www.scotcourts.gov.uk/about-us/news/news/2024/may/scts-gender-pay-gap-report-published"
+  },
+  {
+   "comparable": false,
+   "consent": "given",
+   "detail": "not comparable: document title fleet 'A 9 Safety Camera Data Published Transpo' / emulator 'A9 Safety Camera Data Published | Transp'",
+   "reason": "title spoken differently",
+   "status": "not comparable: document title fleet 'A 9 Safety Camera Data Published Transpo' / emulator 'A9 Safety Camera Data Published | Transp'",
+   "url": "https://www.transport.gov.scot/news/a9-safety-camera-data-published/"
+  },
+  {
+   "comparable": true,
+   "consent": "given",
+   "status": "comparable",
+   "url": "https://www.transport.gov.scot/news/improved-road-safety-measures-for-charleston/"
+  },
+  {
+   "comparable": false,
+   "consent": "given",
+   "detail": "not comparable: document title fleet 'M 74 Junction 3A, Daldowie - Weekend Clo' / emulator 'M74 Junction 3A, Daldowie - Weekend Clos'",
+   "reason": "title spoken differently",
+   "status": "not comparable: document title fleet 'M 74 Junction 3A, Daldowie - Weekend Clo' / emulator 'M74 Junction 3A, Daldowie - Weekend Clos'",
+   "url": "https://www.transport.gov.scot/news/m74-junction-3a-daldowie-weekend-closure/"
+  }
+ ],
+ "reasons": {
+  "document differs": 1,
+  "title spoken differently": 5
+ },
+ "total": 68
+}

@@ -1,0 +1,10 @@
+--- a/q3/sweep.py
++++ b/q3/sweep.py
+@@ -203,5 +203,5 @@
+         time.sleep(0.35)
+         if at_end: break
+     time.sleep(2.0)
+-    d.s.eval("window.scrollTo(0, 0)"); time.sleep(0.5)
++    time.sleep(1.5)      # PROBE: the page is left scrolled to its end, as NVDA leaves it on the fleet; its own scroll handlers (a 500 ms rate limit, an IntersectionObserver) run
+     d.refresh()
+

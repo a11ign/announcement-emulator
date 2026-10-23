@@ -1,0 +1,686 @@
+[
+ {
+  "n": 86,
+  "key": "shift+h",
+  "said": "Explore more, heading, level 2",
+  "caret": 2072,
+  "line": 69,
+  "lineText": "Explore more",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 87,
+  "key": "shift+h",
+  "said": "Our head offices, heading, level 2",
+  "caret": 1950,
+  "line": 62,
+  "lineText": "Our head offices",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 88,
+  "key": "shift+h",
+  "said": "General enquiries, heading, level 2",
+  "caret": 1683,
+  "line": 49,
+  "lineText": "General enquiries",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 89,
+  "key": "shift+h",
+  "said": "main landmark, Enjoy the Doune Castle audio guide, heading, level 2",
+  "caret": 1418,
+  "line": 44,
+  "lineText": "Enjoy the Doune Castle audio guide",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 90,
+  "key": "shift+h",
+  "said": "clickable, slide 6 of 6, grouping, Doune Castle Tartan Tea Towel, link, heading, level 3",
+  "caret": 1383,
+  "line": 42,
+  "lineText": "Doune Castle Tartan Tea Towel",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 91,
+  "key": "shift+h",
+  "said": "slide 5 of 6, grouping, Doune Castle Resin Model, link, heading, level 3",
+  "caret": 1353,
+  "line": 40,
+  "lineText": "Doune Castle Resin Model",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 92,
+  "key": "shift+h",
+  "said": "slide 4 of 6, grouping, Doune Castle Hanging Decoration, link, heading, level 3",
+  "caret": 1317,
+  "line": 38,
+  "lineText": "Doune Castle Hanging Decoration",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 93,
+  "key": "shift+h",
+  "said": "slide 3 of 6, grouping, Doune Castle Organic T-Shirt Blue, link, heading, level 3",
+  "caret": 1278,
+  "line": 36,
+  "lineText": "Doune Castle Organic T-Shirt Blue",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 94,
+  "key": "shift+h",
+  "said": "slide 2 of 6, grouping, Doune Castle Guidebook, link, heading, level 3",
+  "caret": 1251,
+  "line": 34,
+  "lineText": "Doune Castle Guidebook",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 95,
+  "key": "shift+h",
+  "said": "slide 1 of 6, grouping, Doune Castle Souvenir Magnet, link, heading, level 3",
+  "caret": 1218,
+  "line": 32,
+  "lineText": "Doune Castle Souvenir Magnet",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 96,
+  "key": "shift+h",
+  "said": "Popular products, heading, level 2",
+  "caret": 1095,
+  "line": 27,
+  "lineText": "Popular products",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 97,
+  "key": "shift+h",
+  "said": "Visit our shop, heading, level 2",
+  "caret": 372,
+  "line": 18,
+  "lineText": "Visit our shop",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 98,
+  "key": "shift+h",
+  "said": "Doune Castle, heading, level 1",
+  "caret": 244,
+  "line": 9,
+  "lineText": "Doune Castle",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 99,
+  "key": "shift+h",
+  "said": "no previous heading",
+  "caret": 244,
+  "line": 9,
+  "lineText": "Doune Castle",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 100,
+  "key": "h",
+  "said": "Visit our shop, heading, level 2",
+  "caret": 372,
+  "line": 18,
+  "lineText": "Visit our shop",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 101,
+  "key": "h",
+  "said": "Popular products, heading, level 2",
+  "caret": 1095,
+  "line": 27,
+  "lineText": "Popular products",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 102,
+  "key": "h",
+  "said": "clickable, slide 1 of 6, grouping, Doune Castle Souvenir Magnet, link, heading, level 3",
+  "caret": 1218,
+  "line": 32,
+  "lineText": "Doune Castle Souvenir Magnet",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 103,
+  "key": "h",
+  "said": "slide 2 of 6, grouping, Doune Castle Guidebook, link, heading, level 3",
+  "caret": 1251,
+  "line": 34,
+  "lineText": "Doune Castle Guidebook",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 104,
+  "key": "h",
+  "said": "slide 3 of 6, grouping, Doune Castle Organic T-Shirt Blue, link, heading, level 3",
+  "caret": 1278,
+  "line": 36,
+  "lineText": "Doune Castle Organic T-Shirt Blue",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 105,
+  "key": "h",
+  "said": "slide 4 of 6, grouping, Doune Castle Hanging Decoration, link, heading, level 3",
+  "caret": 1317,
+  "line": 38,
+  "lineText": "Doune Castle Hanging Decoration",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 106,
+  "key": "h",
+  "said": "slide 5 of 6, grouping, Doune Castle Resin Model, link, heading, level 3",
+  "caret": 1353,
+  "line": 40,
+  "lineText": "Doune Castle Resin Model",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 107,
+  "key": "h",
+  "said": "slide 6 of 6, grouping, Doune Castle Tartan Tea Towel, link, heading, level 3",
+  "caret": 1383,
+  "line": 42,
+  "lineText": "Doune Castle Tartan Tea Towel",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 108,
+  "key": "h",
+  "said": "Enjoy the Doune Castle audio guide, heading, level 2",
+  "caret": 1418,
+  "line": 44,
+  "lineText": "Enjoy the Doune Castle audio guide",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 109,
+  "key": "h",
+  "said": "content info landmark, General enquiries, heading, level 2",
+  "caret": 1683,
+  "line": 49,
+  "lineText": "General enquiries",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 110,
+  "key": "h",
+  "said": "Our head offices, heading, level 2",
+  "caret": 1950,
+  "line": 62,
+  "lineText": "Our head offices",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 111,
+  "key": "h",
+  "said": "Explore more, heading, level 2",
+  "caret": 2072,
+  "line": 69,
+  "lineText": "Explore more",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 112,
+  "key": "h",
+  "said": "no next heading",
+  "caret": 2072,
+  "line": 69,
+  "lineText": "Explore more",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 113,
+  "key": "shift+d",
+  "said": "main landmark, Tertiary navigation, navigation landmark, list, with 4 items, Overview, lin",
+  "caret": 326,
+  "line": 14,
+  "lineText": "Overview",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 114,
+  "key": "shift+d",
+  "said": "Breadcrumbs, navigation landmark, list, with 2 items, Home, link",
+  "caret": 225,
+  "line": 7,
+  "lineText": "Home",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 115,
+  "key": "shift+d",
+  "said": "banner landmark, Primary navigation, navigation landmark, Open menu, button, collapsed",
+  "caret": 216,
+  "line": 6,
+  "lineText": "Open menu",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 116,
+  "key": "shift+d",
+  "said": "search landmark, Open search, button, collapsed",
+  "caret": 205,
+  "line": 5,
+  "lineText": "Open search",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 117,
+  "key": "shift+d",
+  "said": "Historic Environment Scotland - Go to homepage, graphic, link",
+  "caret": 159,
+  "line": 4,
+  "lineText": "Historic Environment Scotland - Go to homepage",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 118,
+  "key": "shift+d",
+  "said": "no previous landmark",
+  "caret": 159,
+  "line": 4,
+  "lineText": "Historic Environment Scotland - Go to homepage",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 119,
+  "key": "d",
+  "said": "search landmark, Open search, button, collapsed",
+  "caret": 205,
+  "line": 5,
+  "lineText": "Open search",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 120,
+  "key": "d",
+  "said": "Primary navigation, navigation landmark, Open menu, button, collapsed",
+  "caret": 216,
+  "line": 6,
+  "lineText": "Open menu",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 121,
+  "key": "d",
+  "said": "main landmark, Breadcrumbs, navigation landmark, list, with 2 items, Home, link",
+  "caret": 225,
+  "line": 7,
+  "lineText": "Home",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 122,
+  "key": "d",
+  "said": "Tertiary navigation, navigation landmark, list, with 4 items, Overview, link",
+  "caret": 326,
+  "line": 14,
+  "lineText": "Overview",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 123,
+  "key": "d",
+  "said": "content info landmark, Historic Environment Scotland logo, graphic",
+  "caret": 1649,
+  "line": 48,
+  "lineText": "Historic Environment Scotland logo",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 124,
+  "key": "d",
+  "said": "no next landmark",
+  "caret": 1649,
+  "line": 48,
+  "lineText": "Historic Environment Scotland logo",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 125,
+  "key": "shift+f",
+  "said": "main landmark, Next slide, button",
+  "caret": 1208,
+  "line": 31,
+  "lineText": "Next slide",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 126,
+  "key": "shift+f",
+  "said": "Previous slide, button, unavailable",
+  "caret": 1194,
+  "line": 30,
+  "lineText": "Previous slide",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 127,
+  "key": "shift+f",
+  "said": "Book now, button",
+  "caret": 274,
+  "line": 11,
+  "lineText": "Book now",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 128,
+  "key": "shift+f",
+  "said": "banner landmark, Primary navigation, navigation landmark, Open menu, button, collapsed",
+  "caret": 216,
+  "line": 6,
+  "lineText": "Open menu",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 129,
+  "key": "enter",
+  "said": "banner landmark, Primary navigation, navigation landmark, Visit What's on Learn Protect an",
+  "caret": 206,
+  "line": 6,
+  "lineText": "Visit",
+  "focus": "UL.mobile-navigation__list js-mob|"
+ },
+ {
+  "n": 130,
+  "key": "nvda+tab",
+  "said": "Visit What's on Learn Protect and care About us, list, focused, read only",
+  "caret": 206,
+  "line": 6,
+  "lineText": "Visit",
+  "focus": "UL.mobile-navigation__list js-mob|"
+ },
+ {
+  "n": 131,
+  "key": "escape",
+  "said": "",
+  "caret": 206,
+  "line": 5,
+  "lineText": "Open search",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 132,
+  "key": "shift+f",
+  "said": "Close notification, button",
+  "caret": 141,
+  "line": 3,
+  "lineText": "Close notification",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 133,
+  "key": "shift+f",
+  "said": "no previous form field",
+  "caret": 141,
+  "line": 3,
+  "lineText": "Close notification",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 134,
+  "key": "f",
+  "said": "banner landmark, search landmark, Open search, button, collapsed",
+  "caret": 205,
+  "line": 5,
+  "lineText": "Open search",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 135,
+  "key": "enter",
+  "said": "banner landmark, search landmark, section, Search site by keyword, Search site by keyword,",
+  "caret": 197,
+  "line": 5,
+  "lineText": "Search site by keyword",
+  "focus": "DIV.search__inner js-search__inner|"
+ },
+ {
+  "n": 136,
+  "key": "nvda+tab",
+  "said": "Looking for events or publications Search on our What's on page or Publications page., sec",
+  "caret": 197,
+  "line": 5,
+  "lineText": "Search site by keyword",
+  "focus": "DIV.search__inner js-search__inner|"
+ },
+ {
+  "n": 137,
+  "key": "escape",
+  "said": "",
+  "caret": 197,
+  "line": 5,
+  "lineText": "Search site by keyword",
+  "focus": "DIV.search__inner js-search__inner|"
+ },
+ {
+  "n": 138,
+  "key": "f",
+  "said": "section, Search site by keyword, combo box, collapsed, has auto complete, editable, opens ",
+  "caret": 219,
+  "line": 6,
+  "lineText": " ",
+  "focus": "DIV.search__inner js-search__inner|"
+ },
+ {
+  "n": 139,
+  "key": "enter",
+  "said": "form landmark",
+  "caret": 219,
+  "line": 6,
+  "lineText": " ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 140,
+  "key": "nvda+tab",
+  "said": "Search site by keyword, combo box, focused, collapsed, has auto complete, editable, Search",
+  "caret": 219,
+  "line": 6,
+  "lineText": " ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 141,
+  "key": "escape",
+  "said": "",
+  "caret": 219,
+  "line": 6,
+  "lineText": " ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 142,
+  "key": "f",
+  "said": "Search, button",
+  "caret": 220,
+  "line": 7,
+  "lineText": "Search",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 143,
+  "key": "f",
+  "said": "Primary navigation, navigation landmark, Open menu, button, collapsed",
+  "caret": 311,
+  "line": 9,
+  "lineText": "Open menu",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 144,
+  "key": "f",
+  "said": "no next form field",
+  "caret": 311,
+  "line": 9,
+  "lineText": "Open menu",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 145,
+  "key": "shift+g",
+  "said": "Historic Environment Scotland - Go to homepage, graphic, link",
+  "caret": 139,
+  "line": 3,
+  "lineText": "Historic Environment Scotland - Go to homepage",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 146,
+  "key": "shift+g",
+  "said": "no previous graphic",
+  "caret": 139,
+  "line": 3,
+  "lineText": "Historic Environment Scotland - Go to homepage",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 147,
+  "key": "g",
+  "said": "no next graphic",
+  "caret": 139,
+  "line": 3,
+  "lineText": "Historic Environment Scotland - Go to homepage",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 148,
+  "key": "shift+k",
+  "said": "check our closures page, link, Check for closures",
+  "caret": 79,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 149,
+  "key": "shift+k",
+  "said": "no previous link",
+  "caret": 79,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 150,
+  "key": "k",
+  "said": "banner landmark, Historic Environment Scotland - Go to homepage, graphic, link",
+  "caret": 139,
+  "line": 3,
+  "lineText": "Historic Environment Scotland - Go to homepage",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 151,
+  "key": "k",
+  "said": "search landmark, What's on page, link",
+  "caret": 275,
+  "line": 8,
+  "lineText": "Looking for events or publications?Search on our What's on p",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 152,
+  "key": "k",
+  "said": "Publications page, link",
+  "caret": 293,
+  "line": 8,
+  "lineText": "Looking for events or publications?Search on our What's on p",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 153,
+  "key": "k",
+  "said": "no next link",
+  "caret": 293,
+  "line": 8,
+  "lineText": "Looking for events or publications?Search on our What's on p",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 154,
+  "key": "escape",
+  "said": "",
+  "caret": 293,
+  "line": 8,
+  "lineText": "Looking for events or publications?Search on our What's on p",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 155,
+  "key": "control+home",
+  "said": "Weather warnings are in place this weekend and sites may face disruption. Please, link, ch",
+  "caret": 0,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 156,
+  "key": "shift+l",
+  "said": "no previous list",
+  "caret": 0,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 157,
+  "key": "l",
+  "said": "no next list",
+  "caret": 0,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 158,
+  "key": "escape",
+  "said": "",
+  "caret": 0,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 159,
+  "key": "control+home",
+  "said": "Weather warnings are in place this weekend and sites may face disruption. Please, link, ch",
+  "caret": 0,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 160,
+  "key": "shift+m",
+  "said": "no previous frame",
+  "caret": 0,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 161,
+  "key": "m",
+  "said": "no next frame",
+  "caret": 0,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ }
+]

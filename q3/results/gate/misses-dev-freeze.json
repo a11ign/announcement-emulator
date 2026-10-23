@@ -1,0 +1,1075 @@
+{
+ "split": "dev",
+ "pages": [
+  {
+   "url": "https://caselaw.nationalarchives.gov.uk/accessibility-statement",
+   "status": "comparable"
+  },
+  {
+   "url": "https://caselaw.nationalarchives.gov.uk/permissions-and-licensing",
+   "status": "comparable"
+  },
+  {
+   "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/26",
+   "status": "comparable"
+  },
+  {
+   "url": "https://data.southwark.gov.uk/economy-and-employment/map/",
+   "status": "not comparable: document title fleet 'Southwark Data – Economy and Employment ' / emulator 'Southwark Data – Economy & Employment – '"
+  },
+  {
+   "url": "https://data.southwark.gov.uk/economy-and-employment/reports/",
+   "status": "not comparable: document title fleet 'Economy - Ward Borough and Bankside Repo' / emulator 'Economy - Ward | Borough & Bankside | Re'"
+  },
+  {
+   "url": "https://data.southwark.gov.uk/resources/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-patterns.service.justice.gov.uk/components/badge/examples/urgent/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-patterns.service.justice.gov.uk/components/pagination/examples/all-variants/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/cookie-banner/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/cookies/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://events.bl.uk/events/refugees-journey-a-drama-workshop",
+   "status": "comparable"
+  },
+  {
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/exemptions/a-guide-to-the-data-protection-exemptions/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/using-an-exception/what-are-the-exceptions/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://ico.org.uk/for-the-public/your-right-to-get-your-data-deleted/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/community-and-contribution/feed-back-or-share-insights",
+   "status": "comparable"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/components/warning-callout",
+   "status": "comparable"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/patterns/hub-page",
+   "status": "comparable"
+  },
+  {
+   "url": "https://sheffield.ac.uk/smph/people/academic/clinical-medicine/david-g-kiely",
+   "status": "comparable"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/r1qbtmxef",
+   "status": "comparable"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/tcby0ekf5",
+   "status": "comparable"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/xcbzchbyz",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.scot/publications/children-young-peoples-neurodevelopment-support-fund-2026-27-supporting-guidance/pages/10/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.scot/publications/greenhouse-gas-emissions-reporting-local-authorities-scottish-public-bodies-research-scope-3-group-3-emissions/pages/2/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.scot/publications/january-2026-open-market-review-superfast-ultrafast-gigabit-capable-broadband-infrastructure-scotland-outcome-report/pages/4/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.uk/government/news/culture-secretary-appoints-four-new-board-members-at-the-sports-grounds-safety-authority",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.uk/government/news/paralympic-sculpture-presented-to-competition-winner",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.uk/government/news/support-to-the-uks-regulators",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.wales/written-statement-accessibility-welsh-law",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.gov.wales/written-statement-publication-national-school-categorisation-system-categories-year-four",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/biggar-gasworks-museum/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/blackhammer-chambered-cairn/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/chesters-hill-fort/history-and-stories/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q1/philpot-square",
+   "status": "not comparable: document title fleet 'Philpot Square Q 1 - 2025 to 2026 Estate' / emulator 'Philpot Square Q1 - 2025 to 2026 Estate '"
+  },
+  {
+   "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q2/lytton-estate-burne-jones-samuel-richardson-glenallen-houses-the-grange",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nationalarchives.gov.uk/explore-the-collection/stories/revealing-the-corrupt-record-in-14th-century-ireland/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.networkrail.co.uk/stories/rail-companies-urge-customers-to-re-plan-journeys-as-storms-threaten-major-disruption/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.networkrail.co.uk/stories/winning-design-to-improve-smaller-stations/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nhs.uk/medicines/insulin/biphasic-insulin/how-and-when-to-take-biphasic-insulin/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nhs.uk/medicines/nystatin/taking-or-using-nystatin-with-other-medicines-and-herbal-supplements/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nhs.uk/nhs-services/gps/health-services-for-someone-else-family-carer-access/apply-for-family-carer-access-nhs-app/accessibility-statement/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nidirect.gov.uk/articles/making-planning-application",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nidirect.gov.uk/articles/safety-workplace-pension-schemes",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nidirect.gov.uk/articles/using-scaffolding-safely",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nls.uk/about-us/plans-and-policies/corporate-documents/enquiry-policy/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nrscotland.gov.uk/learning-and-events/research-guides/census-1841/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nrscotland.gov.uk/learning-and-events/research-guides/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nrscotland.gov.uk/registration/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.nrscotland.gov.uk/statistics-and-data/nhs-central-register/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.ofgem.gov.uk/energy-company-obligation-eco/contacts-guidance-and-resources/eco-public-reports-and-data",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.scotcourts.gov.uk/about-us/news/news/2026/april/debt-actions-make-up-over-a-quarter-of-civil-business",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.transport.gov.scot/news/forth-road-bridge-reopens/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.transport.gov.scot/news/major-progress-on-haudagain-improvement-scheme/",
+   "status": "comparable"
+  }
+ ],
+ "gate": {
+  "exact": 2844,
+  "total": 2848
+ },
+ "top": [
+  "NAME + ROLE",
+  "NAME + NAME + NAME + NAME + ROLE",
+  "NAME + ROLE + LEVEL",
+  "ROLE + COUNT + NAME + ROLE",
+  "NAME + ROLE + ROLE + COUNT + NAME + ROLE",
+  "NAME + STATE + ROLE",
+  "ROLE + COUNT + NAME",
+  "ROLE + ROLE + COUNT + NAME + ROLE",
+  "NAME + ROLE + ROLE",
+  "NAME + NAME + ROLE"
+ ],
+ "misses": [
+  {
+   "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/26",
+   "channel": "graphics",
+   "i": 0,
+   "expected": "main landmark, To get missing image descriptions, open the context menu., Unlabelled graphic",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "graphics",
+   "class": "prompt"
+  },
+  {
+   "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/26",
+   "channel": "links",
+   "i": 24,
+   "expected": "Skip to end, same page, link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "prompt-downstream"
+  },
+  {
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/using-an-exception/what-are-the-exceptions/",
+   "channel": "links",
+   "i": 31,
+   "expected": "Back to top, same page, link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://ico.org.uk/for-the-public/your-right-to-get-your-data-deleted/",
+   "channel": "links",
+   "i": 31,
+   "expected": "Back to top, same page, link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/patterns/hub-page",
+   "channel": "landmarks",
+   "i": 2,
+   "expected": "Breadcrumb, navigation landmark, Back to Home, link",
+   "predicted": "Breadcrumb, navigation landmark, list, with 1 item, Home, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/patterns/hub-page",
+   "channel": "links",
+   "i": 34,
+   "expected": "Breadcrumb, navigation landmark, Back to Home, link",
+   "predicted": "Breadcrumb, navigation landmark, list, with 1 item, Home, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/patterns/hub-page",
+   "channel": "lists",
+   "i": 5,
+   "expected": "example, frame, clickable, main landmark, list, with 1 item, Order a repeat prescription, link, heading, level 5",
+   "predicted": "example, frame, clickable, Breadcrumb, navigation landmark, list, with 1 item, Home, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "lists",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/smph/people/academic/clinical-medicine/david-g-kiely",
+   "channel": "headings",
+   "i": 0,
+   "expected": "content info landmark, Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "predicted": "Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/smph/people/academic/clinical-medicine/david-g-kiely",
+   "channel": "landmarks",
+   "i": 3,
+   "expected": "link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/smph/people/academic/clinical-medicine/david-g-kiely",
+   "channel": "links",
+   "i": 44,
+   "expected": "link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/smph/people/academic/clinical-medicine/david-g-kiely",
+   "channel": "links",
+   "i": 72,
+   "expected": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+   "predicted": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/smph/people/academic/clinical-medicine/david-g-kiely",
+   "channel": "links",
+   "i": 76,
+   "expected": "Log in to MUSE, link, Alt plus, m",
+   "predicted": "Log in to MUSE, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/smph/people/academic/clinical-medicine/david-g-kiely",
+   "channel": "links",
+   "i": 87,
+   "expected": "You are here, navigation landmark, list, with 6 items, Home, link",
+   "predicted": "main landmark, You are here, navigation landmark, list, with 6 items, Home, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/r1qbtmxef",
+   "channel": "headings",
+   "i": 1,
+   "expected": "clickable, Thu 22 Oct., heading, level 3",
+   "predicted": "clickable, Thu 22 Oct., heading, level 3, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "STATE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/r1qbtmxef",
+   "channel": "headings",
+   "i": 2,
+   "expected": "clickable, Wed 21 Oct., heading, level 3, same page, link",
+   "predicted": "clickable, Wed 21 Oct., heading, level 3",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "STATE",
+    "NAME",
+    "ROLE",
+    "LEVEL",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/r1qbtmxef",
+   "channel": "headings",
+   "i": 6,
+   "expected": "list, with 3 items, clickable, Wed 21 Oct., heading, level 3, same page, link",
+   "predicted": "list, with 3 items, clickable, Wed 21 Oct., heading, level 3",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "LEVEL",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/r1qbtmxef",
+   "channel": "formFields",
+   "i": 1,
+   "expected": "row 5, Temperature degrees C Wind gust (mph) Visibilitydescription Humidity Pressure (h Pa) Pressure tendency, column 1, Choose wind speed units, combo box, collapsed, mph",
+   "predicted": "row 5, Choose wind speed units, combo box, collapsed, mph",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/r1qbtmxef",
+   "channel": "formFields",
+   "i": 2,
+   "expected": "row 3, Wind direction and speedmph Wind gust (mph) Visibilitydescription Humidity Pressure (h Pa) Pressure tendency, column 1, Choose temperature units, combo box, collapsed, degrees C",
+   "predicted": "row 3, Choose temperature units, combo box, collapsed, degrees C",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/r1qbtmxef",
+   "channel": "formFields",
+   "i": 4,
+   "expected": "form landmark",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/r1qbtmxef",
+   "channel": "lists",
+   "i": 3,
+   "expected": "list, with 3 items, clickable, Wed 21 Oct., heading, level 3, same page, link",
+   "predicted": "list, with 3 items, clickable, Wed 21 Oct., heading, level 3",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "LEVEL",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "lists",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/tcby0ekf5",
+   "channel": "headings",
+   "i": 2,
+   "expected": "list, with 3 items, clickable, Fri 23 Oct., heading, level 3",
+   "predicted": "list, with 3 items, clickable, Fri 23 Oct., heading, level 3, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/tcby0ekf5",
+   "channel": "headings",
+   "i": 4,
+   "expected": "clickable, Wed 21 Oct., heading, level 3, same page, link",
+   "predicted": "clickable, Wed 21 Oct., heading, level 3",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "STATE",
+    "NAME",
+    "ROLE",
+    "LEVEL",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/tcby0ekf5",
+   "channel": "headings",
+   "i": 8,
+   "expected": "list, with 3 items, clickable, Wed 21 Oct., heading, level 3, same page, link",
+   "predicted": "list, with 3 items, clickable, Wed 21 Oct., heading, level 3",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "LEVEL",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/tcby0ekf5",
+   "channel": "headings",
+   "i": 9,
+   "expected": "clickable, Fri 23 Oct., heading, level 3",
+   "predicted": "clickable, Fri 23 Oct., heading, level 3, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "STATE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/tcby0ekf5",
+   "channel": "formFields",
+   "i": 1,
+   "expected": "row 5, Temperature degrees C Wind gust (mph) Visibilitydescription Humidity Pressure (h Pa) Pressure tendency, column 1, Choose wind speed units, combo box, collapsed, mph",
+   "predicted": "row 5, Choose wind speed units, combo box, collapsed, mph",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/tcby0ekf5",
+   "channel": "formFields",
+   "i": 2,
+   "expected": "row 3, Wind direction and speedmph Wind gust (mph) Visibilitydescription Humidity Pressure (h Pa) Pressure tendency, column 1, Choose temperature units, combo box, collapsed, degrees C",
+   "predicted": "row 3, Choose temperature units, combo box, collapsed, degrees C",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/tcby0ekf5",
+   "channel": "formFields",
+   "i": 10,
+   "expected": "row 5, Choose wind speed units, combo box, collapsed, mph",
+   "predicted": "row 9, Choose visibility units, combo box, collapsed, description",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/tcby0ekf5",
+   "channel": "formFields",
+   "i": 11,
+   "expected": "row 9, Temperature degrees C Wind direction and speedmph Wind gust (mph) Humidity Pressure (h Pa) Pressure tendency, column 1, Choose visibility units, combo box, collapsed, description",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/tcby0ekf5",
+   "channel": "links",
+   "i": 45,
+   "expected": "list, with 3 items, clickable, Thu 22 Oct., heading, level 3, same page, link",
+   "predicted": "list, with 3 items, clickable, Fri 23 Oct., heading, level 3, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "LEVEL",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/tcby0ekf5",
+   "channel": "links",
+   "i": 46,
+   "expected": "clickable, Wed 21 Oct., heading, level 3, same page, link",
+   "predicted": "clickable, Thu 22 Oct., heading, level 3, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "STATE",
+    "NAME",
+    "ROLE",
+    "LEVEL",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/tcby0ekf5",
+   "channel": "links",
+   "i": 49,
+   "expected": "Karaikal (India) last 24 hours weather, main landmark, list, with 3 items, clickable, Wed 21 Oct., heading, level 3, same page, link",
+   "predicted": "Karaikal (India) last 24 hours weather, main landmark, list, with 3 items, clickable, Thu 22 Oct., heading, level 3, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "LEVEL",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/tcby0ekf5",
+   "channel": "links",
+   "i": 50,
+   "expected": "clickable, Thu 22 Oct., heading, level 3, same page, link",
+   "predicted": "clickable, Fri 23 Oct., heading, level 3, same page, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "STATE",
+    "NAME",
+    "ROLE",
+    "LEVEL",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://weather.metoffice.gov.uk/observations/tcby0ekf5",
+   "channel": "lists",
+   "i": 1,
+   "expected": "Karaikal (India) last 24 hours weather, main landmark, list, with 3 items, clickable, Wed 21 Oct., heading, level 3, same page, link",
+   "predicted": "Karaikal (India) last 24 hours weather, main landmark, list, with 3 items, clickable, Wed 21 Oct., heading, level 3",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "LEVEL",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "lists",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/biggar-gasworks-museum/",
+   "channel": "formFields",
+   "i": 4,
+   "expected": "search landmark, Open search, button, collapsed",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/biggar-gasworks-museum/",
+   "channel": "formFields",
+   "i": 5,
+   "expected": "Close search, button, expanded",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/blackhammer-chambered-cairn/",
+   "channel": "formFields",
+   "i": 4,
+   "expected": "search landmark, Open search, button, collapsed",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/blackhammer-chambered-cairn/",
+   "channel": "formFields",
+   "i": 5,
+   "expected": "Close search, button, expanded",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/chesters-hill-fort/history-and-stories/",
+   "channel": "formFields",
+   "i": 1,
+   "expected": "search landmark, Open search, button, collapsed",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/chesters-hill-fort/history-and-stories/",
+   "channel": "formFields",
+   "i": 2,
+   "expected": "Close search, button, expanded",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.nrscotland.gov.uk/learning-and-events/research-guides/census-1841/",
+   "channel": "formFields",
+   "i": 0,
+   "expected": "main landmark, Breadcrumb, navigation landmark, main landmark, section, re CAPTCHA, grouping, re CAPTCHA, grouping, I'm not a robot, check box, not checked",
+   "predicted": "main landmark, Breadcrumb, navigation landmark, main landmark, section, re CAPTCHA, grouping, I'm not a robot, check box, not checked",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.nrscotland.gov.uk/learning-and-events/research-guides/census-1841/",
+   "channel": "formFields",
+   "i": 8,
+   "expected": "re CAPTCHA, grouping, re CAPTCHA, grouping, I'm not a robot, check box, not checked",
+   "predicted": "re CAPTCHA, grouping, I'm not a robot, check box, not checked",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.nrscotland.gov.uk/registration/",
+   "channel": "formFields",
+   "i": 0,
+   "expected": "main landmark, section, re CAPTCHA, grouping, re CAPTCHA, grouping, I'm not a robot, check box, not checked",
+   "predicted": "main landmark, section, re CAPTCHA, grouping, I'm not a robot, check box, not checked",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.nrscotland.gov.uk/statistics-and-data/nhs-central-register/",
+   "channel": "formFields",
+   "i": 0,
+   "expected": "main landmark, Breadcrumb, navigation landmark, main landmark, section, re CAPTCHA, grouping, re CAPTCHA, grouping, I'm not a robot, check box, not checked",
+   "predicted": "main landmark, Breadcrumb, navigation landmark, main landmark, section, re CAPTCHA, grouping, I'm not a robot, check box, not checked",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.nrscotland.gov.uk/statistics-and-data/nhs-central-register/",
+   "channel": "formFields",
+   "i": 6,
+   "expected": "Close allsections, button, expanded",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.nrscotland.gov.uk/statistics-and-data/nhs-central-register/",
+   "channel": "formFields",
+   "i": 14,
+   "expected": "re CAPTCHA, grouping, re CAPTCHA, grouping, I'm not a robot, check box, not checked",
+   "predicted": "re CAPTCHA, grouping, I'm not a robot, check box, not checked",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "formFields",
+   "class": "unexplained"
+  }
+ ]
+}

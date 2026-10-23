@@ -1,0 +1,124 @@
+{
+ "misses": [
+  {
+   "channel": "headings",
+   "class": "emulator bug",
+   "evidence": [
+    "evidence/page-scroll-state.json"
+   ],
+   "expected": "RTS Flexible Systems Limited v Molkerei Alois M\u00fcller Gmbh and Company KG (UK Production), heading, level 2",
+   "i": 5,
+   "page": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38",
+   "predicted": null,
+   "why": "an element a page shows only once it has been scrolled: ICO \"Back to top, same page, link\"; National Archives heading level 2 \"<title>\" and \"Skip to end, same page, link\""
+  },
+  {
+   "channel": "links",
+   "class": "emulator bug",
+   "evidence": [
+    "evidence/page-scroll-state.json"
+   ],
+   "expected": "Skip to end, same page, link",
+   "i": 21,
+   "page": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38",
+   "predicted": null,
+   "why": "an element a page shows only once it has been scrolled: ICO \"Back to top, same page, link\"; National Archives heading level 2 \"<title>\" and \"Skip to end, same page, link\""
+  },
+  {
+   "channel": "links",
+   "class": "emulator bug",
+   "evidence": [
+    "evidence/page-scroll-state.json"
+   ],
+   "expected": "Back to top, same page, link",
+   "i": 31,
+   "page": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/when-can-an-exemption-apply-to-information-about-other-people-in-a-sar/",
+   "predicted": null,
+   "why": "an element a page shows only once it has been scrolled: ICO \"Back to top, same page, link\"; National Archives heading level 2 \"<title>\" and \"Skip to end, same page, link\""
+  },
+  {
+   "channel": "links",
+   "class": "emulator bug",
+   "evidence": [
+    "evidence/page-scroll-state.json"
+   ],
+   "expected": "Back to top, same page, link",
+   "i": 31,
+   "page": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/appropriate-safeguards/what-are-standard-data-protection-clauses-the-uk-idta-and-the-addendum/",
+   "predicted": null,
+   "why": "an element a page shows only once it has been scrolled: ICO \"Back to top, same page, link\"; National Archives heading level 2 \"<title>\" and \"Skip to end, same page, link\""
+  },
+  {
+   "channel": "links",
+   "class": "emulator bug",
+   "evidence": [
+    "evidence/empty-anchor-is-a-link.json"
+   ],
+   "expected": "You are here, navigation landmark, list, with 5 items, Home, link",
+   "i": 78,
+   "page": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+   "predicted": "main landmark, You are here, navigation landmark, list, with 5 items, Home, link",
+   "why": "You are here, navigation landmark, list, with N items, Home, link (the fleet) / main landmark, You are here, ... (the emulator)"
+  },
+  {
+   "channel": "links",
+   "class": "emulator bug",
+   "evidence": [
+    "evidence/empty-anchor-is-a-link.json"
+   ],
+   "expected": "You are here, navigation landmark, list, with 5 items, Home, link",
+   "i": 121,
+   "page": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "predicted": "main landmark, You are here, navigation landmark, list, with 5 items, Home, link",
+   "why": "You are here, navigation landmark, list, with N items, Home, link (the fleet) / main landmark, You are here, ... (the emulator)"
+  },
+  {
+   "channel": "links",
+   "class": "emulator bug",
+   "evidence": [
+    "evidence/empty-anchor-is-a-link.json"
+   ],
+   "expected": "You are here, navigation landmark, list, with 3 items, Home, link",
+   "i": 75,
+   "page": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+   "predicted": "main landmark, You are here, navigation landmark, list, with 3 items, Home, link",
+   "why": "You are here, navigation landmark, list, with N items, Home, link (the fleet) / main landmark, You are here, ... (the emulator)"
+  },
+  {
+   "channel": "links",
+   "class": "emulator bug",
+   "evidence": [
+    "evidence/empty-anchor-is-a-link.json"
+   ],
+   "expected": "You are here, navigation landmark, list, with 3 items, Home, link",
+   "i": 81,
+   "page": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+   "predicted": "main landmark, You are here, navigation landmark, list, with 3 items, Home, link",
+   "why": "You are here, navigation landmark, list, with N items, Home, link (the fleet) / main landmark, You are here, ... (the emulator)"
+  },
+  {
+   "channel": "formFields",
+   "class": "emulator bug",
+   "evidence": [
+    "evidence/caret-after-a-menu-closes.json"
+   ],
+   "expected": "Close search, button, expanded",
+   "i": 2,
+   "page": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/",
+   "predicted": null,
+   "why": "Close search, button, expanded (the fleet lists it between Open search and Close notification; the emulator does not reach it)"
+  },
+  {
+   "channel": "formFields",
+   "class": "emulator bug",
+   "evidence": [
+    "evidence/caret-after-a-menu-closes.json"
+   ],
+   "expected": "Close search, button, expanded",
+   "i": 5,
+   "page": "https://www.historicenvironment.scot/visit/all/doune-castle/shop/",
+   "predicted": null,
+   "why": "Close search, button, expanded (the fleet lists it between Open search and Close notification; the emulator does not reach it)"
+  }
+ ]
+}
