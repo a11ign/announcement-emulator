@@ -5,7 +5,7 @@ and an access key is announced. Each one's expected strings are read from the ev
 
 What builds the platform tree and the buffer runs without anything built. What runs the emulator over a page (`pages/`, each shaped like the evidence's page, with the scripts the evidence quotes)
 needs the emulator's virtualenv and Chrome (`setup.sh` builds them into $EMU_DOWNLOADS) and is skipped without them."""
-import concurrent.futures, contextlib, functools, http.server, json, os, pathlib, random, socket, subprocess, sys, tempfile, threading, unittest
+import concurrent.futures, contextlib, functools, http.server, json, pathlib, random, socket, subprocess, sys, tempfile, threading, unittest
 
 HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
@@ -100,11 +100,12 @@ def tearDownModule():
     if SITE: SITE.close()
 
 
-def tree(*rows):
-    """A tree from (depth, role, extra) rows, as the extension dumps one: `ix` renumbered by position, `uid` by `uid`."""
-    nodes = []
-    for ix, (depth, role, extra) in enumerate(rows): nodes.append({'depth': depth, 'ix': ix, 'uid': extra.pop('uid', 1000 + ix), 'role': role, 'state': {}, **extra})
-    return standin.build_platform_tree(nodes)
+def nodes_of(rows, uids=True):
+    """The extension's dump of a tree from (depth, role, extra) rows: `ix` is the position, `uid` the row's own or a number made from the position (none, for a tree without them)."""
+    return [{'depth': depth, 'ix': ix, 'state': {}, 'role': role, **({'uid': 1000 + ix} if uids else {}), **extra} for ix, (depth, role, extra) in enumerate(rows)]
+
+
+def tree(*rows): return standin.build_platform_tree(nodes_of(rows))
 
 
 def lines_of(buffer):
@@ -227,7 +228,7 @@ class CaretAfterTheBufferIsRebuilt(unittest.TestCase):
         rows = [(0, 'rootWebArea', {'name': 'page', 'uid': 1}), (1, 'paragraph', {'uid': 2}), (2, 'staticText', {'name': first, 'uid': 3}), (1, 'section', {'uid': 4})]
         if not drop_second: rows += [(2, 'paragraph', {'uid': 5}), (3, 'staticText', {'name': second, 'uid': 6})]
         rows += [(2, 'paragraph', {'uid': 7}), (3, 'staticText', {'name': 'tail', 'uid': 8})]
-        return standin.Builder(standin.build_platform_tree([{**{'depth': d, 'ix': ix, 'state': {}, 'role': r}, **extra} for ix, (d, r, extra) in enumerate(rows)])).build()
+        return standin.Builder(standin.build_platform_tree(nodes_of(rows))).build()
 
     def test_the_text_of_the_page_is_what_the_offsets_below_are_taken_from(self):
         self.assertEqual(lines_of(self.page('aaaa', 'bbbbbb')), [(0, 'aaaa'), (4, 'bbbbbb'), (10, 'tail')])
@@ -283,8 +284,7 @@ class CaretAfterTheBufferIsRebuilt(unittest.TestCase):
         """Without the extension's id the only number a node has is its index, which is renumbered at every read: it is not taken for the node."""
         def page(text):
             rows = [(0, 'rootWebArea', {'name': 'page'}), (1, 'paragraph', {}), (2, 'staticText', {'name': text}), (1, 'paragraph', {}), (2, 'staticText', {'name': 'bbbbbb'})]
-            nodes = [{'depth': d, 'ix': ix, 'state': {}, 'role': r, **extra} for ix, (d, r, extra) in enumerate(rows)]
-            return standin.Builder(standin.build_platform_tree(nodes)).build()
+            return standin.Builder(standin.build_platform_tree(nodes_of(rows, uids=False))).build()
         old = page('aaaa'); old.sel = (6, 6)
         new = page('aaaaaaaaaa'); new.sel = (6, 6)
         new.correct_selection(old.selection_identifiers())

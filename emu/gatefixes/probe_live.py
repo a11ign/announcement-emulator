@@ -13,7 +13,7 @@ os.environ.setdefault('EMU_NVDA_INI', os.path.join(ROOT, 'q3', 'nvda-fleet.ini')
 
 def facade():
     """IAccessible::accKeyboardShortcut over a platform node with and without an access key."""
-    import boot, standin, objlayer
+    import boot, standin, objlayer      # boot first: it puts NVDA's source on the path
     node = lambda **extra: standin.PN({'depth': 0, 'ix': 1, 'role': 'link', 'state': {}, **extra}, None)
     world = objlayer.World(node())
     return {'with': objlayer.Facade(node(accessKey='m'), world).accKeyboardShortcut(0), 'without': objlayer.Facade(node(), world).accKeyboardShortcut(0)}
@@ -54,4 +54,7 @@ def uids(url, port):
 
 if __name__ == '__main__':
     what = sys.argv[1]
-    print(json.dumps(facade() if what == 'facade' else scroll(sys.argv[2], int(sys.argv[3])) if what == 'scroll' else uids(sys.argv[2], int(sys.argv[3]))))
+    if what == 'facade': result = facade()
+    elif what == 'scroll': result = scroll(sys.argv[2], int(sys.argv[3]))
+    else: result = uids(sys.argv[2], int(sys.argv[3]))
+    print(json.dumps(result))
