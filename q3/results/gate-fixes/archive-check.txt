@@ -1,0 +1,10 @@
+ok  c042abfb10f6 sheffield-ac-uk-inclusion-religion-belief-and-no-belief-muslim-student-abffec55
+ok  d4d717a93e6c caselaw-nationalarchives-gov-uk-uksc-2010-38-7704e6df
+ok  5acc84fa7304 sheffield-ac-uk-speri-news-our-doctoral-researchers-network-has-big-pl-a06202c4
+ok  a4d9b075ba1f ico-org-uk-for-organisations-uk-gdpr-guidance-and-resources-individual-41179ae3
+ok  f336e9b810c7 www-historicenvironment-scot-visit-all-doune-castle-shop-e623d336
+ok  84b1b4682e8d sheffield-ac-uk-ijc-people-professional-services-staff-nastaran-bozorg-c5373f0c
+ok  2ce214a0276b www-historicenvironment-scot-visit-all-cnoc-freiceadain-long-cairns-hi-0c2b1049
+ok  0b2ebd7e4079 sheffield-ac-uk-mac-news-one-watch-engineering-student-wins-best-paper-3366e540
+ok  8c0f7a4c83ed ico-org-uk-for-organisations-uk-gdpr-guidance-and-resources-internatio-a8ab83aa
+9 of 9 archives match the sha256 of A11-166's manifest (q3/results/gate/archive-manifest.json)

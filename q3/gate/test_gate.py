@@ -4,7 +4,7 @@ The batch-2 snapshot and the run list need nothing but the committed files."""
 import contextlib, io, sys, os, json, hashlib, shutil, tempfile, unittest
 HERE = os.path.dirname(os.path.abspath(__file__)); Q3 = os.path.dirname(HERE)
 sys.path.insert(0, HERE); sys.path.insert(0, Q3); sys.path.insert(0, os.path.join(Q3, 'remeasure'))
-import snapshot_batch2 as sb, consent_report as cr, comparability as cmp, views, probes, attribute_gate as ag, check, fixed_at_head as fh
+import snapshot_batch2 as sb, consent_report as cr, comparability as cmp, views, probes, attribute_gate as ag, check, fixed_at_head as fh, page_readings as pr
 import corpus_capture as cc, readback as rb
 from split import split_of
 
@@ -214,6 +214,33 @@ class SourcesOfTheQuotedLines(unittest.TestCase):
         usage = io.StringIO()
         with contextlib.redirect_stdout(usage), self.assertRaises(SystemExit): ag.main(['--help'])
         self.assertIn('--repo', usage.getvalue())
+
+
+class PageReadings(unittest.TestCase):
+    ADDRESS = 'https://one.example/a'
+
+    def write_fleet(self, directory, worker, headings):
+        write(os.path.join(directory, cc.slug_of(self.ADDRESS) + '.json'), json.dumps({'worker': worker, 'capturedAt': 'then', 'capture': {'structure': {'headings': headings, 'links': []}}}))
+
+    def write_run(self, directory, k, headings, census):
+        write(os.path.join(directory, f'{cc.slug_of(self.ADDRESS)}.run{k}.json'), json.dumps({'census': {'heading': census, 'link': 3, 'graphic': 0}, 'structure': {'headings': headings, 'links': []}}))
+
+    def test_each_reading_says_which_announcements_it_has_and_a_run_its_census_in_the_order_of_the_runs(self):
+        with tempfile.TemporaryDirectory() as d:
+            one, two, runs = (os.path.join(d, n) for n in ('one', 'two', 'runs')); [os.makedirs(p) for p in (one, two, runs)]
+            self.write_fleet(one, 'w1', ['A, heading, level 2']); self.write_fleet(two, 'w2', [])
+            for k, headings, census in ((10, ['A, heading, level 2'], 8), (2, [], 7)): self.write_run(runs, k, headings, census)
+            got = pr.readings(self.ADDRESS, [('headings', 'A, heading, level 2')], {'first': one, 'second': two}, {'head': runs})
+        self.assertEqual({k: v['has'] for k, v in got['fleet'].items()}, {'first': {'headings=A, heading, level 2': True}, 'second': {'headings=A, heading, level 2': False}})
+        self.assertEqual(list(got['emulator']['head']), ['run2', 'run10'])      # run 2 before run 10
+        self.assertEqual([(r['census']['heading'], r['has']['headings=A, heading, level 2']) for r in got['emulator']['head'].values()], [(7, False), (8, True)])
+
+    def test_the_command_line_names_the_announcements_and_the_readings_and_writes_the_file(self):
+        with tempfile.TemporaryDirectory() as d:
+            self.write_fleet(d, 'w1', ['A, heading, level 2']); out = os.path.join(d, 'out.json')
+            with contextlib.redirect_stdout(io.StringIO()) as shown:
+                self.assertEqual(pr.main([self.ADDRESS, 'headings=A, heading, level 2', '--fleet', f'first={d}', '--out', out]), 0)
+            self.assertEqual(load(out)['fleet']['first']['worker'], 'w1'); self.assertIn('fleet first w1 then 1 of 1', shown.getvalue())
 
 
 class FixedAtHead(unittest.TestCase):

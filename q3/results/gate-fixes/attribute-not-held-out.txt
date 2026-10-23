@@ -1,0 +1,3 @@
+misses on the top-10 shapes at the freeze: 9 {'prompt-downstream': 1, 'bug-fixed': 8}
+all channels: 47 {'prompt': 1, 'prompt-downstream': 1, 'bug-fixed': 39, 'unexplained': 6}
+fixes: {'lazily loaded content': 39}

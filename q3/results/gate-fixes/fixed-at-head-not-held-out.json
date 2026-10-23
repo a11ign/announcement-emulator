@@ -1,0 +1,290 @@
+[
+ {
+  "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38",
+  "channel": "headings",
+  "expected": "RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2",
+  "was": null,
+  "cause": "evidence/page-scroll-state.json",
+  "freeze": {
+   "status": "not reproduced",
+   "reading": "fixed",
+   "now": null
+  },
+  "head": {
+   "status": "page not comparable",
+   "now": null
+  }
+ },
+ {
+  "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38",
+  "channel": "links",
+  "expected": "Skip to end, same page, link",
+  "was": null,
+  "cause": "evidence/page-scroll-state.json",
+  "freeze": {
+   "status": "reproduced",
+   "reading": "still a miss",
+   "now": null
+  },
+  "head": {
+   "status": "page not comparable",
+   "now": null
+  }
+ },
+ {
+  "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/when-can-an-exemption-apply-to-information-about-other-people-in-a-sar/",
+  "channel": "links",
+  "expected": "Back to top, same page, link",
+  "was": null,
+  "cause": "evidence/page-scroll-state.json",
+  "freeze": {
+   "status": "reproduced",
+   "reading": "still a miss",
+   "now": null
+  },
+  "head": {
+   "status": "fixed",
+   "now": null
+  }
+ },
+ {
+  "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/appropriate-safeguards/what-are-standard-data-protection-clauses-the-uk-idta-and-the-addendum/",
+  "channel": "links",
+  "expected": "Back to top, same page, link",
+  "was": null,
+  "cause": "evidence/page-scroll-state.json",
+  "freeze": {
+   "status": "reproduced",
+   "reading": "still a miss",
+   "now": null
+  },
+  "head": {
+   "status": "fixed",
+   "now": null
+  }
+ },
+ {
+  "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+  "channel": "links",
+  "expected": "You are here, navigation landmark, list, with 5 items, Home, link",
+  "was": "main landmark, You are here, navigation landmark, list, with 5 items, Home, link",
+  "cause": "evidence/empty-anchor-is-a-link.json",
+  "freeze": {
+   "status": "reproduced",
+   "reading": "still a miss",
+   "now": "main landmark, You are here, navigation landmark, list, with 5 items, Home, link"
+  },
+  "head": {
+   "status": "fixed",
+   "now": null
+  }
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "links",
+  "expected": "You are here, navigation landmark, list, with 5 items, Home, link",
+  "was": "main landmark, You are here, navigation landmark, list, with 5 items, Home, link",
+  "cause": "evidence/empty-anchor-is-a-link.json",
+  "freeze": {
+   "status": "reproduced",
+   "reading": "still a miss",
+   "now": "main landmark, You are here, navigation landmark, list, with 5 items, Home, link"
+  },
+  "head": {
+   "status": "fixed",
+   "now": null
+  }
+ },
+ {
+  "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+  "channel": "links",
+  "expected": "You are here, navigation landmark, list, with 3 items, Home, link",
+  "was": "main landmark, You are here, navigation landmark, list, with 3 items, Home, link",
+  "cause": "evidence/empty-anchor-is-a-link.json",
+  "freeze": {
+   "status": "reproduced",
+   "reading": "still a miss",
+   "now": "main landmark, You are here, navigation landmark, list, with 3 items, Home, link"
+  },
+  "head": {
+   "status": "fixed",
+   "now": null
+  }
+ },
+ {
+  "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+  "channel": "links",
+  "expected": "You are here, navigation landmark, list, with 3 items, Home, link",
+  "was": "main landmark, You are here, navigation landmark, list, with 3 items, Home, link",
+  "cause": "evidence/empty-anchor-is-a-link.json",
+  "freeze": {
+   "status": "reproduced",
+   "reading": "still a miss",
+   "now": "main landmark, You are here, navigation landmark, list, with 3 items, Home, link"
+  },
+  "head": {
+   "status": "fixed",
+   "now": null
+  }
+ },
+ {
+  "url": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/",
+  "channel": "formFields",
+  "expected": "Close search, button, expanded",
+  "was": null,
+  "cause": "evidence/caret-after-a-menu-closes.json",
+  "freeze": {
+   "status": "reproduced",
+   "reading": "still a miss",
+   "now": null
+  },
+  "head": {
+   "status": "fixed",
+   "now": null
+  }
+ },
+ {
+  "url": "https://www.historicenvironment.scot/visit/all/doune-castle/shop/",
+  "channel": "formFields",
+  "expected": "Close search, button, expanded",
+  "was": null,
+  "cause": "evidence/caret-after-a-menu-closes.json",
+  "freeze": {
+   "status": "reproduced",
+   "reading": "still a miss",
+   "now": null
+  },
+  "head": {
+   "status": "fixed",
+   "now": null
+  }
+ },
+ {
+  "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+  "channel": "links",
+  "expected": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+  "was": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link",
+  "cause": "access key",
+  "freeze": {
+   "status": "reproduced",
+   "reading": "still a miss",
+   "now": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link"
+  },
+  "head": {
+   "status": "fixed",
+   "now": null
+  }
+ },
+ {
+  "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+  "channel": "links",
+  "expected": "Log in to MUSE, link, Alt plus, m",
+  "was": "Log in to MUSE, link",
+  "cause": "access key",
+  "freeze": {
+   "status": "reproduced",
+   "reading": "still a miss",
+   "now": "Log in to MUSE, link"
+  },
+  "head": {
+   "status": "fixed",
+   "now": null
+  }
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "links",
+  "expected": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+  "was": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link",
+  "cause": "access key",
+  "freeze": {
+   "status": "reproduced",
+   "reading": "still a miss",
+   "now": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link"
+  },
+  "head": {
+   "status": "fixed",
+   "now": null
+  }
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "channel": "links",
+  "expected": "Log in to MUSE, link, Alt plus, m",
+  "was": "Log in to MUSE, link",
+  "cause": "access key",
+  "freeze": {
+   "status": "reproduced",
+   "reading": "still a miss",
+   "now": "Log in to MUSE, link"
+  },
+  "head": {
+   "status": "fixed",
+   "now": null
+  }
+ },
+ {
+  "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+  "channel": "links",
+  "expected": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+  "was": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link",
+  "cause": "access key",
+  "freeze": {
+   "status": "reproduced",
+   "reading": "still a miss",
+   "now": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link"
+  },
+  "head": {
+   "status": "fixed",
+   "now": null
+  }
+ },
+ {
+  "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+  "channel": "links",
+  "expected": "Log in to MUSE, link, Alt plus, m",
+  "was": "Log in to MUSE, link",
+  "cause": "access key",
+  "freeze": {
+   "status": "reproduced",
+   "reading": "still a miss",
+   "now": "Log in to MUSE, link"
+  },
+  "head": {
+   "status": "fixed",
+   "now": null
+  }
+ },
+ {
+  "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+  "channel": "links",
+  "expected": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+  "was": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link",
+  "cause": "access key",
+  "freeze": {
+   "status": "reproduced",
+   "reading": "still a miss",
+   "now": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link"
+  },
+  "head": {
+   "status": "fixed",
+   "now": null
+  }
+ },
+ {
+  "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+  "channel": "links",
+  "expected": "Log in to MUSE, link, Alt plus, m",
+  "was": "Log in to MUSE, link",
+  "cause": "access key",
+  "freeze": {
+   "status": "reproduced",
+   "reading": "still a miss",
+   "now": "Log in to MUSE, link"
+  },
+  "head": {
+   "status": "fixed",
+   "now": null
+  }
+ }
+]

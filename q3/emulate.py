@@ -26,7 +26,7 @@ try:
     sweep.anchor_to_top(w)
     lines, reason = sweep.read_through(w)
     res['readThrough'] = {'count': len(lines), 'stopReason': reason}
-    sweep.scroll_where_nvda_left_the_page(w)
+    res['scrolledToCaret'] = sweep.scroll_where_nvda_left_the_page(w)      # whether there was a scroll request of NVDA's caret to deliver, and the page moved
     structure, marks = sweep.structure_sweep(w, deadline)
     res['structure'] = structure; res['sweeps'] = marks; res['actions'] = w.actions; res['errors'] = w.errors
     res['census_after'] = {k: v for k, v in d.census().items() if k != 'roles'}

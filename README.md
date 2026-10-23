@@ -13,6 +13,7 @@ The write-up is `docs/announcement-emulator-spike.md`, with Dates, Q1, Q2, Q3, G
 - **Q2, done.** NVDA's own Python runs on Linux with stand-ins for its Windows modules (`q2/`, `emu/`). On NVDA's own Chrome system tests: 44 of 47 run, 215 of 227 assertions exact, the other 12 attributed.
 - **Q3, measured** (`q3/`): agreement with the fleet's NVDA transcripts on 102 real pages, by element kind and by announcement shape. The tables are in the write-up; the derived data is in `q3/results/`.
 - **Gate.** At least 98% exact agreement on the 10 commonest shapes, every miss explained as an emulator bug or a Windows-only behaviour. **Not passed** on the first reading (97.61%, held out); **passed** on a new, never-read batch of pages with consent given and the emulator frozen first (A11-166: 3,497 of 3,507 = 99.71%, ten misses, each an emulator bug, named and not fixed). See the write-up; what a pass opens (ADR 0047) is the chairman's.
+- **The Gate's bugs, fixed (A11-176, not held out).** The three emulator bugs the Gate named (an anchor with no `href`, the page never scrolled, the caret after a menu closes) and the missing `Alt plus, m` access key are fixed in `emu/` with tests from the Gate's evidence (`emu/gatefixes/`); a fresh fleet reading of the nine pages shows 16 of the 18 rows agreed (`q3/results/gate-fixes/`, the last subsection of `## Re-measure`). The Gate's own figure and `q3/results/gate/` are unchanged.
 
 ## What is in this repository
 

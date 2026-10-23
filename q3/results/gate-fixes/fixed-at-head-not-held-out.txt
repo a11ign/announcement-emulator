@@ -1,0 +1,1 @@
+18 rows: at the freeze {'not reproduced': 1, 'reproduced': 17}; at head {'page not comparable': 2, 'fixed': 16}

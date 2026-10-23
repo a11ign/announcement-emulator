@@ -1,0 +1,864 @@
+{
+ "split": "held",
+ "pages": [
+  {
+   "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38",
+   "status": "comparable"
+  },
+  {
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/when-can-an-exemption-apply-to-information-about-other-people-in-a-sar/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/appropriate-safeguards/what-are-standard-data-protection-clauses-the-uk-idta-and-the-addendum/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+   "status": "comparable"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "status": "comparable"
+  },
+  {
+   "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+   "status": "comparable"
+  },
+  {
+   "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/doune-castle/shop/",
+   "status": "comparable"
+  }
+ ],
+ "gate": {
+  "exact": 706,
+  "total": 715
+ },
+ "top": [
+  "NAME + ROLE",
+  "ROLE + COUNT + NAME + ROLE",
+  "NAME + ROLE + LEVEL",
+  "ROLE + NAME + ROLE + ROLE",
+  "NAME + ROLE + ROLE",
+  "NAME + STATE + ROLE",
+  "NAME + ROLE + NAME",
+  "NAME + ROLE + STATE",
+  "NAME + ROLE + ROLE + COUNT + NAME + ROLE",
+  "ROLE + COUNT + NAME"
+ ],
+ "misses": [
+  {
+   "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38",
+   "channel": "graphics",
+   "i": 0,
+   "expected": "main landmark, To get missing image descriptions, open the context menu., Unlabelled graphic",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "graphics",
+   "class": "prompt"
+  },
+  {
+   "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38",
+   "channel": "links",
+   "i": 21,
+   "expected": "Skip to end, same page, link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "prompt-downstream"
+  },
+  {
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/when-can-an-exemption-apply-to-information-about-other-people-in-a-sar/",
+   "channel": "links",
+   "i": 31,
+   "expected": "Back to top, same page, link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/appropriate-safeguards/what-are-standard-data-protection-clauses-the-uk-idta-and-the-addendum/",
+   "channel": "links",
+   "i": 31,
+   "expected": "Back to top, same page, link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+   "channel": "headings",
+   "i": 0,
+   "expected": "content info landmark, Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "predicted": "Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+   "channel": "landmarks",
+   "i": 3,
+   "expected": "link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+   "channel": "links",
+   "i": 34,
+   "expected": "link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+   "channel": "links",
+   "i": 63,
+   "expected": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+   "predicted": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+   "channel": "links",
+   "i": 67,
+   "expected": "Log in to MUSE, link, Alt plus, m",
+   "predicted": "Log in to MUSE, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+   "channel": "links",
+   "i": 78,
+   "expected": "You are here, navigation landmark, list, with 5 items, Home, link",
+   "predicted": "main landmark, You are here, navigation landmark, list, with 5 items, Home, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "headings",
+   "i": 0,
+   "expected": "content info landmark, Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "predicted": "Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "headings",
+   "i": 4,
+   "expected": "External online support, link, heading, level 2",
+   "predicted": "External online support, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "headings",
+   "i": 10,
+   "expected": "Financial support, link, heading, level 2",
+   "predicted": "Financial support, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "headings",
+   "i": 16,
+   "expected": "Events and opportunities, link, heading, level 2",
+   "predicted": "Events and opportunities, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "headings",
+   "i": 17,
+   "expected": "Student’s Union committees and societies, link, heading, level 2",
+   "predicted": "Student’s Union committees and societies, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "headings",
+   "i": 21,
+   "expected": "Halal food on campus, link, heading, level 2",
+   "predicted": "Halal food on campus, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "headings",
+   "i": 22,
+   "expected": "Prayer rooms, link, heading, level 2",
+   "predicted": "Prayer rooms, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "headings",
+   "i": 23,
+   "expected": "Jummah (Friday) Prayer, link, heading, level 2",
+   "predicted": "Jummah (Friday) Prayer, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "headings",
+   "i": 24,
+   "expected": "Religious observance and assessments, link, heading, level 2",
+   "predicted": "Religious observance and assessments, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "landmarks",
+   "i": 3,
+   "expected": "link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "links",
+   "i": 35,
+   "expected": "External online support, link, heading, level 2",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "links",
+   "i": 44,
+   "expected": "Financial support, link, heading, level 2",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "links",
+   "i": 53,
+   "expected": "Events and opportunities, link, heading, level 2",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "links",
+   "i": 56,
+   "expected": "Student’s Union committees and societies, link, heading, level 2",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "links",
+   "i": 60,
+   "expected": "Halal food on campus, link, heading, level 2",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "links",
+   "i": 62,
+   "expected": "Prayer rooms, link, heading, level 2",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "links",
+   "i": 64,
+   "expected": "Jummah (Friday) Prayer, link, heading, level 2",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "links",
+   "i": 66,
+   "expected": "Religious observance and assessments, link, heading, level 2",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "links",
+   "i": 79,
+   "expected": "link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "links",
+   "i": 106,
+   "expected": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+   "predicted": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "links",
+   "i": 110,
+   "expected": "Log in to MUSE, link, Alt plus, m",
+   "predicted": "Log in to MUSE, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "links",
+   "i": 121,
+   "expected": "You are here, navigation landmark, list, with 5 items, Home, link",
+   "predicted": "main landmark, You are here, navigation landmark, list, with 5 items, Home, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+   "channel": "headings",
+   "i": 0,
+   "expected": "content info landmark, Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "predicted": "Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+   "channel": "landmarks",
+   "i": 3,
+   "expected": "link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+   "channel": "links",
+   "i": 32,
+   "expected": "link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+   "channel": "links",
+   "i": 60,
+   "expected": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+   "predicted": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+   "channel": "links",
+   "i": 64,
+   "expected": "Log in to MUSE, link, Alt plus, m",
+   "predicted": "Log in to MUSE, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+   "channel": "links",
+   "i": 75,
+   "expected": "You are here, navigation landmark, list, with 3 items, Home, link",
+   "predicted": "main landmark, You are here, navigation landmark, list, with 3 items, Home, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+   "channel": "headings",
+   "i": 0,
+   "expected": "content info landmark, Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "predicted": "Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+   "channel": "landmarks",
+   "i": 3,
+   "expected": "link",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE"
+   ],
+   "kind": "landmarks",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+   "channel": "links",
+   "i": 64,
+   "expected": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+   "predicted": "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+   "channel": "links",
+   "i": 68,
+   "expected": "Log in to MUSE, link, Alt plus, m",
+   "predicted": "Log in to MUSE, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+   "channel": "links",
+   "i": 81,
+   "expected": "You are here, navigation landmark, list, with 3 items, Home, link",
+   "predicted": "main landmark, You are here, navigation landmark, list, with 3 items, Home, link",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "kind": "links",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/",
+   "channel": "formFields",
+   "i": 1,
+   "expected": "search landmark, Open search, button, collapsed",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/",
+   "channel": "formFields",
+   "i": 2,
+   "expected": "Close search, button, expanded",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/doune-castle/shop/",
+   "channel": "formFields",
+   "i": 4,
+   "expected": "search landmark, Open search, button, collapsed",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/doune-castle/shop/",
+   "channel": "formFields",
+   "i": 5,
+   "expected": "Close search, button, expanded",
+   "predicted": null,
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  }
+ ]
+}

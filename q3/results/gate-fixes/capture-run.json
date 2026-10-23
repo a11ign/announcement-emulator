@@ -1,0 +1,12 @@
+{
+ "captured": 9,
+ "endedAt": "2026-10-23T22:17:14Z",
+ "failed": [],
+ "pages": 9,
+ "startedAt": "2026-10-23T22:00:50Z",
+ "workers": [
+  "a11y-worker-2",
+  "a11y-worker-3",
+  "a11y-worker-7"
+ ]
+}
