@@ -1,6 +1,6 @@
 # Re-measure with scripted page replay: the same bytes, scripts included, on both sides (A11-165)
 
-**This is the procedure A11-164 (language names) and A11-166 (the new freeze and the Gate) reuse.** It records each page of the corpus once, with its scripts and every resource it loads, and serves that recording to the fleet's Edge and to the emulator's Chrome
+**This is the procedure A11-164 (language names) and A11-166 (the new freeze and the Gate) reuse; A11-166's differences (new pages, consent, the freeze, the verdict) are in `q3/gate/RUNBOOK.md`.** It records each page of the corpus once, with its scripts and every resource it loads, and serves that recording to the fleet's Edge and to the emulator's Chrome
 at the page's own address. Nothing is fetched live while a page is read. Every fleet step is Ansible from the control plane, one box first and then one at a time, with a read-back after each; nothing is changed by hand on a box and no box is reached by ssh from this host.
 Results name workers (`a11y-worker-N`) and `capture-host`, never an address (`check.py` `addresses`).
 
@@ -15,6 +15,7 @@ Web Page Replay needs a Go toolchain built from Chromium's `catapult`, which thi
 
 - a request is answered from the loaded archive by `archive.Archive.find` (exact, then the same path and query parameter names with other values, `fuzzy`); anything else is a `404` with `x-replay: miss`; **no connection to a real server is ever made** (`server_connect` refuses it);
 - a recorded response goes out with its encoding taken off and `cache-control: no-store`, so the browser's cache cannot answer in the archive's place or hold the answer for the next page;
+- a page recorded with consent given has `<archive>.consent.json`: the replay server adds its cookies, as `Set-Cookie`, to the page's documents (navigations) whose host may set them, the same for every client, so the fleet's Edge and the emulator's Chrome hold the consent before any script runs, and the log says how many it added (`consentCookies`);
 - `http://replay.control/use?archive=<file>` loads an archive and clears the log; `http://replay.control/log` returns every request since, each as `exact`, `fuzzy`, `miss` or `blocked`, with the archive's sha256.
 
 ```sh
@@ -40,6 +41,7 @@ python3 q3/replay/record_all.py q3/results/corpus.json $RUN --jobs 6 --manifest 
 ```
 
 `record.mjs` loads each address in the emulator's own Chrome 155 (Edge's user agent, the 1008x872 window, scrolled to the end and back, as `snapshot.mjs` did) through a recording proxy; the scripts stay. The run's certificate authority is made fresh in `$RUN/ca` (its key never leaves it) and Chrome trusts it by its hash.
+**Consent (A11-166).** Every page is recorded with consent already given, so neither side is served a cookie dialog: `record.mjs` first loads the page once in a browser of its own with no proxy, and `consent.mjs` finds the dialog's "accept all" control by role and accessible name from the one list in `consent-names.json` (one list for every page, no entry for a site). If it finds one, it is activated, the cookies the browser then holds are read through CDP, and the recorded load is made with them. `<archive>.consent.json` (`consent.py`), written beside the archive like `served.json`, says what happened: `given` (with the cookies), `no-dialog`, or `not-matched` (a dialog or a cookie-named region and no control of the list: nothing is served, and the page is named); the manifest carries each page's `consent`. `record.mjs --consent <address> <out.json>` runs only that pass.
 **Pass:** exit 0, `102 of 102 addresses recorded`, and every address's `mainStatus` is read: a page that was down when it was recorded (`503` maintenance pages, A11-165 had seven) is recorded as it was and both sides read the same page, but its figures are not those of the live page. **The worker refuses a page the server answered with other than 2xx**, so such a page's archive gets a sidecar (`<archive>.served.json`, written by `record_all.py`) and the replay server answers its own address with status 200, the body as recorded; the manifest carries `servedStatus`, and `check.py` `manifest` fails a page recorded with an error status that is not served as 200. `python3 q3/remeasure/check.py --replay --results $R` has `manifest: ok`.
 
 ## 2. The servers: one for each box, and the archive-only probe
@@ -84,7 +86,7 @@ A worker without a passing history and replay read-back is refused by name. **Pa
 ## 5. The emulator, the same bytes
 
 ```sh
-python3 q3/replay/export_freeze.py 5fbd726 $W/emu-gate        # the Gate figure's freeze, with the one launch change a replay needs (nothing of the emulator's logic)
+python3 q3/replay/export_freeze.py 5fbd726 $W/emu-gate        # the Gate figure's freeze, with the one launch change a replay needs (nothing of the emulator's logic); a commit that already has the launch (A11-165's, so every later one) is exported unchanged
 $PYR q3/replay/with_replay.py --run $RUN --archive <slug>.flows --log <log> -- $PY q3/emulate.py <address> <out.json>      # one page, one run: the wrapper is what run_replayed.py calls
 python3 q3/replay/run_replayed.py $W/oracle $W/emu-gate-out --run $RUN --root $W/emu-gate --split all --runs 2 --jobs 6 --port-base 10100       # 5fbd726 (a run past --timeout, 900 s, is ended with everything it started and its log kept)
 python3 q3/replay/run_replayed.py $W/oracle $W/emu-head-out --run $RUN --root $PWD --split all --runs 2 --jobs 6 --port-base 10500            # head, not held out

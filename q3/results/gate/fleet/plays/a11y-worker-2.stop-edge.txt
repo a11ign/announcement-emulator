@@ -1,0 +1,4 @@
+[WARNING]: Unable to parse /root/control/ansible/inventory.yml as an inventory source
+a11y-worker-2 | CHANGED | rc=0 >>
+0
+

@@ -1,0 +1,60 @@
+[WARNING]: Unable to parse /root/control/ansible/inventory.yml as an inventory source
+
+PLAY [Take one box from behind the replay server] ******************************
+
+TASK [Exactly one box, and the CA to remove] ***********************************
+Friday 23 October 2026  17:21:58 +0000 (0:00:00.010)       0:00:00.010 ******** 
+ok: [a11y-worker-3] => 
+    changed: false
+    msg: All assertions passed
+
+TASK [The box is idle, as the worker says] *************************************
+Friday 23 October 2026  17:21:58 +0000 (0:00:00.036)       0:00:00.047 ******** 
+ok: [a11y-worker-3]
+
+TASK [Edge is stopped, so the next capture starts it without the proxy] ********
+Friday 23 October 2026  17:22:01 +0000 (0:00:02.659)       0:00:02.706 ******** 
+ok: [a11y-worker-3]
+
+TASK [The proxy values are removed] ********************************************
+Friday 23 October 2026  17:22:06 +0000 (0:00:05.512)       0:00:08.219 ******** 
+changed: [a11y-worker-3] => (item=ProxyMode)
+changed: [a11y-worker-3] => (item=ProxyServer)
+changed: [a11y-worker-3] => (item=ProxyBypassList)
+
+TASK [The run's CA is no longer a trusted root] ********************************
+Friday 23 October 2026  17:22:16 +0000 (0:00:10.000)       0:00:18.220 ******** 
+changed: [a11y-worker-3]
+
+TASK [Read the proxy values back] **********************************************
+Friday 23 October 2026  17:22:20 +0000 (0:00:03.477)       0:00:21.698 ******** 
+ok: [a11y-worker-3] => (item=ProxyMode)
+ok: [a11y-worker-3] => (item=ProxyServer)
+ok: [a11y-worker-3] => (item=ProxyBypassList)
+
+TASK [Read the certificate store back] *****************************************
+Friday 23 October 2026  17:22:27 +0000 (0:00:07.496)       0:00:29.194 ******** 
+ok: [a11y-worker-3]
+
+TASK [Refuse to call this box restored if a value or the certificate is still there] ***
+Friday 23 October 2026  17:22:31 +0000 (0:00:03.845)       0:00:33.039 ******** 
+ok: [a11y-worker-3] => 
+    changed: false
+    msg: 'replay off: ProxyMode, ProxyServer and ProxyBypassList are absent; certificate
+        7BFAA287B10FCCC0FE450272AB793C62CBBDDFAE is not in LocalMachine\Root'
+
+PLAY RECAP *********************************************************************
+a11y-worker-3              : ok=8    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+TASKS RECAP ********************************************************************
+Friday 23 October 2026  17:22:31 +0000 (0:00:00.039)       0:00:33.079 ******** 
+=============================================================================== 
+The proxy values are removed ------------------------------------------- 10.00s
+Read the proxy values back ---------------------------------------------- 7.50s
+Edge is stopped, so the next capture starts it without the proxy -------- 5.51s
+Read the certificate store back ----------------------------------------- 3.85s
+The run's CA is no longer a trusted root -------------------------------- 3.48s
+The box is idle, as the worker says ------------------------------------- 2.66s
+Refuse to call this box restored if a value or the certificate is still there --- 0.04s
+Exactly one box, and the CA to remove ----------------------------------- 0.04s

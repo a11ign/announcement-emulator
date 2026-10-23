@@ -1,0 +1,353 @@
+{
+ "policy": "SavingBrowserHistoryDisabled",
+ "workers": {
+  "a11y-worker-10": {
+   "after": {
+    "capturedAt": "2026-10-23T15:53:22.122Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "after-run": {
+    "capturedAt": "2026-10-23T17:17:52.638Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "emptied": {
+    "at": "2026-10-23T15:48:25Z",
+    "what": "Default/History, History-journal removed by win_file"
+   },
+   "passed": false,
+   "policy": {
+    "evidence": "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1",
+    "name": "SavingBrowserHistoryDisabled",
+    "readAt": "2026-10-23T15:48:18Z",
+    "value": 1
+   },
+   "restored": {
+    "at": "2026-10-23T17:30:42Z",
+    "evidence": "restore play failed=0; win_reg_stat read value 0"
+   }
+  },
+  "a11y-worker-12": {
+   "after": {
+    "capturedAt": "2026-10-23T15:55:24.070Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "after-run": {
+    "capturedAt": "2026-10-23T17:18:24.105Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "emptied": {
+    "at": "2026-10-23T15:50:30Z",
+    "what": "Default/History, History-journal removed by win_file"
+   },
+   "passed": false,
+   "policy": {
+    "evidence": "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1",
+    "name": "SavingBrowserHistoryDisabled",
+    "readAt": "2026-10-23T15:50:23Z",
+    "value": 1
+   },
+   "restored": {
+    "at": "2026-10-23T17:32:18Z",
+    "evidence": "restore play failed=0; win_reg_stat read value 0"
+   }
+  },
+  "a11y-worker-13": {
+   "after": {
+    "capturedAt": "2026-10-23T15:57:22.581Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "after-run": {
+    "capturedAt": "2026-10-23T17:17:52.912Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "emptied": {
+    "at": "2026-10-23T15:52:34Z",
+    "what": "Default/History, History-journal removed by win_file"
+   },
+   "passed": false,
+   "policy": {
+    "evidence": "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1",
+    "name": "SavingBrowserHistoryDisabled",
+    "readAt": "2026-10-23T15:52:27Z",
+    "value": 1
+   },
+   "restored": {
+    "at": "2026-10-23T17:33:48Z",
+    "evidence": "restore play failed=0; win_reg_stat read value 0"
+   }
+  },
+  "a11y-worker-14": {
+   "after": {
+    "capturedAt": "2026-10-23T15:59:25.626Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "after-run": {
+    "capturedAt": "2026-10-23T17:17:54.514Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "emptied": {
+    "at": "2026-10-23T15:54:34Z",
+    "what": "Default/History, History-journal removed by win_file"
+   },
+   "passed": false,
+   "policy": {
+    "evidence": "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1",
+    "name": "SavingBrowserHistoryDisabled",
+    "readAt": "2026-10-23T15:54:27Z",
+    "value": 1
+   },
+   "restored": {
+    "at": "2026-10-23T17:35:19Z",
+    "evidence": "restore play failed=0; win_reg_stat read value 0"
+   }
+  },
+  "a11y-worker-15": {
+   "after": {
+    "capturedAt": "2026-10-23T16:01:36.801Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "after-run": {
+    "capturedAt": "2026-10-23T17:17:53.910Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "emptied": {
+    "at": "2026-10-23T15:56:40Z",
+    "what": "Default/History, History-journal removed by win_file"
+   },
+   "passed": false,
+   "policy": {
+    "evidence": "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1",
+    "name": "SavingBrowserHistoryDisabled",
+    "readAt": "2026-10-23T15:56:33Z",
+    "value": 1
+   },
+   "restored": {
+    "at": "2026-10-23T17:36:56Z",
+    "evidence": "restore play failed=0; win_reg_stat read value 0"
+   }
+  },
+  "a11y-worker-16": {
+   "after": {
+    "capturedAt": "2026-10-23T16:03:34.358Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "after-run": {
+    "capturedAt": "2026-10-23T17:17:53.904Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "emptied": {
+    "at": "2026-10-23T15:58:46Z",
+    "what": "Default/History, History-journal removed by win_file"
+   },
+   "passed": false,
+   "policy": {
+    "evidence": "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1",
+    "name": "SavingBrowserHistoryDisabled",
+    "readAt": "2026-10-23T15:58:39Z",
+    "value": 1
+   },
+   "restored": {
+    "at": "2026-10-23T17:38:31Z",
+    "evidence": "restore play failed=0; win_reg_stat read value 0"
+   }
+  },
+  "a11y-worker-2": {
+   "after": {
+    "capturedAt": "2026-10-23T15:35:31.387Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "after-run": {
+    "capturedAt": "2026-10-23T17:18:25.012Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "emptied": {
+    "at": "2026-10-23T15:30:45Z",
+    "what": "Default/History, History-journal removed by win_file"
+   },
+   "passed": false,
+   "policy": {
+    "evidence": "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1",
+    "name": "SavingBrowserHistoryDisabled",
+    "readAt": "2026-10-23T15:30:38Z",
+    "value": 1
+   },
+   "restored": {
+    "at": "2026-10-23T17:21:54Z",
+    "evidence": "restore play failed=0; win_reg_stat read value 0"
+   }
+  },
+  "a11y-worker-3": {
+   "after": {
+    "capturedAt": "2026-10-23T15:43:05.677Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "after-run": {
+    "capturedAt": "2026-10-23T17:18:21.390Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "emptied": {
+    "at": "2026-10-23T15:38:27Z",
+    "what": "Default/History, History-journal removed by win_file"
+   },
+   "passed": false,
+   "policy": {
+    "evidence": "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1",
+    "name": "SavingBrowserHistoryDisabled",
+    "readAt": "2026-10-23T15:38:21Z",
+    "value": 1
+   },
+   "restored": {
+    "at": "2026-10-23T17:23:15Z",
+    "evidence": "restore play failed=0; win_reg_stat read value 0"
+   }
+  },
+  "a11y-worker-4": {
+   "after": {
+    "capturedAt": "2026-10-23T15:45:02.740Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "after-run": {
+    "capturedAt": "2026-10-23T17:18:25.021Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "emptied": {
+    "at": "2026-10-23T15:40:20Z",
+    "what": "Default/History, History-journal removed by win_file"
+   },
+   "passed": false,
+   "policy": {
+    "evidence": "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1",
+    "name": "SavingBrowserHistoryDisabled",
+    "readAt": "2026-10-23T15:40:13Z",
+    "value": 1
+   },
+   "restored": {
+    "at": "2026-10-23T17:24:41Z",
+    "evidence": "restore play failed=0; win_reg_stat read value 0"
+   }
+  },
+  "a11y-worker-7": {
+   "after": {
+    "capturedAt": "2026-10-23T15:47:07.357Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "after-run": {
+    "capturedAt": "2026-10-23T17:17:53.162Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "emptied": {
+    "at": "2026-10-23T15:42:17Z",
+    "what": "Default/History, History-journal removed by win_file"
+   },
+   "passed": false,
+   "policy": {
+    "evidence": "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1",
+    "name": "SavingBrowserHistoryDisabled",
+    "readAt": "2026-10-23T15:42:10Z",
+    "value": 1
+   },
+   "restored": {
+    "at": "2026-10-23T17:26:11Z",
+    "evidence": "restore play failed=0; win_reg_stat read value 0"
+   }
+  },
+  "a11y-worker-8": {
+   "after": {
+    "capturedAt": "2026-10-23T15:49:09.382Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "after-run": {
+    "capturedAt": "2026-10-23T17:18:25.106Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "emptied": {
+    "at": "2026-10-23T15:44:18Z",
+    "what": "Default/History, History-journal removed by win_file"
+   },
+   "passed": false,
+   "policy": {
+    "evidence": "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1",
+    "name": "SavingBrowserHistoryDisabled",
+    "readAt": "2026-10-23T15:44:11Z",
+    "value": 1
+   },
+   "restored": {
+    "at": "2026-10-23T17:27:42Z",
+    "evidence": "restore play failed=0; win_reg_stat read value 0"
+   }
+  },
+  "a11y-worker-9": {
+   "after": {
+    "capturedAt": "2026-10-23T15:51:08.402Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "after-run": {
+    "capturedAt": "2026-10-23T17:18:21.374Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "emptied": {
+    "at": "2026-10-23T15:46:21Z",
+    "what": "Default/History, History-journal removed by win_file"
+   },
+   "passed": false,
+   "policy": {
+    "evidence": "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1",
+    "name": "SavingBrowserHistoryDisabled",
+    "readAt": "2026-10-23T15:46:14Z",
+    "value": 1
+   },
+   "restored": {
+    "at": "2026-10-23T17:29:11Z",
+    "evidence": "restore play failed=0; win_reg_stat read value 0"
+   }
+  }
+ }
+}

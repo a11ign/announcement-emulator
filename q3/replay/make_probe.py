@@ -24,9 +24,10 @@ def page(marker):
     return f'<!DOCTYPE html>\n<html lang="en"><head><meta charset="utf-8"><title>Replay probe</title></head>\n<body><main><h1>{marker}</h1><p>This page is in the replay archive and nowhere else.</p><a href="{ADDRESS}">Replay probe, itself</a> <a href="{ADDRESS}other">Replay probe, other</a></main></body></html>\n'
 
 
-def write(archives_dir, marker, name='probe.flows', status=200):
+def write(archives_dir, marker, name='probe.flows', status=200, html=None):
+    """The probe archive; `html` (the unit tests of the consent cookies) replaces the page's body, at the same address."""
     os.makedirs(archives_dir, exist_ok=True)
-    flow = tflow.tflow(req=http.Request.make('GET', ADDRESS), resp=http.Response.make(status, page(marker), {'content-type': 'text/html; charset=utf-8'}))
+    flow = tflow.tflow(req=http.Request.make('GET', ADDRESS), resp=http.Response.make(status, html or page(marker), {'content-type': 'text/html; charset=utf-8'}))
     with open(os.path.join(archives_dir, name), 'wb') as f: io.FlowWriter(f).add(flow)
     return ADDRESS
 

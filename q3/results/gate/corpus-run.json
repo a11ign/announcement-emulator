@@ -1,0 +1,1082 @@
+[
+ {
+  "url": "https://data.southwark.gov.uk/economy-and-employment/map/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://caselaw.nationalarchives.gov.uk/accessibility-statement",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.nhs.uk/conditions/dementia/living-with-dementia/communication/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://design-patterns.service.justice.gov.uk/components/pagination/examples/prev-next/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.historicenvironment.scot/visit/all/biggar-gasworks-museum/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.nrscotland.gov.uk/learning-and-events/research-guides/census-1841/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://service-manual.nhs.uk/design-system/components/warning-callout",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/tcby0ekf5",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://european-union.europa.eu/principles-countries-history/eu-countries/slovakia_en",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/energy-policy-and-regulation/engagement/forums-and-working-groups/extension-contestability-sub-group",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.scotcourts.gov.uk/about-us/news/news/2026/april/debt-actions-make-up-over-a-quarter-of-civil-business",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://events.bl.uk/events/refugees-journey-a-drama-workshop",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/cookie-banner/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.nls.uk/about-us/plans-and-policies/corporate-documents/enquiry-policy/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.gov.scot/publications/greenhouse-gas-emissions-reporting-local-authorities-scottish-public-bodies-research-scope-3-group-3-emissions/pages/2/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.transport.gov.scot/news/improved-road-safety-measures-for-charleston/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.gov.uk/employment-tribunal-decisions/e-peers-v-a-collins-2414201-slash-2021",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q1/philpot-square",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/using-an-exception/what-are-the-exceptions/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.mygov.scot/energy-performance-certificates",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.nidirect.gov.uk/services/broadband-and-mobile-checker",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.gov.wales/written-statement-provision-veterans-mental-health-wales",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.nationalarchives.gov.uk/explore-the-collection/stories/medieval-irish-roll-with-hidden-grievances/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.networkrail.co.uk/stories/love-the-railway-heritage-railways/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://data.southwark.gov.uk/population-and-equalities/map/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.nhs.uk/nhs-services/gps/health-services-for-someone-else-family-carer-access/apply-for-family-carer-access-nhs-app/accessibility-statement/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://design-patterns.service.justice.gov.uk/production/moj-frontend/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.historicenvironment.scot/visit/all/blackhammer-chambered-cairn/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.nrscotland.gov.uk/registration/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://service-manual.nhs.uk/content/how-to-write-good-questions-for-forms/test-your-questions",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/r1qbtmxef",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://european-union.europa.eu/principles-countries-history/eu-enlargement_en",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/energy-policy-and-regulation/engagement/forums-and-working-groups/citizens-energy-forum",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.scotcourts.gov.uk/about-us/news/news/2023/december/prohibition-of-dropped-footway-parking-double-parking-and-pavement-parking",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://events.bl.uk/sitemap",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://design-system.service.gov.uk/patterns/bank-details/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.nls.uk/collections/stories/scottish-history/james-vi-and-the-union-of-the-crowns/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.gov.scot/publications/january-2026-open-market-review-superfast-ultrafast-gigabit-capable-broadband-infrastructure-scotland-outcome-report/pages/4/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.transport.gov.scot/news/m74-junction-3a-daldowie-weekend-closure/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.gov.uk/government/publications/treaties-monthly-bulletin-february-2013",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q2/lytton-estate-burne-jones-samuel-richardson-glenallen-houses-the-grange",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/when-can-an-exemption-apply-to-information-about-other-people-in-a-sar/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.mygov.scot/seafarer-rights",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.nidirect.gov.uk/articles/safety-workplace-pension-schemes",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.gov.wales/written-statement-accessibility-welsh-law",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.nationalarchives.gov.uk/professional-guidance-and-services/our-research-and-academic-collaboration/our-research-projects/research-projects/from-our-students/lgbtq-histories-and-colonial-office-records/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.networkrail.co.uk/stories/winning-design-to-improve-smaller-stations/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://data.southwark.gov.uk/news/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/26",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.nhs.uk/medicines/insulin/biphasic-insulin/how-and-when-to-take-biphasic-insulin/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://design-patterns.service.justice.gov.uk/components/badge/examples/urgent/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.historicenvironment.scot/visit/all/doune-castle/shop/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.nrscotland.gov.uk/learning-and-events/first-world-war/battle-of-the-somme-1916/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://service-manual.nhs.uk/standards-and-technology/service-standard-points/10-define-what-success-looks-like-and-be-open-about-how-your-service-is-performing",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/xcbzchbyz",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://european-union.europa.eu/languages-our-websites_en",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/cy/feed-tariffs-fit/contacts-guidance-and-resources/public-reports-and-data-fit/feed-tariffs-quarterly-report",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.scotcourts.gov.uk/about-us/news/news/2023/march/new-local-taxation-chamber-to-be-established-on-1st-april",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://events.bl.uk/events/making-artists-books",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/inset-text/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.nls.uk/privacy/fundraising/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://sheffield.ac.uk/smph/people/academic/clinical-medicine/david-g-kiely",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.gov.scot/publications/children-young-peoples-neurodevelopment-support-fund-2026-27-supporting-guidance/pages/10/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.transport.gov.scot/news/a9-safety-camera-data-published/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.gov.uk/government/news/culture-secretary-appoints-four-new-board-members-at-the-sports-grounds-safety-authority",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q1/bellamy-close",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://ico.org.uk/for-the-public/your-right-to-get-your-data-deleted/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.mygov.scot/non-disclosure-agreements-nda",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.nidirect.gov.uk/articles/using-scaffolding-safely",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.gov.wales/written-statement-publication-national-school-categorisation-system-categories-year-four",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-time-period/second-world-war/operation-overlord-and-d-day/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.networkrail.co.uk/stories/rail-companies-urge-customers-to-re-plan-journeys-as-storms-threaten-major-disruption/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://data.southwark.gov.uk/economy-and-employment/reports/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://caselaw.nationalarchives.gov.uk/permissions-and-licensing",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.nhs.uk/contraception/methods-of-contraception/contraceptive-diaphragm-or-cap/side-effects-and-risks/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://design-patterns.service.justice.gov.uk/components/pagination/examples/all-variants/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.historicenvironment.scot/visit/all/chesters-hill-fort/history-and-stories/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.nrscotland.gov.uk/statistics-and-data/nhs-central-register/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://service-manual.nhs.uk/community-and-contribution/feed-back-or-share-insights",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/ub1fk8vf1",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/search-all-eu-institutions-and-bodies/european-central-bank-ecb_en",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/energy-company-obligation-eco/contacts-guidance-and-resources/eco-public-reports-and-data",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.scotcourts.gov.uk/about-us/news/news/2024/may/scts-gender-pay-gap-report-published",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://events.bl.uk/profile/fernando-pizarro",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://design-system.service.gov.uk/cookies/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.nls.uk/collections/stories/printing-and-publishing/the-scotsman/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.gov.scot/publications/benefit-take-up-strategy-2026-2031-icia/pages/3/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.transport.gov.scot/news/major-progress-on-haudagain-improvement-scheme/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.gov.uk/government/news/paralympic-sculpture-presented-to-competition-winner",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q1/emlyn-gardens-beverley-crane-lea-longford-mole-wandle-courts",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/exemptions/a-guide-to-the-data-protection-exemptions/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.mygov.scot/apply-for-blue-badge",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.nidirect.gov.uk/articles/making-planning-application",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.gov.wales/written-statement-independent-qc-investigation",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.nationalarchives.gov.uk/explore-the-collection/stories/revealing-the-corrupt-record-in-14th-century-ireland/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.networkrail.co.uk/stories/four-years-on-im-reminded-by-that-one-decision-to-go-on-the-railway/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://data.southwark.gov.uk/resources/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://caselaw.nationalarchives.gov.uk/courts-and-tribunals/ukftt/credit",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.nhs.uk/medicines/nystatin/taking-or-using-nystatin-with-other-medicines-and-herbal-supplements/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://design-patterns.service.justice.gov.uk/components/search/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.nrscotland.gov.uk/learning-and-events/research-guides/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://service-manual.nhs.uk/design-system/patterns/hub-page",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/observations/u1h1et5j1",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://european-union.europa.eu/contact-eu/social-media-channels_en",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/cy/energy-policy-and-regulation/engagement/forums-and-working-groups/riio-ed1-online-stakeholder-forum",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.scotcourts.gov.uk/about-us/news/news/2024/february/success-for-scts-at-international-technology-awards",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://events.bl.uk/events/self-guided-school-visits",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://design-system.service.gov.uk/patterns/interruption-pages/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.nls.uk/tools-for-research/introduction-to-estate-papers/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.gov.scot/publications/enhancing-accessibility-adaptability-usability-scotlands-homes-consultation-analysis-report/pages/5/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://www.transport.gov.scot/news/forth-road-bridge-reopens/",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.gov.uk/government/news/support-to-the-uks-regulators",
+  "set": "batch2",
+  "split": "dev",
+  "role": null
+ },
+ {
+  "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q2/lintaine-court",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/appropriate-safeguards/what-are-standard-data-protection-clauses-the-uk-idta-and-the-addendum/",
+  "set": "batch2",
+  "split": "held",
+  "role": null
+ },
+ {
+  "url": "https://bathingwaters.sepa.org.uk/",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://caselaw.nationalarchives.gov.uk/search?query=",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://data.southwark.gov.uk/data-catalog-explorer/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://design-patterns.service.justice.gov.uk/components/filter/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://design-patterns.service.justice.gov.uk/components/scrollable-pane/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/accordion/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/checkboxes/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/date-input/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/radios/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/skip-link/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/tabs/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://design-system.service.gov.uk/components/text-input/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://european-union.europa.eu/index_en",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://ico.org.uk/action-weve-taken/enforcement/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://ratings.food.gov.uk/search-a-local-authority-area",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://reports.ofsted.gov.uk/search?q=school",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://service-manual.nhs.uk/design-system/components/table",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://tfl.gov.uk/plan-a-journey/",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://the-internet.herokuapp.com/login",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://weather.metoffice.gov.uk/warnings-and-advice/uk-warnings",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://www.adobe.com/",
+  "set": "old60",
+  "split": "held",
+  "role": "field"
+ },
+ {
+  "url": "https://www.british-history.ac.uk/catalogue",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.dropbox.com/",
+  "set": "old60",
+  "split": "held",
+  "role": "field"
+ },
+ {
+  "url": "https://www.gla.ac.uk/undergraduate/degrees/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://www.gov.scot/about/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.gov.uk/vehicle-tax",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://www.gov.wales/statistics-and-research",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://www.historicenvironment.scot/visit/all/edinburgh-castle/",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.hubspot.com/",
+  "set": "old60",
+  "split": "held",
+  "role": "field"
+ },
+ {
+  "url": "https://www.leeds.ac.uk/undergraduate",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.mygov.scot/browse/benefits",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://www.mygov.scot/scottish-child-payment",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://www.nationalarchives.gov.uk/about-us/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://www.networkrail.co.uk/careers/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://www.nhs.uk/conditions/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://www.nhs.uk/service-search/find-a-gp",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.notion.com/",
+  "set": "old60",
+  "split": "held",
+  "role": "field"
+ },
+ {
+  "url": "https://www.nrscotland.gov.uk/publications/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://www.nrscotland.gov.uk/statistics-and-data/",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/after/tickets.html",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://www.w3.org/WAI/demos/bad/before/news.html",
+  "set": "old60",
+  "split": "held",
+  "role": "calibration"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/carousels/structure/",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/instructions/",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/forms/multi-page/",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/decorative/",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/images/informative/",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/menus/flyout/",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/page-structure/regions/",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ },
+ {
+  "url": "https://www.w3.org/WAI/tutorials/tables/one-header/",
+  "set": "old60",
+  "split": "held",
+  "role": "training"
+ }
+]

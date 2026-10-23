@@ -15,12 +15,16 @@ The server is steered by requests to the reserved host `replay.control`, sent th
 A page the server answered with an error status when it was recorded (a site down for maintenance) is a page the fleet's worker refuses to capture, whatever its body says. Its archive has a sidecar, `<archive>.served.json`
 (`{"address": ..., "recordedStatus": 503, "servedStatus": 200}`): the exchange for that address that was recorded with that status is answered with the served one, the body as recorded, and the log says what was recorded.
 
+A page recorded with consent given (A11-166) has a second sidecar, `<archive>.consent.json` (consent.py): the cookies the recording's browser held once it had activated the page's "accept all" control. The server adds them, as `Set-Cookie`,
+to every document (navigation) response whose host may set them, the same for every client, so the fleet's Edge and the emulator's Chrome both hold the consent before any script of the page runs. The log says how many it added.
+
 The log holds no client address: each side has its own server and its own log."""
 import hashlib, json, os, sys, time
 from urllib.parse import urlsplit, parse_qs
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from archive import Archive, normal_url
 from flows import entries_of
+import consent
 from mitmproxy import http
 
 CONTROL_HOST = 'replay.control'
@@ -30,17 +34,18 @@ HOP_BY_HOP = {'connection', 'keep-alive', 'proxy-connection', 'transfer-encoding
 class Replay:
     def __init__(self):
         self.root = os.path.realpath(os.environ.get('REPLAY_ROOT') or '.')
-        self.archive = None; self.name = None; self.sha = None; self.log = []; self.served_as = None
+        self.archive = None; self.name = None; self.sha = None; self.log = []; self.served_as = None; self.consent = None
         if os.environ.get('REPLAY_ARCHIVE'): self.use(os.environ['REPLAY_ARCHIVE'])
 
     def use(self, name):
         path = os.path.realpath(os.path.join(self.root, name))
         if os.path.commonpath([path, self.root]) != self.root: raise ValueError('an archive is a file under the archive directory')
-        with open(path, 'rb') as f: self.sha = hashlib.sha256(f.read()).hexdigest()
-        self.archive = Archive(entries_of(path)); self.name = name; self.log = []
-        sidecar = path + '.served.json'; self.served_as = None
+        with open(path, 'rb') as f: sha = hashlib.sha256(f.read()).hexdigest()
+        sidecar = path + '.served.json'; served_as = None
         if os.path.exists(sidecar):
-            with open(sidecar) as f: self.served_as = json.load(f)
+            with open(sidecar) as f: served_as = json.load(f)
+        sidecars = (consent.read_sidecar(path), served_as)      # read before anything is switched: a sidecar that cannot be read leaves the archive in use, and its cookies, as they were
+        self.archive = Archive(entries_of(path)); self.name = name; self.sha = sha; self.log = []; self.consent, self.served_as = sidecars
 
     def control(self, flow):
         q = parse_qs(urlsplit(flow.request.pretty_url).query); path = urlsplit(flow.request.pretty_url).path
@@ -60,6 +65,16 @@ class Replay:
         if sc and method == 'GET' and normal_url(url) == normal_url(sc['address']) and entry.status == sc['recordedStatus']: return sc['servedStatus']
         return entry.status
 
+    @staticmethod
+    def is_document(request):
+        """A navigation: the browser says so (`sec-fetch-dest: document`), or, where it sends no fetch metadata (an http address), it asked for a page."""
+        dest = request.headers.get('sec-fetch-dest', '')
+        return dest == 'document' or (dest == '' and request.method == 'GET' and 'text/html' in request.headers.get('accept', ''))
+
+    def consent_cookies(self, request):
+        """The `Set-Cookie` values consent adds to the answer to this request."""
+        return consent.set_cookie_headers(self.consent, request.pretty_url) if self.is_document(request) else []
+
     def request(self, flow: http.HTTPFlow):
         if flow.request.pretty_host == CONTROL_HOST: return self.control(flow)
         url = flow.request.pretty_url
@@ -71,6 +86,8 @@ class Replay:
             flow.response = http.Response.make(404, b'replay: no recording of this request', {'content-type': 'text/plain', 'x-replay': 'miss', 'cache-control': 'no-store'}); return
         headers = http.Headers([(k.encode('latin-1'), v.encode('latin-1')) for k, v in entry.headers if k.lower() not in HOP_BY_HOP and k.lower() not in ('cache-control', 'expires', 'pragma', 'etag', 'last-modified', 'age')])
         headers['cache-control'] = 'no-store'; headers['x-replay'] = kind
+        cookies = self.consent_cookies(flow.request)
+        if cookies: headers.set_all('set-cookie', [*headers.get_all('set-cookie'), *cookies]); self.log[-1]['consentCookies'] = len(cookies)
         flow.response = http.Response.make(status, entry.body, headers)
 
     def server_connect(self, data):

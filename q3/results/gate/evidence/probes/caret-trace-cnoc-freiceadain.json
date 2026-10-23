@@ -1,0 +1,569 @@
+[
+ {
+  "n": 80,
+  "key": "shift+h",
+  "said": "Explore more, heading, level 2",
+  "caret": 2525,
+  "line": 63,
+  "lineText": "Explore more",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 81,
+  "key": "shift+h",
+  "said": "Our head offices, heading, level 2",
+  "caret": 2403,
+  "line": 56,
+  "lineText": "Our head offices",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 82,
+  "key": "shift+h",
+  "said": "General enquiries, heading, level 2",
+  "caret": 2136,
+  "line": 43,
+  "lineText": "General enquiries",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 83,
+  "key": "shift+h",
+  "said": "main landmark, Discover more on trove dot scot, heading, level 2",
+  "caret": 1922,
+  "line": 38,
+  "lineText": "Discover more on trove.scot",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 84,
+  "key": "shift+h",
+  "said": "Statement of Significance, heading, level 2",
+  "caret": 1543,
+  "line": 32,
+  "lineText": "Statement of Significance",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 85,
+  "key": "shift+h",
+  "said": "Unexcavated and undisturbed, heading, level 2",
+  "caret": 869,
+  "line": 23,
+  "lineText": "Unexcavated and undisturbed",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 86,
+  "key": "shift+h",
+  "said": "Prehistoric burial monument, heading, level 2",
+  "caret": 389,
+  "line": 16,
+  "lineText": "Prehistoric burial monument",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 87,
+  "key": "shift+h",
+  "said": "Cnoc Freiceadain Long Cairns, heading, level 1",
+  "caret": 244,
+  "line": 9,
+  "lineText": "Cnoc Freiceadain Long Cairns",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 88,
+  "key": "shift+h",
+  "said": "no previous heading",
+  "caret": 244,
+  "line": 9,
+  "lineText": "Cnoc Freiceadain Long Cairns",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 89,
+  "key": "h",
+  "said": "Prehistoric burial monument, heading, level 2",
+  "caret": 389,
+  "line": 16,
+  "lineText": "Prehistoric burial monument",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 90,
+  "key": "h",
+  "said": "Unexcavated and undisturbed, heading, level 2",
+  "caret": 869,
+  "line": 23,
+  "lineText": "Unexcavated and undisturbed",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 91,
+  "key": "h",
+  "said": "Statement of Significance, heading, level 2",
+  "caret": 1543,
+  "line": 32,
+  "lineText": "Statement of Significance",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 92,
+  "key": "h",
+  "said": "Discover more on trove dot scot, heading, level 2",
+  "caret": 1922,
+  "line": 38,
+  "lineText": "Discover more on trove.scot",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 93,
+  "key": "h",
+  "said": "content info landmark, General enquiries, heading, level 2",
+  "caret": 2136,
+  "line": 43,
+  "lineText": "General enquiries",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 94,
+  "key": "h",
+  "said": "Our head offices, heading, level 2",
+  "caret": 2403,
+  "line": 56,
+  "lineText": "Our head offices",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 95,
+  "key": "h",
+  "said": "Explore more, heading, level 2",
+  "caret": 2525,
+  "line": 63,
+  "lineText": "Explore more",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 96,
+  "key": "h",
+  "said": "no next heading",
+  "caret": 2525,
+  "line": 63,
+  "lineText": "Explore more",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 97,
+  "key": "shift+d",
+  "said": "main landmark, Tertiary navigation, navigation landmark, list, with 3 items, Overview, lin",
+  "caret": 347,
+  "line": 13,
+  "lineText": "Overview",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 98,
+  "key": "shift+d",
+  "said": "Breadcrumbs, navigation landmark, list, with 2 items, Home, link",
+  "caret": 225,
+  "line": 7,
+  "lineText": "Home",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 99,
+  "key": "shift+d",
+  "said": "banner landmark, Primary navigation, navigation landmark, Open menu, button, collapsed",
+  "caret": 216,
+  "line": 6,
+  "lineText": "Open menu",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 100,
+  "key": "shift+d",
+  "said": "search landmark, Open search, button, collapsed",
+  "caret": 205,
+  "line": 5,
+  "lineText": "Open search",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 101,
+  "key": "shift+d",
+  "said": "Historic Environment Scotland - Go to homepage, graphic, link",
+  "caret": 159,
+  "line": 4,
+  "lineText": "Historic Environment Scotland - Go to homepage",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 102,
+  "key": "shift+d",
+  "said": "no previous landmark",
+  "caret": 159,
+  "line": 4,
+  "lineText": "Historic Environment Scotland - Go to homepage",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 103,
+  "key": "d",
+  "said": "search landmark, Open search, button, collapsed",
+  "caret": 205,
+  "line": 5,
+  "lineText": "Open search",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 104,
+  "key": "d",
+  "said": "Primary navigation, navigation landmark, Open menu, button, collapsed",
+  "caret": 216,
+  "line": 6,
+  "lineText": "Open menu",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 105,
+  "key": "d",
+  "said": "main landmark, Breadcrumbs, navigation landmark, list, with 2 items, Home, link",
+  "caret": 225,
+  "line": 7,
+  "lineText": "Home",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 106,
+  "key": "d",
+  "said": "Tertiary navigation, navigation landmark, list, with 3 items, Overview, link",
+  "caret": 347,
+  "line": 13,
+  "lineText": "Overview",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 107,
+  "key": "d",
+  "said": "content info landmark, Historic Environment Scotland logo, graphic",
+  "caret": 2102,
+  "line": 42,
+  "lineText": "Historic Environment Scotland logo",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 108,
+  "key": "d",
+  "said": "no next landmark",
+  "caret": 2102,
+  "line": 42,
+  "lineText": "Historic Environment Scotland logo",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 109,
+  "key": "shift+f",
+  "said": "banner landmark, Primary navigation, navigation landmark, Open menu, button, collapsed",
+  "caret": 216,
+  "line": 6,
+  "lineText": "Open menu",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 110,
+  "key": "enter",
+  "said": "banner landmark, Primary navigation, navigation landmark, Visit What's on Learn Protect an",
+  "caret": 206,
+  "line": 6,
+  "lineText": "Visit",
+  "focus": "UL.mobile-navigation__list js-mob|"
+ },
+ {
+  "n": 111,
+  "key": "nvda+tab",
+  "said": "Visit What's on Learn Protect and care About us, list, focused, read only",
+  "caret": 206,
+  "line": 6,
+  "lineText": "Visit",
+  "focus": "UL.mobile-navigation__list js-mob|"
+ },
+ {
+  "n": 112,
+  "key": "escape",
+  "said": "",
+  "caret": 206,
+  "line": 5,
+  "lineText": "Open search",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 113,
+  "key": "shift+f",
+  "said": "Close notification, button",
+  "caret": 141,
+  "line": 3,
+  "lineText": "Close notification",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 114,
+  "key": "shift+f",
+  "said": "no previous form field",
+  "caret": 141,
+  "line": 3,
+  "lineText": "Close notification",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 115,
+  "key": "f",
+  "said": "banner landmark, search landmark, Open search, button, collapsed",
+  "caret": 205,
+  "line": 5,
+  "lineText": "Open search",
+  "focus": "BODY.|"
+ },
+ {
+  "n": 116,
+  "key": "enter",
+  "said": "banner landmark, search landmark, section, Search site by keyword, Search site by keyword,",
+  "caret": 197,
+  "line": 5,
+  "lineText": "Search site by keyword",
+  "focus": "DIV.search__inner js-search__inner|"
+ },
+ {
+  "n": 117,
+  "key": "nvda+tab",
+  "said": "Looking for events or publications Search on our What's on page or Publications page., sec",
+  "caret": 197,
+  "line": 5,
+  "lineText": "Search site by keyword",
+  "focus": "DIV.search__inner js-search__inner|"
+ },
+ {
+  "n": 118,
+  "key": "escape",
+  "said": "",
+  "caret": 197,
+  "line": 5,
+  "lineText": "Search site by keyword",
+  "focus": "DIV.search__inner js-search__inner|"
+ },
+ {
+  "n": 119,
+  "key": "f",
+  "said": "section, Search site by keyword, combo box, collapsed, has auto complete, editable, opens ",
+  "caret": 219,
+  "line": 6,
+  "lineText": " ",
+  "focus": "DIV.search__inner js-search__inner|"
+ },
+ {
+  "n": 120,
+  "key": "enter",
+  "said": "form landmark",
+  "caret": 219,
+  "line": 6,
+  "lineText": " ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 121,
+  "key": "nvda+tab",
+  "said": "Search site by keyword, combo box, focused, collapsed, has auto complete, editable, Search",
+  "caret": 219,
+  "line": 6,
+  "lineText": " ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 122,
+  "key": "escape",
+  "said": "",
+  "caret": 219,
+  "line": 6,
+  "lineText": " ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 123,
+  "key": "f",
+  "said": "Search, button",
+  "caret": 220,
+  "line": 7,
+  "lineText": "Search",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 124,
+  "key": "f",
+  "said": "Primary navigation, navigation landmark, Open menu, button, collapsed",
+  "caret": 311,
+  "line": 9,
+  "lineText": "Open menu",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 125,
+  "key": "f",
+  "said": "no next form field",
+  "caret": 311,
+  "line": 9,
+  "lineText": "Open menu",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 126,
+  "key": "shift+g",
+  "said": "Historic Environment Scotland - Go to homepage, graphic, link",
+  "caret": 139,
+  "line": 3,
+  "lineText": "Historic Environment Scotland - Go to homepage",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 127,
+  "key": "shift+g",
+  "said": "no previous graphic",
+  "caret": 139,
+  "line": 3,
+  "lineText": "Historic Environment Scotland - Go to homepage",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 128,
+  "key": "g",
+  "said": "no next graphic",
+  "caret": 139,
+  "line": 3,
+  "lineText": "Historic Environment Scotland - Go to homepage",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 129,
+  "key": "shift+k",
+  "said": "check our closures page, link, Check for closures",
+  "caret": 79,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 130,
+  "key": "shift+k",
+  "said": "no previous link",
+  "caret": 79,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 131,
+  "key": "k",
+  "said": "banner landmark, Historic Environment Scotland - Go to homepage, graphic, link",
+  "caret": 139,
+  "line": 3,
+  "lineText": "Historic Environment Scotland - Go to homepage",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 132,
+  "key": "k",
+  "said": "search landmark, What's on page, link",
+  "caret": 275,
+  "line": 8,
+  "lineText": "Looking for events or publications?Search on our What's on p",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 133,
+  "key": "k",
+  "said": "Publications page, link",
+  "caret": 293,
+  "line": 8,
+  "lineText": "Looking for events or publications?Search on our What's on p",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 134,
+  "key": "k",
+  "said": "no next link",
+  "caret": 293,
+  "line": 8,
+  "lineText": "Looking for events or publications?Search on our What's on p",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 135,
+  "key": "escape",
+  "said": "",
+  "caret": 293,
+  "line": 8,
+  "lineText": "Looking for events or publications?Search on our What's on p",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 136,
+  "key": "control+home",
+  "said": "Weather warnings are in place this weekend and sites may face disruption. Please, link, ch",
+  "caret": 0,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 137,
+  "key": "shift+l",
+  "said": "no previous list",
+  "caret": 0,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 138,
+  "key": "l",
+  "said": "no next list",
+  "caret": 0,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 139,
+  "key": "escape",
+  "said": "",
+  "caret": 0,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 140,
+  "key": "control+home",
+  "said": "Weather warnings are in place this weekend and sites may face disruption. Please, link, ch",
+  "caret": 0,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 141,
+  "key": "shift+m",
+  "said": "no previous frame",
+  "caret": 0,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ },
+ {
+  "n": 142,
+  "key": "m",
+  "said": "no next frame",
+  "caret": 0,
+  "line": 0,
+  "lineText": "Weather warnings are in place this weekend & sites may face ",
+  "focus": "INPUT.search__input autocomplete__in|"
+ }
+]

@@ -1,0 +1,73 @@
+{
+ "class": "emulator bug",
+ "miss": "an element a page shows only once it has been scrolled: ICO \"Back to top, same page, link\"; National Archives heading level 2 \"<title>\" and \"Skip to end, same page, link\"",
+ "pages": [
+  "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/when-can-an-exemption-apply-to-information-about-other-people-in-a-sar/",
+  "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/appropriate-safeguards/what-are-standard-data-protection-clauses-the-uk-idta-and-the-addendum/",
+  "https://caselaw.nationalarchives.gov.uk/uksc/2010/38"
+ ],
+ "probe": {
+  "change": "load_lazy_content leaves the page scrolled to its end",
+  "note": "on each page the announcements the frozen emulator misses are all agreed once the page is left scrolled",
+  "results": [
+   {
+    "headings": {
+     "frozen": [],
+     "probe": []
+    },
+    "links": {
+     "frozen": [
+      "Back to top, same page, link"
+     ],
+     "probe": []
+    },
+    "page": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/when-can-an-exemption-apply-to-information-about-other-people-in-a-sar/"
+   },
+   {
+    "headings": {
+     "frozen": [],
+     "probe": []
+    },
+    "links": {
+     "frozen": [
+      "Back to top, same page, link"
+     ],
+     "probe": []
+    },
+    "page": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/appropriate-safeguards/what-are-standard-data-protection-clauses-the-uk-idta-and-the-addendum/"
+   },
+   {
+    "headings": {
+     "frozen": [
+      "RTS Flexible Systems Limited v Molkerei Alois M\u00fcller Gmbh and Company KG (UK Production), heading, level 2"
+     ],
+     "probe": []
+    },
+    "links": {
+     "frozen": [
+      "Skip to end, same page, link"
+     ],
+     "probe": []
+    },
+    "page": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38"
+   }
+  ],
+  "variant": "page-left-at-end"
+ },
+ "the pages": {
+  "caselaw.nationalarchives.gov.uk": "document_navigation.js: an IntersectionObserver on the start of the document shows #js-document-navigation (`.autohide` is display:none, `.show` display:block; position:fixed) once it has scrolled out of view; the bar holds the h2 with the title and the \"Back to top\" and \"Skip to end\" links",
+  "ico.org.uk": "index.js: `function l(){0===window.scrollY?a.classList.add(\"opacity-0\"):a.classList.remove(\"hidden\",\"opacity-0\")}` on a scroll listener rate-limited to 500 ms: the #button-top link is `hidden` until the page has been scrolled"
+ },
+ "what the emulator does": {
+  "livepage.py": {
+   "line": 8,
+   "text": "scroll_browser = False      # sweeps run in seconds, not minutes: NVDA's scrollIntoView is not delivered to the browser (see live.LiveDoc.scroll_browser)"
+  },
+  "on the fleet": "NVDA scrolls the browser as its caret moves (IA2 scrollTo), so the page is scrolled when the sweeps run",
+  "sweep.py load_lazy_content": {
+   "line": 206,
+   "note": "scrolls the page to its end for lazily loaded content and then back to the top; nothing scrolls it again, so every sweep reads the page at scrollY 0",
+   "text": "d.s.eval(\"window.scrollTo(0, 0)\"); time.sleep(0.5)"
+  }
+ }
+}

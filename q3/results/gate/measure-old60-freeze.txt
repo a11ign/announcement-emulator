@@ -1,0 +1,51 @@
+pages 60 (held)  comparable: 53   not comparable: 4   emulator fault: 1   unstable: 2
+   not comparable: https://european-union.europa.eu/index_en  [not comparable: heading fleet 0 / emulator 4, link fleet 0 / emulator 29, document title fleet 'cookiebot dot com slash en slash what-is' / emulator 'Your gateway to the EU, News, Highlights']
+   not comparable: https://www.adobe.com/  [not comparable: link fleet 30 / emulator 31]
+   not comparable: https://www.w3.org/WAI/demos/bad/before/news.html  [not comparable: document title fleet 'Welcome to City Lights! Inaccessible New' / emulator 'Welcome to CityLights! [Inaccessible New']
+   not comparable: https://www.w3.org/WAI/tutorials/carousels/structure/  [not comparable: heading fleet 0 / emulator 4, link fleet 0 / emulator 75, document title fleet 'smartsurvey dot co dot uk slash s slash ' / emulator 'Carousel Structure | Web Accessibility I']
+   emulator fault: https://ico.org.uk/action-weve-taken/enforcement/  [emulator fault: timeout 900s]
+   unstable: https://www.hubspot.com/  [unstable: the two emulator runs differ]
+   unstable: https://www.ons.gov.uk/economy/inflationandpriceindices  [unstable: the two emulator runs differ]
+
+agreement by element kind (53 comparable pages)
+     exact / total       %  positional
+      735 / 759       96.8%         733  headings
+     3960 / 3970      99.7%        3886  links
+      256 / 263       97.3%         251  buttons
+      604 / 605       99.8%         600  formFields
+      523 / 526       99.4%         509  landmarks
+      506 / 510       99.2%         499  lists
+      168 / 168      100.0%         168  graphics
+       59 / 60        98.3%          59  frames
+
+agreement by swept channel
+     exact / total       %  positional
+      735 / 759       96.8%         733  headings
+      523 / 526       99.4%         509  landmarks
+      860 / 868       99.1%         851  formFields
+      168 / 168      100.0%         168  graphics
+     3960 / 3970      99.7%        3886  links
+      506 / 510       99.2%         499  lists
+       59 / 60        98.3%          59  frames
+
+shapes: 6801 announcements in 312 distinct shapes; top 10 cover 4856 = 71.4% (the fleet's script quotes 33 shapes, top 10 = 94.3%)
+
+agreement by shape (top 10, ranked in this run)
+     exact / total       %  positional
+     2448 / 2453      99.8%        2406  NAME + ROLE
+      467 / 487       95.9%         466  NAME + ROLE + LEVEL
+      437 / 438       99.8%         436  NAME + ROLE + STATE
+      310 / 312       99.4%         309  NAME + ROLE + ROLE + COUNT + NAME + ROLE
+      287 / 287      100.0%         282  ROLE + COUNT + NAME + ROLE
+      266 / 266      100.0%         265  NAME + NAME + ROLE
+      212 / 212      100.0%         209  NAME + STATE + ROLE
+      148 / 148      100.0%         147  NAME + NAME + NAME + NAME + ROLE
+      130 / 130      100.0%         127  NAME + ROLE + ROLE
+      123 / 123      100.0%         122  NAME + ROLE + ROLE + LEVEL
+
+GATE: 4828 of 4856 = 99.42% exact on the top 10 shapes   (positional: 4769 of 4856)   [AT OR ABOVE 98%]
+      with the not-comparable pages kept in: 4907 of 4945 = 99.23%
+      emulator announcements with no counterpart in the fleet's lists (extras): 63
+      top-10 misses by cause: unexplained 28
+      the same, with the pages' `history` misses not counted as misses against us: 4828 of 4856 = 99.42%   (an upper bound if the fleet's browser history could be reproduced)
+      misses over all channels: 50 of 6861; on top-10 shapes: 28

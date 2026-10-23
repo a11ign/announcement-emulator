@@ -1,0 +1,12 @@
+--- a/emu/standin.py
++++ b/emu/standin.py
+@@ -208,7 +208,7 @@
+         if s.get('focusable'): out |= CONST['STATE_SYSTEM_FOCUSABLE']
+         if self.raw.get('hasPopup'): out |= CONST['STATE_SYSTEM_HASPOPUP']
+         if s.get('invisible'): out |= CONST['STATE_SYSTEM_INVISIBLE']
+-        if s.get('linked'): out |= CONST['STATE_SYSTEM_LINKED']
++        if s.get('linked') or r == 'link': out |= CONST['STATE_SYSTEM_LINKED']      # PROBE: ax_platform_node_win.cc:8242, a kLink is LINKED whatever the kLinked state
+         if s.get('multiselectable'): out |= CONST['STATE_SYSTEM_MULTISELECTABLE']
+         if s.get('offscreen'): out |= CONST['STATE_SYSTEM_OFFSCREEN']
+         if s.get('protected'): out |= CONST['STATE_SYSTEM_PROTECTED']
+

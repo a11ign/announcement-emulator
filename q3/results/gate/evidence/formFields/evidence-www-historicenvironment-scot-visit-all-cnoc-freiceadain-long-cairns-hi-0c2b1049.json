@@ -1,0 +1,109 @@
+{
+ "capturedAt": "2026-10-23T16:42:50.552Z",
+ "channel": "formFields",
+ "emulator": {
+  "gate.run1": {
+   "entries": 5,
+   "first": [
+    "banner landmark, Primary navigation, navigation landmark, Open menu, button, collapsed",
+    "Close notification, button",
+    "banner landmark, search landmark, Open search, button, collapsed"
+   ],
+   "frameHeaderIndexes": [],
+   "onlyInEmulator": [
+    "banner landmark, search landmark, Open search, button, collapsed"
+   ],
+   "onlyInFleet": [
+    "search landmark, Open search, button, collapsed",
+    "Close search, button, expanded"
+   ],
+   "order": "differentEntries",
+   "start": {
+    "readThrough": {
+     "count": 74,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 5,
+     "nextSteps": 4,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Primary navigation, navigation landmark, Open menu, button, collapsed",
+     "prevCount": 2,
+     "prevSteps": 2,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Close notification, button",
+     "type": "formField"
+    }
+   }
+  },
+  "gate.run2": {
+   "entries": 5,
+   "first": [
+    "banner landmark, Primary navigation, navigation landmark, Open menu, button, collapsed",
+    "Close notification, button",
+    "banner landmark, search landmark, Open search, button, collapsed"
+   ],
+   "frameHeaderIndexes": [],
+   "onlyInEmulator": [
+    "banner landmark, search landmark, Open search, button, collapsed"
+   ],
+   "onlyInFleet": [
+    "search landmark, Open search, button, collapsed",
+    "Close search, button, expanded"
+   ],
+   "order": "differentEntries",
+   "start": {
+    "readThrough": {
+     "count": 74,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 5,
+     "nextSteps": 4,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Primary navigation, navigation landmark, Open menu, button, collapsed",
+     "prevCount": 2,
+     "prevSteps": 2,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Close notification, button",
+     "type": "formField"
+    }
+   }
+  }
+ },
+ "fleet": {
+  "entries": 6,
+  "first": [
+   "banner landmark, Primary navigation, navigation landmark, Open menu, button, collapsed",
+   "search landmark, Open search, button, collapsed",
+   "Close search, button, expanded"
+  ],
+  "frameHeaderIndexes": []
+ },
+ "fleetObserved": {
+  "asked": true,
+  "complete": true,
+  "focusInFrame": null,
+  "stop": {
+   "next": "exhausted",
+   "prev": "exhausted"
+  }
+ },
+ "fleetStart": {
+  "firstFocusIn": {
+   "atMs": 46194,
+   "id": 0,
+   "name": "Open menu",
+   "type": "focusin"
+  },
+  "focusBeforeReadThroughEnded": false,
+  "focusFrameBeforeSweep": null,
+  "readThrough": {
+   "atMs": 40005,
+   "count": 75,
+   "stopReason": "repeatBottom"
+  }
+ },
+ "url": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/",
+ "worker": "a11y-worker-14"
+}

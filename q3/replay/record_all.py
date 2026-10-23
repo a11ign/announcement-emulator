@@ -5,7 +5,10 @@
 `<run dir>/archives/<slug>.flows` for each address (the slug is corpus_capture.slug_of), written by a recording proxy that the emulator's own Chrome 155 loads the page through (record.mjs: Edge's user agent, the 1008x872
 window, scrolled to the end and back). The run's CA is made on first use in `<run dir>/ca` and stays there. An address already recorded is kept, so an interrupted batch resumes; an address whose page did not load
 (its own address got no response) is not kept and is named. `--manifest` writes what is committed of the archives: the run's id and, for each address, its archive file, its sha256, the number of exchanges, the hosts, the status the address ended on and when it was
-recorded. A page recorded with an error status is served with status 200 (`write_served_status`). The archives hold third-party pages and are not committed."""
+recorded. A page recorded with an error status is served with status 200 (`write_served_status`). The archives hold third-party pages and are not committed.
+
+Every page is recorded with consent already given (A11-166): before the recorded load, record.mjs loads the page once in a browser of its own and activates the control the one list (consent-names.json) names, if it finds one; the cookies the
+browser then holds are loaded into the recording browser, and `<archive>.consent.json` (consent.py) is written beside the archive with the outcome (`given`, `no-dialog`, `not-matched`). The manifest carries each page's `consent`."""
 import sys, os, json, argparse, hashlib, subprocess, concurrent.futures as cf
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE); sys.path.insert(0, os.path.dirname(HERE))
@@ -14,6 +17,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'
 import readback as rb
 import proxy as px
 import ca as cert_names
+import consent
 
 VENV_PY = str(px.VENV / 'python')
 
@@ -42,14 +46,27 @@ def write_served_status(run_dir, record):
     return {**record, 'servedStatus': 200}
 
 
-def record_one(url, run_dir, spki, timeout=240):
+def write_consent(archive, found):
+    """The consent sidecar beside the archive, from what record.mjs found (its temporary file is removed)."""
+    c = rb.read_json(found)
+    sidecar = consent.make_sidecar(c['address'], c['outcome'], c['why'], c.get('control'), c.get('cookies'), c.get('recordedAt'))
+    consent.write_sidecar(archive, sidecar); os.remove(found)
+    return sidecar
+
+
+def is_kept(dest, meta):
+    """An archive of an earlier batch is kept only if it was recorded with the consent pass: its sidecar and the `consent` of its record are there. An archive from before consent is recorded again."""
+    return os.path.exists(dest) and os.path.exists(meta) and os.path.exists(consent.sidecar_path(dest)) and 'consent' in rb.read_json(meta)
+
+
+def record_one(url, run_dir, spki, timeout=420):
     """('ok', info) or ('failed: why', None). The archive is moved into place only when the page's own address got a response."""
     slug = cc.slug_of(url); archives = os.path.join(run_dir, 'archives'); dest = os.path.join(archives, slug + '.flows'); part = dest + '.part'; meta = dest + '.meta.json'
-    if os.path.exists(dest) and os.path.exists(meta): return 'kept', rb.read_json(meta)
+    if is_kept(dest, meta): return 'kept', rb.read_json(meta)
     p = px.start_record(os.path.join(run_dir, 'ca'), part)
     try:
         p.wait_listening()
-        done = subprocess.run(['node', os.path.join(HERE, 'record.mjs'), url, f'127.0.0.1:{p.port}', spki, meta + '.page'], capture_output=True, text=True, timeout=timeout)
+        done = subprocess.run(['node', os.path.join(HERE, 'record.mjs'), url, f'127.0.0.1:{p.port}', spki, meta + '.page', meta + '.consent'], capture_output=True, text=True, timeout=timeout)
     except subprocess.TimeoutExpired:
         return f'failed: no recording in {timeout} s', None
     finally: p.stop()
@@ -57,9 +74,13 @@ def record_one(url, run_dir, spki, timeout=240):
     info = json.loads(subprocess.run([VENV_PY, os.path.join(HERE, 'flows.py'), 'info', part, url], capture_output=True, text=True, check=True).stdout)
     page = rb.read_json(meta + '.page') if os.path.exists(meta + '.page') else {}
     if info['mainStatus'] is None: os.remove(part); return f'failed: the page\'s own address got no response ({done.stderr.strip()[-100:] or page.get("navigateError")})', None
+    if not os.path.exists(meta + '.consent'): os.remove(part); return 'failed: record.mjs wrote no consent outcome (a recording without the consent pass is not kept)', None
+    try: sidecar = write_consent(dest, meta + '.consent')
+    except (KeyError, ValueError) as e: os.remove(part); return f'failed: the consent outcome could not be kept ({e})', None
     os.replace(part, dest)
     record = {'url': url, 'slug': slug, 'archive': f'archives/{slug}.flows', 'sha256': sha256_of(dest), 'bytes': os.path.getsize(dest), **{k: info[k] for k in ('requests', 'hosts', 'mainStatus', 'endedAt')},
-              'finalAddress': page.get('finalAddress'), 'title': page.get('title'), 'recordedAt': page.get('recordedAt')}
+              'finalAddress': page.get('finalAddress'), 'title': page.get('title'), 'recordedAt': page.get('recordedAt'),
+              'consent': sidecar['outcome'], 'consentWhy': sidecar['why'], 'consentCookies': len(sidecar.get('cookies') or [])}
     rb.write_json(meta, record)
     if os.path.exists(meta + '.page'): os.remove(meta + '.page')
     return 'ok', record

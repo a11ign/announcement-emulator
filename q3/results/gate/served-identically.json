@@ -1,0 +1,5984 @@
+{
+ "browserOwn": [
+  "clients2.google.com",
+  "update.googleapis.com",
+  "mtalk.google.com",
+  "android.clients.google.com",
+  "optimizationguide-pa.googleapis.com",
+  "content-autofill.googleapis.com",
+  "safebrowsing.googleapis.com",
+  "edge.microsoft.com",
+  "config.edge.microsoft.com",
+  "msedge.api.cdp.microsoft.com",
+  "edgedl.me.gvt1.com",
+  "redirector.gvt1.com",
+  "nav-edge.smartscreen.microsoft.com",
+  "xpaywalletcdn-prod.azureedge.net"
+ ],
+ "pages": [
+  {
+   "archiveSha256": "cd02b9b4ee758bb856d34a63eef2f56b0c398e49ce1fa61f696a484872a1ae4b",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "cd02b9b4ee758bb856d34a63eef2f56b0c398e49ce1fa61f696a484872a1ae4b",
+     "browserOwn": 12,
+     "exact": 354,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 356
+    },
+    "gate.run2": {
+     "archiveSha256": "cd02b9b4ee758bb856d34a63eef2f56b0c398e49ce1fa61f696a484872a1ae4b",
+     "browserOwn": 12,
+     "exact": 354,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 356
+    }
+   },
+   "fleet": {
+    "archiveSha256": "cd02b9b4ee758bb856d34a63eef2f56b0c398e49ce1fa61f696a484872a1ae4b",
+    "browserOwn": 0,
+    "exact": 730,
+    "fuzzy": 3,
+    "miss": 6,
+    "requests": 739,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "data-southwark-gov-uk-economy-and-employment-map-574e1a33",
+   "url": "https://data.southwark.gov.uk/economy-and-employment/map/"
+  },
+  {
+   "archiveSha256": "271b6db5986a137794a449f943b946bd6cee35cad0aa6dbf656e955e8dd9f1a8",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "271b6db5986a137794a449f943b946bd6cee35cad0aa6dbf656e955e8dd9f1a8",
+     "browserOwn": 10,
+     "exact": 14,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 14
+    },
+    "gate.run2": {
+     "archiveSha256": "271b6db5986a137794a449f943b946bd6cee35cad0aa6dbf656e955e8dd9f1a8",
+     "browserOwn": 10,
+     "exact": 14,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 14
+    }
+   },
+   "fleet": {
+    "archiveSha256": "271b6db5986a137794a449f943b946bd6cee35cad0aa6dbf656e955e8dd9f1a8",
+    "browserOwn": 0,
+    "exact": 9,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 11,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "caselaw-nationalarchives-gov-uk-accessibility-statement-3872f65a",
+   "url": "https://caselaw.nationalarchives.gov.uk/accessibility-statement"
+  },
+  {
+   "archiveSha256": "3b062994106ca485ff84e69b3568ea61fcdb7d08a219bee4a05bab4f321655d6",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "3b062994106ca485ff84e69b3568ea61fcdb7d08a219bee4a05bab4f321655d6",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 28
+    },
+    "gate.run2": {
+     "archiveSha256": "3b062994106ca485ff84e69b3568ea61fcdb7d08a219bee4a05bab4f321655d6",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 28
+    }
+   },
+   "fleet": {
+    "archiveSha256": "3b062994106ca485ff84e69b3568ea61fcdb7d08a219bee4a05bab4f321655d6",
+    "browserOwn": 0,
+    "exact": 22,
+    "fuzzy": 2,
+    "miss": 4,
+    "requests": 28,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-nhs-uk-conditions-dementia-living-with-dementia-communication-67260717",
+   "url": "https://www.nhs.uk/conditions/dementia/living-with-dementia/communication/"
+  },
+  {
+   "archiveSha256": "14362932a16f65823322deac8588dcabe7d0e0f377abf5931daeccbc58d87b09",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "14362932a16f65823322deac8588dcabe7d0e0f377abf5931daeccbc58d87b09",
+     "browserOwn": 10,
+     "exact": 11,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 11
+    },
+    "gate.run2": {
+     "archiveSha256": "14362932a16f65823322deac8588dcabe7d0e0f377abf5931daeccbc58d87b09",
+     "browserOwn": 10,
+     "exact": 11,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 11
+    }
+   },
+   "fleet": {
+    "archiveSha256": "14362932a16f65823322deac8588dcabe7d0e0f377abf5931daeccbc58d87b09",
+    "browserOwn": 0,
+    "exact": 7,
+    "fuzzy": 0,
+    "miss": 0,
+    "requests": 7,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "design-patterns-service-justice-gov-uk-components-pagination-examples--eaf75e50",
+   "url": "https://design-patterns.service.justice.gov.uk/components/pagination/examples/prev-next/"
+  },
+  {
+   "archiveSha256": "ad242fbd33732a8de9ea23822c073cf7cb524d2c87e9eb48a95e535d81802490",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "ad242fbd33732a8de9ea23822c073cf7cb524d2c87e9eb48a95e535d81802490",
+     "browserOwn": 12,
+     "exact": 39,
+     "fuzzy": 1,
+     "miss": 5,
+     "requests": 45
+    },
+    "gate.run2": {
+     "archiveSha256": "ad242fbd33732a8de9ea23822c073cf7cb524d2c87e9eb48a95e535d81802490",
+     "browserOwn": 13,
+     "exact": 39,
+     "fuzzy": 1,
+     "miss": 5,
+     "requests": 45
+    }
+   },
+   "fleet": {
+    "archiveSha256": "ad242fbd33732a8de9ea23822c073cf7cb524d2c87e9eb48a95e535d81802490",
+    "browserOwn": 2,
+    "exact": 36,
+    "fuzzy": 1,
+    "miss": 13,
+    "requests": 50,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "www-historicenvironment-scot-visit-all-biggar-gasworks-museum-97203891",
+   "url": "https://www.historicenvironment.scot/visit/all/biggar-gasworks-museum/"
+  },
+  {
+   "archiveSha256": "bd0875b26ddd8aad753d13e1183f324003686889b074cda7554f8a14329426a3",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "bd0875b26ddd8aad753d13e1183f324003686889b074cda7554f8a14329426a3",
+     "browserOwn": 13,
+     "exact": 41,
+     "fuzzy": 1,
+     "miss": 2,
+     "requests": 44
+    },
+    "gate.run2": {
+     "archiveSha256": "bd0875b26ddd8aad753d13e1183f324003686889b074cda7554f8a14329426a3",
+     "browserOwn": 13,
+     "exact": 41,
+     "fuzzy": 1,
+     "miss": 2,
+     "requests": 44
+    }
+   },
+   "fleet": {
+    "archiveSha256": "bd0875b26ddd8aad753d13e1183f324003686889b074cda7554f8a14329426a3",
+    "browserOwn": 0,
+    "exact": 38,
+    "fuzzy": 1,
+    "miss": 5,
+    "requests": 44,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "www-nrscotland-gov-uk-learning-and-events-research-guides-census-1841-35cccd7f",
+   "url": "https://www.nrscotland.gov.uk/learning-and-events/research-guides/census-1841/"
+  },
+  {
+   "archiveSha256": "22b25c299a178077f17ee740dad7b2ede53ccd6418f78a9ef2519ffa6e3b3683",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "22b25c299a178077f17ee740dad7b2ede53ccd6418f78a9ef2519ffa6e3b3683",
+     "browserOwn": 10,
+     "exact": 31,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 32
+    },
+    "gate.run2": {
+     "archiveSha256": "22b25c299a178077f17ee740dad7b2ede53ccd6418f78a9ef2519ffa6e3b3683",
+     "browserOwn": 10,
+     "exact": 31,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 32
+    }
+   },
+   "fleet": {
+    "archiveSha256": "22b25c299a178077f17ee740dad7b2ede53ccd6418f78a9ef2519ffa6e3b3683",
+    "browserOwn": 4,
+    "exact": 26,
+    "fuzzy": 0,
+    "miss": 5,
+    "requests": 31,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "service-manual-nhs-uk-design-system-components-warning-callout-2e88306d",
+   "url": "https://service-manual.nhs.uk/design-system/components/warning-callout"
+  },
+  {
+   "archiveSha256": "1ce1ef8556602adf5e9e0963982d42d76d1bbe067ec6733a1d1290b7e5445c30",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "1ce1ef8556602adf5e9e0963982d42d76d1bbe067ec6733a1d1290b7e5445c30",
+     "browserOwn": 5,
+     "exact": 118,
+     "fuzzy": 11,
+     "miss": 47,
+     "requests": 176
+    },
+    "gate.run2": {
+     "archiveSha256": "1ce1ef8556602adf5e9e0963982d42d76d1bbe067ec6733a1d1290b7e5445c30",
+     "browserOwn": 5,
+     "exact": 118,
+     "fuzzy": 11,
+     "miss": 45,
+     "requests": 174
+    }
+   },
+   "fleet": {
+    "archiveSha256": "1ce1ef8556602adf5e9e0963982d42d76d1bbe067ec6733a1d1290b7e5445c30",
+    "browserOwn": 2,
+    "exact": 208,
+    "fuzzy": 24,
+    "miss": 97,
+    "requests": 329,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "weather-metoffice-gov-uk-observations-tcby0ekf5-a0278837",
+   "url": "https://weather.metoffice.gov.uk/observations/tcby0ekf5"
+  },
+  {
+   "archiveSha256": "3bc36432c8ef6f00f85a720940a4fceb9ff951f6f01892daebc91cf68d62e0d0",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "3bc36432c8ef6f00f85a720940a4fceb9ff951f6f01892daebc91cf68d62e0d0",
+     "browserOwn": 16,
+     "exact": 54,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 55
+    },
+    "gate.run2": {
+     "archiveSha256": "3bc36432c8ef6f00f85a720940a4fceb9ff951f6f01892daebc91cf68d62e0d0",
+     "browserOwn": 16,
+     "exact": 54,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 55
+    }
+   },
+   "fleet": {
+    "archiveSha256": "3bc36432c8ef6f00f85a720940a4fceb9ff951f6f01892daebc91cf68d62e0d0",
+    "browserOwn": 0,
+    "exact": 51,
+    "fuzzy": 0,
+    "miss": 3,
+    "requests": 54,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "european-union-europa-eu-principles-countries-history-eu-countries-slo-b85d3c94",
+   "url": "https://european-union.europa.eu/principles-countries-history/eu-countries/slovakia_en"
+  },
+  {
+   "archiveSha256": "1d5fa782e1e47c42c276325b0cbebfd1452b209b3ff70713fdd829d950924515",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "1d5fa782e1e47c42c276325b0cbebfd1452b209b3ff70713fdd829d950924515",
+     "blocked": 4,
+     "browserOwn": 11,
+     "exact": 48,
+     "fuzzy": 7,
+     "miss": 2,
+     "requests": 61
+    },
+    "gate.run2": {
+     "archiveSha256": "1d5fa782e1e47c42c276325b0cbebfd1452b209b3ff70713fdd829d950924515",
+     "blocked": 4,
+     "browserOwn": 11,
+     "exact": 49,
+     "fuzzy": 7,
+     "miss": 2,
+     "requests": 62
+    }
+   },
+   "fleet": {
+    "archiveSha256": "1d5fa782e1e47c42c276325b0cbebfd1452b209b3ff70713fdd829d950924515",
+    "blocked": 14,
+    "browserOwn": 0,
+    "exact": 65,
+    "fuzzy": 8,
+    "miss": 5,
+    "requests": 92,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-ofgem-gov-uk-energy-policy-and-regulation-engagement-forums-and-wo-ee982f67",
+   "url": "https://www.ofgem.gov.uk/energy-policy-and-regulation/engagement/forums-and-working-groups/extension-contestability-sub-group"
+  },
+  {
+   "archiveSha256": "e11ff5dbc6e3f8096eb86f89af1f1f6bc0e8859aa26f656e21bea8b3276a1e38",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "e11ff5dbc6e3f8096eb86f89af1f1f6bc0e8859aa26f656e21bea8b3276a1e38",
+     "browserOwn": 12,
+     "exact": 50,
+     "fuzzy": 1,
+     "miss": 2,
+     "requests": 53
+    },
+    "gate.run2": {
+     "archiveSha256": "e11ff5dbc6e3f8096eb86f89af1f1f6bc0e8859aa26f656e21bea8b3276a1e38",
+     "browserOwn": 12,
+     "exact": 50,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 52
+    }
+   },
+   "fleet": {
+    "archiveSha256": "e11ff5dbc6e3f8096eb86f89af1f1f6bc0e8859aa26f656e21bea8b3276a1e38",
+    "browserOwn": 0,
+    "exact": 46,
+    "fuzzy": 1,
+    "miss": 4,
+    "requests": 51,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "www-scotcourts-gov-uk-about-us-news-news-2026-april-debt-actions-make--2aeafb40",
+   "url": "https://www.scotcourts.gov.uk/about-us/news/news/2026/april/debt-actions-make-up-over-a-quarter-of-civil-business"
+  },
+  {
+   "archiveSha256": "b39599e234c505008999112ae3b4d99bc34770f2567416f0a97e09edce4ffc95",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "b39599e234c505008999112ae3b4d99bc34770f2567416f0a97e09edce4ffc95",
+     "browserOwn": 10,
+     "exact": 75,
+     "fuzzy": 20,
+     "miss": 11,
+     "requests": 106
+    },
+    "gate.run2": {
+     "archiveSha256": "b39599e234c505008999112ae3b4d99bc34770f2567416f0a97e09edce4ffc95",
+     "browserOwn": 10,
+     "exact": 74,
+     "fuzzy": 21,
+     "miss": 10,
+     "requests": 105
+    }
+   },
+   "fleet": {
+    "archiveSha256": "b39599e234c505008999112ae3b4d99bc34770f2567416f0a97e09edce4ffc95",
+    "browserOwn": 1,
+    "exact": 86,
+    "fuzzy": 24,
+    "miss": 30,
+    "requests": 140,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "events-bl-uk-events-refugees-journey-a-drama-workshop-32eafebc",
+   "url": "https://events.bl.uk/events/refugees-journey-a-drama-workshop"
+  },
+  {
+   "archiveSha256": "f04e7497e49794c113f5963e7e2f0f3a55c11a79121dbad1479d78fc1a1a1efa",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "f04e7497e49794c113f5963e7e2f0f3a55c11a79121dbad1479d78fc1a1a1efa",
+     "browserOwn": 14,
+     "exact": 66,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 69
+    },
+    "gate.run2": {
+     "archiveSha256": "f04e7497e49794c113f5963e7e2f0f3a55c11a79121dbad1479d78fc1a1a1efa",
+     "browserOwn": 13,
+     "exact": 66,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 69
+    }
+   },
+   "fleet": {
+    "archiveSha256": "f04e7497e49794c113f5963e7e2f0f3a55c11a79121dbad1479d78fc1a1a1efa",
+    "browserOwn": 0,
+    "exact": 61,
+    "fuzzy": 0,
+    "miss": 5,
+    "requests": 66,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "design-system-service-gov-uk-components-cookie-banner-26dfca08",
+   "url": "https://design-system.service.gov.uk/components/cookie-banner/"
+  },
+  {
+   "archiveSha256": "10affba91a333e445fcd9ba4511fede23bee52435eca6d49428eb00a1c15404d",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "10affba91a333e445fcd9ba4511fede23bee52435eca6d49428eb00a1c15404d",
+     "browserOwn": 11,
+     "exact": 23,
+     "fuzzy": 2,
+     "miss": 8,
+     "requests": 33
+    },
+    "gate.run2": {
+     "archiveSha256": "10affba91a333e445fcd9ba4511fede23bee52435eca6d49428eb00a1c15404d",
+     "browserOwn": 11,
+     "exact": 23,
+     "fuzzy": 2,
+     "miss": 8,
+     "requests": 33
+    }
+   },
+   "fleet": {
+    "archiveSha256": "10affba91a333e445fcd9ba4511fede23bee52435eca6d49428eb00a1c15404d",
+    "browserOwn": 2,
+    "exact": 20,
+    "fuzzy": 2,
+    "miss": 11,
+    "requests": 33,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "www-nls-uk-about-us-plans-and-policies-corporate-documents-enquiry-pol-f84808f3",
+   "url": "https://www.nls.uk/about-us/plans-and-policies/corporate-documents/enquiry-policy/"
+  },
+  {
+   "archiveSha256": "c042abfb10f65fe0658ea327eb5089f9a1081eee0d398f69c0a9860c256855e8",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "c042abfb10f65fe0658ea327eb5089f9a1081eee0d398f69c0a9860c256855e8",
+     "browserOwn": 16,
+     "exact": 111,
+     "fuzzy": 29,
+     "miss": 9,
+     "requests": 149
+    },
+    "gate.run2": {
+     "archiveSha256": "c042abfb10f65fe0658ea327eb5089f9a1081eee0d398f69c0a9860c256855e8",
+     "browserOwn": 18,
+     "exact": 111,
+     "fuzzy": 30,
+     "miss": 9,
+     "requests": 150
+    }
+   },
+   "fleet": {
+    "archiveSha256": "c042abfb10f65fe0658ea327eb5089f9a1081eee0d398f69c0a9860c256855e8",
+    "browserOwn": 0,
+    "exact": 135,
+    "fuzzy": 40,
+    "miss": 15,
+    "requests": 190,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "sheffield-ac-uk-inclusion-religion-belief-and-no-belief-muslim-student-abffec55",
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support"
+  },
+  {
+   "archiveSha256": "3e83f53d7f8faee1007baec16707bd506bd06522b9ec1ca3406d2b62214f4bb0",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "3e83f53d7f8faee1007baec16707bd506bd06522b9ec1ca3406d2b62214f4bb0",
+     "browserOwn": 10,
+     "exact": 33,
+     "fuzzy": 1,
+     "miss": 2,
+     "requests": 36
+    },
+    "gate.run2": {
+     "archiveSha256": "3e83f53d7f8faee1007baec16707bd506bd06522b9ec1ca3406d2b62214f4bb0",
+     "browserOwn": 10,
+     "exact": 32,
+     "fuzzy": 1,
+     "miss": 2,
+     "requests": 35
+    }
+   },
+   "fleet": {
+    "archiveSha256": "3e83f53d7f8faee1007baec16707bd506bd06522b9ec1ca3406d2b62214f4bb0",
+    "browserOwn": 0,
+    "exact": 29,
+    "fuzzy": 2,
+    "miss": 4,
+    "requests": 35,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-gov-scot-publications-greenhouse-gas-emissions-reporting-local-aut-ea6160a5",
+   "url": "https://www.gov.scot/publications/greenhouse-gas-emissions-reporting-local-authorities-scottish-public-bodies-research-scope-3-group-3-emissions/pages/2/"
+  },
+  {
+   "archiveSha256": "197380bff70c26b16f6f88d53cf31426e169d6ff56e020969155483ff350fdf8",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "197380bff70c26b16f6f88d53cf31426e169d6ff56e020969155483ff350fdf8",
+     "browserOwn": 12,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 8,
+     "requests": 40
+    },
+    "gate.run2": {
+     "archiveSha256": "197380bff70c26b16f6f88d53cf31426e169d6ff56e020969155483ff350fdf8",
+     "browserOwn": 12,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 8,
+     "requests": 40
+    }
+   },
+   "fleet": {
+    "archiveSha256": "197380bff70c26b16f6f88d53cf31426e169d6ff56e020969155483ff350fdf8",
+    "browserOwn": 0,
+    "exact": 27,
+    "fuzzy": 1,
+    "miss": 18,
+    "requests": 46,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-transport-gov-scot-news-improved-road-safety-measures-for-charlest-81f9f94e",
+   "url": "https://www.transport.gov.scot/news/improved-road-safety-measures-for-charleston/"
+  },
+  {
+   "archiveSha256": "cdaea0d635a03e8aa421b612328ddb67c2700f000944ffe9c898cc9d2c911560",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "cdaea0d635a03e8aa421b612328ddb67c2700f000944ffe9c898cc9d2c911560",
+     "browserOwn": 11,
+     "exact": 18,
+     "fuzzy": 0,
+     "miss": 5,
+     "requests": 23
+    },
+    "gate.run2": {
+     "archiveSha256": "cdaea0d635a03e8aa421b612328ddb67c2700f000944ffe9c898cc9d2c911560",
+     "browserOwn": 12,
+     "exact": 18,
+     "fuzzy": 0,
+     "miss": 5,
+     "requests": 23
+    }
+   },
+   "fleet": {
+    "archiveSha256": "cdaea0d635a03e8aa421b612328ddb67c2700f000944ffe9c898cc9d2c911560",
+    "browserOwn": 0,
+    "exact": 13,
+    "fuzzy": 0,
+    "miss": 11,
+    "requests": 24,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "www-gov-uk-employment-tribunal-decisions-e-peers-v-a-collins-2414201-s-6c9b3738",
+   "url": "https://www.gov.uk/employment-tribunal-decisions/e-peers-v-a-collins-2414201-slash-2021"
+  },
+  {
+   "archiveSha256": "db8d8a9069966ad7d1a27978413e4690642073ffc3e3781397e48176a9572e16",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "db8d8a9069966ad7d1a27978413e4690642073ffc3e3781397e48176a9572e16",
+     "browserOwn": 6,
+     "exact": 63,
+     "fuzzy": 6,
+     "miss": 7,
+     "requests": 76
+    },
+    "gate.run2": {
+     "archiveSha256": "db8d8a9069966ad7d1a27978413e4690642073ffc3e3781397e48176a9572e16",
+     "browserOwn": 6,
+     "exact": 63,
+     "fuzzy": 6,
+     "miss": 7,
+     "requests": 76
+    }
+   },
+   "fleet": {
+    "archiveSha256": "db8d8a9069966ad7d1a27978413e4690642073ffc3e3781397e48176a9572e16",
+    "browserOwn": 0,
+    "exact": 62,
+    "fuzzy": 6,
+    "miss": 10,
+    "requests": 78,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "www-lbhf-gov-uk-housing-resident-involvement-estate-inspections-estate-37a0c7f2",
+   "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q1/philpot-square"
+  },
+  {
+   "archiveSha256": "0feb48fe39a7d272e40b27372aa93e624dfa5c4a61034ef323c93c01da33144e",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "0feb48fe39a7d272e40b27372aa93e624dfa5c4a61034ef323c93c01da33144e",
+     "browserOwn": 16,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 22
+    },
+    "gate.run2": {
+     "archiveSha256": "0feb48fe39a7d272e40b27372aa93e624dfa5c4a61034ef323c93c01da33144e",
+     "browserOwn": 16,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 22
+    }
+   },
+   "fleet": {
+    "archiveSha256": "0feb48fe39a7d272e40b27372aa93e624dfa5c4a61034ef323c93c01da33144e",
+    "browserOwn": 1,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 11,
+    "requests": 26,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "ico-org-uk-for-organisations-uk-gdpr-guidance-and-resources-internatio-ea3bdb59",
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/using-an-exception/what-are-the-exceptions/"
+  },
+  {
+   "archiveSha256": "fbf9d2b12b1d162478af87928049c2ebd91d4c3cfd87ca68b990de7b5ef2fb88",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "fbf9d2b12b1d162478af87928049c2ebd91d4c3cfd87ca68b990de7b5ef2fb88",
+     "browserOwn": 10,
+     "exact": 35,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 39
+    },
+    "gate.run2": {
+     "archiveSha256": "fbf9d2b12b1d162478af87928049c2ebd91d4c3cfd87ca68b990de7b5ef2fb88",
+     "browserOwn": 10,
+     "exact": 36,
+     "fuzzy": 1,
+     "miss": 2,
+     "requests": 39
+    }
+   },
+   "fleet": {
+    "archiveSha256": "fbf9d2b12b1d162478af87928049c2ebd91d4c3cfd87ca68b990de7b5ef2fb88",
+    "browserOwn": 3,
+    "exact": 34,
+    "fuzzy": 1,
+    "miss": 5,
+    "requests": 40,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "www-mygov-scot-energy-performance-certificates-f8870346",
+   "url": "https://www.mygov.scot/energy-performance-certificates"
+  },
+  {
+   "archiveSha256": "e6965a07274264ce4b41df52a80e84e61d89bf305c3907acf63dbb3efadf62a7",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "e6965a07274264ce4b41df52a80e84e61d89bf305c3907acf63dbb3efadf62a7",
+     "browserOwn": 15,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 35
+    },
+    "gate.run2": {
+     "archiveSha256": "e6965a07274264ce4b41df52a80e84e61d89bf305c3907acf63dbb3efadf62a7",
+     "browserOwn": 15,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 35
+    }
+   },
+   "fleet": {
+    "archiveSha256": "e6965a07274264ce4b41df52a80e84e61d89bf305c3907acf63dbb3efadf62a7",
+    "browserOwn": 0,
+    "exact": 27,
+    "fuzzy": 1,
+    "miss": 3,
+    "requests": 31,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "www-nidirect-gov-uk-services-broadband-and-mobile-checker-4f5a320e",
+   "url": "https://www.nidirect.gov.uk/services/broadband-and-mobile-checker"
+  },
+  {
+   "archiveSha256": "5da4189a5e335d108a72053bde6b85248b4978890dbd996fd9caef9636aa2a32",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "5da4189a5e335d108a72053bde6b85248b4978890dbd996fd9caef9636aa2a32",
+     "browserOwn": 10,
+     "exact": 26,
+     "fuzzy": 3,
+     "miss": 5,
+     "requests": 34
+    },
+    "gate.run2": {
+     "archiveSha256": "5da4189a5e335d108a72053bde6b85248b4978890dbd996fd9caef9636aa2a32",
+     "browserOwn": 10,
+     "exact": 26,
+     "fuzzy": 3,
+     "miss": 5,
+     "requests": 34
+    }
+   },
+   "fleet": {
+    "archiveSha256": "5da4189a5e335d108a72053bde6b85248b4978890dbd996fd9caef9636aa2a32",
+    "browserOwn": 0,
+    "exact": 23,
+    "fuzzy": 3,
+    "miss": 11,
+    "requests": 37,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "www-gov-wales-written-statement-provision-veterans-mental-health-wales-e997e3c7",
+   "url": "https://www.gov.wales/written-statement-provision-veterans-mental-health-wales"
+  },
+  {
+   "archiveSha256": "4ae36a6db1f29b66d09b2ba41a7893ddb17fe82093f8ccbb76c4b8fa50312579",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "4ae36a6db1f29b66d09b2ba41a7893ddb17fe82093f8ccbb76c4b8fa50312579",
+     "browserOwn": 10,
+     "exact": 30,
+     "fuzzy": 1,
+     "miss": 6,
+     "requests": 37
+    },
+    "gate.run2": {
+     "archiveSha256": "4ae36a6db1f29b66d09b2ba41a7893ddb17fe82093f8ccbb76c4b8fa50312579",
+     "browserOwn": 10,
+     "exact": 30,
+     "fuzzy": 1,
+     "miss": 6,
+     "requests": 37
+    }
+   },
+   "fleet": {
+    "archiveSha256": "4ae36a6db1f29b66d09b2ba41a7893ddb17fe82093f8ccbb76c4b8fa50312579",
+    "browserOwn": 1,
+    "exact": 26,
+    "fuzzy": 1,
+    "miss": 11,
+    "requests": 38,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "www-nationalarchives-gov-uk-explore-the-collection-stories-medieval-ir-59a1d7a6",
+   "url": "https://www.nationalarchives.gov.uk/explore-the-collection/stories/medieval-irish-roll-with-hidden-grievances/"
+  },
+  {
+   "archiveSha256": "16e124ba8ff4bf0ef4146ed6e886b1bd6744ea1fcddfbde5454750ff3fd1466c",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "16e124ba8ff4bf0ef4146ed6e886b1bd6744ea1fcddfbde5454750ff3fd1466c",
+     "browserOwn": 6,
+     "exact": 70,
+     "fuzzy": 1,
+     "miss": 17,
+     "requests": 88
+    },
+    "gate.run2": {
+     "archiveSha256": "16e124ba8ff4bf0ef4146ed6e886b1bd6744ea1fcddfbde5454750ff3fd1466c",
+     "browserOwn": 6,
+     "exact": 69,
+     "fuzzy": 2,
+     "miss": 17,
+     "requests": 88
+    }
+   },
+   "fleet": {
+    "archiveSha256": "16e124ba8ff4bf0ef4146ed6e886b1bd6744ea1fcddfbde5454750ff3fd1466c",
+    "browserOwn": 0,
+    "exact": 68,
+    "fuzzy": 2,
+    "miss": 23,
+    "requests": 93,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "www-networkrail-co-uk-stories-love-the-railway-heritage-railways-09701572",
+   "url": "https://www.networkrail.co.uk/stories/love-the-railway-heritage-railways/"
+  },
+  {
+   "archiveSha256": "63bfd3e08994baf488d6e7d26054f8cdc24964b9456aa1b8362ffd2f88701c3d",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "63bfd3e08994baf488d6e7d26054f8cdc24964b9456aa1b8362ffd2f88701c3d",
+     "browserOwn": 11,
+     "exact": 351,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 354
+    },
+    "gate.run2": {
+     "archiveSha256": "63bfd3e08994baf488d6e7d26054f8cdc24964b9456aa1b8362ffd2f88701c3d",
+     "browserOwn": 11,
+     "exact": 351,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 354
+    }
+   },
+   "fleet": {
+    "archiveSha256": "63bfd3e08994baf488d6e7d26054f8cdc24964b9456aa1b8362ffd2f88701c3d",
+    "browserOwn": 0,
+    "exact": 694,
+    "fuzzy": 2,
+    "miss": 6,
+    "requests": 702,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "data-southwark-gov-uk-population-and-equalities-map-3409675f",
+   "url": "https://data.southwark.gov.uk/population-and-equalities/map/"
+  },
+  {
+   "archiveSha256": "d4d717a93e6cf9faa0663d3cb590338872398b65f4d57ae511ecead865f0e3ff",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "d4d717a93e6cf9faa0663d3cb590338872398b65f4d57ae511ecead865f0e3ff",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    },
+    "gate.run2": {
+     "archiveSha256": "d4d717a93e6cf9faa0663d3cb590338872398b65f4d57ae511ecead865f0e3ff",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    }
+   },
+   "fleet": {
+    "archiveSha256": "d4d717a93e6cf9faa0663d3cb590338872398b65f4d57ae511ecead865f0e3ff",
+    "browserOwn": 0,
+    "exact": 16,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 18,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "caselaw-nationalarchives-gov-uk-uksc-2010-38-7704e6df",
+   "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38"
+  },
+  {
+   "archiveSha256": "36012dbb51a72f94b7ee55d1cddcc059759f73ebd9c44658c16e92150cc49701",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "36012dbb51a72f94b7ee55d1cddcc059759f73ebd9c44658c16e92150cc49701",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 28
+    },
+    "gate.run2": {
+     "archiveSha256": "36012dbb51a72f94b7ee55d1cddcc059759f73ebd9c44658c16e92150cc49701",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 28
+    }
+   },
+   "fleet": {
+    "archiveSha256": "36012dbb51a72f94b7ee55d1cddcc059759f73ebd9c44658c16e92150cc49701",
+    "browserOwn": 0,
+    "exact": 22,
+    "fuzzy": 2,
+    "miss": 4,
+    "requests": 28,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "www-nhs-uk-nhs-services-gps-health-services-for-someone-else-family-ca-bc36e9bc",
+   "url": "https://www.nhs.uk/nhs-services/gps/health-services-for-someone-else-family-carer-access/apply-for-family-carer-access-nhs-app/accessibility-statement/"
+  },
+  {
+   "archiveSha256": "df2e076e4858d9f35928b11c1b91d5253f54abbf13f15a8822b1e0c03ba88c94",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "df2e076e4858d9f35928b11c1b91d5253f54abbf13f15a8822b1e0c03ba88c94",
+     "browserOwn": 12,
+     "exact": 13,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 13
+    },
+    "gate.run2": {
+     "archiveSha256": "df2e076e4858d9f35928b11c1b91d5253f54abbf13f15a8822b1e0c03ba88c94",
+     "browserOwn": 12,
+     "exact": 13,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 13
+    }
+   },
+   "fleet": {
+    "archiveSha256": "df2e076e4858d9f35928b11c1b91d5253f54abbf13f15a8822b1e0c03ba88c94",
+    "browserOwn": 0,
+    "exact": 8,
+    "fuzzy": 0,
+    "miss": 0,
+    "requests": 8,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "design-patterns-service-justice-gov-uk-production-moj-frontend-23e51a46",
+   "url": "https://design-patterns.service.justice.gov.uk/production/moj-frontend/"
+  },
+  {
+   "archiveSha256": "ea44f0ceb39c0cf11e90285c7fcf3ae4099e41fef76e486692d92bbc21d1eb1d",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "ea44f0ceb39c0cf11e90285c7fcf3ae4099e41fef76e486692d92bbc21d1eb1d",
+     "browserOwn": 12,
+     "exact": 40,
+     "fuzzy": 1,
+     "miss": 5,
+     "requests": 46
+    },
+    "gate.run2": {
+     "archiveSha256": "ea44f0ceb39c0cf11e90285c7fcf3ae4099e41fef76e486692d92bbc21d1eb1d",
+     "browserOwn": 12,
+     "exact": 40,
+     "fuzzy": 1,
+     "miss": 5,
+     "requests": 46
+    }
+   },
+   "fleet": {
+    "archiveSha256": "ea44f0ceb39c0cf11e90285c7fcf3ae4099e41fef76e486692d92bbc21d1eb1d",
+    "browserOwn": 2,
+    "exact": 37,
+    "fuzzy": 1,
+    "miss": 11,
+    "requests": 49,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "www-historicenvironment-scot-visit-all-blackhammer-chambered-cairn-7e5b7c6e",
+   "url": "https://www.historicenvironment.scot/visit/all/blackhammer-chambered-cairn/"
+  },
+  {
+   "archiveSha256": "b389c0153ea4844758d466c8514c1173376efeeb5d0450a7fc8a1db69e912ebb",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "b389c0153ea4844758d466c8514c1173376efeeb5d0450a7fc8a1db69e912ebb",
+     "browserOwn": 13,
+     "exact": 37,
+     "fuzzy": 1,
+     "miss": 2,
+     "requests": 40
+    },
+    "gate.run2": {
+     "archiveSha256": "b389c0153ea4844758d466c8514c1173376efeeb5d0450a7fc8a1db69e912ebb",
+     "browserOwn": 13,
+     "exact": 36,
+     "fuzzy": 1,
+     "miss": 2,
+     "requests": 39
+    }
+   },
+   "fleet": {
+    "archiveSha256": "b389c0153ea4844758d466c8514c1173376efeeb5d0450a7fc8a1db69e912ebb",
+    "browserOwn": 0,
+    "exact": 31,
+    "fuzzy": 1,
+    "miss": 5,
+    "requests": 37,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-nrscotland-gov-uk-registration-24f8d0ed",
+   "url": "https://www.nrscotland.gov.uk/registration/"
+  },
+  {
+   "archiveSha256": "6ff9fc7e7f2d958f39343ab5e6ce930d0a6ea5f9e774d7450bfd0a66cc57bbde",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "6ff9fc7e7f2d958f39343ab5e6ce930d0a6ea5f9e774d7450bfd0a66cc57bbde",
+     "browserOwn": 10,
+     "exact": 17,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 18
+    },
+    "gate.run2": {
+     "archiveSha256": "6ff9fc7e7f2d958f39343ab5e6ce930d0a6ea5f9e774d7450bfd0a66cc57bbde",
+     "browserOwn": 10,
+     "exact": 17,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 18
+    }
+   },
+   "fleet": {
+    "archiveSha256": "6ff9fc7e7f2d958f39343ab5e6ce930d0a6ea5f9e774d7450bfd0a66cc57bbde",
+    "browserOwn": 2,
+    "exact": 13,
+    "fuzzy": 0,
+    "miss": 5,
+    "requests": 18,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "service-manual-nhs-uk-content-how-to-write-good-questions-for-forms-te-fc9ec7b1",
+   "url": "https://service-manual.nhs.uk/content/how-to-write-good-questions-for-forms/test-your-questions"
+  },
+  {
+   "archiveSha256": "3613f70715ae873c7a85a74502b9f6866d9fc9e94e3d69b6af20f7b2f5886647",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "3613f70715ae873c7a85a74502b9f6866d9fc9e94e3d69b6af20f7b2f5886647",
+     "browserOwn": 12,
+     "exact": 102,
+     "fuzzy": 12,
+     "miss": 49,
+     "requests": 163
+    },
+    "gate.run2": {
+     "archiveSha256": "3613f70715ae873c7a85a74502b9f6866d9fc9e94e3d69b6af20f7b2f5886647",
+     "browserOwn": 5,
+     "exact": 102,
+     "fuzzy": 12,
+     "miss": 50,
+     "requests": 164
+    }
+   },
+   "fleet": {
+    "archiveSha256": "3613f70715ae873c7a85a74502b9f6866d9fc9e94e3d69b6af20f7b2f5886647",
+    "browserOwn": 2,
+    "exact": 175,
+    "fuzzy": 26,
+    "miss": 109,
+    "requests": 310,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "weather-metoffice-gov-uk-observations-r1qbtmxef-5e1f32dd",
+   "url": "https://weather.metoffice.gov.uk/observations/r1qbtmxef"
+  },
+  {
+   "archiveSha256": "f6dfec0e290bb940bbd5a6f1466804e9ae4fd5dc87a1204a315d5c5a5339cb50",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "f6dfec0e290bb940bbd5a6f1466804e9ae4fd5dc87a1204a315d5c5a5339cb50",
+     "browserOwn": 16,
+     "exact": 47,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 48
+    },
+    "gate.run2": {
+     "archiveSha256": "f6dfec0e290bb940bbd5a6f1466804e9ae4fd5dc87a1204a315d5c5a5339cb50",
+     "browserOwn": 16,
+     "exact": 47,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 48
+    }
+   },
+   "fleet": {
+    "archiveSha256": "f6dfec0e290bb940bbd5a6f1466804e9ae4fd5dc87a1204a315d5c5a5339cb50",
+    "browserOwn": 0,
+    "exact": 43,
+    "fuzzy": 0,
+    "miss": 8,
+    "requests": 51,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "european-union-europa-eu-principles-countries-history-eu-enlargement-e-bff16f60",
+   "url": "https://european-union.europa.eu/principles-countries-history/eu-enlargement_en"
+  },
+  {
+   "archiveSha256": "60782dbf886106c412ea9fda3127e8acabb4ffc980a2cd8bc4570e2c2150d11e",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "60782dbf886106c412ea9fda3127e8acabb4ffc980a2cd8bc4570e2c2150d11e",
+     "blocked": 3,
+     "browserOwn": 10,
+     "exact": 37,
+     "fuzzy": 7,
+     "miss": 6,
+     "requests": 53
+    },
+    "gate.run2": {
+     "archiveSha256": "60782dbf886106c412ea9fda3127e8acabb4ffc980a2cd8bc4570e2c2150d11e",
+     "blocked": 3,
+     "browserOwn": 10,
+     "exact": 37,
+     "fuzzy": 7,
+     "miss": 6,
+     "requests": 53
+    }
+   },
+   "fleet": {
+    "archiveSha256": "60782dbf886106c412ea9fda3127e8acabb4ffc980a2cd8bc4570e2c2150d11e",
+    "blocked": 10,
+    "browserOwn": 0,
+    "exact": 40,
+    "fuzzy": 9,
+    "miss": 9,
+    "requests": 68,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "www-ofgem-gov-uk-energy-policy-and-regulation-engagement-forums-and-wo-64053c1e",
+   "url": "https://www.ofgem.gov.uk/energy-policy-and-regulation/engagement/forums-and-working-groups/citizens-energy-forum"
+  },
+  {
+   "archiveSha256": "d0aa05e2c6359dd5d3c82d85246706223ab61e7fbfd5c42468fc21e1e5c2d0e4",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "d0aa05e2c6359dd5d3c82d85246706223ab61e7fbfd5c42468fc21e1e5c2d0e4",
+     "browserOwn": 12,
+     "exact": 48,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 50
+    },
+    "gate.run2": {
+     "archiveSha256": "d0aa05e2c6359dd5d3c82d85246706223ab61e7fbfd5c42468fc21e1e5c2d0e4",
+     "browserOwn": 12,
+     "exact": 48,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 50
+    }
+   },
+   "fleet": {
+    "archiveSha256": "d0aa05e2c6359dd5d3c82d85246706223ab61e7fbfd5c42468fc21e1e5c2d0e4",
+    "browserOwn": 0,
+    "exact": 44,
+    "fuzzy": 1,
+    "miss": 6,
+    "requests": 51,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "www-scotcourts-gov-uk-about-us-news-news-2023-december-prohibition-of--db60e5b1",
+   "url": "https://www.scotcourts.gov.uk/about-us/news/news/2023/december/prohibition-of-dropped-footway-parking-double-parking-and-pavement-parking"
+  },
+  {
+   "archiveSha256": "245a2913dcb4b6f9d89b5496ac3e4a54731813eaca0d9fc0fd7d98dbd4fa1a42",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "245a2913dcb4b6f9d89b5496ac3e4a54731813eaca0d9fc0fd7d98dbd4fa1a42",
+     "browserOwn": 12,
+     "exact": 65,
+     "fuzzy": 19,
+     "miss": 10,
+     "requests": 94
+    },
+    "gate.run2": {
+     "archiveSha256": "245a2913dcb4b6f9d89b5496ac3e4a54731813eaca0d9fc0fd7d98dbd4fa1a42",
+     "browserOwn": 12,
+     "exact": 65,
+     "fuzzy": 20,
+     "miss": 9,
+     "requests": 94
+    }
+   },
+   "fleet": {
+    "archiveSha256": "245a2913dcb4b6f9d89b5496ac3e4a54731813eaca0d9fc0fd7d98dbd4fa1a42",
+    "browserOwn": 1,
+    "exact": 107,
+    "fuzzy": 23,
+    "miss": 12,
+    "requests": 142,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "events-bl-uk-sitemap-a7df407f",
+   "url": "https://events.bl.uk/sitemap"
+  },
+  {
+   "archiveSha256": "6bbeb42c0d42799b531e8256117f108b724367c8f4e37056d9941ee16726b0ed",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "6bbeb42c0d42799b531e8256117f108b724367c8f4e37056d9941ee16726b0ed",
+     "browserOwn": 21,
+     "exact": 38,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 41
+    },
+    "gate.run2": {
+     "archiveSha256": "6bbeb42c0d42799b531e8256117f108b724367c8f4e37056d9941ee16726b0ed",
+     "browserOwn": 20,
+     "exact": 38,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 41
+    }
+   },
+   "fleet": {
+    "archiveSha256": "6bbeb42c0d42799b531e8256117f108b724367c8f4e37056d9941ee16726b0ed",
+    "browserOwn": 0,
+    "exact": 33,
+    "fuzzy": 0,
+    "miss": 4,
+    "requests": 37,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "design-system-service-gov-uk-patterns-bank-details-d6059cbc",
+   "url": "https://design-system.service.gov.uk/patterns/bank-details/"
+  },
+  {
+   "archiveSha256": "3acac76569a61e7818e3e989db132e30a8f31e5e3557776595f644ba7cfddae8",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "3acac76569a61e7818e3e989db132e30a8f31e5e3557776595f644ba7cfddae8",
+     "browserOwn": 11,
+     "exact": 35,
+     "fuzzy": 2,
+     "miss": 8,
+     "requests": 45
+    },
+    "gate.run2": {
+     "archiveSha256": "3acac76569a61e7818e3e989db132e30a8f31e5e3557776595f644ba7cfddae8",
+     "browserOwn": 11,
+     "exact": 35,
+     "fuzzy": 2,
+     "miss": 8,
+     "requests": 45
+    }
+   },
+   "fleet": {
+    "archiveSha256": "3acac76569a61e7818e3e989db132e30a8f31e5e3557776595f644ba7cfddae8",
+    "browserOwn": 2,
+    "exact": 32,
+    "fuzzy": 1,
+    "miss": 16,
+    "requests": 49,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-nls-uk-collections-stories-scottish-history-james-vi-and-the-union-b32f5e3d",
+   "url": "https://www.nls.uk/collections/stories/scottish-history/james-vi-and-the-union-of-the-crowns/"
+  },
+  {
+   "archiveSha256": "5acc84fa730485b298b02b6269a2559de7f25181a382db589d228c00bb02b114",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "5acc84fa730485b298b02b6269a2559de7f25181a382db589d228c00bb02b114",
+     "browserOwn": 16,
+     "exact": 90,
+     "fuzzy": 29,
+     "miss": 10,
+     "requests": 129
+    },
+    "gate.run2": {
+     "archiveSha256": "5acc84fa730485b298b02b6269a2559de7f25181a382db589d228c00bb02b114",
+     "browserOwn": 16,
+     "exact": 90,
+     "fuzzy": 29,
+     "miss": 11,
+     "requests": 130
+    }
+   },
+   "fleet": {
+    "archiveSha256": "5acc84fa730485b298b02b6269a2559de7f25181a382db589d228c00bb02b114",
+    "browserOwn": 0,
+    "exact": 97,
+    "fuzzy": 37,
+    "miss": 44,
+    "requests": 178,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "sheffield-ac-uk-speri-news-our-doctoral-researchers-network-has-big-pl-a06202c4",
+   "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year"
+  },
+  {
+   "archiveSha256": "40aa2bf3945d45cd9b280fd55e41862a07bb31f83f8f772b324d554b13150f3e",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "40aa2bf3945d45cd9b280fd55e41862a07bb31f83f8f772b324d554b13150f3e",
+     "browserOwn": 10,
+     "exact": 30,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 33
+    },
+    "gate.run2": {
+     "archiveSha256": "40aa2bf3945d45cd9b280fd55e41862a07bb31f83f8f772b324d554b13150f3e",
+     "browserOwn": 10,
+     "exact": 30,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 33
+    }
+   },
+   "fleet": {
+    "archiveSha256": "40aa2bf3945d45cd9b280fd55e41862a07bb31f83f8f772b324d554b13150f3e",
+    "browserOwn": 0,
+    "exact": 26,
+    "fuzzy": 4,
+    "miss": 2,
+    "requests": 32,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "www-gov-scot-publications-january-2026-open-market-review-superfast-ul-9365e245",
+   "url": "https://www.gov.scot/publications/january-2026-open-market-review-superfast-ultrafast-gigabit-capable-broadband-infrastructure-scotland-outcome-report/pages/4/"
+  },
+  {
+   "archiveSha256": "5539bfdf657e513bec8947a1089d99383f187f98d8d5348eac42e83bebd897bd",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "5539bfdf657e513bec8947a1089d99383f187f98d8d5348eac42e83bebd897bd",
+     "browserOwn": 12,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 8,
+     "requests": 40
+    },
+    "gate.run2": {
+     "archiveSha256": "5539bfdf657e513bec8947a1089d99383f187f98d8d5348eac42e83bebd897bd",
+     "browserOwn": 12,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 8,
+     "requests": 40
+    }
+   },
+   "fleet": {
+    "archiveSha256": "5539bfdf657e513bec8947a1089d99383f187f98d8d5348eac42e83bebd897bd",
+    "browserOwn": 0,
+    "exact": 26,
+    "fuzzy": 1,
+    "miss": 13,
+    "requests": 40,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "www-transport-gov-scot-news-m74-junction-3a-daldowie-weekend-closure-0e102fc5",
+   "url": "https://www.transport.gov.scot/news/m74-junction-3a-daldowie-weekend-closure/"
+  },
+  {
+   "archiveSha256": "ab30889049a53f9a888fda602c2544c8f87a91c29de13980e9c7531fe0974eed",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "ab30889049a53f9a888fda602c2544c8f87a91c29de13980e9c7531fe0974eed",
+     "browserOwn": 12,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 5,
+     "requests": 26
+    },
+    "gate.run2": {
+     "archiveSha256": "ab30889049a53f9a888fda602c2544c8f87a91c29de13980e9c7531fe0974eed",
+     "browserOwn": 11,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 5,
+     "requests": 26
+    }
+   },
+   "fleet": {
+    "archiveSha256": "ab30889049a53f9a888fda602c2544c8f87a91c29de13980e9c7531fe0974eed",
+    "browserOwn": 0,
+    "exact": 16,
+    "fuzzy": 0,
+    "miss": 8,
+    "requests": 24,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-gov-uk-government-publications-treaties-monthly-bulletin-february--db684ff3",
+   "url": "https://www.gov.uk/government/publications/treaties-monthly-bulletin-february-2013"
+  },
+  {
+   "archiveSha256": "acbe8e1b37a805308f8369cdefe6dd6a736fabd98e9073cf3c8ea800529ccab5",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "acbe8e1b37a805308f8369cdefe6dd6a736fabd98e9073cf3c8ea800529ccab5",
+     "browserOwn": 6,
+     "exact": 64,
+     "fuzzy": 4,
+     "miss": 8,
+     "requests": 76
+    },
+    "gate.run2": {
+     "archiveSha256": "acbe8e1b37a805308f8369cdefe6dd6a736fabd98e9073cf3c8ea800529ccab5",
+     "browserOwn": 6,
+     "exact": 63,
+     "fuzzy": 4,
+     "miss": 8,
+     "requests": 75
+    }
+   },
+   "fleet": {
+    "archiveSha256": "acbe8e1b37a805308f8369cdefe6dd6a736fabd98e9073cf3c8ea800529ccab5",
+    "browserOwn": 0,
+    "exact": 64,
+    "fuzzy": 4,
+    "miss": 15,
+    "requests": 83,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "www-lbhf-gov-uk-housing-resident-involvement-estate-inspections-estate-a4069f09",
+   "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q2/lytton-estate-burne-jones-samuel-richardson-glenallen-houses-the-grange"
+  },
+  {
+   "archiveSha256": "a4d9b075ba1f486d12a1c0ff57d32e207a32961ed3fb0e52223c6ed5cd1f218f",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "a4d9b075ba1f486d12a1c0ff57d32e207a32961ed3fb0e52223c6ed5cd1f218f",
+     "browserOwn": 15,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 21
+    },
+    "gate.run2": {
+     "archiveSha256": "a4d9b075ba1f486d12a1c0ff57d32e207a32961ed3fb0e52223c6ed5cd1f218f",
+     "browserOwn": 16,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 21
+    }
+   },
+   "fleet": {
+    "archiveSha256": "a4d9b075ba1f486d12a1c0ff57d32e207a32961ed3fb0e52223c6ed5cd1f218f",
+    "browserOwn": 1,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 11,
+    "requests": 26,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "ico-org-uk-for-organisations-uk-gdpr-guidance-and-resources-individual-41179ae3",
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/when-can-an-exemption-apply-to-information-about-other-people-in-a-sar/"
+  },
+  {
+   "archiveSha256": "497a4b096edb9ab9d8074c4510b39dd3281f91b40a6003ee028292644dfc5077",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "497a4b096edb9ab9d8074c4510b39dd3281f91b40a6003ee028292644dfc5077",
+     "browserOwn": 10,
+     "exact": 24,
+     "fuzzy": 1,
+     "miss": 2,
+     "requests": 27
+    },
+    "gate.run2": {
+     "archiveSha256": "497a4b096edb9ab9d8074c4510b39dd3281f91b40a6003ee028292644dfc5077",
+     "browserOwn": 10,
+     "exact": 24,
+     "fuzzy": 1,
+     "miss": 2,
+     "requests": 27
+    }
+   },
+   "fleet": {
+    "archiveSha256": "497a4b096edb9ab9d8074c4510b39dd3281f91b40a6003ee028292644dfc5077",
+    "browserOwn": 2,
+    "exact": 21,
+    "fuzzy": 1,
+    "miss": 5,
+    "requests": 27,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "www-mygov-scot-seafarer-rights-e631549b",
+   "url": "https://www.mygov.scot/seafarer-rights"
+  },
+  {
+   "archiveSha256": "f9aae3a55482708d511724d46a5ef3d59e8ca941ba0ff5133ab96b499e4afddf",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "f9aae3a55482708d511724d46a5ef3d59e8ca941ba0ff5133ab96b499e4afddf",
+     "browserOwn": 14,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 35
+    },
+    "gate.run2": {
+     "archiveSha256": "f9aae3a55482708d511724d46a5ef3d59e8ca941ba0ff5133ab96b499e4afddf",
+     "browserOwn": 14,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 35
+    }
+   },
+   "fleet": {
+    "archiveSha256": "f9aae3a55482708d511724d46a5ef3d59e8ca941ba0ff5133ab96b499e4afddf",
+    "browserOwn": 0,
+    "exact": 27,
+    "fuzzy": 1,
+    "miss": 9,
+    "requests": 37,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "www-nidirect-gov-uk-articles-safety-workplace-pension-schemes-556540a3",
+   "url": "https://www.nidirect.gov.uk/articles/safety-workplace-pension-schemes"
+  },
+  {
+   "archiveSha256": "532363423cec4421ed613e559a85ae3b9f857fcaeb289f678332844c5ae0efb1",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "532363423cec4421ed613e559a85ae3b9f857fcaeb289f678332844c5ae0efb1",
+     "browserOwn": 10,
+     "exact": 26,
+     "fuzzy": 3,
+     "miss": 5,
+     "requests": 34
+    },
+    "gate.run2": {
+     "archiveSha256": "532363423cec4421ed613e559a85ae3b9f857fcaeb289f678332844c5ae0efb1",
+     "browserOwn": 10,
+     "exact": 26,
+     "fuzzy": 3,
+     "miss": 5,
+     "requests": 34
+    }
+   },
+   "fleet": {
+    "archiveSha256": "532363423cec4421ed613e559a85ae3b9f857fcaeb289f678332844c5ae0efb1",
+    "browserOwn": 0,
+    "exact": 23,
+    "fuzzy": 3,
+    "miss": 11,
+    "requests": 37,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-gov-wales-written-statement-accessibility-welsh-law-c2f36502",
+   "url": "https://www.gov.wales/written-statement-accessibility-welsh-law"
+  },
+  {
+   "archiveSha256": "99696eae755e07dead38dca7145e0126555c9fa81078132a0fe4f0635f960a1b",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "99696eae755e07dead38dca7145e0126555c9fa81078132a0fe4f0635f960a1b",
+     "browserOwn": 13,
+     "exact": 27,
+     "fuzzy": 2,
+     "miss": 7,
+     "requests": 36
+    },
+    "gate.run2": {
+     "archiveSha256": "99696eae755e07dead38dca7145e0126555c9fa81078132a0fe4f0635f960a1b",
+     "browserOwn": 11,
+     "exact": 27,
+     "fuzzy": 2,
+     "miss": 7,
+     "requests": 36
+    }
+   },
+   "fleet": {
+    "archiveSha256": "99696eae755e07dead38dca7145e0126555c9fa81078132a0fe4f0635f960a1b",
+    "browserOwn": 1,
+    "exact": 22,
+    "fuzzy": 1,
+    "miss": 14,
+    "requests": 37,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "www-nationalarchives-gov-uk-professional-guidance-and-services-our-res-a9779b72",
+   "url": "https://www.nationalarchives.gov.uk/professional-guidance-and-services/our-research-and-academic-collaboration/our-research-projects/research-projects/from-our-students/lgbtq-histories-and-colonial-office-records/"
+  },
+  {
+   "archiveSha256": "dcafb2a7abe3541d061d945ebf849a1b5b84145b582545ffeb4ebc5077be11b3",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "dcafb2a7abe3541d061d945ebf849a1b5b84145b582545ffeb4ebc5077be11b3",
+     "browserOwn": 11,
+     "exact": 66,
+     "fuzzy": 3,
+     "miss": 16,
+     "requests": 85
+    },
+    "gate.run2": {
+     "archiveSha256": "dcafb2a7abe3541d061d945ebf849a1b5b84145b582545ffeb4ebc5077be11b3",
+     "browserOwn": 11,
+     "exact": 66,
+     "fuzzy": 3,
+     "miss": 15,
+     "requests": 84
+    }
+   },
+   "fleet": {
+    "archiveSha256": "dcafb2a7abe3541d061d945ebf849a1b5b84145b582545ffeb4ebc5077be11b3",
+    "browserOwn": 0,
+    "exact": 65,
+    "fuzzy": 3,
+    "miss": 15,
+    "requests": 83,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "www-networkrail-co-uk-stories-winning-design-to-improve-smaller-statio-545e9615",
+   "url": "https://www.networkrail.co.uk/stories/winning-design-to-improve-smaller-stations/"
+  },
+  {
+   "archiveSha256": "4e28451eff4fbb74edde94e9c574e18fe1e99ba55098365a9ced5282b460f6a7",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "4e28451eff4fbb74edde94e9c574e18fe1e99ba55098365a9ced5282b460f6a7",
+     "browserOwn": 10,
+     "exact": 29,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 31
+    },
+    "gate.run2": {
+     "archiveSha256": "4e28451eff4fbb74edde94e9c574e18fe1e99ba55098365a9ced5282b460f6a7",
+     "browserOwn": 10,
+     "exact": 29,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 31
+    }
+   },
+   "fleet": {
+    "archiveSha256": "4e28451eff4fbb74edde94e9c574e18fe1e99ba55098365a9ced5282b460f6a7",
+    "browserOwn": 0,
+    "exact": 75,
+    "fuzzy": 2,
+    "miss": 5,
+    "requests": 82,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "data-southwark-gov-uk-news-1ce4d004",
+   "url": "https://data.southwark.gov.uk/news/"
+  },
+  {
+   "archiveSha256": "e4d1e506a11f6c863b45fa5d8bf65bf9a47dbadafcfbfe3613d4a37d263aa469",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "e4d1e506a11f6c863b45fa5d8bf65bf9a47dbadafcfbfe3613d4a37d263aa469",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    },
+    "gate.run2": {
+     "archiveSha256": "e4d1e506a11f6c863b45fa5d8bf65bf9a47dbadafcfbfe3613d4a37d263aa469",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    }
+   },
+   "fleet": {
+    "archiveSha256": "e4d1e506a11f6c863b45fa5d8bf65bf9a47dbadafcfbfe3613d4a37d263aa469",
+    "browserOwn": 0,
+    "exact": 17,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 19,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "caselaw-nationalarchives-gov-uk-uksc-2010-26-bd43230c",
+   "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/26"
+  },
+  {
+   "archiveSha256": "4f72d688228c3dcc57f399b938643b32175a9b39e7a18cc463cfd08c6ebe70ca",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "4f72d688228c3dcc57f399b938643b32175a9b39e7a18cc463cfd08c6ebe70ca",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 28
+    },
+    "gate.run2": {
+     "archiveSha256": "4f72d688228c3dcc57f399b938643b32175a9b39e7a18cc463cfd08c6ebe70ca",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 28
+    }
+   },
+   "fleet": {
+    "archiveSha256": "4f72d688228c3dcc57f399b938643b32175a9b39e7a18cc463cfd08c6ebe70ca",
+    "browserOwn": 0,
+    "exact": 21,
+    "fuzzy": 2,
+    "miss": 3,
+    "requests": 26,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-nhs-uk-medicines-insulin-biphasic-insulin-how-and-when-to-take-bip-a7c44cdc",
+   "url": "https://www.nhs.uk/medicines/insulin/biphasic-insulin/how-and-when-to-take-biphasic-insulin/"
+  },
+  {
+   "archiveSha256": "3a44a689db0240ba2d5bb35d86710bd9bc0c3eb5946150e2aefe83e3281540af",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "3a44a689db0240ba2d5bb35d86710bd9bc0c3eb5946150e2aefe83e3281540af",
+     "browserOwn": 10,
+     "exact": 12,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 12
+    },
+    "gate.run2": {
+     "archiveSha256": "3a44a689db0240ba2d5bb35d86710bd9bc0c3eb5946150e2aefe83e3281540af",
+     "browserOwn": 10,
+     "exact": 12,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 12
+    }
+   },
+   "fleet": {
+    "archiveSha256": "3a44a689db0240ba2d5bb35d86710bd9bc0c3eb5946150e2aefe83e3281540af",
+    "browserOwn": 0,
+    "exact": 7,
+    "fuzzy": 0,
+    "miss": 0,
+    "requests": 7,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "design-patterns-service-justice-gov-uk-components-badge-examples-urgen-14e4a0bd",
+   "url": "https://design-patterns.service.justice.gov.uk/components/badge/examples/urgent/"
+  },
+  {
+   "archiveSha256": "f336e9b810c737752db47755b07067226adaff14cc034b836e2094dcc640db45",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "f336e9b810c737752db47755b07067226adaff14cc034b836e2094dcc640db45",
+     "browserOwn": 12,
+     "exact": 40,
+     "fuzzy": 1,
+     "miss": 4,
+     "requests": 45
+    },
+    "gate.run2": {
+     "archiveSha256": "f336e9b810c737752db47755b07067226adaff14cc034b836e2094dcc640db45",
+     "browserOwn": 12,
+     "exact": 40,
+     "fuzzy": 1,
+     "miss": 4,
+     "requests": 45
+    }
+   },
+   "fleet": {
+    "archiveSha256": "f336e9b810c737752db47755b07067226adaff14cc034b836e2094dcc640db45",
+    "browserOwn": 2,
+    "exact": 37,
+    "fuzzy": 1,
+    "miss": 15,
+    "requests": 53,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "www-historicenvironment-scot-visit-all-doune-castle-shop-e623d336",
+   "url": "https://www.historicenvironment.scot/visit/all/doune-castle/shop/"
+  },
+  {
+   "archiveSha256": "db7f8934eea603ffed348ffebc8e6207643e5bc1170fe0704d1c3683a21ad3d1",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "db7f8934eea603ffed348ffebc8e6207643e5bc1170fe0704d1c3683a21ad3d1",
+     "browserOwn": 13,
+     "exact": 45,
+     "fuzzy": 1,
+     "miss": 2,
+     "requests": 48
+    },
+    "gate.run2": {
+     "archiveSha256": "db7f8934eea603ffed348ffebc8e6207643e5bc1170fe0704d1c3683a21ad3d1",
+     "browserOwn": 12,
+     "exact": 45,
+     "fuzzy": 1,
+     "miss": 2,
+     "requests": 48
+    }
+   },
+   "fleet": {
+    "archiveSha256": "db7f8934eea603ffed348ffebc8e6207643e5bc1170fe0704d1c3683a21ad3d1",
+    "browserOwn": 0,
+    "exact": 42,
+    "fuzzy": 1,
+    "miss": 7,
+    "requests": 50,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "www-nrscotland-gov-uk-learning-and-events-first-world-war-battle-of-th-5ed227c8",
+   "url": "https://www.nrscotland.gov.uk/learning-and-events/first-world-war/battle-of-the-somme-1916/"
+  },
+  {
+   "archiveSha256": "d8f15051f78bdd87652fbbd0152c35b89a19e8fe0a64f19ed8e408b79ba62caf",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "d8f15051f78bdd87652fbbd0152c35b89a19e8fe0a64f19ed8e408b79ba62caf",
+     "browserOwn": 10,
+     "exact": 17,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 18
+    },
+    "gate.run2": {
+     "archiveSha256": "d8f15051f78bdd87652fbbd0152c35b89a19e8fe0a64f19ed8e408b79ba62caf",
+     "browserOwn": 10,
+     "exact": 17,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 18
+    }
+   },
+   "fleet": {
+    "archiveSha256": "d8f15051f78bdd87652fbbd0152c35b89a19e8fe0a64f19ed8e408b79ba62caf",
+    "browserOwn": 2,
+    "exact": 13,
+    "fuzzy": 0,
+    "miss": 5,
+    "requests": 18,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "service-manual-nhs-uk-standards-and-technology-service-standard-points-88627cb3",
+   "url": "https://service-manual.nhs.uk/standards-and-technology/service-standard-points/10-define-what-success-looks-like-and-be-open-about-how-your-service-is-performing"
+  },
+  {
+   "archiveSha256": "73b6269454ba4c7445c2a52a566e3fbe67aefb5a7aef26f39e73e17a4511dee1",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "73b6269454ba4c7445c2a52a566e3fbe67aefb5a7aef26f39e73e17a4511dee1",
+     "browserOwn": 5,
+     "exact": 97,
+     "fuzzy": 11,
+     "miss": 22,
+     "requests": 130
+    },
+    "gate.run2": {
+     "archiveSha256": "73b6269454ba4c7445c2a52a566e3fbe67aefb5a7aef26f39e73e17a4511dee1",
+     "browserOwn": 5,
+     "exact": 97,
+     "fuzzy": 11,
+     "miss": 19,
+     "requests": 127
+    }
+   },
+   "fleet": {
+    "archiveSha256": "73b6269454ba4c7445c2a52a566e3fbe67aefb5a7aef26f39e73e17a4511dee1",
+    "browserOwn": 2,
+    "exact": 167,
+    "fuzzy": 23,
+    "miss": 37,
+    "requests": 227,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "weather-metoffice-gov-uk-observations-xcbzchbyz-ee1ec81c",
+   "url": "https://weather.metoffice.gov.uk/observations/xcbzchbyz"
+  },
+  {
+   "archiveSha256": "35ebc9e74a82cd2c1bf6e5e1862c459b16b77151eb5569a419743b353d37b378",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "35ebc9e74a82cd2c1bf6e5e1862c459b16b77151eb5569a419743b353d37b378",
+     "browserOwn": 13,
+     "exact": 44,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 45
+    },
+    "gate.run2": {
+     "archiveSha256": "35ebc9e74a82cd2c1bf6e5e1862c459b16b77151eb5569a419743b353d37b378",
+     "browserOwn": 13,
+     "exact": 44,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 45
+    }
+   },
+   "fleet": {
+    "archiveSha256": "35ebc9e74a82cd2c1bf6e5e1862c459b16b77151eb5569a419743b353d37b378",
+    "browserOwn": 0,
+    "exact": 42,
+    "fuzzy": 0,
+    "miss": 3,
+    "requests": 45,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "european-union-europa-eu-languages-our-websites-en-417fd540",
+   "url": "https://european-union.europa.eu/languages-our-websites_en"
+  },
+  {
+   "archiveSha256": "63c19c0dec03a7e47b8c2c75adb8811c10f306bf70640c905875583037a99af5",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "63c19c0dec03a7e47b8c2c75adb8811c10f306bf70640c905875583037a99af5",
+     "blocked": 4,
+     "browserOwn": 13,
+     "exact": 50,
+     "fuzzy": 7,
+     "miss": 2,
+     "requests": 63
+    },
+    "gate.run2": {
+     "archiveSha256": "63c19c0dec03a7e47b8c2c75adb8811c10f306bf70640c905875583037a99af5",
+     "blocked": 4,
+     "browserOwn": 11,
+     "exact": 51,
+     "fuzzy": 7,
+     "miss": 2,
+     "requests": 64
+    }
+   },
+   "fleet": {
+    "archiveSha256": "63c19c0dec03a7e47b8c2c75adb8811c10f306bf70640c905875583037a99af5",
+    "blocked": 15,
+    "browserOwn": 0,
+    "exact": 65,
+    "fuzzy": 8,
+    "miss": 5,
+    "requests": 93,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "www-ofgem-gov-uk-cy-feed-tariffs-fit-contacts-guidance-and-resources-p-0daa8081",
+   "url": "https://www.ofgem.gov.uk/cy/feed-tariffs-fit/contacts-guidance-and-resources/public-reports-and-data-fit/feed-tariffs-quarterly-report"
+  },
+  {
+   "archiveSha256": "db5b34edad8b008a69963f0e81b48f7e5aed206ad5ebaf4e499f93e313c97806",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "db5b34edad8b008a69963f0e81b48f7e5aed206ad5ebaf4e499f93e313c97806",
+     "browserOwn": 12,
+     "exact": 48,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 50
+    },
+    "gate.run2": {
+     "archiveSha256": "db5b34edad8b008a69963f0e81b48f7e5aed206ad5ebaf4e499f93e313c97806",
+     "browserOwn": 12,
+     "exact": 48,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 50
+    }
+   },
+   "fleet": {
+    "archiveSha256": "db5b34edad8b008a69963f0e81b48f7e5aed206ad5ebaf4e499f93e313c97806",
+    "browserOwn": 0,
+    "exact": 43,
+    "fuzzy": 1,
+    "miss": 6,
+    "requests": 50,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "www-scotcourts-gov-uk-about-us-news-news-2023-march-new-local-taxation-856d7f24",
+   "url": "https://www.scotcourts.gov.uk/about-us/news/news/2023/march/new-local-taxation-chamber-to-be-established-on-1st-april"
+  },
+  {
+   "archiveSha256": "51b10883a75ca56a57bf1148a2f9e31a3d118b5ff7a1df0de6aeecf6e3faef86",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "51b10883a75ca56a57bf1148a2f9e31a3d118b5ff7a1df0de6aeecf6e3faef86",
+     "browserOwn": 5,
+     "exact": 72,
+     "fuzzy": 19,
+     "miss": 12,
+     "requests": 103
+    },
+    "gate.run2": {
+     "archiveSha256": "51b10883a75ca56a57bf1148a2f9e31a3d118b5ff7a1df0de6aeecf6e3faef86",
+     "browserOwn": 5,
+     "exact": 73,
+     "fuzzy": 12,
+     "miss": 34,
+     "requests": 119
+    }
+   },
+   "fleet": {
+    "archiveSha256": "51b10883a75ca56a57bf1148a2f9e31a3d118b5ff7a1df0de6aeecf6e3faef86",
+    "browserOwn": 1,
+    "exact": 85,
+    "fuzzy": 21,
+    "miss": 31,
+    "requests": 137,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "events-bl-uk-events-making-artists-books-184ee455",
+   "url": "https://events.bl.uk/events/making-artists-books"
+  },
+  {
+   "archiveSha256": "3e20a7d6a55ee1dd3838f7578e16074d14ca8903766f812a9e82beacd7fd0ce8",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "3e20a7d6a55ee1dd3838f7578e16074d14ca8903766f812a9e82beacd7fd0ce8",
+     "browserOwn": 11,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 24
+    },
+    "gate.run2": {
+     "archiveSha256": "3e20a7d6a55ee1dd3838f7578e16074d14ca8903766f812a9e82beacd7fd0ce8",
+     "browserOwn": 11,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 24
+    }
+   },
+   "fleet": {
+    "archiveSha256": "3e20a7d6a55ee1dd3838f7578e16074d14ca8903766f812a9e82beacd7fd0ce8",
+    "browserOwn": 0,
+    "exact": 16,
+    "fuzzy": 0,
+    "miss": 7,
+    "requests": 23,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "design-system-service-gov-uk-components-inset-text-a24f267e",
+   "url": "https://design-system.service.gov.uk/components/inset-text/"
+  },
+  {
+   "archiveSha256": "4ec46525b61b2c481b3d8d46e43efe23525ceb598baeee8d8999af669fdb72d5",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "4ec46525b61b2c481b3d8d46e43efe23525ceb598baeee8d8999af669fdb72d5",
+     "browserOwn": 11,
+     "exact": 29,
+     "fuzzy": 1,
+     "miss": 4,
+     "requests": 34
+    },
+    "gate.run2": {
+     "archiveSha256": "4ec46525b61b2c481b3d8d46e43efe23525ceb598baeee8d8999af669fdb72d5",
+     "browserOwn": 11,
+     "exact": 29,
+     "fuzzy": 1,
+     "miss": 4,
+     "requests": 34
+    }
+   },
+   "fleet": {
+    "archiveSha256": "4ec46525b61b2c481b3d8d46e43efe23525ceb598baeee8d8999af669fdb72d5",
+    "browserOwn": 2,
+    "exact": 34,
+    "fuzzy": 0,
+    "miss": 10,
+    "requests": 44,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-nls-uk-privacy-fundraising-34c5f913",
+   "url": "https://www.nls.uk/privacy/fundraising/"
+  },
+  {
+   "archiveSha256": "512b4ac93063c7513d55a8749f8b2a0b9d29e3e49b2461466c8a72137f6a7d3a",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "512b4ac93063c7513d55a8749f8b2a0b9d29e3e49b2461466c8a72137f6a7d3a",
+     "browserOwn": 14,
+     "exact": 105,
+     "fuzzy": 31,
+     "miss": 14,
+     "requests": 150
+    },
+    "gate.run2": {
+     "archiveSha256": "512b4ac93063c7513d55a8749f8b2a0b9d29e3e49b2461466c8a72137f6a7d3a",
+     "browserOwn": 14,
+     "exact": 105,
+     "fuzzy": 33,
+     "miss": 14,
+     "requests": 152
+    }
+   },
+   "fleet": {
+    "archiveSha256": "512b4ac93063c7513d55a8749f8b2a0b9d29e3e49b2461466c8a72137f6a7d3a",
+    "browserOwn": 0,
+    "exact": 109,
+    "fuzzy": 41,
+    "miss": 42,
+    "requests": 192,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "sheffield-ac-uk-smph-people-academic-clinical-medicine-david-g-kiely-1083c362",
+   "url": "https://sheffield.ac.uk/smph/people/academic/clinical-medicine/david-g-kiely"
+  },
+  {
+   "archiveSha256": "136c29c6a90bd7d243aaa74de3e5163ec27f10fa3647cf7792d0e44fa6b4f0b8",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "136c29c6a90bd7d243aaa74de3e5163ec27f10fa3647cf7792d0e44fa6b4f0b8",
+     "browserOwn": 10,
+     "exact": 29,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 33
+    },
+    "gate.run2": {
+     "archiveSha256": "136c29c6a90bd7d243aaa74de3e5163ec27f10fa3647cf7792d0e44fa6b4f0b8",
+     "browserOwn": 10,
+     "exact": 30,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 34
+    }
+   },
+   "fleet": {
+    "archiveSha256": "136c29c6a90bd7d243aaa74de3e5163ec27f10fa3647cf7792d0e44fa6b4f0b8",
+    "browserOwn": 0,
+    "exact": 25,
+    "fuzzy": 2,
+    "miss": 6,
+    "requests": 33,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "www-gov-scot-publications-children-young-peoples-neurodevelopment-supp-43fb23d5",
+   "url": "https://www.gov.scot/publications/children-young-peoples-neurodevelopment-support-fund-2026-27-supporting-guidance/pages/10/"
+  },
+  {
+   "archiveSha256": "61cc8064c9f900a78d0f1d7bbf5b40bcce2eb95f2fc77d6211243fb5ea1a69f9",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "61cc8064c9f900a78d0f1d7bbf5b40bcce2eb95f2fc77d6211243fb5ea1a69f9",
+     "browserOwn": 11,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 8,
+     "requests": 40
+    },
+    "gate.run2": {
+     "archiveSha256": "61cc8064c9f900a78d0f1d7bbf5b40bcce2eb95f2fc77d6211243fb5ea1a69f9",
+     "browserOwn": 12,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 8,
+     "requests": 40
+    }
+   },
+   "fleet": {
+    "archiveSha256": "61cc8064c9f900a78d0f1d7bbf5b40bcce2eb95f2fc77d6211243fb5ea1a69f9",
+    "browserOwn": 0,
+    "exact": 25,
+    "fuzzy": 1,
+    "miss": 20,
+    "requests": 46,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-transport-gov-scot-news-a9-safety-camera-data-published-778d76e1",
+   "url": "https://www.transport.gov.scot/news/a9-safety-camera-data-published/"
+  },
+  {
+   "archiveSha256": "febaadec7841a5d1fd543484e3981f0157276fb72e036b487a3f191c4b8de228",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "febaadec7841a5d1fd543484e3981f0157276fb72e036b487a3f191c4b8de228",
+     "browserOwn": 12,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 5,
+     "requests": 24
+    },
+    "gate.run2": {
+     "archiveSha256": "febaadec7841a5d1fd543484e3981f0157276fb72e036b487a3f191c4b8de228",
+     "browserOwn": 11,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 5,
+     "requests": 24
+    }
+   },
+   "fleet": {
+    "archiveSha256": "febaadec7841a5d1fd543484e3981f0157276fb72e036b487a3f191c4b8de228",
+    "browserOwn": 0,
+    "exact": 14,
+    "fuzzy": 0,
+    "miss": 9,
+    "requests": 23,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "www-gov-uk-government-news-culture-secretary-appoints-four-new-board-m-ec5e5b0e",
+   "url": "https://www.gov.uk/government/news/culture-secretary-appoints-four-new-board-members-at-the-sports-grounds-safety-authority"
+  },
+  {
+   "archiveSha256": "af167fb6d73fb4e0fe0fcd7a30659c8a633eeac0f278e85d0a3e8aceb090906d",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "af167fb6d73fb4e0fe0fcd7a30659c8a633eeac0f278e85d0a3e8aceb090906d",
+     "browserOwn": 6,
+     "exact": 64,
+     "fuzzy": 5,
+     "miss": 7,
+     "requests": 76
+    },
+    "gate.run2": {
+     "archiveSha256": "af167fb6d73fb4e0fe0fcd7a30659c8a633eeac0f278e85d0a3e8aceb090906d",
+     "browserOwn": 6,
+     "exact": 64,
+     "fuzzy": 5,
+     "miss": 7,
+     "requests": 76
+    }
+   },
+   "fleet": {
+    "archiveSha256": "af167fb6d73fb4e0fe0fcd7a30659c8a633eeac0f278e85d0a3e8aceb090906d",
+    "browserOwn": 1,
+    "exact": 64,
+    "fuzzy": 5,
+    "miss": 15,
+    "requests": 84,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "www-lbhf-gov-uk-housing-resident-involvement-estate-inspections-estate-a631141a",
+   "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q1/bellamy-close"
+  },
+  {
+   "archiveSha256": "e2cc5b1848a71f7bd959a96db866347c9021ec5f3af4f1b8802ed0feaba4ab21",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "e2cc5b1848a71f7bd959a96db866347c9021ec5f3af4f1b8802ed0feaba4ab21",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 21
+    },
+    "gate.run2": {
+     "archiveSha256": "e2cc5b1848a71f7bd959a96db866347c9021ec5f3af4f1b8802ed0feaba4ab21",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 21
+    }
+   },
+   "fleet": {
+    "archiveSha256": "e2cc5b1848a71f7bd959a96db866347c9021ec5f3af4f1b8802ed0feaba4ab21",
+    "browserOwn": 1,
+    "exact": 14,
+    "fuzzy": 0,
+    "miss": 10,
+    "requests": 24,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "ico-org-uk-for-the-public-your-right-to-get-your-data-deleted-14b22975",
+   "url": "https://ico.org.uk/for-the-public/your-right-to-get-your-data-deleted/"
+  },
+  {
+   "archiveSha256": "e0b965cfd4974c10e0e5e24ca38f4a0e67e495fcb49c14487fd5f40d88988fb2",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "e0b965cfd4974c10e0e5e24ca38f4a0e67e495fcb49c14487fd5f40d88988fb2",
+     "browserOwn": 10,
+     "exact": 24,
+     "fuzzy": 0,
+     "miss": 4,
+     "requests": 28
+    },
+    "gate.run2": {
+     "archiveSha256": "e0b965cfd4974c10e0e5e24ca38f4a0e67e495fcb49c14487fd5f40d88988fb2",
+     "browserOwn": 10,
+     "exact": 24,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 27
+    }
+   },
+   "fleet": {
+    "archiveSha256": "e0b965cfd4974c10e0e5e24ca38f4a0e67e495fcb49c14487fd5f40d88988fb2",
+    "browserOwn": 2,
+    "exact": 21,
+    "fuzzy": 0,
+    "miss": 12,
+    "requests": 33,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "www-mygov-scot-non-disclosure-agreements-nda-c66a105e",
+   "url": "https://www.mygov.scot/non-disclosure-agreements-nda"
+  },
+  {
+   "archiveSha256": "8790f44326c5f8002583697b7bbac019762f4931e6d37a899bdd1bb8b0c6f246",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "8790f44326c5f8002583697b7bbac019762f4931e6d37a899bdd1bb8b0c6f246",
+     "browserOwn": 16,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 35
+    },
+    "gate.run2": {
+     "archiveSha256": "8790f44326c5f8002583697b7bbac019762f4931e6d37a899bdd1bb8b0c6f246",
+     "browserOwn": 16,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 35
+    }
+   },
+   "fleet": {
+    "archiveSha256": "8790f44326c5f8002583697b7bbac019762f4931e6d37a899bdd1bb8b0c6f246",
+    "browserOwn": 0,
+    "exact": 27,
+    "fuzzy": 1,
+    "miss": 3,
+    "requests": 31,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "www-nidirect-gov-uk-articles-using-scaffolding-safely-7d375a14",
+   "url": "https://www.nidirect.gov.uk/articles/using-scaffolding-safely"
+  },
+  {
+   "archiveSha256": "c263fbdb5e03afa7de7156d346d7abdb659afb2951b5ccce3c16a369e09d5cc1",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "c263fbdb5e03afa7de7156d346d7abdb659afb2951b5ccce3c16a369e09d5cc1",
+     "browserOwn": 10,
+     "exact": 26,
+     "fuzzy": 3,
+     "miss": 5,
+     "requests": 34
+    },
+    "gate.run2": {
+     "archiveSha256": "c263fbdb5e03afa7de7156d346d7abdb659afb2951b5ccce3c16a369e09d5cc1",
+     "browserOwn": 10,
+     "exact": 26,
+     "fuzzy": 3,
+     "miss": 5,
+     "requests": 34
+    }
+   },
+   "fleet": {
+    "archiveSha256": "c263fbdb5e03afa7de7156d346d7abdb659afb2951b5ccce3c16a369e09d5cc1",
+    "browserOwn": 0,
+    "exact": 23,
+    "fuzzy": 3,
+    "miss": 11,
+    "requests": 37,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "www-gov-wales-written-statement-publication-national-school-categorisa-2c3f6879",
+   "url": "https://www.gov.wales/written-statement-publication-national-school-categorisation-system-categories-year-four"
+  },
+  {
+   "archiveSha256": "854fe5f1d1a11f55796db4afa302b84accf86ea0f68e0a15b29841a5b2fa1b80",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "854fe5f1d1a11f55796db4afa302b84accf86ea0f68e0a15b29841a5b2fa1b80",
+     "browserOwn": 10,
+     "exact": 33,
+     "fuzzy": 1,
+     "miss": 6,
+     "requests": 40
+    },
+    "gate.run2": {
+     "archiveSha256": "854fe5f1d1a11f55796db4afa302b84accf86ea0f68e0a15b29841a5b2fa1b80",
+     "browserOwn": 11,
+     "exact": 33,
+     "fuzzy": 1,
+     "miss": 6,
+     "requests": 40
+    }
+   },
+   "fleet": {
+    "archiveSha256": "854fe5f1d1a11f55796db4afa302b84accf86ea0f68e0a15b29841a5b2fa1b80",
+    "browserOwn": 1,
+    "exact": 29,
+    "fuzzy": 0,
+    "miss": 13,
+    "requests": 42,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-nationalarchives-gov-uk-explore-the-collection-explore-by-time-per-e314f2f2",
+   "url": "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-time-period/second-world-war/operation-overlord-and-d-day/"
+  },
+  {
+   "archiveSha256": "6f5bc5d361a3716fe6d784209d4686d57660b912d08c1bb7829de63df26b9a8a",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "6f5bc5d361a3716fe6d784209d4686d57660b912d08c1bb7829de63df26b9a8a",
+     "browserOwn": 11,
+     "exact": 61,
+     "fuzzy": 3,
+     "miss": 15,
+     "requests": 79
+    },
+    "gate.run2": {
+     "archiveSha256": "6f5bc5d361a3716fe6d784209d4686d57660b912d08c1bb7829de63df26b9a8a",
+     "browserOwn": 11,
+     "exact": 61,
+     "fuzzy": 3,
+     "miss": 15,
+     "requests": 79
+    }
+   },
+   "fleet": {
+    "archiveSha256": "6f5bc5d361a3716fe6d784209d4686d57660b912d08c1bb7829de63df26b9a8a",
+    "browserOwn": 0,
+    "exact": 60,
+    "fuzzy": 3,
+    "miss": 16,
+    "requests": 79,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-networkrail-co-uk-stories-rail-companies-urge-customers-to-re-plan-6e7b92b7",
+   "url": "https://www.networkrail.co.uk/stories/rail-companies-urge-customers-to-re-plan-journeys-as-storms-threaten-major-disruption/"
+  },
+  {
+   "archiveSha256": "dd7d1bd10920cb1497c0dc427d3e585afebdb9dd541a8fe236933f2ba284578b",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "dd7d1bd10920cb1497c0dc427d3e585afebdb9dd541a8fe236933f2ba284578b",
+     "browserOwn": 12,
+     "exact": 74,
+     "fuzzy": 0,
+     "miss": 53,
+     "requests": 127
+    },
+    "gate.run2": {
+     "archiveSha256": "dd7d1bd10920cb1497c0dc427d3e585afebdb9dd541a8fe236933f2ba284578b",
+     "browserOwn": 10,
+     "exact": 74,
+     "fuzzy": 0,
+     "miss": 53,
+     "requests": 127
+    }
+   },
+   "fleet": {
+    "archiveSha256": "dd7d1bd10920cb1497c0dc427d3e585afebdb9dd541a8fe236933f2ba284578b",
+    "browserOwn": 0,
+    "exact": 198,
+    "fuzzy": 1,
+    "miss": 124,
+    "requests": 323,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "data-southwark-gov-uk-economy-and-employment-reports-9e673f3a",
+   "url": "https://data.southwark.gov.uk/economy-and-employment/reports/"
+  },
+  {
+   "archiveSha256": "08146f26ffd985746ed137a8aa25a00df46098c0ce8006dd95b61caf7cbfa2b7",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "08146f26ffd985746ed137a8aa25a00df46098c0ce8006dd95b61caf7cbfa2b7",
+     "browserOwn": 10,
+     "exact": 14,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 14
+    },
+    "gate.run2": {
+     "archiveSha256": "08146f26ffd985746ed137a8aa25a00df46098c0ce8006dd95b61caf7cbfa2b7",
+     "browserOwn": 10,
+     "exact": 14,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 14
+    }
+   },
+   "fleet": {
+    "archiveSha256": "08146f26ffd985746ed137a8aa25a00df46098c0ce8006dd95b61caf7cbfa2b7",
+    "browserOwn": 0,
+    "exact": 10,
+    "fuzzy": 0,
+    "miss": 4,
+    "requests": 14,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "caselaw-nationalarchives-gov-uk-permissions-and-licensing-f99011af",
+   "url": "https://caselaw.nationalarchives.gov.uk/permissions-and-licensing"
+  },
+  {
+   "archiveSha256": "1e696cf1744a10a38a95c932f2fb0cf7f81290daf822440981a56eb866604eb6",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "1e696cf1744a10a38a95c932f2fb0cf7f81290daf822440981a56eb866604eb6",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 28
+    },
+    "gate.run2": {
+     "archiveSha256": "1e696cf1744a10a38a95c932f2fb0cf7f81290daf822440981a56eb866604eb6",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 28
+    }
+   },
+   "fleet": {
+    "archiveSha256": "1e696cf1744a10a38a95c932f2fb0cf7f81290daf822440981a56eb866604eb6",
+    "browserOwn": 0,
+    "exact": 22,
+    "fuzzy": 2,
+    "miss": 4,
+    "requests": 28,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "www-nhs-uk-contraception-methods-of-contraception-contraceptive-diaphr-476b42c7",
+   "url": "https://www.nhs.uk/contraception/methods-of-contraception/contraceptive-diaphragm-or-cap/side-effects-and-risks/"
+  },
+  {
+   "archiveSha256": "c1821bf1026cef9d09571f25a06e293cc1a1e68e12927e8c96df6ace59c10be5",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "c1821bf1026cef9d09571f25a06e293cc1a1e68e12927e8c96df6ace59c10be5",
+     "browserOwn": 10,
+     "exact": 13,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 13
+    },
+    "gate.run2": {
+     "archiveSha256": "c1821bf1026cef9d09571f25a06e293cc1a1e68e12927e8c96df6ace59c10be5",
+     "browserOwn": 10,
+     "exact": 13,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 13
+    }
+   },
+   "fleet": {
+    "archiveSha256": "c1821bf1026cef9d09571f25a06e293cc1a1e68e12927e8c96df6ace59c10be5",
+    "browserOwn": 0,
+    "exact": 9,
+    "fuzzy": 0,
+    "miss": 0,
+    "requests": 9,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "design-patterns-service-justice-gov-uk-components-pagination-examples--2160cbb0",
+   "url": "https://design-patterns.service.justice.gov.uk/components/pagination/examples/all-variants/"
+  },
+  {
+   "archiveSha256": "6a2156338878e03cd506b4ad2b722d1cddfab4613c469839ace21276881f73e6",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "6a2156338878e03cd506b4ad2b722d1cddfab4613c469839ace21276881f73e6",
+     "browserOwn": 12,
+     "exact": 37,
+     "fuzzy": 1,
+     "miss": 4,
+     "requests": 42
+    },
+    "gate.run2": {
+     "archiveSha256": "6a2156338878e03cd506b4ad2b722d1cddfab4613c469839ace21276881f73e6",
+     "browserOwn": 12,
+     "exact": 37,
+     "fuzzy": 1,
+     "miss": 4,
+     "requests": 42
+    }
+   },
+   "fleet": {
+    "archiveSha256": "6a2156338878e03cd506b4ad2b722d1cddfab4613c469839ace21276881f73e6",
+    "browserOwn": 2,
+    "exact": 33,
+    "fuzzy": 1,
+    "miss": 11,
+    "requests": 45,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "www-historicenvironment-scot-visit-all-chesters-hill-fort-history-and--afa80f6c",
+   "url": "https://www.historicenvironment.scot/visit/all/chesters-hill-fort/history-and-stories/"
+  },
+  {
+   "archiveSha256": "5a5ebe963101f71c385bcec24686574f0a81717f7e2986d355483f3192e3e908",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "5a5ebe963101f71c385bcec24686574f0a81717f7e2986d355483f3192e3e908",
+     "browserOwn": 13,
+     "exact": 40,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 42
+    },
+    "gate.run2": {
+     "archiveSha256": "5a5ebe963101f71c385bcec24686574f0a81717f7e2986d355483f3192e3e908",
+     "browserOwn": 13,
+     "exact": 39,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 41
+    }
+   },
+   "fleet": {
+    "archiveSha256": "5a5ebe963101f71c385bcec24686574f0a81717f7e2986d355483f3192e3e908",
+    "browserOwn": 0,
+    "exact": 34,
+    "fuzzy": 1,
+    "miss": 5,
+    "requests": 40,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "www-nrscotland-gov-uk-statistics-and-data-nhs-central-register-ccc253b5",
+   "url": "https://www.nrscotland.gov.uk/statistics-and-data/nhs-central-register/"
+  },
+  {
+   "archiveSha256": "f4733e1e2208e491e5d5e66a0c7801c8ecfa66862a7d4f74569bc9c8c9428d9e",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "f4733e1e2208e491e5d5e66a0c7801c8ecfa66862a7d4f74569bc9c8c9428d9e",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 20
+    },
+    "gate.run2": {
+     "archiveSha256": "f4733e1e2208e491e5d5e66a0c7801c8ecfa66862a7d4f74569bc9c8c9428d9e",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 20
+    }
+   },
+   "fleet": {
+    "archiveSha256": "f4733e1e2208e491e5d5e66a0c7801c8ecfa66862a7d4f74569bc9c8c9428d9e",
+    "browserOwn": 2,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 5,
+    "requests": 20,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "service-manual-nhs-uk-community-and-contribution-feed-back-or-share-in-bf753e0d",
+   "url": "https://service-manual.nhs.uk/community-and-contribution/feed-back-or-share-insights"
+  },
+  {
+   "archiveSha256": "a27680a25f9e0b6ed7257e4d936f8d47da3d28d73a118e377a770a232de6f4c0",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "a27680a25f9e0b6ed7257e4d936f8d47da3d28d73a118e377a770a232de6f4c0",
+     "browserOwn": 5,
+     "exact": 125,
+     "fuzzy": 11,
+     "miss": 17,
+     "requests": 153
+    },
+    "gate.run2": {
+     "archiveSha256": "a27680a25f9e0b6ed7257e4d936f8d47da3d28d73a118e377a770a232de6f4c0",
+     "browserOwn": 5,
+     "exact": 123,
+     "fuzzy": 11,
+     "miss": 17,
+     "requests": 151
+    }
+   },
+   "fleet": {
+    "archiveSha256": "a27680a25f9e0b6ed7257e4d936f8d47da3d28d73a118e377a770a232de6f4c0",
+    "browserOwn": 2,
+    "exact": 210,
+    "fuzzy": 24,
+    "miss": 40,
+    "requests": 274,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "weather-metoffice-gov-uk-observations-ub1fk8vf1-81aa8834",
+   "url": "https://weather.metoffice.gov.uk/observations/ub1fk8vf1"
+  },
+  {
+   "archiveSha256": "a3320fbb19edfb3f80a182811a2c5e17eb4e7eb084a21d029b0826e0d9974035",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "a3320fbb19edfb3f80a182811a2c5e17eb4e7eb084a21d029b0826e0d9974035",
+     "browserOwn": 14,
+     "exact": 50,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 51
+    },
+    "gate.run2": {
+     "archiveSha256": "a3320fbb19edfb3f80a182811a2c5e17eb4e7eb084a21d029b0826e0d9974035",
+     "browserOwn": 14,
+     "exact": 49,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 50
+    }
+   },
+   "fleet": {
+    "archiveSha256": "a3320fbb19edfb3f80a182811a2c5e17eb4e7eb084a21d029b0826e0d9974035",
+    "browserOwn": 0,
+    "exact": 43,
+    "fuzzy": 0,
+    "miss": 6,
+    "requests": 49,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "european-union-europa-eu-institutions-law-budget-institutions-and-bodi-a27447df",
+   "url": "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/search-all-eu-institutions-and-bodies/european-central-bank-ecb_en"
+  },
+  {
+   "archiveSha256": "0755f27a72c139ac7feceee085f02ff0b2e57032bab86c8856a4cbca0306cb75",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "0755f27a72c139ac7feceee085f02ff0b2e57032bab86c8856a4cbca0306cb75",
+     "blocked": 4,
+     "browserOwn": 12,
+     "exact": 46,
+     "fuzzy": 7,
+     "miss": 13,
+     "requests": 70
+    },
+    "gate.run2": {
+     "archiveSha256": "0755f27a72c139ac7feceee085f02ff0b2e57032bab86c8856a4cbca0306cb75",
+     "blocked": 4,
+     "browserOwn": 11,
+     "exact": 46,
+     "fuzzy": 7,
+     "miss": 3,
+     "requests": 60
+    }
+   },
+   "fleet": {
+    "archiveSha256": "0755f27a72c139ac7feceee085f02ff0b2e57032bab86c8856a4cbca0306cb75",
+    "blocked": 15,
+    "browserOwn": 0,
+    "exact": 53,
+    "fuzzy": 9,
+    "miss": 7,
+    "requests": 84,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "www-ofgem-gov-uk-energy-company-obligation-eco-contacts-guidance-and-r-19901d36",
+   "url": "https://www.ofgem.gov.uk/energy-company-obligation-eco/contacts-guidance-and-resources/eco-public-reports-and-data"
+  },
+  {
+   "archiveSha256": "bff9435f4ea05160cb498745a38d9b67aa62bb2365464c495c2440f551fcfff3",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "bff9435f4ea05160cb498745a38d9b67aa62bb2365464c495c2440f551fcfff3",
+     "browserOwn": 12,
+     "exact": 50,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 52
+    },
+    "gate.run2": {
+     "archiveSha256": "bff9435f4ea05160cb498745a38d9b67aa62bb2365464c495c2440f551fcfff3",
+     "browserOwn": 12,
+     "exact": 50,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 52
+    }
+   },
+   "fleet": {
+    "archiveSha256": "bff9435f4ea05160cb498745a38d9b67aa62bb2365464c495c2440f551fcfff3",
+    "browserOwn": 0,
+    "exact": 45,
+    "fuzzy": 1,
+    "miss": 4,
+    "requests": 50,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "www-scotcourts-gov-uk-about-us-news-news-2024-may-scts-gender-pay-gap--eb002747",
+   "url": "https://www.scotcourts.gov.uk/about-us/news/news/2024/may/scts-gender-pay-gap-report-published"
+  },
+  {
+   "archiveSha256": "889f933d0adb4ee2b181247fc9c63141bb74fb8e511e81e4522b3ef56ca86b23",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "889f933d0adb4ee2b181247fc9c63141bb74fb8e511e81e4522b3ef56ca86b23",
+     "browserOwn": 10,
+     "exact": 63,
+     "fuzzy": 21,
+     "miss": 11,
+     "requests": 95
+    },
+    "gate.run2": {
+     "archiveSha256": "889f933d0adb4ee2b181247fc9c63141bb74fb8e511e81e4522b3ef56ca86b23",
+     "browserOwn": 10,
+     "exact": 63,
+     "fuzzy": 21,
+     "miss": 8,
+     "requests": 92
+    }
+   },
+   "fleet": {
+    "archiveSha256": "889f933d0adb4ee2b181247fc9c63141bb74fb8e511e81e4522b3ef56ca86b23",
+    "browserOwn": 1,
+    "exact": 64,
+    "fuzzy": 19,
+    "miss": 23,
+    "requests": 106,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "events-bl-uk-profile-fernando-pizarro-8c0cfc3c",
+   "url": "https://events.bl.uk/profile/fernando-pizarro"
+  },
+  {
+   "archiveSha256": "bb8088a801c3a3b4414747a37b917960bcfad89830fb8bf5ea10d95284684658",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "bb8088a801c3a3b4414747a37b917960bcfad89830fb8bf5ea10d95284684658",
+     "browserOwn": 11,
+     "exact": 13,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 13
+    },
+    "gate.run2": {
+     "archiveSha256": "bb8088a801c3a3b4414747a37b917960bcfad89830fb8bf5ea10d95284684658",
+     "browserOwn": 12,
+     "exact": 13,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 13
+    }
+   },
+   "fleet": {
+    "archiveSha256": "bb8088a801c3a3b4414747a37b917960bcfad89830fb8bf5ea10d95284684658",
+    "browserOwn": 0,
+    "exact": 8,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 10,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "design-system-service-gov-uk-cookies-f7a5d6ef",
+   "url": "https://design-system.service.gov.uk/cookies/"
+  },
+  {
+   "archiveSha256": "83aa8611e81ca8eb7cabdc8ae330e75f49b4b47fca8fe8d67d9be19151c90069",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "83aa8611e81ca8eb7cabdc8ae330e75f49b4b47fca8fe8d67d9be19151c90069",
+     "browserOwn": 11,
+     "exact": 36,
+     "fuzzy": 2,
+     "miss": 8,
+     "requests": 46
+    },
+    "gate.run2": {
+     "archiveSha256": "83aa8611e81ca8eb7cabdc8ae330e75f49b4b47fca8fe8d67d9be19151c90069",
+     "browserOwn": 11,
+     "exact": 36,
+     "fuzzy": 2,
+     "miss": 9,
+     "requests": 47
+    }
+   },
+   "fleet": {
+    "archiveSha256": "83aa8611e81ca8eb7cabdc8ae330e75f49b4b47fca8fe8d67d9be19151c90069",
+    "browserOwn": 2,
+    "exact": 32,
+    "fuzzy": 1,
+    "miss": 17,
+    "requests": 50,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-nls-uk-collections-stories-printing-and-publishing-the-scotsman-9fb83f6a",
+   "url": "https://www.nls.uk/collections/stories/printing-and-publishing/the-scotsman/"
+  },
+  {
+   "archiveSha256": "84b1b4682e8d8bc143ead4b56abfc47eba23c2c6be1dbe9b5335d20c87b761c3",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "84b1b4682e8d8bc143ead4b56abfc47eba23c2c6be1dbe9b5335d20c87b761c3",
+     "browserOwn": 14,
+     "exact": 103,
+     "fuzzy": 29,
+     "miss": 10,
+     "requests": 142
+    },
+    "gate.run2": {
+     "archiveSha256": "84b1b4682e8d8bc143ead4b56abfc47eba23c2c6be1dbe9b5335d20c87b761c3",
+     "browserOwn": 14,
+     "exact": 103,
+     "fuzzy": 32,
+     "miss": 11,
+     "requests": 146
+    }
+   },
+   "fleet": {
+    "archiveSha256": "84b1b4682e8d8bc143ead4b56abfc47eba23c2c6be1dbe9b5335d20c87b761c3",
+    "browserOwn": 0,
+    "exact": 110,
+    "fuzzy": 39,
+    "miss": 41,
+    "requests": 190,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "sheffield-ac-uk-ijc-people-professional-services-staff-nastaran-bozorg-c5373f0c",
+   "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab"
+  },
+  {
+   "archiveSha256": "ca19d16c31df5beeae481e6fadfe6261267f3c0dc6624163b4714bdaf7f34298",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "ca19d16c31df5beeae481e6fadfe6261267f3c0dc6624163b4714bdaf7f34298",
+     "browserOwn": 10,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 33
+    },
+    "gate.run2": {
+     "archiveSha256": "ca19d16c31df5beeae481e6fadfe6261267f3c0dc6624163b4714bdaf7f34298",
+     "browserOwn": 10,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 33
+    }
+   },
+   "fleet": {
+    "archiveSha256": "ca19d16c31df5beeae481e6fadfe6261267f3c0dc6624163b4714bdaf7f34298",
+    "browserOwn": 0,
+    "exact": 26,
+    "fuzzy": 6,
+    "miss": 2,
+    "requests": 34,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "www-gov-scot-publications-benefit-take-up-strategy-2026-2031-icia-page-361cec56",
+   "url": "https://www.gov.scot/publications/benefit-take-up-strategy-2026-2031-icia/pages/3/"
+  },
+  {
+   "archiveSha256": "e06600a655f217a7ae127ffad42ac778a9f2ef4e8e528df17028d5838726ea54",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "e06600a655f217a7ae127ffad42ac778a9f2ef4e8e528df17028d5838726ea54",
+     "browserOwn": 12,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 8,
+     "requests": 40
+    },
+    "gate.run2": {
+     "archiveSha256": "e06600a655f217a7ae127ffad42ac778a9f2ef4e8e528df17028d5838726ea54",
+     "browserOwn": 12,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 8,
+     "requests": 40
+    }
+   },
+   "fleet": {
+    "archiveSha256": "e06600a655f217a7ae127ffad42ac778a9f2ef4e8e528df17028d5838726ea54",
+    "browserOwn": 0,
+    "exact": 27,
+    "fuzzy": 1,
+    "miss": 13,
+    "requests": 41,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "www-transport-gov-scot-news-major-progress-on-haudagain-improvement-sc-ee2b6727",
+   "url": "https://www.transport.gov.scot/news/major-progress-on-haudagain-improvement-scheme/"
+  },
+  {
+   "archiveSha256": "05e089b0b07e9e92c19bab283ce207a1e1cb7063d15d4633341d072a866447c9",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "05e089b0b07e9e92c19bab283ce207a1e1cb7063d15d4633341d072a866447c9",
+     "browserOwn": 11,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 5,
+     "requests": 24
+    },
+    "gate.run2": {
+     "archiveSha256": "05e089b0b07e9e92c19bab283ce207a1e1cb7063d15d4633341d072a866447c9",
+     "browserOwn": 11,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 6,
+     "requests": 25
+    }
+   },
+   "fleet": {
+    "archiveSha256": "05e089b0b07e9e92c19bab283ce207a1e1cb7063d15d4633341d072a866447c9",
+    "browserOwn": 0,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 10,
+    "requests": 25,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "www-gov-uk-government-news-paralympic-sculpture-presented-to-competiti-24ce89ee",
+   "url": "https://www.gov.uk/government/news/paralympic-sculpture-presented-to-competition-winner"
+  },
+  {
+   "archiveSha256": "f190fe8870bfd585e53dbe562b6687d3f104b41d9413ad3aab3c7e9e2e80331b",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "f190fe8870bfd585e53dbe562b6687d3f104b41d9413ad3aab3c7e9e2e80331b",
+     "browserOwn": 6,
+     "exact": 65,
+     "fuzzy": 6,
+     "miss": 7,
+     "requests": 78
+    },
+    "gate.run2": {
+     "archiveSha256": "f190fe8870bfd585e53dbe562b6687d3f104b41d9413ad3aab3c7e9e2e80331b",
+     "browserOwn": 6,
+     "exact": 65,
+     "fuzzy": 6,
+     "miss": 7,
+     "requests": 78
+    }
+   },
+   "fleet": {
+    "archiveSha256": "f190fe8870bfd585e53dbe562b6687d3f104b41d9413ad3aab3c7e9e2e80331b",
+    "browserOwn": 0,
+    "exact": 64,
+    "fuzzy": 6,
+    "miss": 11,
+    "requests": 81,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "www-lbhf-gov-uk-housing-resident-involvement-estate-inspections-estate-eb475e38",
+   "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q1/emlyn-gardens-beverley-crane-lea-longford-mole-wandle-courts"
+  },
+  {
+   "archiveSha256": "9d8e6b5f61a946e381f043b1f98dcbc4e348929526f3540eb3f41e482e9277f4",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "9d8e6b5f61a946e381f043b1f98dcbc4e348929526f3540eb3f41e482e9277f4",
+     "browserOwn": 16,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 5,
+     "requests": 24
+    },
+    "gate.run2": {
+     "archiveSha256": "9d8e6b5f61a946e381f043b1f98dcbc4e348929526f3540eb3f41e482e9277f4",
+     "browserOwn": 16,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 5,
+     "requests": 24
+    }
+   },
+   "fleet": {
+    "archiveSha256": "9d8e6b5f61a946e381f043b1f98dcbc4e348929526f3540eb3f41e482e9277f4",
+    "browserOwn": 2,
+    "exact": 14,
+    "fuzzy": 0,
+    "miss": 7,
+    "requests": 21,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "ico-org-uk-for-organisations-uk-gdpr-guidance-and-resources-exemptions-f1e74fd1",
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/exemptions/a-guide-to-the-data-protection-exemptions/"
+  },
+  {
+   "archiveSha256": "aca7fda594fa5bb6f8966944054d1c481125c519d75022ef910546f4ff4c3d7f",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "aca7fda594fa5bb6f8966944054d1c481125c519d75022ef910546f4ff4c3d7f",
+     "browserOwn": 10,
+     "exact": 35,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 38
+    },
+    "gate.run2": {
+     "archiveSha256": "aca7fda594fa5bb6f8966944054d1c481125c519d75022ef910546f4ff4c3d7f",
+     "browserOwn": 10,
+     "exact": 35,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 38
+    }
+   },
+   "fleet": {
+    "archiveSha256": "aca7fda594fa5bb6f8966944054d1c481125c519d75022ef910546f4ff4c3d7f",
+    "browserOwn": 3,
+    "exact": 32,
+    "fuzzy": 0,
+    "miss": 6,
+    "requests": 38,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "www-mygov-scot-apply-for-blue-badge-e0abfe11",
+   "url": "https://www.mygov.scot/apply-for-blue-badge"
+  },
+  {
+   "archiveSha256": "644df1ca889de11c037896be6eb66af09fa7fbb8ff41bf7a5bca9e85283912d2",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "644df1ca889de11c037896be6eb66af09fa7fbb8ff41bf7a5bca9e85283912d2",
+     "browserOwn": 16,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 35
+    },
+    "gate.run2": {
+     "archiveSha256": "644df1ca889de11c037896be6eb66af09fa7fbb8ff41bf7a5bca9e85283912d2",
+     "browserOwn": 16,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 35
+    }
+   },
+   "fleet": {
+    "archiveSha256": "644df1ca889de11c037896be6eb66af09fa7fbb8ff41bf7a5bca9e85283912d2",
+    "browserOwn": 0,
+    "exact": 26,
+    "fuzzy": 1,
+    "miss": 3,
+    "requests": 30,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "www-nidirect-gov-uk-articles-making-planning-application-13b45d12",
+   "url": "https://www.nidirect.gov.uk/articles/making-planning-application"
+  },
+  {
+   "archiveSha256": "7a3d0d5f90a5cc714b5b32e57179531a359cae15af827d73c7598973f6a21af6",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "7a3d0d5f90a5cc714b5b32e57179531a359cae15af827d73c7598973f6a21af6",
+     "browserOwn": 10,
+     "exact": 26,
+     "fuzzy": 3,
+     "miss": 5,
+     "requests": 34
+    },
+    "gate.run2": {
+     "archiveSha256": "7a3d0d5f90a5cc714b5b32e57179531a359cae15af827d73c7598973f6a21af6",
+     "browserOwn": 10,
+     "exact": 26,
+     "fuzzy": 3,
+     "miss": 5,
+     "requests": 34
+    }
+   },
+   "fleet": {
+    "archiveSha256": "7a3d0d5f90a5cc714b5b32e57179531a359cae15af827d73c7598973f6a21af6",
+    "browserOwn": 1,
+    "exact": 23,
+    "fuzzy": 3,
+    "miss": 14,
+    "requests": 40,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "www-gov-wales-written-statement-independent-qc-investigation-4a60471d",
+   "url": "https://www.gov.wales/written-statement-independent-qc-investigation"
+  },
+  {
+   "archiveSha256": "975b3f33134293227759d53c30cd48afbb5293122e306fc2fc35773a12baa874",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "975b3f33134293227759d53c30cd48afbb5293122e306fc2fc35773a12baa874",
+     "browserOwn": 10,
+     "exact": 37,
+     "fuzzy": 1,
+     "miss": 6,
+     "requests": 44
+    },
+    "gate.run2": {
+     "archiveSha256": "975b3f33134293227759d53c30cd48afbb5293122e306fc2fc35773a12baa874",
+     "browserOwn": 12,
+     "exact": 37,
+     "fuzzy": 1,
+     "miss": 6,
+     "requests": 44
+    }
+   },
+   "fleet": {
+    "archiveSha256": "975b3f33134293227759d53c30cd48afbb5293122e306fc2fc35773a12baa874",
+    "browserOwn": 1,
+    "exact": 32,
+    "fuzzy": 1,
+    "miss": 12,
+    "requests": 45,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "www-nationalarchives-gov-uk-explore-the-collection-stories-revealing-t-c1dd5865",
+   "url": "https://www.nationalarchives.gov.uk/explore-the-collection/stories/revealing-the-corrupt-record-in-14th-century-ireland/"
+  },
+  {
+   "archiveSha256": "b0e67430fb939a4608dbbf4d1df5a60cb30ef5bba280abbd972b1625f31b787c",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "b0e67430fb939a4608dbbf4d1df5a60cb30ef5bba280abbd972b1625f31b787c",
+     "browserOwn": 11,
+     "exact": 65,
+     "fuzzy": 3,
+     "miss": 15,
+     "requests": 83
+    },
+    "gate.run2": {
+     "archiveSha256": "b0e67430fb939a4608dbbf4d1df5a60cb30ef5bba280abbd972b1625f31b787c",
+     "browserOwn": 12,
+     "exact": 65,
+     "fuzzy": 3,
+     "miss": 15,
+     "requests": 83
+    }
+   },
+   "fleet": {
+    "archiveSha256": "b0e67430fb939a4608dbbf4d1df5a60cb30ef5bba280abbd972b1625f31b787c",
+    "browserOwn": 0,
+    "exact": 64,
+    "fuzzy": 2,
+    "miss": 23,
+    "requests": 89,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "www-networkrail-co-uk-stories-four-years-on-im-reminded-by-that-one-de-9abd8c7c",
+   "url": "https://www.networkrail.co.uk/stories/four-years-on-im-reminded-by-that-one-decision-to-go-on-the-railway/"
+  },
+  {
+   "archiveSha256": "119bc4e29cb9ac3b4b114d0dd85e2e413ada044740551ea604d09283cfa8e414",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "119bc4e29cb9ac3b4b114d0dd85e2e413ada044740551ea604d09283cfa8e414",
+     "browserOwn": 10,
+     "exact": 29,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 31
+    },
+    "gate.run2": {
+     "archiveSha256": "119bc4e29cb9ac3b4b114d0dd85e2e413ada044740551ea604d09283cfa8e414",
+     "browserOwn": 10,
+     "exact": 29,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 31
+    }
+   },
+   "fleet": {
+    "archiveSha256": "119bc4e29cb9ac3b4b114d0dd85e2e413ada044740551ea604d09283cfa8e414",
+    "browserOwn": 0,
+    "exact": 75,
+    "fuzzy": 0,
+    "miss": 7,
+    "requests": 82,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "data-southwark-gov-uk-resources-28523362",
+   "url": "https://data.southwark.gov.uk/resources/"
+  },
+  {
+   "archiveSha256": "bf4223412429cd860d0c0dfce6720f930d8a68bac69e2df0579deeec5e26892e",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "bf4223412429cd860d0c0dfce6720f930d8a68bac69e2df0579deeec5e26892e",
+     "browserOwn": 12,
+     "exact": 14,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 14
+    },
+    "gate.run2": {
+     "archiveSha256": "bf4223412429cd860d0c0dfce6720f930d8a68bac69e2df0579deeec5e26892e",
+     "browserOwn": 11,
+     "exact": 14,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 14
+    }
+   },
+   "fleet": {
+    "archiveSha256": "bf4223412429cd860d0c0dfce6720f930d8a68bac69e2df0579deeec5e26892e",
+    "browserOwn": 0,
+    "exact": 10,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 12,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "caselaw-nationalarchives-gov-uk-courts-and-tribunals-ukftt-credit-c0bf8fb1",
+   "url": "https://caselaw.nationalarchives.gov.uk/courts-and-tribunals/ukftt/credit"
+  },
+  {
+   "archiveSha256": "ab6830524e83d8487c46fd60482c149b6037ff8da172a2a6c94a06b05b204e98",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "ab6830524e83d8487c46fd60482c149b6037ff8da172a2a6c94a06b05b204e98",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 28
+    },
+    "gate.run2": {
+     "archiveSha256": "ab6830524e83d8487c46fd60482c149b6037ff8da172a2a6c94a06b05b204e98",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 28
+    }
+   },
+   "fleet": {
+    "archiveSha256": "ab6830524e83d8487c46fd60482c149b6037ff8da172a2a6c94a06b05b204e98",
+    "browserOwn": 0,
+    "exact": 21,
+    "fuzzy": 2,
+    "miss": 3,
+    "requests": 26,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "www-nhs-uk-medicines-nystatin-taking-or-using-nystatin-with-other-medi-7d532ed4",
+   "url": "https://www.nhs.uk/medicines/nystatin/taking-or-using-nystatin-with-other-medicines-and-herbal-supplements/"
+  },
+  {
+   "archiveSha256": "410ff6f0d2ee9b0189a6ec6134820a5735e5d47f21c92cd6020d12385cb99c18",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "410ff6f0d2ee9b0189a6ec6134820a5735e5d47f21c92cd6020d12385cb99c18",
+     "browserOwn": 20,
+     "exact": 43,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 43
+    },
+    "gate.run2": {
+     "archiveSha256": "410ff6f0d2ee9b0189a6ec6134820a5735e5d47f21c92cd6020d12385cb99c18",
+     "browserOwn": 20,
+     "exact": 43,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 43
+    }
+   },
+   "fleet": {
+    "archiveSha256": "410ff6f0d2ee9b0189a6ec6134820a5735e5d47f21c92cd6020d12385cb99c18",
+    "browserOwn": 1,
+    "exact": 38,
+    "fuzzy": 0,
+    "miss": 0,
+    "requests": 38,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "design-patterns-service-justice-gov-uk-components-search-a131fabc",
+   "url": "https://design-patterns.service.justice.gov.uk/components/search/"
+  },
+  {
+   "archiveSha256": "2ce214a0276b45124cc85e2a4e7128947daf9eb522dfe2a3ed2d5e0af8092b93",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "2ce214a0276b45124cc85e2a4e7128947daf9eb522dfe2a3ed2d5e0af8092b93",
+     "browserOwn": 12,
+     "exact": 37,
+     "fuzzy": 1,
+     "miss": 4,
+     "requests": 42
+    },
+    "gate.run2": {
+     "archiveSha256": "2ce214a0276b45124cc85e2a4e7128947daf9eb522dfe2a3ed2d5e0af8092b93",
+     "browserOwn": 12,
+     "exact": 37,
+     "fuzzy": 1,
+     "miss": 4,
+     "requests": 42
+    }
+   },
+   "fleet": {
+    "archiveSha256": "2ce214a0276b45124cc85e2a4e7128947daf9eb522dfe2a3ed2d5e0af8092b93",
+    "browserOwn": 2,
+    "exact": 34,
+    "fuzzy": 1,
+    "miss": 11,
+    "requests": 46,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-historicenvironment-scot-visit-all-cnoc-freiceadain-long-cairns-hi-0c2b1049",
+   "url": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/"
+  },
+  {
+   "archiveSha256": "2f57bcabbba1a3ea49f70609b1f181edd2791aa8d6760e88054788ddaf9ed2c4",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "2f57bcabbba1a3ea49f70609b1f181edd2791aa8d6760e88054788ddaf9ed2c4",
+     "browserOwn": 11,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 23
+    },
+    "gate.run2": {
+     "archiveSha256": "2f57bcabbba1a3ea49f70609b1f181edd2791aa8d6760e88054788ddaf9ed2c4",
+     "browserOwn": 12,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 24
+    }
+   },
+   "fleet": {
+    "archiveSha256": "2f57bcabbba1a3ea49f70609b1f181edd2791aa8d6760e88054788ddaf9ed2c4",
+    "browserOwn": 0,
+    "exact": 17,
+    "fuzzy": 0,
+    "miss": 5,
+    "requests": 22,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "www-nrscotland-gov-uk-learning-and-events-research-guides-fdab149f",
+   "url": "https://www.nrscotland.gov.uk/learning-and-events/research-guides/"
+  },
+  {
+   "archiveSha256": "861d177d268c5572443fb0330d383cd2dcdeef03e5ff440e0ba8fd53a5d392cf",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "861d177d268c5572443fb0330d383cd2dcdeef03e5ff440e0ba8fd53a5d392cf",
+     "browserOwn": 10,
+     "exact": 45,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 46
+    },
+    "gate.run2": {
+     "archiveSha256": "861d177d268c5572443fb0330d383cd2dcdeef03e5ff440e0ba8fd53a5d392cf",
+     "browserOwn": 10,
+     "exact": 45,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 46
+    }
+   },
+   "fleet": {
+    "archiveSha256": "861d177d268c5572443fb0330d383cd2dcdeef03e5ff440e0ba8fd53a5d392cf",
+    "browserOwn": 6,
+    "exact": 40,
+    "fuzzy": 0,
+    "miss": 5,
+    "requests": 45,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "service-manual-nhs-uk-design-system-patterns-hub-page-0e259dab",
+   "url": "https://service-manual.nhs.uk/design-system/patterns/hub-page"
+  },
+  {
+   "archiveSha256": "aeae7c039e2d7d38e719f2f5fe61139e72ae6282c8bbfbfa2092ec6c9f17cb58",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "aeae7c039e2d7d38e719f2f5fe61139e72ae6282c8bbfbfa2092ec6c9f17cb58",
+     "browserOwn": 16,
+     "exact": 111,
+     "fuzzy": 11,
+     "miss": 47,
+     "requests": 169
+    },
+    "gate.run2": {
+     "archiveSha256": "aeae7c039e2d7d38e719f2f5fe61139e72ae6282c8bbfbfa2092ec6c9f17cb58",
+     "browserOwn": 12,
+     "exact": 111,
+     "fuzzy": 11,
+     "miss": 45,
+     "requests": 167
+    }
+   },
+   "fleet": {
+    "archiveSha256": "aeae7c039e2d7d38e719f2f5fe61139e72ae6282c8bbfbfa2092ec6c9f17cb58",
+    "browserOwn": 2,
+    "exact": 176,
+    "fuzzy": 23,
+    "miss": 98,
+    "requests": 297,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "weather-metoffice-gov-uk-observations-u1h1et5j1-c33b1517",
+   "url": "https://weather.metoffice.gov.uk/observations/u1h1et5j1"
+  },
+  {
+   "archiveSha256": "a4895ecce488e8f4ae669f67769af0e63617fe0dffb1f2acf5bb12e6867ee31f",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "a4895ecce488e8f4ae669f67769af0e63617fe0dffb1f2acf5bb12e6867ee31f",
+     "browserOwn": 14,
+     "exact": 55,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 57
+    },
+    "gate.run2": {
+     "archiveSha256": "a4895ecce488e8f4ae669f67769af0e63617fe0dffb1f2acf5bb12e6867ee31f",
+     "browserOwn": 14,
+     "exact": 54,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 56
+    }
+   },
+   "fleet": {
+    "archiveSha256": "a4895ecce488e8f4ae669f67769af0e63617fe0dffb1f2acf5bb12e6867ee31f",
+    "browserOwn": 0,
+    "exact": 98,
+    "fuzzy": 0,
+    "miss": 10,
+    "requests": 108,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "european-union-europa-eu-contact-eu-social-media-channels-en-1e3f3dd4",
+   "url": "https://european-union.europa.eu/contact-eu/social-media-channels_en"
+  },
+  {
+   "archiveSha256": "128019d89f07375e78238619c148c6b1ae7fc8059921839b8c6c08b8d0ebf9cb",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "128019d89f07375e78238619c148c6b1ae7fc8059921839b8c6c08b8d0ebf9cb",
+     "blocked": 4,
+     "browserOwn": 11,
+     "exact": 50,
+     "fuzzy": 7,
+     "miss": 2,
+     "requests": 63
+    },
+    "gate.run2": {
+     "archiveSha256": "128019d89f07375e78238619c148c6b1ae7fc8059921839b8c6c08b8d0ebf9cb",
+     "blocked": 4,
+     "browserOwn": 11,
+     "exact": 51,
+     "fuzzy": 7,
+     "miss": 2,
+     "requests": 64
+    }
+   },
+   "fleet": {
+    "archiveSha256": "128019d89f07375e78238619c148c6b1ae7fc8059921839b8c6c08b8d0ebf9cb",
+    "blocked": 14,
+    "browserOwn": 1,
+    "exact": 66,
+    "fuzzy": 8,
+    "miss": 5,
+    "requests": 93,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "www-ofgem-gov-uk-cy-energy-policy-and-regulation-engagement-forums-and-553c62ef",
+   "url": "https://www.ofgem.gov.uk/cy/energy-policy-and-regulation/engagement/forums-and-working-groups/riio-ed1-online-stakeholder-forum"
+  },
+  {
+   "archiveSha256": "bed24e632370740780117e4c828dc497d046a0fa31791e893289c736b30b85f1",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "bed24e632370740780117e4c828dc497d046a0fa31791e893289c736b30b85f1",
+     "browserOwn": 12,
+     "exact": 50,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 52
+    },
+    "gate.run2": {
+     "archiveSha256": "bed24e632370740780117e4c828dc497d046a0fa31791e893289c736b30b85f1",
+     "browserOwn": 12,
+     "exact": 50,
+     "fuzzy": 1,
+     "miss": 1,
+     "requests": 52
+    }
+   },
+   "fleet": {
+    "archiveSha256": "bed24e632370740780117e4c828dc497d046a0fa31791e893289c736b30b85f1",
+    "browserOwn": 0,
+    "exact": 46,
+    "fuzzy": 1,
+    "miss": 4,
+    "requests": 51,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "www-scotcourts-gov-uk-about-us-news-news-2024-february-success-for-sct-4f70f948",
+   "url": "https://www.scotcourts.gov.uk/about-us/news/news/2024/february/success-for-scts-at-international-technology-awards"
+  },
+  {
+   "archiveSha256": "dcc728331c681930db231f058dd9784793c35af9c9ba459db963a86066d77eae",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "dcc728331c681930db231f058dd9784793c35af9c9ba459db963a86066d77eae",
+     "browserOwn": 5,
+     "exact": 73,
+     "fuzzy": 13,
+     "miss": 18,
+     "requests": 104
+    },
+    "gate.run2": {
+     "archiveSha256": "dcc728331c681930db231f058dd9784793c35af9c9ba459db963a86066d77eae",
+     "browserOwn": 5,
+     "exact": 73,
+     "fuzzy": 12,
+     "miss": 19,
+     "requests": 104
+    }
+   },
+   "fleet": {
+    "archiveSha256": "dcc728331c681930db231f058dd9784793c35af9c9ba459db963a86066d77eae",
+    "browserOwn": 1,
+    "exact": 87,
+    "fuzzy": 20,
+    "miss": 32,
+    "requests": 139,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "events-bl-uk-events-self-guided-school-visits-3e4adaba",
+   "url": "https://events.bl.uk/events/self-guided-school-visits"
+  },
+  {
+   "archiveSha256": "b597a1a59eb4b253b1f9578602de7b8bdc0300c44e23b9edef6b02ffd02d28d5",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "b597a1a59eb4b253b1f9578602de7b8bdc0300c44e23b9edef6b02ffd02d28d5",
+     "browserOwn": 13,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 24
+    },
+    "gate.run2": {
+     "archiveSha256": "b597a1a59eb4b253b1f9578602de7b8bdc0300c44e23b9edef6b02ffd02d28d5",
+     "browserOwn": 12,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 24
+    }
+   },
+   "fleet": {
+    "archiveSha256": "b597a1a59eb4b253b1f9578602de7b8bdc0300c44e23b9edef6b02ffd02d28d5",
+    "browserOwn": 2,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 3,
+    "requests": 18,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "design-system-service-gov-uk-patterns-interruption-pages-087e5020",
+   "url": "https://design-system.service.gov.uk/patterns/interruption-pages/"
+  },
+  {
+   "archiveSha256": "6fd3b03b33bbcf81a397a8a0b38651cf340d36b15ee25e4a63a5942ace8a01db",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "6fd3b03b33bbcf81a397a8a0b38651cf340d36b15ee25e4a63a5942ace8a01db",
+     "browserOwn": 11,
+     "exact": 25,
+     "fuzzy": 1,
+     "miss": 8,
+     "requests": 34
+    },
+    "gate.run2": {
+     "archiveSha256": "6fd3b03b33bbcf81a397a8a0b38651cf340d36b15ee25e4a63a5942ace8a01db",
+     "browserOwn": 11,
+     "exact": 25,
+     "fuzzy": 1,
+     "miss": 8,
+     "requests": 34
+    }
+   },
+   "fleet": {
+    "archiveSha256": "6fd3b03b33bbcf81a397a8a0b38651cf340d36b15ee25e4a63a5942ace8a01db",
+    "browserOwn": 2,
+    "exact": 21,
+    "fuzzy": 1,
+    "miss": 11,
+    "requests": 33,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-nls-uk-tools-for-research-introduction-to-estate-papers-c0187e22",
+   "url": "https://www.nls.uk/tools-for-research/introduction-to-estate-papers/"
+  },
+  {
+   "archiveSha256": "0b2ebd7e407941d80479f209dff4374dadcc489f0ee556d144c84010a1d2b4ef",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "0b2ebd7e407941d80479f209dff4374dadcc489f0ee556d144c84010a1d2b4ef",
+     "browserOwn": 14,
+     "exact": 109,
+     "fuzzy": 27,
+     "miss": 12,
+     "requests": 148
+    },
+    "gate.run2": {
+     "archiveSha256": "0b2ebd7e407941d80479f209dff4374dadcc489f0ee556d144c84010a1d2b4ef",
+     "browserOwn": 14,
+     "exact": 109,
+     "fuzzy": 28,
+     "miss": 11,
+     "requests": 148
+    }
+   },
+   "fleet": {
+    "archiveSha256": "0b2ebd7e407941d80479f209dff4374dadcc489f0ee556d144c84010a1d2b4ef",
+    "browserOwn": 0,
+    "exact": 135,
+    "fuzzy": 39,
+    "miss": 20,
+    "requests": 194,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "sheffield-ac-uk-mac-news-one-watch-engineering-student-wins-best-paper-3366e540",
+   "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference"
+  },
+  {
+   "archiveSha256": "0fbdf83d1ca9270c85d13fc3182b155691087e42d5d8b1858a67612b70fa36de",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "0fbdf83d1ca9270c85d13fc3182b155691087e42d5d8b1858a67612b70fa36de",
+     "browserOwn": 10,
+     "exact": 28,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 31
+    },
+    "gate.run2": {
+     "archiveSha256": "0fbdf83d1ca9270c85d13fc3182b155691087e42d5d8b1858a67612b70fa36de",
+     "browserOwn": 10,
+     "exact": 29,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 32
+    }
+   },
+   "fleet": {
+    "archiveSha256": "0fbdf83d1ca9270c85d13fc3182b155691087e42d5d8b1858a67612b70fa36de",
+    "browserOwn": 0,
+    "exact": 23,
+    "fuzzy": 4,
+    "miss": 3,
+    "requests": 30,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-gov-scot-publications-enhancing-accessibility-adaptability-usabili-963a142c",
+   "url": "https://www.gov.scot/publications/enhancing-accessibility-adaptability-usability-scotlands-homes-consultation-analysis-report/pages/5/"
+  },
+  {
+   "archiveSha256": "350167742ba8e6e8e558e5aba364c018a6e50726abcce9d1b226465a2f92aab1",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "350167742ba8e6e8e558e5aba364c018a6e50726abcce9d1b226465a2f92aab1",
+     "browserOwn": 12,
+     "exact": 30,
+     "fuzzy": 1,
+     "miss": 15,
+     "requests": 46
+    },
+    "gate.run2": {
+     "archiveSha256": "350167742ba8e6e8e558e5aba364c018a6e50726abcce9d1b226465a2f92aab1",
+     "browserOwn": 12,
+     "exact": 30,
+     "fuzzy": 1,
+     "miss": 8,
+     "requests": 39
+    }
+   },
+   "fleet": {
+    "archiveSha256": "350167742ba8e6e8e558e5aba364c018a6e50726abcce9d1b226465a2f92aab1",
+    "browserOwn": 0,
+    "exact": 26,
+    "fuzzy": 1,
+    "miss": 13,
+    "requests": 40,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "www-transport-gov-scot-news-forth-road-bridge-reopens-21491f99",
+   "url": "https://www.transport.gov.scot/news/forth-road-bridge-reopens/"
+  },
+  {
+   "archiveSha256": "b11b88afc15007339294a7468c8336f3de0d0bc757c307e468c54af4eba19862",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "b11b88afc15007339294a7468c8336f3de0d0bc757c307e468c54af4eba19862",
+     "browserOwn": 11,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 6,
+     "requests": 26
+    },
+    "gate.run2": {
+     "archiveSha256": "b11b88afc15007339294a7468c8336f3de0d0bc757c307e468c54af4eba19862",
+     "browserOwn": 12,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 5,
+     "requests": 25
+    }
+   },
+   "fleet": {
+    "archiveSha256": "b11b88afc15007339294a7468c8336f3de0d0bc757c307e468c54af4eba19862",
+    "browserOwn": 0,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 7,
+    "requests": 22,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "www-gov-uk-government-news-support-to-the-uks-regulators-04336a1f",
+   "url": "https://www.gov.uk/government/news/support-to-the-uks-regulators"
+  },
+  {
+   "archiveSha256": "28f96ef940de6d54c26bf83096398abe63b0be133e9b3ab4c8c7ce195477bf5d",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "28f96ef940de6d54c26bf83096398abe63b0be133e9b3ab4c8c7ce195477bf5d",
+     "browserOwn": 6,
+     "exact": 64,
+     "fuzzy": 5,
+     "miss": 7,
+     "requests": 76
+    },
+    "gate.run2": {
+     "archiveSha256": "28f96ef940de6d54c26bf83096398abe63b0be133e9b3ab4c8c7ce195477bf5d",
+     "browserOwn": 6,
+     "exact": 64,
+     "fuzzy": 5,
+     "miss": 7,
+     "requests": 76
+    }
+   },
+   "fleet": {
+    "archiveSha256": "28f96ef940de6d54c26bf83096398abe63b0be133e9b3ab4c8c7ce195477bf5d",
+    "browserOwn": 0,
+    "exact": 63,
+    "fuzzy": 5,
+    "miss": 9,
+    "requests": 77,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "www-lbhf-gov-uk-housing-resident-involvement-estate-inspections-estate-244ec551",
+   "url": "https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q2/lintaine-court"
+  },
+  {
+   "archiveSha256": "8c0f7a4c83ed4e73becbe36b5aaa7fbdafee8ff6848144ec2fba13be0745a4c8",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "8c0f7a4c83ed4e73becbe36b5aaa7fbdafee8ff6848144ec2fba13be0745a4c8",
+     "browserOwn": 12,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 21
+    },
+    "gate.run2": {
+     "archiveSha256": "8c0f7a4c83ed4e73becbe36b5aaa7fbdafee8ff6848144ec2fba13be0745a4c8",
+     "browserOwn": 12,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 21
+    }
+   },
+   "fleet": {
+    "archiveSha256": "8c0f7a4c83ed4e73becbe36b5aaa7fbdafee8ff6848144ec2fba13be0745a4c8",
+    "browserOwn": 2,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 10,
+    "requests": 25,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "ico-org-uk-for-organisations-uk-gdpr-guidance-and-resources-internatio-a8ab83aa",
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/appropriate-safeguards/what-are-standard-data-protection-clauses-the-uk-idta-and-the-addendum/"
+  },
+  {
+   "archiveSha256": "75e717fa099727df0447d8fe46a7291a66fdf0548204bbbe08dc0f5022474674",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "75e717fa099727df0447d8fe46a7291a66fdf0548204bbbe08dc0f5022474674",
+     "browserOwn": 10,
+     "exact": 41,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 43
+    },
+    "gate.run2": {
+     "archiveSha256": "75e717fa099727df0447d8fe46a7291a66fdf0548204bbbe08dc0f5022474674",
+     "browserOwn": 10,
+     "exact": 41,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 43
+    }
+   },
+   "fleet": {
+    "archiveSha256": "75e717fa099727df0447d8fe46a7291a66fdf0548204bbbe08dc0f5022474674",
+    "browserOwn": 3,
+    "exact": 72,
+    "fuzzy": 0,
+    "miss": 4,
+    "requests": 76,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "bathingwaters-sepa-org-uk-fd91d003",
+   "url": "https://bathingwaters.sepa.org.uk/"
+  },
+  {
+   "archiveSha256": "842d8fcd130135675de6ccd902a23129fd794145c9a4161f3e2357e4b69d7b8e",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "842d8fcd130135675de6ccd902a23129fd794145c9a4161f3e2357e4b69d7b8e",
+     "browserOwn": 10,
+     "exact": 18,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 18
+    },
+    "gate.run2": {
+     "archiveSha256": "842d8fcd130135675de6ccd902a23129fd794145c9a4161f3e2357e4b69d7b8e",
+     "browserOwn": 10,
+     "exact": 18,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 18
+    }
+   },
+   "fleet": {
+    "archiveSha256": "842d8fcd130135675de6ccd902a23129fd794145c9a4161f3e2357e4b69d7b8e",
+    "browserOwn": 0,
+    "exact": 14,
+    "fuzzy": 0,
+    "miss": 8,
+    "requests": 22,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "caselaw-nationalarchives-gov-uk-search-query-381a308b",
+   "url": "https://caselaw.nationalarchives.gov.uk/search?query="
+  },
+  {
+   "archiveSha256": "6cae086b09693547b421eab81bd2c241e532176fe1cd3270e5507368da8494d8",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "6cae086b09693547b421eab81bd2c241e532176fe1cd3270e5507368da8494d8",
+     "browserOwn": 12,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 22
+    },
+    "gate.run2": {
+     "archiveSha256": "6cae086b09693547b421eab81bd2c241e532176fe1cd3270e5507368da8494d8",
+     "browserOwn": 12,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 22
+    }
+   },
+   "fleet": {
+    "archiveSha256": "6cae086b09693547b421eab81bd2c241e532176fe1cd3270e5507368da8494d8",
+    "browserOwn": 0,
+    "exact": 14,
+    "fuzzy": 0,
+    "miss": 6,
+    "requests": 20,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "check-for-flooding-service-gov-uk-river-and-sea-levels-02ac4374",
+   "url": "https://check-for-flooding.service.gov.uk/river-and-sea-levels"
+  },
+  {
+   "archiveSha256": "b3954c5438c7501aa1f96bc70d9de2b6339f346a892d388782e8e2ec231f8740",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "b3954c5438c7501aa1f96bc70d9de2b6339f346a892d388782e8e2ec231f8740",
+     "browserOwn": 11,
+     "exact": 53,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 56
+    },
+    "gate.run2": {
+     "archiveSha256": "b3954c5438c7501aa1f96bc70d9de2b6339f346a892d388782e8e2ec231f8740",
+     "browserOwn": 11,
+     "exact": 53,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 56
+    }
+   },
+   "fleet": {
+    "archiveSha256": "b3954c5438c7501aa1f96bc70d9de2b6339f346a892d388782e8e2ec231f8740",
+    "browserOwn": 0,
+    "exact": 144,
+    "fuzzy": 3,
+    "miss": 9,
+    "requests": 156,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "data-southwark-gov-uk-data-catalog-explorer-6cf9be6d",
+   "url": "https://data.southwark.gov.uk/data-catalog-explorer/"
+  },
+  {
+   "archiveSha256": "6917409887867b4a361dc1782cf5998fe5cc577f17553da31f2b627cfd3688bf",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "6917409887867b4a361dc1782cf5998fe5cc577f17553da31f2b627cfd3688bf",
+     "browserOwn": 16,
+     "exact": 25,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 25
+    },
+    "gate.run2": {
+     "archiveSha256": "6917409887867b4a361dc1782cf5998fe5cc577f17553da31f2b627cfd3688bf",
+     "browserOwn": 16,
+     "exact": 25,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 25
+    }
+   },
+   "fleet": {
+    "archiveSha256": "6917409887867b4a361dc1782cf5998fe5cc577f17553da31f2b627cfd3688bf",
+    "browserOwn": 0,
+    "exact": 21,
+    "fuzzy": 0,
+    "miss": 0,
+    "requests": 21,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "design-patterns-service-justice-gov-uk-components-filter-002b6441",
+   "url": "https://design-patterns.service.justice.gov.uk/components/filter/"
+  },
+  {
+   "archiveSha256": "b973f841a507c1fb5de9d436d196673b5e4b4f3d53b79e6143a1741415f53cbc",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "b973f841a507c1fb5de9d436d196673b5e4b4f3d53b79e6143a1741415f53cbc",
+     "browserOwn": 13,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    },
+    "gate.run2": {
+     "archiveSha256": "b973f841a507c1fb5de9d436d196673b5e4b4f3d53b79e6143a1741415f53cbc",
+     "browserOwn": 13,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    }
+   },
+   "fleet": {
+    "archiveSha256": "b973f841a507c1fb5de9d436d196673b5e4b4f3d53b79e6143a1741415f53cbc",
+    "browserOwn": 0,
+    "exact": 18,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 20,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "design-patterns-service-justice-gov-uk-components-scrollable-pane-e7133af0",
+   "url": "https://design-patterns.service.justice.gov.uk/components/scrollable-pane/"
+  },
+  {
+   "archiveSha256": "5bade47a97d47e8668dda8b08ef3bf1f84cc7b9519bc1d56e412829198c4f892",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "5bade47a97d47e8668dda8b08ef3bf1f84cc7b9519bc1d56e412829198c4f892",
+     "browserOwn": 21,
+     "exact": 28,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 31
+    },
+    "gate.run2": {
+     "archiveSha256": "5bade47a97d47e8668dda8b08ef3bf1f84cc7b9519bc1d56e412829198c4f892",
+     "browserOwn": 21,
+     "exact": 28,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 31
+    }
+   },
+   "fleet": {
+    "archiveSha256": "5bade47a97d47e8668dda8b08ef3bf1f84cc7b9519bc1d56e412829198c4f892",
+    "browserOwn": 0,
+    "exact": 23,
+    "fuzzy": 0,
+    "miss": 11,
+    "requests": 34,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "design-system-service-gov-uk-components-accordion-b4437d78",
+   "url": "https://design-system.service.gov.uk/components/accordion/"
+  },
+  {
+   "archiveSha256": "d2b5d60c6415b57490cdd9a96b7cebfbabd7f7ceb0f6c15935f9c7bbab70f4be",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "d2b5d60c6415b57490cdd9a96b7cebfbabd7f7ceb0f6c15935f9c7bbab70f4be",
+     "browserOwn": 16,
+     "exact": 63,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 66
+    },
+    "gate.run2": {
+     "archiveSha256": "d2b5d60c6415b57490cdd9a96b7cebfbabd7f7ceb0f6c15935f9c7bbab70f4be",
+     "browserOwn": 16,
+     "exact": 63,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 66
+    }
+   },
+   "fleet": {
+    "archiveSha256": "d2b5d60c6415b57490cdd9a96b7cebfbabd7f7ceb0f6c15935f9c7bbab70f4be",
+    "browserOwn": 0,
+    "exact": 58,
+    "fuzzy": 0,
+    "miss": 3,
+    "requests": 61,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "design-system-service-gov-uk-components-checkboxes-c8b8459e",
+   "url": "https://design-system.service.gov.uk/components/checkboxes/"
+  },
+  {
+   "archiveSha256": "72ff75a8574ea36cdb56e5dedcf1be3ada268eb07eff2d2e5d6f4d53e463157d",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "72ff75a8574ea36cdb56e5dedcf1be3ada268eb07eff2d2e5d6f4d53e463157d",
+     "browserOwn": 25,
+     "exact": 45,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 48
+    },
+    "gate.run2": {
+     "archiveSha256": "72ff75a8574ea36cdb56e5dedcf1be3ada268eb07eff2d2e5d6f4d53e463157d",
+     "browserOwn": 25,
+     "exact": 45,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 48
+    }
+   },
+   "fleet": {
+    "archiveSha256": "72ff75a8574ea36cdb56e5dedcf1be3ada268eb07eff2d2e5d6f4d53e463157d",
+    "browserOwn": 0,
+    "exact": 40,
+    "fuzzy": 0,
+    "miss": 5,
+    "requests": 45,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "design-system-service-gov-uk-components-date-input-1b727a81",
+   "url": "https://design-system.service.gov.uk/components/date-input/"
+  },
+  {
+   "archiveSha256": "9c5f939440b1cea899a2ca86e7a3070eb5902ff6a789b492e9c4c0db02afbcb4",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "9c5f939440b1cea899a2ca86e7a3070eb5902ff6a789b492e9c4c0db02afbcb4",
+     "browserOwn": 20,
+     "exact": 69,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 72
+    },
+    "gate.run2": {
+     "archiveSha256": "9c5f939440b1cea899a2ca86e7a3070eb5902ff6a789b492e9c4c0db02afbcb4",
+     "browserOwn": 20,
+     "exact": 69,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 72
+    }
+   },
+   "fleet": {
+    "archiveSha256": "9c5f939440b1cea899a2ca86e7a3070eb5902ff6a789b492e9c4c0db02afbcb4",
+    "browserOwn": 0,
+    "exact": 64,
+    "fuzzy": 0,
+    "miss": 4,
+    "requests": 68,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "design-system-service-gov-uk-components-radios-b9e8f450",
+   "url": "https://design-system.service.gov.uk/components/radios/"
+  },
+  {
+   "archiveSha256": "505aebf83da69d8ead700dbef8e1f31aac166d66a23917243fc5d2eddac49789",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "505aebf83da69d8ead700dbef8e1f31aac166d66a23917243fc5d2eddac49789",
+     "browserOwn": 11,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 24
+    },
+    "gate.run2": {
+     "archiveSha256": "505aebf83da69d8ead700dbef8e1f31aac166d66a23917243fc5d2eddac49789",
+     "browserOwn": 11,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 24
+    }
+   },
+   "fleet": {
+    "archiveSha256": "505aebf83da69d8ead700dbef8e1f31aac166d66a23917243fc5d2eddac49789",
+    "browserOwn": 0,
+    "exact": 16,
+    "fuzzy": 0,
+    "miss": 6,
+    "requests": 22,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "design-system-service-gov-uk-components-skip-link-ea2d81bd",
+   "url": "https://design-system.service.gov.uk/components/skip-link/"
+  },
+  {
+   "archiveSha256": "85ad514ed5bcee43572523466110b119e50fcb73e4b0fb5d2a77bf89a0e9f0e8",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "85ad514ed5bcee43572523466110b119e50fcb73e4b0fb5d2a77bf89a0e9f0e8",
+     "browserOwn": 14,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 25
+    },
+    "gate.run2": {
+     "archiveSha256": "85ad514ed5bcee43572523466110b119e50fcb73e4b0fb5d2a77bf89a0e9f0e8",
+     "browserOwn": 14,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 25
+    }
+   },
+   "fleet": {
+    "archiveSha256": "85ad514ed5bcee43572523466110b119e50fcb73e4b0fb5d2a77bf89a0e9f0e8",
+    "browserOwn": 1,
+    "exact": 17,
+    "fuzzy": 0,
+    "miss": 16,
+    "requests": 33,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "design-system-service-gov-uk-components-tabs-0a2a18f0",
+   "url": "https://design-system.service.gov.uk/components/tabs/"
+  },
+  {
+   "archiveSha256": "71467da5e89d6dbce9541d1884bf009e1726e2c2e15493c7ca398f7cb997ce54",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "71467da5e89d6dbce9541d1884bf009e1726e2c2e15493c7ca398f7cb997ce54",
+     "browserOwn": 40,
+     "exact": 89,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 92
+    },
+    "gate.run2": {
+     "archiveSha256": "71467da5e89d6dbce9541d1884bf009e1726e2c2e15493c7ca398f7cb997ce54",
+     "browserOwn": 40,
+     "exact": 89,
+     "fuzzy": 0,
+     "miss": 3,
+     "requests": 92
+    }
+   },
+   "fleet": {
+    "archiveSha256": "71467da5e89d6dbce9541d1884bf009e1726e2c2e15493c7ca398f7cb997ce54",
+    "browserOwn": 1,
+    "exact": 84,
+    "fuzzy": 0,
+    "miss": 7,
+    "requests": 91,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "design-system-service-gov-uk-components-text-input-cb5ea0d7",
+   "url": "https://design-system.service.gov.uk/components/text-input/"
+  },
+  {
+   "archiveSha256": "b23fb446db8d0824c6540b7d795f206714e2ce4cab88e12b49d0a922d2407431",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "b23fb446db8d0824c6540b7d795f206714e2ce4cab88e12b49d0a922d2407431",
+     "browserOwn": 14,
+     "exact": 54,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 55
+    },
+    "gate.run2": {
+     "archiveSha256": "b23fb446db8d0824c6540b7d795f206714e2ce4cab88e12b49d0a922d2407431",
+     "browserOwn": 14,
+     "exact": 54,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 55
+    }
+   },
+   "fleet": {
+    "archiveSha256": "b23fb446db8d0824c6540b7d795f206714e2ce4cab88e12b49d0a922d2407431",
+    "browserOwn": 0,
+    "exact": 39,
+    "fuzzy": 0,
+    "miss": 5,
+    "requests": 44,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "european-union-europa-eu-index-en-4c1683aa",
+   "url": "https://european-union.europa.eu/index_en"
+  },
+  {
+   "archiveSha256": "561c334cc823c942dcd1beb9907653ca7ef823d084e043859f0d93837f98deaf",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "561c334cc823c942dcd1beb9907653ca7ef823d084e043859f0d93837f98deaf",
+     "browserOwn": 10,
+     "exact": 6,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 6
+    },
+    "gate.run2": {
+     "archiveSha256": "561c334cc823c942dcd1beb9907653ca7ef823d084e043859f0d93837f98deaf",
+     "browserOwn": 10,
+     "exact": 6,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 6
+    }
+   },
+   "fleet": {
+    "archiveSha256": "561c334cc823c942dcd1beb9907653ca7ef823d084e043859f0d93837f98deaf",
+    "browserOwn": 0,
+    "exact": 2,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 4,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "find-and-update-company-information-service-gov-uk-company-00000006-081efa96",
+   "url": "https://find-and-update.company-information.service.gov.uk/company/00000006"
+  },
+  {
+   "archiveSha256": "6541f5c60eeecabbdc544b03fb016d72ce7a710ece4fa951c215e29061079fb7",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "6541f5c60eeecabbdc544b03fb016d72ce7a710ece4fa951c215e29061079fb7",
+     "browserOwn": 38,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 6,
+     "requests": 27
+    },
+    "gate.run2": {
+     "archiveSha256": "6541f5c60eeecabbdc544b03fb016d72ce7a710ece4fa951c215e29061079fb7",
+     "browserOwn": 36,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 4,
+     "requests": 25
+    }
+   },
+   "fleet": {
+    "archiveSha256": "6541f5c60eeecabbdc544b03fb016d72ce7a710ece4fa951c215e29061079fb7",
+    "browserOwn": 1,
+    "exact": 16,
+    "fuzzy": 0,
+    "miss": 8,
+    "requests": 24,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "ico-org-uk-action-weve-taken-enforcement-a3b207f5",
+   "url": "https://ico.org.uk/action-weve-taken/enforcement/"
+  },
+  {
+   "archiveSha256": "c14eb84dae14df3ab839da430ce7e94fb801adbe04a74317508b4ba1427fe120",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "c14eb84dae14df3ab839da430ce7e94fb801adbe04a74317508b4ba1427fe120",
+     "browserOwn": 14,
+     "exact": 51,
+     "fuzzy": 1,
+     "miss": 6,
+     "requests": 58
+    },
+    "gate.run2": {
+     "archiveSha256": "c14eb84dae14df3ab839da430ce7e94fb801adbe04a74317508b4ba1427fe120",
+     "browserOwn": 14,
+     "exact": 51,
+     "fuzzy": 1,
+     "miss": 6,
+     "requests": 58
+    }
+   },
+   "fleet": {
+    "archiveSha256": "c14eb84dae14df3ab839da430ce7e94fb801adbe04a74317508b4ba1427fe120",
+    "browserOwn": 0,
+    "exact": 49,
+    "fuzzy": 1,
+    "miss": 11,
+    "requests": 61,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "ratings-food-gov-uk-search-a-local-authority-area-7a48362e",
+   "url": "https://ratings.food.gov.uk/search-a-local-authority-area"
+  },
+  {
+   "archiveSha256": "c558629859bfcce379d8bca2bb47c724239767465cb297ee93b0e8f3ce05c17f",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "c558629859bfcce379d8bca2bb47c724239767465cb297ee93b0e8f3ce05c17f",
+     "browserOwn": 14,
+     "exact": 40,
+     "fuzzy": 3,
+     "miss": 2,
+     "requests": 45
+    },
+    "gate.run2": {
+     "archiveSha256": "c558629859bfcce379d8bca2bb47c724239767465cb297ee93b0e8f3ce05c17f",
+     "browserOwn": 14,
+     "exact": 40,
+     "fuzzy": 2,
+     "miss": 3,
+     "requests": 45
+    }
+   },
+   "fleet": {
+    "archiveSha256": "c558629859bfcce379d8bca2bb47c724239767465cb297ee93b0e8f3ce05c17f",
+    "browserOwn": 0,
+    "exact": 36,
+    "fuzzy": 1,
+    "miss": 10,
+    "requests": 47,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "reports-ofsted-gov-uk-search-q-school-6d4721f3",
+   "url": "https://reports.ofsted.gov.uk/search?q=school"
+  },
+  {
+   "archiveSha256": "f5400da3d8f8671e5776d15952886e2b7927433645196099359809f9e75e4ec4",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "f5400da3d8f8671e5776d15952886e2b7927433645196099359809f9e75e4ec4",
+     "browserOwn": 13,
+     "exact": 107,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 108
+    },
+    "gate.run2": {
+     "archiveSha256": "f5400da3d8f8671e5776d15952886e2b7927433645196099359809f9e75e4ec4",
+     "browserOwn": 13,
+     "exact": 107,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 108
+    }
+   },
+   "fleet": {
+    "archiveSha256": "f5400da3d8f8671e5776d15952886e2b7927433645196099359809f9e75e4ec4",
+    "browserOwn": 14,
+    "exact": 102,
+    "fuzzy": 0,
+    "miss": 5,
+    "requests": 107,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "service-manual-nhs-uk-design-system-components-table-1332f01c",
+   "url": "https://service-manual.nhs.uk/design-system/components/table"
+  },
+  {
+   "archiveSha256": "a5c3e6a7f79d0dfea9cf4d1e0a967da0263a8e3f5eeb1c2299d55728bb94d947",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "a5c3e6a7f79d0dfea9cf4d1e0a967da0263a8e3f5eeb1c2299d55728bb94d947",
+     "browserOwn": 22,
+     "exact": 113,
+     "fuzzy": 30,
+     "miss": 11,
+     "requests": 154
+    },
+    "gate.run2": {
+     "archiveSha256": "a5c3e6a7f79d0dfea9cf4d1e0a967da0263a8e3f5eeb1c2299d55728bb94d947",
+     "browserOwn": 22,
+     "exact": 114,
+     "fuzzy": 29,
+     "miss": 13,
+     "requests": 156
+    }
+   },
+   "fleet": {
+    "archiveSha256": "a5c3e6a7f79d0dfea9cf4d1e0a967da0263a8e3f5eeb1c2299d55728bb94d947",
+    "browserOwn": 0,
+    "exact": 136,
+    "fuzzy": 42,
+    "miss": 13,
+    "requests": 191,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "sheffield-ac-uk-postgraduate-taught-courses-2027-309878b8",
+   "url": "https://sheffield.ac.uk/postgraduate/taught/courses/2027"
+  },
+  {
+   "archiveSha256": "abd12a03d313edbfece937a20fed6c9c9d13e2bf8dd2a6b3ff57415f1c79a54d",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "abd12a03d313edbfece937a20fed6c9c9d13e2bf8dd2a6b3ff57415f1c79a54d",
+     "browserOwn": 13,
+     "exact": 83,
+     "fuzzy": 6,
+     "miss": 8,
+     "requests": 97
+    },
+    "gate.run2": {
+     "archiveSha256": "abd12a03d313edbfece937a20fed6c9c9d13e2bf8dd2a6b3ff57415f1c79a54d",
+     "browserOwn": 12,
+     "exact": 80,
+     "fuzzy": 6,
+     "miss": 7,
+     "requests": 93
+    }
+   },
+   "fleet": {
+    "archiveSha256": "abd12a03d313edbfece937a20fed6c9c9d13e2bf8dd2a6b3ff57415f1c79a54d",
+    "browserOwn": 0,
+    "exact": 60,
+    "fuzzy": 1,
+    "miss": 10,
+    "requests": 71,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "tfl-gov-uk-plan-a-journey-0f85db50",
+   "url": "https://tfl.gov.uk/plan-a-journey/"
+  },
+  {
+   "archiveSha256": "aa074ba080c148eec4a73a43980df122ae4f2c7161f60d6ce0824675fd30cea6",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "aa074ba080c148eec4a73a43980df122ae4f2c7161f60d6ce0824675fd30cea6",
+     "browserOwn": 12,
+     "exact": 18,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 19
+    },
+    "gate.run2": {
+     "archiveSha256": "aa074ba080c148eec4a73a43980df122ae4f2c7161f60d6ce0824675fd30cea6",
+     "browserOwn": 12,
+     "exact": 18,
+     "fuzzy": 0,
+     "miss": 1,
+     "requests": 19
+    }
+   },
+   "fleet": {
+    "archiveSha256": "aa074ba080c148eec4a73a43980df122ae4f2c7161f60d6ce0824675fd30cea6",
+    "browserOwn": 4,
+    "exact": 40,
+    "fuzzy": 0,
+    "miss": 7,
+    "requests": 47,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "the-internet-herokuapp-com-login-5de190cf",
+   "url": "https://the-internet.herokuapp.com/login"
+  },
+  {
+   "archiveSha256": "020ea70667d865edbed29c410080906f590fec97986bb0617beb80d5959b7ba9",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "020ea70667d865edbed29c410080906f590fec97986bb0617beb80d5959b7ba9",
+     "browserOwn": 5,
+     "exact": 111,
+     "fuzzy": 12,
+     "miss": 38,
+     "requests": 161
+    },
+    "gate.run2": {
+     "archiveSha256": "020ea70667d865edbed29c410080906f590fec97986bb0617beb80d5959b7ba9",
+     "browserOwn": 5,
+     "exact": 111,
+     "fuzzy": 12,
+     "miss": 47,
+     "requests": 170
+    }
+   },
+   "fleet": {
+    "archiveSha256": "020ea70667d865edbed29c410080906f590fec97986bb0617beb80d5959b7ba9",
+    "browserOwn": 1,
+    "exact": 106,
+    "fuzzy": 15,
+    "miss": 47,
+    "requests": 168,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "weather-metoffice-gov-uk-warnings-and-advice-uk-warnings-c995e390",
+   "url": "https://weather.metoffice.gov.uk/warnings-and-advice/uk-warnings"
+  },
+  {
+   "archiveSha256": "ea35aa4f8a6bc46af8061951a3a6e20680e2904afcd4a809a8eea114a23ab4c6",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "ea35aa4f8a6bc46af8061951a3a6e20680e2904afcd4a809a8eea114a23ab4c6",
+     "browserOwn": 7,
+     "exact": 284,
+     "fuzzy": 24,
+     "miss": 13,
+     "requests": 321
+    },
+    "gate.run2": {
+     "archiveSha256": "ea35aa4f8a6bc46af8061951a3a6e20680e2904afcd4a809a8eea114a23ab4c6",
+     "browserOwn": 7,
+     "exact": 284,
+     "fuzzy": 24,
+     "miss": 13,
+     "requests": 321
+    }
+   },
+   "fleet": {
+    "archiveSha256": "ea35aa4f8a6bc46af8061951a3a6e20680e2904afcd4a809a8eea114a23ab4c6",
+    "browserOwn": 0,
+    "exact": 804,
+    "fuzzy": 62,
+    "miss": 45,
+    "requests": 911,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "www-adobe-com-200ae71a",
+   "url": "https://www.adobe.com/"
+  },
+  {
+   "archiveSha256": "33e0b9017b73de2d5179b6daab67a90bfe53f460e3e68eb99d0b14887cfef8de",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "33e0b9017b73de2d5179b6daab67a90bfe53f460e3e68eb99d0b14887cfef8de",
+     "browserOwn": 6,
+     "exact": 44,
+     "fuzzy": 1,
+     "miss": 8,
+     "requests": 53
+    },
+    "gate.run2": {
+     "archiveSha256": "33e0b9017b73de2d5179b6daab67a90bfe53f460e3e68eb99d0b14887cfef8de",
+     "browserOwn": 6,
+     "exact": 44,
+     "fuzzy": 1,
+     "miss": 5,
+     "requests": 50
+    }
+   },
+   "fleet": {
+    "archiveSha256": "33e0b9017b73de2d5179b6daab67a90bfe53f460e3e68eb99d0b14887cfef8de",
+    "browserOwn": 0,
+    "exact": 39,
+    "fuzzy": 1,
+    "miss": 5,
+    "requests": 45,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "www-british-history-ac-uk-catalogue-9d6b1d9d",
+   "url": "https://www.british-history.ac.uk/catalogue"
+  },
+  {
+   "archiveSha256": "b4260150961ecf8f750e11f898456d6c85fa46db6f2d3b7b10dcf26eaf013308",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "b4260150961ecf8f750e11f898456d6c85fa46db6f2d3b7b10dcf26eaf013308",
+     "blocked": 2,
+     "browserOwn": 10,
+     "exact": 307,
+     "fuzzy": 1,
+     "miss": 11,
+     "requests": 321
+    },
+    "gate.run2": {
+     "archiveSha256": "b4260150961ecf8f750e11f898456d6c85fa46db6f2d3b7b10dcf26eaf013308",
+     "blocked": 2,
+     "browserOwn": 10,
+     "exact": 308,
+     "fuzzy": 1,
+     "miss": 11,
+     "requests": 322
+    }
+   },
+   "fleet": {
+    "archiveSha256": "b4260150961ecf8f750e11f898456d6c85fa46db6f2d3b7b10dcf26eaf013308",
+    "blocked": 6,
+    "browserOwn": 8,
+    "exact": 925,
+    "fuzzy": 4,
+    "miss": 7,
+    "requests": 942,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-dropbox-com-8f9fb359",
+   "url": "https://www.dropbox.com/"
+  },
+  {
+   "archiveSha256": "91211e829309e972c10f5ef972f08f553095be3e1b1667994d0878d28180a872",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "91211e829309e972c10f5ef972f08f553095be3e1b1667994d0878d28180a872",
+     "browserOwn": 12,
+     "exact": 77,
+     "fuzzy": 11,
+     "miss": 11,
+     "requests": 99
+    },
+    "gate.run2": {
+     "archiveSha256": "91211e829309e972c10f5ef972f08f553095be3e1b1667994d0878d28180a872",
+     "browserOwn": 12,
+     "exact": 76,
+     "fuzzy": 11,
+     "miss": 11,
+     "requests": 98
+    }
+   },
+   "fleet": {
+    "archiveSha256": "91211e829309e972c10f5ef972f08f553095be3e1b1667994d0878d28180a872",
+    "browserOwn": 0,
+    "exact": 104,
+    "fuzzy": 11,
+    "miss": 11,
+    "requests": 126,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "www-gla-ac-uk-undergraduate-degrees-5e5eb747",
+   "url": "https://www.gla.ac.uk/undergraduate/degrees/"
+  },
+  {
+   "archiveSha256": "e3c9eb0628166df5ee0a55c491b8d7167050c52d4205de0d651c11106d10e70a",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "e3c9eb0628166df5ee0a55c491b8d7167050c52d4205de0d651c11106d10e70a",
+     "browserOwn": 10,
+     "exact": 27,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 31
+    },
+    "gate.run2": {
+     "archiveSha256": "e3c9eb0628166df5ee0a55c491b8d7167050c52d4205de0d651c11106d10e70a",
+     "browserOwn": 10,
+     "exact": 27,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 31
+    }
+   },
+   "fleet": {
+    "archiveSha256": "e3c9eb0628166df5ee0a55c491b8d7167050c52d4205de0d651c11106d10e70a",
+    "browserOwn": 0,
+    "exact": 21,
+    "fuzzy": 1,
+    "miss": 12,
+    "requests": 34,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-gov-scot-about-eef02a93",
+   "url": "https://www.gov.scot/about/"
+  },
+  {
+   "archiveSha256": "219ccbf2a7c9ecaf0fced7f31d691caf9dd5116c6fffd7758138758dbfb5c79a",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "219ccbf2a7c9ecaf0fced7f31d691caf9dd5116c6fffd7758138758dbfb5c79a",
+     "browserOwn": 19,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 8,
+     "requests": 29
+    },
+    "gate.run2": {
+     "archiveSha256": "219ccbf2a7c9ecaf0fced7f31d691caf9dd5116c6fffd7758138758dbfb5c79a",
+     "browserOwn": 19,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 8,
+     "requests": 29
+    }
+   },
+   "fleet": {
+    "archiveSha256": "219ccbf2a7c9ecaf0fced7f31d691caf9dd5116c6fffd7758138758dbfb5c79a",
+    "browserOwn": 0,
+    "exact": 16,
+    "fuzzy": 0,
+    "miss": 9,
+    "requests": 25,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "www-gov-uk-guidance-rates-and-thresholds-for-employers-2025-to-2026-9ec7aaf8",
+   "url": "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2025-to-2026"
+  },
+  {
+   "archiveSha256": "8f2b5fca8bc3abf48c45725bc06ee0491425327173939e247d727b5c22ed62ff",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "8f2b5fca8bc3abf48c45725bc06ee0491425327173939e247d727b5c22ed62ff",
+     "browserOwn": 11,
+     "exact": 18,
+     "fuzzy": 0,
+     "miss": 13,
+     "requests": 31
+    },
+    "gate.run2": {
+     "archiveSha256": "8f2b5fca8bc3abf48c45725bc06ee0491425327173939e247d727b5c22ed62ff",
+     "browserOwn": 11,
+     "exact": 18,
+     "fuzzy": 0,
+     "miss": 13,
+     "requests": 31
+    }
+   },
+   "fleet": {
+    "archiveSha256": "8f2b5fca8bc3abf48c45725bc06ee0491425327173939e247d727b5c22ed62ff",
+    "browserOwn": 0,
+    "exact": 13,
+    "fuzzy": 0,
+    "miss": 10,
+    "requests": 23,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "www-gov-uk-vehicle-tax-7ba39163",
+   "url": "https://www.gov.uk/vehicle-tax"
+  },
+  {
+   "archiveSha256": "3581526ed387ab40673e0643b6bd9ceaf37a77d8987c8bfb6cf06b3e2aed9411",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "3581526ed387ab40673e0643b6bd9ceaf37a77d8987c8bfb6cf06b3e2aed9411",
+     "browserOwn": 18,
+     "exact": 25,
+     "fuzzy": 3,
+     "miss": 6,
+     "requests": 34
+    },
+    "gate.run2": {
+     "archiveSha256": "3581526ed387ab40673e0643b6bd9ceaf37a77d8987c8bfb6cf06b3e2aed9411",
+     "browserOwn": 18,
+     "exact": 25,
+     "fuzzy": 3,
+     "miss": 6,
+     "requests": 34
+    }
+   },
+   "fleet": {
+    "archiveSha256": "3581526ed387ab40673e0643b6bd9ceaf37a77d8987c8bfb6cf06b3e2aed9411",
+    "browserOwn": 1,
+    "exact": 21,
+    "fuzzy": 3,
+    "miss": 8,
+    "requests": 32,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "www-gov-wales-statistics-and-research-bb6c408a",
+   "url": "https://www.gov.wales/statistics-and-research"
+  },
+  {
+   "archiveSha256": "c041905a31493b86bbf5597161f288f9a6696d4acf44d0b253ef64f354c55839",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "c041905a31493b86bbf5597161f288f9a6696d4acf44d0b253ef64f354c55839",
+     "browserOwn": 13,
+     "exact": 41,
+     "fuzzy": 1,
+     "miss": 5,
+     "requests": 47
+    },
+    "gate.run2": {
+     "archiveSha256": "c041905a31493b86bbf5597161f288f9a6696d4acf44d0b253ef64f354c55839",
+     "browserOwn": 14,
+     "exact": 41,
+     "fuzzy": 1,
+     "miss": 5,
+     "requests": 47
+    }
+   },
+   "fleet": {
+    "archiveSha256": "c041905a31493b86bbf5597161f288f9a6696d4acf44d0b253ef64f354c55839",
+    "browserOwn": 3,
+    "exact": 38,
+    "fuzzy": 1,
+    "miss": 11,
+    "requests": 50,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "www-historicenvironment-scot-visit-all-edinburgh-castle-ba403e32",
+   "url": "https://www.historicenvironment.scot/visit/all/edinburgh-castle/"
+  },
+  {
+   "archiveSha256": "a4e71cf7eb4aa10147ec4c64034738404de5632b7b6b36387b562fdb439acaa5",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "a4e71cf7eb4aa10147ec4c64034738404de5632b7b6b36387b562fdb439acaa5",
+     "browserOwn": 7,
+     "exact": 206,
+     "fuzzy": 21,
+     "miss": 28,
+     "requests": 255
+    },
+    "gate.run2": {
+     "archiveSha256": "a4e71cf7eb4aa10147ec4c64034738404de5632b7b6b36387b562fdb439acaa5",
+     "browserOwn": 7,
+     "exact": 216,
+     "fuzzy": 25,
+     "miss": 28,
+     "requests": 269
+    }
+   },
+   "fleet": {
+    "archiveSha256": "a4e71cf7eb4aa10147ec4c64034738404de5632b7b6b36387b562fdb439acaa5",
+    "browserOwn": 1,
+    "exact": 396,
+    "fuzzy": 45,
+    "miss": 56,
+    "requests": 497,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "www-hubspot-com-31d11f63",
+   "url": "https://www.hubspot.com/"
+  },
+  {
+   "archiveSha256": "3934e5e0e38c5308ea56402a4fe9eadb16dcb37495d7150a83424cfb3df78c3e",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "3934e5e0e38c5308ea56402a4fe9eadb16dcb37495d7150a83424cfb3df78c3e",
+     "browserOwn": 7,
+     "exact": 155,
+     "fuzzy": 55,
+     "miss": 32,
+     "requests": 242
+    },
+    "gate.run2": {
+     "archiveSha256": "3934e5e0e38c5308ea56402a4fe9eadb16dcb37495d7150a83424cfb3df78c3e",
+     "browserOwn": 7,
+     "exact": 155,
+     "fuzzy": 52,
+     "miss": 32,
+     "requests": 239
+    }
+   },
+   "fleet": {
+    "archiveSha256": "3934e5e0e38c5308ea56402a4fe9eadb16dcb37495d7150a83424cfb3df78c3e",
+    "browserOwn": 1,
+    "exact": 213,
+    "fuzzy": 164,
+    "miss": 59,
+    "requests": 436,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "www-leeds-ac-uk-undergraduate-ba978a50",
+   "url": "https://www.leeds.ac.uk/undergraduate"
+  },
+  {
+   "archiveSha256": "ce3ff8a3b44ab978178f24da0955377323d6a3aecc99e16027e7dc4a3366b346",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "ce3ff8a3b44ab978178f24da0955377323d6a3aecc99e16027e7dc4a3366b346",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 29
+    },
+    "gate.run2": {
+     "archiveSha256": "ce3ff8a3b44ab978178f24da0955377323d6a3aecc99e16027e7dc4a3366b346",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 1,
+     "miss": 2,
+     "requests": 28
+    }
+   },
+   "fleet": {
+    "archiveSha256": "ce3ff8a3b44ab978178f24da0955377323d6a3aecc99e16027e7dc4a3366b346",
+    "browserOwn": 2,
+    "exact": 21,
+    "fuzzy": 1,
+    "miss": 8,
+    "requests": 30,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-mygov-scot-browse-benefits-7b51164a",
+   "url": "https://www.mygov.scot/browse/benefits"
+  },
+  {
+   "archiveSha256": "6882ba8c1eea3777565d407c98a22252737414be38a3f1afde7a29e30ddde040",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "6882ba8c1eea3777565d407c98a22252737414be38a3f1afde7a29e30ddde040",
+     "browserOwn": 10,
+     "exact": 36,
+     "fuzzy": 1,
+     "miss": 2,
+     "requests": 39
+    },
+    "gate.run2": {
+     "archiveSha256": "6882ba8c1eea3777565d407c98a22252737414be38a3f1afde7a29e30ddde040",
+     "browserOwn": 10,
+     "exact": 36,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 40
+    }
+   },
+   "fleet": {
+    "archiveSha256": "6882ba8c1eea3777565d407c98a22252737414be38a3f1afde7a29e30ddde040",
+    "browserOwn": 3,
+    "exact": 33,
+    "fuzzy": 1,
+    "miss": 5,
+    "requests": 39,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "www-mygov-scot-scottish-child-payment-3b6a0f8b",
+   "url": "https://www.mygov.scot/scottish-child-payment"
+  },
+  {
+   "archiveSha256": "b4dac4f2b422c2af67e26aedc5cedaeee8f4c74176622811f36334304e69b628",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "b4dac4f2b422c2af67e26aedc5cedaeee8f4c74176622811f36334304e69b628",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 1,
+     "miss": 6,
+     "requests": 32
+    },
+    "gate.run2": {
+     "archiveSha256": "b4dac4f2b422c2af67e26aedc5cedaeee8f4c74176622811f36334304e69b628",
+     "browserOwn": 10,
+     "exact": 25,
+     "fuzzy": 1,
+     "miss": 6,
+     "requests": 32
+    }
+   },
+   "fleet": {
+    "archiveSha256": "b4dac4f2b422c2af67e26aedc5cedaeee8f4c74176622811f36334304e69b628",
+    "browserOwn": 1,
+    "exact": 21,
+    "fuzzy": 2,
+    "miss": 8,
+    "requests": 31,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-nationalarchives-gov-uk-about-us-21b112f0",
+   "url": "https://www.nationalarchives.gov.uk/about-us/"
+  },
+  {
+   "archiveSha256": "9127d2c2f47558212273f7e4b36c4ccb23fd6a5d2f4de269dd214ff735a9e304",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "9127d2c2f47558212273f7e4b36c4ccb23fd6a5d2f4de269dd214ff735a9e304",
+     "browserOwn": 6,
+     "exact": 63,
+     "fuzzy": 2,
+     "miss": 16,
+     "requests": 81
+    },
+    "gate.run2": {
+     "archiveSha256": "9127d2c2f47558212273f7e4b36c4ccb23fd6a5d2f4de269dd214ff735a9e304",
+     "browserOwn": 11,
+     "exact": 63,
+     "fuzzy": 3,
+     "miss": 15,
+     "requests": 81
+    }
+   },
+   "fleet": {
+    "archiveSha256": "9127d2c2f47558212273f7e4b36c4ccb23fd6a5d2f4de269dd214ff735a9e304",
+    "browserOwn": 0,
+    "exact": 62,
+    "fuzzy": 1,
+    "miss": 17,
+    "requests": 80,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "www-networkrail-co-uk-careers-f59c9ccc",
+   "url": "https://www.networkrail.co.uk/careers/"
+  },
+  {
+   "archiveSha256": "2c4542ae8652148778b67af8830dfd88bdf8ed7b6df648122dc5d376934dc857",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "2c4542ae8652148778b67af8830dfd88bdf8ed7b6df648122dc5d376934dc857",
+     "browserOwn": 17,
+     "exact": 25,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 28
+    },
+    "gate.run2": {
+     "archiveSha256": "2c4542ae8652148778b67af8830dfd88bdf8ed7b6df648122dc5d376934dc857",
+     "browserOwn": 18,
+     "exact": 25,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 28
+    }
+   },
+   "fleet": {
+    "archiveSha256": "2c4542ae8652148778b67af8830dfd88bdf8ed7b6df648122dc5d376934dc857",
+    "browserOwn": 0,
+    "exact": 21,
+    "fuzzy": 2,
+    "miss": 7,
+    "requests": 30,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "www-nhs-uk-conditions-796584b1",
+   "url": "https://www.nhs.uk/conditions/"
+  },
+  {
+   "archiveSha256": "b2edacd98a83b1fba13a9beeccd1655e9a2567435ab0c548cdad8b9cf6511066",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "b2edacd98a83b1fba13a9beeccd1655e9a2567435ab0c548cdad8b9cf6511066",
+     "browserOwn": 12,
+     "exact": 29,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 32
+    },
+    "gate.run2": {
+     "archiveSha256": "b2edacd98a83b1fba13a9beeccd1655e9a2567435ab0c548cdad8b9cf6511066",
+     "browserOwn": 12,
+     "exact": 29,
+     "fuzzy": 2,
+     "miss": 1,
+     "requests": 32
+    }
+   },
+   "fleet": {
+    "archiveSha256": "b2edacd98a83b1fba13a9beeccd1655e9a2567435ab0c548cdad8b9cf6511066",
+    "browserOwn": 0,
+    "exact": 26,
+    "fuzzy": 2,
+    "miss": 4,
+    "requests": 32,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "www-nhs-uk-service-search-find-a-gp-44065862",
+   "url": "https://www.nhs.uk/service-search/find-a-gp"
+  },
+  {
+   "archiveSha256": "81685546a8131483d0823a315d2dfdcf8d134221f83b2aa28208c3d217a90fba",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "81685546a8131483d0823a315d2dfdcf8d134221f83b2aa28208c3d217a90fba",
+     "browserOwn": 13,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 35
+    },
+    "gate.run2": {
+     "archiveSha256": "81685546a8131483d0823a315d2dfdcf8d134221f83b2aa28208c3d217a90fba",
+     "browserOwn": 14,
+     "exact": 31,
+     "fuzzy": 1,
+     "miss": 3,
+     "requests": 35
+    }
+   },
+   "fleet": {
+    "archiveSha256": "81685546a8131483d0823a315d2dfdcf8d134221f83b2aa28208c3d217a90fba",
+    "browserOwn": 0,
+    "exact": 26,
+    "fuzzy": 1,
+    "miss": 6,
+    "requests": 33,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "www-nidirect-gov-uk-information-and-services-motoring-mot-and-vehicle--24af12a3",
+   "url": "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing"
+  },
+  {
+   "archiveSha256": "6fdbc6b50cfded45993f971f48f8e3b31c38b269720e42cc12d476467ec8ccc1",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "6fdbc6b50cfded45993f971f48f8e3b31c38b269720e42cc12d476467ec8ccc1",
+     "browserOwn": 12,
+     "exact": 211,
+     "fuzzy": 6,
+     "miss": 2,
+     "requests": 219
+    },
+    "gate.run2": {
+     "archiveSha256": "6fdbc6b50cfded45993f971f48f8e3b31c38b269720e42cc12d476467ec8ccc1",
+     "browserOwn": 12,
+     "exact": 211,
+     "fuzzy": 6,
+     "miss": 2,
+     "requests": 219
+    }
+   },
+   "fleet": {
+    "archiveSha256": "6fdbc6b50cfded45993f971f48f8e3b31c38b269720e42cc12d476467ec8ccc1",
+    "browserOwn": 3,
+    "exact": 360,
+    "fuzzy": 15,
+    "miss": 7,
+    "requests": 382,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "www-notion-com-b04d19f2",
+   "url": "https://www.notion.com/"
+  },
+  {
+   "archiveSha256": "82a4d097976d2056a9dc17375ec9d78c0ae22dc14c4c2ef65496939a0b41abd1",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "82a4d097976d2056a9dc17375ec9d78c0ae22dc14c4c2ef65496939a0b41abd1",
+     "browserOwn": 12,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 24
+    },
+    "gate.run2": {
+     "archiveSha256": "82a4d097976d2056a9dc17375ec9d78c0ae22dc14c4c2ef65496939a0b41abd1",
+     "browserOwn": 12,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 23
+    }
+   },
+   "fleet": {
+    "archiveSha256": "82a4d097976d2056a9dc17375ec9d78c0ae22dc14c4c2ef65496939a0b41abd1",
+    "browserOwn": 0,
+    "exact": 16,
+    "fuzzy": 0,
+    "miss": 5,
+    "requests": 21,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-nrscotland-gov-uk-publications-a6d1fded",
+   "url": "https://www.nrscotland.gov.uk/publications/"
+  },
+  {
+   "archiveSha256": "24e14b3b462bb3699ef24bcbfc74d84c5f3ffebe87a8b3194a28cc1e1da03809",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "24e14b3b462bb3699ef24bcbfc74d84c5f3ffebe87a8b3194a28cc1e1da03809",
+     "browserOwn": 13,
+     "exact": 37,
+     "fuzzy": 1,
+     "miss": 2,
+     "requests": 40
+    },
+    "gate.run2": {
+     "archiveSha256": "24e14b3b462bb3699ef24bcbfc74d84c5f3ffebe87a8b3194a28cc1e1da03809",
+     "browserOwn": 13,
+     "exact": 36,
+     "fuzzy": 1,
+     "miss": 2,
+     "requests": 39
+    }
+   },
+   "fleet": {
+    "archiveSha256": "24e14b3b462bb3699ef24bcbfc74d84c5f3ffebe87a8b3194a28cc1e1da03809",
+    "browserOwn": 0,
+    "exact": 31,
+    "fuzzy": 1,
+    "miss": 16,
+    "requests": 48,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "www-nrscotland-gov-uk-statistics-and-data-e4c34d42",
+   "url": "https://www.nrscotland.gov.uk/statistics-and-data/"
+  },
+  {
+   "archiveSha256": "a99298039bb213cec9ec0b8faeb655a6bb4c494bfac948b10a4baf7aa4243d7f",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "a99298039bb213cec9ec0b8faeb655a6bb4c494bfac948b10a4baf7aa4243d7f",
+     "blocked": 3,
+     "browserOwn": 13,
+     "exact": 57,
+     "fuzzy": 8,
+     "miss": 3,
+     "requests": 71
+    },
+    "gate.run2": {
+     "archiveSha256": "a99298039bb213cec9ec0b8faeb655a6bb4c494bfac948b10a4baf7aa4243d7f",
+     "blocked": 3,
+     "browserOwn": 13,
+     "exact": 57,
+     "fuzzy": 8,
+     "miss": 6,
+     "requests": 74
+    }
+   },
+   "fleet": {
+    "archiveSha256": "a99298039bb213cec9ec0b8faeb655a6bb4c494bfac948b10a4baf7aa4243d7f",
+    "blocked": 13,
+    "browserOwn": 0,
+    "exact": 73,
+    "fuzzy": 9,
+    "miss": 14,
+    "requests": 109,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "www-ofgem-gov-uk-your-energy-supply-your-energy-bill-energy-price-cap--c1317dbc",
+   "url": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-and-standing-charges-explained"
+  },
+  {
+   "archiveSha256": "7a3e80c5e5bbd9378315e61ed92cef1d327c338fb7961f25c93b0421d6a77d7b",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "7a3e80c5e5bbd9378315e61ed92cef1d327c338fb7961f25c93b0421d6a77d7b",
+     "blocked": 3,
+     "browserOwn": 10,
+     "exact": 42,
+     "fuzzy": 0,
+     "miss": 5,
+     "requests": 50
+    },
+    "gate.run2": {
+     "archiveSha256": "7a3e80c5e5bbd9378315e61ed92cef1d327c338fb7961f25c93b0421d6a77d7b",
+     "blocked": 3,
+     "browserOwn": 10,
+     "exact": 42,
+     "fuzzy": 0,
+     "miss": 5,
+     "requests": 50
+    }
+   },
+   "fleet": {
+    "archiveSha256": "7a3e80c5e5bbd9378315e61ed92cef1d327c338fb7961f25c93b0421d6a77d7b",
+    "blocked": 20,
+    "browserOwn": 0,
+    "exact": 55,
+    "fuzzy": 0,
+    "miss": 29,
+    "requests": 104,
+    "worker": "a11y-worker-15"
+   },
+   "slug": "www-ons-gov-uk-economy-inflationandpriceindices-8ee43205",
+   "url": "https://www.ons.gov.uk/economy/inflationandpriceindices"
+  },
+  {
+   "archiveSha256": "d5be31bc8a884b379f8af702c2cb0cb782891b5f622c57e93b94a156e1697006",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "d5be31bc8a884b379f8af702c2cb0cb782891b5f622c57e93b94a156e1697006",
+     "browserOwn": 10,
+     "exact": 30,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 30
+    },
+    "gate.run2": {
+     "archiveSha256": "d5be31bc8a884b379f8af702c2cb0cb782891b5f622c57e93b94a156e1697006",
+     "browserOwn": 10,
+     "exact": 30,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 30
+    }
+   },
+   "fleet": {
+    "archiveSha256": "d5be31bc8a884b379f8af702c2cb0cb782891b5f622c57e93b94a156e1697006",
+    "browserOwn": 2,
+    "exact": 25,
+    "fuzzy": 0,
+    "miss": 4,
+    "requests": 29,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "www-w3-org-wai-demos-bad-after-tickets-html-6813234a",
+   "url": "https://www.w3.org/WAI/demos/bad/after/tickets.html"
+  },
+  {
+   "archiveSha256": "84cefb250a4bf18091b884a5992376bcdb25cf80324847f99a31d5a5547098a0",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "84cefb250a4bf18091b884a5992376bcdb25cf80324847f99a31d5a5547098a0",
+     "browserOwn": 10,
+     "exact": 42,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 42
+    },
+    "gate.run2": {
+     "archiveSha256": "84cefb250a4bf18091b884a5992376bcdb25cf80324847f99a31d5a5547098a0",
+     "browserOwn": 10,
+     "exact": 42,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 42
+    }
+   },
+   "fleet": {
+    "archiveSha256": "84cefb250a4bf18091b884a5992376bcdb25cf80324847f99a31d5a5547098a0",
+    "browserOwn": 2,
+    "exact": 37,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 38,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "www-w3-org-wai-demos-bad-before-news-html-b62f1af0",
+   "url": "https://www.w3.org/WAI/demos/bad/before/news.html"
+  },
+  {
+   "archiveSha256": "645eeb89e1aaebaa1ebf57ed04f54bdea680f80bfdd99215af7d420b165dd2a6",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "645eeb89e1aaebaa1ebf57ed04f54bdea680f80bfdd99215af7d420b165dd2a6",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "gate.run2": {
+     "archiveSha256": "645eeb89e1aaebaa1ebf57ed04f54bdea680f80bfdd99215af7d420b165dd2a6",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    }
+   },
+   "fleet": {
+    "archiveSha256": "645eeb89e1aaebaa1ebf57ed04f54bdea680f80bfdd99215af7d420b165dd2a6",
+    "browserOwn": 3,
+    "exact": 14,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 16,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-w3-org-wai-tutorials-carousels-structure-0630a3a5",
+   "url": "https://www.w3.org/WAI/tutorials/carousels/structure/"
+  },
+  {
+   "archiveSha256": "0af8a2aefce332bfd8e26bd576b47c8695ef29f7c92188de5954de8f3a2f57d7",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "0af8a2aefce332bfd8e26bd576b47c8695ef29f7c92188de5954de8f3a2f57d7",
+     "browserOwn": 16,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "gate.run2": {
+     "archiveSha256": "0af8a2aefce332bfd8e26bd576b47c8695ef29f7c92188de5954de8f3a2f57d7",
+     "browserOwn": 16,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    }
+   },
+   "fleet": {
+    "archiveSha256": "0af8a2aefce332bfd8e26bd576b47c8695ef29f7c92188de5954de8f3a2f57d7",
+    "browserOwn": 2,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 16,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "www-w3-org-wai-tutorials-forms-grouping-29b6f2dc",
+   "url": "https://www.w3.org/WAI/tutorials/forms/grouping/"
+  },
+  {
+   "archiveSha256": "7bce8d3ddf4ae2b9e6599d51ac7c8599bb43f788fed4052981201d83dee5320f",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "7bce8d3ddf4ae2b9e6599d51ac7c8599bb43f788fed4052981201d83dee5320f",
+     "browserOwn": 12,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "gate.run2": {
+     "archiveSha256": "7bce8d3ddf4ae2b9e6599d51ac7c8599bb43f788fed4052981201d83dee5320f",
+     "browserOwn": 12,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    }
+   },
+   "fleet": {
+    "archiveSha256": "7bce8d3ddf4ae2b9e6599d51ac7c8599bb43f788fed4052981201d83dee5320f",
+    "browserOwn": 2,
+    "exact": 14,
+    "fuzzy": 0,
+    "miss": 4,
+    "requests": 18,
+    "worker": "a11y-worker-8"
+   },
+   "slug": "www-w3-org-wai-tutorials-forms-instructions-9c2d8b72",
+   "url": "https://www.w3.org/WAI/tutorials/forms/instructions/"
+  },
+  {
+   "archiveSha256": "61e7588dd93325f0d5f112d5e61983389afd44dabf52286d625fc004b20d33ee",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "61e7588dd93325f0d5f112d5e61983389afd44dabf52286d625fc004b20d33ee",
+     "browserOwn": 14,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "gate.run2": {
+     "archiveSha256": "61e7588dd93325f0d5f112d5e61983389afd44dabf52286d625fc004b20d33ee",
+     "browserOwn": 14,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    }
+   },
+   "fleet": {
+    "archiveSha256": "61e7588dd93325f0d5f112d5e61983389afd44dabf52286d625fc004b20d33ee",
+    "browserOwn": 2,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 17,
+    "worker": "a11y-worker-13"
+   },
+   "slug": "www-w3-org-wai-tutorials-forms-labels-8a8502f7",
+   "url": "https://www.w3.org/WAI/tutorials/forms/labels/"
+  },
+  {
+   "archiveSha256": "09d954f0d7d92c2d188c96b830e6e99c3783fcadd3d4d6c94828aa3cffc00894",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "09d954f0d7d92c2d188c96b830e6e99c3783fcadd3d4d6c94828aa3cffc00894",
+     "browserOwn": 10,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 19
+    },
+    "gate.run2": {
+     "archiveSha256": "09d954f0d7d92c2d188c96b830e6e99c3783fcadd3d4d6c94828aa3cffc00894",
+     "browserOwn": 10,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    }
+   },
+   "fleet": {
+    "archiveSha256": "09d954f0d7d92c2d188c96b830e6e99c3783fcadd3d4d6c94828aa3cffc00894",
+    "browserOwn": 2,
+    "exact": 14,
+    "fuzzy": 0,
+    "miss": 6,
+    "requests": 20,
+    "worker": "a11y-worker-16"
+   },
+   "slug": "www-w3-org-wai-tutorials-forms-multi-page-da75bd08",
+   "url": "https://www.w3.org/WAI/tutorials/forms/multi-page/"
+  },
+  {
+   "archiveSha256": "76c73a3eecef89da9b2c022586a7bdbb35ed993e5b1d63c965d8d28ca095624a",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "76c73a3eecef89da9b2c022586a7bdbb35ed993e5b1d63c965d8d28ca095624a",
+     "browserOwn": 10,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 23
+    },
+    "gate.run2": {
+     "archiveSha256": "76c73a3eecef89da9b2c022586a7bdbb35ed993e5b1d63c965d8d28ca095624a",
+     "browserOwn": 10,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 23
+    }
+   },
+   "fleet": {
+    "archiveSha256": "76c73a3eecef89da9b2c022586a7bdbb35ed993e5b1d63c965d8d28ca095624a",
+    "browserOwn": 2,
+    "exact": 18,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 19,
+    "worker": "a11y-worker-10"
+   },
+   "slug": "www-w3-org-wai-tutorials-images-decorative-421989ee",
+   "url": "https://www.w3.org/WAI/tutorials/images/decorative/"
+  },
+  {
+   "archiveSha256": "b2afe3caa87c07fe951b55bdb538a6067e0675d2b680ced74c9ed5dc0256f83f",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "b2afe3caa87c07fe951b55bdb538a6067e0675d2b680ced74c9ed5dc0256f83f",
+     "browserOwn": 12,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 23
+    },
+    "gate.run2": {
+     "archiveSha256": "b2afe3caa87c07fe951b55bdb538a6067e0675d2b680ced74c9ed5dc0256f83f",
+     "browserOwn": 12,
+     "exact": 23,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 23
+    }
+   },
+   "fleet": {
+    "archiveSha256": "b2afe3caa87c07fe951b55bdb538a6067e0675d2b680ced74c9ed5dc0256f83f",
+    "browserOwn": 2,
+    "exact": 18,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 19,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "www-w3-org-wai-tutorials-images-functional-2015b7a1",
+   "url": "https://www.w3.org/WAI/tutorials/images/functional/"
+  },
+  {
+   "archiveSha256": "4f82cdf32581b8672a799add608f61d7fea2646534d3b83481210ff7d69f4e10",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "4f82cdf32581b8672a799add608f61d7fea2646534d3b83481210ff7d69f4e10",
+     "browserOwn": 10,
+     "exact": 27,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 27
+    },
+    "gate.run2": {
+     "archiveSha256": "4f82cdf32581b8672a799add608f61d7fea2646534d3b83481210ff7d69f4e10",
+     "browserOwn": 10,
+     "exact": 27,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 27
+    }
+   },
+   "fleet": {
+    "archiveSha256": "4f82cdf32581b8672a799add608f61d7fea2646534d3b83481210ff7d69f4e10",
+    "browserOwn": 2,
+    "exact": 23,
+    "fuzzy": 0,
+    "miss": 2,
+    "requests": 25,
+    "worker": "a11y-worker-4"
+   },
+   "slug": "www-w3-org-wai-tutorials-images-informative-f5c3b9f0",
+   "url": "https://www.w3.org/WAI/tutorials/images/informative/"
+  },
+  {
+   "archiveSha256": "f5493a51d91dd547dee97438fa774f47db88008e9d69fbfe471e3e672f24f1a9",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "f5493a51d91dd547dee97438fa774f47db88008e9d69fbfe471e3e672f24f1a9",
+     "browserOwn": 13,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    },
+    "gate.run2": {
+     "archiveSha256": "f5493a51d91dd547dee97438fa774f47db88008e9d69fbfe471e3e672f24f1a9",
+     "browserOwn": 14,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    }
+   },
+   "fleet": {
+    "archiveSha256": "f5493a51d91dd547dee97438fa774f47db88008e9d69fbfe471e3e672f24f1a9",
+    "browserOwn": 2,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 3,
+    "requests": 18,
+    "worker": "a11y-worker-9"
+   },
+   "slug": "www-w3-org-wai-tutorials-menus-flyout-d3e65f97",
+   "url": "https://www.w3.org/WAI/tutorials/menus/flyout/"
+  },
+  {
+   "archiveSha256": "028edb4809428c6152b2e70be962c32f91096a1f7cbf3cb67c8e7c623782fc13",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "028edb4809428c6152b2e70be962c32f91096a1f7cbf3cb67c8e7c623782fc13",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    },
+    "gate.run2": {
+     "archiveSha256": "028edb4809428c6152b2e70be962c32f91096a1f7cbf3cb67c8e7c623782fc13",
+     "browserOwn": 10,
+     "exact": 22,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 22
+    }
+   },
+   "fleet": {
+    "archiveSha256": "028edb4809428c6152b2e70be962c32f91096a1f7cbf3cb67c8e7c623782fc13",
+    "browserOwn": 2,
+    "exact": 17,
+    "fuzzy": 0,
+    "miss": 3,
+    "requests": 20,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "www-w3-org-wai-tutorials-page-structure-headings-52ef9e1e",
+   "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/"
+  },
+  {
+   "archiveSha256": "d3372c9be6597e64c8e20c64474b13003f70fdd88565ac4f552f8002a371c8b1",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "d3372c9be6597e64c8e20c64474b13003f70fdd88565ac4f552f8002a371c8b1",
+     "browserOwn": 10,
+     "exact": 24,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 24
+    },
+    "gate.run2": {
+     "archiveSha256": "d3372c9be6597e64c8e20c64474b13003f70fdd88565ac4f552f8002a371c8b1",
+     "browserOwn": 10,
+     "exact": 24,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 24
+    }
+   },
+   "fleet": {
+    "archiveSha256": "d3372c9be6597e64c8e20c64474b13003f70fdd88565ac4f552f8002a371c8b1",
+    "browserOwn": 2,
+    "exact": 19,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 20,
+    "worker": "a11y-worker-12"
+   },
+   "slug": "www-w3-org-wai-tutorials-page-structure-regions-cae76404",
+   "url": "https://www.w3.org/WAI/tutorials/page-structure/regions/"
+  },
+  {
+   "archiveSha256": "89af716a4e99592512c8f1fa0b8e7a47df5cdb9b7b1cf61e390fabe86f1e1826",
+   "differences": [],
+   "emulator": {
+    "gate.run1": {
+     "archiveSha256": "89af716a4e99592512c8f1fa0b8e7a47df5cdb9b7b1cf61e390fabe86f1e1826",
+     "browserOwn": 10,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    },
+    "gate.run2": {
+     "archiveSha256": "89af716a4e99592512c8f1fa0b8e7a47df5cdb9b7b1cf61e390fabe86f1e1826",
+     "browserOwn": 10,
+     "exact": 20,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 20
+    }
+   },
+   "fleet": {
+    "archiveSha256": "89af716a4e99592512c8f1fa0b8e7a47df5cdb9b7b1cf61e390fabe86f1e1826",
+    "browserOwn": 2,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 16,
+    "worker": "a11y-worker-14"
+   },
+   "slug": "www-w3-org-wai-tutorials-tables-one-header-9d641601",
+   "url": "https://www.w3.org/WAI/tutorials/tables/one-header/"
+  }
+ ]
+}

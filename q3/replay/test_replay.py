@@ -5,7 +5,7 @@ $EMU_DOWNLOADS (and curl), and are skipped without them."""
 import sys, os, io, re, json, shutil, time, contextlib, subprocess, tempfile, unittest
 HERE = os.path.dirname(os.path.abspath(__file__)); Q3 = os.path.dirname(HERE); ROOT = os.path.dirname(Q3)
 sys.path.insert(0, HERE); sys.path.insert(0, Q3); sys.path.insert(0, os.path.join(Q3, 'remeasure')); sys.path.insert(0, os.path.join(ROOT, 'emu'))
-import export_freeze, evidence, explain, oracle_summary, run_replayed, process, archive as ar, join, replay_readback as rrb, capture_hooks, readback as rb, corpus_capture as cc
+import consent, record_all, export_freeze, evidence, explain, oracle_summary, run_replayed, process, archive as ar, join, replay_readback as rrb, capture_hooks, readback as rb, corpus_capture as cc
 from archive import Entry
 
 try:
@@ -357,6 +357,19 @@ class ExportFreeze(unittest.TestCase):
     def test_a_session_without_the_launch_line_is_refused(self):
         with self.assertRaises(SystemExit): export_freeze.patched('const x = 1;\n')
 
+    def test_a_commit_that_already_launches_through_the_proxy_is_exported_unchanged(self):
+        current = read(os.path.join(ROOT, 'emu', 'session.mjs')); self.assertTrue(export_freeze.has_launch(current))
+        self.assertEqual(export_freeze.patched(current), current)
+
+    def test_a_session_that_has_the_block_but_does_not_use_it_is_refused_and_not_taken_for_launched(self):
+        half = read(os.path.join(ROOT, 'emu', 'session.mjs')).replace(" ...REPLAY,\n", "\n")
+        self.assertFalse(export_freeze.has_launch(half)); self.assertEqual(export_freeze.patched(half).count('...REPLAY'), 1)      # the anchor is there: the one change is made, the block is not added twice
+
+    def test_a_whole_commit_is_exported_with_its_session_byte_for_byte(self):
+        with tempfile.TemporaryDirectory() as d:
+            export_freeze.export('HEAD', d)
+            self.assertEqual(read(os.path.join(d, 'emu', 'session.mjs')), subprocess.run(['git', 'show', 'HEAD:emu/session.mjs'], capture_output=True, text=True, check=True, cwd=ROOT).stdout)
+
     def test_the_launch_without_the_variable_is_the_commits_own(self):
         """`REPLAY` is an empty list unless EMU_PROXY is set, so the spawn's argument list is the one it was."""
         self.assertIn("process.env.EMU_PROXY ? [", export_freeze.REPLAY); self.assertTrue(export_freeze.REPLAY.rstrip().endswith(': [];'))
@@ -368,6 +381,138 @@ class SessionLaunch(unittest.TestCase):
         env = {**os.environ, 'EMU_PROXY': '127.0.0.1:1', 'EMU_PORT': '9740', 'EMU_CDP': '9741'}; env.pop('EMU_PROXY_SPKI', None)
         done = subprocess.run(['node', os.path.join(ROOT, 'emu', 'session.mjs'), 'url:https://replay-probe.test/', os.path.join(ROOT, 'emu', 'ext2'), '/nonexistent/chrome'], env=env, capture_output=True, text=True, timeout=60)
         self.assertNotEqual(done.returncode, 0); self.assertIn('EMU_PROXY needs EMU_PROXY_SPKI', done.stderr)
+
+
+def classify_nodes(nodes):
+    """consent.mjs over a list of accessibility nodes: its verdict as JSON."""
+    done = subprocess.run(['node', os.path.join(HERE, 'consent.mjs')], input=json.dumps(nodes), capture_output=True, text=True, timeout=60)
+    if done.returncode: raise AssertionError(done.stderr)
+    return json.loads(done.stdout)
+
+
+def ax(role, name, ignored=False, backend=None): return {'role': role, 'name': name, 'ignored': ignored, 'backendId': backend}
+
+
+@unittest.skipUnless(shutil.which('node'), 'needs node')
+class ConsentRule(unittest.TestCase):
+    """Which control is "accept all": found by role and accessible name from the one list, for every page alike."""
+    def test_a_publishers_accept_control_in_its_cookie_region_is_the_one_to_activate(self):
+        v = classify_nodes([ax('region', 'Cookies on GOV.UK'), ax('button', 'Accept additional cookies', backend=7), ax('button', 'Reject additional cookies'), ax('link', 'View cookies')])
+        self.assertEqual((v['outcome'], v['control']['name'], v['control']['backendId']), ('control', 'Accept additional cookies', 7))
+
+    def test_a_name_is_compared_without_case_punctuation_or_typographic_apostrophes(self):
+        for name in ('ACCEPT  ALL   COOKIES', 'Accept all cookies.', 'Accept all cookies!', 'I\u2019m OK with analytics cookies', "I'm OK with analytics cookies"):
+            self.assertEqual(classify_nodes([ax('button', name)])['outcome'], 'control', name)
+
+    def test_a_link_is_a_control_too_and_a_heading_of_the_same_name_is_not(self):
+        self.assertEqual(classify_nodes([ax('link', 'Accept all cookies')])['outcome'], 'control')
+        self.assertEqual(classify_nodes([ax('heading', 'Accept all cookies')])['outcome'], 'none')
+
+    def test_a_reject_control_is_never_the_one(self):
+        for name in ('Reject all cookies', 'Reject additional cookies', 'Manage cookies', 'Accept necessary cookies only'):
+            self.assertNotEqual(classify_nodes([ax('button', name)])['outcome'], 'control', name)
+
+    def test_a_hidden_control_is_not_a_control_and_a_hidden_dialog_is_not_a_dialog(self):
+        self.assertEqual(classify_nodes([ax('button', 'Accept all cookies', ignored=True)])['outcome'], 'none')
+        self.assertEqual(classify_nodes([ax('dialog', 'Cookies', ignored=True), ax('button', 'Manage preferences')])['outcome'], 'none')
+
+    def test_a_bare_accept_counts_only_on_a_page_that_also_has_a_dialog_or_a_cookie_region(self):
+        self.assertEqual(classify_nodes([ax('button', 'Accept')])['outcome'], 'none')      # a page's own "Accept" button is not touched
+        self.assertEqual(classify_nodes([ax('dialog', 'Terms'), ax('button', 'Accept', backend=3)])['control']['backendId'], 3)
+        self.assertEqual(classify_nodes([ax('region', 'Cookie settings'), ax('button', 'I agree')])['outcome'], 'control')
+
+    def test_the_earlier_name_of_the_list_wins_over_the_later_and_a_bare_name_loses_to_a_full_one(self):
+        v = classify_nodes([ax('dialog', 'Privacy'), ax('button', 'Accept', backend=1), ax('button', 'Accept all', backend=2), ax('button', 'Accept all cookies', backend=3)])
+        self.assertEqual(v['control']['backendId'], 3)
+        self.assertEqual(classify_nodes([ax('button', 'Allow all cookies', backend=1), ax('button', 'Accept all cookies', backend=2)])['control']['backendId'], 2)      # list order, not page order
+        self.assertEqual(classify_nodes([ax('button', 'Accept all cookies', backend=1), ax('button', 'Accept all cookies', backend=2)])['control']['backendId'], 1)      # the same name: the earlier node
+
+    def test_a_dialog_or_a_cookie_named_region_with_no_control_in_the_list_is_the_unmatched_outcome(self):
+        self.assertEqual(classify_nodes([ax('dialog', 'Your privacy choices'), ax('button', 'Manage preferences')])['outcome'], 'dialog')
+        self.assertEqual(classify_nodes([ax('region', 'Cookie preferences'), ax('button', 'Customise')])['outcome'], 'dialog')
+        self.assertEqual(classify_nodes([ax('banner', 'Consent'), ax('button', 'Customise')])['outcome'], 'dialog')
+
+    def test_a_page_with_neither_is_the_no_dialog_outcome(self):
+        self.assertEqual(classify_nodes([ax('banner', 'Site header'), ax('navigation', 'Main'), ax('heading', 'Cookies policy'), ax('link', 'Cookies')])['outcome'], 'none')
+
+    def test_every_name_of_the_list_is_found_and_the_list_has_no_site_in_it(self):
+        rule = json.loads(read(os.path.join(HERE, 'consent-names.json')))
+        for name in rule['acceptNames']: self.assertEqual(classify_nodes([ax('button', name)])['outcome'], 'control', name)
+        for name in rule['acceptNamesInADialog']: self.assertEqual(classify_nodes([ax('dialog', 'x'), ax('button', name)])['outcome'], 'control', name)
+        self.assertNotRegex(' '.join(rule['acceptNames'] + rule['acceptNamesInADialog']).lower(), r'\.(gov|uk|org|com)\b|nhs|govuk|gov\.uk')
+
+
+class ConsentSidecar(unittest.TestCase):
+    COOKIES = [{'name': 'cookies_policy', 'value': '%7B%7D', 'domain': '.example.gov.uk', 'path': '/', 'expires': 1800000000, 'session': False, 'secure': True, 'httpOnly': False, 'sameSite': 'Lax'},
+               {'name': 'seen', 'value': '1', 'domain': 'www.example.gov.uk', 'path': '/a', 'expires': -1, 'session': True, 'secure': False, 'httpOnly': True},
+               {'name': 'other', 'value': '1', 'domain': 'cdn.other.org', 'path': '/', 'expires': -1, 'session': True}]
+
+    def given(self): return consent.make_sidecar('https://www.example.gov.uk/', 'given', 'why', {'role': 'button', 'name': 'Accept additional cookies'}, self.COOKIES)
+
+    def test_the_three_outcomes_and_no_other(self):
+        self.assertEqual(consent.OUTCOMES, ('given', 'no-dialog', 'not-matched'))
+        with self.assertRaises(ValueError): consent.make_sidecar('https://e.org/', 'maybe', 'why')
+
+    def test_only_a_given_sidecar_carries_cookies_and_the_control(self):
+        self.assertEqual(sorted(self.given()), ['address', 'control', 'cookies', 'outcome', 'why'])
+        for outcome in ('no-dialog', 'not-matched'): self.assertEqual(sorted(consent.make_sidecar('https://e.org/', outcome, 'why', {'role': 'button', 'name': 'x'}, self.COOKIES)), ['address', 'outcome', 'why'])
+
+    def test_a_sidecar_is_written_beside_its_archive_and_read_back(self):
+        with tempfile.TemporaryDirectory() as d:
+            archive = os.path.join(d, 'page.flows'); self.assertIsNone(consent.read_sidecar(archive))
+            consent.write_sidecar(archive, self.given()); self.assertTrue(os.path.exists(archive + '.consent.json')); self.assertEqual(consent.read_sidecar(archive), self.given())
+
+    def test_a_sidecar_with_another_outcome_is_refused_when_read(self):
+        with tempfile.TemporaryDirectory() as d:
+            archive = os.path.join(d, 'page.flows'); write(archive + '.consent.json', json.dumps({'outcome': 'declined'}))
+            with self.assertRaises(ValueError): consent.read_sidecar(archive)
+
+    def test_a_domain_cookie_is_set_by_the_domain_and_its_subdomains_and_a_host_cookie_by_its_host_only(self):
+        c = self.COOKIES
+        self.assertTrue(consent.domain_matches(c[0], 'example.gov.uk')); self.assertTrue(consent.domain_matches(c[0], 'www.example.gov.uk')); self.assertFalse(consent.domain_matches(c[0], 'notexample.gov.uk'))
+        self.assertTrue(consent.domain_matches(c[1], 'WWW.example.gov.uk')); self.assertFalse(consent.domain_matches(c[1], 'example.gov.uk')); self.assertFalse(consent.domain_matches(c[1], 'a.www.example.gov.uk'))
+
+    def test_a_cookie_goes_out_with_the_attributes_the_browser_reported(self):
+        self.assertEqual(consent.set_cookie_header(self.COOKIES[0]), f'cookies_policy=%7B%7D; Domain=example.gov.uk; Path=/; Max-Age={consent.SERVED_MAX_AGE}; Secure; SameSite=Lax')
+        self.assertEqual(consent.set_cookie_header(self.COOKIES[1]), 'seen=1; Path=/a; HttpOnly')      # host-only, a session cookie: no Domain, no Max-Age
+
+    def test_the_headers_for_a_document_are_the_cookies_its_host_may_set_and_over_http_not_the_secure_ones(self):
+        self.assertEqual(len(consent.set_cookie_headers(self.given(), 'https://www.example.gov.uk/start')), 2)
+        self.assertEqual(consent.set_cookie_headers(self.given(), 'http://www.example.gov.uk/start'), ['seen=1; Path=/a; HttpOnly'])
+        self.assertEqual(consent.set_cookie_headers(self.given(), 'https://cdn.other.org/x'), ['other=1; Path=/'])
+        self.assertEqual(consent.set_cookie_headers(self.given(), 'https://elsewhere.net/'), [])
+
+    def test_nothing_is_served_unless_consent_was_given(self):
+        for outcome in ('no-dialog', 'not-matched'): self.assertEqual(consent.set_cookie_headers(consent.make_sidecar('https://e.org/', outcome, 'why'), 'https://e.org/'), [])
+        self.assertEqual(consent.set_cookie_headers(None, 'https://e.org/'), [])
+
+    def test_the_outcomes_of_a_manifest_are_counted_and_the_three_are_always_there(self):
+        self.assertEqual(consent.counts([{'consent': 'given'}, {'consent': 'given'}, {'consent': 'not-matched'}]), {'given': 2, 'no-dialog': 0, 'not-matched': 1})
+
+
+class RecordAllKept(unittest.TestCase):
+    def test_an_archive_of_an_earlier_batch_is_kept_only_if_it_was_recorded_with_the_consent_pass(self):
+        with tempfile.TemporaryDirectory() as d:
+            dest = os.path.join(d, 'p.flows'); meta = dest + '.meta.json'
+            self.assertFalse(record_all.is_kept(dest, meta))
+            write(dest, 'x'); write(meta, json.dumps({'url': 'https://e.org/'})); self.assertFalse(record_all.is_kept(dest, meta))      # an archive from before consent: recorded again
+            write(meta, json.dumps({'url': 'https://e.org/', 'consent': 'given'})); self.assertFalse(record_all.is_kept(dest, meta))      # a record that says consent and no sidecar beside the archive
+            consent.write_sidecar(dest, consent.make_sidecar('https://e.org/', 'no-dialog', 'w')); self.assertTrue(record_all.is_kept(dest, meta))
+
+
+class RecordAllConsent(unittest.TestCase):
+    def test_what_the_recorder_found_becomes_the_sidecar_beside_the_archive_and_its_temporary_file_goes(self):
+        with tempfile.TemporaryDirectory() as d:
+            archive = os.path.join(d, 'p.flows'); found = archive + '.meta.json.consent'
+            write(found, json.dumps({'address': 'https://e.org/', 'recordedAt': '2026-10-23T10:00:00Z', 'outcome': 'given', 'why': 'w', 'control': {'role': 'button', 'name': 'Accept all'}, 'cookies': [{'name': 'a', 'value': '1', 'domain': 'e.org', 'path': '/'}]}))
+            sidecar = record_all.write_consent(archive, found)
+            self.assertEqual(sidecar['outcome'], 'given'); self.assertEqual(consent.read_sidecar(archive)['cookies'][0]['name'], 'a'); self.assertFalse(os.path.exists(found))
+
+    def test_a_recorder_that_found_nothing_to_say_is_not_an_outcome(self):
+        with tempfile.TemporaryDirectory() as d:
+            archive = os.path.join(d, 'p.flows'); found = archive + '.meta.json.consent'
+            write(found, json.dumps({'address': 'https://e.org/', 'outcome': 'unknown', 'why': 'w'}))
+            with self.assertRaises(ValueError): record_all.write_consent(archive, found)
 
 
 @unittest.skipUnless(HAVE_PROXY, 'needs the replay virtualenv (setup.sh) and curl')
@@ -383,9 +528,9 @@ class ReplayServer(unittest.TestCase):
     @classmethod
     def tearDownClass(cls): cls.proxy.stop(); cls.tmp.cleanup()
 
-    def fetch(self, url):
+    def fetch(self, url, request_headers=()):
         headers, content = os.path.join(self.dir, 'headers.txt'), os.path.join(self.dir, 'content.txt')
-        done = subprocess.run(['curl', '-sS', '-D', headers, '-o', content, '-x', f'http://127.0.0.1:{self.proxy.port}', '--cacert', os.path.join(self.ca, 'mitmproxy-ca-cert.pem'), url], capture_output=True, text=True)
+        done = subprocess.run(['curl', '-sS', '-D', headers, '-o', content, *[a for h in request_headers for a in ('-H', h)], '-x', f'http://127.0.0.1:{self.proxy.port}', '--cacert', os.path.join(self.ca, 'mitmproxy-ca-cert.pem'), url], capture_output=True, text=True)
         if done.returncode: self.fail(f'curl: exit {done.returncode}, {done.stderr!r}')
         return [b for b in re.split(r'\r?\n\r?\n', read(headers).lower()) if b.strip()][-1], read(content)      # the last block: the proxy's own `200 Connection established` comes first
 
@@ -418,6 +563,56 @@ class ReplayServer(unittest.TestCase):
         write(os.path.join(archives, 'down.flows.served.json'), json.dumps({'address': 'https://replay-probe.test/', 'recordedStatus': 500, 'servedStatus': 200}))
         self.proxy.control('/use?archive=down.flows'); head, _ = self.fetch('https://replay-probe.test/')
         self.assertIn('503', head.splitlines()[0])      # a sidecar for another recorded status leaves the page as it was
+
+    def consenting_archive(self, name, outcome, html='<!DOCTYPE html><title>Consent probe</title><h1>x</h1>'):
+        """An archive of the probe address with a consent sidecar of the given outcome (cookies only when it is `given`)."""
+        subprocess.run([str(px.VENV / 'python'), '-c', "import sys; sys.path.insert(0, %r); import make_probe; make_probe.write(%r, 'unused', name=%r, html=%r)" % (HERE, self.archives, name, html)], check=True, capture_output=True)
+        cookies = [{'name': 'cookies_policy', 'value': 'accepted', 'domain': 'replay-probe.test', 'path': '/', 'expires': 1800000000, 'session': False, 'secure': True, 'sameSite': 'Lax'},
+                   {'name': 'elsewhere', 'value': '1', 'domain': 'other.test', 'path': '/', 'session': True}]
+        consent.write_sidecar(os.path.join(self.archives, name), consent.make_sidecar('https://replay-probe.test/', outcome, 'unit test', {'role': 'button', 'name': 'Accept all'}, cookies))
+        self.proxy.control('/use?archive=' + name)
+
+    def test_consent_given_is_served_as_cookies_on_the_pages_document_for_every_client_alike(self):
+        self.consenting_archive('consented.flows', 'given')
+        for client in (['Sec-Fetch-Dest: document'], ['Sec-Fetch-Dest: document', 'User-Agent: Edge'], ['Accept: text/html,application/xhtml+xml']):
+            head, _ = self.fetch('https://replay-probe.test/', client)
+            self.assertEqual([l for l in head.splitlines() if l.startswith('set-cookie')], [f'set-cookie: cookies_policy=accepted; path=/; max-age={consent.SERVED_MAX_AGE}; secure; samesite=lax'], client)      # the cookie of another host is not set
+        self.assertEqual(self.proxy.control('/log')['requests'][0]['consentCookies'], 1)
+
+    def test_a_request_that_is_not_a_navigation_gets_no_cookie(self):
+        self.consenting_archive('consented-sub.flows', 'given')
+        for dest in ('script', 'image', 'iframe', 'empty'):
+            head, _ = self.fetch('https://replay-probe.test/', [f'Sec-Fetch-Dest: {dest}'])
+            self.assertNotIn('set-cookie', head, dest)
+        self.assertNotIn('consentCookies', self.proxy.control('/log')['requests'][0])
+
+    def test_no_dialog_or_a_dialog_nothing_matched_serves_no_cookie(self):
+        for outcome in ('no-dialog', 'not-matched'):
+            self.consenting_archive(f'{outcome}.flows', outcome); head, _ = self.fetch('https://replay-probe.test/', ['Sec-Fetch-Dest: document'])
+            self.assertNotIn('set-cookie', head, outcome)
+
+    def test_an_archive_with_no_sidecar_is_served_as_it_was(self):
+        self.proxy.control('/use?archive=probe.flows'); head, _ = self.fetch('https://replay-probe.test/', ['Sec-Fetch-Dest: document']); self.assertNotIn('set-cookie', head)
+
+    def test_the_cookie_is_added_after_the_ones_the_recorded_response_set(self):
+        subprocess.run([str(px.VENV / 'python'), '-c', """
+import sys; sys.path.insert(0, %r)
+from mitmproxy import http, io
+from mitmproxy.test import tflow
+resp = http.Response.make(200, 'x', [(b'content-type', b'text/html'), (b'set-cookie', b'cookies_policy=declined; Path=/'), (b'set-cookie', b'session=1; Path=/')])
+with open(%r, 'wb') as f: io.FlowWriter(f).add(tflow.tflow(req=http.Request.make('GET', 'https://replay-probe.test/'), resp=resp))
+""" % (HERE, os.path.join(self.archives, 'cookied.flows'))], check=True, capture_output=True)
+        consent.write_sidecar(os.path.join(self.archives, 'cookied.flows'), consent.make_sidecar('https://replay-probe.test/', 'given', 'unit test', None, [{'name': 'cookies_policy', 'value': 'accepted', 'domain': 'replay-probe.test', 'path': '/', 'session': True}]))
+        self.proxy.control('/use?archive=cookied.flows'); head, _ = self.fetch('https://replay-probe.test/', ['Sec-Fetch-Dest: document'])
+        self.assertEqual([l for l in head.splitlines() if l.startswith('set-cookie')], ['set-cookie: cookies_policy=declined; path=/', 'set-cookie: session=1; path=/', 'set-cookie: cookies_policy=accepted; path=/'])
+
+    def test_a_sidecar_that_cannot_be_read_leaves_the_archive_in_use_and_its_cookies_as_they_were(self):
+        self.consenting_archive('consent-a.flows', 'given')
+        subprocess.run([str(px.VENV / 'python'), '-c', "import sys; sys.path.insert(0, %r); import make_probe; make_probe.write(%r, 'unused', name='consent-b.flows')" % (HERE, self.archives)], check=True, capture_output=True)
+        write(os.path.join(self.archives, 'consent-b.flows.consent.json'), json.dumps({'outcome': 'declined'}))
+        with self.assertRaises(RuntimeError): self.proxy.control('/use?archive=consent-b.flows')
+        self.assertEqual(self.proxy.control('/log')['archive'], 'consent-a.flows')      # not switched to b
+        head, _ = self.fetch('https://replay-probe.test/', ['Sec-Fetch-Dest: document']); self.assertIn('set-cookie: cookies_policy=accepted', head)      # a's cookies are a's, still
 
     def test_with_replay_gives_the_command_a_proxy_that_answers_and_keeps_the_log(self):
         run = os.path.join(self.dir, 'run'); os.makedirs(run); shutil.copytree(self.ca, os.path.join(run, 'ca')); shutil.copytree(self.archives, os.path.join(run, 'archives'))
@@ -455,6 +650,32 @@ class BrowserThroughReplay(unittest.TestCase):
         done = subprocess.run(['node', os.path.join(HERE, 'record.mjs'), 'https://replay-probe.test/', f'127.0.0.1:{self.proxy.port}', self.ident['spki']], capture_output=True, text=True, timeout=120)
         self.assertEqual(done.returncode, 0, done.stderr); self.assertEqual(json.loads(done.stdout)['title'], 'Replay probe')
 
+    def setUp(self): self.proxy.control('/use?archive=probe.flows')      # each test starts on the probe page; one that needs another page sets it
+
+    def consenting_page(self, name, cookie_domain='replay-probe.test'):
+        """A page whose script reads document.cookie into its title as it is parsed, with a consent sidecar; the replay server is set to it."""
+        archives = os.path.join(self.dir, 'archives')
+        html = '<!DOCTYPE html><html><head><meta charset="utf-8"><script>document.title = "cookie=" + document.cookie;</script></head><body><h1>Consent probe</h1></body></html>'
+        subprocess.run([str(px.VENV / 'python'), '-c', "import sys; sys.path.insert(0, %r); import make_probe; make_probe.write(%r, 'unused', name=%r, html=%r)" % (HERE, archives, name, html)], check=True, capture_output=True)
+        consent.write_sidecar(os.path.join(archives, name), consent.make_sidecar('https://replay-probe.test/', 'given', 'unit test', {'role': 'button', 'name': 'Accept all'},
+                                                                                  [{'name': 'cookies_policy', 'value': 'accepted', 'domain': cookie_domain, 'path': '/', 'expires': 1800000000, 'session': False, 'secure': True, 'sameSite': 'Lax'}]))
+        self.proxy.control('/use?archive=' + name)
+
+    def test_chrome_holds_the_consent_cookie_before_the_pages_scripts_run_when_it_reads_a_replayed_page(self):
+        self.consenting_page('consent-chrome.flows')
+        done = subprocess.run(['node', os.path.join(HERE, 'record.mjs'), 'https://replay-probe.test/', f'127.0.0.1:{self.proxy.port}', self.ident['spki']], capture_output=True, text=True, timeout=120)
+        self.assertEqual(done.returncode, 0, done.stderr); self.assertEqual(json.loads(done.stdout)['title'], 'cookie=cookies_policy=accepted')
+
+    def test_the_emulators_chrome_holds_it_too_and_a_cookie_of_another_domain_is_not_set(self):
+        import session
+        os.environ.update({'EMU_PROXY': f'127.0.0.1:{self.proxy.port}', 'EMU_PROXY_SPKI': self.ident['spki']})
+        try:
+            for name, domain, expected in (('consent-emulator.flows', 'replay-probe.test', 'cookie=cookies_policy=accepted'), ('consent-elsewhere.flows', 'other.test', 'cookie=')):
+                self.consenting_page(name, domain); s = session.Session(url='https://replay-probe.test/', port=9704)
+                try: s.navigate('https://replay-probe.test/', settle=500); self.assertEqual(s.eval('document.title'), expected, name)
+                finally: self.closed(s)
+        finally: os.environ.pop('EMU_PROXY'); os.environ.pop('EMU_PROXY_SPKI')
+
     def test_record_mjs_does_not_trust_another_authority(self):
         done = subprocess.run(['node', os.path.join(HERE, 'record.mjs'), 'https://replay-probe.test/', f'127.0.0.1:{self.proxy.port}', 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='], capture_output=True, text=True, timeout=120)
         self.assertNotEqual(done.returncode, 0)
@@ -470,6 +691,56 @@ class BrowserThroughReplay(unittest.TestCase):
         s = session.Session(url='https://replay-probe.test/', port=9702)
         try: s.navigate('https://replay-probe.test/', settle=500, timeout=8000); self.assertNotEqual(s.eval('document.title'), 'Replay probe')      # no proxy: the name does not resolve
         finally: self.closed(s)
+
+
+@unittest.skipUnless(HAVE_CHROME and shutil.which('node'), 'needs the emulator\'s Chrome (setup.sh)')
+class ConsentPass(unittest.TestCase):
+    """record.mjs --consent over pages of a local server: what the rule finds in a real browser, and what the browser then holds."""
+    PAGES = {
+        '/banner': '<title>Banner</title><div role="region" aria-label="Cookies on Example"><h2>Cookies on Example</h2><button id="a">Accept additional cookies</button> <button>Reject additional cookies</button></div><h1>Main</h1>'
+                   '<script>document.getElementById("a").onclick = () => { document.cookie = "cookies_policy=accepted; path=/"; document.querySelector("[role=region]").hidden = true; };</script>',
+        '/plain': '<title>Plain</title><h1>Main</h1><a href="/other">Accept all cookies of the world</a>',
+        '/unmatched': '<title>Unmatched</title><div role="dialog" aria-label="Your privacy choices"><button>Manage preferences</button></div><h1>Main</h1>',
+        '/leaves': '<title>Leaves</title><div role="dialog" aria-label="Cookies"><a href="/other">Accept all cookies</a></div><h1>Main</h1>',
+        '/other': '<title>Other</title><h1>Elsewhere</h1>',
+    }
+    @classmethod
+    def setUpClass(cls):
+        import http.server, threading
+        pages = cls.PAGES
+        class Handler(http.server.BaseHTTPRequestHandler):
+            def do_GET(self):
+                body = ('<!DOCTYPE html><html lang="en">' + pages.get(self.path, '<title>none</title>') + '</html>').encode()
+                self.send_response(200 if self.path in pages else 404); self.send_header('content-type', 'text/html'); self.send_header('content-length', str(len(body))); self.end_headers(); self.wfile.write(body)
+            def log_message(self, *args): pass
+        cls.server = http.server.ThreadingHTTPServer(('127.0.0.1', 0), Handler); cls.port = cls.server.server_address[1]
+        cls.thread = threading.Thread(target=cls.server.serve_forever, daemon=True); cls.thread.start(); cls.tmp = tempfile.TemporaryDirectory()
+    @classmethod
+    def tearDownClass(cls): cls.server.shutdown(); cls.server.server_close(); cls.thread.join(); cls.tmp.cleanup()
+
+    def found(self, path):
+        out = os.path.join(self.tmp.name, path.strip('/') + '.json')
+        done = subprocess.run(['node', os.path.join(HERE, 'record.mjs'), '--consent', f'http://127.0.0.1:{self.port}{path}', out], capture_output=True, text=True, timeout=180)
+        self.assertEqual(done.returncode, 0, done.stderr); return json.loads(read(out))
+
+    def test_the_accept_control_is_activated_and_the_cookie_it_sets_is_read_back(self):
+        c = self.found('/banner')
+        self.assertEqual((c['outcome'], c['control']['name'], c['control']['goneAfter']), ('given', 'Accept additional cookies', True))
+        self.assertEqual([(k['name'], k['value']) for k in c['cookies']], [('cookies_policy', 'accepted')])
+        consent.make_sidecar(c['address'], c['outcome'], c['why'], c['control'], c['cookies'])      # and it is a sidecar consent.py accepts
+
+    def test_a_page_with_no_dialog_is_no_dialog_even_if_a_link_has_a_name_like_the_lists(self):
+        self.assertEqual(self.found('/plain')['outcome'], 'no-dialog')      # a link, with no dialog on the page, whose name is not in the list
+
+    def test_a_dialog_with_no_control_in_the_list_is_not_matched_and_nothing_is_clicked(self):
+        c = self.found('/unmatched'); self.assertEqual(c['outcome'], 'not-matched'); self.assertNotIn('cookies', c)
+
+    def test_a_control_that_takes_the_page_somewhere_else_is_not_matched(self):
+        self.assertEqual(self.found('/leaves')['outcome'], 'not-matched')
+
+    def test_a_page_that_does_not_load_is_an_error_and_not_an_outcome(self):
+        done = subprocess.run(['node', os.path.join(HERE, 'record.mjs'), '--consent', 'http://127.0.0.1:1/', os.path.join(self.tmp.name, 'none.json')], capture_output=True, text=True, timeout=180)
+        self.assertNotEqual(done.returncode, 0); self.assertFalse(os.path.exists(os.path.join(self.tmp.name, 'none.json')))
 
 
 if __name__ == '__main__': unittest.main()

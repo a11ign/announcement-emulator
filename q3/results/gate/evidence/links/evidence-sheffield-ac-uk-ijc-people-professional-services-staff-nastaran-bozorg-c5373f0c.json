@@ -1,0 +1,117 @@
+{
+ "capturedAt": "2026-10-23T16:40:48.386Z",
+ "channel": "links",
+ "emulator": {
+  "gate.run1": {
+   "entries": 89,
+   "first": [
+    "figure, Threads logo, graphic, link",
+    "figure, We Chat, graphic, link",
+    "figure, Tik Tok, graphic, link"
+   ],
+   "frameHeaderIndexes": [],
+   "onlyInEmulator": [
+    "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link",
+    "Log in to MUSE, link",
+    "main landmark, You are here, navigation landmark, list, with 5 items, Home, link"
+   ],
+   "onlyInFleet": [
+    "link",
+    "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+    "Log in to MUSE, link, Alt plus, m",
+    "You are here, navigation landmark, list, with 5 items, Home, link"
+   ],
+   "order": "differentEntries",
+   "start": {
+    "readThrough": {
+     "count": 85,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 89,
+     "nextSteps": 71,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Modern slavery statement, link",
+     "prevCount": 65,
+     "prevSteps": 66,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Skip to main content, same page, link",
+     "type": "link"
+    }
+   }
+  },
+  "gate.run2": {
+   "entries": 89,
+   "first": [
+    "figure, Threads logo, graphic, link",
+    "figure, We Chat, graphic, link",
+    "figure, Tik Tok, graphic, link"
+   ],
+   "frameHeaderIndexes": [],
+   "onlyInEmulator": [
+    "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link",
+    "Log in to MUSE, link",
+    "main landmark, You are here, navigation landmark, list, with 5 items, Home, link"
+   ],
+   "onlyInFleet": [
+    "link",
+    "MUSE menu, navigation landmark, list, with 2 items, Log in to MUSE, link, Alt plus, m",
+    "Log in to MUSE, link, Alt plus, m",
+    "You are here, navigation landmark, list, with 5 items, Home, link"
+   ],
+   "order": "differentEntries",
+   "start": {
+    "readThrough": {
+     "count": 85,
+     "stopReason": "repeatBottom"
+    },
+    "sweep": {
+     "found": 89,
+     "nextSteps": 71,
+     "nextStop": "exhausted",
+     "nextStopPhrase": "Modern slavery statement, link",
+     "prevCount": 65,
+     "prevSteps": 66,
+     "prevStop": "exhausted",
+     "prevStopPhrase": "Skip to main content, same page, link",
+     "type": "link"
+    }
+   }
+  }
+ },
+ "fleet": {
+  "entries": 90,
+  "first": [
+   "figure, Threads logo, graphic, link",
+   "figure, We Chat, graphic, link",
+   "figure, Tik Tok, graphic, link"
+  ],
+  "frameHeaderIndexes": []
+ },
+ "fleetObserved": {
+  "asked": true,
+  "complete": true,
+  "focusInFrame": null,
+  "stop": {
+   "next": "exhausted",
+   "prev": "exhausted"
+  }
+ },
+ "fleetStart": {
+  "firstFocusIn": {
+   "atMs": 53148,
+   "id": 0,
+   "name": "SPAN",
+   "type": "focusin"
+  },
+  "focusBeforeReadThroughEnded": false,
+  "focusFrameBeforeSweep": null,
+  "readThrough": {
+   "atMs": 45605,
+   "count": 87,
+   "stopReason": "repeatBottom"
+  }
+ },
+ "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+ "worker": "a11y-worker-16"
+}

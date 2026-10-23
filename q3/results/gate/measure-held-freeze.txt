@@ -1,0 +1,50 @@
+pages 68 (held)  comparable: 62   not comparable: 6
+   not comparable: https://design-system.service.gov.uk/patterns/interruption-pages/  [not comparable: heading fleet 0 / emulator 14, link fleet 0 / emulator 60, document title fleet 'smartsurvey dot co dot uk slash s slash ' / emulator 'Interruption pages – GOV.UK Design Syste']
+   not comparable: https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q2/lintaine-court  [not comparable: document title fleet 'Lintaine Court Q 2 - 2025 to 2026 Estate' / emulator 'Lintaine Court Q2 - 2025 to 2026 Estate ']
+   not comparable: https://www.lbhf.gov.uk/housing/resident-involvement/estate-inspections/estate-inspection-reports-2025-2026/q1/bellamy-close  [not comparable: document title fleet 'Bellamy Close Q 1 - 2025 to 2026 Estate ' / emulator 'Bellamy Close Q1 - 2025 to 2026 Estate i']
+   not comparable: https://www.ofgem.gov.uk/cy/energy-policy-and-regulation/engagement/forums-and-working-groups/riio-ed1-online-stakeholder-forum  [not comparable: document title fleet 'RIIO-ED 1 online stakeholder forum Ofgem' / emulator 'RIIO-ED1 online stakeholder forum | Ofge']
+   not comparable: https://www.transport.gov.scot/news/a9-safety-camera-data-published/  [not comparable: document title fleet 'A 9 Safety Camera Data Published Transpo' / emulator 'A9 Safety Camera Data Published | Transp']
+   not comparable: https://www.transport.gov.scot/news/m74-junction-3a-daldowie-weekend-closure/  [not comparable: document title fleet 'M 74 Junction 3A, Daldowie - Weekend Clo' / emulator 'M74 Junction 3A, Daldowie - Weekend Clos']
+
+agreement by element kind (62 comparable pages)
+     exact / total       %  positional
+      572 / 593       96.5%         571  headings
+     2817 / 2853      98.7%        2498  links
+      404 / 408       99.0%         400  buttons
+      222 / 236       94.1%         220  formFields
+      481 / 489       98.4%         441  landmarks
+      455 / 461       98.7%         455  lists
+      344 / 349       98.6%         336  graphics
+        9 / 9        100.0%           9  frames
+
+agreement by swept channel
+     exact / total       %  positional
+      572 / 593       96.5%         571  headings
+      481 / 489       98.4%         441  landmarks
+      626 / 644       97.2%         620  formFields
+      344 / 349       98.6%         336  graphics
+     2817 / 2853      98.7%        2498  links
+      455 / 461       98.7%         455  lists
+        9 / 9        100.0%           9  frames
+
+shapes: 5389 announcements in 301 distinct shapes; top 10 cover 3507 = 65.1% (the fleet's script quotes 33 shapes, top 10 = 94.3%)
+
+agreement by shape (top 10, ranked in this run)
+     exact / total       %  positional
+     1769 / 1769     100.0%        1648  NAME + ROLE
+      395 / 396       99.7%         394  NAME + ROLE + LEVEL
+      266 / 266      100.0%         219  ROLE + COUNT + NAME + ROLE
+      224 / 228       98.2%         216  NAME + ROLE + ROLE + COUNT + NAME + ROLE
+      199 / 201       99.0%         199  NAME + ROLE + STATE
+      168 / 168      100.0%         166  NAME + NAME + ROLE
+      145 / 145      100.0%         145  NAME + NAME + NAME + NAME + ROLE
+      119 / 122       97.5%          84  NAME + STATE + ROLE
+      113 / 113      100.0%         102  NAME + ROLE + ROLE
+       99 / 99       100.0%          93  ROLE + NAME + ROLE + ROLE
+
+GATE: 3497 of 3507 = 99.71% exact on the top 10 shapes   (positional: 3266 of 3507)   [AT OR ABOVE 98%]
+      with the not-comparable pages kept in: 3694 of 3704 = 99.73%
+      emulator announcements with no counterpart in the fleet's lists (extras): 67
+      top-10 misses by cause: unexplained 9, prompt-downstream 1
+      the same, with the pages' `history` misses not counted as misses against us: 3497 of 3507 = 99.71%   (an upper bound if the fleet's browser history could be reproduced)
+      misses over all channels: 94 of 5398; on top-10 shapes: 10
