@@ -10,7 +10,7 @@ python3 -W error::ResourceWarning -m unittest discover -s q3/replay -t q3/replay
 # a new freeze, before the held-out half was read: every capture is later, and the emulator and harness are the freeze's
 python3 q3/remeasure/check.py --replay --gate --results q3/results/gate --corpus q3/results/gate/corpus-run.json --control-from q3/results/remeasure/history-readback.json | tee /tmp/a11-166-check.txt
 ! grep -E '^ +FAIL' /tmp/a11-166-check.txt
-grep -E '^ +ok  (freeze|consent|comparable|explained|verdict|labels|served|manifest|replay-readback|doc|figures):' /tmp/a11-166-check.txt | wc -l      # 11
+grep -E '^ +ok  (freeze|consent|comparable|explained|crosswalk|verdict|labels|served|manifest|replay-readback|doc|figures):' /tmp/a11-166-check.txt | wc -l      # 12
 # the figure on the page is the figure in the run, and the verdict is the one the figure and the classes give
 grep -q '^GATE: 3497 of 3507 = 99.71%' q3/results/gate/measure-held-freeze.txt
 grep -q '3,497 of 3,507 = 99.71%' docs/announcement-emulator-spike.md

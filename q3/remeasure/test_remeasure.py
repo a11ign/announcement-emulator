@@ -657,6 +657,19 @@ class GateChecks(unittest.TestCase):
         rb.write_json(path, {'pages': [page]}); self.assertEqual(check.check_manifest(path, corpus, require_consent=True)[0], check.FAIL); self.assertEqual(check.check_manifest(path, corpus)[0], check.OK)      # the earlier run's manifest has none
         rb.write_json(path, {'pages': [page | {'consent': 'declined'}]}); self.assertEqual(check.check_manifest(path, corpus, require_consent=True)[0], check.FAIL)
 
+    def test_the_misses_attribute_py_lists_and_the_attribution_are_the_same_misses_key_for_key(self):
+        figure = os.path.join(self.dir, 'misses-held-freeze.json'); rb.write_json(figure, {'top': ['a'], 'gate': {'exact': 8, 'total': 10}})
+        miss = lambda page, i, text='t', shape=('a',), channel='links': {'url': page, 'channel': channel, 'i': i, 'expected': text, 'shape': list(shape), 'class': 'unexplained'}
+        entry = lambda page, i, text='t', channel='links': {'page': page, 'channel': channel, 'i': i, 'expected': text, 'class': 'emulator bug'}
+        theirs, ours = os.path.join(self.dir, 'misses-held-freeze-attributed.json'), os.path.join(self.dir, 'misses-attributed.json')
+        write_both = lambda t, o: (rb.write_json(theirs, t), rb.write_json(ours, {'misses': o}))
+        self.assertEqual(check.check_crosswalk(ours, theirs, figure)[0], check.PENDING)
+        write_both([miss('p', 1), miss('q', 4), miss('q', 9, shape=('b',)), miss('q', 2, channel='frames')], [entry('p', 1), entry('q', 4)]); self.assertEqual(check.check_crosswalk(ours, theirs, figure)[0], check.OK)      # another shape, and frames, are not the figure's
+        write_both([miss('p', 1), miss('q', 4)], [entry('p', 1)]); self.assertEqual(check.check_crosswalk(ours, theirs, figure)[0], check.FAIL)      # attribute.py lists one the attribution lacks
+        write_both([miss('p', 1)], [entry('p', 1), entry('q', 4)]); self.assertEqual(check.check_crosswalk(ours, theirs, figure)[0], check.FAIL)      # the attribution has one attribute.py does not list
+        write_both([miss('p', 1), miss('p', 1)], [entry('p', 1), entry('p', 1)]); self.assertEqual(check.check_crosswalk(ours, theirs, figure)[0], check.FAIL)      # listed twice
+        write_both([miss('p', 1)], [entry('p', 2)]); self.assertEqual(check.check_crosswalk(ours, theirs, figure)[0], check.FAIL)      # the same text at another place in the list is another miss
+
     def test_a_figure_is_found_as_a_whole_number_and_a_measure_file_without_a_gate_line_is_a_failure(self):
         page = os.path.join(self.dir, 'page.md'); write(os.path.join(self.dir, 'measure-old60-freeze.txt'), 'GATE: 60 of 60 = 100.00%\n')
         write(page, '| the earlier 60 pages (not held out) | 160 of 160 |\n'); self.assertEqual(check.check_labels(self.dir, page)[0], check.FAIL)      # `60 of 60` is not inside `160 of 160`
@@ -675,7 +688,7 @@ class GateChecks(unittest.TestCase):
     def test_gate_alone_runs_the_replay_checks_too(self):
         root = os.path.dirname(Q3)
         done = subprocess.run([sys.executable, os.path.join(HERE, 'check.py'), '--gate', '--results', self.dir, '--base', 'HEAD', '--repo', root], capture_output=True, text=True, cwd=root)
-        self.assertIn('freeze:', done.stdout); self.assertIn('verdict:', done.stdout); self.assertEqual(done.returncode, 0)      # nothing there yet: pending, not a failure
+        self.assertIn('freeze:', done.stdout); self.assertIn('verdict:', done.stdout); self.assertIn('pending  freeze:', done.stdout)      # nothing there yet: pending, not a failure
 
     def test_the_earlier_figure_is_labelled_not_held_out_and_the_dev_half_dev_half_on_the_page(self):
         page = os.path.join(self.dir, 'page.md'); write(os.path.join(self.dir, 'measure-old60-freeze.txt'), 'GATE: 4488 of 4491 = 99.93%\n'); write(os.path.join(self.dir, 'measure-dev-freeze.txt'), 'GATE: 3000 of 3100 = 96.77%\n')

@@ -15,6 +15,7 @@
               and before every capture of the run (each record's `capturedAt`)
   consent     consent-report.json holds every manifest page once, with the sidecar's outcome the manifest holds, and whether either side's capture begins in a cookie or consent surface; the counts are the manifest's
   comparable  comparability.json accounts for every page of the Gate's half: comparable, or one reason of the list
+  crosswalk   the misses attribute.py lists (misses-held-freeze-attributed.json) and the attribution (misses-attributed.json) are the same misses, key for key
   explained   every miss of the Gate figure's ten shapes (misses-held-freeze.json) is attributed once, to one class, with evidence under the results (or what was tried, for `unexplained`), and is on the page
   verdict     the verdict sentence on the page is the one the figure and the classes give: at least 98% and every miss `emulator bug` or `Windows-only`
   labels      the earlier pages' figure is labelled "not held out" and the dev half's "dev half", on the page
@@ -460,6 +461,21 @@ def check_labels(results, doc):
     return (FAIL, '; '.join(bad)) if bad else (OK, f'{found} labelled figures')
 
 
+def check_crosswalk(attributed_path, measure_attributed_path, misses_path):
+    """The two lists of the Gate figure's misses are one list: the misses `attribute.py` printed (`misses-held-freeze-attributed.json`, with measure.py's own class for each) and the hand attribution (`misses-attributed.json`), key for key
+    (page, channel, place in the list, text), each once. A miss in one and not the other, or twice in either, fails."""
+    if not all(os.path.exists(f) for f in (attributed_path, measure_attributed_path, misses_path)): return PENDING, 'no attribution to compare with attribute.py\'s list yet'
+    figure = rb.read_json(misses_path); top = set(figure['top'])
+    key = lambda page, channel, i, expected: (page, channel, i, expected)
+    theirs = [key(m['url'], m['channel'], m['i'], m['expected']) for m in rb.read_json(measure_attributed_path) if ' + '.join(m['shape']) in top and m['channel'] != 'frames']
+    ours = [key(e['page'], e['channel'], e['i'], e['expected']) for e in rb.read_json(attributed_path)['misses']]
+    bad = []
+    if len(set(theirs)) != len(theirs) or len(set(ours)) != len(ours): bad.append('a miss is listed twice')
+    for label, only in (('attribute.py lists and the attribution lacks', set(theirs) - set(ours)), ('the attribution has and attribute.py does not list', set(ours) - set(theirs))):
+        if only: bad.append(f'{len(only)} {label}, such as {sorted(only)[0][0]} {sorted(only)[0][1]}[{sorted(only)[0][2]}]')
+    return (FAIL, '; '.join(bad)) if bad else (OK, f'{len(ours)} misses, the same ones in both lists')
+
+
 def check_gate_explained(results, explained_path, doc):
     """`explained` for the Gate's run: against the Gate figure's own misses file, and pending (not the old eleven) until that file is there."""
     misses = os.path.join(results, 'misses-held-freeze.json')
@@ -481,7 +497,7 @@ def main(argv):
                     ('served', check_served(os.path.join(a.results, 'served-identically.json'), manifest)), ('explained', check_gate_explained(a.results, explained, a.doc) if a.gate else check_explained(explained, a.results, a.doc))]
         if a.gate:
             results += [('freeze', check_freeze(os.path.join(a.results, 'freeze.json'), a.repo, a.oracle, os.path.join(a.results, 'oracle-summary.json'))), ('consent', check_consent(os.path.join(a.results, 'consent-report.json'), manifest)),
-                        ('comparable', check_comparable(os.path.join(a.results, 'comparability.json'), misses)), ('verdict', check_verdict(misses, explained, a.doc)), ('labels', check_labels(a.results, a.doc))]
+                        ('comparable', check_comparable(os.path.join(a.results, 'comparability.json'), misses)), ('crosswalk', check_crosswalk(explained, os.path.join(a.results, 'misses-held-freeze-attributed.json'), misses)), ('verdict', check_verdict(misses, explained, a.doc)), ('labels', check_labels(a.results, a.doc))]
     for name, (state, msg) in results: print(f'{state:>8}  {name}: {msg}')
     states = {s for _, (s, _) in results}
     sys.exit(1 if FAIL in states or (a.require_complete and PENDING in states) else 0)
