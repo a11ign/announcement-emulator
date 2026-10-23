@@ -32,7 +32,6 @@ class LiveDoc:
 
     def refresh(self):
         nodes, focus_ix = self.s.dump()
-        self._pending_scroll = None      # an index names a node of one read of the tree (they are renumbered at every read): a request made before this one is not this tree's
         root = standin.build_platform_tree(nodes)
         self.world = objlayer.World(root); self.world.focus_cb = self._focus_cb; self.world.action_cb = self._action_cb; self.world.scroll_cb = self._scroll_cb; self.world.sel = self.s.sel; self.focus_ix = focus_ix; L.world = self.world
         def _fcd(binding, hwnd, uid, what, idRef, offRef, _w=self.world):
@@ -150,20 +149,22 @@ class LiveDoc:
 
     scroll_browser = True      # False: NVDA's scrollIntoView (IA2 scrollTo) is not delivered to the browser; the Q3 sweeps do that to run in seconds, not minutes
 
-    _pending_scroll = None      # the node NVDA last asked the browser to scroll into view while scroll_browser was off, by its index in the current read of the tree
+    _pending_scroll = None      # the node NVDA last asked the browser to scroll into view while scroll_browser was off, by its uid: an index names a node of one read of the tree only
 
     def _scroll_cb(self, ix):
-        if not self.scroll_browser: self._pending_scroll = ix; return
+        if not self.scroll_browser: self._pending_scroll = self.world.by_ix[ix].uid; return
         self.s.scroll(ix); self._scrolled = True
 
     SCROLL_SETTLE = 1.5      # seconds: a page's handlers for the scroll run before the tree is read again (ICO's listener is rate-limited to 500 ms)
 
     def deliver_pending_scroll(self):
         """Scroll the browser to where NVDA's caret last asked it to (IA2 scrollTo), once, and read the tree again. With scroll_browser off a key does not scroll,
-        so this is the one scroll that puts the page where the fleet's sits when its read-through ends and the sweeps begin. Returns whether there was one."""
-        ix, self._pending_scroll = self._pending_scroll, None
-        if ix is None: return False
-        self.s.scroll(ix); time.sleep(self.SCROLL_SETTLE); self.refresh_in_place()
+        so this is the one scroll that puts the page where the fleet's sits when its read-through ends and the sweeps begin. Returns whether the page was scrolled:
+        not when there was no request, or the node it named is no longer in the tree."""
+        uid, self._pending_scroll = self._pending_scroll, None
+        node = next((pn for pn in self.world.by_ix.values() if uid is not None and pn.uid == uid), None)
+        if node is None: return False
+        self.s.scroll(node.ix); time.sleep(self.SCROLL_SETTLE); self.refresh_in_place()
         return True
 
     def _action_cb(self, ix):

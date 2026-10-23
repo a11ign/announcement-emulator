@@ -32,7 +32,7 @@ class PN:
         self.raw, self.parent, self.kids = raw, parent, []
         self.role = raw['role']
         self.ix = raw['ix']
-        self.uid = raw.get('uid', raw['ix'])      # the extension's id for the automation node, which lasts as long as the node (`ix` is renumbered at every read); a tree with none keeps to `ix`
+        self.uid = raw.get('uid')      # the extension's id for the automation node, which lasts as long as the node (`ix` is renumbered at every read); None in a tree that has none
 
     def __repr__(self): return f'<PN {self.role} {self.raw.get("name", "")!r}>'
 
@@ -201,7 +201,7 @@ class PN:
         return CONST[c]
 
     def keyboard_shortcut(self):
-        """IAccessible::accKeyboardShortcut (ax_platform_node_win.cc:1901-1910: the node's kKeyShortcuts string, else E_INVALIDARG with an empty answer). Blink fills kKeyShortcuts from aria-keyshortcuts, else
+        """IAccessible::accKeyboardShortcut (ax_platform_node_win.cc:1901-1910 and :8412-8424: the node's kKeyShortcuts string, else S_FALSE, which gecko_ia2 records as an empty shortcut). Blink fills kKeyShortcuts from aria-keyshortcuts, else
         from AXObject::KeyboardShortcut() (third_party/blink/renderer/modules/accessibility/ax_object.cc:1877-1925): the platform's access-key modifiers (KeyboardEventManager::kAccessKeyModifiers, Alt on Windows),
         '+', and the element's `accesskey`. chrome.automation exposes the second as `accessKey` and not `keyShortcuts` (q1/out-rich-155.json), so aria-keyshortcuts is not ported here."""
         key = self.raw.get('accessKey')
@@ -434,13 +434,16 @@ class Buffer:
 
     def correct_selection(self, identifiers):
         """The other half of replaceSubtrees (storage.cpp:742-760): walk the recorded fields from the root and stop at the first that is gone or is not a child of the one before; the
-        selection start goes to the deepest one found, at its recorded offset, kept inside it (the selection end is left as it was, as there). With none found it stays."""
+        selection start goes to the deepest one found, at its recorded offset, kept inside it, and the selection keeps its length (storage.cpp keeps selectionStart and selectionLength,
+        :936-937, :947-948). With none found it stays."""
         last, rel = None, 0
         for key, offset in identifiers:
             c = self.by_key.get(key)
             if c is None or c.parent is not last: break
             last, rel = c, offset
-        if last is not None: self.sel = (last.offset_in_tree() + min(rel, max(last.length - 1, 0)), self.sel[1])
+        if last is not None:
+            start = last.offset_in_tree() + min(rel, max(last.length - 1, 0))
+            self.sel = (start, start + self.sel[1] - self.sel[0])
 
     def text(self, s, e, markup):
         if self.root is None or s >= e: return ''
@@ -659,7 +662,7 @@ class Builder:
         return self.buf
 
     def add_control(self, parent, previous, pn):
-        c = Control(self.doc_handle, pn.ix, key=(self.doc_handle, pn.uid))
+        c = Control(self.doc_handle, pn.ix, key=(self.doc_handle, pn.uid) if pn.uid is not None else (self.doc_handle, 'no uid', id(self.buf), pn.ix))      # without a uid nothing is found again: a later buffer's field has another key, whatever its ix
         c.parent = parent
         if parent is not None:
             if previous is None: parent.kids.insert(0, c)

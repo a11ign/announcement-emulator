@@ -1,10 +1,10 @@
 """python3 -m unittest discover -s q3/gate -t q3/gate   (from the repository root)
 
 The batch-2 snapshot and the run list need nothing but the committed files."""
-import sys, os, json, hashlib, shutil, tempfile, unittest
+import contextlib, io, sys, os, json, hashlib, shutil, tempfile, unittest
 HERE = os.path.dirname(os.path.abspath(__file__)); Q3 = os.path.dirname(HERE)
 sys.path.insert(0, HERE); sys.path.insert(0, Q3); sys.path.insert(0, os.path.join(Q3, 'remeasure'))
-import snapshot_batch2 as sb, consent_report as cr, comparability as cmp, views, probes, attribute_gate as ag, check
+import snapshot_batch2 as sb, consent_report as cr, comparability as cmp, views, probes, attribute_gate as ag, check, fixed_at_head as fh
 import corpus_capture as cc, readback as rb
 from split import split_of
 
@@ -204,6 +204,65 @@ class Probes(unittest.TestCase):
         for name, (path, old, new) in probes.VARIANTS.items():
             frozen = subprocess.run(['git', '-C', root, 'show', f'{commit}:{path}'], capture_output=True, text=True, check=True).stdout
             self.assertEqual(frozen.count(old), 1, name)
+
+
+class SourcesOfTheQuotedLines(unittest.TestCase):
+    def test_the_lines_are_read_from_the_checkout_it_is_given_not_from_this_one(self):
+        """The emulator has been fixed since the freeze (A11-176): the quoted lines are the frozen ones only when it is pointed at an export of the frozen commit."""
+        here, there = ag.Sources('o', 'e', 'p', 'd'), ag.Sources('o', 'e', 'p', 'd', repo='/frozen')
+        self.assertEqual((here.standin, there.standin, there.sweep), (os.path.join(os.path.dirname(Q3), 'emu', 'standin.py'), '/frozen/emu/standin.py', '/frozen/q3/sweep.py'))
+        usage = io.StringIO()
+        with contextlib.redirect_stdout(usage), self.assertRaises(SystemExit): ag.main(['--help'])
+        self.assertIn('--repo', usage.getvalue())
+
+
+class FixedAtHead(unittest.TestCase):
+    A, B = 'https://one.example/a', 'https://two.example/b'
+
+    def miss(self, url, channel, expected, predicted=None, **extra): return {'url': url, 'channel': channel, 'expected': expected, 'predicted': predicted, **extra}
+
+    def reading(self, pages, misses): return {'pages': [{'url': u, 'status': s} for u, s in pages.items()], 'misses': misses}
+
+    def test_the_rows_are_the_ten_misses_and_the_access_key_rows_of_the_same_pages_once_each(self):
+        attributed = {'misses': [{'page': self.A, 'channel': 'links', 'expected': 'x', 'predicted': 'y', 'evidence': ['evidence/e.json']},
+                                 {'page': self.A, 'channel': 'links', 'expected': 'Log in, link, Alt plus, m', 'predicted': None, 'evidence': ['evidence/f.json']}]}
+        gate = {'misses': [self.miss(self.A, 'links', 'Log in, link, Alt plus, m'), self.miss(self.A, 'links', 'Menu, Alt plus, m'), self.miss(self.A, 'links', 'other'), self.miss(self.B, 'links', 'Menu, Alt plus, m')]}
+        rows = fh.rows_of(attributed, gate)
+        self.assertEqual([(r['url'], r['expected'], r['cause']) for r in rows], [(self.A, 'x', 'evidence/e.json'), (self.A, 'Log in, link, Alt plus, m', 'evidence/f.json'), (self.A, 'Menu, Alt plus, m', 'access key')])
+
+    def test_a_row_is_reproduced_at_the_freeze_and_fixed_at_head_when_only_the_freeze_misses_it(self):
+        row = self.miss(self.A, 'links', 'x'); freeze = self.reading({self.A: 'comparable'}, [self.miss(self.A, 'links', 'x', 'y')]); head = self.reading({self.A: 'comparable'}, [])
+        (got,) = fh.statuses([row], freeze, head)
+        self.assertEqual((got['freeze'], got['head']), ({'status': 'reproduced', 'reading': 'still a miss', 'now': 'y'}, {'status': 'fixed', 'now': None}))
+        self.assertTrue(fh.all_fixed([got]))
+
+    def test_a_row_the_fresh_reading_does_not_miss_at_the_freeze_is_not_reproduced_and_is_not_called_fixed(self):
+        row = self.miss(self.A, 'links', 'x'); both = self.reading({self.A: 'comparable'}, [])
+        (got,) = fh.statuses([row], both, both)
+        self.assertEqual((got['freeze']['status'], got['head']['status']), ('not reproduced', 'fixed'))
+        self.assertFalse(fh.all_fixed([got]))
+
+    def test_a_row_head_still_misses_says_what_the_emulator_says_now(self):
+        row = self.miss(self.A, 'links', 'x'); still = self.reading({self.A: 'comparable'}, [self.miss(self.A, 'links', 'x', 'z')])
+        (got,) = fh.statuses([row], still, still)
+        self.assertEqual(got['head'], {'status': 'still a miss', 'now': 'z'}); self.assertFalse(fh.all_fixed([got]))
+
+    def test_a_page_the_reading_cannot_compare_is_not_fixed(self):
+        row = self.miss(self.A, 'links', 'x'); freeze = self.reading({self.A: 'comparable'}, [self.miss(self.A, 'links', 'x', 'y')]); head = self.reading({self.A: 'not comparable'}, [])
+        (got,) = fh.statuses([row], freeze, head)
+        self.assertEqual(got['head']['status'], 'page not comparable'); self.assertFalse(fh.all_fixed([got]))
+
+    def test_the_exit_status_and_the_file_follow_the_rows(self):
+        with tempfile.TemporaryDirectory() as d:
+            files = {}
+            for name, body in {'attributed': {'misses': [{'page': self.A, 'channel': 'links', 'expected': 'x', 'predicted': 'y', 'evidence': ['evidence/e.json']}]}, 'gate': {'misses': []},
+                               'freeze': self.reading({self.A: 'comparable'}, [self.miss(self.A, 'links', 'x', 'y')]), 'fixed': self.reading({self.A: 'comparable'}, []),
+                               'broken': self.reading({self.A: 'comparable'}, [self.miss(self.A, 'links', 'x', 'y')])}.items():
+                files[name] = os.path.join(d, name + '.json'); write(files[name], json.dumps(body))
+            out = os.path.join(d, 'out.json')
+            with contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(fh.main([files['attributed'], files['gate'], files['freeze'], files['fixed'], out]), 0); self.assertEqual(load(out)[0]['head']['status'], 'fixed')
+                self.assertEqual(fh.main([files['attributed'], files['gate'], files['freeze'], files['broken']]), 1)
 
 
 class Attribution(unittest.TestCase):

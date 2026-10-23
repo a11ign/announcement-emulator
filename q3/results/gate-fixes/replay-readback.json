@@ -1,0 +1,43 @@
+{
+ "marker": "replay probe pebble dune beacon",
+ "probeAddress": "https://replay-probe.test/",
+ "runId": "a11-166-2026-10-23",
+ "thumbprint": "7BFAA287B10FCCC0FE450272AB793C62CBBDDFAE",
+ "workers": {
+  "a11y-worker-2": {
+   "certificate": {
+    "evidence": "replay-on.yml found the run's certificate once in LocalMachine\\Root and asserted it",
+    "readAt": "2026-10-23T21:40:16Z",
+    "thumbprint": "7BFAA287B10FCCC0FE450272AB793C62CBBDDFAE"
+   },
+   "heldRun": false,
+   "on": {
+    "capturedAt": "2026-10-23T21:45:27.312Z",
+    "headings": 1,
+    "read": true
+   },
+   "passed": true,
+   "proxy": {
+    "evidence": "replay-on.yml read ProxyMode, ProxyServer and ProxyBypassList back with win_reg_stat and asserted them",
+    "readAt": "2026-10-23T21:40:16Z",
+    "server": "capture-host:3202"
+   },
+   "restoredOk": false
+  },
+  "a11y-worker-3": {
+   "certificate": {
+    "evidence": "replay-on.yml found the run's certificate once in LocalMachine\\Root and asserted it",
+    "readAt": "2026-10-23T21:47:27Z",
+    "thumbprint": "7BFAA287B10FCCC0FE450272AB793C62CBBDDFAE"
+   },
+   "heldRun": false,
+   "passed": false,
+   "proxy": {
+    "evidence": "replay-on.yml read ProxyMode, ProxyServer and ProxyBypassList back with win_reg_stat and asserted them",
+    "readAt": "2026-10-23T21:47:27Z",
+    "server": "capture-host:3203"
+   },
+   "restoredOk": false
+  }
+ }
+}

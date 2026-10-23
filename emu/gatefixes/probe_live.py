@@ -20,20 +20,22 @@ def facade():
 
 
 def scroll(url, port):
-    """Keys scroll nothing, the one pending request does, a read of the tree drops the request that was pending, and a second delivery has nothing to deliver."""
+    """Keys scroll nothing and the one pending request does; the request is the node's, so it outlives a read of the tree and is dropped only when the node is gone from it."""
     from livepage import LivePage
     import driver, sweep
     d = LivePage(url=url, port=port)
     try:
-        w = sweep.Walker(d, driver); sweep.anchor_to_top(w); lines, reason = sweep.read_through(w)
+        w = sweep.Walker(d, driver); sweep.anchor_to_top(w); sweep.read_through(w)
         y = lambda: d.s.eval('window.scrollY')
+        back_to_top = lambda: (d.s.eval('window.scrollTo(0, 0)'), w.perform('control+end'))      # the caret goes to the last line, which asks for a scroll again
         before = {'scrollY': y(), 'pending': d._pending_scroll is not None}
         delivered = d.deliver_pending_scroll(); after = {'scrollY': y(), 'pending': d._pending_scroll is not None}
         again = d.deliver_pending_scroll()
-        d.s.eval('window.scrollTo(0, 0)'); w.perform('control+home'); w.perform('downArrow')
-        asked = d._pending_scroll is not None; d.refresh()
-        dropped = {'asked': asked, 'pending': d._pending_scroll is not None, 'delivered': d.deliver_pending_scroll(), 'scrollY': y()}
-        return {'before': before, 'delivered': delivered, 'after': after, 'again': again, 'dropped': dropped}
+        back_to_top(); asked = d._pending_scroll is not None; d.refresh()
+        survived = {'asked': asked, 'pending': d._pending_scroll is not None, 'delivered': d.deliver_pending_scroll(), 'scrollY': y()}
+        back_to_top(); d.s.eval("document.querySelector('footer').remove()"); d.refresh()
+        gone = {'delivered': d.deliver_pending_scroll(), 'scrollY': y()}
+        return {'before': before, 'delivered': delivered, 'after': after, 'again': again, 'survived': survived, 'gone': gone}
     finally: d.close()
 
 

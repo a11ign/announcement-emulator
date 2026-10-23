@@ -132,8 +132,8 @@ class AnchorWithNoHref(unittest.TestCase):
     def test_an_anchor_with_no_href_is_linked(self):
         self.assertTrue(self.evidence_node().msaa_state() & standin.CONST['STATE_SYSTEM_LINKED'])
 
-    def test_an_anchor_with_an_href_is_still_linked(self):
-        node = self.evidence_node(); node.raw['state']['linked'] = True
+    def test_the_ax_state_linked_still_sets_it(self):
+        node = standin.PN({'depth': 1, 'ix': 1, 'role': 'genericContainer', 'state': {'linked': True}}, None)
         self.assertTrue(node.msaa_state() & standin.CONST['STATE_SYSTEM_LINKED'])
 
     def test_a_node_that_is_not_a_link_is_not_linked(self):
@@ -206,12 +206,17 @@ class ScrollState(unittest.TestCase):
         self.assertEqual(missed(CASELAW, 'links'), ['Skip to end, same page, link']); self.assertIn('Skip to end, same page, link', result['links'])
 
     @needs_emulator
-    def test_the_one_scroll_nvda_asked_for_is_delivered_once_and_a_new_read_of_the_tree_drops_it(self):
+    def test_the_one_scroll_nvda_asked_for_is_delivered_once_and_survives_a_read_of_the_tree_while_its_node_is_there(self):
         done = probe('scroll', SITE.url('ico-back-to-top.html'), free_port())
         self.assertEqual(done['before'], {'scrollY': 0, 'pending': True})      # the keys scrolled nothing, and the last request is waiting
         self.assertTrue(done['delivered']); self.assertGreater(done['after']['scrollY'], 0); self.assertFalse(done['after']['pending'])
         self.assertFalse(done['again'])
-        self.assertEqual(done['dropped'], {'asked': True, 'pending': False, 'delivered': False, 'scrollY': 0})      # indexes are renumbered at every read: a request made on the last read is not this tree's
+        self.assertEqual({k: done['survived'][k] for k in ('asked', 'pending', 'delivered')}, {'asked': True, 'pending': True, 'delivered': True}); self.assertGreater(done['survived']['scrollY'], 0)
+
+    @needs_emulator
+    def test_a_request_for_a_node_that_has_left_the_tree_is_not_delivered(self):
+        done = probe('scroll', SITE.url('ico-back-to-top.html'), free_port())
+        self.assertEqual(done['gone'], {'delivered': False, 'scrollY': 0})      # indexes are renumbered at every read, so the request names the node by its uid, and a node that is gone is not scrolled to by another's index
 
 
 class CaretAfterTheBufferIsRebuilt(unittest.TestCase):
@@ -236,13 +241,19 @@ class CaretAfterTheBufferIsRebuilt(unittest.TestCase):
         old = self.page('aaaa', 'bbbbbb'); old.sel = (7, 7)
         new = self.page('aaaaaaaaaa', 'bbbbbb'); new.sel = old.sel
         new.correct_selection(old.selection_identifiers())
-        self.assertEqual(new.sel, (13, 7))      # 10 + 3: the third letter of the second paragraph still; the end is left as it was, as storage.cpp leaves selectionEnd
+        self.assertEqual(new.sel, (13, 13))      # 10 + 3: the third letter of the second paragraph still, and a caret is still a caret (storage.cpp keeps the selection's length)
+
+    def test_a_selection_keeps_its_length(self):
+        old = self.page('aaaa', 'bbbbbb'); old.sel = (7, 9)
+        new = self.page('aaaaaaaaaa', 'bbbbbb'); new.sel = old.sel
+        new.correct_selection(old.selection_identifiers())
+        self.assertEqual(new.sel, (13, 15))
 
     def test_the_selection_stays_where_it_was_when_nothing_before_it_changed(self):
         old = self.page('aaaa', 'bbbbbb'); old.sel = (7, 7)
-        new = self.page('aaaa', 'bbbbbb'); new.sel = old.sel
+        new = self.page('aaaa', 'bbbbbb'); new.sel = (0, 0)      # a buffer built anew starts with the selection the caller gives it; the correction is what puts the caret back
         new.correct_selection(old.selection_identifiers())
-        self.assertEqual(new.sel[0], 7)
+        self.assertEqual(new.sel, (7, 7))
 
     def test_a_removed_field_puts_the_selection_in_the_deepest_ancestor_that_is_left_clamped_to_its_last_character(self):
         old = self.page('aaaa', 'bbbbbb'); old.sel = (9, 9)      # the last letter of the second paragraph, which is 6 + 4 characters into the section
@@ -255,9 +266,9 @@ class CaretAfterTheBufferIsRebuilt(unittest.TestCase):
         old = self.page('aaaa', 'bbbbbb'); old.sel = (9, 9)
         identifiers = old.selection_identifiers()
         new = self.page('aaaa', 'bbbbbb'); new.by_key.pop(identifiers[1][0])      # the section is gone, with the paragraph in it still there by its key
-        new.sel = old.sel
+        new.sel = (0, 0)
         new.correct_selection(identifiers)
-        self.assertEqual(new.sel[0], 9)      # only the root was found: 9 relative to a root that starts at 0
+        self.assertEqual(new.sel, (9, 9))      # only the root was found: 9 relative to a root that starts at 0
 
     def test_a_field_found_under_another_parent_stops_the_walk(self):
         old = self.page('aaaa', 'bbbbbb'); old.sel = (7, 7)
@@ -267,6 +278,17 @@ class CaretAfterTheBufferIsRebuilt(unittest.TestCase):
         new.correct_selection(identifiers)
         section = new.root.kids[2]
         self.assertEqual(new.sel[0], section.offset_in_tree() + 3)      # the section is found (the root's child, 3 in), its paragraph is not under it: the walk ends at the section, which now starts after the 6 + 4 characters before it
+
+    def test_a_tree_with_no_uids_finds_nothing_again_whatever_its_indexes_are(self):
+        """Without the extension's id the only number a node has is its index, which is renumbered at every read: it is not taken for the node."""
+        def page(text):
+            rows = [(0, 'rootWebArea', {'name': 'page'}), (1, 'paragraph', {}), (2, 'staticText', {'name': text}), (1, 'paragraph', {}), (2, 'staticText', {'name': 'bbbbbb'})]
+            nodes = [{'depth': d, 'ix': ix, 'state': {}, 'role': r, **extra} for ix, (d, r, extra) in enumerate(rows)]
+            return standin.Builder(standin.build_platform_tree(nodes)).build()
+        old = page('aaaa'); old.sel = (6, 6)
+        new = page('aaaaaaaaaa'); new.sel = (6, 6)
+        new.correct_selection(old.selection_identifiers())
+        self.assertEqual(new.sel, (6, 6))
 
     def test_a_selection_with_no_field_found_is_left_alone(self):
         new = self.page('aaaa', 'bbbbbb'); new.sel = (5, 5)
