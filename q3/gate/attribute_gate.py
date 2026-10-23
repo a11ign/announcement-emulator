@@ -44,53 +44,70 @@ def fleet_lines(oracle, url, first, last):
     return rb.read_json(os.path.join(oracle, cc.slug_of(url) + '.json'))['capture']['transcript'][first:last]
 
 
-def build(results, oracle, emulator_dir, probes, downloads, repo=ROOT):
-    figure = rb.read_json(os.path.join(results, 'misses-held-freeze.json')); gate = check.gate_misses(figure)
-    chromium = os.path.join(downloads, 'chromium-src', 'ax_platform_node_win.cc'); storage = os.path.join(downloads, 'nvda-src', 'nvdaHelper', 'vbufBase', 'storage.cpp')
-    standin = os.path.join(repo, 'emu', 'standin.py'); live = os.path.join(repo, 'emu', 'live.py'); livepage = os.path.join(repo, 'q3', 'livepage.py'); sweep = os.path.join(repo, 'q3', 'sweep.py')
-    by = lambda text: sorted({m['url'] for m in gate if text in m['url']})
-    sheffield, scrolled, nationalarchives, ico, hes = by('sheffield.ac.uk'), by('ico.org.uk') + by('caselaw.nationalarchives.gov.uk'), by('caselaw.nationalarchives.gov.uk'), by('ico.org.uk'), by('historicenvironment.scot')
-    node = rb.read_json(os.path.join(probes, 'node-sheffield.json'))
-    linked_at = find_line(standin, "if s.get('linked'): out |= CONST['STATE_SYSTEM_LINKED']")
-    live_at = find_line(live, 'sel = (0, 0) if first else L.buffers[self.b._h].sel')
-    scroll_at = find_line(livepage, 'scroll_browser = False'); lazy_at = find_line(sweep, 'd.s.eval("window.scrollTo(0, 0)"); time.sleep(0.5)')
-    with open(chromium) as f: ct = f.read().splitlines()
-    linked_src = next(n for n, l in enumerate(ct, 1) if l.strip() == '// Handle STATE_SYSTEM_LINKED')
-    evidence = {}
-    evidence['evidence/empty-anchor-is-a-link.json'] = {
-        'class': 'emulator bug', 'miss': 'You are here, navigation landmark, list, with N items, Home, link (the fleet) / main landmark, You are here, ... (the emulator)', 'pages': sheffield,
-        'what the fleet read': {'page': sheffield[0], 'read-through lines 17 to 21': fleet_lines(oracle, sheffield[0], 17, 21), 'note': 'line 19 is a link with no name, which the fleet speaks as "out of list, main landmark, link": the first thing in <main> is an <a id="main-content"></a> with no href; the next line is the breadcrumb'},
+class Sources:
+    """Where the quoted lines and the probes' outputs are: read once, passed to the three causes."""
+    def __init__(self, oracle, emulator_dir, probes, downloads, repo=ROOT):
+        self.oracle, self.emulator_dir, self.probes = oracle, emulator_dir, probes
+        self.chromium = os.path.join(downloads, 'chromium-src', 'ax_platform_node_win.cc'); self.storage = os.path.join(downloads, 'nvda-src', 'nvdaHelper', 'vbufBase', 'storage.cpp')
+        self.standin, self.live = os.path.join(repo, 'emu', 'standin.py'), os.path.join(repo, 'emu', 'live.py')
+        self.livepage, self.sweep = os.path.join(repo, 'q3', 'livepage.py'), os.path.join(repo, 'q3', 'sweep.py')
+
+    def probe(self, name, pages, channels): return [probe_result(self.oracle, self.emulator_dir, os.path.join(self.probes, name), u, channels) for u in pages]
+
+
+def empty_anchor_is_a_link(src, pages):
+    node = rb.read_json(os.path.join(src.probes, 'node-sheffield.json')); linked_at = find_line(src.standin, "if s.get('linked'): out |= CONST['STATE_SYSTEM_LINKED']")
+    with open(src.chromium) as f: chromium = f.read().splitlines()
+    linked_src = next(n for n, l in enumerate(chromium, 1) if l.strip() == '// Handle STATE_SYSTEM_LINKED')
+    return {
+        'class': 'emulator bug', 'miss': 'You are here, navigation landmark, list, with N items, Home, link (the fleet) / main landmark, You are here, ... (the emulator)', 'pages': pages,
+        'what the fleet read': {'page': pages[0], 'read-through lines 17 to 21': fleet_lines(src.oracle, pages[0], 17, 21), 'note': 'line 19 is a link with no name, which the fleet speaks as "out of list, main landmark, link": the first thing in <main> is an <a id="main-content"></a> with no href; the next line is the breadcrumb'},
         'what the emulator has': {'node of <a id="main-content">': node, 'note': 'role link, no name, no `linked` state (Chromium sets the AX state kLinked only for an anchor with an href)'},
         'how NVDA then speaks the breadcrumb': 'NVDA announces a landmark only when it is new to the control-field stack of what it spoke last (speech/speech.py:1584-1620, controlFieldStackCache). On the fleet the empty link inside <main> has just been spoken, so "main landmark" is not said again at the breadcrumb; in the emulator the empty link is not in the buffer, the previous link is the header menu, and "main landmark" is said.',
-        'why the emulator lacks the link': {'chromium': {'file': 'ax_platform_node_win.cc', 'lines': [linked_src, linked_src + 3], 'text': ct[linked_src - 1:linked_src + 3]},
+        'why the emulator lacks the link': {'chromium': {'file': 'ax_platform_node_win.cc', 'lines': [linked_src, linked_src + 3], 'text': chromium[linked_src - 1:linked_src + 3]},
                                             'emulator': {'file': 'emu/standin.py', 'line': linked_at[0], 'text': linked_at[1].strip()},
                                             'cause': 'Chromium on Windows reports STATE_SYSTEM_LINKED for every node whose role is a link; the emulator reports it only when the AX state `linked` is set, so an anchor with no href is not "in a link" (gecko_ia2 fillVBuf: in_link, interactive), is not interactive, and an empty node of no text leaves no line in the buffer'},
-        'probe': {'change': 'standin.py line: `or r == \'link\'`', 'variant': 'linked', 'results': [probe_result(oracle, emulator_dir, os.path.join(probes, 'out-linked'), u, ['links']) for u in sheffield],
+        'probe': {'change': 'standin.py line: `or r == \'link\'`', 'variant': 'linked', 'results': src.probe('out-linked', pages, ['links']),
                   'note': 'with the one change the empty link and the breadcrumb agree on every page; what is left on each page is the `Alt plus, m` access key, outside the ten shapes'}}
-    evidence['evidence/page-scroll-state.json'] = {
-        'class': 'emulator bug', 'miss': 'an element a page shows only once it has been scrolled: ICO "Back to top, same page, link"; National Archives heading level 2 "<title>" and "Skip to end, same page, link"', 'pages': scrolled,
+
+
+def page_scroll_state(src, pages):
+    scroll_at = find_line(src.livepage, 'scroll_browser = False'); lazy_at = find_line(src.sweep, 'd.s.eval("window.scrollTo(0, 0)"); time.sleep(0.5)')
+    return {
+        'class': 'emulator bug', 'miss': 'an element a page shows only once it has been scrolled: ICO "Back to top, same page, link"; National Archives heading level 2 "<title>" and "Skip to end, same page, link"', 'pages': pages,
         'the pages': {'ico.org.uk': 'index.js: `function l(){0===window.scrollY?a.classList.add("opacity-0"):a.classList.remove("hidden","opacity-0")}` on a scroll listener rate-limited to 500 ms: the #button-top link is `hidden` until the page has been scrolled',
                       'caselaw.nationalarchives.gov.uk': 'document_navigation.js: an IntersectionObserver on the start of the document shows #js-document-navigation (`.autohide` is display:none, `.show` display:block; position:fixed) once it has scrolled out of view; the bar holds the h2 with the title and the "Back to top" and "Skip to end" links'},
         'what the emulator does': {'livepage.py': {'line': scroll_at[0], 'text': scroll_at[1].strip()}, 'sweep.py load_lazy_content': {'line': lazy_at[0], 'text': lazy_at[1].strip(), 'note': 'scrolls the page to its end for lazily loaded content and then back to the top; nothing scrolls it again, so every sweep reads the page at scrollY 0'},
                                    'on the fleet': 'NVDA scrolls the browser as its caret moves (IA2 scrollTo), so the page is scrolled when the sweeps run'},
-        'probe': {'change': 'load_lazy_content leaves the page scrolled to its end', 'variant': 'page-left-at-end',
-                  'results': [probe_result(oracle, emulator_dir, os.path.join(probes, 'out-page-left-at-end'), u, ['headings', 'links']) for u in scrolled],
+        'probe': {'change': 'load_lazy_content leaves the page scrolled to its end', 'variant': 'page-left-at-end', 'results': src.probe('out-page-left-at-end', pages, ['headings', 'links']),
                   'note': 'on each page the announcements the frozen emulator misses are all agreed once the page is left scrolled'}}
-    trace = {u: rb.read_json(glob.glob(os.path.join(probes, 'trace-' + cc.slug_of(u) + '.json'))[0]) for u in hes}
-    first = trace[hes[0]]; n0 = next(i for i, r in enumerate(first) if r['key'] == 'enter' and 'Open menu' in first[i - 1]['said'])
-    fleet_record = rb.read_json(os.path.join(oracle, cc.slug_of(hes[0]) + '.json'))['capture']; log = fleet_record['interaction']['focusEvents']['log'][:6]
-    evidence['evidence/caret-after-a-menu-closes.json'] = {
-        'class': 'emulator bug', 'miss': 'Close search, button, expanded (the fleet lists it between Open search and Close notification; the emulator does not reach it)', 'pages': hes,
-        'what the fleet did': {'focus events of the probes (page order)': log, 'form fields it listed': fleet_record['structure']['formFields'][3:7],
+
+
+def caret_after_a_menu_closes(src, pages):
+    live_at = find_line(src.live, 'sel = (0, 0) if first else L.buffers[self.b._h].sel')
+    trace = rb.read_json(glob.glob(os.path.join(src.probes, 'trace-' + cc.slug_of(pages[0]) + '.json'))[0])
+    n0 = next(i for i, r in enumerate(trace) if r['key'] == 'enter' and 'Open menu' in trace[i - 1]['said'])
+    fleet_record = rb.read_json(os.path.join(src.oracle, cc.slug_of(pages[0]) + '.json'))['capture']
+    return {
+        'class': 'emulator bug', 'miss': 'Close search, button, expanded (the fleet lists it between Open search and Close notification; the emulator does not reach it)', 'pages': pages,
+        'what the fleet did': {'focus events of the probes (page order)': fleet_record['interaction']['focusEvents']['log'][:6], 'form fields it listed': fleet_record['structure']['formFields'][3:7],
                                'note': 'after the probe on "Open menu" (Enter opens the menu and focus goes into it; Escape closes it) the next backward step stops on "Open search"'},
-        'what the emulator did': {'page': hes[0], 'keys from the probe on Open menu (key, announced, caret, line of the buffer the caret is on, focus)': [{k: r[k] for k in ('key', 'said', 'caret', 'lineText', 'focus')} for r in first[n0 - 1:n0 + 4]],
+        'what the emulator did': {'page': pages[0], 'keys from the probe on Open menu (key, announced, caret, line of the buffer the caret is on, focus)': [{k: r[k] for k in ('key', 'said', 'caret', 'lineText', 'focus')} for r in trace[n0 - 1:n0 + 4]],
                                   'note': 'Enter moves the caret into the opened menu (offset 206); Escape closes it and the menu\'s text leaves the buffer; the caret is still at offset 206, which is now the line of "Open search"; the next backward step starts before that line and passes "Open search"'},
-        'why': {'nvda': {'file': 'nvdaHelper/vbufBase/storage.cpp', 'lines': [742, 760], 'text': lines_of(storage, 742, 744) + ['...'] + lines_of(storage, 760, 760), 'note': 'replaceSubtree corrects the selection to "the deepest field the selection started in that still exists", relative to that field'},
+        'why': {'nvda': {'file': 'nvdaHelper/vbufBase/storage.cpp', 'lines': [742, 760], 'text': lines_of(src.storage, 742, 744) + ['...'] + lines_of(src.storage, 760, 760), 'note': 'replaceSubtree corrects the selection to "the deepest field the selection started in that still exists", relative to that field'},
                 'emulator': {'file': 'emu/live.py', 'line': live_at[0], 'text': live_at[1].strip(), 'note': 'refresh builds a new buffer and keeps the old selection as a number; node identifiers are renumbered at every read, so no field can be found again'}},
-        'probe': {'change': 'the caret put back on the line of the control that was probed once the probe is over (probe_caret_back.py: a probe of the cause, not an implementation of storage.cpp)', 'variant': 'caret-back',
-                  'results': [probe_result(oracle, emulator_dir, os.path.join(probes, 'out-caret-back'), u, ['formFields']) for u in hes],
+        'probe': {'change': 'the caret put back on the line of the control that was probed once the probe is over (probe_caret_back.py: a probe of the cause, not an implementation of storage.cpp)', 'variant': 'caret-back', 'results': src.probe('out-caret-back', pages, ['formFields']),
                   'note': '"Close search, button, expanded" agrees on both pages; what is left is the emulator\'s "banner landmark" prefix on "Open search", which is not a Gate miss (a shape outside the ten)'}}
-    return gate, evidence, {'sheffield': sheffield, 'scroll': scrolled, 'hes': hes}
+
+
+def build(results, oracle, emulator_dir, probes, downloads, repo=ROOT):
+    """(the Gate's misses, the evidence of each cause by file name, the pages each cause covers)."""
+    gate = check.gate_misses(rb.read_json(os.path.join(results, 'misses-held-freeze.json'))); src = Sources(oracle, emulator_dir, probes, downloads, repo)
+    by = lambda text: sorted({m['url'] for m in gate if text in m['url']})
+    pages = {'sheffield': by('sheffield.ac.uk'), 'scroll': by('ico.org.uk') + by('caselaw.nationalarchives.gov.uk'), 'hes': by('historicenvironment.scot')}
+    evidence = {'evidence/empty-anchor-is-a-link.json': empty_anchor_is_a_link(src, pages['sheffield']), 'evidence/page-scroll-state.json': page_scroll_state(src, pages['scroll']),
+                'evidence/caret-after-a-menu-closes.json': caret_after_a_menu_closes(src, pages['hes'])}
+    return gate, evidence, pages
 
 
 def attribute(gate, pages, evidence_files):

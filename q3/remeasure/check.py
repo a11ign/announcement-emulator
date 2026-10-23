@@ -350,36 +350,54 @@ def capture_times(oracle_dir, summary_path):
     return [e.get('capturedAt') for e in rb.read_json(summary_path)] if os.path.exists(summary_path) else None
 
 
-def check_freeze(freeze_path, repo, oracle_dir=None, summary_path=None):
-    """The freeze: a commit of this branch's history, named before any capture of the run, whose emulator and harness are unchanged at this commit and which has A11-164's table."""
-    if not os.path.exists(freeze_path): return PENDING, 'no freeze.json yet'
-    freeze = rb.read_json(freeze_path); bad = []; commit = freeze.get('commit')
-    if not commit or not git_ok(repo, 'cat-file', '-e', f'{commit}^{{commit}}'): return FAIL, f'the freeze names {commit!r}, which is not a commit of this repository'
-    if not git_ok(repo, 'merge-base', '--is-ancestor', commit, 'HEAD'): bad.append('the frozen commit is not an ancestor of this one')
+def freeze_object_problems(freeze, repo, commit):
+    """What differs between the objects the freeze names, the frozen commit's and this branch's head, for the emulator, the harness and the rules the figure is measured by; and A11-164's table."""
+    bad = []
     for path in FREEZE_OBJECTS:
         named, then, now = (freeze.get('objects') or {}).get(path), git(repo, 'rev-parse', f'{commit}:{path}'), git(repo, 'rev-parse', f'HEAD:{path}')
         if not named: bad.append(f'{path}: not named in the freeze')
         elif named != then: bad.append(f'{path}: the freeze names {named[:10]} but the frozen commit has {str(then)[:10]}')
         elif named != now: bad.append(f'{path} has changed since the freeze ({named[:10]} then, {str(now)[:10]} now)')
     if git(repo, 'rev-parse', f'{commit}:{TABLE}') is None: bad.append(f'{TABLE} (A11-164) is not in the frozen commit')
+    return bad
+
+
+def freeze_history_problems(freeze, repo, commit):
+    """The frozen commit is behind this branch, and contains the commits the freeze says it includes (A11-164's merge)."""
+    bad = [] if git_ok(repo, 'merge-base', '--is-ancestor', commit, 'HEAD') else ['the frozen commit is not an ancestor of this one']
     for ticket, merge in sorted((freeze.get('includes') or {}).items()):
         if not git_ok(repo, 'merge-base', '--is-ancestor', merge, commit): bad.append(f'{ticket} ({merge[:10]}) is not in the frozen commit')
     if not (freeze.get('includes') or {}).get('A11-164'): bad.append('the freeze does not say it includes A11-164')
-    try: named_at = instant(freeze['namedAt'])
-    except (KeyError, ValueError): return FAIL, 'the freeze has no namedAt'
+    return bad
+
+
+def freeze_time_problems(freeze, freeze_path, repo, commit, times):
+    """The order of the times: the frozen commit, the naming, the commit of freeze.json, then every capture (`times`, or None when there are no records yet)."""
+    named_at = instant(freeze['namedAt']); bad = []
     made = git(repo, 'show', '-s', '--format=%cI', commit)
     if made and instant(made) > named_at: bad.append(f'named at {freeze["namedAt"]}, before its commit was made ({made})')
-    rel = os.path.relpath(os.path.realpath(freeze_path), os.path.realpath(git(repo, 'rev-parse', '--show-toplevel')))
-    first = git(repo, 'log', '--diff-filter=A', '--format=%cI', '--', rel)
-    if first: first = first.splitlines()[-1]
-    if first and instant(first) < named_at: bad.append(f'freeze.json was committed ({first}) before it was named ({freeze["namedAt"]})')
-    times = capture_times(oracle_dir, summary_path)
+    added = git(repo, 'log', '--diff-filter=A', '--format=%cI', '--', os.path.relpath(os.path.realpath(freeze_path), os.path.realpath(git(repo, 'rev-parse', '--show-toplevel'))))
+    committed = added.splitlines()[-1] if added else None
+    if committed and instant(committed) < named_at: bad.append(f'freeze.json was committed ({committed}) before it was named ({freeze["namedAt"]})')
     if times is not None:
         early = [t for t in times if not t or instant(t) <= named_at]
         if early: bad.append(f'{len(early)} of {len(times)} captures were made at or before the freeze was named')
-        if first and any(t and instant(t) <= instant(first) for t in times): bad.append('a capture was made before freeze.json was committed')
+        if committed and any(t and instant(t) <= instant(committed) for t in times): bad.append('a capture was made before freeze.json was committed')
+    return bad
+
+
+def check_freeze(freeze_path, repo, oracle_dir=None, summary_path=None):
+    """The freeze: a commit of this branch's history, named before any capture of the run, whose emulator and harness are unchanged at this commit and which has A11-164's table."""
+    if not os.path.exists(freeze_path): return PENDING, 'no freeze.json yet'
+    freeze = rb.read_json(freeze_path); commit = freeze.get('commit')
+    if not commit or not git_ok(repo, 'cat-file', '-e', f'{commit}^{{commit}}'): return FAIL, f'the freeze names {commit!r}, which is not a commit of this repository'
+    try: instant(freeze['namedAt'])
+    except (KeyError, ValueError): return FAIL, 'the freeze has no namedAt'
+    times = capture_times(oracle_dir, summary_path)
+    bad = freeze_history_problems(freeze, repo, commit) + freeze_object_problems(freeze, repo, commit) + freeze_time_problems(freeze, freeze_path, repo, commit, times)
     if bad: return FAIL, '; '.join(bad[:5])
-    return (PENDING, f'freeze {commit[:10]} is in order; no capture records to compare with it yet') if times is None else (OK, f'frozen at {commit[:10]}, named {freeze["namedAt"]}; emu/ and the harness are unchanged at this commit; {len(times)} captures, all later')
+    if times is None: return PENDING, f'freeze {commit[:10]} is in order; no capture records to compare with it yet'
+    return OK, f'frozen at {commit[:10]}, named {freeze["namedAt"]}; emu/ and the harness are unchanged at this commit; {len(times)} captures, all later'
 
 
 def check_consent(report_path, manifest_path):
