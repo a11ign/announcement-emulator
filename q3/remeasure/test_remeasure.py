@@ -642,12 +642,13 @@ class GateChecks(unittest.TestCase):
         path = os.path.join(self.dir, 'consent-report.json'); side = lambda surface=False: {'surface': surface, 'lines': ['Cookies, dialog'] if surface else []}
         report = lambda **b: {'outcomes': {'given': 1, 'not-matched': 1}, 'pages': [{'url': 'https://e.org/a', 'outcome': 'given', 'fleet': side(), 'emulator': side()}, {'url': 'https://e.org/b', 'outcome': 'not-matched', 'fleet': side(True), 'emulator': side()}]} | b
         self.assertEqual(check.check_consent(os.path.join(self.dir, 'none.json'), manifest)[0], check.PENDING)
-        rb.write_json(path, report()); state, msg = check.check_consent(path, manifest); self.assertEqual(state, check.OK); self.assertIn('1 begin in a cookie or consent surface', msg)
+        rb.write_json(path, report()); state, msg = check.check_consent(path, manifest); self.assertEqual(state, check.OK); self.assertIn('1 begin in or contain a cookie or consent surface', msg)
         rb.write_json(path, report(outcomes={'given': 2})); self.assertEqual(check.check_consent(path, manifest)[0], check.FAIL)
         rb.write_json(path, report(pages=report()['pages'][:1])); self.assertEqual(check.check_consent(path, manifest)[0], check.FAIL)
         wrong = report(); wrong['pages'][0]['outcome'] = 'no-dialog'; rb.write_json(path, wrong); self.assertEqual(check.check_consent(path, manifest)[0], check.FAIL)
         wrong = report(); wrong['pages'][1]['fleet'] = {'surface': True, 'lines': []}; rb.write_json(path, wrong); self.assertEqual(check.check_consent(path, manifest)[0], check.FAIL)      # a surface and no line to show it
         wrong = report(); wrong['pages'][1]['emulator'] = None; rb.write_json(path, wrong); self.assertEqual(check.check_consent(path, manifest)[0], check.FAIL)      # a side not read
+        unread = report(); unread['pages'][1]['emulator'] = {'surface': False, 'lines': [], 'unread': 'timed out'}; rb.write_json(path, unread); self.assertEqual(check.check_consent(path, manifest)[0], check.OK)      # a side that had nothing to read says so
 
     def test_the_manifest_of_a_gate_run_has_each_pages_consent_outcome(self):
         a = 'https://example.org/a'; path = os.path.join(self.dir, 'archive-manifest.json'); corpus = os.path.join(self.dir, 'corpus.json'); rb.write_json(corpus, [{'url': a}])

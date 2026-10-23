@@ -401,10 +401,10 @@ def check_consent(report_path, manifest_path):
     if report.get('outcomes') != outcomes: bad.append(f'the report counts {report.get("outcomes")}, the manifest {outcomes}')
     if bad: return FAIL, '; '.join(bad[:5]) + (f' (+{len(bad) - 5} more)' if len(bad) > 5 else '')
     surfaced = [p for p in pages if (p['fleet'] or {}).get('surface') or (p['emulator'] or {}).get('surface')]
-    return OK, f'{len(pages)} pages, outcomes {outcomes}; {len(surfaced)} begin in a cookie or consent surface on a side'
+    return OK, f'{len(pages)} pages, outcomes {outcomes}; {len(surfaced)} begin in or contain a cookie or consent surface on a side'
 
 
-NOT_COMPARABLE_REASONS = ('consent surface', 'consent not matched', 'two runs disagree', 'census differs', 'document differs', 'timeout', 'emulator fault', 'no fleet record')
+NOT_COMPARABLE_REASONS = ('title spoken differently', 'consent surface', 'consent not matched', 'two runs disagree', 'census differs', 'document differs', 'timeout', 'emulator fault', 'fleet capture incomplete')
 
 
 def check_comparable(path, misses_path):
