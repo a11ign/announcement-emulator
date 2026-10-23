@@ -176,6 +176,13 @@ def read_through(w, steps=600, deadline=None):
     return lines, reason
 
 
+def scroll_where_nvda_left_the_page(w):
+    """On the fleet NVDA scrolls the browser as its caret moves (IA2 scrollTo), so when the read-through ends the page sits where the caret last took it, and the sweeps read
+    it there: an element a page shows only once it is scrolled (ICO's back-to-top link, caselaw's document bar) is in the tree they read. The emulator does not scroll for each
+    key (LivePage.scroll_browser is off); it delivers the last request once, here. Returns whether the page moved."""
+    return w.d.deliver_pending_scroll()
+
+
 def structure_sweep(w, deadline):
     """sweepEveryStructuralType + sweepExtraTypes (probeTables is off on real pages, so tableCells is not swept)."""
     structure, marks = {}, []

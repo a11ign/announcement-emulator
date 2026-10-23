@@ -1,6 +1,6 @@
 """Layer 0 + 5 for focus-driven keys: a live Chrome session whose Tab (and later other keys) is real, whose tree is re-read after each key,
 and whose focus change is delivered to NVDA's own browse-mode event_gainFocus. The buffer is REBUILT from each new tree (NVDA updates
-incrementally from events); the caret offset is carried over by offset, which is only right while the text before it does not change."""
+incrementally from events); the caret is carried over as storage.cpp does when it replaces a subtree: to the deepest field it was in that the new buffer still has (Buffer.correct_selection)."""
 import time, hashlib, ctypes, weakref, boot
 import driver, objlayer, standin, session, capture, textInfos, controlTypes, globalVars
 import NVDAObjects.IAccessible as NI
@@ -32,6 +32,7 @@ class LiveDoc:
 
     def refresh(self):
         nodes, focus_ix = self.s.dump()
+        self._pending_scroll = None      # an index names a node of one read of the tree (they are renumbered at every read): a request made before this one is not this tree's
         root = standin.build_platform_tree(nodes)
         self.world = objlayer.World(root); self.world.focus_cb = self._focus_cb; self.world.action_cb = self._action_cb; self.world.scroll_cb = self._scroll_cb; self.world.sel = self.s.sel; self.focus_ix = focus_ix; L.world = self.world
         def _fcd(binding, hwnd, uid, what, idRef, offRef, _w=self.world):
@@ -49,11 +50,13 @@ class LiveDoc:
         h = L.VBuf_createBuffer(None, HWND, root.ix, 'gecko_ia2')
         vh = L.VBufRemote_bufferHandle_t(); vh.value = h
         first = self.b is None
+        carried = [] if first else L.buffers[self.b._h].selection_identifiers()      # the fields the caret is in, to find again in the new buffer
         if first:
             self.b = driver.EmuBuffer.__new__(driver.EmuBuffer)
             self.b.__init__(vh, root.raw.get('url'), root.raw.get('name'))
         sel = (0, 0) if first else L.buffers[self.b._h].sel
         self.b.VBufHandle = vh; self.b._h = h; L.buffers[h].sel = sel
+        L.buffers[h].correct_selection(carried)      # storage.cpp:742-760: the caret goes to the deepest field it was in that is still there, not to the number it had
         self.root_obj = self.obj(root.ix)
         self.b.rootNVDAObject = self.root_obj; self.b.rootDocHandle = HWND; self.b.rootID = root.ix
         treeInterceptorHandler.runningTable.add(self.b)
@@ -147,9 +150,21 @@ class LiveDoc:
 
     scroll_browser = True      # False: NVDA's scrollIntoView (IA2 scrollTo) is not delivered to the browser; the Q3 sweeps do that to run in seconds, not minutes
 
+    _pending_scroll = None      # the node NVDA last asked the browser to scroll into view while scroll_browser was off, by its index in the current read of the tree
+
     def _scroll_cb(self, ix):
-        if not self.scroll_browser: return
+        if not self.scroll_browser: self._pending_scroll = ix; return
         self.s.scroll(ix); self._scrolled = True
+
+    SCROLL_SETTLE = 1.5      # seconds: a page's handlers for the scroll run before the tree is read again (ICO's listener is rate-limited to 500 ms)
+
+    def deliver_pending_scroll(self):
+        """Scroll the browser to where NVDA's caret last asked it to (IA2 scrollTo), once, and read the tree again. With scroll_browser off a key does not scroll,
+        so this is the one scroll that puts the page where the fleet's sits when its read-through ends and the sweeps begin. Returns whether there was one."""
+        ix, self._pending_scroll = self._pending_scroll, None
+        if ix is None: return False
+        self.s.scroll(ix); time.sleep(self.SCROLL_SETTLE); self.refresh_in_place()
+        return True
 
     def _action_cb(self, ix):
         self._focus_requested = True; self._acted = True; self.s.action(ix)

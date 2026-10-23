@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>A page whose main starts with an anchor that has no href</title>
+<style>main { display: flex; flex-wrap: wrap; }      /* the anchor is a flex item, so it has a box and is in the tree, as the Sheffield one is */</style></head>
+<body>
+<header>
+  <nav aria-label="Main menu">
+    <ul>
+      <li><a href="/study">Study</a></li>
+      <li><a href="/research">Research</a></li>
+    </ul>
+  </nav>
+  <nav aria-label="MUSE menu">
+    <ul>
+      <li><a accesskey="m" href="https://muse.example/login">Log in to MUSE</a></li>
+      <li><a href="/help">Help</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <a id="main-content"></a>
+  <section>
+  <nav aria-label="You are here">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/ijc">School of Information, Journalism and Communication</a></li>
+      <li><a href="/ijc/people">People</a></li>
+      <li><a href="/ijc/people/professional-services-staff">Professional services staff</a></li>
+      <li>A member of staff</li>
+    </ol>
+  </nav>
+  <h1>A member of staff</h1>
+  <p>Some text about them.</p>
+  </section>
+</main>
+<script>
+  // Chrome gives an anchor with no href the role `link` when it has a click handler, and only the AX state `linked` to one with an href: this node is the evidence's (role link, no name, no `linked`).
+  document.getElementById('main-content').addEventListener('click', () => {});
+</script>
+</body>
+</html>

@@ -28,10 +28,11 @@ for f in nvda-src/source/locale/en/*; do ln -s "$D/$f" "nvda-appdir/locale/en/$(
 ln -sf "$D/cldr-src/locale/en/cldr.dic" nvda-appdir/locale/en/cldr.dic
 # 3. the W3C ARIA examples the tests open
 if [ ! -d aria-practices/content ]; then rm -rf aria-practices; git clone -q --filter=blob:none https://github.com/w3c/aria-practices aria-practices; git -C aria-practices checkout -q "$ARIA_REV"; fi
-# 4. Chromium's Windows accessibility mapping, as read: the tables are generated from these (emu/gen_tables.py)
+# 4. Chromium's Windows accessibility mapping, as read: the tables are generated from these (emu/gen_tables.py); ax_object.cc is Blink's, read for the access key (PN.keyboard_shortcut)
 mkdir -p chromium-src
 for p in ui/accessibility/platform/ax_platform_node_win.cc ui/accessibility/platform/ax_platform_node_base.cc ui/accessibility/platform/ax_platform_node_delegate.h \
-         ui/accessibility/ax_role_properties.cc ui/accessibility/ax_node.cc third_party/iaccessible2/ia2_api_all.idl; do
+         ui/accessibility/ax_role_properties.cc ui/accessibility/ax_node.cc third_party/iaccessible2/ia2_api_all.idl \
+         third_party/blink/renderer/modules/accessibility/ax_object.cc; do
   curl -fsSL "https://chromium.googlesource.com/chromium/src/+/refs/tags/$CHROME/$p?format=TEXT" | base64 -d > "chromium-src/$(basename "$p")"
 done
 # 5. the browser

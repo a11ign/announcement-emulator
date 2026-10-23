@@ -32,6 +32,7 @@ class PN:
         self.raw, self.parent, self.kids = raw, parent, []
         self.role = raw['role']
         self.ix = raw['ix']
+        self.uid = raw.get('uid', raw['ix'])      # the extension's id for the automation node, which lasts as long as the node (`ix` is renumbered at every read); a tree with none keeps to `ix`
 
     def __repr__(self): return f'<PN {self.role} {self.raw.get("name", "")!r}>'
 
@@ -199,6 +200,13 @@ class PN:
             if par is not None and par.role == 'treeGrid': c = 'ROLE_SYSTEM_OUTLINEITEM'
         return CONST[c]
 
+    def keyboard_shortcut(self):
+        """IAccessible::accKeyboardShortcut (ax_platform_node_win.cc:1901-1910: the node's kKeyShortcuts string, else E_INVALIDARG with an empty answer). Blink fills kKeyShortcuts from aria-keyshortcuts, else
+        from AXObject::KeyboardShortcut() (third_party/blink/renderer/modules/accessibility/ax_object.cc:1877-1925): the platform's access-key modifiers (KeyboardEventManager::kAccessKeyModifiers, Alt on Windows),
+        '+', and the element's `accesskey`. chrome.automation exposes the second as `accessKey` and not `keyShortcuts` (q1/out-rich-155.json), so aria-keyshortcuts is not ported here."""
+        key = self.raw.get('accessKey')
+        return 'Alt+' + key if key else None
+
     # -- states (MSAAState / ComputeIA2State)
     def msaa_state(self):
         s, r = self.state, self.role
@@ -208,7 +216,7 @@ class PN:
         if s.get('focusable'): out |= CONST['STATE_SYSTEM_FOCUSABLE']
         if self.raw.get('hasPopup'): out |= CONST['STATE_SYSTEM_HASPOPUP']
         if s.get('invisible'): out |= CONST['STATE_SYSTEM_INVISIBLE']
-        if s.get('linked'): out |= CONST['STATE_SYSTEM_LINKED']
+        if s.get('linked') or r == 'link': out |= CONST['STATE_SYSTEM_LINKED']      # ax_platform_node_win.cc:8242-8245 (MSAAState): `if (role == ax::mojom::Role::kLink) msaa_state |= STATE_SYSTEM_LINKED`, for every link, with an href or without (the AX state kLinked is only the former)
         if s.get('multiselectable'): out |= CONST['STATE_SYSTEM_MULTISELECTABLE']
         if s.get('offscreen'): out |= CONST['STATE_SYSTEM_OFFSCREEN']
         if s.get('protected'): out |= CONST['STATE_SYSTEM_PROTECTED']
@@ -378,8 +386,9 @@ class TextField(Field):
 
 
 class Control(Field):
-    def __init__(self, doc_handle, ID, is_block=True):
+    def __init__(self, doc_handle, ID, is_block=True, key=None):
         super().__init__(is_block); self.id = (doc_handle, ID)
+        self.key = (doc_handle, ID) if key is None else key      # what finds this field again after the buffer is built anew: the IDs of a new read are not the old ones (the ID is the node's `ix`, the key its `uid`)
 
     @property
     def length(self): return sum(k.length for k in self.kids)
@@ -408,7 +417,30 @@ def _common(f, s, e):
 
 
 class Buffer:
-    def __init__(self): self.root = None; self.by_id = {}; self.sel = (0, 0)
+    def __init__(self): self.root = None; self.by_id = {}; self.by_key = {}; self.sel = (0, 0)
+
+    def selection_identifiers(self):
+        """The fields the selection started in, as VBufStorage_buffer_t::replaceSubtrees records them before it replaces anything (storage.cpp:677-686): the control fields from the root down to the deepest one
+        that holds the selection start, each with the offset of the selection start from the start of that field, [(key, offset)]."""
+        c = self.control_at(self.sel[0]) if self.root is not None and self.root.length > 0 else None
+        out = []
+        if c is None: return out
+        rel = self.sel[0] - c.offset_in_tree()
+        while c is not None:
+            out.insert(0, (c.key, rel))
+            if c.parent is not None: rel += sum(k.length for k in c.parent.kids[:c.index()])
+            c = c.parent
+        return out
+
+    def correct_selection(self, identifiers):
+        """The other half of replaceSubtrees (storage.cpp:742-760): walk the recorded fields from the root and stop at the first that is gone or is not a child of the one before; the
+        selection start goes to the deepest one found, at its recorded offset, kept inside it (the selection end is left as it was, as there). With none found it stays."""
+        last, rel = None, 0
+        for key, offset in identifiers:
+            c = self.by_key.get(key)
+            if c is None or c.parent is not last: break
+            last, rel = c, offset
+        if last is not None: self.sel = (last.offset_in_tree() + min(rel, max(last.length - 1, 0)), self.sel[1])
 
     def text(self, s, e, markup):
         if self.root is None or s >= e: return ''
@@ -627,12 +659,12 @@ class Builder:
         return self.buf
 
     def add_control(self, parent, previous, pn):
-        c = Control(self.doc_handle, pn.ix)
+        c = Control(self.doc_handle, pn.ix, key=(self.doc_handle, pn.uid))
         c.parent = parent
         if parent is not None:
             if previous is None: parent.kids.insert(0, c)
             else: parent.kids.insert(parent.kids.index(previous) + 1, c)
-        self.buf.by_id[c.id] = c
+        self.buf.by_id[c.id] = c; self.buf.by_key[c.key] = c
         return c
 
     @staticmethod
@@ -673,7 +705,7 @@ class Builder:
             if states & (1 << i): a[f'IAccessible::state_{1 << i}'] = '1'
         for i in range(32):
             if ia2states & (1 << i): a[f'IAccessible2::state_{1 << i}'] = '1'
-        a['keyboardShortcut'] = ''
+        a['keyboardShortcut'] = pn.keyboard_shortcut() or ''      # gecko_ia2.cpp:672-679: IAccessible::accKeyboardShortcut
         # block element? (gecko_ia2.cpp:660-698)
         disp = a.get('IAccessible2::attribute_display')
         if ia2states & C['IA2_STATE_MULTI_LINE']: block = True

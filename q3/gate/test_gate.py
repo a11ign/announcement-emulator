@@ -197,9 +197,13 @@ class Probes(unittest.TestCase):
             with self.assertRaises(SystemExit): probes.make_variant(export, os.path.join(d, 'none'), 'linked')
 
     def test_the_lines_the_probes_are_made_at_are_in_the_frozen_emulator_exactly_once(self):
-        root = os.path.dirname(Q3)
+        """The emulator has been fixed since the freeze (A11-176), so the lines are read from the frozen commit and not from the working tree."""
+        import subprocess
+        root = os.path.dirname(Q3); commit = load(os.path.join(GATE, 'freeze.json'))['commit']
+        if subprocess.run(['git', '-C', root, 'cat-file', '-e', commit + '^{commit}'], capture_output=True).returncode: self.skipTest('the frozen commit is not in this clone')
         for name, (path, old, new) in probes.VARIANTS.items():
-            with open(os.path.join(root, path)) as f: self.assertEqual(f.read().count(old), 1, name)
+            frozen = subprocess.run(['git', '-C', root, 'show', f'{commit}:{path}'], capture_output=True, text=True, check=True).stdout
+            self.assertEqual(frozen.count(old), 1, name)
 
 
 class Attribution(unittest.TestCase):

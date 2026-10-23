@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>A menu that takes over the top of the page while it is open</title>
+<style>[hidden] { display: none !important; }</style></head>
+<body>
+<div id="notice"><p>Weather warnings are in place this weekend, please check the closures page before travelling.</p></div>
+<button aria-label="Close notification">x</button>
+<header>
+  <a href="/">Historic Environment Scotland - Go to homepage</a>
+  <div id="search" role="search">
+    <button id="open-search" aria-label="Open search" aria-expanded="false">s</button>
+    <button id="close-search" aria-label="Close search" aria-expanded="true" hidden>x</button>
+    <div id="search-inner" tabindex="-1" hidden><label for="q">Search site by keyword</label> <input id="q" type="text"></div>
+  </div>
+  <nav aria-label="Primary navigation">
+    <button id="open-menu" aria-label="Open menu" aria-expanded="false">m</button>
+    <button id="close-menu" aria-label="Close menu" aria-expanded="true" hidden>x</button>
+    <ul id="menu-list" tabindex="-1" hidden>
+      <li>Visit</li><li>What's on</li><li>Learn</li><li>Protect and care</li><li>About us</li>
+    </ul>
+  </nav>
+</header>
+<main><h1>Shop</h1><p>The shop is open every day.</p></main>
+<script>
+  // Enter on `Open menu` takes the notice off the page, swaps the button for `Close menu` and shows the list, which takes focus; Escape in the list puts all of it back.
+  const $ = id => document.getElementById(id), list = $('menu-list');
+  const menu = open => {
+    $('notice').hidden = open; $('open-menu').hidden = open; $('close-menu').hidden = !open; list.hidden = !open;
+    if (open) list.focus(); else document.activeElement.blur();
+  };
+  $('open-menu').addEventListener('click', () => menu(true));
+  $('close-menu').addEventListener('click', () => menu(false));
+  list.addEventListener('keydown', e => { if (e.key === 'Escape') menu(false); });
+  const search = open => {
+    $('open-search').hidden = open; $('close-search').hidden = !open; $('search-inner').hidden = !open;
+    if (open) $('search-inner').focus(); else $('open-search').focus();
+  };
+  $('open-search').addEventListener('click', () => search(true));
+  $('close-search').addEventListener('click', () => search(false));
+</script>
+</body>
+</html>

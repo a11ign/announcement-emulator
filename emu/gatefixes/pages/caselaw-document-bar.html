@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>A document bar shown once the start and the end are out of view</title>
+<style>
+  .document-navigation { position: fixed; top: 0; width: 100%; background: #fff; }
+  .document-navigation.autohide { display: none; }
+  .document-navigation.autohide.show { display: block; }
+  .judgment p { margin: 0 0 1rem; }
+  .filler { height: 1500px; }
+  footer .filler { height: 1200px; }
+</style></head>
+<body>
+<header><p>Find case law</p></header>
+<div class="judgment-toolbar"><h1>RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh &amp; Company KG (UK Production)</h1></div>
+<div class="document-navigation" id="js-document-navigation">
+  <div class="document-navigation__summary"><h2>RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh &amp; Company KG (UK Production)</h2></div>
+  <div id="js-document-navigation-links-end" class="document-navigation-links">
+    <a id="start-of-document-link" href="#start-of-document">Back to top</a>
+    <a id="end-of-document-link" href="#end-of-document">Skip to end</a>
+  </div>
+</div>
+<div id="start-of-document" data-document-navigation-start></div>
+<div data-document-body>
+  <article class="judgment">
+    <h3>Judgment</h3>
+    <p>The first paragraph of the judgment.</p>
+    <div class="filler"></div>
+    <p>The last paragraph of the judgment.</p>
+  </article>
+</div>
+<div id="end-of-document" data-document-navigation-end><span>End of document</span></div>
+<footer><p>Footer text.</p><div class="filler"></div><p>The last line of the page.</p></footer>
+<script>
+  // caselaw.nationalarchives.gov.uk static/assets/document_navigation: the bar is hidden (`autohide`) and shown (`show`) when neither the start nor the end of the document is in view
+  document.addEventListener('DOMContentLoaded', () => {
+    const bar = document.getElementById('js-document-navigation'), start = document.querySelector('[data-document-navigation-start]'),
+          end = document.querySelector('[data-document-navigation-end]'), body = document.querySelector('[data-document-body]');
+    bar.classList.add('autohide');
+    const tall = body.scrollHeight > window.innerHeight;
+    const show = visible => { if (tall) visible ? bar.classList.remove('show') : bar.classList.add('show'); };
+    const observer = new IntersectionObserver(entries => show(entries.some(e => e.isIntersecting)), {root: null, rootMargin: '0px'});
+    observer.observe(start); observer.observe(end);
+  });
+</script>
+</body>
+</html>

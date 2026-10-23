@@ -17,7 +17,7 @@ class Facade(boot._IAccessible2_2, boot.IUnknown):
     def accName(self, c=0): return self.pn.name()
     def accValue(self, c=0): return self.pn.value() or None
     def accDescription(self, c=0): return self.pn.description()
-    def accKeyboardShortcut(self, c=0): return None
+    def accKeyboardShortcut(self, c=0): return self.pn.keyboard_shortcut()
     def accRole(self, c=0): return CONST[T['msaa'].get(self.pn.role, 'ROLE_SYSTEM_CLIENT')]
     def accState(self, c=0): return self.pn.msaa_state()
     @property
