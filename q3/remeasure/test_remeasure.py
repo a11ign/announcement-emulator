@@ -1,10 +1,10 @@
 """python3 -m unittest discover -s q3/remeasure -t q3/remeasure   (from the repository root; needs node, as the capture does)"""
-import sys, os, json, tempfile, subprocess, unittest, io, contextlib, threading, time, http.server
+import sys, os, json, shutil, datetime, tempfile, subprocess, unittest, io, contextlib, threading, time, http.server
 HERE = os.path.dirname(os.path.abspath(__file__)); Q3 = os.path.dirname(HERE)
 sys.path.insert(0, HERE); sys.path.insert(0, Q3)
 import readback as rb, check, corpus_capture as cc, policy_override as po, explain_visited as ev, make_views
-sys.path.insert(0, os.path.join(Q3, 'replay'))
-import replay_readback as rrb
+sys.path.insert(0, os.path.join(Q3, 'replay')); sys.path.insert(0, os.path.join(Q3, 'gate'))
+import replay_readback as rrb, make_freeze
 
 def write(path, text):
     with open(path, 'w') as f: f.write(text)
@@ -492,5 +492,176 @@ class Check(unittest.TestCase):
         self.assertEqual(check.check_replay_stamps(self.oracle(a=rec(unmatched=None)), m, path)[0], check.FAIL)
         self.assertEqual(check.check_replay_stamps(self.oracle(a={'worker': 'a11y-worker-2', 'capture': {'url': a}}), m, path)[0], check.FAIL)      # no block at all
         self.assertEqual(check.check_replay_stamps(self.oracle(a=rec() | {'worker': 'a11y-worker-9'}), m, path)[0], check.FAIL)      # a box that did not hold
+
+
+class GateChecks(unittest.TestCase):
+    """The checks of the Gate's re-run on new pages (A11-166): the freeze, the consent report, the comparable account, the attribution of every miss, the verdict, the labels."""
+    def setUp(self): self.tmp = tempfile.TemporaryDirectory(); self.dir = self.tmp.name
+    def tearDown(self): self.tmp.cleanup()
+
+    def git(self, repo, *args, when=None):
+        env = {**os.environ, 'GIT_AUTHOR_NAME': 't', 'GIT_AUTHOR_EMAIL': 't@t', 'GIT_COMMITTER_NAME': 't', 'GIT_COMMITTER_EMAIL': 't@t', **({'GIT_COMMITTER_DATE': when, 'GIT_AUTHOR_DATE': when} if when else {})}
+        return subprocess.run(['git', '-C', repo, *args], check=True, capture_output=True, text=True, env=env).stdout.strip()
+
+    def repo(self):
+        """A repository with the emulator and its harness, A11-164's table and a merge for it, then one commit of tooling after the frozen one. Returns (path, frozen commit, A11-164's commit)."""
+        repo = os.path.join(self.dir, 'repo'); os.makedirs(repo); self.git(repo, 'init', '-q', '-b', 'main')
+        files = {'emu/session.mjs': 'one', 'emu/langnames/language-names.json': '{}', **{p: p for p in check.FREEZE_OBJECTS if p != 'emu'}}
+        for path, text in files.items(): os.makedirs(os.path.dirname(os.path.join(repo, path)), exist_ok=True); write(os.path.join(repo, path), text)
+        self.git(repo, 'add', '.'); self.git(repo, 'commit', '-qm', 'A11-164 merged', when='2026-10-21T20:00:00Z'); table = self.git(repo, 'rev-parse', 'HEAD')
+        write(os.path.join(repo, 'README.md'), 'x'); self.git(repo, 'add', '.'); self.git(repo, 'commit', '-qm', 'the freeze', when='2026-10-22T08:00:00Z'); frozen = self.git(repo, 'rev-parse', 'HEAD')
+        os.makedirs(os.path.join(repo, 'q3/replay')); write(os.path.join(repo, 'q3/replay/addon.py'), 'tooling'); self.git(repo, 'add', '.'); self.git(repo, 'commit', '-qm', 'tooling after the freeze', when='2026-10-22T09:00:00Z')
+        return repo, frozen, table
+
+    def freeze(self, repo, frozen, table, **edit):
+        freeze = make_freeze.freeze_of(repo, frozen, {'A11-164': table}, datetime.datetime(2026, 10, 23, 10, 0, 0, tzinfo=datetime.timezone.utc)) | edit
+        path = os.path.join(repo, 'freeze.json'); rb.write_json(path, freeze); self.git(repo, 'add', 'freeze.json'); self.git(repo, 'commit', '-qm', 'name the freeze', when='2026-10-23T10:05:00Z'); return path
+
+    def summary(self, *stamps):
+        path = os.path.join(self.dir, 'oracle-summary.json'); rb.write_json(path, [{'url': f'https://e.org/{i}', 'capturedAt': t} for i, t in enumerate(stamps)]); return path
+
+    def test_a_freeze_is_the_commit_the_emulator_and_harness_still_are_with_the_table_named_before_every_capture(self):
+        repo, frozen, table = self.repo(); path = self.freeze(repo, frozen, table)
+        later = self.summary('2026-10-23T11:00:00.000Z', '2026-10-23T12:00:00.000Z')
+        self.assertEqual(check.check_freeze(path, repo, None, later)[0], check.OK)
+        self.assertEqual(check.check_freeze(path, repo, None, os.path.join(self.dir, 'none.json'))[0], check.PENDING)      # nothing captured yet: the freeze is in order, and nothing to compare it with
+        self.assertEqual(check.check_freeze(os.path.join(self.dir, 'none.json'), repo)[0], check.PENDING)
+
+    def test_a_capture_at_or_before_the_freeze_was_named_fails(self):
+        repo, frozen, table = self.repo(); path = self.freeze(repo, frozen, table)
+        self.assertEqual(check.check_freeze(path, repo, None, self.summary('2026-10-23T11:00:00.000Z', '2026-10-23T10:00:00.000Z'))[0], check.FAIL)      # at the instant it was named
+        self.assertEqual(check.check_freeze(path, repo, None, self.summary('2026-10-23T11:00:00.000Z', '2026-10-23T09:59:59.000Z'))[0], check.FAIL)
+        self.assertEqual(check.check_freeze(path, repo, None, self.summary('2026-10-23T11:00:00.000Z', '2026-10-23T10:01:00.000Z'))[0], check.FAIL)      # named, but before freeze.json was committed (10:05)
+        self.assertEqual(check.check_freeze(path, repo, None, self.summary('2026-10-23T11:00:00.000Z', None))[0], check.FAIL)      # a record that says no time
+
+    def test_a_change_to_the_emulator_or_its_harness_or_the_measure_after_the_freeze_fails(self):
+        for changed in ('emu/session.mjs', 'q3/emulate.py', 'q3/sweep.py', 'q3/livepage.py', 'q3/shapes.py', 'q3/measure.py', 'q3/attribute.py', 'q3/split.py'):
+            repo, frozen, table = self.repo(); path = self.freeze(repo, frozen, table)
+            write(os.path.join(repo, changed), 'changed'); self.git(repo, 'add', '.'); self.git(repo, 'commit', '-qm', 'a fix', when='2026-10-23T12:00:00Z')
+            state, msg = check.check_freeze(path, repo, None, self.summary('2026-10-23T11:00:00.000Z')); self.assertEqual(state, check.FAIL, changed); self.assertIn('emu' if changed.startswith('emu/') else changed, msg)
+            shutil.rmtree(repo)
+
+    def test_a_new_file_under_the_emulator_is_a_change_of_its_tree(self):
+        repo, frozen, table = self.repo(); path = self.freeze(repo, frozen, table)
+        write(os.path.join(repo, 'emu/new.py'), 'x'); self.git(repo, 'add', '.'); self.git(repo, 'commit', '-qm', 'a new file', when='2026-10-23T12:00:00Z')
+        self.assertEqual(check.check_freeze(path, repo, None, self.summary('2026-10-23T11:00:00.000Z'))[0], check.FAIL)
+
+    def test_a_freeze_that_names_other_objects_or_a_commit_that_is_not_behind_this_one_or_has_no_table_fails(self):
+        repo, frozen, table = self.repo(); good = self.freeze(repo, frozen, table); times = self.summary('2026-10-23T11:00:00.000Z')
+        bad = rb.read_json(good); bad['objects']['q3/sweep.py'] = '0' * 40; rb.write_json(good, bad); self.assertEqual(check.check_freeze(good, repo, None, times)[0], check.FAIL)
+        bad = rb.read_json(good); bad['objects'].pop('emu'); bad['objects']['q3/sweep.py'] = self.git(repo, 'rev-parse', f'{frozen}:q3/sweep.py'); rb.write_json(good, bad); self.assertEqual(check.check_freeze(good, repo, None, times)[0], check.FAIL)      # a part not named
+        bad = rb.read_json(good); bad['commit'] = '1' * 40; rb.write_json(good, bad); self.assertEqual(check.check_freeze(good, repo, None, times)[0], check.FAIL)      # not a commit at all
+        rb.write_json(good, rb.read_json(good) | {'commit': frozen, 'objects': make_freeze.freeze_of(repo, frozen, {'A11-164': table})['objects'], 'includes': {}}); self.assertEqual(check.check_freeze(good, repo, None, times)[0], check.FAIL)      # does not say it has A11-164
+        self.git(repo, 'checkout', '-qf', '-b', 'other', table); write(os.path.join(repo, 'x.txt'), 'x'); self.git(repo, 'add', '.'); self.git(repo, 'commit', '-qm', 'beside', when='2026-10-22T10:00:00Z')
+        beside = self.git(repo, 'rev-parse', 'HEAD'); self.git(repo, 'checkout', '-qf', 'main'); rb.write_json(good, rb.read_json(good) | {'commit': beside, 'includes': {'A11-164': table}})
+        self.assertEqual(check.check_freeze(good, repo, None, times)[0], check.FAIL)      # a commit that is not an ancestor of the branch
+
+    def test_the_table_must_be_in_the_frozen_commit(self):
+        repo = os.path.join(self.dir, 'repo2'); os.makedirs(repo); self.git(repo, 'init', '-q', '-b', 'main')
+        for path in check.FREEZE_OBJECTS:
+            if path != 'emu': os.makedirs(os.path.dirname(os.path.join(repo, path)), exist_ok=True); write(os.path.join(repo, path), path)
+        os.makedirs(os.path.join(repo, 'emu')); write(os.path.join(repo, 'emu/session.mjs'), 'x'); self.git(repo, 'add', '.'); self.git(repo, 'commit', '-qm', 'no table', when='2026-10-21T20:00:00Z'); head = self.git(repo, 'rev-parse', 'HEAD')
+        path = self.freeze(repo, head, head); state, msg = check.check_freeze(path, repo, None, self.summary('2026-10-23T11:00:00.000Z')); self.assertEqual(state, check.FAIL); self.assertIn('language-names.json', msg)
+
+    def test_a_freeze_named_before_its_commit_was_made_or_committed_before_it_was_named_fails(self):
+        repo, frozen, table = self.repo(); times = self.summary('2026-10-23T11:00:00.000Z')
+        path = self.freeze(repo, frozen, table, namedAt='2026-10-22T07:00:00Z'); self.assertEqual(check.check_freeze(path, repo, None, times)[0], check.FAIL)      # before the frozen commit was made (08:00)
+        path = self.freeze(repo, frozen, table, namedAt='2026-10-23T10:30:00Z'); self.assertEqual(check.check_freeze(path, repo, None, times)[0], check.FAIL)      # after freeze.json was committed (10:05)
+
+    def test_the_freeze_is_named_from_a_commit_and_refuses_one_that_lacks_what_it_must_contain(self):
+        repo, frozen, table = self.repo(); freeze = make_freeze.freeze_of(repo, frozen, {'A11-164': table})
+        self.assertEqual(sorted(freeze['objects']), sorted(check.FREEZE_OBJECTS)); self.assertEqual(freeze['commit'], frozen); self.assertEqual(freeze['includes'], {'A11-164': table}); self.assertEqual(freeze['objects']['emu'], self.git(repo, 'rev-parse', f'{frozen}:emu'))
+        with self.assertRaises(SystemExit): make_freeze.freeze_of(repo, table, {'A11-164': frozen})      # the frozen commit does not contain a commit that comes after it
+
+    def gate(self, exact=96, total=100): return {'gate': {'exact': exact, 'total': total}, 'top': ['a + b'], 'pages': [{'url': 'https://e.org/p', 'status': 'comparable'}],
+                                                  'misses': [{'url': 'https://e.org/p', 'channel': 'links', 'i': i, 'expected': f'Link {i}, link', 'shape': ['a', 'b']} for i in range(total - exact)] + [{'url': 'https://e.org/q', 'channel': 'frames', 'i': 0, 'expected': 'f', 'shape': ['a', 'b']},
+                                                                                                                                                                   {'url': 'https://e.org/q', 'channel': 'links', 'i': 9, 'expected': 'other shape', 'shape': ['c']}]}
+
+    def attributed(self, gate, edit=None, cls='emulator bug'):
+        os.makedirs(os.path.join(self.dir, 'evidence'), exist_ok=True); write(os.path.join(self.dir, 'evidence', 'one.json'), '{}')
+        entries = [{'page': m['url'], 'channel': m['channel'], 'i': m['i'], 'expected': m['expected'], 'class': cls, 'evidence': ['evidence/one.json']} for m in check.gate_misses(gate)]
+        if edit: edit(entries)
+        path = os.path.join(self.dir, 'misses-attributed.json'); rb.write_json(path, {'misses': entries}); return path
+
+    def test_every_miss_of_the_gate_figure_is_attributed_once_and_nothing_else_is(self):
+        gate = self.gate(); page = os.path.join(self.dir, 'page.md'); write(page, '\n'.join(f'Link {i}, link' for i in range(4)))
+        self.assertEqual(len(check.gate_misses(gate)), 4)      # not the frames channel, not another shape
+        self.assertEqual(check.check_explained(self.attributed(gate), self.dir, page, gate)[0], check.OK)
+        self.assertEqual(check.check_explained(self.attributed(gate, lambda e: e.pop()), self.dir, page, gate)[0], check.FAIL)      # one not attributed
+        self.assertEqual(check.check_explained(self.attributed(gate, lambda e: e.append(dict(e[0]))), self.dir, page, gate)[0], check.FAIL)      # one attributed twice
+        self.assertEqual(check.check_explained(self.attributed(gate, lambda e: e.append(dict(e[0], i=77))), self.dir, page, gate)[0], check.FAIL)      # a miss that is not one
+        self.assertEqual(check.check_explained(self.attributed(gate, lambda e: e[0].update(i=5)), self.dir, page, gate)[0], check.FAIL)      # another place in the list is another miss
+        self.assertEqual(check.check_explained(self.attributed(gate, lambda e: e[0].update(evidence=[])), self.dir, page, gate)[0], check.FAIL)
+        self.assertEqual(check.check_explained(self.attributed(gate), self.dir, page, self.gate(exact=95))[0], check.FAIL)      # a figure whose misses are not the file's
+        write(page, 'Link 1, link'); self.assertEqual(check.check_explained(self.attributed(gate), self.dir, page, gate)[0], check.FAIL)      # not named on the page
+
+    def test_two_misses_with_the_same_words_at_two_places_of_one_list_are_two_misses(self):
+        gate = self.gate(); gate['misses'] = [m | {'expected': 'Same, link'} for m in gate['misses']]
+        self.assertEqual(len(check.gate_misses(gate)), 4); page = os.path.join(self.dir, 'p.md'); write(page, 'Same, link')
+        self.assertEqual(check.check_explained(self.attributed(gate), self.dir, page, gate)[0], check.OK)
+        self.assertEqual(check.check_explained(self.attributed(gate, lambda e: e.__setitem__(1, dict(e[0]))), self.dir, page, gate)[0], check.FAIL)      # the first twice, the second never
+
+    def test_the_old_eleven_check_is_as_it_was_without_a_misses_file(self):
+        self.assertEqual(check.EXPECTED_MISSES, 11); self.assertEqual(check.check_explained(os.path.join(self.dir, 'none.json'), self.dir)[0], check.PENDING)
+
+    def test_the_gate_is_passed_only_at_98_percent_with_every_miss_an_emulator_bug_or_windows_only(self):
+        cases = [(98, 100, ['emulator bug', 'Windows-only'], 'passed'), (97, 100, ['emulator bug'], 'not passed'), (100, 100, [], 'passed'), (98, 100, ['emulator bug', 'method'], 'not passed'), (99, 100, ['unexplained'], 'not passed'),
+                 (990, 1000, ['Windows-only'] * 10, 'passed'), (979, 1000, ['Windows-only'] * 21, 'not passed'), (980, 1000, ['Windows-only'] * 20, 'passed')]
+        for exact, total, classes, expected in cases: self.assertEqual(check.verdict_of({'exact': exact, 'total': total}, [{'class': c} for c in classes]), expected, (exact, total, classes))
+
+    def verdict_files(self, exact, total, classes):
+        gate = self.gate(exact, total); misses = os.path.join(self.dir, 'misses-held-freeze.json'); rb.write_json(misses, gate)
+        path = os.path.join(self.dir, 'misses-attributed.json'); rb.write_json(path, {'misses': [{'class': c} for c in classes]}); return misses, path
+
+    def test_the_page_says_the_verdict_the_figure_and_classes_give_once_in_bold_in_the_new_subsection_and_not_the_other(self):
+        page = os.path.join(self.dir, 'page.md'); head = '## Gate\n\n**The Gate is not passed**\n\n## Re-measure\n\n### Earlier\n\n**The Gate is passed** (an earlier reading)\n\n### The Gate on new pages\n\n'
+        misses, attributed = self.verdict_files(97, 100, ['emulator bug'] * 3)
+        write(page, head + 'text. **The Gate is not passed**\n\n## Follow-ups\n'); self.assertEqual(check.check_verdict(misses, attributed, page)[0], check.OK)      # the earlier and the Gate section's sentences are not the subsection's
+        write(page, head + 'text. **The Gate is passed**\n'); self.assertEqual(check.check_verdict(misses, attributed, page)[0], check.FAIL)      # the other call
+        write(page, head + 'text. The Gate is not passed\n'); self.assertEqual(check.check_verdict(misses, attributed, page)[0], check.FAIL)      # not in bold
+        write(page, head + '**The Gate is not passed** and **The Gate is not passed**\n'); self.assertEqual(check.check_verdict(misses, attributed, page)[0], check.FAIL)      # twice
+        write(page, head + '**The Gate is not passed** **The Gate is passed**\n'); self.assertEqual(check.check_verdict(misses, attributed, page)[0], check.FAIL)      # both
+        misses, attributed = self.verdict_files(98, 100, ['Windows-only', 'method']); write(page, head + '**The Gate is passed**\n'); self.assertEqual(check.check_verdict(misses, attributed, page)[0], check.FAIL)      # a method miss fails the Gate
+        write(page, head + '**The Gate is not passed**\n'); self.assertEqual(check.check_verdict(misses, attributed, page)[0], check.OK)
+        self.assertEqual(check.check_verdict(misses, os.path.join(self.dir, 'none.json'), page)[0], check.PENDING)
+        write(page, '## Gate\n\n**The Gate is not passed**\n'); self.assertEqual(check.check_verdict(misses, attributed, page)[0], check.PENDING)      # no subsection yet
+
+    def test_the_comparable_account_is_of_the_figures_pages_with_one_reason_for_each_that_is_not(self):
+        misses = os.path.join(self.dir, 'misses-held-freeze.json'); rb.write_json(misses, {'pages': [{'url': 'https://e.org/a', 'status': 'comparable'}, {'url': 'https://e.org/b', 'status': 'unstable: the two emulator runs differ'}]})
+        path = os.path.join(self.dir, 'comparability.json'); account = lambda **b: {'comparable': 1, 'total': 2, 'pages': [{'url': 'https://e.org/a', 'comparable': True}, {'url': 'https://e.org/b', 'comparable': False, 'reason': 'two runs disagree', 'detail': 'unstable'} | b]}
+        self.assertEqual(check.check_comparable(os.path.join(self.dir, 'none.json'), misses)[0], check.PENDING)
+        rb.write_json(path, account()); self.assertEqual(check.check_comparable(path, misses)[0], check.OK)
+        rb.write_json(path, account(reason='it looked odd')); self.assertEqual(check.check_comparable(path, misses)[0], check.FAIL)
+        rb.write_json(path, account(detail='')); self.assertEqual(check.check_comparable(path, misses)[0], check.FAIL)
+        rb.write_json(path, account(comparable=True)); self.assertEqual(check.check_comparable(path, misses)[0], check.FAIL)      # measure.py says it is not
+        rb.write_json(path, account() | {'comparable': 2}); self.assertEqual(check.check_comparable(path, misses)[0], check.FAIL)
+        rb.write_json(path, {'comparable': 1, 'total': 1, 'pages': account()['pages'][:1]}); self.assertEqual(check.check_comparable(path, misses)[0], check.FAIL)      # a page missing
+
+    def test_the_consent_report_is_of_the_manifests_pages_and_outcomes_and_says_where_a_surface_was(self):
+        manifest = os.path.join(self.dir, 'archive-manifest.json'); rb.write_json(manifest, {'pages': [{'url': 'https://e.org/a', 'consent': 'given'}, {'url': 'https://e.org/b', 'consent': 'not-matched'}]})
+        path = os.path.join(self.dir, 'consent-report.json'); side = lambda surface=False: {'surface': surface, 'lines': ['Cookies, dialog'] if surface else []}
+        report = lambda **b: {'outcomes': {'given': 1, 'not-matched': 1}, 'pages': [{'url': 'https://e.org/a', 'outcome': 'given', 'fleet': side(), 'emulator': side()}, {'url': 'https://e.org/b', 'outcome': 'not-matched', 'fleet': side(True), 'emulator': side()}]} | b
+        self.assertEqual(check.check_consent(os.path.join(self.dir, 'none.json'), manifest)[0], check.PENDING)
+        rb.write_json(path, report()); state, msg = check.check_consent(path, manifest); self.assertEqual(state, check.OK); self.assertIn('1 begin in a cookie or consent surface', msg)
+        rb.write_json(path, report(outcomes={'given': 2})); self.assertEqual(check.check_consent(path, manifest)[0], check.FAIL)
+        rb.write_json(path, report(pages=report()['pages'][:1])); self.assertEqual(check.check_consent(path, manifest)[0], check.FAIL)
+        wrong = report(); wrong['pages'][0]['outcome'] = 'no-dialog'; rb.write_json(path, wrong); self.assertEqual(check.check_consent(path, manifest)[0], check.FAIL)
+        wrong = report(); wrong['pages'][1]['fleet'] = {'surface': True, 'lines': []}; rb.write_json(path, wrong); self.assertEqual(check.check_consent(path, manifest)[0], check.FAIL)      # a surface and no line to show it
+        wrong = report(); wrong['pages'][1]['emulator'] = None; rb.write_json(path, wrong); self.assertEqual(check.check_consent(path, manifest)[0], check.FAIL)      # a side not read
+
+    def test_the_manifest_of_a_gate_run_has_each_pages_consent_outcome(self):
+        a = 'https://example.org/a'; path = os.path.join(self.dir, 'archive-manifest.json'); corpus = os.path.join(self.dir, 'corpus.json'); rb.write_json(corpus, [{'url': a}])
+        page = {'url': a, 'archive': 'a.flows', 'sha256': 'a' * 64, 'mainStatus': 200}
+        rb.write_json(path, {'pages': [page | {'consent': 'given'}]}); self.assertEqual(check.check_manifest(path, corpus, require_consent=True)[0], check.OK)
+        rb.write_json(path, {'pages': [page]}); self.assertEqual(check.check_manifest(path, corpus, require_consent=True)[0], check.FAIL); self.assertEqual(check.check_manifest(path, corpus)[0], check.OK)      # the earlier run's manifest has none
+        rb.write_json(path, {'pages': [page | {'consent': 'declined'}]}); self.assertEqual(check.check_manifest(path, corpus, require_consent=True)[0], check.FAIL)
+
+    def test_the_earlier_figure_is_labelled_not_held_out_and_the_dev_half_dev_half_on_the_page(self):
+        page = os.path.join(self.dir, 'page.md'); write(os.path.join(self.dir, 'measure-old60-freeze.txt'), 'GATE: 4488 of 4491 = 99.93%\n'); write(os.path.join(self.dir, 'measure-dev-freeze.txt'), 'GATE: 3000 of 3100 = 96.77%\n')
+        write(page, '| the earlier 60 pages at this freeze (not held out) | 4,488 of 4,491 | \n| the other pages of batch 2 | 3,000 of 3,100 |\n'); self.assertEqual(check.check_labels(self.dir, page)[0], check.FAIL)
+        write(page, '| the earlier 60 pages at this freeze (not held out) | 4,488 of 4,491 | \n| the dev half of batch 2 (dev half) | 3,000 of 3,100 |\n'); self.assertEqual(check.check_labels(self.dir, page)[0], check.OK)
+        write(page, '| the earlier 60 pages at this freeze | 4,488 of 4,491 | \n| the dev half of batch 2 (dev half) | 3,000 of 3,100 |\n'); self.assertEqual(check.check_labels(self.dir, page)[0], check.FAIL)
+        write(page, '| the dev half of batch 2 (dev half) | 3,000 of 3,100 |\n'); self.assertEqual(check.check_labels(self.dir, page)[0], check.FAIL)      # a figure not on the page
+        self.assertEqual(check.check_labels(os.path.join(self.dir, 'empty'), page)[0], check.PENDING)
 
 if __name__ == '__main__': unittest.main()

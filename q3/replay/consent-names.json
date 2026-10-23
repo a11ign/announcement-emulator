@@ -1,0 +1,65 @@
+{
+  "rule": "A page is recorded with consent already given (A11-166). The control to activate is found by its accessible name and role in the page's accessibility tree, from this one list for every page; there is no entry for any one site.",
+  "controlRoles": [
+    "button",
+    "link"
+  ],
+  "acceptNames": [
+    "accept all cookies",
+    "accept all",
+    "accept additional cookies",
+    "accept all cookies and close",
+    "accept all and close",
+    "accept and close",
+    "accept cookies",
+    "accept optional cookies",
+    "accept analytics cookies",
+    "accept recommended cookies",
+    "allow all cookies",
+    "allow all",
+    "allow cookies",
+    "agree to all",
+    "i accept all cookies",
+    "i accept cookies",
+    "i agree to all cookies",
+    "yes i accept",
+    "yes i agree",
+    "I'm OK with analytics cookies",
+    "accept non-essential cookies",
+    "accept all & close",
+    "accept & close",
+    "agree and close",
+    "allow all and close"
+  ],
+  "acceptNamesInADialog": [
+    "accept",
+    "i accept",
+    "agree",
+    "i agree",
+    "ok",
+    "got it",
+    "accept and continue",
+    "agree and continue",
+    "continue",
+    "I'm ok with that"
+  ],
+  "dialogRoles": [
+    "dialog",
+    "alertdialog"
+  ],
+  "regionRoles": [
+    "region",
+    "banner",
+    "complementary",
+    "group",
+    "form",
+    "alert",
+    "status",
+    "navigation"
+  ],
+  "regionWords": [
+    "cookie",
+    "cookies",
+    "consent"
+  ]
+}

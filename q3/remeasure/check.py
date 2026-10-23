@@ -10,8 +10,16 @@
   addresses   nothing under the results directory or in the doc holds an IPv4 literal
   replay      (with --replay) the replay read-back, the archive manifest, the replay stamps on the oracle's records, the per-page join of the servers' logs, and the explanation of the eleven misses (A11-165)
   doc         the diff against the base touches the spike page only by adding one `## Re-measure` section after `## Gate`, or (the base having it) one `### ` subsection at the end of `## Re-measure`
+  with --gate (A11-166, the Gate on new pages), on the results of that run (q3/results/gate), in place of the eleven misses of the replay:
+  freeze      freeze.json names a commit that is an ancestor of this one, the `emu/` tree and the harness at this commit are the freeze's, A11-164's table is in it, the freeze was named before it was committed
+              and before every capture of the run (each record's `capturedAt`)
+  consent     consent-report.json holds every manifest page once, with the sidecar's outcome the manifest holds, and whether either side's capture begins in a cookie or consent surface; the counts are the manifest's
+  comparable  comparability.json accounts for every page of the Gate's half: comparable, or one reason of the list
+  explained   every miss of the Gate figure's ten shapes (misses-held-freeze.json) is attributed once, to one class, with evidence under the results (or what was tried, for `unexplained`), and is on the page
+  verdict     the verdict sentence on the page is the one the figure and the classes give: at least 98% and every miss `emulator bug` or `Windows-only`
+  labels      the earlier pages' figure is labelled "not held out" and the dev half's "dev half", on the page
 Exit 1 on any failure; with --require-complete, also on anything pending."""
-import sys, os, re, json, glob, argparse, subprocess
+import sys, os, re, json, glob, argparse, subprocess, datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import readback as rb
 import explain_visited
@@ -180,6 +188,10 @@ def replay_readback_module():
 
 CLASSES = ('method', 'emulator bug', 'Windows-only')
 EXPECTED_MISSES = 11
+GATE_THRESHOLD = 0.98      # ADR 0047, Decision 7: at least 98% exact on the ten commonest shapes
+PASSING_CLASSES = ('emulator bug', 'Windows-only')      # the Gate's two classes: a miss of any other class (`method`, `unexplained`) does not pass it
+FREEZE_OBJECTS = ('emu', 'q3/emulate.py', 'q3/sweep.py', 'q3/livepage.py', 'q3/shapes.py', 'q3/measure.py', 'q3/attribute.py', 'q3/split.py')      # the emulator, its harness and the rules the figure is measured by
+TABLE = 'emu/langnames/language-names.json'      # A11-164's table: it is in the emulator before the freeze
 
 
 def check_replay_readback(path):
@@ -212,14 +224,17 @@ def check_replay_stamps(directory, manifest_path, replay_readback_path):
     return (FAIL, '; '.join(bad[:5]) + (f' (+{len(bad) - 5} more)' if len(bad) > 5 else '')) if bad else (OK, f'{len(files)} records, each from the archive the manifest names, by a box that held')
 
 
-def check_manifest(path, corpus_path):
-    """One archive per corpus address, once each, each with a sha256; a page recorded with an error status is served as 200, or the worker could not capture it."""
+def check_manifest(path, corpus_path, require_consent=False):
+    """One archive per corpus address, once each, each with a sha256; a page recorded with an error status is served as 200, or the worker could not capture it. With `require_consent` (A11-166) each page also has its consent outcome."""
     if not os.path.exists(path): return PENDING, 'no archive manifest yet'
     pages = rb.read_json(path)['pages']; expected = {e if isinstance(e, str) else e['url'] for e in rb.read_json(corpus_path)}; bad = []
     if sorted(p['url'] for p in pages) != sorted(expected): bad.append(f'the manifest is not the {len(expected)} corpus addresses, once each')
     for p in pages:
         if not re.fullmatch(r'[0-9a-f]{64}', str(p.get('sha256'))): bad.append(f'{p.get("url")}: no sha256')
     if len({p.get('archive') for p in pages}) != len(pages): bad.append('two addresses share an archive file')
+    if require_consent:
+        for p in pages:
+            if p.get('consent') not in ('given', 'no-dialog', 'not-matched'): bad.append(f'{p.get("url")}: no consent outcome (given, no-dialog or not-matched)')
     for p in pages:
         if not 200 <= p.get('mainStatus', 200) < 300 and p.get('servedStatus') != 200: bad.append(f'{p.get("url")}: recorded with status {p.get("mainStatus")} and not served as 200, so the worker would refuse it')
     return (FAIL, '; '.join(bad[:5])) if bad else (OK, f'{len(pages)} archives, one per address, each with its sha256')
@@ -244,12 +259,30 @@ def check_served(summary_path, manifest_path):
     return OK, f'{len(summary)} pages, each side served the manifest\'s archive, no request answered on one side only' + (f' ({explained} differences explained)' if explained else '')
 
 
-def check_explained(path, results, doc=None):
-    """The misses the ticket asks to have explained: exactly EXPECTED_MISSES of them, each classed as method, emulator bug or Windows-only with evidence that is a file under the results (and, in the write-up, named),
-    or kept `unexplained` with what was tried; and every one is on the page."""
+def gate_misses(misses):
+    """The misses of the Gate figure: those of a measure.py --json on the ten shapes of the figure, not in `frames` (the shape ranking reads the channels of the fleet's script), as attribute.py counts them."""
+    top = set(misses['top'])
+    return [m for m in misses['misses'] if ' + '.join(m['shape']) in top and m['channel'] != 'frames']
+
+
+def miss_key(page, channel, i, expected): return (page, channel, i, expected)
+
+
+def check_explained(path, results, doc=None, misses=None):
+    """The misses the ticket asks to have explained, each classed as method, emulator bug or Windows-only with evidence that is a file under the results (and, in the write-up, named), or kept `unexplained` with what was
+    tried; and every one is on the page. Without `misses`, exactly EXPECTED_MISSES of them (A11-165's eleven). With `misses` (a measure.py --json, the Gate's), every miss of the Gate figure once, and nothing else."""
     if not os.path.exists(path): return PENDING, 'no explanation of the misses yet'
     entries = rb.read_json(path)['misses']; bad = []
-    if len(entries) != EXPECTED_MISSES: bad.append(f'{len(entries)} misses explained, {EXPECTED_MISSES} asked')
+    if misses is None:
+        if len(entries) != EXPECTED_MISSES: bad.append(f'{len(entries)} misses explained, {EXPECTED_MISSES} asked')
+    else:
+        wanted = [miss_key(m['url'], m['channel'], m['i'], m['expected']) for m in gate_misses(misses)]
+        given = [miss_key(e.get('page'), e.get('channel'), e.get('i'), e.get('expected')) for e in entries]
+        if len(wanted) != misses['gate']['total'] - misses['gate']['exact']: bad.append(f'the Gate figure has {misses["gate"]["total"] - misses["gate"]["exact"]} misses and its misses file lists {len(wanted)} on the ten shapes')
+        twice = sorted({k for k in given if given.count(k) > 1}); missing = [k for k in wanted if k not in given]; extra = [k for k in given if k not in wanted]
+        if twice: bad.append(f'{len(twice)} misses attributed twice, such as {twice[0][0]} {twice[0][1]}[{twice[0][2]}]')
+        if missing: bad.append(f'{len(missing)} misses of the Gate figure are not attributed, such as {missing[0][0]} {missing[0][1]}[{missing[0][2]}]')
+        if extra: bad.append(f'{len(extra)} attributions are of no miss of the Gate figure, such as {extra[0][0]} {extra[0][1]}[{extra[0][2]}]')
     page = read_text(doc) if doc and os.path.exists(doc) else None
     for e in entries:
         label = f'{e.get("page", "?")} {e.get("channel", "?")} {str(e.get("expected", ""))[:40]!r}'
@@ -268,16 +301,157 @@ def check_explained(path, results, doc=None):
     return OK, f'{len(entries)} misses, each classed with evidence: {counts}'
 
 
+def verdict_of(gate, entries):
+    """`passed` or `not passed`, by the spike's rule as the Gate section reads it: at least 98% exact and every miss an emulator bug or Windows-only. A miss of any other class (`method`, `unexplained`) fails the Gate, as `visited` did."""
+    return 'passed' if gate['total'] and gate['exact'] / gate['total'] >= GATE_THRESHOLD and all(e.get('class') in PASSING_CLASSES for e in entries) else 'not passed'
+
+
+def last_subsection(doc):
+    """The text of the last `### ` subsection of the page's `## Re-measure` section (the one this run adds), or None."""
+    lines = read_text(doc).splitlines(); remeasure = next((n for n, l in enumerate(lines) if l.startswith('## Re-measure')), None)
+    if remeasure is None: return None
+    end = next((n for n in range(remeasure + 1, len(lines)) if lines[n].startswith('## ')), len(lines))
+    starts = [n for n in range(remeasure + 1, end) if lines[n].startswith('### ')]
+    return '\n'.join(lines[starts[-1]:end]) if starts else None
+
+
+def check_verdict(misses_path, attributed_path, doc):
+    """The Gate is called passed or not passed, in bold, once, in the new subsection, and it is the call the figure and the classes give."""
+    if not os.path.exists(misses_path) or not os.path.exists(attributed_path): return PENDING, 'no Gate figure or attribution yet'
+    gate = rb.read_json(misses_path)['gate']; entries = rb.read_json(attributed_path)['misses']; verdict = verdict_of(gate, entries)
+    section = last_subsection(doc) if doc and os.path.exists(doc) else None
+    if section is None: return PENDING, 'the write-up is not written yet'
+    sentences = {v: section.count(f'**The Gate is {v}**') for v in ('passed', 'not passed')}
+    if sentences[verdict] != 1 or sentences['passed' if verdict == 'not passed' else 'not passed']: return FAIL, f'the figure ({gate["exact"]} of {gate["total"]}) and the classes give "The Gate is {verdict}", and the subsection says: {sentences}'
+    return OK, f'**The Gate is {verdict}**: {gate["exact"]} of {gate["total"]} = {100 * gate["exact"] / gate["total"]:.2f}%, {len(entries)} misses: {", ".join(f"{k} {v}" for k, v in sorted(count_classes(entries).items()))}'
+
+
+def count_classes(entries):
+    counts = {}
+    for e in entries: counts[e['class']] = counts.get(e['class'], 0) + 1
+    return counts
+
+
+def git(repo, *args):
+    done = subprocess.run(['git', '-C', repo, *args], capture_output=True, text=True)
+    return done.stdout.strip() if done.returncode == 0 else None
+
+
+def git_ok(repo, *args): return subprocess.run(['git', '-C', repo, *args], capture_output=True).returncode == 0
+
+
+def instant(stamp): return datetime.datetime.fromisoformat(stamp.replace('Z', '+00:00'))
+
+
+def capture_times(oracle_dir, summary_path):
+    """When each record of the run was captured: from the oracle's records, or, where the oracle's pages are not at hand (they are third-party's), from the committed summary."""
+    files = sorted(glob.glob(os.path.join(oracle_dir, '*.json'))) if oracle_dir and os.path.isdir(oracle_dir) else []
+    if files: return [rb.read_json(f).get('capturedAt') for f in files]
+    return [e.get('capturedAt') for e in rb.read_json(summary_path)] if os.path.exists(summary_path) else None
+
+
+def check_freeze(freeze_path, repo, oracle_dir=None, summary_path=None):
+    """The freeze: a commit of this branch's history, named before any capture of the run, whose emulator and harness are unchanged at this commit and which has A11-164's table."""
+    if not os.path.exists(freeze_path): return PENDING, 'no freeze.json yet'
+    freeze = rb.read_json(freeze_path); bad = []; commit = freeze.get('commit')
+    if not commit or not git_ok(repo, 'cat-file', '-e', f'{commit}^{{commit}}'): return FAIL, f'the freeze names {commit!r}, which is not a commit of this repository'
+    if not git_ok(repo, 'merge-base', '--is-ancestor', commit, 'HEAD'): bad.append('the frozen commit is not an ancestor of this one')
+    for path in FREEZE_OBJECTS:
+        named, then, now = (freeze.get('objects') or {}).get(path), git(repo, 'rev-parse', f'{commit}:{path}'), git(repo, 'rev-parse', f'HEAD:{path}')
+        if not named: bad.append(f'{path}: not named in the freeze')
+        elif named != then: bad.append(f'{path}: the freeze names {named[:10]} but the frozen commit has {str(then)[:10]}')
+        elif named != now: bad.append(f'{path} has changed since the freeze ({named[:10]} then, {str(now)[:10]} now)')
+    if git(repo, 'rev-parse', f'{commit}:{TABLE}') is None: bad.append(f'{TABLE} (A11-164) is not in the frozen commit')
+    for ticket, merge in sorted((freeze.get('includes') or {}).items()):
+        if not git_ok(repo, 'merge-base', '--is-ancestor', merge, commit): bad.append(f'{ticket} ({merge[:10]}) is not in the frozen commit')
+    if not (freeze.get('includes') or {}).get('A11-164'): bad.append('the freeze does not say it includes A11-164')
+    try: named_at = instant(freeze['namedAt'])
+    except (KeyError, ValueError): return FAIL, 'the freeze has no namedAt'
+    made = git(repo, 'show', '-s', '--format=%cI', commit)
+    if made and instant(made) > named_at: bad.append(f'named at {freeze["namedAt"]}, before its commit was made ({made})')
+    rel = os.path.relpath(os.path.realpath(freeze_path), os.path.realpath(git(repo, 'rev-parse', '--show-toplevel')))
+    first = git(repo, 'log', '--diff-filter=A', '--format=%cI', '--', rel)
+    if first: first = first.splitlines()[-1]
+    if first and instant(first) < named_at: bad.append(f'freeze.json was committed ({first}) before it was named ({freeze["namedAt"]})')
+    times = capture_times(oracle_dir, summary_path)
+    if times is not None:
+        early = [t for t in times if not t or instant(t) <= named_at]
+        if early: bad.append(f'{len(early)} of {len(times)} captures were made at or before the freeze was named')
+        if first and any(t and instant(t) <= instant(first) for t in times): bad.append('a capture was made before freeze.json was committed')
+    if bad: return FAIL, '; '.join(bad[:5])
+    return (PENDING, f'freeze {commit[:10]} is in order; no capture records to compare with it yet') if times is None else (OK, f'frozen at {commit[:10]}, named {freeze["namedAt"]}; emu/ and the harness are unchanged at this commit; {len(times)} captures, all later')
+
+
+def check_consent(report_path, manifest_path):
+    """The consent report is of the manifest's pages, once each, with the outcome the manifest holds; a page that begins in a cookie or consent surface on either side says which side and where."""
+    if not os.path.exists(report_path) or not os.path.exists(manifest_path): return PENDING, 'no consent report yet'
+    report = rb.read_json(report_path); manifest = {p['url']: p for p in rb.read_json(manifest_path)['pages']}; bad = []
+    pages = report['pages']
+    if sorted(p['url'] for p in pages) != sorted(manifest): bad.append('the report is not of the manifest\'s addresses, once each')
+    for p in pages:
+        m = manifest.get(p['url'])
+        if m is None: continue
+        if m.get('consent') not in ('given', 'no-dialog', 'not-matched'): bad.append(f'{p["url"]}: the manifest has no consent outcome')
+        elif p.get('outcome') != m['consent']: bad.append(f'{p["url"]}: the report says {p.get("outcome")}, the manifest {m["consent"]}')
+        for side in ('fleet', 'emulator'):
+            if p.get(side) is None: bad.append(f'{p["url"]}: no reading of the {side}')
+            elif p[side].get('surface') and not p[side].get('lines'): bad.append(f'{p["url"]}: begins in a surface on the {side} and says no line')
+    outcomes = {}
+    for m in manifest.values(): outcomes[m.get('consent')] = outcomes.get(m.get('consent'), 0) + 1
+    if report.get('outcomes') != outcomes: bad.append(f'the report counts {report.get("outcomes")}, the manifest {outcomes}')
+    if bad: return FAIL, '; '.join(bad[:5]) + (f' (+{len(bad) - 5} more)' if len(bad) > 5 else '')
+    surfaced = [p for p in pages if (p['fleet'] or {}).get('surface') or (p['emulator'] or {}).get('surface')]
+    return OK, f'{len(pages)} pages, outcomes {outcomes}; {len(surfaced)} begin in a cookie or consent surface on a side'
+
+
+NOT_COMPARABLE_REASONS = ('consent surface', 'consent not matched', 'two runs disagree', 'census differs', 'document differs', 'timeout', 'emulator fault', 'no fleet record')
+
+
+def check_comparable(path, misses_path):
+    """comparability.json: every page of the Gate's half is comparable or has one reason from the list, and the comparable count is the figure's."""
+    if not os.path.exists(path) or not os.path.exists(misses_path): return PENDING, 'no comparability account yet'
+    data = rb.read_json(path); misses = rb.read_json(misses_path); bad = []
+    status = {p['url']: p['status'] for p in misses['pages']}
+    if sorted(p['url'] for p in data['pages']) != sorted(status): bad.append('the account is not of the Gate figure\'s pages, once each')
+    for p in data['pages']:
+        if p['comparable'] != (status.get(p['url']) == 'comparable'): bad.append(f'{p["url"]}: the account and measure.py disagree on whether it is comparable')
+        if not p['comparable'] and p.get('reason') not in NOT_COMPARABLE_REASONS: bad.append(f'{p["url"]}: not comparable, and its reason {p.get("reason")!r} is none of the list')
+        if not p['comparable'] and not p.get('detail'): bad.append(f'{p["url"]}: not comparable, and no detail')
+    n = sum(1 for p in data['pages'] if p['comparable'])
+    if data.get('comparable') != n or data.get('total') != len(data['pages']): bad.append('the counts are not the pages\'')
+    if bad: return FAIL, '; '.join(bad[:5]) + (f' (+{len(bad) - 5} more)' if len(bad) > 5 else '')
+    return OK, f'{n} of {len(data["pages"])} pages comparable; {len(data["pages"]) - n} not, each with a reason'
+
+
+def check_labels(results, doc):
+    """On the page, the old pages' figure is on a line that says `not held out` and the dev half's on one that says `dev half`."""
+    page = read_text(doc).splitlines(); bad = []; found = 0
+    for name, label in (('measure-old60-freeze.txt', 'not held out'), ('measure-dev-freeze.txt', 'dev half')):
+        path = os.path.join(results, name)
+        if not os.path.exists(path): continue
+        line = re.search(r'^GATE: (\d+) of (\d+)', read_text(path), re.M); figure = f'{thousands(line[1])} of {thousands(line[2])}'; found += 1
+        rows = [l for l in page if figure in l]
+        if not rows: bad.append(f'{name}: {figure} is not on the page')
+        elif not any(label in l for l in rows): bad.append(f'{name}: {figure} is on the page, on no line that says "{label}"')
+    if not found: return PENDING, 'no figures to label yet'
+    return (FAIL, '; '.join(bad)) if bad else (OK, f'{found} labelled figures')
+
+
 def main(argv):
     ap = argparse.ArgumentParser(); ap.add_argument('--results', default='q3/results/remeasure'); ap.add_argument('--oracle'); ap.add_argument('--corpus', default='q3/results/corpus.json'); ap.add_argument('--explained'); ap.add_argument('--control-from', help='another run\'s history-readback.json whose `before` probes show the method (a run that took none of its own)'); ap.add_argument('--doc', default='docs/announcement-emulator-spike.md')
-    ap.add_argument('--base', default='origin/main'); ap.add_argument('--require-complete', action='store_true'); ap.add_argument('--replay', action='store_true', help='a scripted-replay run (A11-165): the results hold replay-readback.json, archive-manifest.json, served-identically.json and misses-explained.json, and the oracle\'s records carry a `replay` block'); a = ap.parse_args(argv)
+    ap.add_argument('--base', default='origin/main'); ap.add_argument('--require-complete', action='store_true'); ap.add_argument('--replay', action='store_true', help='a scripted-replay run (A11-165): the results hold replay-readback.json, archive-manifest.json, served-identically.json and misses-explained.json, and the oracle\'s records carry a `replay` block')
+    ap.add_argument('--gate', action='store_true', help='the Gate on new pages (A11-166): with --replay, the results hold freeze.json, consent-report.json, comparability.json, misses-held-freeze.json and misses-attributed.json, and the manifest carries each page\'s consent outcome'); ap.add_argument('--repo', default='.'); a = ap.parse_args(argv)
     readback = os.path.join(a.results, 'history-readback.json')
     results = [('readback', check_readback(readback, a.control_from)), ('summary', check_summary(os.path.join(a.results, 'oracle-summary.json'), readback, a.corpus)), ('oracle', check_oracle(a.oracle, readback, a.corpus, a.explained or os.path.join(a.results, 'visited-explained.json'))), ('figures', check_figures(a.results, a.doc)),
                ('addresses', check_addresses([a.results, a.doc])), ('doc', check_doc(a.doc, a.base))]
     if a.replay:
-        manifest = os.path.join(a.results, 'archive-manifest.json')
-        results += [('replay-readback', check_replay_readback(os.path.join(a.results, 'replay-readback.json'))), ('manifest', check_manifest(manifest, a.corpus)), ('replay-stamps', check_replay_stamps(a.oracle, manifest, os.path.join(a.results, 'replay-readback.json'))),
-                    ('served', check_served(os.path.join(a.results, 'served-identically.json'), manifest)), ('explained', check_explained(os.path.join(a.results, 'misses-explained.json'), a.results, a.doc))]
+        manifest = os.path.join(a.results, 'archive-manifest.json'); explained = os.path.join(a.results, 'misses-attributed.json' if a.gate else 'misses-explained.json'); misses = os.path.join(a.results, 'misses-held-freeze.json')
+        gate_figure = rb.read_json(misses) if a.gate and os.path.exists(misses) else None
+        results += [('replay-readback', check_replay_readback(os.path.join(a.results, 'replay-readback.json'))), ('manifest', check_manifest(manifest, a.corpus, require_consent=a.gate)), ('replay-stamps', check_replay_stamps(a.oracle, manifest, os.path.join(a.results, 'replay-readback.json'))),
+                    ('served', check_served(os.path.join(a.results, 'served-identically.json'), manifest)), ('explained', check_explained(explained, a.results, a.doc, gate_figure if a.gate else None))]
+        if a.gate:
+            results += [('freeze', check_freeze(os.path.join(a.results, 'freeze.json'), a.repo, a.oracle, os.path.join(a.results, 'oracle-summary.json'))), ('consent', check_consent(os.path.join(a.results, 'consent-report.json'), manifest)),
+                        ('comparable', check_comparable(os.path.join(a.results, 'comparability.json'), misses)), ('verdict', check_verdict(misses, explained, a.doc)), ('labels', check_labels(a.results, a.doc))]
     for name, (state, msg) in results: print(f'{state:>8}  {name}: {msg}')
     states = {s for _, (s, _) in results}
     sys.exit(1 if FAIL in states or (a.require_complete and PENDING in states) else 0)
