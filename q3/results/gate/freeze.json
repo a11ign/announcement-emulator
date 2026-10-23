@@ -1,0 +1,19 @@
+{
+ "commit": "1ce9efd4adeeafd3a20d32b1b0e9b14a047f77ef",
+ "subject": "Merge pull request #4 from a11ign/admin/a11-164-emulator-speak-language-names-as-nvda-on-windows-does-from-a",
+ "committedAt": "2026-10-21T22:16:29+01:00",
+ "namedAt": "2026-10-23T15:14:44Z",
+ "includes": {
+  "A11-164": "1ce9efd4adeeafd3a20d32b1b0e9b14a047f77ef"
+ },
+ "objects": {
+  "emu": "143e8480850963ac3ad364e306616901718f9b34",
+  "q3/emulate.py": "e1ef2a5276719fd4fdaaf9ad744f31838139f434",
+  "q3/sweep.py": "132779a8b4b2443182200a004b7bee5a4fb9e174",
+  "q3/livepage.py": "4e04a07df5ff4c42cb994437a644392bad436b99",
+  "q3/shapes.py": "d24a06b9a968e4e785d5879b3479f0266bae159a",
+  "q3/measure.py": "ad372a2e82049d658bfcb84f2f07cc0f53b9c52e",
+  "q3/attribute.py": "04c0c12d59aaa14b4bda229e7a73f97abb885447",
+  "q3/split.py": "6bdae607962d670d4c185ce454ea46dc4bc1916f"
+ }
+}
