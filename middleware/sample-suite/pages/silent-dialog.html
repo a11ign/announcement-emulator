@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Cookies - Example shop</title></head>
+<body>
+<main>
+<h1>Cookies</h1>
+<button id="open" type="button">Cookie settings</button>
+<div id="panel" role="dialog" aria-label="Cookie settings" hidden>
+  <p>Choose which cookies we may set.</p>
+  <button type="button">Accept all</button>
+</div>
+<script>document.getElementById('open').addEventListener('click', () => { document.getElementById('panel').hidden = false; });</script>
+</main>
+</body></html>

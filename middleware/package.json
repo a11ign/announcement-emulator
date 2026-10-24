@@ -1,0 +1,52 @@
+{
+  "name": "@a11ign/announcement-emulator",
+  "version": "0.0.0-spike.0",
+  "description": "Playwright middleware: reports the speech NVDA is predicted to make while your existing tests run. A prediction, never a reading of NVDA, and never evidence (a11ign ADR 0047). A spike (A11-208): private, published nowhere.",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "packageManager": "pnpm@10.34.5",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    },
+    "./reporter": {
+      "types": "./dist/reporter.d.mts",
+      "default": "./dist/reporter.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "announcement-emulator": "./dist/cli.mjs"
+  },
+  "files": [
+    "dist",
+    "pins.json",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "@playwright/test": ">=1.40"
+  },
+  "devDependencies": {
+    "@a11ign/toolchain": "0.10.2",
+    "@eslint/js": "^9.0.0",
+    "@playwright/test": "1.64.1",
+    "@rslib/core": "1.0.3",
+    "@rstest/core": "0.12.3",
+    "@types/node": "^24.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^16.0.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "rslib build",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "rstest run"
+  }
+}

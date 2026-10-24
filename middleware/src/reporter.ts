@@ -1,0 +1,78 @@
+import { mkdirSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import type { FullConfig, Reporter, TestCase, TestResult } from "@playwright/test/reporter";
+import { readManifest } from "./bundle.ts";
+import { annotationsFor, assign, attachments, describe, type Window } from "./format.ts";
+import { prepareExtension } from "./extension.ts";
+import { freePorts } from "./ports.ts";
+import { publishRun } from "./run.ts";
+import { Runtime, type DrainStats } from "./runtime.ts";
+
+interface ReporterOptions { bundle: string; sweeps?: boolean; verify?: boolean }
+interface Seen { test: TestCase; result: TestResult; worker: number; window: Window }
+
+/**
+ * The part of the middleware that lives in Playwright's main process. It starts one runtime for each worker before the workers exist (they read their ports from the environment it sets),
+ * notes when each test ran, and at the end asks every runtime for its predictions and attaches them to the tests they belong to.
+ */
+export default class AnnouncementsReporter implements Reporter {
+  private runtimes: Runtime[] = [];
+  private readonly seen: Seen[] = [];
+  private dir = "";
+  private started = 0;
+  private readonly options: ReporterOptions;
+  constructor(options: ReporterOptions) { this.options = options; }
+
+  printsToStdio(): boolean { return false; }
+
+  async onBegin(config: FullConfig): Promise<void> {
+    this.started = Date.now();
+    this.dir = join(config.configFile ? dirname(config.configFile) : config.rootDir, "test-results", "announcement-emulator");
+    mkdirSync(this.dir, { recursive: true });
+    const count = Math.max(1, config.workers);
+    const numbers = await freePorts(count * 2);
+    const ports = Array.from({ length: count }, (_, i) => ({ collector: numbers[2 * i]!, cdp: numbers[2 * i + 1]! }));
+    const extensions = ports.map((p, i) => prepareExtension(this.options.bundle, join(this.dir, `extension-${i}`), p.collector, this.options.verify));
+    publishRun({ bundle: this.options.bundle, dir: this.dir, ports, extensions, verify: !!this.options.verify, sweeps: this.options.sweeps !== false });
+    this.runtimes = ports.map((p, i) => new Runtime(this.options.bundle, p, { sweeps: this.options.sweeps !== false, log: join(this.dir, `runtime-${i}.log`) }));
+  }
+
+  onTestEnd(test: TestCase, result: TestResult): void {
+    const start = result.startTime.getTime();
+    this.seen.push({ test, result, worker: result.parallelIndex, window: { title: test.titlePath().filter(Boolean).join(" > "), start, end: start + result.duration + 50 } });
+  }
+
+  async onEnd(): Promise<void> {
+    const waited = Date.now();
+    const stats = await Promise.all(this.runtimes.map(async (r) => { await r.ready.catch(() => 0); return r.drain(); }));
+    for (const [i, r] of this.runtimes.entries()) if (r.failure) console.error(`announcement-emulator: runtime ${i} did not run (${r.failure}); see ${join(this.dir, `runtime-${i}.log`)}. No speech is attached for its tests.`);
+    const drainMs = Date.now() - waited;
+    const emulator = readManifestOrNull(this.options.bundle);
+    let flagged = 0, unassigned = 0;
+    this.runtimes.forEach((runtime, worker) => {
+      const mine = this.seen.filter((s) => s.worker === worker);
+      const owned = assign(runtime.records, mine.map((s) => s.window));
+      unassigned += owned.unassigned;
+      for (const { test, result, window } of mine) {
+        const output = describe(window, owned.byWindow.get(window) ?? [], emulator);
+        result.attachments.push(...attachments(output));
+        test.annotations.push(...annotationsFor(output.flags));
+        flagged += output.flags.length;
+      }
+    });
+    this.write(stats, drainMs, flagged, unassigned);
+    await Promise.all(this.runtimes.map((r) => r.stop()));
+  }
+
+  private write(stats: DrainStats[], drainMs: number, flagged: number, unassigned: number): void {
+    this.runtimes.forEach((r, i) => writeFileSync(join(this.dir, `records-${i}.json`), JSON.stringify(r.records, null, 1)));
+    const run = { label: "predicted NVDA speech: run summary", wallMs: Date.now() - this.started, drainMs, workers: this.runtimes.map((r, i) => ({ bootMs: r.bootMs, ...stats[i] })), tests: this.seen.length, flags: flagged, recordsOutsideAnyTest: unassigned };
+    writeFileSync(join(this.dir, "run.json"), JSON.stringify(run, null, 2));
+    console.log(`announcement-emulator: predicted NVDA speech attached to ${this.seen.length} tests, ${flagged} flags; the runtime waited ${drainMs} ms at the end (${join(this.dir, "run.json")})`);
+  }
+}
+
+function readManifestOrNull(bundle: string) {
+  try { return readManifest(bundle); } catch { return null; }
+}
+

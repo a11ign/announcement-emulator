@@ -1,0 +1,7 @@
+node_modules/
+dist/
+test-results/
+sample-suite/node_modules/
+sample-suite/test-results/
+sample-suite/playwright-report/
+*.tgz

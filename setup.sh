@@ -6,13 +6,12 @@
 # Needs node 22 or later as well (emu/session.mjs uses the global WebSocket). Every address and revision below is the one the spike was measured with (docs/announcement-emulator-spike.md, Reproduction), and step 8 is mitmproxy, pinned, for the scripted replay (q3/replay/RUNBOOK.md). Needs git, curl, python3, dpkg-deb,
 # apt-get download (the Chrome libraries are fetched as .deb files and unpacked under libs/root; nothing is installed), and about 2.5 GB.
 set -eu
+HERE="$(cd "$(dirname "$0")" && pwd)"
 D="${EMU_DOWNLOADS:-$HOME/spikes/announcement-emulator-5661}"
 mkdir -p "$D" && cd "$D"
 
-NVDA_REV=5d92106f17e461dac62aa48257bbbf4183e033d0          # tag release-2026.1.1 (2026-05-18), the release the fleet runs
-CLDR_REV=6d3ba86c3963f023550a4b1aa8160945e77ca423          # nvaccess/nvda-cldr, the emoji and symbol names NVDA's tests are run with
-ARIA_REV=84b921a0                                          # w3c/aria-practices as NVDA's include/ pins it (the tests load pages from it)
-CHROME=155.0.8059.84                                       # Chrome for Testing, milestone 155 as the fleet's Edge 155.0.4283.x
+# the revisions, the Chrome and the Python this is built with: pins.env, which middleware/bundle/build.sh reads too
+. "$HERE/pins.env"
 UV_REL=https://github.com/astral-sh/uv/releases/latest/download/uv-x86_64-unknown-linux-gnu.tar.gz
 
 # 1. NVDA's own source, unmodified
@@ -30,9 +29,7 @@ ln -sf "$D/cldr-src/locale/en/cldr.dic" nvda-appdir/locale/en/cldr.dic
 if [ ! -d aria-practices/content ]; then rm -rf aria-practices; git clone -q --filter=blob:none https://github.com/w3c/aria-practices aria-practices; git -C aria-practices checkout -q "$ARIA_REV"; fi
 # 4. Chromium's Windows accessibility mapping, as read: the tables are generated from these (emu/gen_tables.py); ax_object.cc is Blink's, read for the access key (PN.keyboard_shortcut)
 mkdir -p chromium-src
-for p in ui/accessibility/platform/ax_platform_node_win.cc ui/accessibility/platform/ax_platform_node_base.cc ui/accessibility/platform/ax_platform_node_delegate.h \
-         ui/accessibility/ax_role_properties.cc ui/accessibility/ax_node.cc third_party/iaccessible2/ia2_api_all.idl \
-         third_party/blink/renderer/modules/accessibility/ax_object.cc; do
+for p in $CHROMIUM_FILES; do
   curl -fsSL "https://chromium.googlesource.com/chromium/src/+/refs/tags/$CHROME/$p?format=TEXT" | base64 -d > "chromium-src/$(basename "$p")"
 done
 # 5. the browser
@@ -57,10 +54,10 @@ for f in libs/debs/*.deb; do dpkg-deb -x "$f" libs/root; done
 # 7. Python 3.13 (NVDA's pyproject requires >=3.13,<3.14) and the packages NVDA's source imports that are not Windows-only
 mkdir -p tools
 if [ ! -x tools/uv ]; then curl -fsSL "$UV_REL" | tar -xz -C tools --strip-components=1; fi
-tools/uv python install 3.13.16
-[ -x q2/venv/bin/python ] || tools/uv venv --python 3.13.16 q2/venv
-tools/uv pip install --python q2/venv/bin/python configobj==5.0.9 fast-diff-match-patch==2.1.0 nh3==0.3.2 pyserial==3.5 requests==2.32.5 rpyc==6.0.2 schedule==1.2.2 url-normalize==2.2.1 plumbum==2.0.2
+tools/uv python install "$PYTHON"
+[ -x q2/venv/bin/python ] || tools/uv venv --python "$PYTHON" q2/venv
+tools/uv pip install --python q2/venv/bin/python $PYTHON_PACKAGES
 # 8. the replay proxy (A11-165, q3/replay/RUNBOOK.md): mitmproxy, pinned, in a virtualenv of its own (it records a page once and answers every request of a replay from the recording)
-[ -x replay/venv/bin/python ] || tools/uv venv --python 3.13.16 replay/venv
+[ -x replay/venv/bin/python ] || tools/uv venv --python "$PYTHON" replay/venv
 tools/uv pip install --python replay/venv/bin/python mitmproxy==12.2.3
 echo "ready: EMU_DOWNLOADS=$D"

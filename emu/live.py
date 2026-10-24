@@ -12,9 +12,12 @@ ARROWS = {'upArrow': ('ArrowUp', 0), 'downArrow': ('ArrowDown', 0), 'leftArrow':
           'control+leftArrow': ('ArrowLeft', 2), 'control+rightArrow': ('ArrowRight', 2), 'home': ('Home', 0), 'end': ('End', 0), 'control+home': ('Home', 2), 'control+end': ('End', 2)}
 
 class LiveDoc:
-    def __init__(self, case_html=None, url=None, port=8765, history=None):
-        """A system test's page (`case_html`, wrapped as ChromeLib._writeTestFile wraps it), or a live address (`url`)."""
-        if url is None:
+    def __init__(self, case_html=None, url=None, port=8765, history=None, session=None):
+        """A system test's page (`case_html`, wrapped as ChromeLib._writeTestFile wraps it), or a live address (`url`), or a browser this did not launch: `session`
+        answers what session.Session answers (dump, key, focus, action, scroll, click, eval, close), and nothing is launched or navigated (the middleware, A11-208)."""
+        if session is not None:
+            self.s = session; self.navigated = {}
+        elif url is None:
             key = hashlib.sha1(case_html.encode()).hexdigest()[:12]
             page = capture.CACHE / f'live-{key}.html'
             page.write_text(capture.WRAP.format(title='NVDA Browser Test Case', case=case_html))

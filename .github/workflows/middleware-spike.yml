@@ -1,0 +1,146 @@
+# The Playwright middleware spike (A11-208): the package is tested, the runtime bundle is built for each platform, and the sample suite, which has no screen-reader code in it, is run with the
+# middleware attached on a plain GitHub-hosted runner: no container, no Docker, no setup beyond `npm i -D` and `npx announcement-emulator install`.
+#
+# Nothing is published. The bundle travels as a workflow artifact and the `demo` jobs serve it from a static server on the runner, so that `install` does its real http download, its
+# checksum and its unpack. A released version would serve the bundle from a host; this spike has none (docs/playwright-middleware-spike.md).
+name: middleware-spike
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: middleware-spike-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # The package's own checks, and the parts of the runtime that need neither NVDA nor a browser.
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+        with: { package_json_file: middleware/package.json }
+      - uses: actions/setup-node@v7
+        with: { node-version: 22, cache: pnpm, cache-dependency-path: middleware/pnpm-lock.yaml }
+      - run: pnpm install --frozen-lockfile
+        working-directory: middleware
+      - run: pnpm run build
+        working-directory: middleware
+      - run: pnpm run lint
+        working-directory: middleware
+      - run: pnpm run typecheck
+        working-directory: middleware
+      - run: pnpm test
+        working-directory: middleware
+      - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_flags.py'
+      - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_pure.py'
+      - run: python3 -m unittest discover -s middleware/bundle -t middleware/bundle
+
+  # One bundle for each platform, built here: NVDA's source and the Chromium sources at their pins, the pinned Chrome, the companion extension, and a self-contained Python with the packages in it.
+  bundle:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { platform: linux-x64, runner: ubuntu-latest }
+          - { platform: darwin-arm64, runner: macos-latest }
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v7
+      # the Chrome libraries are downloaded as .deb files and unpacked into the bundle; nothing is installed on the runner
+      - if: matrix.platform == 'linux-x64'
+        run: sudo apt-get update
+      - id: build
+        run: |
+          start=$(date +%s)
+          middleware/bundle/build.sh ${{ matrix.platform }} "$RUNNER_TEMP/bundle"
+          echo "seconds=$(( $(date +%s) - start ))" >> "$GITHUB_OUTPUT"
+      # The archive is the same bytes for the same inputs (mktar.py), and the pin in the package is its sha256: build it a second time and compare.
+      - id: again
+        if: matrix.platform == 'linux-x64'
+        run: |
+          middleware/bundle/build.sh ${{ matrix.platform }} "$RUNNER_TEMP/bundle2"
+          if cmp -s "$RUNNER_TEMP/bundle/announcement-emulator-bundle-${{ matrix.platform }}.tar.gz" "$RUNNER_TEMP/bundle2/announcement-emulator-bundle-${{ matrix.platform }}.tar.gz"; then echo "same=true" >> "$GITHUB_OUTPUT"; else echo "same=false" >> "$GITHUB_OUTPUT"; fi
+      - run: |
+          { echo "### Bundle ${{ matrix.platform }}"; echo; echo "built in ${{ steps.build.outputs.seconds }} s"; echo; ls -l "$RUNNER_TEMP/bundle"; cat "$RUNNER_TEMP/bundle"/pin-*.json
+            echo; echo "built twice, byte-identical: ${{ steps.again.outputs.same || 'not checked on this platform' }}"; } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v7
+        with:
+          name: bundle-${{ matrix.platform }}
+          path: ${{ runner.temp }}/bundle
+          compression-level: 0
+          retention-days: 14
+
+  # The acceptance: the sample suite, with the middleware attached by the one line, after `npx announcement-emulator install`, on a plain runner with no container.
+  demo:
+    needs: [checks, bundle]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { platform: linux-x64, runner: ubuntu-latest, allow-failure: false }
+          # One probe, no promise: whether it works on macOS, and why not if it does not.
+          - { platform: darwin-arm64, runner: macos-latest, allow-failure: true }
+    runs-on: ${{ matrix.runner }}
+    continue-on-error: ${{ matrix.allow-failure }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+        with: { package_json_file: middleware/package.json }
+      - uses: actions/setup-node@v7
+        with: { node-version: 22 }
+      - uses: actions/download-artifact@v8
+        with: { name: "bundle-${{ matrix.platform }}", path: "${{ runner.temp }}/bundle" }
+      # The package is built here and packed as `npm pack` packs it; the pin it carries is the sha256 of the bundle just built.
+      - run: |
+          node bundle/write-pins.mjs "$(node -p "require('./package.json').version")" "$RUNNER_TEMP"/bundle/pin-*.json > pins.json
+          cat pins.json
+          pnpm install --frozen-lockfile && pnpm run build && npm pack --pack-destination "$RUNNER_TEMP"
+        working-directory: middleware
+      # A user's project: the sample suite, a package.json, `npm i -D` of the package and of Playwright. Playwright's own browsers are not installed: the tests use the bundle's Chrome.
+      - run: |
+          cp -R middleware/sample-suite "$RUNNER_TEMP/project"
+          cd "$RUNNER_TEMP/project"
+          npm i -D "$RUNNER_TEMP"/a11ign-announcement-emulator-*.tgz @playwright/test@1.64.1
+      # The bundle is served over http from this runner, as a host would serve it; `install` downloads it, refuses it unless it is the pinned sha256, and unpacks it into the cache.
+      - run: |
+          (cd "$RUNNER_TEMP/bundle" && python3 -m http.server 8099 --bind 127.0.0.1 >/dev/null 2>&1 &)
+          sleep 2
+          cd "$RUNNER_TEMP/project"
+          export ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST=http://127.0.0.1:8099
+          { time npx announcement-emulator install; } 2>&1 | tee "$RUNNER_TEMP/install.log"
+          npx announcement-emulator doctor
+      # Run 1: the one line (playwright.config.ts). Run 2: no line at all (`announcement-emulator test` wraps playwright.plain.config.ts). Run 3: the same suite without the middleware.
+      - id: run
+        run: |
+          cd "$RUNNER_TEMP/project"
+          { time npx playwright test --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-with.log"
+          node check-report.mjs
+          cp -R test-results/announcement-emulator "$RUNNER_TEMP/announcement-emulator-run"
+          rm -rf test-results
+          mv playwright-report "$RUNNER_TEMP/playwright-report-one-line"
+          { time npx announcement-emulator test --config playwright.plain.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-zero.log"
+          node check-report.mjs
+          mv playwright-report "$RUNNER_TEMP/playwright-report-zero-lines"
+          rm -rf test-results
+          { time npx playwright test --config playwright.plain.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-without.log" || true
+      - if: always()
+        run: |
+          { echo "### Sample suite on ${{ matrix.platform }} (${{ matrix.runner }}, no container)"; echo; cat "$RUNNER_TEMP/install.log" 2>/dev/null || true
+            for f in run-with run-zero run-without; do echo; echo "#### $f"; tail -8 "$RUNNER_TEMP/$f.log" 2>/dev/null || true; done
+            echo; echo '```'; cat "$RUNNER_TEMP/announcement-emulator-run/run.json" 2>/dev/null || true; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: sample-suite-report-${{ matrix.platform }}
+          path: |
+            ${{ runner.temp }}/playwright-report-one-line
+            ${{ runner.temp }}/playwright-report-zero-lines
+            ${{ runner.temp }}/announcement-emulator-run
+            ${{ runner.temp }}/run-*.log
+            ${{ runner.temp }}/install.log
+          if-no-files-found: warn

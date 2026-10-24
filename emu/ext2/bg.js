@@ -2,22 +2,7 @@
 const COLLECTOR = 'http://127.0.0.1:__PORT__/';      // session.mjs writes the session's port here
 let TARGET = '';
 const post = (kind, body) => fetch(COLLECTOR + kind, {method: 'POST', body: JSON.stringify(body)}).catch(() => {});
-const IX = new Map();
-const UID = new WeakMap(); let nextUid = 0;      // unlike IX, never cleared: Chromium keeps one AutomationNode for an AX node for as long as the node lives, so its id says "the same node" across two dumps (IX is renumbered at every dump)
-const uid = n => { if (!UID.has(n)) UID.set(n, nextUid++); return UID.get(n); };
-function number(n) { if (!IX.has(n)) IX.set(n, IX.size); for (const c of n.children) number(c); }
-function describe(node) {
-  const out = {};
-  for (const k in node) {
-    let v; try { v = node[k]; } catch (e) { continue; }
-    if (typeof v === 'function') continue;
-    if (v && typeof v === 'object' && !Array.isArray(v)) { if (k !== 'state' && k !== 'location' && k !== 'unclippedLocation') continue; }
-    if (Array.isArray(v) && v.length && typeof v[0] === 'object') { if (v[0] && 'role' in v[0]) out[k + 'Ix'] = v.map(x => IX.has(x) ? IX.get(x) : -1); else { try { out[k] = JSON.parse(JSON.stringify(v)); } catch (e) {} } continue; }
-    out[k] = v;
-  }
-  return out;
-}
-function walk(n, depth, acc) { acc.push({depth, ix: IX.get(n), uid: uid(n), ...describe(n)}); for (const c of n.children) walk(c, depth + 1, acc); return acc; }
+importScripts('tree.js');      // IX, uid, number, describe, walk
 function findWeb(n) { if (n.role === 'rootWebArea' && n.url && n.url.startsWith(TARGET)) return n; for (const c of n.children) { const r = findWeb(c); if (r) return r; } }
 function dump(seq) {
   chrome.automation.getDesktop((desktop) => {
