@@ -85,6 +85,19 @@ class Replay(unittest.TestCase):
         self.assertEqual(sweep['treeAt'], max(s['t'] for s in snaps))
         self.assertGreater(sweep['treeAt'], min(s['t'] for s in snaps))
 
+    def test_a_browser_launched_again_is_heard_as_the_first_was(self):
+        """Playwright replaces a worker after a timeout; the new browser's extension numbers its snapshots and its pages from the start. Two sessions run one after the other must give twice one session's speech."""
+        import gzip
+        with gzip.open(HERE / 'fixtures' / 'basket-live.jsonl.gz', 'rt') as f: rows = f.read().splitlines()
+        with tempfile.TemporaryDirectory() as d:
+            path = pathlib.Path(d) / 'two.jsonl.gz'
+            with gzip.open(path, 'wt') as f: f.write('\n'.join(rows + [json.dumps({'k': 'ready', 'arrived': 0, 'body': {'t': 1}})] + rows) + '\n')
+            out = subprocess.run([str(PYTHON), '-I', str(HERE / 'replay.py'), str(path), '--no-sweeps'], capture_output=True, text=True, env={**os.environ, 'EMU_DOWNLOADS': str(DOWNLOADS)}, timeout=300)
+        self.assertEqual(out.returncode, 0, out.stderr[-1500:])
+        records = [r for r in json.loads(out.stdout)['records'] if r['kind'] == 'speech']
+        self.assertEqual([r['text'] for r in records if r['cause'] == 'live'], ['1 item in your basket', '2 items in your basket'] * 2)
+        self.assertEqual(sum(r['cause'] == 'load' for r in records), 2)      # the second browser's page is a new page, and its load is heard
+
     def test_a_dialog_is_a_state_of_its_own(self):
         sweeps = [r['trigger'] for r in replay('delete-dialog')['records'] if r['kind'] == 'sweep']
         self.assertEqual(sorted(sweeps), ['dialog', 'load'])

@@ -21,6 +21,9 @@ def replay(path, **options):
         for line in f:
             row = json.loads(line)
             if row['k'] == 'page': predictor.on_page_event(row['body'])
+            elif row['k'] == 'ready':      # the extension started again (main.py)
+                for snap in ordered.ready(float('inf'), final=True): predictor.on_snapshot(snap)
+                ordered.reset(); predictor.restart()
             else:
                 ordered.add(row['body'], row['arrived'])
                 for snap in ordered.ready(row['arrived']): predictor.on_snapshot(snap)

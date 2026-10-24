@@ -78,7 +78,7 @@ def main():
     dump = open(os.environ['AE_DUMP'], 'a', buffering=1) if os.environ.get('AE_DUMP') else None      # a log of what arrived and when, for finding what a run lost
     record = open(os.environ['AE_RECORD'], 'a', buffering=1) if os.environ.get('AE_RECORD') else None      # everything the runtime was told, whole, for replay.py
     def note(kind, body, arrived):
-        if record and kind in ('snap', 'page'): record.write(json.dumps({'k': kind, 'arrived': arrived, 'body': body}, separators=(',', ':')) + '\n')
+        if record and kind in ('snap', 'page', 'ready'): record.write(json.dumps({'k': kind, 'arrived': arrived, 'body': body}, separators=(',', ':')) + '\n')
         if not dump: return
         row = {'kind': kind, 'arrived': round(arrived * 1000), **{k: body[k] for k in ('seq', 't', 'page', 'why', 'url', 'ms', 'key', 'cmd') if k in body}}
         if kind == 'snap': f = next((n for n in body['nodes'] if n['ix'] == body['focusIx']), None); row.update(nodes=len(body['nodes']), focus=f and f'{f["role"]} {f.get("name")}')
@@ -112,6 +112,8 @@ def main():
         note(kind, body, arrived)
         if kind == 'snap': ordered.add(body, arrived); snapshots()
         elif kind == 'page': handle('page', body)
+        elif kind == 'ready':      # the extension started again: what it told before is done with, and its numbers begin again
+            snapshots(final=True); ordered.reset(); predictor.restart(); handle(kind, body, arrived)
         elif kind == 'cmd':
             if body['cmd'] == 'quit': break
             if body['cmd'] == 'drain':

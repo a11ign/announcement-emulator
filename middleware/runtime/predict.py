@@ -333,6 +333,13 @@ class Predictor:
                    'stops': {m['type']: [m['prevStop'], m['nextStop']] for m in marks}, 'notDelivered': len(session.refused), 'ms': round(ms)})
         return True
 
+    def restart(self):
+        """The extension's service worker started again (the browser was launched again, as it is when Playwright replaces a worker after a timeout): its numbers for nodes and pages begin again, so what was known
+        of the pages is not about the ones that will come. Their states are swept first."""
+        self.events_until(float('inf'), final=True)
+        for page in self.pages.values(): self.end_state(page)
+        self.pages = {}; self.doc = None; self.doc_page = None
+
     # ---- the end
     def finish(self):
         self.events_until(float('inf'), final=True)
