@@ -179,7 +179,7 @@ class Cdp:
         with self.wake: self.wanted.setdefault(session, set()).add(why); self.wake.notify()
 
     def _trees(self):
-        """Reads the trees of the pages that have changed, one page at a time, and rests as long as a read took (so that reading is at most half the time of a busy page)."""
+        """Reads the trees of the pages that have changed, one page at a time, and rests as long as a read took when that was more than a tenth of a second (so that reading is at most half the time of a busy page)."""
         import axtree
         while not self.stopped:
             with self.wake:
@@ -202,7 +202,7 @@ class Cdp:
             number = self.page_numbers.setdefault((generation, target), len(self.page_numbers))
             took = time.time() - started
             self.on_tree({'kind': 'snap', 'seq': self.seq, 't': round(started * 1000), 'page': number, 'why': sorted(w for w in why if w), 'ms': round(took * 1000, 1), **converted})
-            time.sleep(min(took, 0.5))
+            if took > 0.1: time.sleep(min(took, 0.5))      # a page that is slow to read is not read more than half the time; a quick one is read again at once, because a test that is quick is closed in a few tens of milliseconds
 
     def _install(self, session, target):
         if target in self.installed: return

@@ -1,0 +1,762 @@
+{
+ "status": {
+  "https://check-for-flooding.service.gov.uk/river-and-sea-levels": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "field",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "landmarks",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    }
+   ]
+  },
+  "https://find-and-update.company-information.service.gov.uk/company/00000006": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "field",
+     "fleet": true,
+     "passive": false
+    }
+   ]
+  },
+  "https://design-system.service.gov.uk/components/tabs/": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "title",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "landmarks",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    }
+   ]
+  },
+  "https://tfl.gov.uk/plan-a-journey/": {
+   "status": "comparable",
+   "unstable": []
+  },
+  "https://service-manual.nhs.uk/design-system/components/table": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "title",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "field",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "lists",
+     "fleet": false,
+     "passive": false
+    }
+   ]
+  },
+  "https://design-system.service.gov.uk/components/date-input/": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "title",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "landmarks",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "graphics",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "lists",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "frames",
+     "fleet": true,
+     "passive": false
+    }
+   ]
+  }
+ },
+ "units": {
+  "field": [
+   0,
+   1
+  ],
+  "formFields": [
+   12,
+   22
+  ],
+  "frames": [
+   14,
+   15
+  ],
+  "graphics": [
+   3,
+   7
+  ],
+  "headings": [
+   11,
+   11
+  ],
+  "landmarks": [
+   24,
+   24
+  ],
+  "links": [
+   67,
+   74
+  ],
+  "lists": [
+   27,
+   30
+  ],
+  "stops": [
+   33,
+   37
+  ],
+  "title": [
+   3,
+   3
+  ],
+  "typed": [
+   12,
+   18
+  ]
+ },
+ "misses": [
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "graphics",
+   "i": 0,
+   "expected": "banner landmark, GOV dot UK, link",
+   "predicted": "banner landmark, GOV dot UK, graphic, link",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "graphics",
+   "i": 1,
+   "expected": "main landmark, ￼, graphic, button",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "lists",
+   "i": 0,
+   "expected": "main landmark, Related content, navigation landmark, list, with 6 items, Get flood warnings by phone, text or email",
+   "predicted": "main landmark, Related content, navigation landmark, list, with 6 items, Get flood warnings by phone, text or email, link",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "lists",
+   "i": 1,
+   "expected": "content info landmark, list, with 4 items, Accessibility statement",
+   "predicted": "content info landmark, list, with 4 items, Accessibility statement, link, Cookies, link, Privacy notice, link, Terms and conditions",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "frames",
+   "i": 0,
+   "expected": "Not supported in this document",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "stops",
+   "i": 6,
+   "expected": "Companies House does not check the accuracy of the information filed (link opens a new window), link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "stops",
+   "i": 10,
+   "expected": "Advanced company search Link opens in new window, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "stops",
+   "i": 17,
+   "expected": "Tell us what you think of this service (link opens a new window), link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "stops",
+   "i": 18,
+   "expected": "Is there anything wrong with this page? (link opens a new window), link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "field",
+   "i": 0,
+   "expected": "Search the site, edit, focused, Search, blank",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 0,
+   "expected": "1",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 1,
+   "expected": "2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 2,
+   "expected": "3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 3,
+   "expected": "4",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 4,
+   "expected": "5",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 5,
+   "expected": "6",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 1,
+   "expected": "main landmark, section, clickable, Journey preferences, grouping, Plan my journey, button",
+   "predicted": "Accept only essential cookies, button",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 3,
+   "expected": "From location, combo box, expanded, has auto complete, editable, opens list, From",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 4,
+   "expected": "banner landmark, Open Favourites, menu button, collapsed, sub Menu",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 5,
+   "expected": "search landmark, Search the site, edit, Search",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 6,
+   "expected": "Main menu, navigation landmark, list, with 5 items, clickable, Moremenu options, button, collapsed",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 7,
+   "expected": "Accept all cookies, button",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 8,
+   "expected": "Accept only essential cookies, button",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 9,
+   "expected": "Manage cookies, button",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 10,
+   "expected": "Open Favourites, menu button, expanded, sub Menu",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 11,
+   "expected": "main landmark, section, clickable, Journey preferences, grouping, From location, combo box, expanded, has auto complete, editable, opens list, From",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "graphics",
+   "i": 1,
+   "expected": "content info landmark, Other public bodies, navigation landmark, Mayor of London, graphic, menu button, expanded, sub Menu",
+   "predicted": "content info landmark, Other public bodies, navigation landmark, Mayor of London, graphic, menu button, collapsed, sub Menu",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "graphics",
+   "i": 2,
+   "expected": "list, with 7 items, Greater London Authority, graphic",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 27,
+   "expected": "banner landmark, Main menu, navigation landmark, list, with 5 items, Fares, link",
+   "predicted": "banner landmark, clickable, , Now you can save your favourites Take a look, link, menu button, collapsed, sub Menu",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 47,
+   "expected": "Other public bodies, navigation landmark, list, with 7 items, Mayor of London, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 48,
+   "expected": "London Assembly, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 49,
+   "expected": "London and Partners, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 50,
+   "expected": "Metropolitan Police Service, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 51,
+   "expected": "London Fire Brigade, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 52,
+   "expected": "The Mayor's Office for Policing and Crime, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "lists",
+   "i": 6,
+   "expected": "Other public bodies, navigation landmark, list, with 7 items, Greater London Authority, graphic",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  }
+ ]
+}

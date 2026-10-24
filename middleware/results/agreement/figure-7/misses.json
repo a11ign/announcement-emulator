@@ -1,0 +1,530 @@
+{
+ "status": {
+  "https://check-for-flooding.service.gov.uk/river-and-sea-levels": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "landmarks",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    }
+   ]
+  },
+  "https://find-and-update.company-information.service.gov.uk/company/00000006": {
+   "status": "comparable",
+   "unstable": []
+  },
+  "https://design-system.service.gov.uk/components/tabs/": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "landmarks",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    }
+   ]
+  },
+  "https://tfl.gov.uk/plan-a-journey/": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "headings",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "landmarks",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "formFields",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "graphics",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "links",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "lists",
+     "fleet": true,
+     "passive": false
+    }
+   ]
+  },
+  "https://service-manual.nhs.uk/design-system/components/table": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "lists",
+     "fleet": false,
+     "passive": true
+    }
+   ]
+  },
+  "https://design-system.service.gov.uk/components/date-input/": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "landmarks",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "graphics",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "lists",
+     "fleet": false,
+     "passive": true
+    }
+   ]
+  }
+ },
+ "units": {
+  "field": [
+   2,
+   3
+  ],
+  "formFields": [
+   9,
+   9
+  ],
+  "frames": [
+   17,
+   21
+  ],
+  "graphics": [
+   2,
+   4
+  ],
+  "headings": [
+   5,
+   5
+  ],
+  "landmarks": [
+   13,
+   15
+  ],
+  "links": [
+   17,
+   17
+  ],
+  "lists": [
+   20,
+   22
+  ],
+  "stops": [
+   25,
+   29
+  ],
+  "title": [
+   6,
+   6
+  ],
+  "typed": [
+   12,
+   18
+  ]
+ },
+ "misses": [
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "graphics",
+   "i": 0,
+   "expected": "banner landmark, GOV dot UK, link",
+   "predicted": "banner landmark, GOV dot UK, graphic, link",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "graphics",
+   "i": 1,
+   "expected": "main landmark, ￼, graphic, button",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "lists",
+   "i": 0,
+   "expected": "main landmark, Related content, navigation landmark, list, with 6 items, Get flood warnings by phone, text or email",
+   "predicted": "main landmark, Related content, navigation landmark, list, with 6 items, Get flood warnings by phone, text or email, link",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "lists",
+   "i": 1,
+   "expected": "content info landmark, list, with 4 items, Accessibility statement",
+   "predicted": "content info landmark, list, with 4 items, Accessibility statement, link, Cookies, link, Privacy notice, link, Terms and conditions",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "frames",
+   "i": 0,
+   "expected": "Not supported in this document",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "stops",
+   "i": 6,
+   "expected": "Companies House does not check the accuracy of the information filed (link opens a new window), link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "stops",
+   "i": 10,
+   "expected": "Advanced company search Link opens in new window, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "stops",
+   "i": 17,
+   "expected": "Tell us what you think of this service (link opens a new window), link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "stops",
+   "i": 18,
+   "expected": "Is there anything wrong with this page? (link opens a new window), link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "landmarks",
+   "i": 0,
+   "expected": "main landmark, search landmark, Search for a company or officer",
+   "predicted": "main landmark, search landmark, clickable, Search for a company or officer",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "field",
+   "i": 0,
+   "expected": "Search the site, edit, focused, Search, blank",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 0,
+   "expected": "1",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 1,
+   "expected": "2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 2,
+   "expected": "3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 3,
+   "expected": "4",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 4,
+   "expected": "5",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 5,
+   "expected": "6",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "landmarks",
+   "i": 5,
+   "expected": "search landmark, section, Search the NHS digital service manual",
+   "predicted": "search landmark, section, clickable, Search the NHS digital service manual",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "frames",
+   "i": 3,
+   "expected": "Date input to ask for date of birth – Date input example, frame, What is your date of birth?, grouping, What is your date of birth?, heading, level 1",
+   "predicted": "Date input to ask for date of birth – Date input example, frame, about:blank",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "frames",
+   "i": 4,
+   "expected": "Date input with errors – Date input example, frame, When was your passport issued?, grouping, When was your passport issued?, heading, level 1",
+   "predicted": "Date input with errors – Date input example, frame, about:blank",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "frames",
+   "i": 5,
+   "expected": "Dates with errors – Date input example, frame, When was your passport issued?, grouping, When was your passport issued?, heading, level 1",
+   "predicted": "Dates with errors – Date input example, frame, about:blank",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": true
+  }
+ ]
+}

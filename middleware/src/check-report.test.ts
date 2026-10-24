@@ -67,11 +67,11 @@ test("with --lower-fidelity a run through the DevTools port passes when most tes
   assert.match(result.stdout, /a page load for 2 of 2 tests, tree through the DevTools port/);
 });
 
-test("with --lower-fidelity a flag the suite is not built to raise fails the run, and so does an output that does not say where its tree came from", () => {
+test("with --lower-fidelity a flag the suite is not built to raise is counted and printed and does not fail the run, but an output that does not say where its tree came from does", () => {
   const ok = { treeSource: "devtools", predictedSpeech: speech, sweeps: sweep };
   const text = `PREDICTED NVDA SPEECH: ADVISORY, NOT A READING OF NVDA, NEVER EVIDENCE\n${lower}`;
-  const flagged = check("--lower-fidelity", ...Object.values(report([{ title: "a page", data: { ...ok, flags: [{ flag: "unheard-error" }] }, text }], 5)));
-  assert.equal(flagged.status, 1); assert.match(flagged.stderr, /flag unheard-error was not wanted/);
+  const flagged = check("--lower-fidelity", ...Object.values(report([{ title: "the cookie panel opens", data: { ...ok, flags: [{ flag: "silent-dialog" }] }, text }, { title: "a page", data: { ...ok, flags: [{ flag: "unheard-error" }] }, text }], 5)));
+  assert.equal(flagged.status, 0, flagged.stderr); assert.match(flagged.stdout, /1 flag\(s\) the extension's run does not raise: a page: unheard-error/);
   const unsaid = check("--lower-fidelity", ...Object.values(report([{ title: "a page", data: { ...ok, treeSource: "extension" } }], 5)));
   assert.equal(unsaid.status, 1); assert.match(unsaid.stderr, /does not say its tree came through the DevTools port/);
 });
