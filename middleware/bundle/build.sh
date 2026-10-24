@@ -65,7 +65,14 @@ curl -fsSL -o "$W/python.tar.gz" "https://github.com/astral-sh/python-build-stan
 tar -xzf "$W/python.tar.gz" -C "$B"
 # fast-diff-match-patch has no wheel for 3.13 and is built here (so a C++ compiler is needed); setuptools 85 refuses its setup.cfg, so the build uses the one it was measured with
 "$B/python/bin/python3" -m pip install --quiet --no-cache-dir --disable-pip-version-check "setuptools==$SETUPTOOLS" wheel
+# what the build leaves in the extension it compiles (a build id, the build directory in its debug information) and in the scripts pip writes (the interpreter's absolute path) differs from one build to the next
+# and from one place to the next: none is wanted, so the compiler is told to leave it out and the scripts, which nothing here runs, are removed after
+export SOURCE_DATE_EPOCH=1767225600 CFLAGS="-g0 -ffile-prefix-map=$W=/build" CXXFLAGS="-g0 -ffile-prefix-map=$W=/build" LDFLAGS="-Wl,--build-id=none"
 CC="${CC:-cc}" CXX="${CXX:-c++}" "$B/python/bin/python3" -m pip install --quiet --no-cache-dir --disable-pip-version-check --no-build-isolation $PYTHON_PACKAGES      # python-build-standalone was built with clang; the host's compiler is what is there
+# the console scripts pip wrote name the interpreter by the path it was built at, and the records of what pip installed hold their hashes; neither is used
+find "$B/python/bin" -type f ! -name 'python*' ! -name 'pip*' -delete
+find "$B/python/lib" -path '*-info/RECORD' -delete
+find "$B/python/bin" -name 'pip*' -delete      # and pip's own scripts, for the same reason
 # 7. this repository's runtime: the emulator, the sweep it runs, the companion extension, and the middleware's runtime process
 cd "$REPO"
 git ls-files --cached --others --exclude-standard -- 'emu/*.py' emu/tables.json 'emu/ext2' emu/langnames q1/ext-id.txt q2/stubs.py q3/sweep.py q3/livepage.py q3/shapes.py q3/nvda-fleet.ini middleware/runtime LICENSE \
