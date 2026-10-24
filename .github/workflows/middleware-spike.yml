@@ -133,11 +133,20 @@ jobs:
           export BASELINE_CHROME="$chrome" BASELINE_LIBS="$bundle/libs/root/usr/lib/x86_64-linux-gnu"
           { time npx playwright test --config playwright.baseline.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-without.log"
           node cost.mjs --project fixtures --runs 3 --workers 1,2,4 --out "$RUNNER_TEMP/cost.json" 2>&1 | tee "$RUNNER_TEMP/cost.log"
+      # Whether the companion extension is up in this platform's Chrome, and has chrome.automation: the macOS probe's answer, and the ubuntu one beside it.
+      - if: always()
+        run: |
+          cd "$RUNNER_TEMP/project"
+          cache="$(ls -d ~/.cache/announcement-emulator/*/ ~/Library/Caches/announcement-emulator/*/ 2>/dev/null | head -1)"
+          if [ "$(uname)" = Darwin ]; then export BASELINE_CHROME="$cache/chrome/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"; else export BASELINE_CHROME="$cache/chrome/chrome-linux64/chrome"; fi
+          export BASELINE_LIBS="$cache/libs/root/usr/lib/x86_64-linux-gnu" EXTENSION_DIR="$RUNNER_TEMP/project/test-results/announcement-emulator/extension-0" EXTENSION_ID="$(cat "$cache/q1/ext-id.txt")"
+          ls "$EXTENSION_DIR" > /dev/null 2>&1 || { mkdir -p "$RUNNER_TEMP/ext" && cp -R "$cache/emu/ext2/." "$RUNNER_TEMP/ext/" && EXTENSION_DIR="$RUNNER_TEMP/ext"; }
+          node probe-extension.mjs 2>&1 | tee "$RUNNER_TEMP/probe-extension.log" || true
       - if: always()
         run: |
           { echo "### Sample suite on ${{ matrix.platform }} (${{ matrix.runner }}, no container)"; echo; cat "$RUNNER_TEMP/install.log" 2>/dev/null || true
             for f in run-with run-zero run-without; do echo; echo "#### $f"; tail -8 "$RUNNER_TEMP/$f.log" 2>/dev/null || true; done
-            echo; echo '```'; cat "$RUNNER_TEMP/announcement-emulator-run/run.json" 2>/dev/null || true; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+            echo; echo '```'; cat "$RUNNER_TEMP/announcement-emulator-run/run.json" 2>/dev/null || true; echo '```'; echo '#### extension probe'; echo '```'; cat "$RUNNER_TEMP/probe-extension.log" 2>/dev/null || true; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
       - if: always()
         uses: actions/upload-artifact@v7
         with:
@@ -149,5 +158,6 @@ jobs:
             ${{ runner.temp }}/project/test-results/announcement-emulator
             ${{ runner.temp }}/run-*.log
             ${{ runner.temp }}/cost.*
+            ${{ runner.temp }}/probe-extension.log
             ${{ runner.temp }}/install.log
           if-no-files-found: warn
