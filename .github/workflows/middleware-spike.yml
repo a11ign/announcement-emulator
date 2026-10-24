@@ -83,10 +83,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { platform: linux-x64, runner: ubuntu-latest, check: "" }
-          # One probe, no promise: whether it works on macOS, and why not if it does not. The answer in the write-up (Q7) is that Chrome gives the extension no desktop tree there, so the probe passes when the tests pass,
-          # carry their two labelled attachments and nothing was read, predicted or flagged; it fails if macOS starts to give a tree, because the write-up would then be out of date.
-          - { platform: darwin-arm64, runner: macos-latest, check: "--expect-no-tree" }
+          # `tree` is where the first two runs get the accessibility tree (the default of the platform), `other` the third run's: each platform is run with both sources. The extension's source gives macOS no tree
+          # (chrome.automation.getDesktop never answers there), so that run is held to saying so (--expect-no-tree), and fails if macOS starts to give one, because the write-up would then be out of date.
+          # The DevTools source is the lower-fidelity one ADR 0047 allows; its runs are held to --lower-fidelity.
+          - { platform: linux-x64, runner: ubuntu-latest, check: "", other: devtools, other-check: "--lower-fidelity" }
+          - { platform: darwin-arm64, runner: macos-latest, check: "--lower-fidelity", other: extension, other-check: "--expect-no-tree" }
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v7
@@ -115,7 +116,7 @@ jobs:
           export ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST=http://127.0.0.1:8099
           { time npx announcement-emulator install; } 2>&1 | tee "$RUNNER_TEMP/install.log"
           npx announcement-emulator doctor
-      # Run 1: the one line (playwright.config.ts). Run 2: no line at all (`announcement-emulator test` wraps playwright.plain.config.ts). Run 3: the same suite without the middleware.
+      # Run 1: the one line (playwright.config.ts). Run 2: no line at all (`announcement-emulator test` wraps playwright.plain.config.ts). Run 3: the platform's other tree source. Run 4: the same suite without the middleware.
       - id: run
         run: |
           cd "$RUNNER_TEMP/project"
@@ -127,6 +128,12 @@ jobs:
           { time npx announcement-emulator test --config playwright.plain.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-zero.log"
           node check-report.mjs ${{ matrix.check }}
           mv playwright-report "$RUNNER_TEMP/playwright-report-zero-lines"
+          rm -rf test-results
+          # Run 3: the platform's other tree source.
+          { time ANNOUNCEMENT_EMULATOR_TREE=${{ matrix.other }} npx playwright test --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-${{ matrix.other }}.log"
+          node check-report.mjs ${{ matrix.other-check }}
+          cp -R test-results/announcement-emulator "$RUNNER_TEMP/announcement-emulator-run-${{ matrix.other }}"; cp test-results/report.json "$RUNNER_TEMP/announcement-emulator-run-${{ matrix.other }}/report.json"
+          mv playwright-report "$RUNNER_TEMP/playwright-report-${{ matrix.other }}"
           rm -rf test-results
           [ -z "${{ matrix.check }}" ] || exit 0      # the cost is measured where a tree is read
           cache="${ANNOUNCEMENT_EMULATOR_PATH:-$(node -e "const os=require('os'),p=require('path');console.log(process.platform==='darwin'?p.join(os.homedir(),'Library/Caches/announcement-emulator'):p.join(process.env.XDG_CACHE_HOME||p.join(os.homedir(),'.cache'),'announcement-emulator'))")}"
@@ -160,6 +167,8 @@ jobs:
             ${{ runner.temp }}/playwright-report-one-line
             ${{ runner.temp }}/playwright-report-zero-lines
             ${{ runner.temp }}/announcement-emulator-run
+            ${{ runner.temp }}/announcement-emulator-run-${{ matrix.other }}
+            ${{ runner.temp }}/playwright-report-${{ matrix.other }}
             ${{ runner.temp }}/project/test-results/announcement-emulator
             ${{ runner.temp }}/run-*.log
             ${{ runner.temp }}/cost.*

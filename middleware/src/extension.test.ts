@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { browserArgs, prepareExtension } from "./extension.ts";
+import { browserArgs, prepareExtension, treeSource } from "./extension.ts";
 
 test("the extension copy names passive.js as its service worker and carries the runtime's port, and the bundle's own copy is untouched", () => {
   const bundle = mkdtempSync(join(tmpdir(), "ae-ext-"));
@@ -31,4 +31,17 @@ test("tree.js lists a node's fields in the order the node has them, the fields t
   const described = describeNode(node, other);
   assert.deepEqual(Object.keys(described), ["role", "name", "labelledByIx", "value", "children", "state", "tabs"]);
   assert.deepEqual(described.labelledByIx, [1]);
+});
+
+test("the tree is read by the extension where the browser has a desktop tree, and through the DevTools port on macOS, which has none; the environment decides when it is set", () => {
+  assert.equal(treeSource("linux", {}), "extension");
+  assert.equal(treeSource("win32", {}), "extension");
+  assert.equal(treeSource("darwin", {}), "devtools");
+  assert.equal(treeSource("darwin", { ANNOUNCEMENT_EMULATOR_TREE: "extension" }), "extension");
+  assert.equal(treeSource("linux", { ANNOUNCEMENT_EMULATOR_TREE: "devtools" }), "devtools");
+  assert.equal(treeSource("linux", { ANNOUNCEMENT_EMULATOR_TREE: "nonsense" }), "extension");
+});
+
+test("with the tree through the DevTools port the browser gets no extension flag", () => {
+  assert.deepEqual(browserArgs("", "id", { collector: 1, cdp: 2 }, "devtools"), ["--force-renderer-accessibility", "--remote-debugging-port=2"]);
 });

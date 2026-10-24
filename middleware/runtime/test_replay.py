@@ -142,4 +142,21 @@ class Replay(unittest.TestCase):
         self.assertEqual(keys(replay('tab-order')['records']) & banned, set())
 
 
+@unittest.skipUnless(HAVE, "needs the emulator's virtualenv and NVDA's source (setup.sh)")
+class ReplayDevtools(unittest.TestCase):
+    """The same sessions with the tree read through the DevTools port (axtree.py, where the extension is given none: macOS). Recorded with ANNOUNCEMENT_EMULATOR_TREE=devtools."""
+    def test_every_tab_stop_is_spoken(self):
+        focus = [t for c, t in said('devtools-tab-order') if c == 'focus']
+        self.assertEqual(focus, ['Home, link', 'Basket, link', 'main landmark | form landmark | Full name, edit, blank', 'Email address, edit, blank', 'Send me news, check box, not checked', 'Create account, button'])
+        self.assertTrue(said('devtools-tab-order')[0][1].startswith('Create an account - Example shop, document'))
+
+    def test_typing_is_echoed_and_a_live_region_is_said(self):
+        self.assertEqual([t for c, t in said('devtools-typing') if c == 'typed'], ['A', 'd', 'a'])
+        self.assertEqual([t for c, t in said('devtools-basket-live') if c == 'live'], ['1 item in your basket', '2 items in your basket'])
+
+    def test_a_button_with_no_name_is_flagged_and_the_page_with_none_is_not(self):
+        self.assertEqual(flagged('devtools-toolbar-unnamed'), ['focus-without-name'])
+        self.assertEqual(flagged('devtools-tab-order'), [])
+
+
 if __name__ == '__main__': unittest.main()

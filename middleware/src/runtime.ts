@@ -3,7 +3,7 @@ import { mkdirSync, openSync } from "node:fs";
 import { createInterface } from "node:readline";
 import { dirname } from "node:path";
 import { layout } from "./bundle.ts";
-import type { BrowserPorts } from "./extension.ts";
+import type { BrowserPorts, TreeSource } from "./extension.ts";
 
 /** One thing the runtime predicted or noticed. `kind` is speech, observe, sweep, flag, error or verify; `t` is the page's clock in ms, as Playwright's is. */
 export interface RuntimeRecord { kind: string; t: number; [field: string]: unknown }
@@ -25,12 +25,12 @@ export class Runtime {
 
   readonly ports: BrowserPorts;
 
-  constructor(bundle: string, ports: BrowserPorts, options: { sweeps?: boolean; log?: string } = {}) {
+  constructor(bundle: string, ports: BrowserPorts, options: { sweeps?: boolean; log?: string; tree?: TreeSource } = {}) {
     this.ports = ports;
     const files = layout(bundle);
     if (options.log) mkdirSync(dirname(options.log), { recursive: true });
     const stderr = options.log ? openSync(options.log, "w") : "ignore";
-    this.child = spawn(files.python, ["-I", files.runtime, "--port", String(ports.collector), "--cdp", String(ports.cdp), ...(options.sweeps === false ? ["--no-sweeps"] : []), ...(process.env.ANNOUNCEMENT_EMULATOR_REPORT_FOCUS ? ["--report-focus"] : [])], {
+    this.child = spawn(files.python, ["-I", files.runtime, "--port", String(ports.collector), "--cdp", String(ports.cdp), "--tree", options.tree ?? "extension", ...(options.sweeps === false ? ["--no-sweeps"] : []), ...(process.env.ANNOUNCEMENT_EMULATOR_REPORT_FOCUS ? ["--report-focus"] : [])], {
       env: { ...process.env, EMU_DOWNLOADS: bundle, PYTHONDONTWRITEBYTECODE: "1", PYTHONUTF8: "1" },
       stdio: ["pipe", "pipe", stderr],
     });

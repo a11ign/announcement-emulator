@@ -55,8 +55,8 @@ function attach(use: Use, bundle: string, run: RunEnv | null): Use {
   const launchOptions: Launch = {
     ...given,
     executablePath: files.chrome,
-    args: [...(given.args ?? []), ...browserArgs(run.extensions[index]!, extensionId, run.ports[index]!)],
-    ignoreDefaultArgs: ignoring(given.ignoreDefaultArgs, "--disable-extensions"),
+    args: [...(given.args ?? []), ...browserArgs(run.extensions[index] ?? "", extensionId, run.ports[index]!, run.tree)],
+    ignoreDefaultArgs: run.tree === "devtools" ? given.ignoreDefaultArgs : ignoring(given.ignoreDefaultArgs, "--disable-extensions"),
     env: { ...(given.env as Record<string, string> | undefined), ...(process.platform === "linux" ? { LD_LIBRARY_PATH: libraryPath(files.libs, given.env as Record<string, string> | undefined) } : {}) },
   };
   return { ...use, channel: undefined, launchOptions };

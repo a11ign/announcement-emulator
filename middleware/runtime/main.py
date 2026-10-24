@@ -59,7 +59,7 @@ class Ordered:
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('--port', type=int, required=True); ap.add_argument('--cdp', type=int, default=0); ap.add_argument('--no-sweeps', action='store_true'); ap.add_argument('--report-focus', action='store_true', help='also record what NVDA+Tab says for each focus move (the fleet probe\'s phrase), for the agreement measure')
+    ap = argparse.ArgumentParser(); ap.add_argument('--port', type=int, required=True); ap.add_argument('--cdp', type=int, default=0); ap.add_argument('--tree', choices=['extension', 'devtools'], default='extension'); ap.add_argument('--no-sweeps', action='store_true'); ap.add_argument('--report-focus', action='store_true', help='also record what NVDA+Tab says for each focus move (the fleet probe\'s phrase), for the agreement measure')
     args = ap.parse_args()
     protocol = os.fdopen(os.dup(1), 'w', buffering=1); sys.stdout = sys.stderr      # nothing NVDA prints may be taken for a record
     def send(message): protocol.write(json.dumps(message, separators=(',', ':')) + '\n'); protocol.flush()
@@ -72,7 +72,10 @@ def main():
     cdp = None
     if args.cdp:
         import cdp as cdp_module
-        cdp = cdp_module.Cdp(args.cdp, lambda ev: inbox.put(('page', ev, time.time())), lambda target: inbox.put(('attached', {'target': target}, time.time())))
+        devtools = args.tree == 'devtools'      # the trees come through this port as well (axtree.py), where the extension is given none
+        cdp = cdp_module.Cdp(args.cdp, lambda ev: inbox.put(('page', ev, time.time())), lambda target: inbox.put(('attached', {'target': target}, time.time())),
+                             on_tree=(lambda snap: inbox.put(('snap', snap, time.time()))) if devtools else None,
+                             on_connect=(lambda: inbox.put(('ready', {'t': round(time.time() * 1000), 'source': 'devtools'}, time.time()))) if devtools else lambda: None)
     send({'type': 'ready', 'bootMs': round((time.time() - t0) * 1000)})
     ordered = Ordered()
     dump = open(os.environ['AE_DUMP'], 'a', buffering=1) if os.environ.get('AE_DUMP') else None      # a log of what arrived and when, for finding what a run lost
@@ -89,7 +92,7 @@ def main():
             if kind == 'snap': pass
             elif kind == 'page': predictor.on_page_event(body)
             elif kind in ('error', 'verify'): send({'type': 'record', 'rec': {'kind': kind, **body}})
-            elif kind == 'ready': send({'type': 'record', 'rec': {'kind': 'start', 'what': 'extension', 't': body['t'], 'desktopChildren': body.get('desktopChildren'), 'documents': body.get('documents')}})      # when the extension's service worker was up: a test that ran before it was up lost what it did
+            elif kind == 'ready': send({'type': 'record', 'rec': {'kind': 'start', 'what': 'tree-source' if body.get('source') == 'devtools' else 'extension', 't': body['t'], 'desktopChildren': body.get('desktopChildren'), 'documents': body.get('documents')}})      # when the extension's service worker was up: a test that ran before it was up lost what it did
             elif kind == 'hello': send({'type': 'record', 'rec': {'kind': 'start', 'what': 'worker', 't': body['t'], 'automation': body.get('automation'), 'getDesktop': body.get('getDesktop')}})
             elif kind == 'attached': send({'type': 'record', 'rec': {'kind': 'start', 'what': 'devtools', 't': round(arrived_at * 1000)}})
         except BaseException as e:

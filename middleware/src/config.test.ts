@@ -26,7 +26,7 @@ function withEnv<T>(env: Record<string, string | undefined>, body: () => T): T {
 /** `withAnnouncements` keeps the type of the config it is given; these tests look inside the result, so they ask for the general one. */
 const withAnnouncements = (config: PlaywrightTestConfig) => wrap(config);
 
-const run = (bundle: string) => JSON.stringify({ bundle, dir: "/tmp/x", ports: [{ collector: 41001, cdp: 41002 }], extensions: ["/tmp/x/extension-0"], verify: false, sweeps: true });
+const run = (bundle: string, tree?: string) => JSON.stringify({ bundle, dir: "/tmp/x", ports: [{ collector: 41001, cdp: 41002 }], extensions: ["/tmp/x/extension-0"], verify: false, sweeps: true, ...(tree ? { tree } : {}) });
 
 test("without a bundle the one line says what to run", () => {
   withEnv({ ANNOUNCEMENT_EMULATOR_BUNDLE: join(tmpdir(), "no-such-bundle") }, () => {
@@ -61,6 +61,16 @@ test("a single reporter given as a name or as a pair is kept", () => {
   withEnv({ ANNOUNCEMENT_EMULATOR_BUNDLE: bundle }, () => {
     assert.deepEqual((withAnnouncements({ reporter: "dot" }).reporter as unknown as unknown[]).slice(1), [["dot"]]);
     assert.deepEqual((withAnnouncements({ reporter: ["html", { open: "never" }] } as unknown as PlaywrightTestConfig).reporter as unknown as unknown[]).slice(1), [["html", { open: "never" }]]);
+  });
+});
+
+test("where the tree is read through the DevTools port the browser is launched with no extension, and with the port and the accessibility flag", () => {
+  const bundle = fakeBundle();
+  withEnv({ ANNOUNCEMENT_EMULATOR_BUNDLE: bundle, [RUN_ENV]: run(bundle, "devtools"), TEST_PARALLEL_INDEX: "0" }, () => {
+    const launch = withAnnouncements({ use: { launchOptions: { args: ["--mine"] } } }).use!.launchOptions!;
+    assert.deepEqual(launch.args, ["--mine", "--force-renderer-accessibility", "--remote-debugging-port=41002"]);
+    assert.equal(launch.ignoreDefaultArgs, undefined);
+    assert.match(launch.executablePath!, /chrome/);
   });
 });
 

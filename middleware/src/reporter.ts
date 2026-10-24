@@ -3,7 +3,7 @@ import { dirname, join } from "node:path";
 import type { FullConfig, Reporter, TestCase, TestResult } from "@playwright/test/reporter";
 import { readManifest } from "./bundle.ts";
 import { annotationsFor, assign, attachments, describe, type Window } from "./format.ts";
-import { prepareExtension } from "./extension.ts";
+import { prepareExtension, treeSource, type TreeSource } from "./extension.ts";
 import { freePorts } from "./ports.ts";
 import { publishRun } from "./run.ts";
 import { Runtime, type DrainStats } from "./runtime.ts";
@@ -19,6 +19,7 @@ export default class AnnouncementsReporter implements Reporter {
   private runtimes: Runtime[] = [];
   private readonly seen: Seen[] = [];
   private dir = "";
+  private tree: TreeSource = "extension";
   private started = 0;
   private readonly options: ReporterOptions;
   constructor(options: ReporterOptions) { this.options = options; }
@@ -32,9 +33,10 @@ export default class AnnouncementsReporter implements Reporter {
     const count = Math.max(1, config.workers);
     const numbers = await freePorts(count * 2);
     const ports = Array.from({ length: count }, (_, i) => ({ collector: numbers[2 * i]!, cdp: numbers[2 * i + 1]! }));
-    const extensions = ports.map((p, i) => prepareExtension(this.options.bundle, join(this.dir, `extension-${i}`), p.collector, this.options.verify));
-    publishRun({ bundle: this.options.bundle, dir: this.dir, ports, extensions, verify: !!this.options.verify, sweeps: sweepsOn(this.options) });
-    this.runtimes = ports.map((p, i) => new Runtime(this.options.bundle, p, { sweeps: sweepsOn(this.options), log: join(this.dir, `runtime-${i}.log`) }));
+    this.tree = treeSource();
+    const extensions = this.tree === "extension" ? ports.map((p, i) => prepareExtension(this.options.bundle, join(this.dir, `extension-${i}`), p.collector, this.options.verify)) : [];
+    publishRun({ bundle: this.options.bundle, dir: this.dir, ports, extensions, verify: !!this.options.verify, sweeps: sweepsOn(this.options), tree: this.tree });
+    this.runtimes = ports.map((p, i) => new Runtime(this.options.bundle, p, { sweeps: sweepsOn(this.options), log: join(this.dir, `runtime-${i}.log`), tree: this.tree }));
   }
 
   onTestEnd(test: TestCase, result: TestResult): void {
@@ -54,7 +56,7 @@ export default class AnnouncementsReporter implements Reporter {
       const owned = assign(runtime.records.filter((rec) => rec.kind !== "start"), mine.map((s) => s.window));
       unassigned += owned.unassigned;
       for (const { test, result, window } of mine) {
-        const output = describe(window, owned.byWindow.get(window) ?? [], emulator);
+        const output = describe(window, owned.byWindow.get(window) ?? [], emulator, this.tree);
         result.attachments.push(...attachments(output));
         test.annotations.push(...annotationsFor(output.flags));
         flagged += output.flags.length;
@@ -69,7 +71,7 @@ export default class AnnouncementsReporter implements Reporter {
     const first = Math.min(...this.seen.filter((s) => s.worker === worker).map((s) => s.window.start));
     const at = (what: string) => { const t = runtime.records.find((r) => r.kind === "start" && r.what === what)?.t; return t === undefined || !Number.isFinite(first) ? null : t - first; };
     const up = runtime.records.find((rec) => rec.kind === "start" && rec.what === "extension");
-    return { extensionUpAfterFirstTestStartedMs: at("extension"), devtoolsAttachedAfterFirstTestStartedMs: at("devtools"), desktopChildrenWhenUp: (up?.desktopChildren as number | undefined) ?? null, chromeAutomationInWorker: (runtime.records.find((rec) => rec.kind === "start" && rec.what === "worker")?.automation as string | undefined) ?? null };
+    return { treeSource: this.tree, treeSourceUpAfterFirstTestStartedMs: at("tree-source"), extensionUpAfterFirstTestStartedMs: at("extension"), devtoolsAttachedAfterFirstTestStartedMs: at("devtools"), desktopChildrenWhenUp: (up?.desktopChildren as number | undefined) ?? null, chromeAutomationInWorker: (runtime.records.find((rec) => rec.kind === "start" && rec.what === "worker")?.automation as string | undefined) ?? null };
   }
 
   private write(stats: DrainStats[], drainMs: number, flagged: number, unassigned: number): void {

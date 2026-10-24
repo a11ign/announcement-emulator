@@ -1,6 +1,12 @@
 import { ANNOTATION, ATTACH_JSON, ATTACH_TEXT, LABEL } from "./label.ts";
 import type { BundleManifest } from "./bundle.ts";
 import type { RuntimeRecord } from "./runtime.ts";
+import type { TreeSource } from "./extension.ts";
+
+const TREE_NOTE: Record<TreeSource, string> = {
+  extension: "Predicted by the announcement emulator from Chrome's accessibility tree and NVDA's own Python. Not what NVDA said. Nothing here may fill an a11ign evidence field.",
+  devtools: "Predicted by the announcement emulator from the accessibility tree the DevTools port gives (lower fidelity than the extension's: no table or set numbers from Chromium, word and sentence breaks by pattern, no visited or default states) and NVDA's own Python. Not what NVDA said. Nothing here may fill an a11ign evidence field.",
+};
 
 /** The slice of a run one test owns: what happened on its worker's browser while the test ran. */
 export interface Window { title: string; start: number; end: number }
@@ -34,7 +40,7 @@ const seconds = (t: number, w: Window) => `+${(ms(t, w) / 1000).toFixed(2)}s`;
 export interface Output { text: string; json: Record<string, unknown>; flags: { flag: string; detail: string }[] }
 
 /** The output for one test, from the records `assign` gave it. */
-export function describe(w: Window, records: RuntimeRecord[], emulator: BundleManifest | null): Output {
+export function describe(w: Window, records: RuntimeRecord[], emulator: BundleManifest | null, tree: TreeSource = "extension"): Output {
   const mine = [...records].sort((a, b) => a.t - b.t);
   const speech = mine.filter((r) => r.kind === "speech");
   const sweeps = mine.filter((r) => r.kind === "sweep");
@@ -43,16 +49,17 @@ export function describe(w: Window, records: RuntimeRecord[], emulator: BundleMa
   const sweepRows = sweeps.map((r) => ({ atMs: ms(r.t, w), trigger: r.trigger, url: r.url, lists: r.lists, counts: r.counts, census: r.census, keysSent: r.keys, notDelivered: r.notDelivered, runtimeMs: r.ms }));
   const flagRows = flags.map((r) => ({ flag: r.flag as string, atMs: ms(r.t, w), detail: r.detail as string, node: r.node }));
   const json = {
-    label: LABEL, test: w.title, emulator,
-    notes: ["Predicted by the announcement emulator from Chrome's accessibility tree and NVDA's own Python. Not what NVDA said. Nothing here may fill an a11ign evidence field."],
+    label: LABEL, test: w.title, emulator, treeSource: tree,
+    notes: [TREE_NOTE[tree]],
     predictedSpeech: predicted, sweeps: sweepRows, flags: flagRows,
   };
-  return { text: textOf(w, mine, emulator), json, flags: flagRows.map(({ flag, detail }) => ({ flag, detail })) };
+  return { text: textOf(w, mine, emulator, tree), json, flags: flagRows.map(({ flag, detail }) => ({ flag, detail })) };
 }
 
-function textOf(w: Window, mine: RuntimeRecord[], emulator: BundleManifest | null): string {
+function textOf(w: Window, mine: RuntimeRecord[], emulator: BundleManifest | null, tree: TreeSource): string {
   const lines = [LABEL.toUpperCase(), `test: ${w.title}`];
   if (emulator) lines.push(`emulator: NVDA ${emulator.nvda.release} (${emulator.nvda.commit.slice(0, 8)}), Chrome ${emulator.chrome}, bundle ${emulator.name}`);
+  if (tree === "devtools") lines.push("tree: the DevTools port's accessibility tree, lower fidelity than the extension's (this platform gives the extension none)");
   lines.push("");
   const speech = mine.filter((r) => r.kind === "speech");
   if (!speech.length) lines.push("(no speech was predicted while this test ran)");
