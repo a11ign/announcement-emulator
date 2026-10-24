@@ -1,59 +1,56 @@
 {
   "label": "predicted NVDA speech: run summary",
-  "wallMs": 7952,
-  "drainMs": 348,
+  "wallMs": 4993,
+  "drainMs": 314,
   "workers": [
     {
-      "bootMs": 974,
+      "bootMs": 1815,
       "startup": {
         "treeSource": "extension",
         "treeSourceUpAfterFirstTestStartedMs": null,
-        "extensionUpAfterFirstTestStartedMs": 2455,
-        "devtoolsAttachedAfterFirstTestStartedMs": 2213,
+        "extensionUpAfterFirstTestStartedMs": 1416,
+        "devtoolsAttachedAfterFirstTestStartedMs": 1679,
         "desktopChildrenWhenUp": 1,
         "chromeAutomationInWorker": "object"
       },
-      "snapshots": 23,
-      "speechMs": 585,
+      "snapshots": 25,
+      "speechMs": 301,
       "sweepMs": [
-        21,
-        34,
-        89,
-        240,
-        75,
-        49,
-        24,
-        23
+        111,
+        84,
+        79,
+        12,
+        25,
+        13,
+        13
       ],
-      "keys": 4,
-      "focusEvents": 11,
+      "keys": 3,
+      "focusEvents": 7,
       "unresolvedFocus": 0,
       "skippedSweeps": 0,
       "lostSnapshots": 0
     },
     {
-      "bootMs": 968,
+      "bootMs": 1762,
       "startup": {
         "treeSource": "extension",
         "treeSourceUpAfterFirstTestStartedMs": null,
-        "extensionUpAfterFirstTestStartedMs": 2560,
-        "devtoolsAttachedAfterFirstTestStartedMs": 2284,
+        "extensionUpAfterFirstTestStartedMs": 1557,
+        "devtoolsAttachedAfterFirstTestStartedMs": 1569,
         "desktopChildrenWhenUp": 1,
         "chromeAutomationInWorker": "object"
       },
-      "snapshots": 24,
-      "speechMs": 571,
+      "snapshots": 17,
+      "speechMs": 325,
       "sweepMs": [
-        35,
-        334,
-        322,
-        203,
-        49,
-        50,
-        24
+        52,
+        72,
+        46,
+        28,
+        13
       ],
-      "keys": 9,
-      "focusEvents": 13,
+      "keys": 3,
+      "focusEvents": 6,
       "unresolvedFocus": 0,
       "skippedSweeps": 0,
       "lostSnapshots": 0
@@ -61,5 +58,5 @@
   ],
   "tests": 13,
   "flags": 3,
-  "recordsOutsideAnyTest": 14
+  "recordsOutsideAnyTest": 0
 }

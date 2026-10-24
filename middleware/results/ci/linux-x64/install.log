@@ -1,7 +1,7 @@
 announcement-emulator: downloading http://127.0.0.1:8099/announcement-emulator-bundle-linux-x64.tar.gz
-announcement-emulator: sha256 0c740277a6c389694804b6f14f4868d578a07710426f4c6b650119c92968d633 matches the pin
+announcement-emulator: sha256 0a707737cd46d301290f448c9ff81ff036da779b991934a2c200af491c913edb matches the pin
 announcement-emulator: installed /home/runner/.cache/announcement-emulator/0.0.0-spike.0-linux-x64
 
-real	0m6.304s
-user	0m6.028s
-sys	0m1.755s
+real	0m4.360s
+user	0m4.097s
+sys	0m1.213s

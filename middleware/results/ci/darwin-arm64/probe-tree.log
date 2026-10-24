@@ -37,6 +37,12 @@
     "setDocumentSelection"
    ],
    "desktopDeclared": true
+  },
+  "desktop-asked": {
+   "t": 1792869991297
+  },
+  "beat": {
+   "n": 20
   }
  }
 }

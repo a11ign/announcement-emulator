@@ -1,5 +1,5 @@
 // The service worker of probe-tree.mjs (A11-208, the macOS probe): which trees does chrome.automation give this platform's Chrome? The desktop's (getDesktop, what passive.js reads), and the tab's own (getTree(tabId)).
-// It posts what it found to the probe's server; it reads nothing the middleware needs.
+// It posts what it found to the probe's server; it reads nothing the middleware needs. (Its first version took a callback with no tree for no callback at all: passive.js did, too, and threw on it.)
 importScripts('tree.js');
 const C = 'http://127.0.0.1:__PORT__/';
 const DESKTOP = '__DESKTOP__' === '1';      // whether the manifest of this copy asks for the desktop tree
@@ -7,7 +7,7 @@ const post = (kind, body) => fetch(C + kind, { method: 'POST', body: JSON.string
 // Calls fn(callback) and says what came back in `ms`: the value, a timeout, or what it threw.
 const within = (ms, fn) => new Promise((resolve) => {
   const timer = setTimeout(() => resolve({ timedOut: true }), ms);
-  try { fn((value) => { clearTimeout(timer); resolve({ value }); }); } catch (e) { clearTimeout(timer); resolve({ threw: String(e) }); }
+  try { fn((value) => { clearTimeout(timer); resolve({ value, lastError: chrome.runtime.lastError ? chrome.runtime.lastError.message : null }); }); } catch (e) { clearTimeout(timer); resolve({ threw: String(e) }); }
 });
 const nodes = (root) => { const all = []; (function visit(n) { all.push(n); for (const c of n.children) visit(c); })(root); return all; };
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -20,7 +20,8 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   if (DESKTOP) {
     post('desktop-asked', { t: Date.now() });
     const desktop = await within(5000, (cb) => chrome.automation.getDesktop(cb));
-    post('desktop', desktop.timedOut || desktop.threw ? desktop : { children: desktop.value.children.length, roles: desktop.value.children.map((c) => c.role) });
+    // answered with a tree, answered with none (and what the browser said was wrong), or not answered
+    post('desktop', desktop.timedOut || desktop.threw ? desktop : desktop.value ? { children: desktop.value.children.length, roles: desktop.value.children.map((c) => c.role) } : { calledBackWithNoTree: true, lastError: desktop.lastError });
   }
 
   clearInterval(beat); post('beats', { n: ticks });

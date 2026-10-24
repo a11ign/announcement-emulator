@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/home/runner/.cache/announcement-emulator/0.0.0-spike.0-linux-x64/middleware/runtime/main.py", line 104, in snapshots
-    try: predictor.on_snapshot(snap)
-         ~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "/home/runner/.cache/announcement-emulator/0.0.0-spike.0-linux-x64/middleware/runtime/predict.py", line 175, in on_snapshot
-    route_change = not new_document and (root.get('docUrl') or snap['url']) != page.url      # a new address in the same document, a fragment too: a single-page app's route
-                                                               ~~~~^^^^^^^
-KeyError: 'url'

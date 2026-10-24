@@ -38,11 +38,17 @@
    ],
    "desktopDeclared": true
   },
+  "desktop-asked": {
+   "t": 1792870080136
+  },
   "desktop": {
    "children": 1,
    "roles": [
     "window"
    ]
+  },
+  "beats": {
+   "n": 0
   },
   "tab": {
    "missing": true

@@ -1,15 +1,15 @@
 {
   "label": "predicted NVDA speech: run summary",
-  "wallMs": 8489,
-  "drainMs": 357,
+  "wallMs": 10261,
+  "drainMs": 426,
   "workers": [
     {
-      "bootMs": 259,
+      "bootMs": 395,
       "startup": {
         "treeSource": "extension",
         "treeSourceUpAfterFirstTestStartedMs": null,
         "extensionUpAfterFirstTestStartedMs": null,
-        "devtoolsAttachedAfterFirstTestStartedMs": 1312,
+        "devtoolsAttachedAfterFirstTestStartedMs": 1891,
         "desktopChildrenWhenUp": null,
         "chromeAutomationInWorker": "object"
       },
@@ -23,12 +23,12 @@
       "lostSnapshots": 0
     },
     {
-      "bootMs": 260,
+      "bootMs": 375,
       "startup": {
         "treeSource": "extension",
         "treeSourceUpAfterFirstTestStartedMs": null,
         "extensionUpAfterFirstTestStartedMs": null,
-        "devtoolsAttachedAfterFirstTestStartedMs": 1324,
+        "devtoolsAttachedAfterFirstTestStartedMs": 1901,
         "desktopChildrenWhenUp": null,
         "chromeAutomationInWorker": "object"
       },
