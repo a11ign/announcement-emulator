@@ -1,5 +1,5 @@
 """python3 -m unittest discover -s middleware/agreement -t middleware/agreement   (from the repository root)"""
-import hashlib, os, sys, unittest
+import collections, hashlib, os, sys, unittest
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import select_pages
@@ -31,6 +31,14 @@ class Rule(unittest.TestCase):
         self.assertEqual([k['url'] for k in kept], ['a', 'c'])
         self.assertEqual([r['url'] for r in rejected], ['x', 'b'])
         self.assertIn('not opened', rejected[0]['why'])
+
+
+class Plan(unittest.TestCase):
+    def test_the_two_captures_of_a_page_go_to_two_boxes(self):
+        import capture_fleet
+        plan = capture_fleet.plan(['a', 'b', 'c'], ['w1', 'w2', 'w3'])
+        for address in 'abc': self.assertEqual(len({w for a, k, w in plan if a == address}), 2)
+        self.assertEqual(sorted(collections.Counter(w for _, _, w in plan).values()), [2, 2, 2])
 
 
 if __name__ == '__main__': unittest.main()

@@ -7,7 +7,7 @@ The same discipline as q3/gate/make_freeze.py (A11-166): the runtime, the extens
 are fixed first, so a figure cannot have been fitted to the pages' misses. Anything the figure is made by that is changed afterwards makes `check` fail, and is listed."""
 import argparse, datetime, glob, json, os, subprocess, sys
 
-OBJECTS = ['emu', 'middleware/runtime', 'middleware/src', 'middleware/agreement/measure.py', 'middleware/agreement/select_pages.py', 'middleware/agreement/dom_check.mjs',
+OBJECTS = ['emu', 'middleware/runtime', 'middleware/src', 'middleware/agreement/measure.py', 'middleware/agreement/select_pages.py', 'middleware/agreement/capture_fleet.py', 'middleware/agreement/dom_check.mjs',
            'middleware/sample-suite/tests/corpus', 'middleware/results/agreement/rule.md', 'middleware/results/agreement/pages.json', 'q3/sweep.py', 'q3/livepage.py', 'q3/shapes.py', 'q3/fleet_capture.mjs', 'pins.env']
 
 

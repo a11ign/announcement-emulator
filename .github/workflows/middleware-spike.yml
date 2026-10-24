@@ -146,6 +146,7 @@ jobs:
             ${{ runner.temp }}/playwright-report-one-line
             ${{ runner.temp }}/playwright-report-zero-lines
             ${{ runner.temp }}/announcement-emulator-run
+            ${{ runner.temp }}/project/test-results/announcement-emulator
             ${{ runner.temp }}/run-*.log
             ${{ runner.temp }}/cost.*
             ${{ runner.temp }}/install.log
