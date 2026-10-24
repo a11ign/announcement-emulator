@@ -75,7 +75,7 @@ class Cdp:
     """Calls `on_event(event)` for each trusted keydown and focusin in any page of the browser listening on `port`. Reconnects when the browser is launched again (a Playwright worker is restarted)."""
     def __init__(self, port, on_event):
         self.port, self.on_event = port, on_event
-        self.ws = None; self.next_id = 0; self.stopped = False; self.installed = set(); self.lock = threading.Lock()
+        self.ws = None; self.next_id = 0; self.stopped = False; self.installed = set(); self.lock = threading.Lock(); self.target_of = {}; self.url_of = {}
         self.thread = threading.Thread(target=self._run, daemon=True, name='cdp'); self.thread.start()
 
     def _send(self, method, params=None, session=None):
@@ -96,7 +96,7 @@ class Cdp:
         while not self.stopped:
             self.ws = self._connect()
             if self.ws is None: return
-            self.installed.clear()
+            self.installed.clear(); self.target_of.clear(); self.url_of.clear()
             try:
                 self._send('Target.setAutoAttach', {'autoAttach': True, 'waitForDebuggerOnStart': False, 'flatten': True})
                 self._send('Target.setDiscoverTargets', {'discover': True})
@@ -106,12 +106,17 @@ class Cdp:
 
     def _handle(self, m):
         method = m.get('method')
-        if method == 'Target.attachedToTarget' and m['params']['targetInfo']['type'] == 'page': self._install(m['params']['sessionId'], m['params']['targetInfo']['targetId'])
+        if method == 'Target.targetInfoChanged' and m['params']['targetInfo']['type'] == 'page': self.url_of[m['params']['targetInfo']['targetId']] = m['params']['targetInfo']['url']
+        if method == 'Target.attachedToTarget' and m['params']['targetInfo']['type'] == 'page':
+            self.target_of[m['params']['sessionId']] = m['params']['targetInfo']['targetId']; self.url_of[m['params']['targetInfo']['targetId']] = m['params']['targetInfo']['url']
+            self._install(m['params']['sessionId'], m['params']['targetInfo']['targetId'])
         elif method == 'Target.targetCreated' and m['params']['targetInfo']['type'] == 'page' and m['params']['targetInfo']['targetId'] not in self.installed:
             self._send('Target.attachToTarget', {'targetId': m['params']['targetInfo']['targetId'], 'flatten': True})
         elif method == 'Runtime.bindingCalled' and m['params']['name'] == '__ae':
-            try: self.on_event(json.loads(m['params']['payload']))
-            except ValueError: pass
+            try: event = json.loads(m['params']['payload'])
+            except ValueError: return
+            event['pageUrl'] = self.url_of.get(self.target_of.get(m.get('sessionId')))      # the address of the page the frame is in: a frame's own address is not the page's
+            self.on_event(event)
 
     def _install(self, session, target):
         if target in self.installed: return

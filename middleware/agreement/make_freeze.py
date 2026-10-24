@@ -1,0 +1,54 @@
+"""Name the freeze of the agreement measurement (A11-208), before any fleet capture for this ticket is taken, and check afterwards that nothing it names has moved.
+
+    python3 make_freeze.py name  <out.json> [--commit HEAD]      write freeze.json: the commit, the time, and the git object of each thing the measure is made of
+    python3 make_freeze.py check <freeze.json> [--fleet <dir>]   fail if any of those objects differs at HEAD, or if a fleet capture is older than the freeze
+
+The same discipline as q3/gate/make_freeze.py (A11-166): the runtime, the extension, the sweep, the sample suite's corpus test, the page list and its rule, and the scripts the figure is made by
+are fixed first, so a figure cannot have been fitted to the pages' misses. Anything the figure is made by that is changed afterwards makes `check` fail, and is listed."""
+import argparse, datetime, glob, json, os, subprocess, sys
+
+OBJECTS = ['emu', 'middleware/runtime', 'middleware/src', 'middleware/agreement/measure.py', 'middleware/agreement/select_pages.py', 'middleware/agreement/dom_check.mjs',
+           'middleware/sample-suite/tests/corpus', 'middleware/results/agreement/rule.md', 'middleware/results/agreement/pages.json', 'q3/sweep.py', 'q3/livepage.py', 'q3/shapes.py', 'q3/fleet_capture.mjs', 'pins.env']
+
+
+def git(*args, repo='.'): return subprocess.run(['git', '-C', repo, *args], capture_output=True, text=True, check=True).stdout.strip()
+
+
+def name(repo, commit, now=None):
+    full = git('rev-parse', '--verify', commit + '^{commit}', repo=repo)
+    return {'commit': full, 'subject': git('show', '-s', '--format=%s', full, repo=repo), 'committedAt': git('show', '-s', '--format=%cI', full, repo=repo),
+            'namedAt': (now or datetime.datetime.now(datetime.timezone.utc)).strftime('%Y-%m-%dT%H:%M:%SZ'),
+            'objects': {path: git('rev-parse', '--verify', f'{full}:{path}', repo=repo) for path in OBJECTS}}
+
+
+def moved(freeze, repo='.', head='HEAD'):
+    """The named things whose git object at `head` is not the one in the freeze."""
+    return [p for p, obj in freeze['objects'].items() if git('rev-parse', '--verify', f'{head}:{p}', repo=repo) != obj]
+
+
+def early(freeze, fleet_dir):
+    """The fleet captures dated before the freeze was named."""
+    out = []
+    for f in sorted(glob.glob(os.path.join(fleet_dir, '*.json'))):
+        with open(f) as h: at = json.load(h).get('capturedAt')
+        if not at or at < freeze['namedAt'].replace('Z', '.000Z'): out.append(os.path.basename(f))
+    return out
+
+
+def main(argv):
+    ap = argparse.ArgumentParser(); ap.add_argument('command', choices=['name', 'check']); ap.add_argument('file'); ap.add_argument('--commit', default='HEAD'); ap.add_argument('--fleet'); ap.add_argument('--repo', default='.')
+    a = ap.parse_args(argv)
+    if a.command == 'name':
+        freeze = name(a.repo, a.commit)
+        with open(a.file, 'w') as f: json.dump(freeze, f, indent=1); f.write('\n')
+        print(f'freeze {freeze["commit"][:10]} named {freeze["namedAt"]}')
+        return 0
+    with open(a.file) as f: freeze = json.load(f)
+    problems = [f'{p} has changed since the freeze' for p in moved(freeze, a.repo)]
+    if a.fleet: problems += [f'{f} was captured before the freeze was named' for f in early(freeze, a.fleet)]
+    print('\n'.join(problems) if problems else f'ok: nothing the figure is made by has moved since {freeze["commit"][:10]}'
+          + (', and every fleet capture is after the freeze' if a.fleet else ''))
+    return 1 if problems else 0
+
+
+if __name__ == '__main__': sys.exit(main(sys.argv[1:]))

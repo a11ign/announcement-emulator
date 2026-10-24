@@ -30,7 +30,7 @@ export class Runtime {
     const files = layout(bundle);
     if (options.log) mkdirSync(dirname(options.log), { recursive: true });
     const stderr = options.log ? openSync(options.log, "w") : "ignore";
-    this.child = spawn(files.python, ["-I", files.runtime, "--port", String(ports.collector), "--cdp", String(ports.cdp), ...(options.sweeps === false ? ["--no-sweeps"] : [])], {
+    this.child = spawn(files.python, ["-I", files.runtime, "--port", String(ports.collector), "--cdp", String(ports.cdp), ...(options.sweeps === false ? ["--no-sweeps"] : []), ...(process.env.ANNOUNCEMENT_EMULATOR_REPORT_FOCUS ? ["--report-focus"] : [])], {
       env: { ...process.env, EMU_DOWNLOADS: bundle, PYTHONDONTWRITEBYTECODE: "1", PYTHONUTF8: "1" },
       stdio: ["pipe", "pipe", stderr],
     });

@@ -39,8 +39,8 @@ export function describe(w: Window, records: RuntimeRecord[], emulator: BundleMa
   const speech = mine.filter((r) => r.kind === "speech");
   const sweeps = mine.filter((r) => r.kind === "sweep");
   const flags = mine.filter((r) => r.kind === "flag");
-  const predicted = speech.map((r) => ({ atMs: ms(r.t, w), cause: r.cause, text: r.text, utterances: r.utterances, shape: r.shape, node: r.node, runtimeMs: r.ms }));
-  const sweepRows = sweeps.map((r) => ({ atMs: ms(r.t, w), trigger: r.trigger, url: r.url, lists: r.lists, counts: r.counts, keysSent: r.keys, notDelivered: r.notDelivered, runtimeMs: r.ms }));
+  const predicted = speech.map((r) => ({ atMs: ms(r.t, w), cause: r.cause, text: r.text, utterances: r.utterances, shape: r.shape, node: r.node, runtimeMs: r.ms, ...(r.repeatFocus === undefined ? {} : { repeatFocus: r.repeatFocus, repeatFocusShape: r.repeatFocusShape }) }));
+  const sweepRows = sweeps.map((r) => ({ atMs: ms(r.t, w), trigger: r.trigger, url: r.url, lists: r.lists, counts: r.counts, census: r.census, keysSent: r.keys, notDelivered: r.notDelivered, runtimeMs: r.ms }));
   const flagRows = flags.map((r) => ({ flag: r.flag as string, atMs: ms(r.t, w), detail: r.detail as string, node: r.node }));
   const json = {
     label: LABEL, test: w.title, emulator,

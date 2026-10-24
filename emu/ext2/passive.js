@@ -15,11 +15,12 @@ const PAGES = new Map();      // top document's root -> {changed: types seen sin
 const QUEUE = []; let busy = false, seq = 0, posted = 0, bytes = 0;
 
 const isDocument = n => n && n.role === 'rootWebArea' && n.url !== undefined && !/^(chrome|chrome-extension|devtools):/.test(n.url);
-// An iframe's document is a tree of its own whose parent is the iframe node of the document that holds it: climb to the document the browser shows.
+// An iframe's document is a tree of its own whose parent is the iframe node of the document that holds it: climb to the document the browser shows, which hangs from a webView. A document that has
+// no parent yet (an iframe's, in the moment before the tree links it in) is nobody's page.
 function topDocument(n) {
   let r = n && n.root;
   for (let hops = 0; r && r.parent && hops < 32; hops++) { const up = r.parent.root; if (up && up !== r && up.role === 'rootWebArea') r = up; else break; }
-  return isDocument(r) ? r : null;
+  return isDocument(r) && r.parent && r.parent.role === 'webView' ? r : null;
 }
 
 function parts(n) {

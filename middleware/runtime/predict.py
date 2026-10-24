@@ -164,7 +164,7 @@ class Predictor:
         if new_document:
             if self.doc_page == page.uid: self.doc = None; self.doc_page = None
             page.root_uid = root['uid']; page.loaded = False; page.spoke_load = False; page.focus_uid = None; page.observed = set(); page.last = None; page.reports_focus = False; page.sweep_wanted = None
-            self.emit({'kind': 'observe', 'what': 'navigation', 't': t, 'page': page.uid, 'url': snap['url'], 'node': None, 'text': snap['url']})
+            if len(snap['nodes']) > 1: self.emit({'kind': 'observe', 'what': 'navigation', 't': t, 'page': page.uid, 'url': snap['url'], 'node': None, 'text': snap['url']})
         page.url = root.get('docUrl') or snap['url']
         loaded = root.get('docLoaded', True)
         if loaded and not page.spoke_load and len(snap['nodes']) <= 1:      # the blank page a browser opens a tab with: nothing is there to hear
@@ -172,7 +172,7 @@ class Predictor:
         if loaded and not page.spoke_load:
             page.spoke_load = True
             doc = self.document_for(page, snap, at_root=True)
-            earliest = min([t] + [e['t'] for e in self.events if without_fragment(e.get('url')) == without_fragment(page.url)])      # the document loaded before anything the page did in it
+            earliest = min([t] + [e['t'] for e in self.events if (e.get('pageUrl') or e.get('url') or '').split('#')[0] == without_fragment(page.url)])      # the document loaded before anything the page did in it
             self.speak('load', earliest - 1, page, self.node_info(root), lambda: self.load_speech(doc))
             page.focus_uid = root['uid']      # a document has the focus when it has loaded; if the test's first key was faster than the extension, the focus is already on a control, and that is a move
             self.schedule_sweep(page, snap, t, 'load')
@@ -222,7 +222,7 @@ class Predictor:
         """Answer the page's events that happened by `t` (all of them at the end), each against the newest tree of its page. A focus the tree does not have yet is tried again with the next tree."""
         waiting = []
         for e in self.events:
-            page = self.page_at(e.get('url'))
+            page = self.page_at(e.get('pageUrl')) or self.page_at(e.get('url'))
             needs_tree = e['e'] in ('focusin', 'keydown')
             if page is None or (needs_tree and not final and (e['t'] > t or e['t'] > page.last['t'])):
                 waiting.append(e); continue
@@ -300,8 +300,9 @@ class Predictor:
         structure, marks = self.sweep.structure_sweep(w, time.time() + budget)
         ms = (time.perf_counter() - t0) * 1000
         counts = {k: len(v) for k, v in structure.items()}
+        census = {k: v for k, v in doc.census().items() if k != 'roles'}      # the tree's heading, link, graphic and landmark counts: what the fleet's own census is compared with
         self.stats['sweeps'].append(round(ms))
-        self.emit({'kind': 'sweep', 't': t, 'page': page_uid, 'url': snap['url'], 'trigger': trigger, 'lists': structure, 'counts': counts, 'keys': w.actions, 'errors': w.errors,
+        self.emit({'kind': 'sweep', 't': t, 'page': page_uid, 'url': snap['url'], 'trigger': trigger, 'lists': structure, 'counts': counts, 'census': census, 'keys': w.actions, 'errors': w.errors,
                    'stops': {m['type']: [m['prevStop'], m['nextStop']] for m in marks}, 'notDelivered': len(session.refused), 'ms': round(ms)})
         return True
 
