@@ -90,6 +90,7 @@ def main():
             elif kind == 'page': predictor.on_page_event(body)
             elif kind in ('error', 'verify'): send({'type': 'record', 'rec': {'kind': kind, **body}})
             elif kind == 'ready': send({'type': 'record', 'rec': {'kind': 'start', 'what': 'extension', 't': body['t'], 'desktopChildren': body.get('desktopChildren'), 'documents': body.get('documents')}})      # when the extension's service worker was up: a test that ran before it was up lost what it did
+            elif kind == 'hello': send({'type': 'record', 'rec': {'kind': 'start', 'what': 'worker', 't': body['t'], 'automation': body.get('automation'), 'getDesktop': body.get('getDesktop')}})
             elif kind == 'attached': send({'type': 'record', 'rec': {'kind': 'start', 'what': 'devtools', 't': round(arrived_at * 1000)}})
         except BaseException as e:
             import traceback; traceback.print_exc()

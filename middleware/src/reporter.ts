@@ -65,11 +65,11 @@ export default class AnnouncementsReporter implements Reporter {
   }
 
   /** When the browser's side came up, against when the worker's first test began: positive means the test began first, and what it did before then was not seen. */
-  private startup(runtime: Runtime, worker: number): Record<string, number | null> {
+  private startup(runtime: Runtime, worker: number): Record<string, number | string | null> {
     const first = Math.min(...this.seen.filter((s) => s.worker === worker).map((s) => s.window.start));
     const at = (what: string) => { const t = runtime.records.find((r) => r.kind === "start" && r.what === what)?.t; return t === undefined || !Number.isFinite(first) ? null : t - first; };
     const up = runtime.records.find((rec) => rec.kind === "start" && rec.what === "extension");
-    return { extensionUpAfterFirstTestStartedMs: at("extension"), devtoolsAttachedAfterFirstTestStartedMs: at("devtools"), desktopChildrenWhenUp: (up?.desktopChildren as number | undefined) ?? null };
+    return { extensionUpAfterFirstTestStartedMs: at("extension"), devtoolsAttachedAfterFirstTestStartedMs: at("devtools"), desktopChildrenWhenUp: (up?.desktopChildren as number | undefined) ?? null, chromeAutomationInWorker: (runtime.records.find((rec) => rec.kind === "start" && rec.what === "worker")?.automation as string | undefined) ?? null };
   }
 
   private write(stats: DrainStats[], drainMs: number, flagged: number, unassigned: number): void {

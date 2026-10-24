@@ -91,6 +91,7 @@ function onChange(change) {
   PAGES.get(web).changed.add(change.type);
 }
 
+post('hello', {t: Date.now(), automation: typeof chrome.automation, getDesktop: chrome.automation ? typeof chrome.automation.getDesktop : null});      // the worker is up; whether the platform gave it the API at all
 // The first call to getDesktop is what makes Chromium build the platform tree at all.
 chrome.automation.getDesktop(desktop => {
   chrome.automation.addTreeChangeObserver('allTreeChanges', onChange);
