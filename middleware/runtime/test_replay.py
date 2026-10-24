@@ -115,6 +115,24 @@ class Replay(unittest.TestCase):
         self.assertEqual(out.returncode, 0, out.stderr[-1500:])
         self.assertIn('1 item in your basket', out.stdout)
 
+    def test_the_emulators_own_launch_of_a_browser_is_still_the_one_that_runs_when_no_session_is_given(self):
+        """LiveDoc gained a `session` argument; inside it the name once stood for the module that launches Chrome, and the system tests of Q2 and the sweeps of Q3 broke (`'NoneType' has no attribute 'Session'`)."""
+        probe = (
+            "import sys, json; sys.path[:0] = [%r, %r]\n"
+            "import boot, live, replay\n"
+            "snap = [json.loads(l) for l in __import__('gzip').open(%r, 'rt')]\n"
+            "snap = next(r['body'] for r in snap if r['k'] == 'snap' and len(r['body']['nodes']) > 5)\n"
+            "import predict\n"
+            "class Launched(predict.SnapshotSession):\n"
+            "    def __init__(self, page=None, url=None, port=None): super().__init__(snap)\n"
+            "    def navigate(self, url): return {'href': url}\n"
+            "live.launcher.Session = Launched\n"
+            "d = live.LiveDoc(url='http://x/')\n"
+            "print(json.dumps(d.navigated))\n") % (str(ROOT / 'emu'), str(HERE), str(HERE / 'fixtures' / 'basket-live.jsonl.gz'))
+        out = subprocess.run([str(PYTHON), '-I', '-c', probe], capture_output=True, text=True, env={**os.environ, 'EMU_DOWNLOADS': str(DOWNLOADS)}, timeout=300)
+        self.assertEqual(out.returncode, 0, out.stderr[-1500:])
+        self.assertEqual(json.loads(out.stdout.strip().splitlines()[-1]), {'href': 'http://x/'})
+
     def test_nothing_it_writes_is_named_for_an_a11ign_evidence_field(self):
         banned = {'transcript', 'structure', 'interaction', 'observed', 'media', 'formInputs', 'diagnostics', 'focusOrder', 'typedFeedback', 'dialogEscape'}
         def keys(x):

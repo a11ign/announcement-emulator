@@ -2,7 +2,8 @@
 and whose focus change is delivered to NVDA's own browse-mode event_gainFocus. The buffer is REBUILT from each new tree (NVDA updates
 incrementally from events); the caret is carried over as storage.cpp does when it replaces a subtree: to the deepest field it was in that the new buffer still has (Buffer.correct_selection)."""
 import time, hashlib, ctypes, weakref, boot
-import driver, objlayer, standin, session, capture, textInfos, controlTypes, globalVars
+import driver, objlayer, standin, capture, textInfos, controlTypes, globalVars
+import session as launcher      # not `session`: LiveDoc takes an argument of that name (a browser it did not launch)
 import NVDAObjects.IAccessible as NI
 import treeInterceptorHandler
 from objlayer import HWND
@@ -14,16 +15,16 @@ ARROWS = {'upArrow': ('ArrowUp', 0), 'downArrow': ('ArrowDown', 0), 'leftArrow':
 class LiveDoc:
     def __init__(self, case_html=None, url=None, port=8765, history=None, session=None):
         """A system test's page (`case_html`, wrapped as ChromeLib._writeTestFile wraps it), or a live address (`url`), or a browser this did not launch: `session`
-        answers what session.Session answers (dump, key, focus, action, scroll, click, eval, close), and nothing is launched or navigated (the middleware, A11-208)."""
+        answers what `launcher.Session` (emu/session.py) answers (dump, key, focus, action, scroll, click, eval, close), and nothing is launched or navigated (the middleware, A11-208)."""
         if session is not None:
             self.s = session; self.navigated = {}
         elif url is None:
             key = hashlib.sha1(case_html.encode()).hexdigest()[:12]
             page = capture.CACHE / f'live-{key}.html'
             page.write_text(capture.WRAP.format(title='NVDA Browser Test Case', case=case_html))
-            self.s = session.Session(page, port=port); time.sleep(1.5)
+            self.s = launcher.Session(page, port=port); time.sleep(1.5)
         else:
-            self.s = session.Session(url=url, port=port); self.navigated = self.s.navigate(url)
+            self.s = launcher.Session(url=url, port=port); self.navigated = self.s.navigate(url)
             if history:      # addresses the browser has visited before: a link to one is announced `visited`. The page is loaded again so that its links are styled by them.
                 self.s.add_history(history); self.s.reload()
         self.b = None; self.world = None; self.focus_ix = None; self._scrolled = False
