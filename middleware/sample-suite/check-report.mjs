@@ -26,6 +26,9 @@ const EXPECTED = {
   "an empty email is refused": ["unheard-error"],
   "an empty email is refused and the field is focused": ["unheard-error"],
 };
+// A flag a test may or may not raise, by what the tree read after the focus move had in it (A11-234): the field that takes the focus has its error message in the tree if the page had shown it by the time the tree was read,
+// and then the words are in the speech and the flag is rightly not raised (NVDA says an invalid field's error message). Which tree is read depends on how quickly the browser answered.
+const MAY_BE_ABSENT = { "an empty email is refused and the field is focused": ["unheard-error"] };
 const tests = [];
 (function walk(suite) { for (const s of suite.suites ?? []) walk(s); for (const spec of suite.specs ?? []) for (const t of spec.tests) tests.push({ title: spec.title, results: t.results }); })({ suites: report.suites });
 
@@ -81,8 +84,8 @@ for (const { title, results } of tests) {
     continue;
   }
   if (cold(result)) { skipped.push(title); continue; }
-  const got = data.flags.map((f) => f.flag).sort(), want = (EXPECTED[title] ?? []).slice().sort();
-  if (JSON.stringify(got) !== JSON.stringify(want)) problems.push(`${title}: flags ${JSON.stringify(got)}, wanted ${JSON.stringify(want)}`);
+  const got = data.flags.map((f) => f.flag).sort(), want = (EXPECTED[title] ?? []).slice().sort(), optional = MAY_BE_ABSENT[title] ?? [];
+  if (JSON.stringify(got) !== JSON.stringify(want) && JSON.stringify(got) !== JSON.stringify(want.filter((f) => !optional.includes(f)))) problems.push(`${title}: flags ${JSON.stringify(got)}, wanted ${JSON.stringify(want)}`);
   if (!data.predictedSpeech.some((s) => s.cause === "load")) problems.push(`${title}: no page load was predicted`);
   if (!data.sweeps.length) problems.push(`${title}: no sweep`);
 }

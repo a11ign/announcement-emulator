@@ -162,3 +162,13 @@ test("with --expect-shape-rates a run whose figure has no shapes is held to carr
   const claimed = checkRates(shaped({ rate: { shape: "NAME + ROLE", measured: false }, text: "+0.10s  load    Save, button  [shape not measured]", line: NOT_MEASURED, measured: false }));
   assert.equal(claimed.status, 1); assert.match(claimed.stderr, /carries a rate by shape, and the build's figure has none/);
 });
+
+test("a test whose error message may be in the tree it was read from passes with the flag or without it, and any other flag still fails", () => {
+  const title = "an empty email is refused and the field is focused";
+  const run = (flags: { flag: string }[]) => { const r = report([{ title, data: { predictedSpeech: speech, sweeps: sweep, flags } }], 5); return check(r.report, r.run); };
+  assert.equal(run([{ flag: "unheard-error" }]).status, 0);
+  assert.equal(run([]).status, 0);
+  assert.match(run([{ flag: "silent-dialog" }]).stderr, /flags \["silent-dialog"\], wanted \["unheard-error"\]/);
+  const strict = report([{ title: "an empty email is refused", data: { predictedSpeech: speech, sweeps: sweep, flags: [] } }], 5);
+  assert.match(check(strict.report, strict.run).stderr, /an empty email is refused: flags \[\], wanted \["unheard-error"\]/);
+});
