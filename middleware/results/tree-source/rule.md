@@ -93,7 +93,7 @@ the misses, made after the figure, and are labelled so in the write-up. **`unexp
 
 ## The files
 
-`rule.md` (this), `compare_sources.py` (applies the margin, the attribution and the tables), `freeze.json` (the objects before the first capture), `boxes.md` and `fleet-readings.json` (the boxes and each capture's own date),
+`rule.md` (this), `compare_sources.py` (applies the margin, the attribution and the tables), `run_linux_readings.sh` (this host's four runs, interleaved) and `measure_readings.sh` (`measure.py` for each reading and its second reading), `freeze.json` (the objects before the first capture), `boxes.md` and `fleet-readings.json` (the boxes and each capture's own date),
 `passive-runs.json` (each run's dates and summary), `ci-run.txt` (the stamp that starts the macOS workflow), `figure-<reading>/` (`agreement.txt` from `measure.py`, `misses.json` with the causes),
 `comparison.txt` and `comparison.json` (what `compare_sources.py` printed). The fleet's records and the passive reports are third-party pages' data and are not committed: the tables and each miss are, as in A11-208.
 The macOS and control reports travel in a workflow artifact kept one day and deleted once downloaded.
