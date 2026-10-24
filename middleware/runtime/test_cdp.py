@@ -17,6 +17,22 @@ def reader():
     return c
 
 
+class BrowserBuild(unittest.TestCase):
+    def test_the_build_is_read_from_what_the_browser_calls_itself(self):
+        self.assertEqual(cdp.browser_build('HeadlessChrome/156.0.8078.4'), '156.0.8078.4')
+        self.assertEqual(cdp.browser_build('Chrome/153.0.8010.12'), '153.0.8010.12')
+        self.assertEqual(cdp.browser_build('Edg/155.0.4283.1'), '155.0.4283.1')
+
+    def test_a_browser_that_names_no_build_has_none(self):
+        self.assertIsNone(cdp.browser_build(None))
+        self.assertIsNone(cdp.browser_build('Chrome'))
+
+    def test_the_build_is_told_to_whoever_wants_to_know_a_page_was_attached(self):
+        c = reader(); c.browser = '156.0.8078.4'; told = []; c.on_attach = lambda target, browser: told.append((target, browser)); c.installed = set(); c.on_tree = None
+        c._install('s', 't')
+        self.assertEqual(told, [('t', '156.0.8078.4')])
+
+
 class Routing(unittest.TestCase):
     def test_commands_sent_together_are_answered_in_the_order_they_were_sent_whatever_order_the_browser_answers_in(self):
         c = reader(); out = []

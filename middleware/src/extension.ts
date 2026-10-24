@@ -27,11 +27,22 @@ export interface BrowserPorts { collector: number; cdp: number }
  */
 export type TreeSource = "extension" | "devtools";
 
-export function treeSource(platform: string = process.platform, env: NodeJS.ProcessEnv = process.env): TreeSource {
+/** Where the tree comes from, and why: what the report says when it is not the extension. */
+export interface TreePick { source: TreeSource; why: string }
+
+/**
+ * The environment decides when it is set. Otherwise macOS reads through the DevTools port, and so does a launch the extension cannot be expected to load in (`extension.ok` false: the team chose
+ * its own browser, or Playwright's full Chromium is not installed). Anywhere else the extension is the default. No setup is broken by this: the DevTools source runs in any Chromium.
+ */
+export function pickTree(platform: string = process.platform, env: NodeJS.ProcessEnv = process.env, extension: { ok: boolean; why: string } = { ok: true, why: "" }): TreePick {
   const given = env.ANNOUNCEMENT_EMULATOR_TREE;
-  if (given === "extension" || given === "devtools") return given;
-  return platform === "darwin" ? "devtools" : "extension";
+  if (given === "extension" || given === "devtools") return { source: given, why: `ANNOUNCEMENT_EMULATOR_TREE=${given}` };
+  if (platform === "darwin") return { source: "devtools", why: "macOS gives the extension no desktop tree" };
+  if (!extension.ok) return { source: "devtools", why: `the extension was not used: ${extension.why}` };
+  return { source: "extension", why: "the default where the browser gives the extension a desktop tree" };
 }
+
+export const treeSource = (platform: string = process.platform, env: NodeJS.ProcessEnv = process.env): TreeSource => pickTree(platform, env).source;
 
 /**
  * The flags the emulator's browser needs, which the ticket names (`--force-renderer-accessibility`, `--load-extension`, `--allowlisted-extension-id`) and two more:

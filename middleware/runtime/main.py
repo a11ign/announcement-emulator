@@ -73,7 +73,7 @@ def main():
     if args.cdp:
         import cdp as cdp_module
         devtools = args.tree == 'devtools'      # the trees come through this port as well (axtree.py), where the extension is given none
-        cdp = cdp_module.Cdp(args.cdp, lambda ev: inbox.put(('page', ev, time.time())), lambda target: inbox.put(('attached', {'target': target}, time.time())),
+        cdp = cdp_module.Cdp(args.cdp, lambda ev: inbox.put(('page', ev, time.time())), lambda target, browser: inbox.put(('attached', {'target': target, 'browser': browser}, time.time())),
                              on_tree=(lambda snap: inbox.put(('snap', snap, time.time()))) if devtools else None,
                              on_connect=(lambda: inbox.put(('ready', {'t': round(time.time() * 1000), 'source': 'devtools'}, time.time()))) if devtools else lambda: None)
     send({'type': 'ready', 'bootMs': round((time.time() - t0) * 1000)})
@@ -94,7 +94,7 @@ def main():
             elif kind in ('error', 'verify'): send({'type': 'record', 'rec': {'kind': kind, **body}})
             elif kind == 'ready': send({'type': 'record', 'rec': {'kind': 'start', 'what': 'tree-source' if body.get('source') == 'devtools' else 'extension', 't': body['t'], 'desktopChildren': body.get('desktopChildren'), 'documents': body.get('documents')}})      # when the extension's service worker was up: a test that ran before it was up lost what it did
             elif kind == 'hello': send({'type': 'record', 'rec': {'kind': 'start', 'what': 'worker', 't': body['t'], 'automation': body.get('automation'), 'getDesktop': body.get('getDesktop')}})
-            elif kind == 'attached': send({'type': 'record', 'rec': {'kind': 'start', 'what': 'devtools', 't': round(arrived_at * 1000)}})
+            elif kind == 'attached': send({'type': 'record', 'rec': {'kind': 'start', 'what': 'devtools', 't': round(arrived_at * 1000), 'browser': body.get('browser')}})
         except BaseException as e:
             import traceback; traceback.print_exc()
             send({'type': 'record', 'rec': {'kind': 'error', 'where': kind, 'message': f'{type(e).__name__}: {e}'}})

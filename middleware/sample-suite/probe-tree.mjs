@@ -1,5 +1,5 @@
 // Does this platform's Chrome give the companion extension a tab's own tree, when it gives it no desktop tree? (A11-208, the macOS probe: chrome.automation.getTree(tabId) beside getDesktop.)
-//   BASELINE_CHROME=<chrome> [BASELINE_LIBS=<libs>] EXTENSION_SRC=<a copy of emu/ext2> EXTENSION_ID=<id> [PROBE_DESKTOP=0] node probe-tree.mjs
+//   EXTENSION_SRC=<a copy of emu/ext2> EXTENSION_ID=<id> [PROBE_DESKTOP=0] node probe-tree.mjs      (in the Chromium the project's Playwright installed: `npx playwright install chromium`)
 // PROBE_DESKTOP=0 asks the manifest for the tab's trees only (no "desktop": true).
 // Prints one JSON object: what the extension's worker posted (hello, desktop, tab, tree, after), the page's own view of the focus, and the browser's version.
 import { chromium } from "@playwright/test";
@@ -8,7 +8,7 @@ import { cpSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-const { BASELINE_CHROME: executablePath, EXTENSION_SRC: source, EXTENSION_ID: id, BASELINE_LIBS: libs } = process.env;
+const { EXTENSION_SRC: source, EXTENSION_ID: id } = process.env;
 const posts = {};
 const waiters = new Map();
 const server = createServer((req, res) => {
@@ -29,9 +29,8 @@ writeFileSync(join(dir, "manifest.json"), JSON.stringify(manifest));
 writeFileSync(join(dir, "probe-sw.js"), readFileSync(new URL("./probe-tree-sw.js", import.meta.url), "utf8").replace("__PORT__", String(port)).replace("__DESKTOP__", desktop ? "1" : "0"));
 
 const browser = await chromium.launch({
-  executablePath, headless: true, ignoreDefaultArgs: ["--disable-extensions"],
+  channel: "chromium", headless: true, ignoreDefaultArgs: ["--disable-extensions"],
   args: ["--force-renderer-accessibility", `--load-extension=${dir}`, `--allowlisted-extension-id=${id}`, "--disable-features=DisableLoadExtensionCommandLineSwitch"],
-  env: { ...process.env, LD_LIBRARY_PATH: [libs, process.env.LD_LIBRARY_PATH].filter(Boolean).join(":") },
 });
 const out = { version: browser.version() };
 try {

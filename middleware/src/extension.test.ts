@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { browserArgs, prepareExtension, treeSource } from "./extension.ts";
+import { browserArgs, pickTree, prepareExtension, treeSource } from "./extension.ts";
 
 test("the extension copy names passive.js as its service worker and carries the runtime's port, and the bundle's own copy is untouched", () => {
   const bundle = mkdtempSync(join(tmpdir(), "ae-ext-"));
@@ -44,4 +44,18 @@ test("the tree is read by the extension where the browser has a desktop tree, an
 
 test("with the tree through the DevTools port the browser gets no extension flag", () => {
   assert.deepEqual(browserArgs("", "id", { collector: 1, cdp: 2 }, "devtools"), ["--force-renderer-accessibility", "--remote-debugging-port=2"]);
+});
+
+test("a run says why its tree came from where it did, and a setup the extension cannot be expected to load in reads through the DevTools port and breaks nothing", () => {
+  const no = { ok: false, why: "Playwright's full Chromium 156.0.8078.4 is not installed" };
+  assert.deepEqual(pickTree("linux", {}, { ok: true, why: "" }), { source: "extension", why: "the default where the browser gives the extension a desktop tree" });
+  assert.deepEqual(pickTree("linux", {}, no), { source: "devtools", why: "the extension was not used: Playwright's full Chromium 156.0.8078.4 is not installed" });
+  assert.deepEqual(pickTree("darwin", {}, { ok: true, why: "" }), { source: "devtools", why: "macOS gives the extension no desktop tree" });
+});
+
+test("the environment still decides over what the launch is expected to load", () => {
+  const no = { ok: false, why: "x" };
+  assert.deepEqual(pickTree("linux", { ANNOUNCEMENT_EMULATOR_TREE: "extension" }, no), { source: "extension", why: "ANNOUNCEMENT_EMULATOR_TREE=extension" });
+  assert.deepEqual(pickTree("darwin", { ANNOUNCEMENT_EMULATOR_TREE: "extension" }, no), { source: "extension", why: "ANNOUNCEMENT_EMULATOR_TREE=extension" });
+  assert.equal(pickTree("linux", { ANNOUNCEMENT_EMULATOR_TREE: "devtools" }).source, "devtools");
 });
