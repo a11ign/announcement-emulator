@@ -109,17 +109,21 @@ class Cdp:
             self.ws.send(json.dumps(message))
             return self.next_id
 
+    def _post(self, method, params, session, then=None):
+        """Sends a command that is answered into a slot (`replies`), under the lock that numbers them; `then(message)` is called from the thread that reads the socket when the answer comes. Returns the command's number and its slot."""
+        with self.lock:
+            self.next_id += 1
+            slot = {'event': threading.Event(), 'session': session, **({'then': then} if then else {})}; self.replies[self.next_id] = slot
+            message = {'id': self.next_id, 'method': method, 'params': params or {}}
+            if session: message['sessionId'] = session
+            self.ws.send(json.dumps(message))
+            return self.next_id, slot
+
     def call_many(self, commands, session=None, timeout=20):
         """Commands sent at once, and their answers in the order they were sent: one round trip to the browser and not one for each. Called by a thread other than the one that reads the socket (`_run`, which hands the answers over)."""
-        slots = []
-        with self.lock:
-            for method, params in commands:
-                slot = {'event': threading.Event(), 'session': session}; self.next_id += 1; self.replies[self.next_id] = slot; slots.append((self.next_id, method, slot))
-                message = {'id': self.next_id, 'method': method, 'params': params or {}}
-                if session: message['sessionId'] = session
-                self.ws.send(json.dumps(message))
+        slots = [(method, *self._post(method, params, session)) for method, params in commands]
         out = []
-        for ident, method, slot in slots:
+        for method, ident, slot in slots:
             if not slot['event'].wait(timeout): self.replies.pop(ident, None); raise TimeoutError(f'{method} did not answer in {timeout} s')
             if 'error' in slot['message']: raise RuntimeError(f'{method}: {slot["message"]["error"].get("message")}')
             out.append(slot['message']['result'])
@@ -139,7 +143,7 @@ class Cdp:
             if self.ws is None: return
             self.installed.clear(); self.target_of.clear(); self.url_of.clear(); self.generation += 1
             with self.wake: self.wanted.clear()      # the tree reader takes from it under this lock
-            gone, self.replies = list(self.replies.values()), {}
+            gone = list(self.replies.values()); self.replies.clear()
             for slot in gone: self._complete(slot, {'error': {'message': 'the browser went away'}})
             try:
                 self.on_connect()
@@ -179,15 +183,6 @@ class Cdp:
             if event.get('e') == 'focusin' and 'seq' in event: self._resolve(session, m['params'].get('executionContextId'), event)      # told on, and the tree read, once the browser has said which DOM node it is
             else: self.on_event(event); self._want(session, event.get('e'))
 
-    def _send_then(self, method, params, session, then):
-        """Sends a command and calls `then(message)` when it is answered, from the thread that reads the socket (so `then` must not wait for an answer): the answer, or an error message if the page goes first."""
-        with self.lock:
-            self.next_id += 1
-            slot = {'event': threading.Event(), 'session': session, 'then': then}; self.replies[self.next_id] = slot
-            message = {'id': self.next_id, 'method': method, 'params': params or {}}
-            if session: message['sessionId'] = session
-            self.ws.send(json.dumps(message))
-
     @staticmethod
     def _complete(slot, message):
         slot['message'] = message; slot['event'].set()
@@ -196,41 +191,8 @@ class Cdp:
             except Exception: import traceback; traceback.print_exc()      # the reader of the socket must outlive what an answer is used for
 
     def _resolve(self, session, context, event):
-        """Tells on a `focusin` after asking the browser which element it is, as the event arrives and without holding up the events behind it: the DOM node (`DOM.describeNode`; the number the accessibility tree holds as
-        `backendDOMNodeId`), and the role and name the browser computed for it (`Accessibility.getPartialAXTree`). Matching by these is exact where the page script's guess at a name is not (a name that CSS or a hidden span adds to
-        is not in the element's own text). Two round trips, asked before the tree is read again so that the read does not hold them up. A page that is closed first, or an element that is gone, leaves the event as the page sent it."""
-        told = []
-        def tell():
-            if not told: told.append(1); self.on_event(event); self._want(session, 'focusin')
-        def element(message):
-            held = ((message.get('result') or {}).get('result') or {}).get('objectId')
-            if not held: return tell()
-            answers = {}
-            def answered(name):
-                def then(reply):
-                    answers[name] = reply.get('result')
-                    if len(answers) < 2: return
-                    try:
-                        self._send('Runtime.releaseObject', {'objectId': held}, session)
-                        event.update(self._what_is(answers['node'], answers['ax']))
-                    finally: tell()
-                return then
-            try:
-                self._send_then('DOM.describeNode', {'objectId': held}, session, answered('node'))
-                self._send_then('Accessibility.getPartialAXTree', {'objectId': held, 'fetchRelatives': False}, session, answered('ax'))
-            except (OSError, ConnectionError): tell()
-        try: self._send_then('Runtime.evaluate', {'expression': f'window.__aeFocused && window.__aeFocused.get({int(event["seq"])})', 'contextId': context}, session, element)
-        except (OSError, ConnectionError, AttributeError): tell()
-
-    @staticmethod
-    def _what_is(node, ax):
-        """What the browser said of an element: `{backendNodeId, axName, axRole}`, with what it could not say left out."""
-        import axtree
-        backend = ((node or {}).get('node') or {}).get('backendNodeId')
-        if backend is None: return {}
-        own = next((n for n in (ax or {}).get('nodes') or [] if n.get('backendDOMNodeId') == backend and not n.get('ignored')), None)
-        if own is None: return {'backendNodeId': backend}
-        return {'backendNodeId': backend, 'axName': own['name'].get('value', '') if isinstance(own.get('name'), dict) else '', 'axRole': axtree.ROLES.get((own.get('chromeRole') or {}).get('value'))}
+        """Tells on a `focusin` after asking the browser which element it is: see `Resolution`."""
+        Resolution(self, session, event).start(context)
 
     def _want(self, session, why):
         if not self.on_tree or not session: return
@@ -282,3 +244,49 @@ class Cdp:
         self.stopped = True
         with self.wake: self.wake.notify()
         if self.ws: self.ws.close()
+
+
+class Resolution:
+    """Tells on one `focusin` after asking the browser which element it was, as the event arrives and without holding up the events behind it: the DOM node (`DOM.describeNode`; the number the accessibility tree holds as
+    `backendDOMNodeId`), and the role and name the browser computed for it (`Accessibility.getPartialAXTree`). Matching by these is exact where the page script's guess at a name is not (a name that CSS or a hidden span adds
+    to is not in the element's own text). Two round trips, asked before the tree is read again so that the read does not hold them up. A page that is closed first, or an element that is gone, leaves the event as the page sent
+    it. Every step runs on the thread that reads the socket, so none of this is shared with another thread."""
+    def __init__(self, cdp, session, event):
+        self.cdp, self.session, self.event = cdp, session, event
+        self.held = None; self.answers = {}; self.told = False
+
+    def start(self, context):
+        expression = f'window.__aeFocused && window.__aeFocused.get({int(self.event["seq"])})'      # the element the listener kept (LISTENER)
+        self.ask('Runtime.evaluate', {'expression': expression, 'contextId': context}, self.on_element)
+
+    def ask(self, method, params, then):
+        try: self.cdp._post(method, params, self.session, then)
+        except (OSError, ConnectionError, AttributeError): self.tell()
+
+    def on_element(self, message):
+        self.held = ((message.get('result') or {}).get('result') or {}).get('objectId')
+        if not self.held: return self.tell()
+        self.ask('DOM.describeNode', {'objectId': self.held}, lambda reply: self.on_answer('node', reply))
+        self.ask('Accessibility.getPartialAXTree', {'objectId': self.held, 'fetchRelatives': False}, lambda reply: self.on_answer('ax', reply))
+
+    def on_answer(self, name, reply):
+        self.answers[name] = reply.get('result')
+        if len(self.answers) < 2: return
+        try:
+            self.cdp._send('Runtime.releaseObject', {'objectId': self.held}, self.session)
+            self.event.update(self.what_is(self.answers['node'], self.answers['ax']))
+        finally: self.tell()
+
+    def tell(self):
+        if self.told: return
+        self.told = True; self.cdp.on_event(self.event); self.cdp._want(self.session, 'focusin')      # and now the tree is read
+
+    @staticmethod
+    def what_is(node, ax):
+        """What the browser said of an element: `{backendNodeId, axName, axRole}`, with what it could not say left out."""
+        import axtree
+        backend = ((node or {}).get('node') or {}).get('backendNodeId')
+        if backend is None: return {}
+        own = next((n for n in (ax or {}).get('nodes') or [] if n.get('backendDOMNodeId') == backend and not n.get('ignored')), None)
+        if own is None: return {'backendNodeId': backend}
+        return {'backendNodeId': backend, 'axName': own['name'].get('value', '') if isinstance(own.get('name'), dict) else '', 'axRole': axtree.ROLES.get((own.get('chromeRole') or {}).get('value'))}

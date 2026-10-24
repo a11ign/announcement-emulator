@@ -112,18 +112,17 @@ def match_focus(snap, event, last_resort=True):
     fits = [n for n in snap['nodes'] if n.get('htmlTag') == event['tag'] and (not event.get('id') or n.get('htmlId') == event['id'])]
     if event.get('axName') is not None:
         named = [n for n in fits if normal(n.get('name')) == normal(event['axName']) and (not event.get('axRole') or n['role'] == event['axRole'])]
-        if named: return prefer_focused(snap, named)[0]
+        if named: return focused_of(snap, named)
         if not last_resort: return None      # the browser has named it and this tree does not have it yet: the next tree may
-    if backend is not None and not last_resort: return None
+    if backend is not None and not last_resort: return None      # named by the browser, and neither its node nor a node of its name is in this tree yet: not a guess, yet
     names = {squashed(n) for n in event.get('names', [])}      # the tree puts a space where Chromium breaks a line between two elements (a hidden span, a block), and the element's own text has none
     fits = [n for n in fits if (squashed(n.get('name')) in names) or (not names and not squashed(n.get('name'))) or event.get('role')]
-    return prefer_focused(snap, fits)[0] if fits else None
+    return focused_of(snap, fits) if fits else None
 
 
-def prefer_focused(snap, fits):
-    """Of several nodes that fit, the one the tree itself has focused, else all of them in tree order."""
-    own = [n for n in fits if n['ix'] == snap['focusIx']]
-    return own or fits
+def focused_of(snap, fits):
+    """Of several nodes that fit, the one the tree itself has focused, else the first in tree order."""
+    return next((n for n in fits if n['ix'] == snap['focusIx']), fits[0])
 
 
 class Predictor:
