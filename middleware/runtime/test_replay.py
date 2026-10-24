@@ -1,7 +1,7 @@
 """Recorded sessions of the sample suite (fixtures/*.jsonl.gz: what the extension and the page told the runtime during one test), run through the predictor with NVDA and without a browser.
 
 Needs the emulator's virtualenv and NVDA's source (`setup.sh`, or the bundle) in $EMU_DOWNLOADS; skipped without them. Each recording is of a test in middleware/sample-suite/tests/fixtures."""
-import json, os, pathlib, subprocess, sys, unittest
+import json, os, pathlib, subprocess, sys, tempfile, unittest
 
 HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
@@ -85,6 +85,14 @@ class Replay(unittest.TestCase):
         records = [r for r in replay('tab-order', '--no-sweeps', '--report-focus')['records'] if r['kind'] == 'speech' and r['cause'] == 'focus']
         self.assertTrue(all('repeatFocus' in r for r in records))
         self.assertEqual(records[0]['repeatFocus'], 'Home, link, focused, linked')
+
+    def test_the_emulator_boots_where_nothing_is_in_the_home_directory(self):
+        """emu/winuser_standin.py read NVDA's source from a path in one machine's home; a bundle is unpacked into a cache, and a CI runner's home has no such directory."""
+        with tempfile.TemporaryDirectory() as home:
+            out = subprocess.run([str(PYTHON), '-I', str(HERE / 'replay.py'), str(HERE / 'fixtures' / 'basket-live.jsonl.gz'), '--no-sweeps'], capture_output=True, text=True,
+                                 env={**os.environ, 'HOME': home, 'EMU_DOWNLOADS': str(DOWNLOADS)}, timeout=300)
+        self.assertEqual(out.returncode, 0, out.stderr[-1500:])
+        self.assertIn('1 item in your basket', out.stdout)
 
     def test_nothing_it_writes_is_named_for_an_a11ign_evidence_field(self):
         banned = {'transcript', 'structure', 'interaction', 'observed', 'media', 'formInputs', 'diagnostics', 'focusOrder', 'typedFeedback', 'dialogEscape'}

@@ -1,7 +1,8 @@
 """winUser for the emulator: NVDA's own integer constants (parsed from source/winUser.py, which otherwise binds to user32), and the few
 window queries NVDAObjects makes, answered for a single Chrome renderer window. This is layer 0/5 territory: a fixed answer, not a measurement."""
-import ast, types, pathlib
-SRC = pathlib.Path.home() / 'spikes/announcement-emulator-5661/nvda-src/source/winUser.py'
+import ast, types
+from paths import DOWNLOADS      # where NVDA's source is: $EMU_DOWNLOADS, as every other module of the emulator reads it (this one named a directory in one machine's home)
+SRC = DOWNLOADS / 'nvda-src/source/winUser.py'
 import stubs
 m = stubs.StubModule('winUser')
 for node in ast.parse(SRC.read_text()).body:
