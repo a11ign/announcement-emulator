@@ -23,7 +23,7 @@ def ask(*extra):
         with tempfile.TemporaryDirectory() as d:
             out = os.path.join(d, 'out.json')
             subprocess.run(['node', os.path.join(HERE, 'fleet_capture.mjs'), f'a11y-worker-2=http://127.0.0.1:{server.server_port}', 'https://example.com/', out, *extra], check=True, capture_output=True, timeout=60)
-            record = json.load(open(out))
+            with open(out) as f: record = json.load(f)
     finally: server.shutdown(); server.server_close()
     return Worker.bodies[0], record
 

@@ -1,0 +1,9 @@
+
+Running 13 tests using 2 workers
+·············
+  13 passed (20.8s)
+announcement-emulator: predicted NVDA speech attached to 13 tests, 0 flags; the runtime waited 346 ms at the end (/Users/runner/work/_temp/project/test-results/announcement-emulator/run.json)
+
+real	0m23.578s
+user	0m18.838s
+sys	0m7.342s

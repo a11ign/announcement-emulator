@@ -1,0 +1,9 @@
+ 1 workers  without          wall ms 5162 5362 5908  median 5362  tests 13  ok true
+ 1 workers  with             wall ms 7643 6882 6816  median 6882  tests 13  ok true
+ 1 workers  with, no sweeps  wall ms 6687 6689 6673  median 6687  tests 13  ok true
+ 2 workers  without          wall ms 5035 5140 5080  median 5080  tests 13  ok true
+ 2 workers  with             wall ms 6842 6852 6843  median 6843  tests 13  ok true
+ 2 workers  with, no sweeps  wall ms 6867 6682 6720  median 6720  tests 13  ok true
+ 4 workers  without          wall ms 5628 5610 5541  median 5610  tests 13  ok true
+ 4 workers  with             wall ms 7987 7785 7716  median 7785  tests 13  ok true
+ 4 workers  with, no sweeps  wall ms 7700 7839 7742  median 7742  tests 13  ok true

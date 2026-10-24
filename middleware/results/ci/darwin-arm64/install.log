@@ -1,0 +1,7 @@
+announcement-emulator: downloading http://127.0.0.1:8099/announcement-emulator-bundle-darwin-arm64.tar.gz
+announcement-emulator: sha256 33ebe89e54487e4cb1bc6596b7c90604118e1d03312ccf42098f2e64e8bfefa7 matches the pin
+announcement-emulator: installed /Users/runner/Library/Caches/announcement-emulator/0.0.0-spike.0-darwin-arm64
+
+real	0m3.234s
+user	0m1.833s
+sys	0m1.520s
