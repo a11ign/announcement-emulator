@@ -1,0 +1,10 @@
+{
+  "extends": "@a11ign/toolchain/tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "noEmit": true,
+    "allowJs": false
+  },
+  "include": ["src"],
+  "exclude": ["src/**/*.test.ts"]
+}

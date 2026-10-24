@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Delete account - Example shop</title></head>
+<body>
+<main>
+<h1>Your account</h1>
+<button id="open" type="button">Delete account</button>
+<dialog id="confirm" aria-labelledby="confirm-title">
+  <h2 id="confirm-title">Delete your account?</h2>
+  <p>This cannot be undone.</p>
+  <button id="cancel" type="button" autofocus>Keep my account</button>
+  <button id="really" type="button">Delete</button>
+</dialog>
+<script>
+  const dialog = document.getElementById('confirm');
+  document.getElementById('open').addEventListener('click', () => dialog.showModal());
+  document.getElementById('cancel').addEventListener('click', () => dialog.close());
+</script>
+</main>
+</body></html>

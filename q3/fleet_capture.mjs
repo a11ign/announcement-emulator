@@ -1,10 +1,13 @@
 // Ask one fleet worker for the capture of one address, with the body the real-page capture sends (screenreader-worker's /capture), and write the record.
-//   node fleet_capture.mjs <worker name>=<worker url> <address> <out.json> [steps] [--tables]
+//   node fleet_capture.mjs <worker name>=<worker url> <address> <out.json> [steps] [--tables] [--typing-dialog]
+//   --typing-dialog  also asks for the worker's typing probe and its Escape probe (`probeTyping`, `probeDialog`: opt-in on the worker, and both ride `probeFocus`, which is on). Without it the body
+//                    is what it has always been; A11-208 uses it to capture the same actions as a Playwright test that tabs, presses Escape and types.
 // Used for control pages we serve ourselves; it changes nothing on the worker and touches no evidence record of a11ign.
 // The record names the worker (`a11y-worker-2`) and the machine serving the page (`capture-host`), never a network address: the worker's URL is only where to ask.
 import { writeFileSync } from "node:fs";
 import { request } from "node:http";
-const [, , workerArg, url, out, steps] = process.argv;
+const [, , workerArg, url, out, stepsArg] = process.argv;
+const steps = stepsArg?.startsWith('--') ? undefined : stepsArg;      // a flag may stand where the step count would
 const parsed = /^([\w-]+)=(http:\/\/.+)$/.exec(workerArg || "");
 if (!parsed) throw new Error("the first argument is <worker name>=<worker url>, e.g. a11y-worker-2=http://host:8765 (http: the workers speak no other)");
 const [, workerName, worker] = parsed;
@@ -12,9 +15,10 @@ const SERVER_NAME = "capture-host";
 const serverHost = new URL(url).hostname;
 const named = (text) => /^[\d.]+$/.test(serverHost) ? text.replaceAll(serverHost, SERVER_NAME) : text;     // an address of ours given as an IP literal is written by name
 const tables = process.argv.includes('--tables');
+const typingAndDialog = process.argv.includes('--typing-dialog');
 // node:http and not fetch: fetch gives up on the response headers after 300 s (undici's default) and a worker answers only when the capture is done, which on a real page can take longer
 // (the re-measure of A11-155 lost its first 99 captures to it, and the retries met `429 a capture is already in progress`). The idle limit here is the worker's own 600 s.
-const body = JSON.stringify({ url, probeForms: false, probeFocus: true, probeNavigation: true, probeFocusContext: true, probeFocusReveal: true, steps: Number(steps || 600), ...(tables ? { probeTables: true } : {}) });
+const body = JSON.stringify({ url, probeForms: false, probeFocus: true, probeNavigation: true, probeFocusContext: true, probeFocusReveal: true, steps: Number(steps || 600), ...(tables ? { probeTables: true } : {}), ...(typingAndDialog ? { probeTyping: true, probeDialog: true } : {}) });
 const post = (target, payload, idleMs) => new Promise((resolve, reject) => {
   const u = new URL(target);
   const req = request({ hostname: u.hostname, port: u.port || 80, path: u.pathname, method: "POST", timeout: idleMs,

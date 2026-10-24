@@ -1,0 +1,1050 @@
+{
+ "status": {
+  "https://check-for-flooding.service.gov.uk/river-and-sea-levels": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "field",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "landmarks",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    }
+   ]
+  },
+  "https://find-and-update.company-information.service.gov.uk/company/00000006": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": true,
+     "passive": false
+    }
+   ]
+  },
+  "https://design-system.service.gov.uk/components/tabs/": {
+   "status": "not comparable",
+   "problems": {
+    "heading": [
+     18,
+     19
+    ],
+    "link": [
+     75,
+     76
+    ]
+   }
+  },
+  "https://tfl.gov.uk/plan-a-journey/": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": true,
+     "passive": false
+    }
+   ]
+  },
+  "https://service-manual.nhs.uk/design-system/components/table": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "lists",
+     "fleet": false,
+     "passive": true
+    }
+   ]
+  },
+  "https://design-system.service.gov.uk/components/date-input/": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "landmarks",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "graphics",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "lists",
+     "fleet": false,
+     "passive": true
+    }
+   ]
+  }
+ },
+ "units": {
+  "field": [
+   0,
+   2
+  ],
+  "formFields": [
+   20,
+   22
+  ],
+  "frames": [
+   0,
+   19
+  ],
+  "graphics": [
+   2,
+   6
+  ],
+  "headings": [
+   11,
+   11
+  ],
+  "landmarks": [
+   15,
+   24
+  ],
+  "links": [
+   65,
+   74
+  ],
+  "lists": [
+   14,
+   18
+  ],
+  "title": [
+   3,
+   5
+  ],
+  "typed": [
+   12,
+   18
+  ]
+ },
+ "misses": [
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "graphics",
+   "i": 0,
+   "expected": "banner landmark, GOV dot UK, link",
+   "predicted": "banner landmark, GOV dot UK, graphic, link",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ]
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "graphics",
+   "i": 1,
+   "expected": "main landmark, ￼, graphic, button",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE"
+   ]
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "lists",
+   "i": 0,
+   "expected": "main landmark, Related content, navigation landmark, list, with 6 items, Get flood warnings by phone, text or email",
+   "predicted": "main landmark, Related content, navigation landmark, list, with 6 items, Get flood warnings by phone, text or email, link",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "lists",
+   "i": 1,
+   "expected": "content info landmark, list, with 4 items, Accessibility statement",
+   "predicted": "content info landmark, list, with 4 items, Accessibility statement, link, Cookies, link, Privacy notice, link, Terms and conditions",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "frames",
+   "i": 0,
+   "expected": "Not supported in this document",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "field",
+   "i": 0,
+   "expected": "Search for a company or officer, edit, focused, blank",
+   "predicted": "Search for a company or officer, edit, blank",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "field",
+   "i": 0,
+   "expected": "Search the site, edit, focused, Search, blank",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 0,
+   "expected": "1",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 1,
+   "expected": "2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 2,
+   "expected": "3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 3,
+   "expected": "4",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 4,
+   "expected": "5",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 5,
+   "expected": "6",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "landmarks",
+   "i": 6,
+   "expected": "Main menu, navigation landmark, list, with 5 items",
+   "predicted": "Main menu, navigation landmark, list, with 6 items",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 6,
+   "expected": "Main menu, navigation landmark, list, with 5 items, clickable, Moremenu options, button, collapsed",
+   "predicted": "Main menu, navigation landmark, list, with 6 items, clickable, Moremenu options, button, collapsed",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 10,
+   "expected": "Open Favourites, menu button, expanded, sub Menu",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "graphics",
+   "i": 1,
+   "expected": "content info landmark, Other public bodies, navigation landmark, Mayor of London, graphic, menu button, expanded, sub Menu",
+   "predicted": "content info landmark, Other public bodies, navigation landmark, Mayor of London, graphic, menu button, collapsed, sub Menu",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "graphics",
+   "i": 2,
+   "expected": "list, with 7 items, Greater London Authority, graphic",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 27,
+   "expected": "banner landmark, Main menu, navigation landmark, list, with 5 items, Fares, link",
+   "predicted": "banner landmark, Main menu, navigation landmark, list, with 6 items, Help and contacts, link",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 37,
+   "expected": "Main menu, navigation landmark, list, with 5 items, Plan a journey, same page, link",
+   "predicted": "Main menu, navigation landmark, list, with 6 items, Plan a journey, same page, link",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 38,
+   "expected": "Fares, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 47,
+   "expected": "Other public bodies, navigation landmark, list, with 7 items, Mayor of London, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 48,
+   "expected": "London Assembly, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 49,
+   "expected": "London and Partners, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 50,
+   "expected": "Metropolitan Police Service, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 51,
+   "expected": "London Fire Brigade, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 52,
+   "expected": "The Mayor's Office for Policing and Crime, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "lists",
+   "i": 0,
+   "expected": "banner landmark, Main menu, navigation landmark, list, with 5 items",
+   "predicted": "banner landmark, Main menu, navigation landmark, list, with 6 items",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT"
+   ]
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "lists",
+   "i": 6,
+   "expected": "Other public bodies, navigation landmark, list, with 7 items, Greater London Authority, graphic",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "title",
+   "i": 0,
+   "expected": "table nhs digital service manual",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "landmarks",
+   "i": 0,
+   "expected": "main landmark, sortable-server-side-last-login-descending, frame, clickable, Pagination, navigation landmark, list, with 6 items, Page 1, link, current page",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "landmarks",
+   "i": 1,
+   "expected": "scrolling, frame, clickable, Childhood vaccination coverage by nation, region, Childhood vaccination coverage by nation, table, with 5 rows and 13 columns, caption, Childhood vaccination coverage by nation",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "landmarks",
+   "i": 2,
+   "expected": "navigation landmark, Form elements, heading, level 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "landmarks",
+   "i": 3,
+   "expected": "Breadcrumb, navigation landmark, list, with 3 items, Home, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "landmarks",
+   "i": 4,
+   "expected": "banner landmark, Menu, navigation landmark, list, with 5 items, NHS service standard, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "landmarks",
+   "i": 5,
+   "expected": "search landmark, section, Search the NHS digital service manual",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "landmarks",
+   "i": 6,
+   "expected": "NHS digital service manual homepage, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "landmarks",
+   "i": 7,
+   "expected": "content info landmark, Support links, heading, level 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "frames",
+   "i": 0,
+   "expected": "main landmark, basic, frame, clickable, Skin symptoms and possible causes, table, with 4 rows and 2 columns, caption, Skin symptoms and possible causes",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "frames",
+   "i": 1,
+   "expected": "3-column, frame, clickable, Prescription prepayment certificate (PPC) charges, table, with 4 rows and 3 columns, caption, Prescription prepayment certificate (PPC) charges",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "frames",
+   "i": 2,
+   "expected": "compact, frame, clickable, Childhood vaccination coverage by nation, table, with 5 rows and 4 columns, caption, Childhood vaccination coverage by nation",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "frames",
+   "i": 3,
+   "expected": "striped, frame, clickable, Childhood vaccination coverage by nation, table, with 5 rows and 4 columns, caption, Childhood vaccination coverage by nation",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "frames",
+   "i": 4,
+   "expected": "responsive, frame, clickable, Ibuprofen liquid dosages for children by age, table, with 7 rows and 3 columns, caption, Ibuprofen liquid dosages for children by age",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "frames",
+   "i": 5,
+   "expected": "scrolling, frame, clickable, Childhood vaccination coverage by nation, region, Childhood vaccination coverage by nation, table, with 5 rows and 13 columns, caption, Childhood vaccination coverage by nation",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "frames",
+   "i": 6,
+   "expected": "sortable, frame, clickable, Childhood vaccination coverage (Column headers are sortable), table, with 5 rows and 4 columns, caption, Childhood vaccination coverage (Column headers are sortable)",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "frames",
+   "i": 7,
+   "expected": "sortable-custom, frame, clickable, Organisations using the service (Column headers are sortable), table, with 5 rows and 4 columns, caption, Organisations using the service (Column headers are sortable)",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "frames",
+   "i": 8,
+   "expected": "sortable-server-side-last-login-descending, frame, clickable, Users (Column headers are sortable), table, with 11 rows and 3 columns, caption, Users (Column headers are sortable)",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "frames",
+   "i": 9,
+   "expected": "word-break, frame, clickable, Users, table, with 2 rows and 2 columns, caption, Users",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "frames",
+   "i": 10,
+   "expected": "missing-data, frame, clickable, Vaccinations given, table, with 3 rows and 3 columns, caption, Vaccinations given",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "frames",
+   "i": 11,
+   "expected": "reverse, frame, clickable, Skin symptoms and possible causes, table, with 4 rows and 2 columns, caption, Skin symptoms and possible causes",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "title",
+   "i": 0,
+   "expected": "date input gov uk design system",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "frames",
+   "i": 0,
+   "expected": "main landmark, Date input example, frame, When was your passport issued?, grouping, When was your passport issued?, heading, level 1",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ]
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "frames",
+   "i": 1,
+   "expected": "Date input second example, frame, When was your passport issued?, grouping, When was your passport issued?, heading, level 1",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ]
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "frames",
+   "i": 2,
+   "expected": "Date input without a heading – Date input second example, frame, When was your passport issued?, grouping, When was your passport issued?",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ]
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "frames",
+   "i": 3,
+   "expected": "Date input to ask for date of birth – Date input example, frame, What is your date of birth?, grouping, What is your date of birth?, heading, level 1",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ]
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "frames",
+   "i": 4,
+   "expected": "Date input with errors – Date input example, frame, When was your passport issued?, grouping, When was your passport issued?, heading, level 1",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ]
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "frames",
+   "i": 5,
+   "expected": "Dates with errors – Date input example, frame, When was your passport issued?, grouping, When was your passport issued?, heading, level 1",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ]
+  }
+ ]
+}

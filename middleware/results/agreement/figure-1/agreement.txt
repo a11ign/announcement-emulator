@@ -1,0 +1,36 @@
+pages 6: comparable 5, not comparable 1
+  unstable channels on https://check-for-flooding.service.gov.uk/river-and-sea-levels: stops, field, headings, landmarks, formFields, links
+  unstable channels on https://find-and-update.company-information.service.gov.uk/company/00000006: stops
+  not comparable: https://design-system.service.gov.uk/components/tabs/ {'heading': [18, 19], 'link': [75, 76]}
+  unstable channels on https://tfl.gov.uk/plan-a-journey/: stops
+  unstable channels on https://service-manual.nhs.uk/design-system/components/table: stops, headings, formFields, links, lists
+  unstable channels on https://design-system.service.gov.uk/components/date-input/: stops, headings, landmarks, formFields, graphics, links, lists
+
+agreement by channel: the passive predictions against the fleet / the fleet against itself / the passive runs against each other
+      3 / 5      60.0% |     5 / 5     100.0% |     3 / 3     100.0%  title
+      0 / 2       0.0% |     2 / 2     100.0% |     1 / 1     100.0%  field
+     12 / 18     66.7% |    18 / 18    100.0% |    12 / 12    100.0%  typed
+     11 / 11    100.0% |    11 / 11    100.0% |    11 / 11    100.0%  headings
+     15 / 24     62.5% |    24 / 24    100.0% |    16 / 16    100.0%  landmarks
+     20 / 22     90.9% |    22 / 22    100.0% |    21 / 21    100.0%  formFields
+      2 / 6      33.3% |     6 / 6     100.0% |     4 / 4     100.0%  graphics
+     65 / 74     87.8% |    74 / 74    100.0% |    68 / 68    100.0%  links
+     14 / 18     77.8% |    18 / 18    100.0% |    17 / 17    100.0%  lists
+      0 / 19      0.0% |    19 / 19    100.0% |     0 / 0        n/a  frames
+
+agreement by shape (the 10 commonest of the fleet's units): the passive predictions against the fleet / the fleet against itself / the passive runs against each other
+     50 / 57     87.7% |    57 / 57    100.0% |    51 / 51    100.0%  NAME + ROLE
+     15 / 24     62.5% |    24 / 24    100.0% |    15 / 15    100.0%  NAME
+      0 / 10      0.0% |    10 / 10    100.0% |     0 / 0        n/a  NAME + ROLE + STATE + NAME + ROLE + NAME + ROLE + NAME
+      5 / 8      62.5% |     8 / 8     100.0% |     5 / 5     100.0%  NAME + ROLE + ROLE + COUNT + NAME + ROLE
+      7 / 7     100.0% |     7 / 7     100.0% |     7 / 7     100.0%  ROLE + COUNT + NAME
+      6 / 6     100.0% |     6 / 6     100.0% |     6 / 6     100.0%  NAME + STATE + ROLE
+      5 / 5     100.0% |     5 / 5     100.0% |     5 / 5     100.0%  NAME + ROLE + LEVEL
+      5 / 5     100.0% |     5 / 5     100.0% |     5 / 5     100.0%  NAME + ROLE + NAME + ROLE + LEVEL
+      3 / 4      75.0% |     4 / 4     100.0% |     3 / 3     100.0%  ROLE + NAME + ROLE
+      3 / 4      75.0% |     4 / 4     100.0% |     4 / 4     100.0%  ROLE + NAME + ROLE + ROLE
+
+all channels: 142 of 199 units agreed = 71.4%
+the 10 commonest shapes: 99 of 130 = 76.2%
+
+misses by cause (all channels): no counterpart 47, unexplained 10

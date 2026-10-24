@@ -1053,6 +1053,14 @@ class LocalLib:
         if r is None: return False
         _set(sRef, r[0]); _set(eRef, r[1]); return True
 
+    def calculateCharacterBoundaries(self, text, length, offsets, countRef):
+        """nvdaHelper/local/textUtils.cpp calculateCharacterBoundaries (textUtils/uniscribe.py splitAtCharacterBoundaries): the end of each character in `text`, behind a leading 0, with the
+        same approximation of Uniscribe's character stops as `calculateCharacterOffsets` (`_log_attr`). NVDA asks for it to spell out a typed character (A11-208)."""
+        stops = _log_attr(text[:length])[0]
+        ends = [0] + [i for i in range(1, length) if stops[i]] + [length]
+        for k, e in enumerate(ends): offsets[k] = e
+        _set(countRef, len(ends)); return True
+
     def calculateCharacterOffsets(self, text, length, offset, sRef, eRef):
         r = _calc_offsets('char', text, length, offset)
         if r is None: return False

@@ -1,0 +1,791 @@
+{
+  "config": {
+    "argv": [
+      "/Users/runner/hostedtoolcache/node/22.23.3/arm64/bin/node",
+      "/Users/runner/work/_temp/project/node_modules/.bin/playwright",
+      "test",
+      "--project=fixtures"
+    ],
+    "configFile": "/Users/runner/work/_temp/project/playwright.config.ts",
+    "rootDir": "/Users/runner/work/_temp/project/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "ci": {
+        "commitHref": "https://github.com/a11ign/announcement-emulator/commit/4fe9261120b6b287fc4362ee1baec8a69d43349a",
+        "commitHash": "4fe9261120b6b287fc4362ee1baec8a69d43349a",
+        "buildHref": "https://github.com/a11ign/announcement-emulator/actions/runs/40125495459"
+      },
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/runner/work/_temp/project/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/a11ign/announcement-emulator/commit/4fe9261120b6b287fc4362ee1baec8a69d43349a",
+            "commitHash": "4fe9261120b6b287fc4362ee1baec8a69d43349a",
+            "buildHref": "https://github.com/a11ign/announcement-emulator/actions/runs/40125495459"
+          },
+          "actualWorkers": 2
+        },
+        "id": "fixtures",
+        "name": "fixtures",
+        "testDir": "/Users/runner/work/_temp/project/tests/fixtures",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/runner/work/_temp/project/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/a11ign/announcement-emulator/commit/4fe9261120b6b287fc4362ee1baec8a69d43349a",
+            "commitHash": "4fe9261120b6b287fc4362ee1baec8a69d43349a",
+            "buildHref": "https://github.com/a11ign/announcement-emulator/actions/runs/40125495459"
+          },
+          "actualWorkers": 2
+        },
+        "id": "corpus",
+        "name": "corpus",
+        "testDir": "/Users/runner/work/_temp/project/tests/corpus",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/runner/work/_temp/project/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/a11ign/announcement-emulator/commit/4fe9261120b6b287fc4362ee1baec8a69d43349a",
+            "commitHash": "4fe9261120b6b287fc4362ee1baec8a69d43349a",
+            "buildHref": "https://github.com/a11ign/announcement-emulator/actions/runs/40125495459"
+          },
+          "actualWorkers": 2
+        },
+        "name": "fixtures",
+        "testDir": "/Users/runner/work/_temp/project/tests/fixtures",
+        "snapshotDir": "/Users/runner/work/_temp/project/tests/fixtures",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4173"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "fixtures"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "/Users/runner/work/_temp/project/node_modules/@a11ign/announcement-emulator/dist/reporter.mjs",
+        {
+          "bundle": "/Users/runner/Library/Caches/announcement-emulator/0.0.0-spike.0-darwin-arm64"
+        }
+      ],
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 2,
+    "webServer": {
+      "command": "node serve.mjs",
+      "url": "http://127.0.0.1:4173/index.html",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "fixtures/dialog.spec.ts",
+      "file": "fixtures/dialog.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "the delete dialog opens and closes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "fixtures",
+              "projectName": "fixtures",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1440,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:35:27.942Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "predicted NVDA speech",
+                      "contentType": "text/plain",
+                      "body": "UFJFRElDVEVEIE5WREEgU1BFRUNIOiBBRFZJU09SWSwgTk9UIEEgUkVBRElORyBPRiBOVkRBLCBORVZFUiBFVklERU5DRSAoQTExSUdOIEFEUiAwMDQ3LCBERUNJU0lPTiAyKQp0ZXN0OiBmaXh0dXJlcyA+IGZpeHR1cmVzL2RpYWxvZy5zcGVjLnRzID4gdGhlIGRlbGV0ZSBkaWFsb2cgb3BlbnMgYW5kIGNsb3NlcwplbXVsYXRvcjogTlZEQSByZWxlYXNlLTIwMjYuMS4xICg1ZDkyMTA2ZiksIENocm9tZSAxNTUuMC44MDU5Ljg0LCBidW5kbGUgYW5ub3VuY2VtZW50LWVtdWxhdG9yLWJ1bmRsZS1kYXJ3aW4tYXJtNjQKCihubyBzcGVlY2ggd2FzIHByZWRpY3RlZCB3aGlsZSB0aGlzIHRlc3QgcmFuKQoKRmxhZ3M6IG5vbmUK"
+                    },
+                    {
+                      "name": "predicted-nvda-speech.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJsYWJlbCI6ICJwcmVkaWN0ZWQgTlZEQSBzcGVlY2g6IGFkdmlzb3J5LCBub3QgYSByZWFkaW5nIG9mIE5WREEsIG5ldmVyIGV2aWRlbmNlIChhMTFpZ24gQURSIDAwNDcsIERlY2lzaW9uIDIpIiwKICAidGVzdCI6ICJmaXh0dXJlcyA+IGZpeHR1cmVzL2RpYWxvZy5zcGVjLnRzID4gdGhlIGRlbGV0ZSBkaWFsb2cgb3BlbnMgYW5kIGNsb3NlcyIsCiAgImVtdWxhdG9yIjogewogICAgIm5hbWUiOiAiYW5ub3VuY2VtZW50LWVtdWxhdG9yLWJ1bmRsZS1kYXJ3aW4tYXJtNjQiLAogICAgInBsYXRmb3JtIjogImRhcndpbi1hcm02NCIsCiAgICAibnZkYSI6IHsKICAgICAgInJlbGVhc2UiOiAicmVsZWFzZS0yMDI2LjEuMSIsCiAgICAgICJjb21taXQiOiAiNWQ5MjEwNmYxN2U0NjFkYWM2MmFhNDgyNTdiYmJmNDE4M2UwMzNkMCIKICAgIH0sCiAgICAiY2hyb21lIjogIjE1NS4wLjgwNTkuODQiLAogICAgInB5dGhvbiI6ICIzLjEzLjE2IiwKICAgICJweXRob25CdWlsZCI6ICJweXRob24tYnVpbGQtc3RhbmRhbG9uZSAyMDI2MTAxMyIsCiAgICAiY29tbWl0IjogIjRmZTkyNjExMjBiNmIyODdmYzQzNjJlZTFiYWVjOGE2OWQ0MzM0OWEiCiAgfSwKICAidHJlZVNvdXJjZSI6ICJleHRlbnNpb24iLAogICJub3RlcyI6IFsKICAgICJQcmVkaWN0ZWQgYnkgdGhlIGFubm91bmNlbWVudCBlbXVsYXRvciBmcm9tIENocm9tZSdzIGFjY2Vzc2liaWxpdHkgdHJlZSBhbmQgTlZEQSdzIG93biBQeXRob24uIE5vdCB3aGF0IE5WREEgc2FpZC4gTm90aGluZyBoZXJlIG1heSBmaWxsIGFuIGExMWlnbiBldmlkZW5jZSBmaWVsZC4iCiAgXSwKICAicHJlZGljdGVkU3BlZWNoIjogW10sCiAgInN3ZWVwcyI6IFtdLAogICJmbGFncyI6IFtdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c88648056942dba76546-06c25b674de6f0f777a0",
+          "file": "fixtures/dialog.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "the cookie panel opens",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "fixtures",
+              "projectName": "fixtures",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1334,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:35:27.956Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "predicted NVDA speech",
+                      "contentType": "text/plain",
+                      "body": "UFJFRElDVEVEIE5WREEgU1BFRUNIOiBBRFZJU09SWSwgTk9UIEEgUkVBRElORyBPRiBOVkRBLCBORVZFUiBFVklERU5DRSAoQTExSUdOIEFEUiAwMDQ3LCBERUNJU0lPTiAyKQp0ZXN0OiBmaXh0dXJlcyA+IGZpeHR1cmVzL2RpYWxvZy5zcGVjLnRzID4gdGhlIGNvb2tpZSBwYW5lbCBvcGVucwplbXVsYXRvcjogTlZEQSByZWxlYXNlLTIwMjYuMS4xICg1ZDkyMTA2ZiksIENocm9tZSAxNTUuMC44MDU5Ljg0LCBidW5kbGUgYW5ub3VuY2VtZW50LWVtdWxhdG9yLWJ1bmRsZS1kYXJ3aW4tYXJtNjQKCihubyBzcGVlY2ggd2FzIHByZWRpY3RlZCB3aGlsZSB0aGlzIHRlc3QgcmFuKQoKRmxhZ3M6IG5vbmUK"
+                    },
+                    {
+                      "name": "predicted-nvda-speech.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJsYWJlbCI6ICJwcmVkaWN0ZWQgTlZEQSBzcGVlY2g6IGFkdmlzb3J5LCBub3QgYSByZWFkaW5nIG9mIE5WREEsIG5ldmVyIGV2aWRlbmNlIChhMTFpZ24gQURSIDAwNDcsIERlY2lzaW9uIDIpIiwKICAidGVzdCI6ICJmaXh0dXJlcyA+IGZpeHR1cmVzL2RpYWxvZy5zcGVjLnRzID4gdGhlIGNvb2tpZSBwYW5lbCBvcGVucyIsCiAgImVtdWxhdG9yIjogewogICAgIm5hbWUiOiAiYW5ub3VuY2VtZW50LWVtdWxhdG9yLWJ1bmRsZS1kYXJ3aW4tYXJtNjQiLAogICAgInBsYXRmb3JtIjogImRhcndpbi1hcm02NCIsCiAgICAibnZkYSI6IHsKICAgICAgInJlbGVhc2UiOiAicmVsZWFzZS0yMDI2LjEuMSIsCiAgICAgICJjb21taXQiOiAiNWQ5MjEwNmYxN2U0NjFkYWM2MmFhNDgyNTdiYmJmNDE4M2UwMzNkMCIKICAgIH0sCiAgICAiY2hyb21lIjogIjE1NS4wLjgwNTkuODQiLAogICAgInB5dGhvbiI6ICIzLjEzLjE2IiwKICAgICJweXRob25CdWlsZCI6ICJweXRob24tYnVpbGQtc3RhbmRhbG9uZSAyMDI2MTAxMyIsCiAgICAiY29tbWl0IjogIjRmZTkyNjExMjBiNmIyODdmYzQzNjJlZTFiYWVjOGE2OWQ0MzM0OWEiCiAgfSwKICAidHJlZVNvdXJjZSI6ICJleHRlbnNpb24iLAogICJub3RlcyI6IFsKICAgICJQcmVkaWN0ZWQgYnkgdGhlIGFubm91bmNlbWVudCBlbXVsYXRvciBmcm9tIENocm9tZSdzIGFjY2Vzc2liaWxpdHkgdHJlZSBhbmQgTlZEQSdzIG93biBQeXRob24uIE5vdCB3aGF0IE5WREEgc2FpZC4gTm90aGluZyBoZXJlIG1heSBmaWxsIGFuIGExMWlnbiBldmlkZW5jZSBmaWVsZC4iCiAgXSwKICAicHJlZGljdGVkU3BlZWNoIjogW10sCiAgInN3ZWVwcyI6IFtdLAogICJmbGFncyI6IFtdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c88648056942dba76546-1921b461c093fa47ba33",
+          "file": "fixtures/dialog.spec.ts",
+          "line": 11,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "fixtures/focus-order.spec.ts",
+      "file": "fixtures/focus-order.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "the sign-up form can be tabbed through",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "fixtures",
+              "projectName": "fixtures",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1049,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:35:30.437Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "predicted NVDA speech",
+                      "contentType": "text/plain",
+                      "body": "UFJFRElDVEVEIE5WREEgU1BFRUNIOiBBRFZJU09SWSwgTk9UIEEgUkVBRElORyBPRiBOVkRBLCBORVZFUiBFVklERU5DRSAoQTExSUdOIEFEUiAwMDQ3LCBERUNJU0lPTiAyKQp0ZXN0OiBmaXh0dXJlcyA+IGZpeHR1cmVzL2ZvY3VzLW9yZGVyLnNwZWMudHMgPiB0aGUgc2lnbi11cCBmb3JtIGNhbiBiZSB0YWJiZWQgdGhyb3VnaAplbXVsYXRvcjogTlZEQSByZWxlYXNlLTIwMjYuMS4xICg1ZDkyMTA2ZiksIENocm9tZSAxNTUuMC44MDU5Ljg0LCBidW5kbGUgYW5ub3VuY2VtZW50LWVtdWxhdG9yLWJ1bmRsZS1kYXJ3aW4tYXJtNjQKCihubyBzcGVlY2ggd2FzIHByZWRpY3RlZCB3aGlsZSB0aGlzIHRlc3QgcmFuKQoKRmxhZ3M6IG5vbmUK"
+                    },
+                    {
+                      "name": "predicted-nvda-speech.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJsYWJlbCI6ICJwcmVkaWN0ZWQgTlZEQSBzcGVlY2g6IGFkdmlzb3J5LCBub3QgYSByZWFkaW5nIG9mIE5WREEsIG5ldmVyIGV2aWRlbmNlIChhMTFpZ24gQURSIDAwNDcsIERlY2lzaW9uIDIpIiwKICAidGVzdCI6ICJmaXh0dXJlcyA+IGZpeHR1cmVzL2ZvY3VzLW9yZGVyLnNwZWMudHMgPiB0aGUgc2lnbi11cCBmb3JtIGNhbiBiZSB0YWJiZWQgdGhyb3VnaCIsCiAgImVtdWxhdG9yIjogewogICAgIm5hbWUiOiAiYW5ub3VuY2VtZW50LWVtdWxhdG9yLWJ1bmRsZS1kYXJ3aW4tYXJtNjQiLAogICAgInBsYXRmb3JtIjogImRhcndpbi1hcm02NCIsCiAgICAibnZkYSI6IHsKICAgICAgInJlbGVhc2UiOiAicmVsZWFzZS0yMDI2LjEuMSIsCiAgICAgICJjb21taXQiOiAiNWQ5MjEwNmYxN2U0NjFkYWM2MmFhNDgyNTdiYmJmNDE4M2UwMzNkMCIKICAgIH0sCiAgICAiY2hyb21lIjogIjE1NS4wLjgwNTkuODQiLAogICAgInB5dGhvbiI6ICIzLjEzLjE2IiwKICAgICJweXRob25CdWlsZCI6ICJweXRob24tYnVpbGQtc3RhbmRhbG9uZSAyMDI2MTAxMyIsCiAgICAiY29tbWl0IjogIjRmZTkyNjExMjBiNmIyODdmYzQzNjJlZTFiYWVjOGE2OWQ0MzM0OWEiCiAgfSwKICAidHJlZVNvdXJjZSI6ICJleHRlbnNpb24iLAogICJub3RlcyI6IFsKICAgICJQcmVkaWN0ZWQgYnkgdGhlIGFubm91bmNlbWVudCBlbXVsYXRvciBmcm9tIENocm9tZSdzIGFjY2Vzc2liaWxpdHkgdHJlZSBhbmQgTlZEQSdzIG93biBQeXRob24uIE5vdCB3aGF0IE5WREEgc2FpZC4gTm90aGluZyBoZXJlIG1heSBmaWxsIGFuIGExMWlnbiBldmlkZW5jZSBmaWVsZC4iCiAgXSwKICAicHJlZGljdGVkU3BlZWNoIjogW10sCiAgInN3ZWVwcyI6IFtdLAogICJmbGFncyI6IFtdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9527670b0c7cf7d24c21-60288d91454b0034fc53",
+          "file": "fixtures/focus-order.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "clicking a field puts focus in it",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "fixtures",
+              "projectName": "fixtures",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1794,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:35:30.515Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "predicted NVDA speech",
+                      "contentType": "text/plain",
+                      "body": "UFJFRElDVEVEIE5WREEgU1BFRUNIOiBBRFZJU09SWSwgTk9UIEEgUkVBRElORyBPRiBOVkRBLCBORVZFUiBFVklERU5DRSAoQTExSUdOIEFEUiAwMDQ3LCBERUNJU0lPTiAyKQp0ZXN0OiBmaXh0dXJlcyA+IGZpeHR1cmVzL2ZvY3VzLW9yZGVyLnNwZWMudHMgPiBjbGlja2luZyBhIGZpZWxkIHB1dHMgZm9jdXMgaW4gaXQKZW11bGF0b3I6IE5WREEgcmVsZWFzZS0yMDI2LjEuMSAoNWQ5MjEwNmYpLCBDaHJvbWUgMTU1LjAuODA1OS44NCwgYnVuZGxlIGFubm91bmNlbWVudC1lbXVsYXRvci1idW5kbGUtZGFyd2luLWFybTY0Cgoobm8gc3BlZWNoIHdhcyBwcmVkaWN0ZWQgd2hpbGUgdGhpcyB0ZXN0IHJhbikKCkZsYWdzOiBub25lCg=="
+                    },
+                    {
+                      "name": "predicted-nvda-speech.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJsYWJlbCI6ICJwcmVkaWN0ZWQgTlZEQSBzcGVlY2g6IGFkdmlzb3J5LCBub3QgYSByZWFkaW5nIG9mIE5WREEsIG5ldmVyIGV2aWRlbmNlIChhMTFpZ24gQURSIDAwNDcsIERlY2lzaW9uIDIpIiwKICAidGVzdCI6ICJmaXh0dXJlcyA+IGZpeHR1cmVzL2ZvY3VzLW9yZGVyLnNwZWMudHMgPiBjbGlja2luZyBhIGZpZWxkIHB1dHMgZm9jdXMgaW4gaXQiLAogICJlbXVsYXRvciI6IHsKICAgICJuYW1lIjogImFubm91bmNlbWVudC1lbXVsYXRvci1idW5kbGUtZGFyd2luLWFybTY0IiwKICAgICJwbGF0Zm9ybSI6ICJkYXJ3aW4tYXJtNjQiLAogICAgIm52ZGEiOiB7CiAgICAgICJyZWxlYXNlIjogInJlbGVhc2UtMjAyNi4xLjEiLAogICAgICAiY29tbWl0IjogIjVkOTIxMDZmMTdlNDYxZGFjNjJhYTQ4MjU3YmJiZjQxODNlMDMzZDAiCiAgICB9LAogICAgImNocm9tZSI6ICIxNTUuMC44MDU5Ljg0IiwKICAgICJweXRob24iOiAiMy4xMy4xNiIsCiAgICAicHl0aG9uQnVpbGQiOiAicHl0aG9uLWJ1aWxkLXN0YW5kYWxvbmUgMjAyNjEwMTMiLAogICAgImNvbW1pdCI6ICI0ZmU5MjYxMTIwYjZiMjg3ZmM0MzYyZWUxYmFlYzhhNjlkNDMzNDlhIgogIH0sCiAgInRyZWVTb3VyY2UiOiAiZXh0ZW5zaW9uIiwKICAibm90ZXMiOiBbCiAgICAiUHJlZGljdGVkIGJ5IHRoZSBhbm5vdW5jZW1lbnQgZW11bGF0b3IgZnJvbSBDaHJvbWUncyBhY2Nlc3NpYmlsaXR5IHRyZWUgYW5kIE5WREEncyBvd24gUHl0aG9uLiBOb3Qgd2hhdCBOVkRBIHNhaWQuIE5vdGhpbmcgaGVyZSBtYXkgZmlsbCBhbiBhMTFpZ24gZXZpZGVuY2UgZmllbGQuIgogIF0sCiAgInByZWRpY3RlZFNwZWVjaCI6IFtdLAogICJzd2VlcHMiOiBbXSwKICAiZmxhZ3MiOiBbXQp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9527670b0c7cf7d24c21-d638085fa73009368508",
+          "file": "fixtures/focus-order.spec.ts",
+          "line": 19,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "fixtures/live-region.spec.ts",
+      "file": "fixtures/live-region.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "adding a mug updates the basket count",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "fixtures",
+              "projectName": "fixtures",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1228,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:35:31.542Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "predicted NVDA speech",
+                      "contentType": "text/plain",
+                      "body": "UFJFRElDVEVEIE5WREEgU1BFRUNIOiBBRFZJU09SWSwgTk9UIEEgUkVBRElORyBPRiBOVkRBLCBORVZFUiBFVklERU5DRSAoQTExSUdOIEFEUiAwMDQ3LCBERUNJU0lPTiAyKQp0ZXN0OiBmaXh0dXJlcyA+IGZpeHR1cmVzL2xpdmUtcmVnaW9uLnNwZWMudHMgPiBhZGRpbmcgYSBtdWcgdXBkYXRlcyB0aGUgYmFza2V0IGNvdW50CmVtdWxhdG9yOiBOVkRBIHJlbGVhc2UtMjAyNi4xLjEgKDVkOTIxMDZmKSwgQ2hyb21lIDE1NS4wLjgwNTkuODQsIGJ1bmRsZSBhbm5vdW5jZW1lbnQtZW11bGF0b3ItYnVuZGxlLWRhcndpbi1hcm02NAoKKG5vIHNwZWVjaCB3YXMgcHJlZGljdGVkIHdoaWxlIHRoaXMgdGVzdCByYW4pCgpGbGFnczogbm9uZQo="
+                    },
+                    {
+                      "name": "predicted-nvda-speech.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJsYWJlbCI6ICJwcmVkaWN0ZWQgTlZEQSBzcGVlY2g6IGFkdmlzb3J5LCBub3QgYSByZWFkaW5nIG9mIE5WREEsIG5ldmVyIGV2aWRlbmNlIChhMTFpZ24gQURSIDAwNDcsIERlY2lzaW9uIDIpIiwKICAidGVzdCI6ICJmaXh0dXJlcyA+IGZpeHR1cmVzL2xpdmUtcmVnaW9uLnNwZWMudHMgPiBhZGRpbmcgYSBtdWcgdXBkYXRlcyB0aGUgYmFza2V0IGNvdW50IiwKICAiZW11bGF0b3IiOiB7CiAgICAibmFtZSI6ICJhbm5vdW5jZW1lbnQtZW11bGF0b3ItYnVuZGxlLWRhcndpbi1hcm02NCIsCiAgICAicGxhdGZvcm0iOiAiZGFyd2luLWFybTY0IiwKICAgICJudmRhIjogewogICAgICAicmVsZWFzZSI6ICJyZWxlYXNlLTIwMjYuMS4xIiwKICAgICAgImNvbW1pdCI6ICI1ZDkyMTA2ZjE3ZTQ2MWRhYzYyYWE0ODI1N2JiYmY0MTgzZTAzM2QwIgogICAgfSwKICAgICJjaHJvbWUiOiAiMTU1LjAuODA1OS44NCIsCiAgICAicHl0aG9uIjogIjMuMTMuMTYiLAogICAgInB5dGhvbkJ1aWxkIjogInB5dGhvbi1idWlsZC1zdGFuZGFsb25lIDIwMjYxMDEzIiwKICAgICJjb21taXQiOiAiNGZlOTI2MTEyMGI2YjI4N2ZjNDM2MmVlMWJhZWM4YTY5ZDQzMzQ5YSIKICB9LAogICJ0cmVlU291cmNlIjogImV4dGVuc2lvbiIsCiAgIm5vdGVzIjogWwogICAgIlByZWRpY3RlZCBieSB0aGUgYW5ub3VuY2VtZW50IGVtdWxhdG9yIGZyb20gQ2hyb21lJ3MgYWNjZXNzaWJpbGl0eSB0cmVlIGFuZCBOVkRBJ3Mgb3duIFB5dGhvbi4gTm90IHdoYXQgTlZEQSBzYWlkLiBOb3RoaW5nIGhlcmUgbWF5IGZpbGwgYW4gYTExaWduIGV2aWRlbmNlIGZpZWxkLiIKICBdLAogICJwcmVkaWN0ZWRTcGVlY2giOiBbXSwKICAic3dlZXBzIjogW10sCiAgImZsYWdzIjogW10KfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "545256953a3b7abbabbd-f3db2fec03222e8521f7",
+          "file": "fixtures/live-region.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "fixtures/navigation.spec.ts",
+      "file": "fixtures/navigation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "the home page links to sign-up",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "fixtures",
+              "projectName": "fixtures",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1251,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:35:32.347Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "predicted NVDA speech",
+                      "contentType": "text/plain",
+                      "body": "UFJFRElDVEVEIE5WREEgU1BFRUNIOiBBRFZJU09SWSwgTk9UIEEgUkVBRElORyBPRiBOVkRBLCBORVZFUiBFVklERU5DRSAoQTExSUdOIEFEUiAwMDQ3LCBERUNJU0lPTiAyKQp0ZXN0OiBmaXh0dXJlcyA+IGZpeHR1cmVzL25hdmlnYXRpb24uc3BlYy50cyA+IHRoZSBob21lIHBhZ2UgbGlua3MgdG8gc2lnbi11cAplbXVsYXRvcjogTlZEQSByZWxlYXNlLTIwMjYuMS4xICg1ZDkyMTA2ZiksIENocm9tZSAxNTUuMC44MDU5Ljg0LCBidW5kbGUgYW5ub3VuY2VtZW50LWVtdWxhdG9yLWJ1bmRsZS1kYXJ3aW4tYXJtNjQKCihubyBzcGVlY2ggd2FzIHByZWRpY3RlZCB3aGlsZSB0aGlzIHRlc3QgcmFuKQoKRmxhZ3M6IG5vbmUK"
+                    },
+                    {
+                      "name": "predicted-nvda-speech.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJsYWJlbCI6ICJwcmVkaWN0ZWQgTlZEQSBzcGVlY2g6IGFkdmlzb3J5LCBub3QgYSByZWFkaW5nIG9mIE5WREEsIG5ldmVyIGV2aWRlbmNlIChhMTFpZ24gQURSIDAwNDcsIERlY2lzaW9uIDIpIiwKICAidGVzdCI6ICJmaXh0dXJlcyA+IGZpeHR1cmVzL25hdmlnYXRpb24uc3BlYy50cyA+IHRoZSBob21lIHBhZ2UgbGlua3MgdG8gc2lnbi11cCIsCiAgImVtdWxhdG9yIjogewogICAgIm5hbWUiOiAiYW5ub3VuY2VtZW50LWVtdWxhdG9yLWJ1bmRsZS1kYXJ3aW4tYXJtNjQiLAogICAgInBsYXRmb3JtIjogImRhcndpbi1hcm02NCIsCiAgICAibnZkYSI6IHsKICAgICAgInJlbGVhc2UiOiAicmVsZWFzZS0yMDI2LjEuMSIsCiAgICAgICJjb21taXQiOiAiNWQ5MjEwNmYxN2U0NjFkYWM2MmFhNDgyNTdiYmJmNDE4M2UwMzNkMCIKICAgIH0sCiAgICAiY2hyb21lIjogIjE1NS4wLjgwNTkuODQiLAogICAgInB5dGhvbiI6ICIzLjEzLjE2IiwKICAgICJweXRob25CdWlsZCI6ICJweXRob24tYnVpbGQtc3RhbmRhbG9uZSAyMDI2MTAxMyIsCiAgICAiY29tbWl0IjogIjRmZTkyNjExMjBiNmIyODdmYzQzNjJlZTFiYWVjOGE2OWQ0MzM0OWEiCiAgfSwKICAidHJlZVNvdXJjZSI6ICJleHRlbnNpb24iLAogICJub3RlcyI6IFsKICAgICJQcmVkaWN0ZWQgYnkgdGhlIGFubm91bmNlbWVudCBlbXVsYXRvciBmcm9tIENocm9tZSdzIGFjY2Vzc2liaWxpdHkgdHJlZSBhbmQgTlZEQSdzIG93biBQeXRob24uIE5vdCB3aGF0IE5WREEgc2FpZC4gTm90aGluZyBoZXJlIG1heSBmaWxsIGFuIGExMWlnbiBldmlkZW5jZSBmaWVsZC4iCiAgXSwKICAicHJlZGljdGVkU3BlZWNoIjogW10sCiAgInN3ZWVwcyI6IFtdLAogICJmbGFncyI6IFtdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-e237354fc2fda329d34e",
+          "file": "fixtures/navigation.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "the shop switches section without loading a page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "fixtures",
+              "projectName": "fixtures",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1005,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:35:32.822Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "predicted NVDA speech",
+                      "contentType": "text/plain",
+                      "body": "UFJFRElDVEVEIE5WREEgU1BFRUNIOiBBRFZJU09SWSwgTk9UIEEgUkVBRElORyBPRiBOVkRBLCBORVZFUiBFVklERU5DRSAoQTExSUdOIEFEUiAwMDQ3LCBERUNJU0lPTiAyKQp0ZXN0OiBmaXh0dXJlcyA+IGZpeHR1cmVzL25hdmlnYXRpb24uc3BlYy50cyA+IHRoZSBzaG9wIHN3aXRjaGVzIHNlY3Rpb24gd2l0aG91dCBsb2FkaW5nIGEgcGFnZQplbXVsYXRvcjogTlZEQSByZWxlYXNlLTIwMjYuMS4xICg1ZDkyMTA2ZiksIENocm9tZSAxNTUuMC44MDU5Ljg0LCBidW5kbGUgYW5ub3VuY2VtZW50LWVtdWxhdG9yLWJ1bmRsZS1kYXJ3aW4tYXJtNjQKCihubyBzcGVlY2ggd2FzIHByZWRpY3RlZCB3aGlsZSB0aGlzIHRlc3QgcmFuKQoKRmxhZ3M6IG5vbmUK"
+                    },
+                    {
+                      "name": "predicted-nvda-speech.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJsYWJlbCI6ICJwcmVkaWN0ZWQgTlZEQSBzcGVlY2g6IGFkdmlzb3J5LCBub3QgYSByZWFkaW5nIG9mIE5WREEsIG5ldmVyIGV2aWRlbmNlIChhMTFpZ24gQURSIDAwNDcsIERlY2lzaW9uIDIpIiwKICAidGVzdCI6ICJmaXh0dXJlcyA+IGZpeHR1cmVzL25hdmlnYXRpb24uc3BlYy50cyA+IHRoZSBzaG9wIHN3aXRjaGVzIHNlY3Rpb24gd2l0aG91dCBsb2FkaW5nIGEgcGFnZSIsCiAgImVtdWxhdG9yIjogewogICAgIm5hbWUiOiAiYW5ub3VuY2VtZW50LWVtdWxhdG9yLWJ1bmRsZS1kYXJ3aW4tYXJtNjQiLAogICAgInBsYXRmb3JtIjogImRhcndpbi1hcm02NCIsCiAgICAibnZkYSI6IHsKICAgICAgInJlbGVhc2UiOiAicmVsZWFzZS0yMDI2LjEuMSIsCiAgICAgICJjb21taXQiOiAiNWQ5MjEwNmYxN2U0NjFkYWM2MmFhNDgyNTdiYmJmNDE4M2UwMzNkMCIKICAgIH0sCiAgICAiY2hyb21lIjogIjE1NS4wLjgwNTkuODQiLAogICAgInB5dGhvbiI6ICIzLjEzLjE2IiwKICAgICJweXRob25CdWlsZCI6ICJweXRob24tYnVpbGQtc3RhbmRhbG9uZSAyMDI2MTAxMyIsCiAgICAiY29tbWl0IjogIjRmZTkyNjExMjBiNmIyODdmYzQzNjJlZTFiYWVjOGE2OWQ0MzM0OWEiCiAgfSwKICAidHJlZVNvdXJjZSI6ICJleHRlbnNpb24iLAogICJub3RlcyI6IFsKICAgICJQcmVkaWN0ZWQgYnkgdGhlIGFubm91bmNlbWVudCBlbXVsYXRvciBmcm9tIENocm9tZSdzIGFjY2Vzc2liaWxpdHkgdHJlZSBhbmQgTlZEQSdzIG93biBQeXRob24uIE5vdCB3aGF0IE5WREEgc2FpZC4gTm90aGluZyBoZXJlIG1heSBmaWxsIGFuIGExMWlnbiBldmlkZW5jZSBmaWVsZC4iCiAgXSwKICAicHJlZGljdGVkU3BlZWNoIjogW10sCiAgInN3ZWVwcyI6IFtdLAogICJmbGFncyI6IFtdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-5c2d6e9a9864df4b23aa",
+          "file": "fixtures/navigation.spec.ts",
+          "line": 10,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "fixtures/toolbar.spec.ts",
+      "file": "fixtures/toolbar.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "the toolbar buttons can be reached by keyboard",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "fixtures",
+              "projectName": "fixtures",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 597,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:35:33.626Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "predicted NVDA speech",
+                      "contentType": "text/plain",
+                      "body": "UFJFRElDVEVEIE5WREEgU1BFRUNIOiBBRFZJU09SWSwgTk9UIEEgUkVBRElORyBPRiBOVkRBLCBORVZFUiBFVklERU5DRSAoQTExSUdOIEFEUiAwMDQ3LCBERUNJU0lPTiAyKQp0ZXN0OiBmaXh0dXJlcyA+IGZpeHR1cmVzL3Rvb2xiYXIuc3BlYy50cyA+IHRoZSB0b29sYmFyIGJ1dHRvbnMgY2FuIGJlIHJlYWNoZWQgYnkga2V5Ym9hcmQKZW11bGF0b3I6IE5WREEgcmVsZWFzZS0yMDI2LjEuMSAoNWQ5MjEwNmYpLCBDaHJvbWUgMTU1LjAuODA1OS44NCwgYnVuZGxlIGFubm91bmNlbWVudC1lbXVsYXRvci1idW5kbGUtZGFyd2luLWFybTY0Cgoobm8gc3BlZWNoIHdhcyBwcmVkaWN0ZWQgd2hpbGUgdGhpcyB0ZXN0IHJhbikKCkZsYWdzOiBub25lCg=="
+                    },
+                    {
+                      "name": "predicted-nvda-speech.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJsYWJlbCI6ICJwcmVkaWN0ZWQgTlZEQSBzcGVlY2g6IGFkdmlzb3J5LCBub3QgYSByZWFkaW5nIG9mIE5WREEsIG5ldmVyIGV2aWRlbmNlIChhMTFpZ24gQURSIDAwNDcsIERlY2lzaW9uIDIpIiwKICAidGVzdCI6ICJmaXh0dXJlcyA+IGZpeHR1cmVzL3Rvb2xiYXIuc3BlYy50cyA+IHRoZSB0b29sYmFyIGJ1dHRvbnMgY2FuIGJlIHJlYWNoZWQgYnkga2V5Ym9hcmQiLAogICJlbXVsYXRvciI6IHsKICAgICJuYW1lIjogImFubm91bmNlbWVudC1lbXVsYXRvci1idW5kbGUtZGFyd2luLWFybTY0IiwKICAgICJwbGF0Zm9ybSI6ICJkYXJ3aW4tYXJtNjQiLAogICAgIm52ZGEiOiB7CiAgICAgICJyZWxlYXNlIjogInJlbGVhc2UtMjAyNi4xLjEiLAogICAgICAiY29tbWl0IjogIjVkOTIxMDZmMTdlNDYxZGFjNjJhYTQ4MjU3YmJiZjQxODNlMDMzZDAiCiAgICB9LAogICAgImNocm9tZSI6ICIxNTUuMC44MDU5Ljg0IiwKICAgICJweXRob24iOiAiMy4xMy4xNiIsCiAgICAicHl0aG9uQnVpbGQiOiAicHl0aG9uLWJ1aWxkLXN0YW5kYWxvbmUgMjAyNjEwMTMiLAogICAgImNvbW1pdCI6ICI0ZmU5MjYxMTIwYjZiMjg3ZmM0MzYyZWUxYmFlYzhhNjlkNDMzNDlhIgogIH0sCiAgInRyZWVTb3VyY2UiOiAiZXh0ZW5zaW9uIiwKICAibm90ZXMiOiBbCiAgICAiUHJlZGljdGVkIGJ5IHRoZSBhbm5vdW5jZW1lbnQgZW11bGF0b3IgZnJvbSBDaHJvbWUncyBhY2Nlc3NpYmlsaXR5IHRyZWUgYW5kIE5WREEncyBvd24gUHl0aG9uLiBOb3Qgd2hhdCBOVkRBIHNhaWQuIE5vdGhpbmcgaGVyZSBtYXkgZmlsbCBhbiBhMTFpZ24gZXZpZGVuY2UgZmllbGQuIgogIF0sCiAgInByZWRpY3RlZFNwZWVjaCI6IFtdLAogICJzd2VlcHMiOiBbXSwKICAiZmxhZ3MiOiBbXQp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27b05ff8789ed639b7b2-3d96e6de459aed149d06",
+          "file": "fixtures/toolbar.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "fixtures/typing.spec.ts",
+      "file": "fixtures/typing.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "a name typed key by key is kept",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "fixtures",
+              "projectName": "fixtures",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 657,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:35:33.847Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "predicted NVDA speech",
+                      "contentType": "text/plain",
+                      "body": "UFJFRElDVEVEIE5WREEgU1BFRUNIOiBBRFZJU09SWSwgTk9UIEEgUkVBRElORyBPRiBOVkRBLCBORVZFUiBFVklERU5DRSAoQTExSUdOIEFEUiAwMDQ3LCBERUNJU0lPTiAyKQp0ZXN0OiBmaXh0dXJlcyA+IGZpeHR1cmVzL3R5cGluZy5zcGVjLnRzID4gYSBuYW1lIHR5cGVkIGtleSBieSBrZXkgaXMga2VwdAplbXVsYXRvcjogTlZEQSByZWxlYXNlLTIwMjYuMS4xICg1ZDkyMTA2ZiksIENocm9tZSAxNTUuMC44MDU5Ljg0LCBidW5kbGUgYW5ub3VuY2VtZW50LWVtdWxhdG9yLWJ1bmRsZS1kYXJ3aW4tYXJtNjQKCihubyBzcGVlY2ggd2FzIHByZWRpY3RlZCB3aGlsZSB0aGlzIHRlc3QgcmFuKQoKRmxhZ3M6IG5vbmUK"
+                    },
+                    {
+                      "name": "predicted-nvda-speech.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJsYWJlbCI6ICJwcmVkaWN0ZWQgTlZEQSBzcGVlY2g6IGFkdmlzb3J5LCBub3QgYSByZWFkaW5nIG9mIE5WREEsIG5ldmVyIGV2aWRlbmNlIChhMTFpZ24gQURSIDAwNDcsIERlY2lzaW9uIDIpIiwKICAidGVzdCI6ICJmaXh0dXJlcyA+IGZpeHR1cmVzL3R5cGluZy5zcGVjLnRzID4gYSBuYW1lIHR5cGVkIGtleSBieSBrZXkgaXMga2VwdCIsCiAgImVtdWxhdG9yIjogewogICAgIm5hbWUiOiAiYW5ub3VuY2VtZW50LWVtdWxhdG9yLWJ1bmRsZS1kYXJ3aW4tYXJtNjQiLAogICAgInBsYXRmb3JtIjogImRhcndpbi1hcm02NCIsCiAgICAibnZkYSI6IHsKICAgICAgInJlbGVhc2UiOiAicmVsZWFzZS0yMDI2LjEuMSIsCiAgICAgICJjb21taXQiOiAiNWQ5MjEwNmYxN2U0NjFkYWM2MmFhNDgyNTdiYmJmNDE4M2UwMzNkMCIKICAgIH0sCiAgICAiY2hyb21lIjogIjE1NS4wLjgwNTkuODQiLAogICAgInB5dGhvbiI6ICIzLjEzLjE2IiwKICAgICJweXRob25CdWlsZCI6ICJweXRob24tYnVpbGQtc3RhbmRhbG9uZSAyMDI2MTAxMyIsCiAgICAiY29tbWl0IjogIjRmZTkyNjExMjBiNmIyODdmYzQzNjJlZTFiYWVjOGE2OWQ0MzM0OWEiCiAgfSwKICAidHJlZVNvdXJjZSI6ICJleHRlbnNpb24iLAogICJub3RlcyI6IFsKICAgICJQcmVkaWN0ZWQgYnkgdGhlIGFubm91bmNlbWVudCBlbXVsYXRvciBmcm9tIENocm9tZSdzIGFjY2Vzc2liaWxpdHkgdHJlZSBhbmQgTlZEQSdzIG93biBQeXRob24uIE5vdCB3aGF0IE5WREEgc2FpZC4gTm90aGluZyBoZXJlIG1heSBmaWxsIGFuIGExMWlnbiBldmlkZW5jZSBmaWVsZC4iCiAgXSwKICAicHJlZGljdGVkU3BlZWNoIjogW10sCiAgInN3ZWVwcyI6IFtdLAogICJmbGFncyI6IFtdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55c4864cc1d114f1b841-17b5c1e34d7070bdf2f8",
+          "file": "fixtures/typing.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "a name filled in one step is kept",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "fixtures",
+              "projectName": "fixtures",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 539,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:35:34.241Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "predicted NVDA speech",
+                      "contentType": "text/plain",
+                      "body": "UFJFRElDVEVEIE5WREEgU1BFRUNIOiBBRFZJU09SWSwgTk9UIEEgUkVBRElORyBPRiBOVkRBLCBORVZFUiBFVklERU5DRSAoQTExSUdOIEFEUiAwMDQ3LCBERUNJU0lPTiAyKQp0ZXN0OiBmaXh0dXJlcyA+IGZpeHR1cmVzL3R5cGluZy5zcGVjLnRzID4gYSBuYW1lIGZpbGxlZCBpbiBvbmUgc3RlcCBpcyBrZXB0CmVtdWxhdG9yOiBOVkRBIHJlbGVhc2UtMjAyNi4xLjEgKDVkOTIxMDZmKSwgQ2hyb21lIDE1NS4wLjgwNTkuODQsIGJ1bmRsZSBhbm5vdW5jZW1lbnQtZW11bGF0b3ItYnVuZGxlLWRhcndpbi1hcm02NAoKKG5vIHNwZWVjaCB3YXMgcHJlZGljdGVkIHdoaWxlIHRoaXMgdGVzdCByYW4pCgpGbGFnczogbm9uZQo="
+                    },
+                    {
+                      "name": "predicted-nvda-speech.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJsYWJlbCI6ICJwcmVkaWN0ZWQgTlZEQSBzcGVlY2g6IGFkdmlzb3J5LCBub3QgYSByZWFkaW5nIG9mIE5WREEsIG5ldmVyIGV2aWRlbmNlIChhMTFpZ24gQURSIDAwNDcsIERlY2lzaW9uIDIpIiwKICAidGVzdCI6ICJmaXh0dXJlcyA+IGZpeHR1cmVzL3R5cGluZy5zcGVjLnRzID4gYSBuYW1lIGZpbGxlZCBpbiBvbmUgc3RlcCBpcyBrZXB0IiwKICAiZW11bGF0b3IiOiB7CiAgICAibmFtZSI6ICJhbm5vdW5jZW1lbnQtZW11bGF0b3ItYnVuZGxlLWRhcndpbi1hcm02NCIsCiAgICAicGxhdGZvcm0iOiAiZGFyd2luLWFybTY0IiwKICAgICJudmRhIjogewogICAgICAicmVsZWFzZSI6ICJyZWxlYXNlLTIwMjYuMS4xIiwKICAgICAgImNvbW1pdCI6ICI1ZDkyMTA2ZjE3ZTQ2MWRhYzYyYWE0ODI1N2JiYmY0MTgzZTAzM2QwIgogICAgfSwKICAgICJjaHJvbWUiOiAiMTU1LjAuODA1OS44NCIsCiAgICAicHl0aG9uIjogIjMuMTMuMTYiLAogICAgInB5dGhvbkJ1aWxkIjogInB5dGhvbi1idWlsZC1zdGFuZGFsb25lIDIwMjYxMDEzIiwKICAgICJjb21taXQiOiAiNGZlOTI2MTEyMGI2YjI4N2ZjNDM2MmVlMWJhZWM4YTY5ZDQzMzQ5YSIKICB9LAogICJ0cmVlU291cmNlIjogImV4dGVuc2lvbiIsCiAgIm5vdGVzIjogWwogICAgIlByZWRpY3RlZCBieSB0aGUgYW5ub3VuY2VtZW50IGVtdWxhdG9yIGZyb20gQ2hyb21lJ3MgYWNjZXNzaWJpbGl0eSB0cmVlIGFuZCBOVkRBJ3Mgb3duIFB5dGhvbi4gTm90IHdoYXQgTlZEQSBzYWlkLiBOb3RoaW5nIGhlcmUgbWF5IGZpbGwgYW4gYTExaWduIGV2aWRlbmNlIGZpZWxkLiIKICBdLAogICJwcmVkaWN0ZWRTcGVlY2giOiBbXSwKICAic3dlZXBzIjogW10sCiAgImZsYWdzIjogW10KfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55c4864cc1d114f1b841-d049a5a325f9522619c7",
+          "file": "fixtures/typing.spec.ts",
+          "line": 10,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "fixtures/validation.spec.ts",
+      "file": "fixtures/validation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "an empty email is refused and the field is focused",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "fixtures",
+              "projectName": "fixtures",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1017,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:35:34.519Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "predicted NVDA speech",
+                      "contentType": "text/plain",
+                      "body": "UFJFRElDVEVEIE5WREEgU1BFRUNIOiBBRFZJU09SWSwgTk9UIEEgUkVBRElORyBPRiBOVkRBLCBORVZFUiBFVklERU5DRSAoQTExSUdOIEFEUiAwMDQ3LCBERUNJU0lPTiAyKQp0ZXN0OiBmaXh0dXJlcyA+IGZpeHR1cmVzL3ZhbGlkYXRpb24uc3BlYy50cyA+IGFuIGVtcHR5IGVtYWlsIGlzIHJlZnVzZWQgYW5kIHRoZSBmaWVsZCBpcyBmb2N1c2VkCmVtdWxhdG9yOiBOVkRBIHJlbGVhc2UtMjAyNi4xLjEgKDVkOTIxMDZmKSwgQ2hyb21lIDE1NS4wLjgwNTkuODQsIGJ1bmRsZSBhbm5vdW5jZW1lbnQtZW11bGF0b3ItYnVuZGxlLWRhcndpbi1hcm02NAoKKG5vIHNwZWVjaCB3YXMgcHJlZGljdGVkIHdoaWxlIHRoaXMgdGVzdCByYW4pCgpGbGFnczogbm9uZQo="
+                    },
+                    {
+                      "name": "predicted-nvda-speech.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJsYWJlbCI6ICJwcmVkaWN0ZWQgTlZEQSBzcGVlY2g6IGFkdmlzb3J5LCBub3QgYSByZWFkaW5nIG9mIE5WREEsIG5ldmVyIGV2aWRlbmNlIChhMTFpZ24gQURSIDAwNDcsIERlY2lzaW9uIDIpIiwKICAidGVzdCI6ICJmaXh0dXJlcyA+IGZpeHR1cmVzL3ZhbGlkYXRpb24uc3BlYy50cyA+IGFuIGVtcHR5IGVtYWlsIGlzIHJlZnVzZWQgYW5kIHRoZSBmaWVsZCBpcyBmb2N1c2VkIiwKICAiZW11bGF0b3IiOiB7CiAgICAibmFtZSI6ICJhbm5vdW5jZW1lbnQtZW11bGF0b3ItYnVuZGxlLWRhcndpbi1hcm02NCIsCiAgICAicGxhdGZvcm0iOiAiZGFyd2luLWFybTY0IiwKICAgICJudmRhIjogewogICAgICAicmVsZWFzZSI6ICJyZWxlYXNlLTIwMjYuMS4xIiwKICAgICAgImNvbW1pdCI6ICI1ZDkyMTA2ZjE3ZTQ2MWRhYzYyYWE0ODI1N2JiYmY0MTgzZTAzM2QwIgogICAgfSwKICAgICJjaHJvbWUiOiAiMTU1LjAuODA1OS44NCIsCiAgICAicHl0aG9uIjogIjMuMTMuMTYiLAogICAgInB5dGhvbkJ1aWxkIjogInB5dGhvbi1idWlsZC1zdGFuZGFsb25lIDIwMjYxMDEzIiwKICAgICJjb21taXQiOiAiNGZlOTI2MTEyMGI2YjI4N2ZjNDM2MmVlMWJhZWM4YTY5ZDQzMzQ5YSIKICB9LAogICJ0cmVlU291cmNlIjogImV4dGVuc2lvbiIsCiAgIm5vdGVzIjogWwogICAgIlByZWRpY3RlZCBieSB0aGUgYW5ub3VuY2VtZW50IGVtdWxhdG9yIGZyb20gQ2hyb21lJ3MgYWNjZXNzaWJpbGl0eSB0cmVlIGFuZCBOVkRBJ3Mgb3duIFB5dGhvbi4gTm90IHdoYXQgTlZEQSBzYWlkLiBOb3RoaW5nIGhlcmUgbWF5IGZpbGwgYW4gYTExaWduIGV2aWRlbmNlIGZpZWxkLiIKICBdLAogICJwcmVkaWN0ZWRTcGVlY2giOiBbXSwKICAic3dlZXBzIjogW10sCiAgImZsYWdzIjogW10KfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1c599a7f4afdfa3cc2e4-88b118ee6fa760036f14",
+          "file": "fixtures/validation.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "an empty email is refused",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "fixtures",
+              "projectName": "fixtures",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 943,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:35:34.837Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "predicted NVDA speech",
+                      "contentType": "text/plain",
+                      "body": "UFJFRElDVEVEIE5WREEgU1BFRUNIOiBBRFZJU09SWSwgTk9UIEEgUkVBRElORyBPRiBOVkRBLCBORVZFUiBFVklERU5DRSAoQTExSUdOIEFEUiAwMDQ3LCBERUNJU0lPTiAyKQp0ZXN0OiBmaXh0dXJlcyA+IGZpeHR1cmVzL3ZhbGlkYXRpb24uc3BlYy50cyA+IGFuIGVtcHR5IGVtYWlsIGlzIHJlZnVzZWQKZW11bGF0b3I6IE5WREEgcmVsZWFzZS0yMDI2LjEuMSAoNWQ5MjEwNmYpLCBDaHJvbWUgMTU1LjAuODA1OS44NCwgYnVuZGxlIGFubm91bmNlbWVudC1lbXVsYXRvci1idW5kbGUtZGFyd2luLWFybTY0Cgoobm8gc3BlZWNoIHdhcyBwcmVkaWN0ZWQgd2hpbGUgdGhpcyB0ZXN0IHJhbikKCkZsYWdzOiBub25lCg=="
+                    },
+                    {
+                      "name": "predicted-nvda-speech.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJsYWJlbCI6ICJwcmVkaWN0ZWQgTlZEQSBzcGVlY2g6IGFkdmlzb3J5LCBub3QgYSByZWFkaW5nIG9mIE5WREEsIG5ldmVyIGV2aWRlbmNlIChhMTFpZ24gQURSIDAwNDcsIERlY2lzaW9uIDIpIiwKICAidGVzdCI6ICJmaXh0dXJlcyA+IGZpeHR1cmVzL3ZhbGlkYXRpb24uc3BlYy50cyA+IGFuIGVtcHR5IGVtYWlsIGlzIHJlZnVzZWQiLAogICJlbXVsYXRvciI6IHsKICAgICJuYW1lIjogImFubm91bmNlbWVudC1lbXVsYXRvci1idW5kbGUtZGFyd2luLWFybTY0IiwKICAgICJwbGF0Zm9ybSI6ICJkYXJ3aW4tYXJtNjQiLAogICAgIm52ZGEiOiB7CiAgICAgICJyZWxlYXNlIjogInJlbGVhc2UtMjAyNi4xLjEiLAogICAgICAiY29tbWl0IjogIjVkOTIxMDZmMTdlNDYxZGFjNjJhYTQ4MjU3YmJiZjQxODNlMDMzZDAiCiAgICB9LAogICAgImNocm9tZSI6ICIxNTUuMC44MDU5Ljg0IiwKICAgICJweXRob24iOiAiMy4xMy4xNiIsCiAgICAicHl0aG9uQnVpbGQiOiAicHl0aG9uLWJ1aWxkLXN0YW5kYWxvbmUgMjAyNjEwMTMiLAogICAgImNvbW1pdCI6ICI0ZmU5MjYxMTIwYjZiMjg3ZmM0MzYyZWUxYmFlYzhhNjlkNDMzNDlhIgogIH0sCiAgInRyZWVTb3VyY2UiOiAiZXh0ZW5zaW9uIiwKICAibm90ZXMiOiBbCiAgICAiUHJlZGljdGVkIGJ5IHRoZSBhbm5vdW5jZW1lbnQgZW11bGF0b3IgZnJvbSBDaHJvbWUncyBhY2Nlc3NpYmlsaXR5IHRyZWUgYW5kIE5WREEncyBvd24gUHl0aG9uLiBOb3Qgd2hhdCBOVkRBIHNhaWQuIE5vdGhpbmcgaGVyZSBtYXkgZmlsbCBhbiBhMTFpZ24gZXZpZGVuY2UgZmllbGQuIgogIF0sCiAgInByZWRpY3RlZFNwZWVjaCI6IFtdLAogICJzd2VlcHMiOiBbXSwKICAiZmxhZ3MiOiBbXQp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1c599a7f4afdfa3cc2e4-2ec207a828dc5a5b024a",
+          "file": "fixtures/validation.spec.ts",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "an empty email is refused with an alert",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "fixtures",
+              "projectName": "fixtures",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 767,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T19:35:35.557Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "predicted NVDA speech",
+                      "contentType": "text/plain",
+                      "body": "UFJFRElDVEVEIE5WREEgU1BFRUNIOiBBRFZJU09SWSwgTk9UIEEgUkVBRElORyBPRiBOVkRBLCBORVZFUiBFVklERU5DRSAoQTExSUdOIEFEUiAwMDQ3LCBERUNJU0lPTiAyKQp0ZXN0OiBmaXh0dXJlcyA+IGZpeHR1cmVzL3ZhbGlkYXRpb24uc3BlYy50cyA+IGFuIGVtcHR5IGVtYWlsIGlzIHJlZnVzZWQgd2l0aCBhbiBhbGVydAplbXVsYXRvcjogTlZEQSByZWxlYXNlLTIwMjYuMS4xICg1ZDkyMTA2ZiksIENocm9tZSAxNTUuMC44MDU5Ljg0LCBidW5kbGUgYW5ub3VuY2VtZW50LWVtdWxhdG9yLWJ1bmRsZS1kYXJ3aW4tYXJtNjQKCihubyBzcGVlY2ggd2FzIHByZWRpY3RlZCB3aGlsZSB0aGlzIHRlc3QgcmFuKQoKRmxhZ3M6IG5vbmUK"
+                    },
+                    {
+                      "name": "predicted-nvda-speech.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJsYWJlbCI6ICJwcmVkaWN0ZWQgTlZEQSBzcGVlY2g6IGFkdmlzb3J5LCBub3QgYSByZWFkaW5nIG9mIE5WREEsIG5ldmVyIGV2aWRlbmNlIChhMTFpZ24gQURSIDAwNDcsIERlY2lzaW9uIDIpIiwKICAidGVzdCI6ICJmaXh0dXJlcyA+IGZpeHR1cmVzL3ZhbGlkYXRpb24uc3BlYy50cyA+IGFuIGVtcHR5IGVtYWlsIGlzIHJlZnVzZWQgd2l0aCBhbiBhbGVydCIsCiAgImVtdWxhdG9yIjogewogICAgIm5hbWUiOiAiYW5ub3VuY2VtZW50LWVtdWxhdG9yLWJ1bmRsZS1kYXJ3aW4tYXJtNjQiLAogICAgInBsYXRmb3JtIjogImRhcndpbi1hcm02NCIsCiAgICAibnZkYSI6IHsKICAgICAgInJlbGVhc2UiOiAicmVsZWFzZS0yMDI2LjEuMSIsCiAgICAgICJjb21taXQiOiAiNWQ5MjEwNmYxN2U0NjFkYWM2MmFhNDgyNTdiYmJmNDE4M2UwMzNkMCIKICAgIH0sCiAgICAiY2hyb21lIjogIjE1NS4wLjgwNTkuODQiLAogICAgInB5dGhvbiI6ICIzLjEzLjE2IiwKICAgICJweXRob25CdWlsZCI6ICJweXRob24tYnVpbGQtc3RhbmRhbG9uZSAyMDI2MTAxMyIsCiAgICAiY29tbWl0IjogIjRmZTkyNjExMjBiNmIyODdmYzQzNjJlZTFiYWVjOGE2OWQ0MzM0OWEiCiAgfSwKICAidHJlZVNvdXJjZSI6ICJleHRlbnNpb24iLAogICJub3RlcyI6IFsKICAgICJQcmVkaWN0ZWQgYnkgdGhlIGFubm91bmNlbWVudCBlbXVsYXRvciBmcm9tIENocm9tZSdzIGFjY2Vzc2liaWxpdHkgdHJlZSBhbmQgTlZEQSdzIG93biBQeXRob24uIE5vdCB3aGF0IE5WREEgc2FpZC4gTm90aGluZyBoZXJlIG1heSBmaWxsIGFuIGExMWlnbiBldmlkZW5jZSBmaWVsZC4iCiAgXSwKICAicHJlZGljdGVkU3BlZWNoIjogW10sCiAgInN3ZWVwcyI6IFtdLAogICJmbGFncyI6IFtdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1c599a7f4afdfa3cc2e4-7a7e9e831bc056a0dc35",
+          "file": "fixtures/validation.spec.ts",
+          "line": 16,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-24T19:35:27.179Z",
+    "duration": 9386.048,
+    "expected": 13,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

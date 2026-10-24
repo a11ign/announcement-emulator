@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Basket - Example shop</title></head>
+<body>
+<main>
+<h1>Basket</h1>
+<button id="add" type="button">Add a mug</button>
+<p id="count" role="status"></p>
+<script>
+  let n = 0;
+  document.getElementById('add').addEventListener('click', () => { n += 1; document.getElementById('count').textContent = n + (n === 1 ? ' item' : ' items') + ' in your basket'; });
+</script>
+</main>
+</body></html>

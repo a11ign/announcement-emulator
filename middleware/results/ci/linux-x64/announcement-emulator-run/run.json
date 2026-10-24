@@ -1,0 +1,63 @@
+{
+  "label": "predicted NVDA speech: run summary",
+  "wallMs": 5076,
+  "drainMs": 334,
+  "workers": [
+    {
+      "bootMs": 2129,
+      "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 1442,
+        "devtoolsAttachedAfterFirstTestStartedMs": 2082,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+      },
+      "snapshots": 22,
+      "speechMs": 286,
+      "sweepMs": [
+        204,
+        27,
+        15,
+        34,
+        17,
+        17
+      ],
+      "keys": 6,
+      "focusEvents": 8,
+      "unresolvedFocus": 0,
+      "skippedSweeps": 0,
+      "lostSnapshots": 0
+    },
+    {
+      "bootMs": 2138,
+      "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 934,
+        "devtoolsAttachedAfterFirstTestStartedMs": 1987,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+      },
+      "snapshots": 18,
+      "speechMs": 316,
+      "sweepMs": [
+        97,
+        74,
+        98,
+        66,
+        50,
+        35,
+        17
+      ],
+      "keys": 0,
+      "focusEvents": 4,
+      "unresolvedFocus": 0,
+      "skippedSweeps": 0,
+      "lostSnapshots": 0
+    }
+  ],
+  "tests": 13,
+  "flags": 3,
+  "recordsOutsideAnyTest": 0
+}

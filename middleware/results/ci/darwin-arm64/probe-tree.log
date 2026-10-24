@@ -1,0 +1,55 @@
+{
+ "version": "155.0.8059.84",
+ "activeElement": "BODY",
+ "posts": {
+  "hello": {
+   "os": "mac",
+   "arch": "arm64",
+   "automation": "object",
+   "getDesktop": "function",
+   "getTree": "undefined",
+   "api": [
+    "ActionType",
+    "AriaCurrentState",
+    "DefaultActionVerb",
+    "DescriptionFromType",
+    "EventType",
+    "HasPopup",
+    "IntentCommandType",
+    "IntentInputEventType",
+    "IntentMoveDirectionType",
+    "IntentTextBoundaryType",
+    "InvalidState",
+    "MarkerType",
+    "NameFromType",
+    "PositionType",
+    "Restriction",
+    "RoleType",
+    "SortDirectionType",
+    "StateType",
+    "TreeChangeObserverFilter",
+    "TreeChangeType",
+    "addTreeChangeObserver",
+    "getAccessibilityFocus",
+    "getDesktop",
+    "getFocus",
+    "removeTreeChangeObserver",
+    "setDocumentSelection"
+   ],
+   "desktopDeclared": true
+  },
+  "desktop-asked": {
+   "t": 1792870546808
+  },
+  "desktop": {
+   "calledBackWithNoTree": true,
+   "lastError": "getDesktop is unsupported by this platform"
+  },
+  "beats": {
+   "n": 0
+  },
+  "tab": {
+   "missing": true
+  }
+ }
+}

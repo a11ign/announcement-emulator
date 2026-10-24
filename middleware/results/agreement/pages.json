@@ -1,0 +1,67 @@
+{
+ "rule": "results/agreement/rule.md",
+ "candidates": 53,
+ "excluded": [
+  "https://european-union.europa.eu/index_en",
+  "https://ico.org.uk/action-weve-taken/enforcement/",
+  "https://www.adobe.com/",
+  "https://www.hubspot.com/",
+  "https://www.ons.gov.uk/economy/inflationandpriceindices",
+  "https://www.w3.org/WAI/demos/bad/before/news.html",
+  "https://www.w3.org/WAI/tutorials/carousels/structure/"
+ ],
+ "sample": [
+  {
+   "url": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "tabStops": 24,
+   "textFields": 1,
+   "title": "Find river, sea, groundwater and rainfall levels - GOV.UK"
+  },
+  {
+   "url": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "tabStops": 26,
+   "textFields": 1,
+   "title": "MARINE AND GENERAL MUTUAL LIFE ASSURANCE SOCIETY overview - Find and update company information - GOV.UK"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/tabs/",
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "tabStops": 83,
+   "textFields": 1,
+   "title": "Tabs \u2013 GOV.UK Design System"
+  },
+  {
+   "url": "https://tfl.gov.uk/plan-a-journey/",
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "tabStops": 131,
+   "textFields": 5,
+   "title": "Plan a journey - Transport for London"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/components/table",
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "tabStops": 128,
+   "textFields": 1,
+   "title": "Table \u2013 NHS digital service manual"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/date-input/",
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "tabStops": 99,
+   "textFields": 1,
+   "title": "Date input \u2013 GOV.UK Design System"
+  }
+ ],
+ "rejected": [
+  {
+   "url": "https://design-patterns.service.justice.gov.uk/components/filter/",
+   "address": "https://design-patterns.service.justice.gov.uk/components/filter/",
+   "tabStops": 79,
+   "textFields": 0,
+   "title": "Filter - MOJ Design System",
+   "why": "fewer than 10 tab stops or no text field"
+  }
+ ]
+}

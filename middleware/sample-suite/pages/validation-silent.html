@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Subscribe - Example shop</title></head>
+<body>
+<main>
+<h1>Subscribe</h1>
+<form id="f" novalidate>
+  <label for="email">Email address</label>
+  <input id="email" type="email" aria-errormessage="email-error">
+  <p id="email-error" hidden>Enter an email address</p>
+  <button type="submit">Subscribe</button>
+</form>
+<script>
+  document.getElementById('f').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const field = document.getElementById('email');
+    if (!field.value) { field.setAttribute('aria-invalid', 'true'); document.getElementById('email-error').hidden = false; }
+  });
+</script>
+</main>
+</body></html>
