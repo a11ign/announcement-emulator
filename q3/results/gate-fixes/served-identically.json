@@ -1,0 +1,461 @@
+{
+ "browserOwn": [
+  "clients2.google.com",
+  "update.googleapis.com",
+  "mtalk.google.com",
+  "android.clients.google.com",
+  "optimizationguide-pa.googleapis.com",
+  "content-autofill.googleapis.com",
+  "safebrowsing.googleapis.com",
+  "edge.microsoft.com",
+  "config.edge.microsoft.com",
+  "msedge.api.cdp.microsoft.com",
+  "edgedl.me.gvt1.com",
+  "redirector.gvt1.com",
+  "nav-edge.smartscreen.microsoft.com",
+  "xpaywalletcdn-prod.azureedge.net"
+ ],
+ "pages": [
+  {
+   "archiveSha256": "c042abfb10f65fe0658ea327eb5089f9a1081eee0d398f69c0a9860c256855e8",
+   "differences": [],
+   "emulator": {
+    "freeze.run1": {
+     "archiveSha256": "c042abfb10f65fe0658ea327eb5089f9a1081eee0d398f69c0a9860c256855e8",
+     "browserOwn": 16,
+     "exact": 110,
+     "fuzzy": 30,
+     "miss": 9,
+     "requests": 149
+    },
+    "freeze.run2": {
+     "archiveSha256": "c042abfb10f65fe0658ea327eb5089f9a1081eee0d398f69c0a9860c256855e8",
+     "browserOwn": 16,
+     "exact": 111,
+     "fuzzy": 29,
+     "miss": 10,
+     "requests": 150
+    },
+    "head.run1": {
+     "archiveSha256": "c042abfb10f65fe0658ea327eb5089f9a1081eee0d398f69c0a9860c256855e8",
+     "browserOwn": 16,
+     "exact": 110,
+     "fuzzy": 30,
+     "miss": 9,
+     "requests": 149
+    },
+    "head.run2": {
+     "archiveSha256": "c042abfb10f65fe0658ea327eb5089f9a1081eee0d398f69c0a9860c256855e8",
+     "browserOwn": 16,
+     "exact": 111,
+     "fuzzy": 33,
+     "miss": 50,
+     "requests": 194
+    }
+   },
+   "fleet": {
+    "archiveSha256": "c042abfb10f65fe0658ea327eb5089f9a1081eee0d398f69c0a9860c256855e8",
+    "browserOwn": 0,
+    "exact": 135,
+    "fuzzy": 41,
+    "miss": 19,
+    "requests": 195,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "sheffield-ac-uk-inclusion-religion-belief-and-no-belief-muslim-student-abffec55",
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support"
+  },
+  {
+   "archiveSha256": "d4d717a93e6cf9faa0663d3cb590338872398b65f4d57ae511ecead865f0e3ff",
+   "differences": [],
+   "emulator": {
+    "freeze.run1": {
+     "archiveSha256": "d4d717a93e6cf9faa0663d3cb590338872398b65f4d57ae511ecead865f0e3ff",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    },
+    "freeze.run2": {
+     "archiveSha256": "d4d717a93e6cf9faa0663d3cb590338872398b65f4d57ae511ecead865f0e3ff",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    },
+    "head.run1": {
+     "archiveSha256": "d4d717a93e6cf9faa0663d3cb590338872398b65f4d57ae511ecead865f0e3ff",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    },
+    "head.run2": {
+     "archiveSha256": "d4d717a93e6cf9faa0663d3cb590338872398b65f4d57ae511ecead865f0e3ff",
+     "browserOwn": 10,
+     "exact": 21,
+     "fuzzy": 0,
+     "miss": 0,
+     "requests": 21
+    }
+   },
+   "fleet": {
+    "archiveSha256": "d4d717a93e6cf9faa0663d3cb590338872398b65f4d57ae511ecead865f0e3ff",
+    "browserOwn": 1,
+    "exact": 16,
+    "fuzzy": 0,
+    "miss": 1,
+    "requests": 17,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "caselaw-nationalarchives-gov-uk-uksc-2010-38-7704e6df",
+   "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38"
+  },
+  {
+   "archiveSha256": "5acc84fa730485b298b02b6269a2559de7f25181a382db589d228c00bb02b114",
+   "differences": [],
+   "emulator": {
+    "freeze.run1": {
+     "archiveSha256": "5acc84fa730485b298b02b6269a2559de7f25181a382db589d228c00bb02b114",
+     "browserOwn": 16,
+     "exact": 90,
+     "fuzzy": 28,
+     "miss": 9,
+     "requests": 127
+    },
+    "freeze.run2": {
+     "archiveSha256": "5acc84fa730485b298b02b6269a2559de7f25181a382db589d228c00bb02b114",
+     "browserOwn": 16,
+     "exact": 90,
+     "fuzzy": 29,
+     "miss": 9,
+     "requests": 128
+    },
+    "head.run1": {
+     "archiveSha256": "5acc84fa730485b298b02b6269a2559de7f25181a382db589d228c00bb02b114",
+     "browserOwn": 16,
+     "exact": 90,
+     "fuzzy": 28,
+     "miss": 9,
+     "requests": 127
+    },
+    "head.run2": {
+     "archiveSha256": "5acc84fa730485b298b02b6269a2559de7f25181a382db589d228c00bb02b114",
+     "browserOwn": 16,
+     "exact": 90,
+     "fuzzy": 28,
+     "miss": 10,
+     "requests": 128
+    }
+   },
+   "fleet": {
+    "archiveSha256": "5acc84fa730485b298b02b6269a2559de7f25181a382db589d228c00bb02b114",
+    "browserOwn": 0,
+    "exact": 95,
+    "fuzzy": 37,
+    "miss": 41,
+    "requests": 173,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "sheffield-ac-uk-speri-news-our-doctoral-researchers-network-has-big-pl-a06202c4",
+   "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year"
+  },
+  {
+   "archiveSha256": "a4d9b075ba1f486d12a1c0ff57d32e207a32961ed3fb0e52223c6ed5cd1f218f",
+   "differences": [],
+   "emulator": {
+    "freeze.run1": {
+     "archiveSha256": "a4d9b075ba1f486d12a1c0ff57d32e207a32961ed3fb0e52223c6ed5cd1f218f",
+     "browserOwn": 16,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 21
+    },
+    "freeze.run2": {
+     "archiveSha256": "a4d9b075ba1f486d12a1c0ff57d32e207a32961ed3fb0e52223c6ed5cd1f218f",
+     "browserOwn": 16,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 21
+    },
+    "head.run1": {
+     "archiveSha256": "a4d9b075ba1f486d12a1c0ff57d32e207a32961ed3fb0e52223c6ed5cd1f218f",
+     "browserOwn": 16,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 21
+    },
+    "head.run2": {
+     "archiveSha256": "a4d9b075ba1f486d12a1c0ff57d32e207a32961ed3fb0e52223c6ed5cd1f218f",
+     "browserOwn": 16,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 21
+    }
+   },
+   "fleet": {
+    "archiveSha256": "a4d9b075ba1f486d12a1c0ff57d32e207a32961ed3fb0e52223c6ed5cd1f218f",
+    "browserOwn": 1,
+    "exact": 15,
+    "fuzzy": 0,
+    "miss": 11,
+    "requests": 26,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "ico-org-uk-for-organisations-uk-gdpr-guidance-and-resources-individual-41179ae3",
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/when-can-an-exemption-apply-to-information-about-other-people-in-a-sar/"
+  },
+  {
+   "archiveSha256": "f336e9b810c737752db47755b07067226adaff14cc034b836e2094dcc640db45",
+   "differences": [],
+   "emulator": {
+    "freeze.run1": {
+     "archiveSha256": "f336e9b810c737752db47755b07067226adaff14cc034b836e2094dcc640db45",
+     "browserOwn": 12,
+     "exact": 40,
+     "fuzzy": 1,
+     "miss": 4,
+     "requests": 45
+    },
+    "freeze.run2": {
+     "archiveSha256": "f336e9b810c737752db47755b07067226adaff14cc034b836e2094dcc640db45",
+     "browserOwn": 12,
+     "exact": 40,
+     "fuzzy": 1,
+     "miss": 4,
+     "requests": 45
+    },
+    "head.run1": {
+     "archiveSha256": "f336e9b810c737752db47755b07067226adaff14cc034b836e2094dcc640db45",
+     "browserOwn": 12,
+     "exact": 40,
+     "fuzzy": 1,
+     "miss": 7,
+     "requests": 48
+    },
+    "head.run2": {
+     "archiveSha256": "f336e9b810c737752db47755b07067226adaff14cc034b836e2094dcc640db45",
+     "browserOwn": 12,
+     "exact": 40,
+     "fuzzy": 1,
+     "miss": 4,
+     "requests": 45
+    }
+   },
+   "fleet": {
+    "archiveSha256": "f336e9b810c737752db47755b07067226adaff14cc034b836e2094dcc640db45",
+    "browserOwn": 2,
+    "exact": 36,
+    "fuzzy": 1,
+    "miss": 15,
+    "requests": 52,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "www-historicenvironment-scot-visit-all-doune-castle-shop-e623d336",
+   "url": "https://www.historicenvironment.scot/visit/all/doune-castle/shop/"
+  },
+  {
+   "archiveSha256": "84b1b4682e8d8bc143ead4b56abfc47eba23c2c6be1dbe9b5335d20c87b761c3",
+   "differences": [],
+   "emulator": {
+    "freeze.run1": {
+     "archiveSha256": "84b1b4682e8d8bc143ead4b56abfc47eba23c2c6be1dbe9b5335d20c87b761c3",
+     "browserOwn": 14,
+     "exact": 103,
+     "fuzzy": 31,
+     "miss": 13,
+     "requests": 147
+    },
+    "freeze.run2": {
+     "archiveSha256": "84b1b4682e8d8bc143ead4b56abfc47eba23c2c6be1dbe9b5335d20c87b761c3",
+     "browserOwn": 14,
+     "exact": 103,
+     "fuzzy": 31,
+     "miss": 10,
+     "requests": 144
+    },
+    "head.run1": {
+     "archiveSha256": "84b1b4682e8d8bc143ead4b56abfc47eba23c2c6be1dbe9b5335d20c87b761c3",
+     "browserOwn": 14,
+     "exact": 103,
+     "fuzzy": 30,
+     "miss": 10,
+     "requests": 143
+    },
+    "head.run2": {
+     "archiveSha256": "84b1b4682e8d8bc143ead4b56abfc47eba23c2c6be1dbe9b5335d20c87b761c3",
+     "browserOwn": 14,
+     "exact": 103,
+     "fuzzy": 31,
+     "miss": 12,
+     "requests": 146
+    }
+   },
+   "fleet": {
+    "archiveSha256": "84b1b4682e8d8bc143ead4b56abfc47eba23c2c6be1dbe9b5335d20c87b761c3",
+    "browserOwn": 0,
+    "exact": 109,
+    "fuzzy": 39,
+    "miss": 39,
+    "requests": 187,
+    "worker": "a11y-worker-2"
+   },
+   "slug": "sheffield-ac-uk-ijc-people-professional-services-staff-nastaran-bozorg-c5373f0c",
+   "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab"
+  },
+  {
+   "archiveSha256": "2ce214a0276b45124cc85e2a4e7128947daf9eb522dfe2a3ed2d5e0af8092b93",
+   "differences": [],
+   "emulator": {
+    "freeze.run1": {
+     "archiveSha256": "2ce214a0276b45124cc85e2a4e7128947daf9eb522dfe2a3ed2d5e0af8092b93",
+     "browserOwn": 12,
+     "exact": 37,
+     "fuzzy": 1,
+     "miss": 4,
+     "requests": 42
+    },
+    "freeze.run2": {
+     "archiveSha256": "2ce214a0276b45124cc85e2a4e7128947daf9eb522dfe2a3ed2d5e0af8092b93",
+     "browserOwn": 12,
+     "exact": 37,
+     "fuzzy": 1,
+     "miss": 4,
+     "requests": 42
+    },
+    "head.run1": {
+     "archiveSha256": "2ce214a0276b45124cc85e2a4e7128947daf9eb522dfe2a3ed2d5e0af8092b93",
+     "browserOwn": 12,
+     "exact": 37,
+     "fuzzy": 1,
+     "miss": 4,
+     "requests": 42
+    },
+    "head.run2": {
+     "archiveSha256": "2ce214a0276b45124cc85e2a4e7128947daf9eb522dfe2a3ed2d5e0af8092b93",
+     "browserOwn": 12,
+     "exact": 37,
+     "fuzzy": 1,
+     "miss": 4,
+     "requests": 42
+    }
+   },
+   "fleet": {
+    "archiveSha256": "2ce214a0276b45124cc85e2a4e7128947daf9eb522dfe2a3ed2d5e0af8092b93",
+    "browserOwn": 2,
+    "exact": 33,
+    "fuzzy": 1,
+    "miss": 14,
+    "requests": 48,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "www-historicenvironment-scot-visit-all-cnoc-freiceadain-long-cairns-hi-0c2b1049",
+   "url": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/"
+  },
+  {
+   "archiveSha256": "0b2ebd7e407941d80479f209dff4374dadcc489f0ee556d144c84010a1d2b4ef",
+   "differences": [],
+   "emulator": {
+    "freeze.run1": {
+     "archiveSha256": "0b2ebd7e407941d80479f209dff4374dadcc489f0ee556d144c84010a1d2b4ef",
+     "browserOwn": 14,
+     "exact": 108,
+     "fuzzy": 27,
+     "miss": 11,
+     "requests": 146
+    },
+    "freeze.run2": {
+     "archiveSha256": "0b2ebd7e407941d80479f209dff4374dadcc489f0ee556d144c84010a1d2b4ef",
+     "browserOwn": 14,
+     "exact": 108,
+     "fuzzy": 27,
+     "miss": 10,
+     "requests": 145
+    },
+    "head.run1": {
+     "archiveSha256": "0b2ebd7e407941d80479f209dff4374dadcc489f0ee556d144c84010a1d2b4ef",
+     "browserOwn": 14,
+     "exact": 108,
+     "fuzzy": 27,
+     "miss": 10,
+     "requests": 145
+    },
+    "head.run2": {
+     "archiveSha256": "0b2ebd7e407941d80479f209dff4374dadcc489f0ee556d144c84010a1d2b4ef",
+     "browserOwn": 14,
+     "exact": 108,
+     "fuzzy": 27,
+     "miss": 10,
+     "requests": 145
+    }
+   },
+   "fleet": {
+    "archiveSha256": "0b2ebd7e407941d80479f209dff4374dadcc489f0ee556d144c84010a1d2b4ef",
+    "browserOwn": 0,
+    "exact": 138,
+    "fuzzy": 39,
+    "miss": 19,
+    "requests": 196,
+    "worker": "a11y-worker-3"
+   },
+   "slug": "sheffield-ac-uk-mac-news-one-watch-engineering-student-wins-best-paper-3366e540",
+   "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference"
+  },
+  {
+   "archiveSha256": "8c0f7a4c83ed4e73becbe36b5aaa7fbdafee8ff6848144ec2fba13be0745a4c8",
+   "differences": [],
+   "emulator": {
+    "freeze.run1": {
+     "archiveSha256": "8c0f7a4c83ed4e73becbe36b5aaa7fbdafee8ff6848144ec2fba13be0745a4c8",
+     "browserOwn": 16,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 21
+    },
+    "freeze.run2": {
+     "archiveSha256": "8c0f7a4c83ed4e73becbe36b5aaa7fbdafee8ff6848144ec2fba13be0745a4c8",
+     "browserOwn": 13,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 21
+    },
+    "head.run1": {
+     "archiveSha256": "8c0f7a4c83ed4e73becbe36b5aaa7fbdafee8ff6848144ec2fba13be0745a4c8",
+     "browserOwn": 12,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 21
+    },
+    "head.run2": {
+     "archiveSha256": "8c0f7a4c83ed4e73becbe36b5aaa7fbdafee8ff6848144ec2fba13be0745a4c8",
+     "browserOwn": 14,
+     "exact": 19,
+     "fuzzy": 0,
+     "miss": 2,
+     "requests": 21
+    }
+   },
+   "fleet": {
+    "archiveSha256": "8c0f7a4c83ed4e73becbe36b5aaa7fbdafee8ff6848144ec2fba13be0745a4c8",
+    "browserOwn": 1,
+    "exact": 14,
+    "fuzzy": 0,
+    "miss": 10,
+    "requests": 24,
+    "worker": "a11y-worker-7"
+   },
+   "slug": "ico-org-uk-for-organisations-uk-gdpr-guidance-and-resources-internatio-a8ab83aa",
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/appropriate-safeguards/what-are-standard-data-protection-clauses-the-uk-idta-and-the-addendum/"
+  }
+ ]
+}

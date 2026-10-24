@@ -1,0 +1,42 @@
+pages 9 (held)  comparable: 9
+
+agreement by element kind (9 comparable pages)
+     exact / total       %  positional
+       91 / 103       88.3%          91  headings
+      598 / 624       95.8%         279  links
+       64 / 68        94.1%          60  buttons
+       10 / 10       100.0%           8  formFields
+       86 / 90        95.6%          46  landmarks
+      126 / 126      100.0%         126  lists
+       59 / 60        98.3%          58  graphics
+
+agreement by swept channel
+     exact / total       %  positional
+       91 / 103       88.3%          91  headings
+       86 / 90        95.6%          46  landmarks
+       74 / 78        94.9%          68  formFields
+       59 / 60        98.3%          58  graphics
+      598 / 624       95.8%         279  links
+      126 / 126      100.0%         126  lists
+
+shapes: 1081 announcements in 70 distinct shapes; top 10 cover 715 = 66.1% (the fleet's script quotes 33 shapes, top 10 = 94.3%)
+
+agreement by shape (top 10, ranked in this run)
+     exact / total       %  positional
+      280 / 280      100.0%         160  NAME + ROLE
+       99 / 99       100.0%          52  ROLE + COUNT + NAME + ROLE
+       67 / 67       100.0%          67  NAME + ROLE + LEVEL
+       57 / 57       100.0%          52  ROLE + NAME + ROLE + ROLE
+       42 / 42       100.0%          32  NAME + ROLE + ROLE
+       38 / 41        92.7%           3  NAME + STATE + ROLE
+       40 / 40       100.0%          11  NAME + ROLE + NAME
+       31 / 33        93.9%          31  NAME + ROLE + STATE
+       28 / 32        87.5%          20  NAME + ROLE + ROLE + COUNT + NAME + ROLE
+       24 / 24       100.0%          24  ROLE + COUNT + NAME
+
+GATE: 706 of 715 = 98.74% exact on the top 10 shapes   (positional: 452 of 715)   [AT OR ABOVE 98%]
+      with the not-comparable pages kept in: 706 of 715 = 98.74%
+      emulator announcements with no counterpart in the fleet's lists (extras): 26
+      top-10 misses by cause: unexplained 8, prompt-downstream 1
+      the same, with the pages' `history` misses not counted as misses against us: 706 of 715 = 98.74%   (an upper bound if the fleet's browser history could be reproduced)
+      misses over all channels: 47 of 1081; on top-10 shapes: 9

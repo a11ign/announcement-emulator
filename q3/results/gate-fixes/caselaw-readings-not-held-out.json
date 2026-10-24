@@ -1,0 +1,175 @@
+{
+ "page": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38",
+ "announcements": [
+  "headings=RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2",
+  "links=Skip to end, same page, link",
+  "links=Back to top, same page, link"
+ ],
+ "fleet": {
+  "reading1": {
+   "worker": "a11y-worker-2",
+   "capturedAt": "2026-10-23T22:05:38.033Z",
+   "has": {
+    "headings=RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2": false,
+    "links=Skip to end, same page, link": true,
+    "links=Back to top, same page, link": false
+   }
+  },
+  "reading2": {
+   "worker": "a11y-worker-2",
+   "capturedAt": "2026-10-23T22:38:10.922Z",
+   "has": {
+    "headings=RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2": true,
+    "links=Skip to end, same page, link": true,
+    "links=Back to top, same page, link": false
+   }
+  },
+  "reading3": {
+   "worker": "a11y-worker-2",
+   "capturedAt": "2026-10-23T22:43:01.301Z",
+   "has": {
+    "headings=RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2": true,
+    "links=Skip to end, same page, link": true,
+    "links=Back to top, same page, link": false
+   }
+  }
+ },
+ "emulator": {
+  "freeze": {
+   "run1": {
+    "census": {
+     "heading": 7,
+     "link": 41
+    },
+    "has": {
+     "headings=RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2": false,
+     "links=Skip to end, same page, link": false,
+     "links=Back to top, same page, link": false
+    }
+   },
+   "run2": {
+    "census": {
+     "heading": 7,
+     "link": 41
+    },
+    "has": {
+     "headings=RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2": false,
+     "links=Skip to end, same page, link": false,
+     "links=Back to top, same page, link": false
+    }
+   },
+   "run3": {
+    "census": {
+     "heading": 8,
+     "link": 43
+    },
+    "has": {
+     "headings=RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2": false,
+     "links=Skip to end, same page, link": false,
+     "links=Back to top, same page, link": false
+    }
+   },
+   "run4": {
+    "census": {
+     "heading": 8,
+     "link": 43
+    },
+    "has": {
+     "headings=RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2": false,
+     "links=Skip to end, same page, link": false,
+     "links=Back to top, same page, link": false
+    }
+   },
+   "run5": {
+    "census": {
+     "heading": 7,
+     "link": 41
+    },
+    "has": {
+     "headings=RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2": false,
+     "links=Skip to end, same page, link": false,
+     "links=Back to top, same page, link": false
+    }
+   },
+   "run6": {
+    "census": {
+     "heading": 8,
+     "link": 43
+    },
+    "has": {
+     "headings=RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2": false,
+     "links=Skip to end, same page, link": false,
+     "links=Back to top, same page, link": false
+    }
+   }
+  },
+  "head": {
+   "run1": {
+    "census": {
+     "heading": 8,
+     "link": 43
+    },
+    "has": {
+     "headings=RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2": true,
+     "links=Skip to end, same page, link": true,
+     "links=Back to top, same page, link": true
+    }
+   },
+   "run2": {
+    "census": {
+     "heading": 7,
+     "link": 41
+    },
+    "has": {
+     "headings=RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2": true,
+     "links=Skip to end, same page, link": true,
+     "links=Back to top, same page, link": true
+    }
+   },
+   "run3": {
+    "census": {
+     "heading": 8,
+     "link": 43
+    },
+    "has": {
+     "headings=RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2": true,
+     "links=Skip to end, same page, link": true,
+     "links=Back to top, same page, link": true
+    }
+   },
+   "run4": {
+    "census": {
+     "heading": 8,
+     "link": 43
+    },
+    "has": {
+     "headings=RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2": true,
+     "links=Skip to end, same page, link": true,
+     "links=Back to top, same page, link": true
+    }
+   },
+   "run5": {
+    "census": {
+     "heading": 7,
+     "link": 41
+    },
+    "has": {
+     "headings=RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2": true,
+     "links=Skip to end, same page, link": true,
+     "links=Back to top, same page, link": true
+    }
+   },
+   "run6": {
+    "census": {
+     "heading": 7,
+     "link": 41
+    },
+    "has": {
+     "headings=RTS Flexible Systems Limited v Molkerei Alois Müller Gmbh and Company KG (UK Production), heading, level 2": true,
+     "links=Skip to end, same page, link": true,
+     "links=Back to top, same page, link": true
+    }
+   }
+  }
+ }
+}

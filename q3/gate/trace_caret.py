@@ -11,6 +11,7 @@ sys.path.insert(0, Q3)
 from livepage import LivePage
 import driver, sweep
 d = LivePage(url=a.url, port=a.port); sweep.load_lazy_content(d); w = sweep.Walker(d, driver); sweep.anchor_to_top(w); sweep.read_through(w)
+if hasattr(sweep, 'scroll_where_nvda_left_the_page'): sweep.scroll_where_nvda_left_the_page(w)      # as q3/emulate.py, once the emulator has the step (A11-176); the frozen one has not
 rows = []; perform = w.perform
 FOCUS = "document.activeElement.tagName + '.' + (document.activeElement.className||'').slice(0,30) + '|' + (document.activeElement.getAttribute('aria-label')||'')"
 

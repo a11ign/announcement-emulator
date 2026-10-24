@@ -1,0 +1,169 @@
+{
+ "split": "held",
+ "pages": [
+  {
+   "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38",
+   "status": "not comparable: heading fleet 8 / emulator 7, link fleet 43 / emulator 41"
+  },
+  {
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/when-can-an-exemption-apply-to-information-about-other-people-in-a-sar/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/appropriate-safeguards/what-are-standard-data-protection-clauses-the-uk-idta-and-the-addendum/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+   "status": "comparable"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "status": "comparable"
+  },
+  {
+   "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+   "status": "comparable"
+  },
+  {
+   "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/",
+   "status": "comparable"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/doune-castle/shop/",
+   "status": "comparable"
+  }
+ ],
+ "gate": {
+  "exact": 682,
+  "total": 682
+ },
+ "top": [
+  "NAME + ROLE",
+  "ROLE + COUNT + NAME + ROLE",
+  "NAME + ROLE + LEVEL",
+  "ROLE + NAME + ROLE + ROLE",
+  "NAME + ROLE + ROLE",
+  "NAME + ROLE + NAME",
+  "NAME + STATE + ROLE",
+  "NAME + ROLE + STATE",
+  "NAME + ROLE + ROLE + COUNT + NAME + ROLE",
+  "ROLE + COUNT + NAME"
+ ],
+ "misses": [
+  {
+   "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+   "channel": "headings",
+   "i": 0,
+   "expected": "content info landmark, Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "predicted": "Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+   "channel": "headings",
+   "i": 0,
+   "expected": "content info landmark, Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "predicted": "Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+   "channel": "headings",
+   "i": 0,
+   "expected": "content info landmark, Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "predicted": "Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+   "channel": "headings",
+   "i": 0,
+   "expected": "content info landmark, Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "predicted": "Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "kind": "headings",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/",
+   "channel": "formFields",
+   "i": 1,
+   "expected": "search landmark, Open search, button, collapsed",
+   "predicted": "banner landmark, search landmark, Open search, button, collapsed",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  },
+  {
+   "url": "https://www.historicenvironment.scot/visit/all/doune-castle/shop/",
+   "channel": "formFields",
+   "i": 4,
+   "expected": "search landmark, Open search, button, collapsed",
+   "predicted": "banner landmark, search landmark, Open search, button, collapsed",
+   "ok": false,
+   "positional": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "kind": "buttons",
+   "class": "unexplained"
+  }
+ ]
+}

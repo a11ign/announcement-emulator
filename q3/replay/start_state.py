@@ -2,7 +2,7 @@
 
     <emulator python> start_state.py <address> <out.json> [--port 9800]       run under `with_replay.py`, so the page is read through its archive
 
-It does what `q3/emulate.py` does up to the first sweep (load the page, scroll it to its end and back, `anchorToTop`, the read-through) and writes: the element that has focus in the page at load, through the frames (so
+It does what `q3/emulate.py` does up to the first sweep (load the page, scroll it to its end and back, `anchorToTop`, the read-through, and, once the emulator has it, the scroll to where the caret left the page) and writes: the element that has focus in the page at load, through the frames (so
 an example frame's focus shows), the node the emulator's tree reports as focused, where the caret is after the read-through (its line, and the lines either side), and how the read-through ended. The sweeps start from
 that caret, forward and backward, so a side that starts elsewhere lists the same entries in another order."""
 import sys, os, json, argparse
@@ -46,6 +46,8 @@ def main(argv):
         result['afterAnchorToTop'] = {'activeElement': d.s.eval(ACTIVE), **caret_context(d)}
         lines, reason = sweep.read_through(w)
         result['readThrough'] = {'count': len(lines), 'stopReason': reason, 'activeElement': d.s.eval(ACTIVE), **caret_context(d)}
+        if hasattr(sweep, 'scroll_where_nvda_left_the_page'):      # the emulator after A11-176 scrolls the page where NVDA's caret left it before the sweeps (q3/emulate.py); the frozen one has no such step
+            result['afterScroll'] = {'scrolled': sweep.scroll_where_nvda_left_the_page(w), 'activeElement': d.s.eval(ACTIVE), **caret_context(d)}
     finally:
         with open(a.out, 'w') as f: json.dump(result, f, indent=1)
         d.close()

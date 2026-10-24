@@ -1,0 +1,98 @@
+{
+ "policy": "SavingBrowserHistoryDisabled",
+ "workers": {
+  "a11y-worker-2": {
+   "after": {
+    "capturedAt": "2026-10-23T21:43:42.315Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "after-run": {
+    "capturedAt": "2026-10-23T22:20:51.796Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "before": {
+    "capturedAt": "2026-10-23T21:38:12.539Z",
+    "links": 2,
+    "read": true,
+    "visited": true
+   },
+   "emptied": {
+    "at": "2026-10-23T21:39:20Z",
+    "what": "Default/History, History-journal removed by win_file"
+   },
+   "passed": false,
+   "policy": {
+    "evidence": "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1",
+    "name": "SavingBrowserHistoryDisabled",
+    "readAt": "2026-10-23T21:39:13Z",
+    "value": 1
+   },
+   "restored": {
+    "at": "2026-10-23T22:44:30Z",
+    "evidence": "restore play failed=0; win_reg_stat read value 0"
+   }
+  },
+  "a11y-worker-3": {
+   "after": {
+    "capturedAt": "2026-10-23T21:51:15.659Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "after-run": {
+    "capturedAt": "2026-10-23T22:26:10.357Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "emptied": {
+    "at": "2026-10-23T21:46:34Z",
+    "what": "Default/History, History-journal removed by win_file"
+   },
+   "passed": false,
+   "policy": {
+    "evidence": "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1",
+    "name": "SavingBrowserHistoryDisabled",
+    "readAt": "2026-10-23T21:46:27Z",
+    "value": 1
+   },
+   "restored": {
+    "at": "2026-10-23T22:45:51Z",
+    "evidence": "restore play failed=0; win_reg_stat read value 0"
+   }
+  },
+  "a11y-worker-7": {
+   "after": {
+    "capturedAt": "2026-10-23T21:58:55.365Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "after-run": {
+    "capturedAt": "2026-10-23T22:31:31.434Z",
+    "links": 2,
+    "read": true,
+    "visited": false
+   },
+   "emptied": {
+    "at": "2026-10-23T21:54:07Z",
+    "what": "Default/History, History-journal removed by win_file"
+   },
+   "passed": false,
+   "policy": {
+    "evidence": "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1",
+    "name": "SavingBrowserHistoryDisabled",
+    "readAt": "2026-10-23T21:54:00Z",
+    "value": 1
+   },
+   "restored": {
+    "at": "2026-10-23T22:47:20Z",
+    "evidence": "restore play failed=0; win_reg_stat read value 0"
+   }
+  }
+ }
+}

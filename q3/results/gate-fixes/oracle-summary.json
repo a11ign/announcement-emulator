@@ -1,0 +1,488 @@
+[
+ {
+  "capturedAt": "2026-10-23T22:05:38.033Z",
+  "documentReadyTitle": "RTS Flexible Systems Limited v Molkerei Alois M\u00fcller Gmbh and Company KG (UK Production) - Find Case Law - The National Archives",
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "captureProtocol": 24,
+   "provisionRevision": "a20963f766666de8",
+   "windowsBuild": "26300.9711",
+   "workerCode": "25bb45d9b38d7a62"
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-23T21:39:13Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-23T21:43:42.315Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-23T21:39:20Z"
+  },
+  "replay": {
+   "archive": "caselaw-nationalarchives-gov-uk-uksc-2010-38-7704e6df.flows",
+   "archiveSha256": "d4d717a93e6cf9faa0663d3cb590338872398b65f4d57ae511ecead865f0e3ff",
+   "blocked": 0,
+   "log": "caselaw-nationalarchives-gov-uk-uksc-2010-38-7704e6df.a11y-worker-2.json",
+   "readback": {
+    "certificateReadAt": "2026-10-23T21:40:16Z",
+    "probeReadAt": "2026-10-23T21:45:27.312Z",
+    "proxyReadAt": "2026-10-23T21:40:16Z"
+   },
+   "requests": 18,
+   "runId": "a11-166-2026-10-23",
+   "unmatched": 2
+  },
+  "role": null,
+  "split": "held",
+  "status": 200,
+  "swept": {
+   "formFields": 0,
+   "frames": 0,
+   "graphics": 2,
+   "headings": 7,
+   "landmarks": 4,
+   "links": 42,
+   "lists": 4,
+   "tableCells": 0
+  },
+  "transcriptLines": 202,
+  "url": "https://caselaw.nationalarchives.gov.uk/uksc/2010/38",
+  "worker": "a11y-worker-2"
+ },
+ {
+  "capturedAt": "2026-10-23T22:06:55.452Z",
+  "documentReadyTitle": "When can an exemption apply to information about other people in a SAR? ICO",
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "captureProtocol": 24,
+   "provisionRevision": "a20963f766666de8",
+   "windowsBuild": "26300.9711",
+   "workerCode": "25bb45d9b38d7a62"
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-23T21:46:27Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-23T21:51:15.659Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-23T21:46:34Z"
+  },
+  "replay": {
+   "archive": "ico-org-uk-for-organisations-uk-gdpr-guidance-and-resources-individual-41179ae3.flows",
+   "archiveSha256": "a4d9b075ba1f486d12a1c0ff57d32e207a32961ed3fb0e52223c6ed5cd1f218f",
+   "blocked": 0,
+   "log": "ico-org-uk-for-organisations-uk-gdpr-guidance-and-resources-individual-41179ae3.a11y-worker-3.json",
+   "readback": {
+    "certificateReadAt": "2026-10-23T21:47:27Z",
+    "probeReadAt": "2026-10-23T21:53:01.175Z",
+    "proxyReadAt": "2026-10-23T21:47:27Z"
+   },
+   "requests": 27,
+   "runId": "a11-166-2026-10-23",
+   "unmatched": 12
+  },
+  "role": null,
+  "split": "held",
+  "status": 200,
+  "swept": {
+   "formFields": 7,
+   "frames": 0,
+   "graphics": 5,
+   "headings": 10,
+   "landmarks": 9,
+   "links": 87,
+   "lists": 43,
+   "tableCells": 0
+  },
+  "transcriptLines": 289,
+  "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/when-can-an-exemption-apply-to-information-about-other-people-in-a-sar/",
+  "worker": "a11y-worker-3"
+ },
+ {
+  "capturedAt": "2026-10-23T22:06:30.260Z",
+  "documentReadyTitle": "What are standard data protection clauses (the UK IDTA and the Addendum)? ICO",
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "captureProtocol": 24,
+   "provisionRevision": "a20963f766666de8",
+   "windowsBuild": "26300.9711",
+   "workerCode": "25bb45d9b38d7a62"
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-23T21:54:00Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-23T21:58:55.365Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-23T21:54:07Z"
+  },
+  "replay": {
+   "archive": "ico-org-uk-for-organisations-uk-gdpr-guidance-and-resources-internatio-a8ab83aa.flows",
+   "archiveSha256": "8c0f7a4c83ed4e73becbe36b5aaa7fbdafee8ff6848144ec2fba13be0745a4c8",
+   "blocked": 0,
+   "log": "ico-org-uk-for-organisations-uk-gdpr-guidance-and-resources-internatio-a8ab83aa.a11y-worker-7.json",
+   "readback": {
+    "certificateReadAt": "2026-10-23T21:55:06Z",
+    "probeReadAt": "2026-10-23T22:00:41.216Z",
+    "proxyReadAt": "2026-10-23T21:55:06Z"
+   },
+   "requests": 25,
+   "runId": "a11-166-2026-10-23",
+   "unmatched": 11
+  },
+  "role": null,
+  "split": "held",
+  "status": 200,
+  "swept": {
+   "formFields": 5,
+   "frames": 0,
+   "graphics": 5,
+   "headings": 16,
+   "landmarks": 9,
+   "links": 90,
+   "lists": 31,
+   "tableCells": 0
+  },
+  "transcriptLines": 222,
+  "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/appropriate-safeguards/what-are-standard-data-protection-clauses-the-uk-idta-and-the-addendum/",
+  "worker": "a11y-worker-7"
+ },
+ {
+  "capturedAt": "2026-10-23T22:11:25.098Z",
+  "documentReadyTitle": "Nastaran Bozorgzad Arbab Information, Journalism and Communication The University of Sheffield",
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "captureProtocol": 24,
+   "provisionRevision": "a20963f766666de8",
+   "windowsBuild": "26300.9711",
+   "workerCode": "25bb45d9b38d7a62"
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-23T21:39:13Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-23T21:43:42.315Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-23T21:39:20Z"
+  },
+  "replay": {
+   "archive": "sheffield-ac-uk-ijc-people-professional-services-staff-nastaran-bozorg-c5373f0c.flows",
+   "archiveSha256": "84b1b4682e8d8bc143ead4b56abfc47eba23c2c6be1dbe9b5335d20c87b761c3",
+   "blocked": 0,
+   "log": "sheffield-ac-uk-ijc-people-professional-services-staff-nastaran-bozorg-c5373f0c.a11y-worker-2.json",
+   "readback": {
+    "certificateReadAt": "2026-10-23T21:40:16Z",
+    "probeReadAt": "2026-10-23T21:45:27.312Z",
+    "proxyReadAt": "2026-10-23T21:40:16Z"
+   },
+   "requests": 187,
+   "runId": "a11-166-2026-10-23",
+   "unmatched": 39
+  },
+  "role": null,
+  "split": "held",
+  "status": 200,
+  "swept": {
+   "formFields": 14,
+   "frames": 0,
+   "graphics": 11,
+   "headings": 5,
+   "landmarks": 14,
+   "links": 90,
+   "lists": 13,
+   "tableCells": 0
+  },
+  "transcriptLines": 87,
+  "url": "https://sheffield.ac.uk/ijc/people/professional-services-staff/nastaran-bozorgzad-arbab",
+  "worker": "a11y-worker-2"
+ },
+ {
+  "capturedAt": "2026-10-23T22:13:37.699Z",
+  "documentReadyTitle": "Information, advice and guidance for Muslim students Inclusion The University of Sheffield",
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "captureProtocol": 24,
+   "provisionRevision": "a20963f766666de8",
+   "windowsBuild": "26300.9711",
+   "workerCode": "25bb45d9b38d7a62"
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-23T21:54:00Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-23T21:58:55.365Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-23T21:54:07Z"
+  },
+  "replay": {
+   "archive": "sheffield-ac-uk-inclusion-religion-belief-and-no-belief-muslim-student-abffec55.flows",
+   "archiveSha256": "c042abfb10f65fe0658ea327eb5089f9a1081eee0d398f69c0a9860c256855e8",
+   "blocked": 0,
+   "log": "sheffield-ac-uk-inclusion-religion-belief-and-no-belief-muslim-student-abffec55.a11y-worker-7.json",
+   "readback": {
+    "certificateReadAt": "2026-10-23T21:55:06Z",
+    "probeReadAt": "2026-10-23T22:00:41.216Z",
+    "proxyReadAt": "2026-10-23T21:55:06Z"
+   },
+   "requests": 195,
+   "runId": "a11-166-2026-10-23",
+   "unmatched": 19
+  },
+  "role": null,
+  "split": "held",
+  "status": 200,
+  "swept": {
+   "formFields": 14,
+   "frames": 0,
+   "graphics": 11,
+   "headings": 29,
+   "landmarks": 14,
+   "links": 133,
+   "lists": 13,
+   "tableCells": 0
+  },
+  "transcriptLines": 236,
+  "url": "https://sheffield.ac.uk/inclusion/religion-belief-and-no-belief/muslim-students/support",
+  "worker": "a11y-worker-7"
+ },
+ {
+  "capturedAt": "2026-10-23T22:13:04.016Z",
+  "documentReadyTitle": "One to watch: engineering student wins best paper award at leading international technical conference MAC The University of Sheffield",
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "captureProtocol": 24,
+   "provisionRevision": "a20963f766666de8",
+   "windowsBuild": "26300.9711",
+   "workerCode": "25bb45d9b38d7a62"
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-23T21:46:27Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-23T21:51:15.659Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-23T21:46:34Z"
+  },
+  "replay": {
+   "archive": "sheffield-ac-uk-mac-news-one-watch-engineering-student-wins-best-paper-3366e540.flows",
+   "archiveSha256": "0b2ebd7e407941d80479f209dff4374dadcc489f0ee556d144c84010a1d2b4ef",
+   "blocked": 0,
+   "log": "sheffield-ac-uk-mac-news-one-watch-engineering-student-wins-best-paper-3366e540.a11y-worker-3.json",
+   "readback": {
+    "certificateReadAt": "2026-10-23T21:47:27Z",
+    "probeReadAt": "2026-10-23T21:53:01.175Z",
+    "proxyReadAt": "2026-10-23T21:47:27Z"
+   },
+   "requests": 196,
+   "runId": "a11-166-2026-10-23",
+   "unmatched": 19
+  },
+  "role": null,
+  "split": "held",
+  "status": 200,
+  "swept": {
+   "formFields": 14,
+   "frames": 0,
+   "graphics": 12,
+   "headings": 6,
+   "landmarks": 14,
+   "links": 84,
+   "lists": 11,
+   "tableCells": 0
+  },
+  "transcriptLines": 103,
+  "url": "https://sheffield.ac.uk/mac/news/one-watch-engineering-student-wins-best-paper-award-leading-international-technical-conference",
+  "worker": "a11y-worker-3"
+ },
+ {
+  "capturedAt": "2026-10-23T22:17:14.508Z",
+  "documentReadyTitle": "Our Doctoral Researchers Network has big plans for the year SPERI The University of Sheffield",
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "captureProtocol": 24,
+   "provisionRevision": "a20963f766666de8",
+   "windowsBuild": "26300.9711",
+   "workerCode": "25bb45d9b38d7a62"
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-23T21:39:13Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-23T21:43:42.315Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-23T21:39:20Z"
+  },
+  "replay": {
+   "archive": "sheffield-ac-uk-speri-news-our-doctoral-researchers-network-has-big-pl-a06202c4.flows",
+   "archiveSha256": "5acc84fa730485b298b02b6269a2559de7f25181a382db589d228c00bb02b114",
+   "blocked": 0,
+   "log": "sheffield-ac-uk-speri-news-our-doctoral-researchers-network-has-big-pl-a06202c4.a11y-worker-2.json",
+   "readback": {
+    "certificateReadAt": "2026-10-23T21:40:16Z",
+    "probeReadAt": "2026-10-23T21:45:27.312Z",
+    "proxyReadAt": "2026-10-23T21:40:16Z"
+   },
+   "requests": 173,
+   "runId": "a11-166-2026-10-23",
+   "unmatched": 41
+  },
+  "role": null,
+  "split": "held",
+  "status": 200,
+  "swept": {
+   "formFields": 9,
+   "frames": 0,
+   "graphics": 12,
+   "headings": 7,
+   "landmarks": 14,
+   "links": 90,
+   "lists": 11,
+   "tableCells": 0
+  },
+  "transcriptLines": 137,
+  "url": "https://sheffield.ac.uk/speri/news/our-doctoral-researchers-network-has-big-plans-year",
+  "worker": "a11y-worker-2"
+ },
+ {
+  "capturedAt": "2026-10-23T22:15:48.917Z",
+  "documentReadyTitle": "History and stories Cnoc Freiceadain Historic Scotland",
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "captureProtocol": 24,
+   "provisionRevision": "a20963f766666de8",
+   "windowsBuild": "26300.9711",
+   "workerCode": "25bb45d9b38d7a62"
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-23T21:46:27Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-23T21:51:15.659Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-23T21:46:34Z"
+  },
+  "replay": {
+   "archive": "www-historicenvironment-scot-visit-all-cnoc-freiceadain-long-cairns-hi-0c2b1049.flows",
+   "archiveSha256": "2ce214a0276b45124cc85e2a4e7128947daf9eb522dfe2a3ed2d5e0af8092b93",
+   "blocked": 0,
+   "log": "www-historicenvironment-scot-visit-all-cnoc-freiceadain-long-cairns-hi-0c2b1049.a11y-worker-3.json",
+   "readback": {
+    "certificateReadAt": "2026-10-23T21:47:27Z",
+    "probeReadAt": "2026-10-23T21:53:01.175Z",
+    "proxyReadAt": "2026-10-23T21:47:27Z"
+   },
+   "requests": 50,
+   "runId": "a11-166-2026-10-23",
+   "unmatched": 16
+  },
+  "role": null,
+  "split": "held",
+  "status": 200,
+  "swept": {
+   "formFields": 6,
+   "frames": 0,
+   "graphics": 1,
+   "headings": 8,
+   "landmarks": 6,
+   "links": 4,
+   "lists": 0,
+   "tableCells": 0
+  },
+  "transcriptLines": 75,
+  "url": "https://www.historicenvironment.scot/visit/all/cnoc-freiceadain-long-cairns/history-and-stories/",
+  "worker": "a11y-worker-3"
+ },
+ {
+  "capturedAt": "2026-10-23T22:16:28.696Z",
+  "documentReadyTitle": "Shop Doune Castle Historic Scotland",
+  "environment": {
+   "browserVersion": "155.0.4283.62",
+   "captureProtocol": 24,
+   "provisionRevision": "a20963f766666de8",
+   "windowsBuild": "26300.9711",
+   "workerCode": "25bb45d9b38d7a62"
+  },
+  "history": {
+   "policy": {
+    "name": "SavingBrowserHistoryDisabled",
+    "value": 1
+   },
+   "policyReadAt": "2026-10-23T21:54:00Z",
+   "probeAfter": {
+    "capturedAt": "2026-10-23T21:58:55.365Z",
+    "visited": false
+   },
+   "storeEmptied": true,
+   "storeEmptiedAt": "2026-10-23T21:54:07Z"
+  },
+  "replay": {
+   "archive": "www-historicenvironment-scot-visit-all-doune-castle-shop-e623d336.flows",
+   "archiveSha256": "f336e9b810c737752db47755b07067226adaff14cc034b836e2094dcc640db45",
+   "blocked": 0,
+   "log": "www-historicenvironment-scot-visit-all-doune-castle-shop-e623d336.a11y-worker-7.json",
+   "readback": {
+    "certificateReadAt": "2026-10-23T21:55:06Z",
+    "probeReadAt": "2026-10-23T22:00:41.216Z",
+    "proxyReadAt": "2026-10-23T21:55:06Z"
+   },
+   "requests": 54,
+   "runId": "a11-166-2026-10-23",
+   "unmatched": 17
+  },
+  "role": null,
+  "split": "held",
+  "status": 200,
+  "swept": {
+   "formFields": 9,
+   "frames": 0,
+   "graphics": 1,
+   "headings": 15,
+   "landmarks": 6,
+   "links": 4,
+   "lists": 0,
+   "tableCells": 0
+  },
+  "transcriptLines": 82,
+  "url": "https://www.historicenvironment.scot/visit/all/doune-castle/shop/",
+  "worker": "a11y-worker-7"
+ }
+]

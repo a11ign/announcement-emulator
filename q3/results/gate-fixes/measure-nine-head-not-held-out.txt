@@ -1,0 +1,43 @@
+pages 9 (held)  not comparable: 1   comparable: 8
+   not comparable: https://caselaw.nationalarchives.gov.uk/uksc/2010/38  [not comparable: heading fleet 8 / emulator 7, link fleet 43 / emulator 41]
+
+agreement by element kind (8 comparable pages)
+     exact / total       %  positional
+       92 / 96        95.8%          92  headings
+      582 / 582      100.0%         582  links
+       66 / 68        97.1%          66  buttons
+       10 / 10       100.0%          10  formFields
+       86 / 86       100.0%          86  landmarks
+      122 / 122      100.0%         122  lists
+       58 / 58       100.0%          58  graphics
+
+agreement by swept channel
+     exact / total       %  positional
+       92 / 96        95.8%          92  headings
+       86 / 86       100.0%          86  landmarks
+       76 / 78        97.4%          76  formFields
+       58 / 58       100.0%          58  graphics
+      582 / 582      100.0%         582  links
+      122 / 122      100.0%         122  lists
+
+shapes: 1022 announcements in 66 distinct shapes; top 10 cover 682 = 66.7% (the fleet's script quotes 33 shapes, top 10 = 94.3%)
+
+agreement by shape (top 10, ranked in this run)
+     exact / total       %  positional
+      265 / 265      100.0%         265  NAME + ROLE
+       95 / 95       100.0%          95  ROLE + COUNT + NAME + ROLE
+       62 / 62       100.0%          62  NAME + ROLE + LEVEL
+       54 / 54       100.0%          54  ROLE + NAME + ROLE + ROLE
+       42 / 42       100.0%          42  NAME + ROLE + ROLE
+       40 / 40       100.0%          40  NAME + ROLE + NAME
+       39 / 39       100.0%          39  NAME + STATE + ROLE
+       33 / 33       100.0%          33  NAME + ROLE + STATE
+       28 / 28       100.0%          28  NAME + ROLE + ROLE + COUNT + NAME + ROLE
+       24 / 24       100.0%          24  ROLE + COUNT + NAME
+
+GATE: 682 of 682 = 100.00% exact on the top 10 shapes   (positional: 682 of 682)   [AT OR ABOVE 98%]
+      with the not-comparable pages kept in: 713 of 715 = 99.72%
+      emulator announcements with no counterpart in the fleet's lists (extras): 6
+      top-10 misses by cause: 
+      the same, with the pages' `history` misses not counted as misses against us: 682 of 682 = 100.00%   (an upper bound if the fleet's browser history could be reproduced)
+      misses over all channels: 6 of 1022; on top-10 shapes: 0

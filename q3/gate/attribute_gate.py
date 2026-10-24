@@ -1,6 +1,6 @@
 """Attribute every miss of the Gate figure to a cause, with the evidence that shows it (A11-166).
 
-    python attribute_gate.py <results dir> --oracle <dir> --emulator <dir> --probes <dir of the probes' outputs> --replay-run <dir> --downloads <dir>
+    python attribute_gate.py <results dir> --oracle <dir> --emulator <dir> --probes <dir of the probes' outputs> --replay-run <dir> --downloads <dir> [--repo <checkout>]
 
 Reads `misses-held-freeze.json` (the Gate figure's misses on the ten shapes, `check.py gate_misses`) and writes `misses-attributed.json` and one evidence file per cause under `evidence/`. A miss is attributed by the table `CAUSES`: the pages and entries
 it covers, the class, the explanation, and where the cause was found. Every miss of the figure must be covered by exactly one cause, or this refuses. The causes were found by reading the fleet's record, the page's recorded bytes and the emulator against
@@ -123,8 +123,9 @@ def attribute(gate, pages, evidence_files):
 
 
 def main(argv):
-    ap = argparse.ArgumentParser(); ap.add_argument('results'); ap.add_argument('--oracle', required=True); ap.add_argument('--emulator', required=True); ap.add_argument('--probes', required=True); ap.add_argument('--downloads', required=True); a = ap.parse_args(argv)
-    gate, evidence, pages = build(a.results, a.oracle, a.emulator, a.probes, a.downloads)
+    ap = argparse.ArgumentParser(); ap.add_argument('results'); ap.add_argument('--oracle', required=True); ap.add_argument('--emulator', required=True); ap.add_argument('--probes', required=True); ap.add_argument('--downloads', required=True)
+    ap.add_argument('--repo', default=ROOT, help='the checkout whose lines are quoted: the frozen commit exported (q3/replay/export_freeze.py) once the emulator has been fixed (A11-176)'); a = ap.parse_args(argv)
+    gate, evidence, pages = build(a.results, a.oracle, a.emulator, a.probes, a.downloads, a.repo)
     os.makedirs(os.path.join(a.results, 'evidence'), exist_ok=True)
     for name, data in evidence.items(): rb.write_json(os.path.join(a.results, name), data)
     entries = attribute(gate, pages, evidence)
