@@ -15,13 +15,17 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 (async () => {
   const platform = await new Promise((r) => chrome.runtime.getPlatformInfo(r));
   post('hello', { os: platform.os, arch: platform.arch, automation: typeof chrome.automation, getDesktop: typeof chrome.automation?.getDesktop, getTree: typeof chrome.automation?.getTree, api: chrome.automation ? Object.keys(chrome.automation).sort() : null, desktopDeclared: DESKTOP });
+  // that the worker is running while it waits: a tick each second (a worker that is stopped, or blocked by the call, posts none)
+  let ticks = 0; const beat = setInterval(() => post('beat', { n: (ticks += 1) }), 1000);
   if (DESKTOP) {
+    post('desktop-asked', { t: Date.now() });
     const desktop = await within(5000, (cb) => chrome.automation.getDesktop(cb));
     post('desktop', desktop.timedOut || desktop.threw ? desktop : { children: desktop.value.children.length, roles: desktop.value.children.map((c) => c.role) });
   }
 
+  clearInterval(beat); post('beats', { n: ticks });
   let tab;      // the page the probe opened: the one tab that is not the browser's or an extension's
-  for (let i = 0; i < 50 && !tab; i++) { tab = (await chrome.tabs.query({})).find((t) => !/^(chrome|chrome-extension|devtools):/.test(t.url || t.pendingUrl || 'chrome:')); if (!tab) await sleep(200); }
+  for (let i = 0; i < 50 && !tab; i++) { tab = (await chrome.tabs.query({})).find((t) => !/^(chrome|chrome-extension|devtools):/.test(t.url || t.pendingUrl || 'chrome:') || t.active); if (!tab) await sleep(200); }
   post('tab', tab ? { id: tab.id, status: tab.status } : { missing: true });
   if (!tab) return;
   const events = {};

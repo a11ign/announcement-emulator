@@ -1,9 +1,9 @@
- 1 workers  without          wall ms 5162 5362 5908  median 5362  tests 13  ok true
- 1 workers  with             wall ms 7643 6882 6816  median 6882  tests 13  ok true
- 1 workers  with, no sweeps  wall ms 6687 6689 6673  median 6687  tests 13  ok true
- 2 workers  without          wall ms 5035 5140 5080  median 5080  tests 13  ok true
- 2 workers  with             wall ms 6842 6852 6843  median 6843  tests 13  ok true
- 2 workers  with, no sweeps  wall ms 6867 6682 6720  median 6720  tests 13  ok true
- 4 workers  without          wall ms 5628 5610 5541  median 5610  tests 13  ok true
- 4 workers  with             wall ms 7987 7785 7716  median 7785  tests 13  ok true
- 4 workers  with, no sweeps  wall ms 7700 7839 7742  median 7742  tests 13  ok true
+ 1 workers  without          wall ms 5519 5613 5490  median 5519  tests 13  ok true
+ 1 workers  with             wall ms 7157 7325 7909  median 7325  tests 13  ok true
+ 1 workers  with, no sweeps  wall ms 7274 6856 7031  median 7031  tests 13  ok true
+ 2 workers  without          wall ms 5262 5432 5375  median 5375  tests 13  ok true
+ 2 workers  with             wall ms 7064 7177 7474  median 7177  tests 13  ok true
+ 2 workers  with, no sweeps  wall ms 7164 7224 7268  median 7224  tests 13  ok true
+ 4 workers  without          wall ms 6059 6047 6094  median 6059  tests 13  ok true
+ 4 workers  with             wall ms 8648 8770 8670  median 8670  tests 13  ok true
+ 4 workers  with, no sweeps  wall ms 8399 8302 8258  median 8302  tests 13  ok true

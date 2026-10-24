@@ -1,0 +1,39 @@
+[
+ {
+  "kind": "start",
+  "what": "devtools",
+  "t": 1792869169938
+ },
+ {
+  "kind": "start",
+  "what": "worker",
+  "t": 1792869170481,
+  "automation": "object",
+  "getDesktop": "function"
+ },
+ {
+  "kind": "start",
+  "what": "devtools",
+  "t": 1792869171170
+ },
+ {
+  "kind": "start",
+  "what": "devtools",
+  "t": 1792869172887
+ },
+ {
+  "kind": "start",
+  "what": "devtools",
+  "t": 1792869173850
+ },
+ {
+  "kind": "start",
+  "what": "devtools",
+  "t": 1792869174507
+ },
+ {
+  "kind": "start",
+  "what": "devtools",
+  "t": 1792869175250
+ }
+]

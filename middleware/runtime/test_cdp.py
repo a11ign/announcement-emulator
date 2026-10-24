@@ -13,7 +13,7 @@ class FakeSocket:
 
 def reader():
     c = cdp.Cdp.__new__(cdp.Cdp)      # not connected: nothing is read from a browser
-    c.ws = FakeSocket(); c.lock = threading.Lock(); c.next_id = 0; c.replies = {}; c.wanted = {}; c.wake = threading.Condition(); c.on_tree = None
+    c.ws = FakeSocket(); c.lock = threading.Lock(); c.next_id = 0; c.replies = {}; c.wanted = {}; c.wake = threading.Condition(); c.on_tree = None; c.converters = {}; c.generation = 0; c.target_of = {}
     return c
 
 
@@ -39,6 +39,11 @@ class Routing(unittest.TestCase):
         c._handle({'method': 'Target.detachedFromTarget', 'params': {'sessionId': 'gone'}})
         thread.join(2)
         self.assertFalse(thread.is_alive()); self.assertEqual(errors, ['Accessibility.getFullAXTree: the page was closed'])
+
+    def test_a_page_that_goes_takes_what_was_wanted_of_it_and_its_converter_with_it(self):
+        c = reader(); c.target_of = {'gone': 't'}; c.wanted = {'gone': {'focusin'}, 'other': {'tick'}}; c.converters = {(0, 't'): object(), (0, 'u'): object()}
+        c._handle({'method': 'Target.detachedFromTarget', 'params': {'sessionId': 'gone'}})
+        self.assertEqual(c.wanted, {'other': {'tick'}}); self.assertEqual(list(c.converters), [(0, 'u')])
 
     def test_a_note_from_the_page_asks_for_a_tree_and_is_not_an_event_for_the_predictor(self):
         c = reader(); c.on_tree = lambda snap: None; c.target_of = {'s': 't'}; c.url_of = {'t': 'http://x/'}; events = []; c.on_event = events.append

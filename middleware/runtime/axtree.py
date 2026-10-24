@@ -47,11 +47,10 @@ class Dom:
     """The elements of a DOMSnapshot by backendNodeId: tag, attributes, computed style and the box."""
     def __init__(self, snapshot):
         strings = snapshot['strings']; s = lambda i: strings[i] if i >= 0 else None
-        self.by_backend = {}; self.viewport_lang = None; self.frame_of_owner = {}      # frame_of_owner: the backend id of an iframe element -> the id of the frame it holds
+        self.by_backend = {}; self.frame_of_owner = {}      # frame_of_owner: the backend id of an iframe element -> the id of the frame it holds
         for doc in snapshot['documents']:
             nodes = doc['nodes']
             lang = s(doc.get('contentLanguage', -1))
-            self.viewport_lang = self.viewport_lang or lang
             layout = {}
             for row, node in enumerate(doc['layout']['nodeIndex']): layout[node] = row
             clickable = set(nodes.get('isClickable', {}).get('index', []))
@@ -69,7 +68,7 @@ class Dom:
                 self.by_backend[backend] = info
             # the language a node is in is the nearest lang attribute above it, else the document's
             index_of = {i: backend for i, backend in enumerate(nodes['backendNodeId'])}
-            def language(i, _cache={}):
+            def language(i):
                 while i >= 0:
                     a = self.by_backend[index_of[i]]
                     if a['attrs'].get('lang') is not None: return a['attrs']['lang']
@@ -264,8 +263,8 @@ class Converter:
         if role == 'genericContainer' and not d and parent_role in TEXT_FIELDS: out['htmlTag'] = 'div'; out['display'] = 'flow-root'      # the editor Chromium puts inside a text field is in a closed shadow root: not in the snapshot
         if (d.get('tag') == 'button' and attrs.get('type', 'submit') == 'submit') or (d.get('tag') == 'input' and out.get('inputType') in ('submit', 'image')): out['_submit'] = True
         out['state'] = state
-        if state.get('focused') and page.get('caret') and role in ('textField', 'searchBox', 'textFieldWithComboBox', 'spinButton'): out['textSelStart'], out['textSelEnd'] = page['caret']
-        elif role in ('textField', 'searchBox', 'textFieldWithComboBox', 'spinButton'): out['textSelStart'] = out['textSelEnd'] = 0
+        if state.get('focused') and page.get('caret') and role in TEXT_FIELDS: out['textSelStart'], out['textSelEnd'] = page['caret']
+        elif role in TEXT_FIELDS: out['textSelStart'] = out['textSelEnd'] = 0
         # live regions: the node's own, and the nearest above it
         if props.get('live') not in (None, 'off'): out['liveStatus'] = props['live']
         if props.get('atomic'): out['liveAtomic'] = True

@@ -1,0 +1,1314 @@
+[
+ {
+  "kind": "start",
+  "what": "tree-source",
+  "t": 1792869146466,
+  "desktopChildren": null,
+  "documents": null
+ },
+ {
+  "kind": "start",
+  "what": "devtools",
+  "t": 1792869147018
+ },
+ {
+  "kind": "observe",
+  "what": "navigation",
+  "t": 1792869148493,
+  "page": 0,
+  "url": "http://127.0.0.1:4173/dialog.html",
+  "node": null,
+  "text": "http://127.0.0.1:4173/dialog.html"
+ },
+ {
+  "kind": "speech",
+  "cause": "load",
+  "t": 1792869148150,
+  "page": 0,
+  "url": "http://127.0.0.1:4173/dialog.html",
+  "text": "Delete account - Example shop, document | main landmark, heading, level 1, English, Your account",
+  "utterances": [
+   "Delete account - Example shop, document",
+   "main landmark, heading, level 1, English, Your account"
+  ],
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "node": {
+   "role": "rootWebArea",
+   "name": "Delete account - Example shop",
+   "uid": 1
+  },
+  "ms": 203.9
+ },
+ {
+  "kind": "observe",
+  "what": "dialog",
+  "t": 1792869149886,
+  "page": 0,
+  "node": {
+   "role": "dialog",
+   "name": "Delete your account? This cannot be undone. Keep my account Delete",
+   "uid": null
+  },
+  "text": "Delete your account? This cannot be undone. Keep my account Delete"
+ },
+ {
+  "kind": "speech",
+  "cause": "focus",
+  "t": 1792869149835,
+  "page": 0,
+  "url": "http://127.0.0.1:4173/dialog.html",
+  "text": "Keep my account, button",
+  "utterances": [
+   "Keep my account, button"
+  ],
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "node": {
+   "role": "button",
+   "name": "Keep my account",
+   "uid": 16,
+   "inDialog": false
+  },
+  "ms": 1.8
+ },
+ {
+  "kind": "speech",
+  "cause": "focus",
+  "t": 1792869150393,
+  "page": 0,
+  "url": "http://127.0.0.1:4173/dialog.html",
+  "text": "Delete account, button",
+  "utterances": [
+   "Delete account, button"
+  ],
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "node": {
+   "role": "button",
+   "name": "Delete account",
+   "uid": 6,
+   "inDialog": false
+  },
+  "ms": 3.4
+ },
+ {
+  "kind": "sweep",
+  "t": 1792869150339,
+  "treeAt": 1792869150339,
+  "page": 0,
+  "url": "http://127.0.0.1:4173/dialog.html",
+  "trigger": "dialog",
+  "lists": {
+   "headings": [],
+   "landmarks": [],
+   "formFields": [],
+   "graphics": [],
+   "links": [],
+   "lists": [],
+   "frames": [],
+   "tableCells": []
+  },
+  "counts": {
+   "headings": 0,
+   "landmarks": 0,
+   "formFields": 0,
+   "graphics": 0,
+   "links": 0,
+   "lists": 0,
+   "frames": 0,
+   "tableCells": 0
+  },
+  "census": {
+   "heading": 1,
+   "link": 0,
+   "graphic": 0,
+   "landmark": 0
+  },
+  "keys": 20,
+  "errors": [],
+  "stops": {
+   "heading": [
+    "exhausted",
+    "exhausted"
+   ],
+   "landmark": [
+    "exhausted",
+    "exhausted"
+   ],
+   "formField": [
+    "exhausted",
+    "exhausted"
+   ],
+   "graphic": [
+    "exhausted",
+    "exhausted"
+   ],
+   "link": [
+    "exhausted",
+    "exhausted"
+   ],
+   "list": [
+    "exhausted",
+    "exhausted"
+   ],
+   "frame": [
+    "exhausted",
+    "exhausted"
+   ]
+  },
+  "notDelivered": 3,
+  "ms": 224
+ },
+ {
+  "kind": "start",
+  "what": "devtools",
+  "t": 1792869151252
+ },
+ {
+  "kind": "observe",
+  "what": "navigation",
+  "t": 1792869151389,
+  "page": 1,
+  "url": "http://127.0.0.1:4173/signup.html",
+  "node": null,
+  "text": "http://127.0.0.1:4173/signup.html"
+ },
+ {
+  "kind": "speech",
+  "cause": "load",
+  "t": 1792869151387,
+  "page": 1,
+  "url": "http://127.0.0.1:4173/signup.html",
+  "text": "Create an account - Example shop, document | banner landmark, Main, navigation landmark, link, Home, link, Basket",
+  "utterances": [
+   "Create an account - Example shop, document",
+   "banner landmark, Main, navigation landmark, link, Home, link, Basket"
+  ],
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "node": {
+   "role": "rootWebArea",
+   "name": "Create an account - Example shop",
+   "uid": 1
+  },
+  "ms": 8.4
+ },
+ {
+  "kind": "start",
+  "what": "devtools",
+  "t": 1792869151953
+ },
+ {
+  "kind": "sweep",
+  "t": 1792869148493,
+  "treeAt": 1792869150399,
+  "page": 0,
+  "url": "http://127.0.0.1:4173/dialog.html",
+  "trigger": "load",
+  "lists": {
+   "headings": [
+    "Your account, heading, level 1"
+   ],
+   "landmarks": [],
+   "formFields": [
+    "Delete account, button"
+   ],
+   "graphics": [],
+   "links": [],
+   "lists": [],
+   "frames": [],
+   "tableCells": []
+  },
+  "counts": {
+   "headings": 1,
+   "landmarks": 0,
+   "formFields": 1,
+   "graphics": 0,
+   "links": 0,
+   "lists": 0,
+   "frames": 0,
+   "tableCells": 0
+  },
+  "census": {
+   "heading": 1,
+   "link": 0,
+   "graphic": 0,
+   "landmark": 1
+  },
+  "keys": 22,
+  "errors": [],
+  "stops": {
+   "heading": [
+    "exhausted",
+    "exhausted"
+   ],
+   "landmark": [
+    "exhausted",
+    "exhausted"
+   ],
+   "formField": [
+    "exhausted",
+    "exhausted"
+   ],
+   "graphic": [
+    "exhausted",
+    "exhausted"
+   ],
+   "link": [
+    "exhausted",
+    "exhausted"
+   ],
+   "list": [
+    "exhausted",
+    "exhausted"
+   ],
+   "frame": [
+    "exhausted",
+    "exhausted"
+   ]
+  },
+  "notDelivered": 3,
+  "ms": 13
+ },
+ {
+  "kind": "observe",
+  "what": "navigation",
+  "t": 1792869152164,
+  "page": 2,
+  "url": "http://127.0.0.1:4173/basket.html",
+  "node": null,
+  "text": "http://127.0.0.1:4173/basket.html"
+ },
+ {
+  "kind": "speech",
+  "cause": "load",
+  "t": 1792869152152,
+  "page": 2,
+  "url": "http://127.0.0.1:4173/basket.html",
+  "text": "Basket - Example shop, document | main landmark, heading, level 1, Basket",
+  "utterances": [
+   "Basket - Example shop, document",
+   "main landmark, heading, level 1, Basket"
+  ],
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "node": {
+   "role": "rootWebArea",
+   "name": "Basket - Example shop",
+   "uid": 1
+  },
+  "ms": 2
+ },
+ {
+  "kind": "speech",
+  "cause": "focus",
+  "t": 1792869151700,
+  "page": 1,
+  "url": "http://127.0.0.1:4173/signup.html",
+  "text": "main landmark | form landmark | Email address, edit, blank",
+  "utterances": [
+   "main landmark",
+   "form landmark",
+   "Email address, edit, blank"
+  ],
+  "shape": [
+   "ROLE"
+  ],
+  "node": {
+   "role": "textField",
+   "name": "Email address",
+   "uid": 25,
+   "inDialog": false
+  },
+  "ms": 8
+ },
+ {
+  "kind": "speech",
+  "cause": "focus",
+  "t": 1792869152295,
+  "page": 2,
+  "url": "http://127.0.0.1:4173/basket.html",
+  "text": "main landmark, Add a mug, button",
+  "utterances": [
+   "main landmark, Add a mug, button"
+  ],
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE"
+  ],
+  "node": {
+   "role": "button",
+   "name": "Add a mug",
+   "uid": 6,
+   "inDialog": false
+  },
+  "ms": 2.1
+ },
+ {
+  "kind": "speech",
+  "cause": "live",
+  "t": 1792869152297,
+  "page": 2,
+  "url": "http://127.0.0.1:4173/basket.html",
+  "text": "1 item in your basket",
+  "utterances": [
+   "1 item in your basket"
+  ],
+  "shape": [
+   "NAME"
+  ],
+  "node": null,
+  "ms": 0.3
+ },
+ {
+  "kind": "speech",
+  "cause": "live",
+  "t": 1792869152357,
+  "page": 2,
+  "url": "http://127.0.0.1:4173/basket.html",
+  "text": "2 items in your basket",
+  "utterances": [
+   "2 items in your basket"
+  ],
+  "shape": [
+   "NAME"
+  ],
+  "node": null,
+  "ms": 0.6
+ },
+ {
+  "kind": "start",
+  "what": "devtools",
+  "t": 1792869152749
+ },
+ {
+  "kind": "sweep",
+  "t": 1792869151389,
+  "treeAt": 1792869151495,
+  "page": 1,
+  "url": "http://127.0.0.1:4173/signup.html",
+  "trigger": "load",
+  "lists": {
+   "headings": [
+    "Create an account, heading, level 1"
+   ],
+   "landmarks": [
+    "banner landmark, Main, navigation landmark, Home, link, , Basket",
+    "main landmark, Create an account, heading, level 1",
+    "section, clickable, Full name, Full name, edit, , clickable, Email address, Email address, edit, , Send me news, check box, not checked, Create account"
+   ],
+   "formFields": [
+    "Full name, edit",
+    "Email address, edit",
+    "Send me news, check box, not checked",
+    "Create account, button"
+   ],
+   "graphics": [],
+   "links": [
+    "banner landmark, Main, navigation landmark, Basket, link",
+    "Home, link"
+   ],
+   "lists": [],
+   "frames": [],
+   "tableCells": []
+  },
+  "counts": {
+   "headings": 1,
+   "landmarks": 3,
+   "formFields": 4,
+   "graphics": 0,
+   "links": 2,
+   "lists": 0,
+   "frames": 0,
+   "tableCells": 0
+  },
+  "census": {
+   "heading": 1,
+   "link": 2,
+   "graphic": 0,
+   "landmark": 3
+  },
+  "keys": 31,
+  "errors": [],
+  "stops": {
+   "heading": [
+    "exhausted",
+    "exhausted"
+   ],
+   "landmark": [
+    "exhausted",
+    "exhausted"
+   ],
+   "formField": [
+    "exhausted",
+    "exhausted"
+   ],
+   "graphic": [
+    "exhausted",
+    "exhausted"
+   ],
+   "link": [
+    "exhausted",
+    "exhausted"
+   ],
+   "list": [
+    "exhausted",
+    "exhausted"
+   ],
+   "frame": [
+    "exhausted",
+    "exhausted"
+   ]
+  },
+  "notDelivered": 3,
+  "ms": 161
+ },
+ {
+  "kind": "observe",
+  "what": "navigation",
+  "t": 1792869153323,
+  "page": 3,
+  "url": "http://127.0.0.1:4173/spa.html",
+  "node": null,
+  "text": "http://127.0.0.1:4173/spa.html"
+ },
+ {
+  "kind": "speech",
+  "cause": "load",
+  "t": 1792869153233,
+  "page": 3,
+  "url": "http://127.0.0.1:4173/spa.html",
+  "text": "Shop, document | Sections, navigation landmark, link, Shoes, link, Boots",
+  "utterances": [
+   "Shop, document",
+   "Sections, navigation landmark, link, Shoes, link, Boots"
+  ],
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "node": {
+   "role": "rootWebArea",
+   "name": "Shop",
+   "uid": 1
+  },
+  "ms": 23.3
+ },
+ {
+  "kind": "speech",
+  "cause": "focus",
+  "t": 1792869153442,
+  "page": 3,
+  "url": "http://127.0.0.1:4173/spa.html#/boots",
+  "text": "Boots, link",
+  "utterances": [
+   "Boots, link"
+  ],
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "node": {
+   "role": "link",
+   "name": "Boots",
+   "uid": 8,
+   "inDialog": false
+  },
+  "ms": 5.6
+ },
+ {
+  "kind": "sweep",
+  "t": 1792869153323,
+  "treeAt": 1792869153323,
+  "page": 3,
+  "url": "http://127.0.0.1:4173/spa.html",
+  "trigger": "load",
+  "lists": {
+   "headings": [
+    "Shop, heading, level 1"
+   ],
+   "landmarks": [
+    "Sections, navigation landmark, Shoes, link, , Boots",
+    "main landmark, Shop, heading, level 1"
+   ],
+   "formFields": [],
+   "graphics": [],
+   "links": [
+    "Sections, navigation landmark, Boots, link",
+    "Shoes, link",
+    "Boots, link"
+   ],
+   "lists": [],
+   "frames": [],
+   "tableCells": []
+  },
+  "counts": {
+   "headings": 1,
+   "landmarks": 2,
+   "formFields": 0,
+   "graphics": 0,
+   "links": 3,
+   "lists": 0,
+   "frames": 0,
+   "tableCells": 0
+  },
+  "census": {
+   "heading": 1,
+   "link": 2,
+   "graphic": 0,
+   "landmark": 2
+  },
+  "keys": 26,
+  "errors": [],
+  "stops": {
+   "heading": [
+    "exhausted",
+    "exhausted"
+   ],
+   "landmark": [
+    "exhausted",
+    "exhausted"
+   ],
+   "formField": [
+    "exhausted",
+    "exhausted"
+   ],
+   "graphic": [
+    "exhausted",
+    "exhausted"
+   ],
+   "link": [
+    "exhausted",
+    "exhausted"
+   ],
+   "list": [
+    "exhausted",
+    "exhausted"
+   ],
+   "frame": [
+    "exhausted",
+    "exhausted"
+   ]
+  },
+  "notDelivered": 3,
+  "ms": 63
+ },
+ {
+  "kind": "start",
+  "what": "devtools",
+  "t": 1792869153802
+ },
+ {
+  "kind": "sweep",
+  "t": 1792869152164,
+  "treeAt": 1792869152367,
+  "page": 2,
+  "url": "http://127.0.0.1:4173/basket.html",
+  "trigger": "load",
+  "lists": {
+   "headings": [
+    "Basket, heading, level 1"
+   ],
+   "landmarks": [],
+   "formFields": [
+    "Add a mug, button"
+   ],
+   "graphics": [],
+   "links": [],
+   "lists": [],
+   "frames": [],
+   "tableCells": []
+  },
+  "counts": {
+   "headings": 1,
+   "landmarks": 0,
+   "formFields": 1,
+   "graphics": 0,
+   "links": 0,
+   "lists": 0,
+   "frames": 0,
+   "tableCells": 0
+  },
+  "census": {
+   "heading": 1,
+   "link": 0,
+   "graphic": 0,
+   "landmark": 1
+  },
+  "keys": 22,
+  "errors": [],
+  "stops": {
+   "heading": [
+    "exhausted",
+    "exhausted"
+   ],
+   "landmark": [
+    "exhausted",
+    "exhausted"
+   ],
+   "formField": [
+    "exhausted",
+    "exhausted"
+   ],
+   "graphic": [
+    "exhausted",
+    "exhausted"
+   ],
+   "link": [
+    "exhausted",
+    "exhausted"
+   ],
+   "list": [
+    "exhausted",
+    "exhausted"
+   ],
+   "frame": [
+    "exhausted",
+    "exhausted"
+   ]
+  },
+  "notDelivered": 3,
+  "ms": 19
+ },
+ {
+  "kind": "observe",
+  "what": "navigation",
+  "t": 1792869154189,
+  "page": 4,
+  "url": "http://127.0.0.1:4173/signup.html",
+  "node": null,
+  "text": "http://127.0.0.1:4173/signup.html"
+ },
+ {
+  "kind": "speech",
+  "cause": "load",
+  "t": 1792869154167,
+  "page": 4,
+  "url": "http://127.0.0.1:4173/signup.html",
+  "text": "Create an account - Example shop, document | banner landmark, Main, navigation landmark, link, Home, link, Basket",
+  "utterances": [
+   "Create an account - Example shop, document",
+   "banner landmark, Main, navigation landmark, link, Home, link, Basket"
+  ],
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "node": {
+   "role": "rootWebArea",
+   "name": "Create an account - Example shop",
+   "uid": 1
+  },
+  "ms": 7.6
+ },
+ {
+  "kind": "speech",
+  "cause": "focus",
+  "t": 1792869154300,
+  "page": 4,
+  "url": "http://127.0.0.1:4173/signup.html",
+  "text": "main landmark | form landmark | Full name, edit, blank",
+  "utterances": [
+   "main landmark",
+   "form landmark",
+   "Full name, edit, blank"
+  ],
+  "shape": [
+   "ROLE"
+  ],
+  "node": {
+   "role": "textField",
+   "name": "Full name",
+   "uid": 20,
+   "inDialog": false
+  },
+  "ms": 10.9
+ },
+ {
+  "kind": "speech",
+  "cause": "typed",
+  "t": 1792869154311,
+  "page": 4,
+  "url": "http://127.0.0.1:4173/signup.html",
+  "text": "A",
+  "utterances": [
+   "A"
+  ],
+  "shape": [
+   "NAME"
+  ],
+  "node": {
+   "role": "textField",
+   "name": "Full name",
+   "uid": 20
+  },
+  "ms": 2.3
+ },
+ {
+  "kind": "speech",
+  "cause": "typed",
+  "t": 1792869154326,
+  "page": 4,
+  "url": "http://127.0.0.1:4173/signup.html",
+  "text": "d",
+  "utterances": [
+   "d"
+  ],
+  "shape": [
+   "NAME"
+  ],
+  "node": {
+   "role": "textField",
+   "name": "Full name",
+   "uid": 20
+  },
+  "ms": 0.5
+ },
+ {
+  "kind": "speech",
+  "cause": "typed",
+  "t": 1792869154343,
+  "page": 4,
+  "url": "http://127.0.0.1:4173/signup.html",
+  "text": "a",
+  "utterances": [
+   "a"
+  ],
+  "shape": [
+   "NAME"
+  ],
+  "node": {
+   "role": "textField",
+   "name": "Full name",
+   "uid": 20
+  },
+  "ms": 0.8
+ },
+ {
+  "kind": "start",
+  "what": "devtools",
+  "t": 1792869154662
+ },
+ {
+  "kind": "sweep",
+  "t": 1792869153459,
+  "treeAt": 1792869153490,
+  "page": 3,
+  "url": "http://127.0.0.1:4173/spa.html#/boots",
+  "trigger": "route",
+  "lists": {
+   "headings": [
+    "Boots, heading, level 1"
+   ],
+   "landmarks": [
+    "Sections, navigation landmark, Shoes, link, , Boots",
+    "main landmark, Boots, heading, level 1"
+   ],
+   "formFields": [],
+   "graphics": [],
+   "links": [
+    "Sections, navigation landmark, Boots, link",
+    "Shoes, link",
+    "Boots, link"
+   ],
+   "lists": [],
+   "frames": [],
+   "tableCells": []
+  },
+  "counts": {
+   "headings": 1,
+   "landmarks": 2,
+   "formFields": 0,
+   "graphics": 0,
+   "links": 3,
+   "lists": 0,
+   "frames": 0,
+   "tableCells": 0
+  },
+  "census": {
+   "heading": 1,
+   "link": 2,
+   "graphic": 0,
+   "landmark": 2
+  },
+  "keys": 26,
+  "errors": [],
+  "stops": {
+   "heading": [
+    "exhausted",
+    "exhausted"
+   ],
+   "landmark": [
+    "exhausted",
+    "exhausted"
+   ],
+   "formField": [
+    "exhausted",
+    "exhausted"
+   ],
+   "graphic": [
+    "exhausted",
+    "exhausted"
+   ],
+   "link": [
+    "exhausted",
+    "exhausted"
+   ],
+   "list": [
+    "exhausted",
+    "exhausted"
+   ],
+   "frame": [
+    "exhausted",
+    "exhausted"
+   ]
+  },
+  "notDelivered": 3,
+  "ms": 29
+ },
+ {
+  "kind": "observe",
+  "what": "navigation",
+  "t": 1792869155047,
+  "page": 5,
+  "url": "http://127.0.0.1:4173/validation-focus.html",
+  "node": null,
+  "text": "http://127.0.0.1:4173/validation-focus.html"
+ },
+ {
+  "kind": "speech",
+  "cause": "load",
+  "t": 1792869155035,
+  "page": 5,
+  "url": "http://127.0.0.1:4173/validation-focus.html",
+  "text": "Subscribe - Example shop, document | main landmark, heading, level 1, Subscribe",
+  "utterances": [
+   "Subscribe - Example shop, document",
+   "main landmark, heading, level 1, Subscribe"
+  ],
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "node": {
+   "role": "rootWebArea",
+   "name": "Subscribe - Example shop",
+   "uid": 1
+  },
+  "ms": 3.8
+ },
+ {
+  "kind": "speech",
+  "cause": "focus",
+  "t": 1792869155208,
+  "page": 5,
+  "url": "http://127.0.0.1:4173/validation-focus.html",
+  "text": "section, Subscribe, button",
+  "utterances": [
+   "section, Subscribe, button"
+  ],
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE"
+  ],
+  "node": {
+   "role": "button",
+   "name": "Subscribe",
+   "uid": 12,
+   "inDialog": false
+  },
+  "ms": 3.2
+ },
+ {
+  "kind": "observe",
+  "what": "error",
+  "t": 1792869155210,
+  "page": 5,
+  "node": {
+   "role": "input",
+   "name": "Email address",
+   "uid": null
+  },
+  "text": "Enter an email address"
+ },
+ {
+  "kind": "speech",
+  "cause": "focus",
+  "t": 1792869155210,
+  "page": 5,
+  "url": "http://127.0.0.1:4173/validation-focus.html",
+  "text": "Email address, edit, invalid entry, blank",
+  "utterances": [
+   "Email address, edit, invalid entry, blank"
+  ],
+  "shape": [
+   "NAME",
+   "ROLE",
+   "STATE",
+   "NAME"
+  ],
+  "node": {
+   "role": "textField",
+   "name": "Email address",
+   "uid": 10,
+   "inDialog": false
+  },
+  "ms": 3.9
+ },
+ {
+  "kind": "start",
+  "what": "devtools",
+  "t": 1792869155550
+ },
+ {
+  "kind": "observe",
+  "what": "navigation",
+  "t": 1792869155747,
+  "page": 6,
+  "url": "http://127.0.0.1:4173/validation-alert.html",
+  "node": null,
+  "text": "http://127.0.0.1:4173/validation-alert.html"
+ },
+ {
+  "kind": "speech",
+  "cause": "load",
+  "t": 1792869155716,
+  "page": 6,
+  "url": "http://127.0.0.1:4173/validation-alert.html",
+  "text": "Subscribe - Example shop, document | main landmark, heading, level 1, Subscribe",
+  "utterances": [
+   "Subscribe - Example shop, document",
+   "main landmark, heading, level 1, Subscribe"
+  ],
+  "shape": [
+   "NAME",
+   "ROLE"
+  ],
+  "node": {
+   "role": "rootWebArea",
+   "name": "Subscribe - Example shop",
+   "uid": 1
+  },
+  "ms": 2.4
+ },
+ {
+  "kind": "speech",
+  "cause": "focus",
+  "t": 1792869155831,
+  "page": 6,
+  "url": "http://127.0.0.1:4173/validation-alert.html",
+  "text": "section, Subscribe, button",
+  "utterances": [
+   "section, Subscribe, button"
+  ],
+  "shape": [
+   "ROLE",
+   "NAME",
+   "ROLE"
+  ],
+  "node": {
+   "role": "button",
+   "name": "Subscribe",
+   "uid": 13,
+   "inDialog": false
+  },
+  "ms": 2.4
+ },
+ {
+  "kind": "speech",
+  "cause": "live",
+  "t": 1792869155832,
+  "page": 6,
+  "url": "http://127.0.0.1:4173/validation-alert.html",
+  "text": "Enter an email address",
+  "utterances": [
+   "Enter an email address"
+  ],
+  "shape": [
+   "NAME"
+  ],
+  "node": null,
+  "ms": 0.3
+ },
+ {
+  "kind": "observe",
+  "what": "error",
+  "t": 1792869155832,
+  "page": 6,
+  "node": {
+   "role": "input",
+   "name": "Email address",
+   "uid": null
+  },
+  "text": "Enter an email address"
+ },
+ {
+  "kind": "sweep",
+  "t": 1792869154189,
+  "treeAt": 1792869154359,
+  "page": 4,
+  "url": "http://127.0.0.1:4173/signup.html",
+  "trigger": "load",
+  "lists": {
+   "headings": [
+    "Create an account, heading, level 1"
+   ],
+   "landmarks": [
+    "banner landmark, Main, navigation landmark, Home, link, , Basket",
+    "main landmark, Create an account, heading, level 1",
+    "section, clickable, Full name, Full name, edit, Ada, clickable, Email address, Email address, edit, , Send me news, check box, not checked, Create account"
+   ],
+   "formFields": [
+    "Full name, edit, Ada",
+    "Email address, edit",
+    "Send me news, check box, not checked",
+    "Create account, button"
+   ],
+   "graphics": [],
+   "links": [
+    "banner landmark, Main, navigation landmark, Basket, link",
+    "Home, link"
+   ],
+   "lists": [],
+   "frames": [],
+   "tableCells": []
+  },
+  "counts": {
+   "headings": 1,
+   "landmarks": 3,
+   "formFields": 4,
+   "graphics": 0,
+   "links": 2,
+   "lists": 0,
+   "frames": 0,
+   "tableCells": 0
+  },
+  "census": {
+   "heading": 1,
+   "link": 2,
+   "graphic": 0,
+   "landmark": 3
+  },
+  "keys": 31,
+  "errors": [],
+  "stops": {
+   "heading": [
+    "exhausted",
+    "exhausted"
+   ],
+   "landmark": [
+    "exhausted",
+    "exhausted"
+   ],
+   "formField": [
+    "exhausted",
+    "exhausted"
+   ],
+   "graphic": [
+    "exhausted",
+    "exhausted"
+   ],
+   "link": [
+    "exhausted",
+    "exhausted"
+   ],
+   "list": [
+    "exhausted",
+    "exhausted"
+   ],
+   "frame": [
+    "exhausted",
+    "exhausted"
+   ]
+  },
+  "notDelivered": 3,
+  "ms": 62
+ },
+ {
+  "kind": "sweep",
+  "t": 1792869155047,
+  "treeAt": 1792869155214,
+  "page": 5,
+  "url": "http://127.0.0.1:4173/validation-focus.html",
+  "trigger": "load",
+  "lists": {
+   "headings": [
+    "Subscribe, heading, level 1"
+   ],
+   "landmarks": [
+    "section, clickable, Email address, Email address, edit, invalid entry,"
+   ],
+   "formFields": [
+    "Email address, edit, invalid entry",
+    "Subscribe, button"
+   ],
+   "graphics": [],
+   "links": [],
+   "lists": [],
+   "frames": [],
+   "tableCells": []
+  },
+  "counts": {
+   "headings": 1,
+   "landmarks": 1,
+   "formFields": 2,
+   "graphics": 0,
+   "links": 0,
+   "lists": 0,
+   "frames": 0,
+   "tableCells": 0
+  },
+  "census": {
+   "heading": 1,
+   "link": 0,
+   "graphic": 0,
+   "landmark": 2
+  },
+  "keys": 24,
+  "errors": [],
+  "stops": {
+   "heading": [
+    "exhausted",
+    "exhausted"
+   ],
+   "landmark": [
+    "exhausted",
+    "exhausted"
+   ],
+   "formField": [
+    "exhausted",
+    "exhausted"
+   ],
+   "graphic": [
+    "exhausted",
+    "exhausted"
+   ],
+   "link": [
+    "exhausted",
+    "exhausted"
+   ],
+   "list": [
+    "exhausted",
+    "exhausted"
+   ],
+   "frame": [
+    "exhausted",
+    "exhausted"
+   ]
+  },
+  "notDelivered": 3,
+  "ms": 21
+ },
+ {
+  "kind": "sweep",
+  "t": 1792869155747,
+  "treeAt": 1792869155835,
+  "page": 6,
+  "url": "http://127.0.0.1:4173/validation-alert.html",
+  "trigger": "load",
+  "lists": {
+   "headings": [
+    "Subscribe, heading, level 1"
+   ],
+   "landmarks": [
+    "section, clickable, Email address, Email address, edit, invalid entry,"
+   ],
+   "formFields": [
+    "Email address, edit, invalid entry",
+    "Subscribe, button"
+   ],
+   "graphics": [],
+   "links": [],
+   "lists": [],
+   "frames": [],
+   "tableCells": []
+  },
+  "counts": {
+   "headings": 1,
+   "landmarks": 1,
+   "formFields": 2,
+   "graphics": 0,
+   "links": 0,
+   "lists": 0,
+   "frames": 0,
+   "tableCells": 0
+  },
+  "census": {
+   "heading": 1,
+   "link": 0,
+   "graphic": 0,
+   "landmark": 2
+  },
+  "keys": 24,
+  "errors": [],
+  "stops": {
+   "heading": [
+    "exhausted",
+    "exhausted"
+   ],
+   "landmark": [
+    "exhausted",
+    "exhausted"
+   ],
+   "formField": [
+    "exhausted",
+    "exhausted"
+   ],
+   "graphic": [
+    "exhausted",
+    "exhausted"
+   ],
+   "link": [
+    "exhausted",
+    "exhausted"
+   ],
+   "list": [
+    "exhausted",
+    "exhausted"
+   ],
+   "frame": [
+    "exhausted",
+    "exhausted"
+   ]
+  },
+  "notDelivered": 3,
+  "ms": 20
+ },
+ {
+  "kind": "flag",
+  "flag": "silent-dialog",
+  "t": 1792869149886,
+  "page": 0,
+  "detail": "a dialog named 'Delete your account? This cannot be undone. Keep my account Delete' opened and nothing was predicted for it (no focus into it, no live-region speech) from 20 ms before it to 1000 ms after",
+  "node": {
+   "role": "dialog",
+   "name": "Delete your account? This cannot be undone. Keep my account Delete",
+   "uid": null
+  }
+ },
+ {
+  "kind": "flag",
+  "flag": "unheard-error",
+  "t": 1792869155210,
+  "page": 5,
+  "detail": "the error message 'Enter an email address' for 'Email address' is in none of the speech predicted from 20 ms before it to 1000 ms after",
+  "node": {
+   "role": "input",
+   "name": "Email address",
+   "uid": null
+  }
+ }
+]

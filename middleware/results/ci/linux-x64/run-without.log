@@ -1,8 +1,8 @@
 
 Running 13 tests using 2 workers
 ·············
-  13 passed (4.4s)
+  13 passed (4.7s)
 
-real	0m5.283s
-user	0m6.274s
-sys	0m1.473s
+real	0m5.646s
+user	0m6.825s
+sys	0m1.574s

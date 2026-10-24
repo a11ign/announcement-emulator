@@ -96,20 +96,8 @@ class Cdp:
             self.ws.send(json.dumps(message))
             return self.next_id
 
-    def call(self, method, params=None, session=None, timeout=20):
-        """A command and its answer. For a thread that is not the one reading the socket (that one is `_run`, which hands the answer over)."""
-        slot = {'event': threading.Event(), 'session': session}
-        with self.lock:
-            self.next_id += 1; ident = self.next_id; self.replies[ident] = slot
-            message = {'id': ident, 'method': method, 'params': params or {}}
-            if session: message['sessionId'] = session
-            self.ws.send(json.dumps(message))
-        if not slot['event'].wait(timeout): self.replies.pop(ident, None); raise TimeoutError(f'{method} did not answer in {timeout} s')
-        if 'error' in slot['message']: raise RuntimeError(f'{method}: {slot["message"]["error"].get("message")}')
-        return slot['message']['result']
-
     def call_many(self, commands, session=None, timeout=20):
-        """Several commands sent at once, and their answers in the order they were sent: one round trip to the browser and not one for each."""
+        """Commands sent at once, and their answers in the order they were sent: one round trip to the browser and not one for each. Called by a thread other than the one that reads the socket (`_run`, which hands the answers over)."""
         slots = []
         with self.lock:
             for method, params in commands:
@@ -135,7 +123,8 @@ class Cdp:
         while not self.stopped:
             self.ws = self._connect()
             if self.ws is None: return
-            self.installed.clear(); self.target_of.clear(); self.url_of.clear(); self.wanted.clear(); self.generation += 1
+            self.installed.clear(); self.target_of.clear(); self.url_of.clear(); self.generation += 1
+            with self.wake: self.wanted.clear()      # the tree reader takes from it under this lock
             for slot in list(self.replies.values()): slot['message'] = {'error': {'message': 'the browser went away'}}; slot['event'].set()
             self.replies.clear()
             try:
@@ -162,7 +151,9 @@ class Cdp:
         elif method == 'Target.targetCreated' and m['params']['targetInfo']['type'] == 'page' and m['params']['targetInfo']['targetId'] not in self.installed:
             self._send('Target.attachToTarget', {'targetId': m['params']['targetInfo']['targetId'], 'flatten': True})
         elif method == 'Target.detachedFromTarget':      # a page that is closed answers nothing more: what is waiting for it is told so
-            gone = m['params'].get('sessionId'); self.wanted.pop(gone, None)
+            gone = m['params'].get('sessionId')
+            self.converters.pop((self.generation, self.target_of.get(gone)), None)      # its uids are of no use to a page that is gone
+            with self.wake: self.wanted.pop(gone, None)
             for ident, slot in list(self.replies.items()):
                 if slot.get('session') == gone: self.replies.pop(ident, None); slot['message'] = {'error': {'message': 'the page was closed'}}; slot['event'].set()
         elif method == 'Runtime.bindingCalled' and m['params']['name'] == '__ae':
@@ -185,7 +176,7 @@ class Cdp:
             with self.wake:
                 while not self.wanted and not self.stopped: self.wake.wait(0.5)
                 session, why = next(iter(self.wanted.items())) if self.wanted else (None, None)
-                if session: del self.wanted[session]
+                if session: self.wanted.pop(session, None)
             if not session: continue
             target = self.target_of.get(session)
             if target is None: continue

@@ -1,0 +1,42 @@
+{
+ "version": "155.0.8059.84",
+ "activeElement": "BODY",
+ "posts": {
+  "hello": {
+   "os": "mac",
+   "arch": "arm64",
+   "automation": "object",
+   "getDesktop": "function",
+   "getTree": "undefined",
+   "api": [
+    "ActionType",
+    "AriaCurrentState",
+    "DefaultActionVerb",
+    "DescriptionFromType",
+    "EventType",
+    "HasPopup",
+    "IntentCommandType",
+    "IntentInputEventType",
+    "IntentMoveDirectionType",
+    "IntentTextBoundaryType",
+    "InvalidState",
+    "MarkerType",
+    "NameFromType",
+    "PositionType",
+    "Restriction",
+    "RoleType",
+    "SortDirectionType",
+    "StateType",
+    "TreeChangeObserverFilter",
+    "TreeChangeType",
+    "addTreeChangeObserver",
+    "getAccessibilityFocus",
+    "getDesktop",
+    "getFocus",
+    "removeTreeChangeObserver",
+    "setDocumentSelection"
+   ],
+   "desktopDeclared": true
+  }
+ }
+}

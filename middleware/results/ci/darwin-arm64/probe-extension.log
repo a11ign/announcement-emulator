@@ -1,12 +1,12 @@
 {
  "version": "155.0.8059.84",
  "targets": [
-  "service_worker chrome-extension://eepnipmapegmkmmfhnidajfhjdddgdfd/passive.",
+  "service_worker chrome-extension://eepnipmapegmkmmfhnidajfhjdddgdfd/bg.js",
   "page data:text/html,<title>probe</title><button>x</button>",
-  "browser_ui chrome://omnibox-popup.top-chrome/",
-  "browser_ui chrome://omnibox-popup.top-chrome/omnibox_popup_aim.html"
+  "browser_ui chrome://omnibox-popup.top-chrome/omnibox_popup_aim.html",
+  "browser_ui chrome://omnibox-popup.top-chrome/"
  ],
  "extensionTargets": [
-  "service_worker chrome-extension://eepnipmapegmkmmfhnidajfhjdddgdfd/passive.js"
+  "service_worker chrome-extension://eepnipmapegmkmmfhnidajfhjdddgdfd/bg.js"
  ]
 }
