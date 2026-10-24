@@ -96,7 +96,7 @@ chrome.automation.getDesktop(desktop => {
   chrome.automation.addTreeChangeObserver('allTreeChanges', onChange);
   const find = n => { if (isDocument(n) && n === topDocument(n)) { PAGES.set(n, {changed: new Set(['found']), last: null}); } for (const c of n.children) find(c); };
   find(desktop); flush();
-  post('ready', {t: Date.now()});
+  post('ready', {t: Date.now(), desktopChildren: desktop.children.length, documents: PAGES.size});      // what the platform gives chrome.automation: on macOS the browser is not drawn by Views and the desktop has no browser windows in it
 });
 // A service worker is stopped after thirty idle seconds, and a test can wait longer than that for a page: a request to the runtime every few seconds keeps this one alive and tells the runtime it is.
 setInterval(() => { chrome.runtime.getPlatformInfo(() => {}); post('alive', {t: Date.now(), posted, bytes}); }, 5000);

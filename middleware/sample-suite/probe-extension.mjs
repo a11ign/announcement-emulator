@@ -1,6 +1,6 @@
 // Is the companion extension up in a browser launched the way the middleware launches it, and does it have chrome.automation? (A11-208, the macOS probe.)
 //   BASELINE_CHROME=<chrome> [BASELINE_LIBS=<libs>] EXTENSION_DIR=<a prepared copy of the extension> EXTENSION_ID=<id> node probe-extension.mjs
-// Prints one JSON object: the browser's version and flags, the extension targets it has, and what its service worker can see.
+// Prints one JSON object: the browser's version and the targets it has, among them the extension's service worker if it is up. What that worker sees of the tree is in the run summary (`desktopChildrenWhenUp`).
 import { chromium } from "@playwright/test";
 
 const { BASELINE_CHROME: executablePath, EXTENSION_DIR: dir, EXTENSION_ID: id, BASELINE_LIBS: libs } = process.env;
@@ -17,10 +17,5 @@ try {
   const { targetInfos } = await session.send("Target.getTargets");
   const extension = targetInfos.filter((t) => t.url.startsWith("chrome-extension://"));
   const out = { version: browser.version(), targets: targetInfos.map((t) => `${t.type} ${t.url.slice(0, 60)}`), extensionTargets: extension.map((t) => `${t.type} ${t.url}`) };
-  for (const t of extension.filter((x) => x.type === "service_worker")) {
-    const { sessionId } = await session.send("Target.attachToTarget", { targetId: t.targetId, flatten: true });
-    const r = await session.send("Runtime.evaluate", { expression: "JSON.stringify({automation: typeof chrome.automation, getDesktop: chrome.automation && typeof chrome.automation.getDesktop})", returnByValue: true }, sessionId).catch((e) => ({ error: String(e) }));
-    out.serviceWorker = r.result?.value ?? r.error ?? r;
-  }
   console.log(JSON.stringify(out, null, 1));
 } finally { await browser.close(); }
