@@ -39,10 +39,17 @@
    "desktopDeclared": true
   },
   "desktop-asked": {
-   "t": 1792869991297
+   "t": 1792870546808
   },
-  "beat": {
-   "n": 20
+  "desktop": {
+   "calledBackWithNoTree": true,
+   "lastError": "getDesktop is unsupported by this platform"
+  },
+  "beats": {
+   "n": 0
+  },
+  "tab": {
+   "missing": true
   }
  }
 }

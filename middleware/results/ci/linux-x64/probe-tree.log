@@ -38,14 +38,14 @@
    ],
    "desktopDeclared": true
   },
-  "desktop-asked": {
-   "t": 1792870080136
-  },
   "desktop": {
    "children": 1,
    "roles": [
     "window"
    ]
+  },
+  "desktop-asked": {
+   "t": 1792870640776
   },
   "beats": {
    "n": 0

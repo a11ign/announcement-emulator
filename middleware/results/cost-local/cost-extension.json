@@ -1,0 +1,1379 @@
+[
+ {
+  "label": "without",
+  "workers": 1,
+  "results": [
+   {
+    "wall": 7229.16483,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 4581,
+    "reportMs": 6173.925,
+    "middleware": null
+   },
+   {
+    "wall": 6694.331901,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 3829,
+    "reportMs": 5364.5560000000005,
+    "middleware": null
+   },
+   {
+    "wall": 5074.039948,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 2847,
+    "reportMs": 4070.88,
+    "middleware": null
+   }
+  ]
+ },
+ {
+  "label": "with",
+  "workers": 1,
+  "results": [
+   {
+    "wall": 6530.439437000001,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 3427,
+    "reportMs": 4639.0199999999995,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 4965,
+     "drainMs": 391,
+     "workers": [
+      {
+       "bootMs": 290,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 383,
+        "devtoolsAttachedAfterFirstTestStartedMs": 263,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 43,
+       "speechMs": 363,
+       "sweepMs": [
+        26,
+        27,
+        32,
+        46,
+        91,
+        86,
+        28,
+        66,
+        85,
+        31,
+        71,
+        68
+       ],
+       "keys": 13,
+       "focusEvents": 24,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 3,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 1
+    }
+   },
+   {
+    "wall": 6431.567874,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 3315,
+    "reportMs": 4540.75,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 4884,
+     "drainMs": 402,
+     "workers": [
+      {
+       "bootMs": 270,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 423,
+        "devtoolsAttachedAfterFirstTestStartedMs": 290,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 36,
+       "speechMs": 338,
+       "sweepMs": [
+        30,
+        30,
+        31,
+        39,
+        83,
+        84,
+        33,
+        82,
+        76,
+        32,
+        71,
+        68
+       ],
+       "keys": 13,
+       "focusEvents": 24,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 3,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 1
+    }
+   },
+   {
+    "wall": 6222.982715999999,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 3230,
+    "reportMs": 4415.635,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 4789,
+     "drainMs": 436,
+     "workers": [
+      {
+       "bootMs": 254,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 373,
+        "devtoolsAttachedAfterFirstTestStartedMs": 254,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 35,
+       "speechMs": 333,
+       "sweepMs": [
+        32,
+        27,
+        31,
+        44,
+        86,
+        83,
+        25,
+        71,
+        75,
+        33,
+        70,
+        71
+       ],
+       "keys": 13,
+       "focusEvents": 24,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 3,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 0
+    }
+   }
+  ]
+ },
+ {
+  "label": "with, no sweeps",
+  "workers": 1,
+  "results": [
+   {
+    "wall": 5895.287576000002,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 3384,
+    "reportMs": 4575.384,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 4768,
+     "drainMs": 252,
+     "workers": [
+      {
+       "bootMs": 268,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 409,
+        "devtoolsAttachedAfterFirstTestStartedMs": 264,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 36,
+       "speechMs": 331,
+       "sweepMs": [],
+       "keys": 13,
+       "focusEvents": 24,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 1
+    }
+   },
+   {
+    "wall": 5715.2853870000035,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 3209,
+    "reportMs": 4363.915,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 4562,
+     "drainMs": 258,
+     "workers": [
+      {
+       "bootMs": 263,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 404,
+        "devtoolsAttachedAfterFirstTestStartedMs": 273,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 41,
+       "speechMs": 324,
+       "sweepMs": [],
+       "keys": 13,
+       "focusEvents": 24,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 1
+    }
+   },
+   {
+    "wall": 6185.0378340000025,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 3239,
+    "reportMs": 4426.095,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 4618,
+     "drainMs": 256,
+     "workers": [
+      {
+       "bootMs": 252,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 382,
+        "devtoolsAttachedAfterFirstTestStartedMs": 265,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 37,
+       "speechMs": 322,
+       "sweepMs": [],
+       "keys": 13,
+       "focusEvents": 24,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 0
+    }
+   }
+  ]
+ },
+ {
+  "label": "without",
+  "workers": 2,
+  "results": [
+   {
+    "wall": 3817.5159589999967,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 3365,
+    "reportMs": 2856.179,
+    "middleware": null
+   },
+   {
+    "wall": 3735.8150629999946,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 3386,
+    "reportMs": 2765.09,
+    "middleware": null
+   },
+   {
+    "wall": 3784.808621999997,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 3398,
+    "reportMs": 2840.57,
+    "middleware": null
+   }
+  ]
+ },
+ {
+  "label": "with",
+  "workers": 2,
+  "results": [
+   {
+    "wall": 5244.683441999994,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 3992,
+    "reportMs": 3272.7,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 3737,
+     "drainMs": 530,
+     "workers": [
+      {
+       "bootMs": 294,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 494,
+        "devtoolsAttachedAfterFirstTestStartedMs": 318,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 20,
+       "speechMs": 217,
+       "sweepMs": [
+        25,
+        48,
+        38,
+        71,
+        26,
+        71,
+        36
+       ],
+       "keys": 4,
+       "focusEvents": 9,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 303,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 482,
+        "devtoolsAttachedAfterFirstTestStartedMs": 324,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 22,
+       "speechMs": 281,
+       "sweepMs": [
+        46,
+        69,
+        64,
+        71,
+        26,
+        56,
+        30,
+        31
+       ],
+       "keys": 9,
+       "focusEvents": 15,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 0
+    }
+   },
+   {
+    "wall": 5183.343672999996,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 4006,
+    "reportMs": 3273.727,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 3766,
+     "drainMs": 553,
+     "workers": [
+      {
+       "bootMs": 302,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 499,
+        "devtoolsAttachedAfterFirstTestStartedMs": 321,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 19,
+       "speechMs": 221,
+       "sweepMs": [
+        27,
+        44,
+        28,
+        71,
+        26,
+        71,
+        41
+       ],
+       "keys": 4,
+       "focusEvents": 9,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 297,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 498,
+        "devtoolsAttachedAfterFirstTestStartedMs": 314,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 24,
+       "speechMs": 287,
+       "sweepMs": [
+        38,
+        69,
+        62,
+        72,
+        32,
+        65,
+        35,
+        34
+       ],
+       "keys": 9,
+       "focusEvents": 15,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 2
+    }
+   },
+   {
+    "wall": 5375.116108999995,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 4065,
+    "reportMs": 3273.95,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 3772,
+     "drainMs": 555,
+     "workers": [
+      {
+       "bootMs": 280,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 460,
+        "devtoolsAttachedAfterFirstTestStartedMs": 292,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 23,
+       "speechMs": 232,
+       "sweepMs": [
+        25,
+        44,
+        40,
+        73,
+        25,
+        79,
+        40,
+        41
+       ],
+       "keys": 4,
+       "focusEvents": 10,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 280,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 455,
+        "devtoolsAttachedAfterFirstTestStartedMs": 285,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 21,
+       "speechMs": 274,
+       "sweepMs": [
+        36,
+        84,
+        66,
+        83,
+        33,
+        79,
+        42
+       ],
+       "keys": 9,
+       "focusEvents": 14,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 0
+    }
+   }
+  ]
+ },
+ {
+  "label": "with, no sweeps",
+  "workers": 2,
+  "results": [
+   {
+    "wall": 4909.271686000007,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 3954,
+    "reportMs": 3273.482,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 3465,
+     "drainMs": 252,
+     "workers": [
+      {
+       "bootMs": 289,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 463,
+        "devtoolsAttachedAfterFirstTestStartedMs": 306,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 20,
+       "speechMs": 222,
+       "sweepMs": [],
+       "keys": 1,
+       "focusEvents": 11,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 288,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 457,
+        "devtoolsAttachedAfterFirstTestStartedMs": 294,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 21,
+       "speechMs": 276,
+       "sweepMs": [],
+       "keys": 12,
+       "focusEvents": 13,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 0
+    }
+   },
+   {
+    "wall": 4886.54508299999,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 4057,
+    "reportMs": 3288.5550000000003,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 3473,
+     "drainMs": 252,
+     "workers": [
+      {
+       "bootMs": 290,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 480,
+        "devtoolsAttachedAfterFirstTestStartedMs": 294,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 19,
+       "speechMs": 221,
+       "sweepMs": [],
+       "keys": 4,
+       "focusEvents": 9,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 290,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 479,
+        "devtoolsAttachedAfterFirstTestStartedMs": 299,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 23,
+       "speechMs": 296,
+       "sweepMs": [],
+       "keys": 9,
+       "focusEvents": 15,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 0
+    }
+   },
+   {
+    "wall": 5022.1481020000065,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 4112,
+    "reportMs": 3362.758,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 3547,
+     "drainMs": 252,
+     "workers": [
+      {
+       "bootMs": 297,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 494,
+        "devtoolsAttachedAfterFirstTestStartedMs": 318,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 20,
+       "speechMs": 227,
+       "sweepMs": [],
+       "keys": 1,
+       "focusEvents": 11,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 291,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 503,
+        "devtoolsAttachedAfterFirstTestStartedMs": 320,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 22,
+       "speechMs": 264,
+       "sweepMs": [],
+       "keys": 12,
+       "focusEvents": 13,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 0
+    }
+   }
+  ]
+ },
+ {
+  "label": "without",
+  "workers": 4,
+  "results": [
+   {
+    "wall": 3370.5904519999895,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 4950,
+    "reportMs": 2459.173,
+    "middleware": null
+   },
+   {
+    "wall": 3460.044339,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 5151,
+    "reportMs": 2532.697,
+    "middleware": null
+   },
+   {
+    "wall": 3537.7182900000043,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 5168,
+    "reportMs": 2561.413,
+    "middleware": null
+   }
+  ]
+ },
+ {
+  "label": "with",
+  "workers": 4,
+  "results": [
+   {
+    "wall": 4874.202239999999,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 6168,
+    "reportMs": 2965.718,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 3343,
+     "drainMs": 441,
+     "workers": [
+      {
+       "bootMs": 330,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 593,
+        "devtoolsAttachedAfterFirstTestStartedMs": 360,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 10,
+       "speechMs": 205,
+       "sweepMs": [
+        39,
+        25,
+        22,
+        36
+       ],
+       "keys": 1,
+       "focusEvents": 7,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 335,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 700,
+        "devtoolsAttachedAfterFirstTestStartedMs": 439,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 9,
+       "speechMs": 208,
+       "sweepMs": [
+        41,
+        70,
+        70,
+        36
+       ],
+       "keys": 0,
+       "focusEvents": 3,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 337,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 672,
+        "devtoolsAttachedAfterFirstTestStartedMs": 345,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 14,
+       "speechMs": 285,
+       "sweepMs": [
+        79,
+        31,
+        72
+       ],
+       "keys": 12,
+       "focusEvents": 10,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 331,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 662,
+        "devtoolsAttachedAfterFirstTestStartedMs": 350,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 11,
+       "speechMs": 230,
+       "sweepMs": [
+        60,
+        81,
+        75,
+        34
+       ],
+       "keys": 0,
+       "focusEvents": 4,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 0
+    }
+   },
+   {
+    "wall": 5112.765392000001,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 7108,
+    "reportMs": 3216.201,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 3663,
+     "drainMs": 507,
+     "workers": [
+      {
+       "bootMs": 316,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 727,
+        "devtoolsAttachedAfterFirstTestStartedMs": 408,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 8,
+       "speechMs": 186,
+       "sweepMs": [
+        34,
+        71,
+        28,
+        83
+       ],
+       "keys": 1,
+       "focusEvents": 6,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 317,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 738,
+        "devtoolsAttachedAfterFirstTestStartedMs": 425,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 16,
+       "speechMs": 250,
+       "sweepMs": [
+        45,
+        29,
+        77,
+        36
+       ],
+       "keys": 3,
+       "focusEvents": 4,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 317,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 775,
+        "devtoolsAttachedAfterFirstTestStartedMs": 458,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 9,
+       "speechMs": 233,
+       "sweepMs": [
+        85,
+        33,
+        40
+       ],
+       "keys": 9,
+       "focusEvents": 11,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 307,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 762,
+        "devtoolsAttachedAfterFirstTestStartedMs": 376,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 8,
+       "speechMs": 253,
+       "sweepMs": [
+        82,
+        62,
+        75,
+        37
+       ],
+       "keys": 0,
+       "focusEvents": 3,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 0
+    }
+   },
+   {
+    "wall": 5372.406331999999,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 7786,
+    "reportMs": 3459.0609999999997,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 3866,
+     "drainMs": 467,
+     "workers": [
+      {
+       "bootMs": 341,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 807,
+        "devtoolsAttachedAfterFirstTestStartedMs": 431,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 8,
+       "speechMs": 261,
+       "sweepMs": [
+        27,
+        69,
+        24,
+        36
+       ],
+       "keys": 1,
+       "focusEvents": 7,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 355,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 840,
+        "devtoolsAttachedAfterFirstTestStartedMs": 526,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 15,
+       "speechMs": 307,
+       "sweepMs": [
+        51,
+        24,
+        71,
+        34
+       ],
+       "keys": 3,
+       "focusEvents": 4,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 325,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 798,
+        "devtoolsAttachedAfterFirstTestStartedMs": 483,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 12,
+       "speechMs": 307,
+       "sweepMs": [
+        78,
+        31,
+        75
+       ],
+       "keys": 9,
+       "focusEvents": 10,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 349,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 925,
+        "devtoolsAttachedAfterFirstTestStartedMs": 528,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 8,
+       "speechMs": 207,
+       "sweepMs": [
+        70,
+        58,
+        71,
+        31
+       ],
+       "keys": 0,
+       "focusEvents": 3,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 0
+    }
+   }
+  ]
+ },
+ {
+  "label": "with, no sweeps",
+  "workers": 4,
+  "results": [
+   {
+    "wall": 4855.645455999998,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 6807,
+    "reportMs": 3235.542,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 3429,
+     "drainMs": 251,
+     "workers": [
+      {
+       "bootMs": 325,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 727,
+        "devtoolsAttachedAfterFirstTestStartedMs": 440,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 8,
+       "speechMs": 206,
+       "sweepMs": [],
+       "keys": 1,
+       "focusEvents": 7,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 325,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 714,
+        "devtoolsAttachedAfterFirstTestStartedMs": 394,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 15,
+       "speechMs": 243,
+       "sweepMs": [],
+       "keys": 3,
+       "focusEvents": 4,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 313,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 744,
+        "devtoolsAttachedAfterFirstTestStartedMs": 420,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 14,
+       "speechMs": 317,
+       "sweepMs": [],
+       "keys": 9,
+       "focusEvents": 10,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 319,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 733,
+        "devtoolsAttachedAfterFirstTestStartedMs": 452,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 10,
+       "speechMs": 208,
+       "sweepMs": [],
+       "keys": 0,
+       "focusEvents": 3,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 0
+    }
+   },
+   {
+    "wall": 5387.213195000004,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 7690,
+    "reportMs": 3602.411,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 3787,
+     "drainMs": 251,
+     "workers": [
+      {
+       "bootMs": 349,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 738,
+        "devtoolsAttachedAfterFirstTestStartedMs": 484,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 8,
+       "speechMs": 291,
+       "sweepMs": [],
+       "keys": 1,
+       "focusEvents": 7,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 333,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 831,
+        "devtoolsAttachedAfterFirstTestStartedMs": 416,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 12,
+       "speechMs": 296,
+       "sweepMs": [],
+       "keys": 3,
+       "focusEvents": 3,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 317,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 840,
+        "devtoolsAttachedAfterFirstTestStartedMs": 432,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 12,
+       "speechMs": 308,
+       "sweepMs": [],
+       "keys": 6,
+       "focusEvents": 8,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 336,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 901,
+        "devtoolsAttachedAfterFirstTestStartedMs": 527,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 13,
+       "speechMs": 282,
+       "sweepMs": [],
+       "keys": 3,
+       "focusEvents": 6,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 0
+    }
+   },
+   {
+    "wall": 4977.40300999998,
+    "ok": true,
+    "tests": 13,
+    "testsMs": 7168,
+    "reportMs": 3337.341,
+    "middleware": {
+     "label": "predicted NVDA speech: run summary",
+     "wallMs": 3528,
+     "drainMs": 251,
+     "workers": [
+      {
+       "bootMs": 334,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 692,
+        "devtoolsAttachedAfterFirstTestStartedMs": 392,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 10,
+       "speechMs": 218,
+       "sweepMs": [],
+       "keys": 1,
+       "focusEvents": 7,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 340,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 693,
+        "devtoolsAttachedAfterFirstTestStartedMs": 380,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 11,
+       "speechMs": 242,
+       "sweepMs": [],
+       "keys": 0,
+       "focusEvents": 3,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 323,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 713,
+        "devtoolsAttachedAfterFirstTestStartedMs": 381,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 10,
+       "speechMs": 292,
+       "sweepMs": [],
+       "keys": 6,
+       "focusEvents": 8,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      },
+      {
+       "bootMs": 334,
+       "startup": {
+        "treeSource": "extension",
+        "treeSourceUpAfterFirstTestStartedMs": null,
+        "extensionUpAfterFirstTestStartedMs": 697,
+        "devtoolsAttachedAfterFirstTestStartedMs": 428,
+        "desktopChildrenWhenUp": 1,
+        "chromeAutomationInWorker": "object"
+       },
+       "snapshots": 15,
+       "speechMs": 264,
+       "sweepMs": [],
+       "keys": 6,
+       "focusEvents": 6,
+       "unresolvedFocus": 0,
+       "skippedSweeps": 0,
+       "lostSnapshots": 0
+      }
+     ],
+     "tests": 13,
+     "flags": 4,
+     "recordsOutsideAnyTest": 0
+    }
+   }
+  ]
+ }
+]

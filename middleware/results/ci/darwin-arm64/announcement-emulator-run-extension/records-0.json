@@ -2,43 +2,38 @@
  {
   "kind": "start",
   "what": "devtools",
-  "t": 1792869974211
+  "t": 1792870529574
  },
  {
   "kind": "start",
   "what": "worker",
-  "t": 1792869974891,
+  "t": 1792870530269,
   "automation": "object",
   "getDesktop": "function"
  },
  {
   "kind": "start",
   "what": "devtools",
-  "t": 1792869975576
+  "t": 1792870531718
  },
  {
   "kind": "start",
   "what": "devtools",
-  "t": 1792869976732
+  "t": 1792870532883
  },
  {
   "kind": "start",
   "what": "devtools",
-  "t": 1792869978014
+  "t": 1792870533917
  },
  {
   "kind": "start",
   "what": "devtools",
-  "t": 1792869979309
+  "t": 1792870534575
  },
  {
   "kind": "start",
   "what": "devtools",
-  "t": 1792869980145
- },
- {
-  "kind": "start",
-  "what": "devtools",
-  "t": 1792869980914
+  "t": 1792870535235
  }
 ]

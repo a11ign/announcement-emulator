@@ -1,56 +1,57 @@
 {
   "label": "predicted NVDA speech: run summary",
-  "wallMs": 4993,
-  "drainMs": 314,
+  "wallMs": 5076,
+  "drainMs": 334,
   "workers": [
     {
-      "bootMs": 1815,
+      "bootMs": 2129,
       "startup": {
         "treeSource": "extension",
         "treeSourceUpAfterFirstTestStartedMs": null,
-        "extensionUpAfterFirstTestStartedMs": 1416,
-        "devtoolsAttachedAfterFirstTestStartedMs": 1679,
+        "extensionUpAfterFirstTestStartedMs": 1442,
+        "devtoolsAttachedAfterFirstTestStartedMs": 2082,
         "desktopChildrenWhenUp": 1,
         "chromeAutomationInWorker": "object"
       },
-      "snapshots": 25,
-      "speechMs": 301,
+      "snapshots": 22,
+      "speechMs": 286,
       "sweepMs": [
-        111,
-        84,
-        79,
-        12,
-        25,
-        13,
-        13
+        204,
+        27,
+        15,
+        34,
+        17,
+        17
       ],
-      "keys": 3,
-      "focusEvents": 7,
+      "keys": 6,
+      "focusEvents": 8,
       "unresolvedFocus": 0,
       "skippedSweeps": 0,
       "lostSnapshots": 0
     },
     {
-      "bootMs": 1762,
+      "bootMs": 2138,
       "startup": {
         "treeSource": "extension",
         "treeSourceUpAfterFirstTestStartedMs": null,
-        "extensionUpAfterFirstTestStartedMs": 1557,
-        "devtoolsAttachedAfterFirstTestStartedMs": 1569,
+        "extensionUpAfterFirstTestStartedMs": 934,
+        "devtoolsAttachedAfterFirstTestStartedMs": 1987,
         "desktopChildrenWhenUp": 1,
         "chromeAutomationInWorker": "object"
       },
-      "snapshots": 17,
-      "speechMs": 325,
+      "snapshots": 18,
+      "speechMs": 316,
       "sweepMs": [
-        52,
-        72,
-        46,
-        28,
-        13
+        97,
+        74,
+        98,
+        66,
+        50,
+        35,
+        17
       ],
-      "keys": 3,
-      "focusEvents": 6,
+      "keys": 0,
+      "focusEvents": 4,
       "unresolvedFocus": 0,
       "skippedSweeps": 0,
       "lostSnapshots": 0
