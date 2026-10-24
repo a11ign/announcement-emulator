@@ -77,6 +77,15 @@ test("doctor no longer runs a browser of the bundle's: it checks the bundle's Py
   assert.doesNotMatch(text, /chrome --version|ok {3}chrome/);
 });
 
+test("a supported-versions list that is broken fails doctor and says the package is to be reinstalled", () => {
+  const broken = run({ supported: undefined, supportedUrl: new URL("file:///no/such/list.json") });
+  assert.equal(broken.code, 1);
+  assert.match(broken.text, /^FAIL the package's supported-versions\.json could not be read: .*Reinstall the package$/m);
+  const sound = run({ supported: undefined });
+  assert.equal(sound.code, 0, "the list the package ships is sound");
+  assert.doesNotMatch(sound.text, /supported-versions\.json/);
+});
+
 test("without a bundle doctor fails and says what to run, after saying what it knows of Playwright", () => {
   const { code, text } = run({ env: { ANNOUNCEMENT_EMULATOR_BUNDLE: join(tmpdir(), "no-such-bundle") } });
   assert.equal(code, 1);

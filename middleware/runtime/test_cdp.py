@@ -33,6 +33,28 @@ class BrowserBuild(unittest.TestCase):
         self.assertEqual(told, [('t', '156.0.8078.4')])
 
 
+class TakingOverTheTrees(unittest.TestCase):
+    """The extension did not come up (fallback.py): the pages that are open are told to note their changes, and the port is where the trees come from from then on."""
+    def test_open_pages_are_told_to_note_their_changes_and_are_read_once_and_later_pages_are_held_for_their_listener(self):
+        c = reader(); c.target_of = {'s1': 't1', 's2': 't2'}; c.stopped = True      # the tree reader thread starts and ends at once
+        c.enable_trees(lambda snap: None)
+        sent = [(m['method'], m.get('sessionId'), m['params']) for m in c.ws.sent]
+        self.assertIn(('Target.setAutoAttach', None, {'autoAttach': True, 'waitForDebuggerOnStart': True, 'flatten': True}), sent)
+        for session in ('s1', 's2'):
+            self.assertIn(('Runtime.evaluate', session, {'expression': cdp.TICKS_ON}), sent)
+            self.assertIn(('Page.addScriptToEvaluateOnNewDocument', session, {'source': cdp.TICKS_ON}), sent)
+        self.assertEqual(c.wanted, {'s1': {'fallback'}, 's2': {'fallback'}})
+
+    def test_it_does_nothing_when_the_trees_already_come_from_the_port(self):
+        c = reader(); c.on_tree = lambda snap: None; c.target_of = {'s1': 't1'}
+        c.enable_trees(lambda snap: None)
+        self.assertEqual(c.ws.sent, [])
+
+    def test_the_listener_notes_changes_only_where_asked_to_or_once_told_to(self):
+        self.assertIn("const ticksOn = () => __TICKS__ || window.__aeTicksOn === true", cdp.LISTENER)
+        self.assertEqual(cdp.TICKS_ON, 'window.__aeTicksOn = true')
+
+
 class Routing(unittest.TestCase):
     def test_commands_sent_together_are_answered_in_the_order_they_were_sent_whatever_order_the_browser_answers_in(self):
         c = reader(); out = []

@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { browserArgs, pickTree, prepareExtension, treeSource } from "./extension.ts";
+import { browserArgs, extensionWait, EXTENSION_WAIT_S, pickTree, prepareExtension, treeSource } from "./extension.ts";
 
 test("the extension copy names passive.js as its service worker and carries the runtime's port, and the bundle's own copy is untouched", () => {
   const bundle = mkdtempSync(join(tmpdir(), "ae-ext-"));
@@ -48,14 +48,23 @@ test("with the tree through the DevTools port the browser gets no extension flag
 
 test("a run says why its tree came from where it did, and a setup the extension cannot be expected to load in reads through the DevTools port and breaks nothing", () => {
   const no = { ok: false, why: "Playwright's full Chromium 156.0.8078.4 is not installed" };
-  assert.deepEqual(pickTree("linux", {}, { ok: true, why: "" }), { source: "extension", why: "the default where the browser gives the extension a desktop tree" });
-  assert.deepEqual(pickTree("linux", {}, no), { source: "devtools", why: "the extension was not used: Playwright's full Chromium 156.0.8078.4 is not installed" });
-  assert.deepEqual(pickTree("darwin", {}, { ok: true, why: "" }), { source: "devtools", why: "macOS gives the extension no desktop tree" });
+  assert.deepEqual(pickTree("linux", {}, { ok: true, why: "" }), { source: "extension", why: "the default where the browser gives the extension a desktop tree", forced: false });
+  assert.deepEqual(pickTree("linux", {}, no), { source: "devtools", why: "the extension was not used: Playwright's full Chromium 156.0.8078.4 is not installed", forced: false });
+  assert.deepEqual(pickTree("darwin", {}, { ok: true, why: "" }), { source: "devtools", why: "macOS gives the extension no desktop tree", forced: false });
 });
 
 test("the environment still decides over what the launch is expected to load", () => {
   const no = { ok: false, why: "x" };
-  assert.deepEqual(pickTree("linux", { ANNOUNCEMENT_EMULATOR_TREE: "extension" }, no), { source: "extension", why: "ANNOUNCEMENT_EMULATOR_TREE=extension" });
-  assert.deepEqual(pickTree("darwin", { ANNOUNCEMENT_EMULATOR_TREE: "extension" }, no), { source: "extension", why: "ANNOUNCEMENT_EMULATOR_TREE=extension" });
+  assert.deepEqual(pickTree("linux", { ANNOUNCEMENT_EMULATOR_TREE: "extension" }, no), { source: "extension", why: "ANNOUNCEMENT_EMULATOR_TREE=extension", forced: true });
+  assert.deepEqual(pickTree("darwin", { ANNOUNCEMENT_EMULATOR_TREE: "extension" }, no), { source: "extension", why: "ANNOUNCEMENT_EMULATOR_TREE=extension", forced: true });
   assert.equal(pickTree("linux", { ANNOUNCEMENT_EMULATOR_TREE: "devtools" }).source, "devtools");
+});
+
+test("the runtime waits for an extension that has said nothing only where the extension is picked and not forced, for as long as the environment says or the default", () => {
+  const auto = pickTree("linux", {});
+  assert.equal(extensionWait(auto, {}), EXTENSION_WAIT_S);
+  assert.equal(extensionWait(auto, { ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT: "12" }), 12);
+  assert.equal(extensionWait(auto, { ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT: "nonsense" }), EXTENSION_WAIT_S);
+  assert.equal(extensionWait(pickTree("linux", { ANNOUNCEMENT_EMULATOR_TREE: "extension" }), {}), 0, "forced: the readings of a source are not switched to the other");
+  assert.equal(extensionWait(pickTree("darwin", {}), {}), 0, "already the DevTools port");
 });

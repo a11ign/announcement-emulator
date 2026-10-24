@@ -23,6 +23,7 @@ for v in 1.64.1 1.63.0 1.62.1; do grep -q "playwright: \"$v\"" .github/workflows
 ( cd middleware && pnpm install --frozen-lockfile >/dev/null && pnpm run lint && pnpm run typecheck && pnpm test >/dev/null )
 # the Python tests: the browser's build reaches the report, and the bundle holds no browser
 python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_cdp.py'
+python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_fallback.py'
 python3 -m unittest discover -s middleware/bundle -t middleware/bundle
 ```
 

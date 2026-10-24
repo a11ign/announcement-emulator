@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { LAG_MS, annotationsFor, assign, attachments, browserBuild, describe, evidenceFieldsIn, type Window } from "./format.ts";
+import { LAG_MS, annotationsFor, assign, attachments, browserBuild, describe, evidenceFieldsIn, treeOfWorker, type Window } from "./format.ts";
 import { agreementFor, type SupportedVersions } from "./supported.ts";
 import { ANNOTATION, ATTACH_JSON, ATTACH_TEXT, LABEL } from "./label.ts";
 import type { RuntimeRecord } from "./runtime.ts";
@@ -85,4 +85,12 @@ test("the build a worker ran in is the one its browser named when the runtime re
   assert.equal(browserBuild([start("extension"), start("devtools", "156.0.8078.4")]), "156.0.8078.4");
   assert.equal(browserBuild([start("devtools")]), null);
   assert.equal(browserBuild([]), null);
+});
+
+test("a worker whose extension did not come up reads as the DevTools source from the runtime's own record, with the reason it gave; any other keeps the run's pick", () => {
+  const planned = { source: "extension" as const, why: "the default where the browser gives the extension a desktop tree" };
+  const fell: RuntimeRecord = { kind: "start", t: 5, what: "fallback", from: "extension", to: "devtools", why: "the extension did not come up within 5 s of the first page, so the trees are read through the DevTools port" };
+  assert.deepEqual(treeOfWorker([fell], planned), { source: "devtools", why: fell.why });
+  assert.deepEqual(treeOfWorker([{ kind: "start", t: 1, what: "extension" }], planned), planned);
+  assert.deepEqual(treeOfWorker([], planned), planned);
 });

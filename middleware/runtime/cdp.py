@@ -21,8 +21,9 @@ LISTENER = r"""(() => {
   const where = () => { const a = document.activeElement; return a ? {tag: a.tagName, type: a.type || null, editable: !!(a.isContentEditable || /^(INPUT|TEXTAREA)$/.test(a.tagName))} : null; };
   const send = o => { try { window.__ae(JSON.stringify({t: Date.now(), url: location.href, ...o})); } catch (x) {} };
   // Only where the tree comes from this port and not from the extension (axtree.py): a note that something changed, for the runtime to read the tree again after. One note at a time, a moment after the change.
-  const TICKS = __TICKS__; let ticking = false, again = null;
-  const tick = why => { if (!TICKS) return; if (ticking) { again = why; return; } ticking = true; send({e: 'tick', why}); setTimeout(() => { ticking = false; if (again) { const w = again; again = null; tick(w); } }, 20); };
+  // `__aeTicksOn` is set by the runtime when it takes over the trees from an extension that did not come up (Cdp.enable_trees): from then on the page notes its changes, as it did from the start where `__TICKS__` is true.
+  const ticksOn = () => __TICKS__ || window.__aeTicksOn === true; let ticking = false, again = null;
+  const tick = why => { if (!ticksOn()) return; if (ticking) { again = why; return; } ticking = true; send({e: 'tick', why}); setTimeout(() => { ticking = false; if (again) { const w = again; again = null; tick(w); } }, 20); };
   for (const type of ['input', 'change', 'keyup', 'load', 'hashchange', 'popstate', 'pageshow', 'readystatechange', 'scroll']) addEventListener(type, () => tick(type), true);
   tick('installed');
   addEventListener('keydown', e => { if (e.isTrusted) send({e: 'keydown', key: e.key, code: e.code, ctrl: e.ctrlKey, alt: e.altKey, meta: e.metaKey, shift: e.shiftKey, at: where()}); }, true);
@@ -74,6 +75,9 @@ LISTENER = r"""(() => {
   new MutationObserver(() => { tick('mutation'); if (!pending) { pending = true; queueMicrotask(() => { pending = false; observe(); }); } }).observe(document, {childList: true, subtree: true, attributes: true, characterData: true});
   addEventListener('load', observe);
 })()"""
+
+
+TICKS_ON = 'window.__aeTicksOn = true'
 
 
 def browser_build(version):
@@ -171,6 +175,19 @@ class Cdp:
             event['pageUrl'] = self.url_of.get(self.target_of.get(session))      # the address of the page the frame is in: a frame's own address is not the page's
             self.on_event(event)
             self._want(session, event.get('e'))
+
+    def enable_trees(self, on_tree):
+        """Become the place the trees come from, from now on: the extension was to give them and did not come up (main.py's fallback). Pages already open are told to note their changes and are read once,
+        pages opened later are held until their listener is in, as where the trees came from this port from the start. Does nothing if they already do."""
+        if self.on_tree: return
+        self.on_tree = on_tree
+        self.trees = threading.Thread(target=self._trees, daemon=True, name='trees'); self.trees.start()
+        if not self.ws: return
+        self._send('Target.setAutoAttach', {'autoAttach': True, 'waitForDebuggerOnStart': True, 'flatten': True})
+        for session in list(self.target_of):
+            self._send('Runtime.evaluate', {'expression': TICKS_ON}, session)
+            self._send('Page.addScriptToEvaluateOnNewDocument', {'source': TICKS_ON}, session)
+            self._want(session, 'fallback')
 
     def _want(self, session, why):
         if not self.on_tree or not session: return

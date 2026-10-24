@@ -92,12 +92,13 @@ export interface Verdict { ok: boolean; why: string }
 /**
  * Whether the companion extension can be expected to load in the browser this launch gives. It loads in the full Chromium, which is Playwright's own for a launch the team has left to Playwright
  * (no channel, no executablePath) once `npx playwright install chromium` has run without `--only-shell`. It does not load in the headless shell, in the old headless mode, or in a branded browser.
- * Anything the team chose itself is not assumed to load it: the DevTools source runs there instead, and ANNOUNCEMENT_EMULATOR_TREE=extension still forces the other.
+ * A launch the team chose itself (a channel, an executablePath) is not known to fail, and is tried: the runtime reads the trees through the DevTools port instead if the extension does not come up
+ * (runtime/fallback.py), so the team's setup is not broken and its browser is not decided against beforehand. What is known to fail is decided here: no full Chromium, or the old headless mode.
  */
 export function extensionVerdict(playwright: PlaywrightChromium | null, launch: BrowserChoice = {}): Verdict {
   if (!playwright) return { ok: false, why: "the team's @playwright/test could not be read" };
-  if (launch.executablePath) return { ok: false, why: "the launch sets its own executablePath, and nothing says that browser loads the extension" };
-  if (launch.channel && launch.channel !== "chromium") return { ok: false, why: `the launch sets channel "${launch.channel}", and nothing says that browser loads the extension` };
+  if (launch.executablePath) return { ok: true, why: "the launch sets its own executablePath: the extension is tried there, and the DevTools port is read instead if it does not come up" };
+  if (launch.channel && launch.channel !== "chromium") return { ok: true, why: `the launch sets channel "${launch.channel}": the extension is tried there, and the DevTools port is read instead if it does not come up` };
   if (!playwright.fullInstalled) {
     return { ok: false, why: `Playwright's full Chromium ${playwright.chromium.build} is not installed (the headless shell loads no extension): run npx playwright install chromium, without --only-shell` };
   }

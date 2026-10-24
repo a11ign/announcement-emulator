@@ -29,18 +29,27 @@ export interface BrowserPorts { collector: number; cdp: number }
 export type TreeSource = "extension" | "devtools";
 
 /** Where the tree comes from, and why: what the report says when it is not the extension. */
-export interface TreePick { source: TreeSource; why: string }
+export interface TreePick { source: TreeSource; why: string; /** Set by hand: the runtime does not fall back from it. */ forced: boolean }
 
 /**
  * The environment decides when it is set. Otherwise macOS reads through the DevTools port, and so does a launch the extension cannot be expected to load in (`extension.ok` false: the team chose
- * its own browser, or Playwright's full Chromium is not installed). Anywhere else the extension is the default. No setup is broken by this: the DevTools source runs in any Chromium.
+ * its own browser, or Playwright's full Chromium is not installed). Anywhere else the extension is the default, and where it is not forced the runtime reads the trees through the DevTools port
+ * instead if the extension does not come up (runtime/fallback.py). No setup is broken by this: the DevTools source runs in any Chromium.
  */
 export function pickTree(platform: string = process.platform, env: NodeJS.ProcessEnv = process.env, extension: Verdict = { ok: true, why: "" }): TreePick {
   const given = env.ANNOUNCEMENT_EMULATOR_TREE;
-  if (given === "extension" || given === "devtools") return { source: given, why: `ANNOUNCEMENT_EMULATOR_TREE=${given}` };
-  if (platform === "darwin") return { source: "devtools", why: "macOS gives the extension no desktop tree" };
-  if (!extension.ok) return { source: "devtools", why: `the extension was not used: ${extension.why}` };
-  return { source: "extension", why: "the default where the browser gives the extension a desktop tree" };
+  if (given === "extension" || given === "devtools") return { source: given, why: `ANNOUNCEMENT_EMULATOR_TREE=${given}`, forced: true };
+  if (platform === "darwin") return { source: "devtools", why: "macOS gives the extension no desktop tree", forced: false };
+  if (!extension.ok) return { source: "devtools", why: `the extension was not used: ${extension.why}`, forced: false };
+  return { source: "extension", why: "the default where the browser gives the extension a desktop tree", forced: false };
+}
+
+/** How long the runtime waits, after the first page, for an extension that has said nothing before it reads the trees through the DevTools port (seconds; 0 where the source is forced). The extension is up a fraction of a second after the first page on an ordinary host. */
+export const EXTENSION_WAIT_S = 5;
+export function extensionWait(pick: TreePick, env: NodeJS.ProcessEnv = process.env): number {
+  if (pick.forced || pick.source !== "extension") return 0;
+  const given = Number(env.ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT);
+  return Number.isFinite(given) && given >= 0 && env.ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT ? given : EXTENSION_WAIT_S;
 }
 
 export const treeSource = (platform: string = process.platform, env: NodeJS.ProcessEnv = process.env): TreeSource => pickTree(platform, env).source;

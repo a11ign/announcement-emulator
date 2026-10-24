@@ -85,10 +85,12 @@ test("the extension is expected to load in the full Chromium of a launch left to
   assert.equal(extensionVerdict(pw(), { headless: false }).ok, true);
 });
 
-test("the extension is not expected to load where the team chose the browser, or the full Chromium is missing, and the reason says what to do", () => {
-  assert.match(extensionVerdict(pw(), { channel: "chrome" }).why, /channel "chrome"/);
-  assert.match(extensionVerdict(pw(), { channel: "msedge" }).why, /channel "msedge"/);
-  assert.match(extensionVerdict(pw(), { executablePath: "/x" }).why, /executablePath/);
+test("a browser the team chose is tried, and the reason says the DevTools port is read if the extension does not come up; a missing full Chromium is known to fail, and the reason says what to do", () => {
+  for (const choice of [{ channel: "chrome" }, { channel: "msedge" }, { executablePath: "/x" }]) {
+    const verdict = extensionVerdict(pw({ fullInstalled: false }), choice);
+    assert.equal(verdict.ok, true, JSON.stringify(choice));
+    assert.match(verdict.why, /DevTools port is read instead if it does not come up/);
+  }
   const missing = extensionVerdict(pw({ fullInstalled: false }));
   assert.equal(missing.ok, false);
   assert.match(missing.why, /npx playwright install chromium, without --only-shell/);
