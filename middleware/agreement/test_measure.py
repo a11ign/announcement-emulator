@@ -126,5 +126,20 @@ class Measure(unittest.TestCase):
         text = measure.report(rows, status)
         for needle in ('agreement by channel', 'agreement by shape', 'all channels: ', 'misses by cause'): self.assertIn(needle, text)
 
+    def test_runs_that_mix_tree_sources_are_refused_and_one_source_is_named(self):
+        ext, dev = {'a': {**prediction(), 'treeSource': 'extension'}}, {'a': {**prediction(), 'treeSource': 'devtools'}}
+        self.assertEqual(measure.tree_source_of([ext, ext]), 'extension')
+        self.assertIsNone(measure.tree_source_of([{}, {}]))
+        with self.assertRaisesRegex(ValueError, 'mix tree sources'): measure.tree_source_of([ext, dev])
+        with self.assertRaisesRegex(ValueError, 'mix tree sources'): measure.tree_source_of([{'a': {**prediction(), 'treeSource': 'extension'}, 'b': {**prediction(), 'treeSource': 'devtools'}}])
+
+    def test_the_second_reading_puts_the_second_capture_against_the_second_run(self):
+        a = 'https://x.test/p'
+        good, other = fleet_record(), fleet_record(stops=('Home, link', 'Search, edit, blank', 'Extra, link'))
+        fleet, runs = measure.second_reading({measure.slug(a): [good, other]}, [{a: prediction()}, {a: prediction(stops=('Home, link', 'Search, edit, blank', 'Extra, link'))}])
+        self.assertEqual(fleet[measure.slug(a)], [other, good])
+        rows, _ = measure.measure([a], fleet, runs)
+        self.assertTrue(all(r['ok'] for r in rows if r['kind'] == 'fleet-vs-passive' and r['channel'] == 'stops'))
+
 
 if __name__ == '__main__': unittest.main()

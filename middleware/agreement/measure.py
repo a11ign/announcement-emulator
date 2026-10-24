@@ -134,6 +134,19 @@ def comparable(fleet_rec, fleet_c, passive_c, passive_census):
     return problems
 
 
+def tree_source_of(runs):
+    """The one tree source every prediction of every run was made from (`treeSource` in `predicted-nvda-speech.json`), or None if there is no prediction. A set of runs that mixes sources is refused:
+    a figure for 'the extension' that holds a test the DevTools port read would be neither (A11-229)."""
+    sources = {p.get('treeSource') for run in runs for p in run.values()}
+    if len(sources) > 1: raise ValueError(f'the passive runs mix tree sources ({", ".join(sorted(str(x) for x in sources))}): a figure is for one source')
+    return next(iter(sources), None)
+
+
+def second_reading(fleet, runs):
+    """The same inputs with the second fleet capture as the first and the second passive run as the first."""
+    return {k: v[::-1] for k, v in fleet.items()}, runs[::-1]
+
+
 def measure(pages, fleet, passive_runs, include_unstable=False, tolerate_census=False):
     """rows, per-page status. `fleet[slug] = [f1, f2]` records; `passive_runs = [{address: prediction}, {address: prediction}]`."""
     rows, status = [], {}
@@ -210,6 +223,7 @@ def report(rows, status, top=10, stable_only=True):
 def main(argv):
     ap = argparse.ArgumentParser(); ap.add_argument('--fleet', required=True); ap.add_argument('--passive', nargs='+', required=True); ap.add_argument('--pages', required=True)
     ap.add_argument('--freeze'); ap.add_argument('--out'); ap.add_argument('--top', type=int, default=10)
+    ap.add_argument('--second', action='store_true', help='read the second fleet capture as the oracle and the second passive run as the prediction (the first of each is the other way round): the spread of the figure between two readings of the same pages (A11-229)')
     ap.add_argument('--tolerate-census', action='store_true', help='compare a page whose title is the same but whose heading or link count differs (added after the first figure was taken)')
     ap.add_argument('--include-unstable', action='store_true', help='also compare a channel that is not the same in both fleet captures or in both passive runs (the first of each against the first), and report it as a second figure: added after the first figure was taken')
     a = ap.parse_args(argv)
@@ -220,8 +234,13 @@ def main(argv):
         with open(path) as f: return json.load(f)
     for address in pages: fleet[slug(address)] = [load(os.path.join(a.fleet, f'{slug(address)}.f{k}.json')) for k in (1, 2)]
     runs = [passive_predictions(load(p)) for p in a.passive]
+    try: source = tree_source_of(runs)
+    except ValueError as e: sys.exit(f'measure.py: {e}')
+    if a.second:
+        if len(runs) < 2: sys.exit('measure.py: --second needs two passive runs')
+        fleet, runs = second_reading(fleet, runs)
     rows, status = measure(pages, fleet, runs, a.include_unstable, a.tolerate_census)
-    text = report(rows, status, a.top)
+    text = f'tree source: {source or "none (no prediction)"}' + (', second fleet capture against second run' if a.second else '') + '\n' + report(rows, status, a.top)
     if a.include_unstable: text += '\n\n==== the same, with the channels that were not stable counted too (first fleet capture against first passive run) ====\n' + report(rows, status, a.top, stable_only=False)
     print(text)
     if a.out:
