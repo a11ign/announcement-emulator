@@ -10,6 +10,7 @@ export const config: PlaywrightTestConfig = {
   use: { baseURL: "http://127.0.0.1:4173" },
   projects: [
     { name: "fixtures", testDir: "./tests/fixtures" },
-    { name: "corpus", testDir: "./tests/corpus", timeout: 600_000 },
+    // the window the fleet's Edge reports (innerWidth x innerHeight, as emu/session.mjs sets it), so that what is on the screen when a stop is read is what was on its screen
+    { name: "corpus", testDir: "./tests/corpus", timeout: 180_000, use: { viewport: { width: 1008, height: 729 } } },
   ],
 };

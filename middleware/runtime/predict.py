@@ -77,6 +77,17 @@ class Page:
 def normal(text): return re.sub(r'\s+', ' ', text or '').strip()
 
 
+def focused_on(snap, node):
+    """The snapshot as it was when `node` took the focus: the tree is read some time after the move, and by then its `focused` flag may be on a later stop. The node that takes the focus has it, no other has,
+    and it is on the screen (the browser scrolls a focused element into view), whatever the tree says of where it is now."""
+    nodes = []
+    for n in snap['nodes']:
+        want = n['ix'] == node['ix']
+        if n is node or bool(n.get('state', {}).get('focused')) != want: n = dict(n, state={**n.get('state', {}), 'focused': want, **({'offscreen': False} if want else {})})
+        nodes.append(n)
+    return dict(snap, focusIx=node['ix'], nodes=nodes)
+
+
 def match_focus(snap, event):
     """The node of the tree the page's `focusin` is about: an element of that tag (and id), whose accessible name is one of the strings the page could make it from; the node the
     tree itself has focused if several fit. None if the tree does not have it (yet)."""
@@ -194,7 +205,7 @@ class Predictor:
     def move_focus(self, page, snap, node, t, in_dialog=False):
         """NVDA's own event_gainFocus for `node`, as the focus of `snap`."""
         self.document_for(page, snap)
-        self.doc.s.snap = dict(snap, focusIx=node['ix'])
+        self.doc.s.snap = focused_on(snap, node)
         self.speak('focus', t, page, dict(self.node_info(node), inDialog=in_dialog), lambda: (self.doc.refresh(), self.doc.gain_focus()), report=True)
         self.doc.s.snap = snap
         page.focus_uid = node['uid']

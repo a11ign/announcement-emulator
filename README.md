@@ -7,7 +7,7 @@ Chromium's Windows (IA2) mapping, and runs NVDA's own Python, at a pinned releas
 
 ## Where it stands
 
-The write-up is `docs/announcement-emulator-spike.md`, with Dates, Q1, Q2, Q3, Gate and Reproduction.
+The write-up is `docs/announcement-emulator-spike.md`, with Dates, Q1, Q2, Q3, Gate and Reproduction. A second spike, `docs/playwright-middleware-spike.md` (A11-208), puts the emulator behind Playwright's own browser launch.
 
 - **Q1, done.** The full tree through `chrome.automation`, in a Chrome 155 launched on Linux with a companion extension (`q1/`, `emu/ext2/`).
 - **Q2, done.** NVDA's own Python runs on Linux with stand-ins for its Windows modules (`q2/`, `emu/`). On NVDA's own Chrome system tests: 44 of 47 run, 215 of 227 assertions exact, the other 12 attributed.
@@ -21,6 +21,8 @@ The write-up is `docs/announcement-emulator-spike.md`, with Dates, Q1, Q2, Q3, G
 - `emu/langnames/` the Windows language names NVDA speaks, as a table recorded on a fleet box and the stand-in that answers NVDA's locale calls from it (`emu/kernel32_standin.py`); see its `README.md`.
 - `q1/`, `q2/` the first two questions' probes.
 - `q3/` the third (`q3/replay/` and `q3/gate/` have the procedures for the scripted replay and for the Gate's re-run, each with a `RUNBOOK.md`): the fleet's sweep re-implemented over the emulator (`sweep.py`, `emulate.py`), the measure (`measure.py`, `shapes.py`, `split.py`), and `results/`.
+- `middleware/` the Playwright middleware spike (A11-208): a package that attaches to an existing Playwright suite and attaches predicted speech to each test, its runtime (`middleware/runtime/`), the runtime bundle's build (`middleware/bundle/`), a sample suite, and the agreement measurement against the fleet. The write-up is `docs/playwright-middleware-spike.md`.
+- `pins.env` every revision the emulator is measured with, read by `setup.sh` and by the bundle build.
 - `setup.sh` builds what is not here.
 
 ## What is not in this repository

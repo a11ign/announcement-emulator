@@ -1,7 +1,7 @@
 """Name the freeze of the agreement measurement (A11-208), before any fleet capture for this ticket is taken, and check afterwards that nothing it names has moved.
 
     python3 make_freeze.py name  <out.json> [--commit HEAD]      write freeze.json: the commit, the time, and the git object of each thing the measure is made of
-    python3 make_freeze.py check <freeze.json> [--fleet <dir>]   fail if any of those objects differs at HEAD, or if a fleet capture is older than the freeze
+    python3 make_freeze.py check <freeze.json> [--fleet <dir>] [--head <rev>]   fail if any of those objects differs at HEAD (or `--head`), or if a fleet capture is older than the freeze
 
 The same discipline as q3/gate/make_freeze.py (A11-166): the runtime, the extension, the sweep, the sample suite's corpus test, the page list and its rule, and the scripts the figure is made by
 are fixed first, so a figure cannot have been fitted to the pages' misses. Anything the figure is made by that is changed afterwards makes `check` fail, and is listed."""
@@ -36,7 +36,7 @@ def early(freeze, fleet_dir):
 
 
 def main(argv):
-    ap = argparse.ArgumentParser(); ap.add_argument('command', choices=['name', 'check']); ap.add_argument('file'); ap.add_argument('--commit', default='HEAD'); ap.add_argument('--fleet'); ap.add_argument('--repo', default='.')
+    ap = argparse.ArgumentParser(); ap.add_argument('command', choices=['name', 'check']); ap.add_argument('file'); ap.add_argument('--commit', default='HEAD'); ap.add_argument('--fleet'); ap.add_argument('--repo', default='.'); ap.add_argument('--head', default='HEAD', help='the commit to check against the freeze: the freeze commit itself, after later commits changed what it names')
     a = ap.parse_args(argv)
     if a.command == 'name':
         freeze = name(a.repo, a.commit)
@@ -44,7 +44,7 @@ def main(argv):
         print(f'freeze {freeze["commit"][:10]} named {freeze["namedAt"]}')
         return 0
     with open(a.file) as f: freeze = json.load(f)
-    problems = [f'{p} has changed since the freeze' for p in moved(freeze, a.repo)]
+    problems = [f'{p} has changed since the freeze' for p in moved(freeze, a.repo, a.head)]
     if a.fleet: problems += [f'{f} was captured before the freeze was named' for f in early(freeze, a.fleet)]
     print('\n'.join(problems) if problems else f'ok: nothing the figure is made by has moved since {freeze["commit"][:10]}'
           + (', and every fleet capture is after the freeze' if a.fleet else ''))

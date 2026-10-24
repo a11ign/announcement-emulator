@@ -37,6 +37,14 @@ class Snapshot(unittest.TestCase):
         unnamed = predict.index_children(snap([node(0, 'rootWebArea', kids=[1]), node(1, 'button', '', htmlTag='button')], focus=1))
         self.assertEqual(predict.match_focus(unnamed, {'tag': 'button', 'id': None, 'names': []})['ix'], 1)
 
+    def test_the_node_that_takes_the_focus_has_it_and_is_on_the_screen_and_no_other_node_has_it(self):
+        s = predict.index_children(snap([node(0, 'rootWebArea', kids=[1, 2]), node(1, 'button', 'Save', state={'focused': True}), node(2, 'button', 'Cancel', state={'offscreen': True})], focus=1))
+        moved = predict.focused_on(s, s['nodes'][2])
+        self.assertEqual(moved['focusIx'], 2)
+        self.assertEqual([bool(n['state'].get('focused')) for n in moved['nodes']], [False, False, True])
+        self.assertFalse(moved['nodes'][2]['state']['offscreen'])
+        self.assertTrue(s['nodes'][1]['state']['focused'] and s['nodes'][2]['state']['offscreen'])      # the snapshot itself is not changed
+
     def test_two_states_that_read_the_same_have_one_signature(self):
         a = predict.index_children(snap([node(0, 'rootWebArea', kids=[1]), node(1, 'button', 'Save')]))
         b = predict.index_children(snap([node(0, 'rootWebArea', kids=[1]), node(1, 'button', 'Save', location={'top': 5})], focus=1))
