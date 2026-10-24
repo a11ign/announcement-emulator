@@ -210,7 +210,7 @@ The second choice is **Prespeak** (equally free on npm and GitHub, a coined word
 
 - It is the shape ADR 0047 Decision 3 already chose: "Apache-2.0 packages never import it... Data crosses a process boundary".
 - It keeps the adoption path open: the package passes a team's licence policy, and the runtime is a separate download, outside the lockfile, that a team running it internally does not distribute (§3).
-- The package contains no NVDA code, and it talks to the runtime only by command-line options and JSON lines, which the GPL FAQ names as the normal communication between separate programs.
+- The package contains no NVDA code. It starts the runtime with command-line options and an environment variable and exchanges simple JSON messages with it over stdin and stdout, which the GPL FAQ names as the normal communication between separate programs (`#MereAggregation`). Two facts weigh the other way and are set out in §3 for counsel: the traffic goes both ways, and the package copies the GPL companion extension out of the bundle and rewrites its port placeholders.
 - Apache over MIT: an express patent grant. The cost is one `NOTICE` file.
 - "Or later" matches `nvda-speech` and NVDA's own "2 or later".
 
