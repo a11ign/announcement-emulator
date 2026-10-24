@@ -22,3 +22,13 @@ test("the browser flags are the ones the ticket names, the one Chrome 155 needs 
   assert.deepEqual(browserArgs("/e", "id", { collector: 1, cdp: 2 }), ["--force-renderer-accessibility", "--load-extension=/e", "--allowlisted-extension-id=id",
     "--disable-features=DisableLoadExtensionCommandLineSwitch", "--remote-debugging-port=2"]);
 });
+
+test("tree.js lists a node's fields in the order the node has them, the fields that name other nodes where they stand (as bg.js did before the code moved)", () => {
+  const source = readFileSync(join(import.meta.dirname, "..", "..", "emu", "ext2", "tree.js"), "utf8");
+  const other = { role: "button", children: [] };
+  const node = { role: "list", name: "n", labelledBy: [other], value: "v", children: [], state: { focused: true }, fn: () => 1, tabs: [{ a: 1 }] };
+  const describeNode = new Function("node", "other", `${source}; IX.set(node, 0); IX.set(other, 1); return describe(node);`);
+  const described = describeNode(node, other);
+  assert.deepEqual(Object.keys(described), ["role", "name", "labelledByIx", "value", "children", "state", "tabs"]);
+  assert.deepEqual(described.labelledByIx, [1]);
+});
