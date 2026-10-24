@@ -50,6 +50,14 @@ test("a Playwright before 1.49 has no headless shell in browsers.json", () => {
   assert.equal(pw.shellInstalled, false);
 });
 
+test("when the working directory has no Playwright the next place is tried: a monorepo run from its root has it beside the package", () => {
+  const empty = mkdtempSync(join(tmpdir(), "ae-none-"));
+  const there = project({ version: "1.64.1", chromium: ["1248", "156.0.8078.4"], shell: ["1248", "156.0.8078.4"], install: "both" });
+  assert.equal(readPlaywright(empty, there)?.version, "1.64.1");
+  assert.equal(readPlaywright(there, empty)?.version, "1.64.1");
+  assert.equal(readPlaywright(empty), null);
+});
+
 test("where there is no Playwright nothing is thrown", () => {
   assert.equal(readPlaywright(mkdtempSync(join(tmpdir(), "ae-none-"))), null);
 });

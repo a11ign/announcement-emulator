@@ -41,7 +41,8 @@ The middleware downloads no browser and bundles none: it runs in **the Chromium 
   the middleware adds `channel: "chromium"`, which runs the full Chromium in the new headless mode. On Linux CI use `npx playwright install --with-deps chromium`, Playwright's own route to the browser's system libraries.
 - **A `channel` or an `executablePath` you chose is yours.** The middleware does not change it, and does not assume that browser loads the extension: the tree then comes through the DevTools port, in whatever Chromium
   that is, and each report says why (`ANNOUNCEMENT_EMULATOR_TREE=extension` forces the extension). The same holds with only the headless shell installed, and for a Playwright older than 1.49 launched headless.
-  Nothing breaks: the tests run as they did, with predicted speech from the DevTools source.
+  Nothing breaks: the tests run as they did, with predicted speech from the DevTools source. The tree source is one for the whole run, so one such project in a config puts every project on the DevTools source.
+- The team's Playwright is looked for from the working directory, then from where this package is installed. The channel the middleware adds is visible to a test as `testInfo.project.use.channel`.
 
 `npx announcement-emulator doctor` prints your Playwright version, the Chromium build its `browsers.json` names, which of the full browser and the headless shell are installed, whether that build is on
 the supported list below, and the tree source the automatic pick takes.

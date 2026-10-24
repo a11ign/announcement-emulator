@@ -11,6 +11,8 @@ export interface DoctorOptions {
   env?: NodeJS.ProcessEnv;
   platform?: string;
   playwright?: PlaywrightChromium | null;
+  /** Starts a browser to ask its version; the tests give it a made-up one. */
+  version?: (executable: string) => { status: number | null; out: string };
   supported?: SupportedVersions;
   log?: (line: string) => void;
 }
@@ -22,30 +24,44 @@ export interface DoctorOptions {
  */
 export function doctor(options: DoctorOptions = {}): number {
   const log = options.log ?? ((line: string) => console.log(line));
-  const env = options.env ?? process.env, platform = options.platform ?? process.platform;
   const pins = readPins();
   let failed = 0;
   const fail = (line: string) => { failed += 1; log(`FAIL ${line}`); };
   log(`package ${pins.version}, platform ${platformId()}`);
-
-  const playwright = options.playwright === undefined ? readPlaywright(options.from) : options.playwright;
-  if (!playwright) {
-    fail("Playwright: @playwright/test is not installed here, or its browsers.json could not be read. Run: npm i -D @playwright/test");
-  } else {
-    reportPlaywright(playwright, options.supported ?? readSupported(), { env, platform, log, fail });
-  }
-
-  const bundle = findBundle(pins.version, env);
-  if (!bundle) { fail(new BundleMissing(pins.version).message); return 1; }
-  const files = layout(bundle);
-  const manifest = readManifest(bundle);
-  log(`bundle ${bundle}\nNVDA ${manifest.nvda.release} (${manifest.nvda.commit})  Chromium ${manifest.chromiumTables} mapping tables  Python ${manifest.python}  commit ${manifest.commit}`);
-  const out = spawnSync(files.python, ["-I", "-c", "import sys; print(sys.version.split()[0])"], { encoding: "utf8" });
-  if (out.status === 0) log(`ok   python: ${out.stdout.trim()}`); else fail(`python: ${(out.stdout || out.stderr || String(out.error)).trim().split("\n")[0]}`);
+  checkPlaywright(options, log, fail);
+  checkBundle(findBundle(pins.version, options.env ?? process.env), pins.version, log, fail);
   return failed ? 1 : 0;
 }
 
-interface Where { env: NodeJS.ProcessEnv; platform: string; log: (line: string) => void; fail: (line: string) => void }
+type Log = (line: string) => void;
+
+function checkPlaywright(options: DoctorOptions, log: Log, fail: Log): void {
+  const playwright = options.playwright === undefined ? readPlaywright(...(options.from ? [options.from] : [])) : options.playwright;
+  if (!playwright) { fail("Playwright: @playwright/test is not installed here, or its browsers.json could not be read. Run: npm i -D @playwright/test"); return; }
+  reportPlaywright(playwright, options.supported ?? readSupported(), { env: options.env ?? process.env, platform: options.platform ?? process.platform, log, fail });
+  if (playwright.fullInstalled && playwright.executablePath) checkStarts(playwright.executablePath, options.version ?? browserVersion, log, fail);
+}
+
+function checkBundle(bundle: string | null, version: string, log: Log, fail: Log): void {
+  if (!bundle) { fail(new BundleMissing(version).message); return; }
+  const manifest = readManifest(bundle);
+  log(`bundle ${bundle}\nNVDA ${manifest.nvda.release} (${manifest.nvda.commit})  Chromium ${manifest.chromiumTables} mapping tables  Python ${manifest.python}  commit ${manifest.commit}`);
+  const out = spawnSync(layout(bundle).python, ["-I", "-c", "import sys; print(sys.version.split()[0])"], { encoding: "utf8" });
+  if (out.status === 0) log(`ok   python: ${out.stdout.trim()}`); else fail(`python: ${(out.stdout || out.stderr || String(out.error)).trim().split("\n")[0]}`);
+}
+
+function browserVersion(executable: string): { status: number | null; out: string } {
+  const run = spawnSync(executable, ["--version"], { encoding: "utf8" });
+  return { status: run.status, out: (run.stdout || run.stderr || String(run.error ?? "")).trim().split("\n")[0] ?? "" };
+}
+
+/** The browser Playwright installed starts: a minimal host without the libraries it needs is found here, and not by every test failing at launch (Playwright's `--with-deps` installs them). */
+function checkStarts(executable: string, version: (executable: string) => { status: number | null; out: string }, log: Log, fail: Log): void {
+  const { status, out } = version(executable);
+  if (status === 0) log(`ok   chromium starts: ${out}`); else fail(`chromium does not start: ${out}. On Linux, npx playwright install --with-deps chromium installs the libraries it needs`);
+}
+
+interface Where { env: NodeJS.ProcessEnv; platform: string; log: Log; fail: Log }
 
 function reportPlaywright(pw: PlaywrightChromium, supported: SupportedVersions, { env, platform, log, fail }: Where): void {
   log(`Playwright ${pw.version}`);

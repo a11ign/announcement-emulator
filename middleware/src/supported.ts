@@ -19,8 +19,18 @@ export function readSupported(url = new URL("../supported-versions.json", import
 const OS: Record<string, string> = { linux: "linux", darwin: "macos", win32: "windows" };
 export const sourceKey = (tree: TreeSource, platform: string = process.platform): string => `${tree}-${OS[platform] ?? platform}`;
 
-export const buildFor = (list: SupportedVersions, chromium: string | null): SupportedBuild | undefined => list.builds.find((b) => b.chromium === chromium);
+export const buildFor = (list: SupportedVersions, chromium: string | null): SupportedBuild | undefined => list.builds.find((b) => b?.chromium === chromium);
 export const buildOfPlaywright = (list: SupportedVersions, version: string): SupportedBuild | undefined => list.builds.find((b) => b.playwright.includes(version));
+
+/** The list, or an empty one when it cannot be read or is not a list: the wording of a prediction must never fail a run. */
+export function readSupportedSafely(url?: URL): SupportedVersions {
+  try {
+    const list = readSupported(url);
+    return Array.isArray(list?.builds) ? list : { builds: [] };
+  } catch {
+    return { builds: [] };
+  }
+}
 
 /** What a report says about the agreement of the Chromium it ran in. */
 export interface Agreement {
@@ -45,9 +55,9 @@ export const percent = (agreement: number) => `${(agreement * 100).toFixed(1)}%`
 export function agreementFor(list: SupportedVersions, chromium: string | null, tree: TreeSource, platform: string = process.platform): Agreement {
   const source = sourceKey(tree, platform);
   if (!chromium) return { line: "agreement not measured for Chromium (build unknown)", measured: false, chromium, source };
-  const build = buildFor(list, chromium), figure = build?.measured[source];
+  const build = buildFor(list, chromium), figure = build?.measured?.[source];
   if (!build || !figure) return { line: `agreement not measured for Chromium ${chromium}`, measured: false, chromium, source };
-  const versions = build.playwright.join(", ");
+  const versions = (build.playwright ?? []).join(", ");
   return {
     line: `agreement measured for Chromium ${chromium} (Playwright ${versions}), ${tree}: ${percent(figure.agreement)} of ${figure.units} units, ${figure.date} (${figure.figure})`,
     measured: true, chromium, source, playwright: build.playwright, ...figure,

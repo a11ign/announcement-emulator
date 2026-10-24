@@ -217,3 +217,30 @@ test("--disable-extensions is added to what is ignored, and ignoring everything 
 test("the package's pins name the version the bundle is looked up by", () => {
   assert.match(readPins().version, /^\d+\.\d+\.\d+/);
 });
+
+test("a project's launchOptions replace the config's, as Playwright merges them: an executablePath at the top does not reach a project that sets its own launchOptions", () => {
+  const config = inWorker({ launchOptions: { executablePath: "/team/chrome" } }, installed, [{ name: "a", use: { browserName: "chromium", launchOptions: { slowMo: 50 } } }]);
+  assert.equal(extensionOf(config as PlaywrightTestConfig).ok, true);
+  assert.equal(config.projects![0]!.use!.channel, "chromium");
+});
+
+test("a project made of a firefox or webkit device is left alone: it is given no channel and no chromium flag, and does not count against the extension", () => {
+  const firefox = { defaultBrowserType: "firefox" } as NonNullable<PlaywrightTestConfig["use"]>;
+  const config = inWorker({}, installed, [{ name: "c", use: { browserName: "chromium" } }, { name: "ff", use: firefox }]);
+  assert.equal(config.projects![0]!.use!.channel, "chromium");
+  assert.deepEqual(config.projects![1]!.use, firefox);
+  assert.equal(extensionOf(config as PlaywrightTestConfig).ok, true);
+});
+
+test("a channel is not put on the config's use when a firefox project would inherit it", () => {
+  const config = inWorker({ viewport: { width: 1, height: 1 } }, installed, [{ name: "ff", use: { browserName: "firefox" } }, { name: "c", use: { browserName: "chromium" } }]);
+  assert.equal(config.use!.channel, undefined);
+  assert.equal(config.projects![1]!.use!.channel, "chromium");
+  assert.equal(config.projects![0]!.use!.channel, undefined);
+});
+
+test("a chromium project that shares the config's use with a firefox project cannot be given a channel, so the extension is not expected there", () => {
+  const config = inWorker({}, installed, [{ name: "plain" }, { name: "ff", use: { browserName: "firefox" } }]);
+  assert.equal(extensionOf(config as PlaywrightTestConfig).ok, false);
+  assert.match(extensionOf(config as PlaywrightTestConfig).why, /shares its launch/);
+});

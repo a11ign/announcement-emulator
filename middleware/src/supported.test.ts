@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { agreementFor, buildFor, buildOfPlaywright, problemsIn, readSupported, sourceKey, type SupportedVersions } from "./supported.ts";
+import { agreementFor, buildFor, buildOfPlaywright, problemsIn, readSupported, readSupportedSafely, sourceKey, type SupportedVersions } from "./supported.ts";
 
 const figure = (agreement: number, units: number, key: string) => ({ agreement, units, date: "2026-10-26", figure: `middleware/results/playwright-versions/156.0.8078.4/${key}/` });
 const list: SupportedVersions = { builds: [
@@ -76,4 +76,11 @@ test("the list ships in the package, beside pins.json", () => {
   const pkg = JSON.parse(readFileSync(join(root, "package.json"), "utf8")) as { files: string[] };
   assert.ok(pkg.files.includes("supported-versions.json"));
   assert.ok(existsSync(join(root, "supported-versions.json")));
+});
+
+test("a list that cannot be read, or has an entry with no figures, never fails a report: the build reads as not measured", () => {
+  assert.deepEqual(readSupportedSafely(new URL("file:///no/such/list.json")), { builds: [] });
+  const broken = { builds: [{ chromium: "156.0.8078.4", playwright: ["1.64.1"] }] } as unknown as SupportedVersions;
+  assert.equal(agreementFor(broken, "156.0.8078.4", "extension", "linux").line, "agreement not measured for Chromium 156.0.8078.4");
+  assert.equal(agreementFor({ builds: [null] } as unknown as SupportedVersions, "156.0.8078.4", "extension", "linux").measured, false);
 });

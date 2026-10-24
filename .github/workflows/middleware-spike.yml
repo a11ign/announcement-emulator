@@ -130,7 +130,8 @@ jobs:
           cd "$RUNNER_TEMP/project"
           export ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST=http://127.0.0.1:8099
           { time npx announcement-emulator install; } 2>&1 | tee "$RUNNER_TEMP/install.log"
-          npx announcement-emulator doctor | tee "$RUNNER_TEMP/doctor.log"
+          npx announcement-emulator doctor > "$RUNNER_TEMP/doctor.log" || { cat "$RUNNER_TEMP/doctor.log"; exit 1; }      # a pipe to tee would lose its exit code
+          cat "$RUNNER_TEMP/doctor.log"
           grep -q '^Chromium ${{ matrix.chromium }} ' "$RUNNER_TEMP/doctor.log"
           grep -q '^supported: no\. Chromium ${{ matrix.chromium }} is not on the list' "$RUNNER_TEMP/doctor.log"
       # Run 1: the one line (playwright.config.ts). Run 2: no line at all (`announcement-emulator test` wraps playwright.plain.config.ts). Run 3: the platform's other tree source. Run 4: the same suite without the middleware.

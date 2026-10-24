@@ -8,7 +8,7 @@ import { freePorts } from "./ports.ts";
 import type { Verdict } from "./playwright-chromium.ts";
 import { publishRun } from "./run.ts";
 import { Runtime, type DrainStats } from "./runtime.ts";
-import { agreementFor, readSupported, type Agreement, type SupportedVersions } from "./supported.ts";
+import { agreementFor, readSupportedSafely, type Agreement, type SupportedVersions } from "./supported.ts";
 
 interface ReporterOptions { bundle: string; sweeps?: boolean; verify?: boolean; /** Whether the extension can be expected to load in the config's chromium projects (config.ts), and if not, why not. */ extension?: Verdict }
 interface Seen { test: TestCase; result: TestResult; worker: number; window: Window }
@@ -39,7 +39,7 @@ export default class AnnouncementsReporter implements Reporter {
     const ports = Array.from({ length: count }, (_, i) => ({ collector: numbers[2 * i]!, cdp: numbers[2 * i + 1]! }));
     const pick = pickTree(process.platform, process.env, this.options.extension);
     this.tree = pick.source; this.treeWhy = pick.why;
-    this.supported = readSupported();
+    this.supported = readSupportedSafely();
     const extensions = this.tree === "extension" ? ports.map((p, i) => prepareExtension(this.options.bundle, join(this.dir, `extension-${i}`), p.collector, this.options.verify)) : [];
     publishRun({ bundle: this.options.bundle, dir: this.dir, ports, extensions, verify: !!this.options.verify, sweeps: sweepsOn(this.options), tree: this.tree });
     this.runtimes = ports.map((p, i) => new Runtime(this.options.bundle, p, { sweeps: sweepsOn(this.options), log: join(this.dir, `runtime-${i}.log`), tree: this.tree }));

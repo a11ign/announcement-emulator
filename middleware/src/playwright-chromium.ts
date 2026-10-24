@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { basename, dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
 /** A browser build Playwright ships: the revision it downloads and the Chromium build that revision is. */
 export interface ShippedBrowser { revision: string; build: string }
@@ -27,10 +28,19 @@ const shipped = (browsers: BrowsersJson["browsers"], name: string): ShippedBrows
 };
 
 /**
- * The team's Playwright, resolved from `from` (the directory of the config, which is the working directory when Playwright loads it) and not from this package: the Chromium that matters is
- * the one the team's `@playwright/test` installs. Null when it cannot be read; nothing here may break a run.
+ * The team's Playwright, resolved from the first of `from` that has one: by default the working directory (the directory of the config when Playwright is run from it), then where this package is
+ * installed (a monorepo run from its root with `-c e2e/playwright.config.ts` has `@playwright/test` beside the package, not at the root). The Chromium that matters is the one the team's
+ * `@playwright/test` installs. Null when none can be read; nothing here may break a run.
  */
-export function readPlaywright(from = process.cwd()): PlaywrightChromium | null {
+export function readPlaywright(...from: string[]): PlaywrightChromium | null {
+  for (const dir of from.length ? from : [process.cwd(), dirname(fileURLToPath(import.meta.url))]) {
+    const found = readPlaywrightFrom(dir);
+    if (found) return found;
+  }
+  return null;
+}
+
+function readPlaywrightFrom(from: string): PlaywrightChromium | null {
   try {
     const { version, corePackage } = locatePlaywright(from);
     const browsers = (JSON.parse(readFileSync(join(dirname(corePackage), "browsers.json"), "utf8")) as BrowsersJson).browsers;

@@ -24,7 +24,7 @@ const listed: SupportedVersions = { builds: [{ chromium: "153.0.8010.12", playwr
 
 function run(over: Parameters<typeof doctor>[0] = {}) {
   const lines: string[] = [];
-  const code = doctor({ env: { ANNOUNCEMENT_EMULATOR_BUNDLE: bundle() }, platform: "linux", playwright: pw(), supported: { builds: [] }, log: (l) => lines.push(l), ...over });
+  const code = doctor({ env: { ANNOUNCEMENT_EMULATOR_BUNDLE: bundle() }, platform: "linux", playwright: pw(), supported: { builds: [] }, version: () => ({ status: 0, out: "Chromium 153.0.8010.12" }), log: (l) => lines.push(l), ...over });
   return { code, text: lines.join("\n") };
 }
 
@@ -82,4 +82,17 @@ test("without a bundle doctor fails and says what to run, after saying what it k
   assert.equal(code, 1);
   assert.match(text, /^Playwright 1\.63\.0$/m);
   assert.match(text, /npx announcement-emulator install/);
+});
+
+test("doctor starts the browser Playwright installed, and fails with the command that installs its libraries when it does not start", () => {
+  assert.match(run().text, /^ok {3}chromium starts: Chromium 153\.0\.8010\.12$/m);
+  const broken = run({ version: () => ({ status: 127, out: "error while loading shared libraries: libnss3.so" }) });
+  assert.equal(broken.code, 1);
+  assert.match(broken.text, /^FAIL chromium does not start: error while loading shared libraries: libnss3\.so\. On Linux, npx playwright install --with-deps chromium/m);
+});
+
+test("doctor does not start a browser that is not installed", () => {
+  let started = 0;
+  run({ playwright: pw({ fullInstalled: false }), version: () => { started += 1; return { status: 0, out: "" }; } });
+  assert.equal(started, 0);
 });

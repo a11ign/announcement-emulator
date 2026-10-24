@@ -36,30 +36,49 @@ export function announce<T extends PlaywrightTestConfig>(config: T, options: Opt
   if (!bundle) throw new BundleMissing(pins.version);
   const run = readRun();
   const reporter = fileURLToPath(new URL("./reporter.mjs", import.meta.url));
+  // A channel set on the config's `use` is inherited by every project, a firefox one included, which would refuse it: it is added there only when every project is chromium.
+  const topLevel: AttachContext = { bundle, run, playwright, addChannel: everyProjectIsChromium(config) };
   return {
     ...config,
     reporter: [[reporter, { bundle, extension: extensionFor(config, playwright), ...options }], ...reportersOf(config)],
-    use: config.use ? attach(config.use, undefined, { bundle, run, playwright }) : config.use,
-    projects: config.projects?.map((project) => (project.use ? { ...project, use: attach(project.use, config.use, { bundle, run, playwright }) } : project)),
+    use: config.use ? attach(config.use, undefined, topLevel) : config.use,
+    projects: config.projects?.map((project) => (project.use ? { ...project, use: attach(project.use, config.use, { ...topLevel, addChannel: true }) } : project)),
   };
 }
 
-/** What `attach` needs of the run: the bundle, what the reporter published for the workers (null outside a worker), and the team's Playwright. */
-interface AttachContext { bundle: string; run: RunEnv | null; playwright: PlaywrightChromium | null }
+/** What `attach` needs of the run: the bundle, what the reporter published for the workers (null outside a worker), the team's Playwright, and whether this `use` may be given a channel. */
+interface AttachContext { bundle: string; run: RunEnv | null; playwright: PlaywrightChromium | null; addChannel: boolean }
 
-/** What a project launches with: the config's `use`, then the project's over it, as Playwright merges them. */
+/** A project's `use` over the config's, as Playwright merges them: shallowly, and a value that is undefined does not override. */
+function mergedUse(use: Use, inherited: Use | undefined): Use {
+  return { ...inherited, ...Object.fromEntries(Object.entries(use).filter(([, value]) => value !== undefined)) };
+}
+
+/** What a project launches with. */
 function choiceOf(use: Use, inherited: Use | undefined): BrowserChoice {
-  const merged = { ...inherited, ...use };
-  const launchOptions = { ...inherited?.launchOptions, ...use.launchOptions };
+  const merged = mergedUse(use, inherited);
+  const launchOptions = merged.launchOptions ?? {};
   return { channel: merged.channel ?? launchOptions.channel, executablePath: launchOptions.executablePath, headless: merged.headless ?? launchOptions.headless };
 }
 
-const isChromium = (use: Use) => { const browser = (use as { browserName?: string }).browserName; return !browser || browser === "chromium"; };
+/** `browserName`, or the `defaultBrowserType` a `devices[...]` descriptor carries in its place. */
+function isChromium(use: Use): boolean {
+  const { browserName, defaultBrowserType } = use as { browserName?: string; defaultBrowserType?: string };
+  const browser = browserName ?? defaultBrowserType;
+  return !browser || browser === "chromium";
+}
 
-/** Whether the extension can be expected to load in every chromium project of the config, and if not, why not: the reporter picks the tree source with it. */
+const projectUses = (config: PlaywrightTestConfig): (Use | undefined)[] => (config.projects?.length ? config.projects.map((project) => project.use) : [undefined]);
+const everyProjectIsChromium = (config: PlaywrightTestConfig): boolean => projectUses(config).every((use) => isChromium(mergedUse(use ?? {}, config.use)));
+
+/**
+ * Whether the extension can be expected to load in every chromium project of the config, and if not, why not: the reporter picks the tree source with it, and the source is one for the run.
+ * A project that has no `use` of its own and shares the config's with a firefox or webkit project is not given a channel, so the headless shell would run it.
+ */
 function extensionFor(config: PlaywrightTestConfig, playwright: PlaywrightChromium | null): Verdict {
-  const own = config.projects?.length ? config.projects.map((project) => project.use ?? {}) : [{}];
-  const verdicts = own.filter((use) => isChromium({ ...config.use, ...use })).map((use) => extensionVerdict(playwright, choiceOf(use, config.use)));
+  const chromium = projectUses(config).filter((use) => isChromium(mergedUse(use ?? {}, config.use)));
+  if (!everyProjectIsChromium(config) && chromium.some((use) => !use)) return { ok: false, why: "a chromium project shares its launch with the config's other browsers, and a channel for it cannot be added without breaking theirs" };
+  const verdicts = chromium.map((use) => extensionVerdict(playwright, choiceOf(use ?? {}, config.use)));
   return verdicts.find((verdict) => !verdict.ok) ?? { ok: true, why: "every chromium project is left to Playwright's own Chromium" };
 }
 
@@ -75,10 +94,9 @@ function reportersOf(config: PlaywrightTestConfig): ReporterDescription[] {
  * The `use` of a worker the emulator is attached to: only inside a worker (the reporter has published the run, and the worker has an index) and only for chromium. The browser is not named:
  * `inherited` is the config's `use`, which a project's own is read over, so that a channel or executablePath the team set at the top is seen from a project.
  */
-function attach(use: Use, inherited: Use | undefined, { bundle, run, playwright }: AttachContext): Use {
-  const browser = (use as { browserName?: string }).browserName;
+function attach(use: Use, inherited: Use | undefined, { bundle, run, playwright, addChannel }: AttachContext): Use {
   const index = Number(process.env.TEST_PARALLEL_INDEX ?? NaN);
-  if (!run || Number.isNaN(index) || (browser && browser !== "chromium")) return use;
+  if (!run || Number.isNaN(index) || !isChromium(mergedUse(use, inherited))) return use;
   const files = layout(bundle);
   const extensionId = readFileSync(files.extensionId, "utf8").trim();
   const given: Launch = use.launchOptions ?? {};
@@ -87,7 +105,7 @@ function attach(use: Use, inherited: Use | undefined, { bundle, run, playwright 
     args: [...(given.args ?? []), ...browserArgs(run.extensions[index] ?? "", extensionId, run.ports[index]!, run.tree)],
     ignoreDefaultArgs: run.tree === "devtools" ? given.ignoreDefaultArgs : ignoring(given.ignoreDefaultArgs, "--disable-extensions"),
   };
-  const channel = run.tree === "extension" ? launchChannel(playwright, choiceOf(use, inherited)) : undefined;
+  const channel = run.tree === "extension" && addChannel ? launchChannel(playwright, choiceOf(use, inherited)) : undefined;
   return { ...use, ...(channel ? { channel } : {}), launchOptions };
 }
 
