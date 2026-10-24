@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { agreementFor, buildFor, buildOfPlaywright, problemsIn, readSupported, readSupportedSafely, sourceKey, type SupportedVersions } from "./supported.ts";
+import { agreementFor, buildFor, buildOfPlaywright, problemsIn, readSupported, readSupportedSafely, shapeRateFor, sourceKey, type Figure, type SupportedVersions } from "./supported.ts";
 
 const figure = (agreement: number, units: number, key: string) => ({ agreement, units, date: "2026-10-26", figure: `middleware/results/playwright-versions/156.0.8078.4/${key}/` });
 const list: SupportedVersions = { builds: [
@@ -83,4 +83,68 @@ test("a list that cannot be read, or has an entry with no figures, never fails a
   const broken = { builds: [{ chromium: "156.0.8078.4", playwright: ["1.64.1"] }] } as unknown as SupportedVersions;
   assert.equal(agreementFor(broken, "156.0.8078.4", "extension", "linux").line, "agreement not measured for Chromium 156.0.8078.4");
   assert.equal(agreementFor({ builds: [null] } as unknown as SupportedVersions, "156.0.8078.4", "extension", "linux").measured, false);
+});
+
+/** A figure as a round writes it (A11-234): what it was measured on, the fleet's own noise as the ceiling, and the rate of each shape. */
+const round = (over: Partial<Figure> = {}): Figure => ({
+  ...figure(0.831, 249, "extension-linux"),
+  population: { pages: 6, heldOut: true, units: 249 },
+  ceiling: { agreement: 0.952, units: 249 },
+  shapes: { "NAME + ROLE": { agreement: 0.86, units: 57, lowConfidence: false }, "NAME": { agreement: 0.682, units: 22, lowConfidence: true } },
+  ...over,
+});
+const rounds = (over: Partial<Figure> = {}): SupportedVersions => ({ builds: [{ chromium: "156.0.8078.4", playwright: ["1.64.0", "1.64.1"], measured: { "extension-linux": round(over) } }] });
+
+test("a figure that says what it was measured on and the fleet's own noise puts both in the sentence, with the date, before where the figure is", () => {
+  const a = agreementFor(rounds(), "156.0.8078.4", "extension", "linux");
+  assert.equal(a.line, "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), extension: 83.1% of 249 units on 6 held-out pages, 2026-10-26; the fleet agrees with itself on 95.2% (middleware/results/playwright-versions/156.0.8078.4/extension-linux/)");
+  assert.deepEqual([a.population, a.ceiling], [{ pages: 6, heldOut: true, units: 249 }, { agreement: 0.952, units: 249 }]);
+});
+
+test("pages that were not held out say so, and one page is not 'pages'", () => {
+  assert.match(agreementFor(rounds({ population: { pages: 6, heldOut: false, units: 249 } }), "156.0.8078.4", "extension", "linux").line, /of 249 units on 6 not held-out pages, 2026-10-26;/);
+  assert.match(agreementFor(rounds({ population: { pages: 1, heldOut: true, units: 249 } }), "156.0.8078.4", "extension", "linux").line, /on 1 held-out page, 2026-10-26;/);
+});
+
+test("a figure with a population and no ceiling, or the other way round, says only what it has", () => {
+  const noCeiling = agreementFor(rounds({ ceiling: undefined }), "156.0.8078.4", "extension", "linux").line;
+  assert.match(noCeiling, /of 249 units on 6 held-out pages, 2026-10-26 \(middleware/); assert.doesNotMatch(noCeiling, /agrees with itself/);
+  const noPopulation = agreementFor(rounds({ population: undefined }), "156.0.8078.4", "extension", "linux").line;
+  assert.match(noPopulation, /of 249 units, 2026-10-26; the fleet agrees with itself on 95\.2% \(middleware/); assert.doesNotMatch(noPopulation, / pages?,/);
+});
+
+test("a part of a figure that is not well formed is left out of the sentence, and the sentence is still said", () => {
+  const broken = rounds({ population: { pages: "six", heldOut: 1, units: 249 } as unknown as Figure["population"], ceiling: { agreement: 2, units: 1 } });
+  assert.equal(agreementFor(broken, "156.0.8078.4", "extension", "linux").line, "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), extension: 83.1% of 249 units, 2026-10-26 (middleware/results/playwright-versions/156.0.8078.4/extension-linux/)");
+});
+
+test("the rate of a shape is the figure's for that shape, with the marker the list gives a weak one", () => {
+  const a = agreementFor(rounds(), "156.0.8078.4", "extension", "linux");
+  assert.deepEqual(shapeRateFor(a, ["NAME", "ROLE"]), { shape: "NAME + ROLE", measured: true, agreement: 0.86, units: 57 });
+  assert.deepEqual(shapeRateFor(a, ["NAME"]), { shape: "NAME", measured: true, agreement: 0.682, units: 22, lowConfidence: true });
+});
+
+test("a shape the round never saw is not measured, and so is one whose entry is not a rate", () => {
+  const a = agreementFor(rounds(), "156.0.8078.4", "extension", "linux");
+  assert.deepEqual(shapeRateFor(a, ["ROLE", "NAME", "LEVEL"]), { shape: "ROLE + NAME + LEVEL", measured: false });
+  const bad = agreementFor(rounds({ shapes: { NAME: { agreement: "high", units: 3, lowConfidence: false } as never } }), "156.0.8078.4", "extension", "linux");
+  assert.deepEqual(shapeRateFor(bad, ["NAME"]), { shape: "NAME", measured: false });
+});
+
+test("a run claims no rate by shape where its figure has none: a figure from before shapes, a build that is not listed, or no figure at all", () => {
+  assert.equal(shapeRateFor(agreementFor(list, "156.0.8078.4", "extension", "linux"), ["NAME", "ROLE"]), null);
+  assert.equal(shapeRateFor(agreementFor(rounds(), "152.0.7999.1", "extension", "linux"), ["NAME", "ROLE"]), null);
+  assert.equal(shapeRateFor(undefined, ["NAME", "ROLE"]), null);
+  assert.equal(shapeRateFor(agreementFor(rounds(), "156.0.8078.4", "extension", "linux"), undefined), null);
+});
+
+test("the schema accepts a figure a round wrote and names what is wrong with its population, ceiling and shapes", () => {
+  assert.deepEqual(problemsIn(rounds()), []);
+  const bad = rounds({ population: { pages: 0, heldOut: "yes", units: 100 } as unknown as Figure["population"], ceiling: { agreement: 1.5, units: 0 }, shapes: { "name + role": { agreement: 2, units: 0, lowConfidence: "no" } as never, "NAME +": { agreement: 0.5, units: 1, lowConfidence: false } } });
+  const problems = problemsIn(bad);
+  for (const wanted of ["measured.extension-linux.population.pages is not a count", "population.heldOut is not true or false", "population.units is not the units of the rate (249)", "ceiling.agreement is not a rate", "ceiling.units is not a count",
+    "shapes.name + role is not a shape", "shapes.name + role.agreement is not a rate", "shapes.name + role.units is not a count", "shapes.name + role.lowConfidence is not true or false", "shapes.NAME + is not a shape"]) {
+    assert.ok(problems.some((p) => p.includes(wanted)), `${wanted}\n${problems.join("\n")}`);
+  }
+  assert.ok(problemsIn(rounds({ shapes: [] as never })).some((p) => p.includes("shapes is not a table of shapes")));
 });

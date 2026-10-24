@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { LAG_MS, annotationsFor, assign, attachments, browserBuild, describe, evidenceFieldsIn, type Window } from "./format.ts";
-import { agreementFor, type SupportedVersions } from "./supported.ts";
+import { agreementFor, type Figure, type SupportedVersions } from "./supported.ts";
 import { ANNOTATION, ATTACH_JSON, ATTACH_TEXT, LABEL } from "./label.ts";
 import type { RuntimeRecord } from "./runtime.ts";
 
@@ -85,4 +85,53 @@ test("the build a worker ran in is the one its browser named when the runtime re
   assert.equal(browserBuild([start("extension"), start("devtools", "156.0.8078.4")]), "156.0.8078.4");
   assert.equal(browserBuild([start("devtools")]), null);
   assert.equal(browserBuild([]), null);
+});
+
+const byShape = (over: Partial<Figure> = {}): SupportedVersions => ({ builds: [{ chromium: "156.0.8078.4", playwright: ["1.64.1"], measured: { "extension-linux": {
+  agreement: 0.831, units: 249, date: "2026-10-26", figure: "middleware/results/agreement-round-1/held-out/156.0.8078.4/extension-linux/", population: { pages: 6, heldOut: true, units: 249 }, ceiling: { agreement: 0.952, units: 249 },
+  shapes: { "NAME + ROLE": { agreement: 0.86, units: 57, lowConfidence: false }, "NAME": { agreement: 0.682, units: 22, lowConfidence: true } }, ...over } } }] });
+const withShape = (shape: string[], text: string): RuntimeRecord => ({ ...speech(1100, 1, text), shape });
+const rated = (list: SupportedVersions, shape: string[], build = "156.0.8078.4") =>
+  describe(w("t", 1000, 2000), [withShape(shape, "Save, button")], null, { tree: "extension", agreement: agreementFor(list, build, "extension", "linux") });
+
+test("an utterance whose shape was measured carries the rate of its shape and the units, in the text and in the json", () => {
+  const out = rated(byShape(), ["NAME", "ROLE"]);
+  assert.match(out.text, /^\+0\.10s {2}focus {3}Save, button {2}\[NAME \+ ROLE: 86\.0% of 57\]$/m);
+  const row = (out.json.predictedSpeech as Record<string, unknown>[])[0]!;
+  assert.deepEqual(row.shapeRate, { shape: "NAME + ROLE", measured: true, agreement: 0.86, units: 57 });
+  assert.equal("lowConfidence" in row, false);
+});
+
+test("an utterance of a shape the list marks low confidence says so, in the text and as lowConfidence: true in the json", () => {
+  const out = rated(byShape(), ["NAME"]);
+  assert.match(out.text, /\[NAME: 68\.2% of 22, low confidence\]$/m);
+  const row = (out.json.predictedSpeech as Record<string, unknown>[])[0]!;
+  assert.equal(row.lowConfidence, true);
+  assert.deepEqual(row.shapeRate, { shape: "NAME", measured: true, agreement: 0.682, units: 22, lowConfidence: true });
+});
+
+test("an utterance of a shape the round never saw says that its shape is not measured", () => {
+  const out = rated(byShape(), ["ROLE", "NAME", "LEVEL"]);
+  assert.match(out.text, /Save, button {2}\[shape not measured\]$/m);
+  const row = (out.json.predictedSpeech as Record<string, unknown>[])[0]!;
+  assert.deepEqual(row.shapeRate, { shape: "ROLE + NAME + LEVEL", measured: false });
+  assert.equal("lowConfidence" in row, false);
+});
+
+test("a listed build whose figure has no shapes (one from before a round measured them) leaves every utterance as it was", () => {
+  const out = rated(listed, ["NAME", "ROLE"]);
+  assert.match(out.text, /^\+0\.10s {2}focus {3}Save, button$/m);
+  assert.equal("shapeRate" in (out.json.predictedSpeech as Record<string, unknown>[])[0]!, false);
+});
+
+test("a build that is not listed says its agreement is not measured and no utterance carries a rate", () => {
+  const out = rated(byShape(), ["NAME", "ROLE"], "152.0.7999.1");
+  assert.match(out.text, /^agreement not measured for Chromium 152\.0\.7999\.1$/m);
+  assert.doesNotMatch(out.text, /shape not measured|% of /);
+  assert.equal("shapeRate" in (out.json.predictedSpeech as Record<string, unknown>[])[0]!, false);
+});
+
+test("the report's sentence carries the population, the date and the ceiling the figure gives", () => {
+  const out = rated(byShape(), ["NAME", "ROLE"]);
+  assert.match(out.text, /^agreement measured for Chromium 156\.0\.8078\.4 \(Playwright 1\.64\.1\), extension: 83\.1% of 249 units on 6 held-out pages, 2026-10-26; the fleet agrees with itself on 95\.2% \(middleware\/results\/agreement-round-1\/held-out\/156\.0\.8078\.4\/extension-linux\/\)$/m);
 });

@@ -26,7 +26,14 @@ LISTENER = r"""(() => {
   for (const type of ['input', 'change', 'keyup', 'load', 'hashchange', 'popstate', 'pageshow', 'readystatechange', 'scroll']) addEventListener(type, () => tick(type), true);
   tick('installed');
   addEventListener('keydown', e => { if (e.isTrusted) send({e: 'keydown', key: e.key, code: e.code, ctrl: e.ctrlKey, alt: e.altKey, meta: e.metaKey, shift: e.shiftKey, at: where()}); }, true);
-  addEventListener('focusin', e => { const el = e.target; if (e.isTrusted && el && el.nodeType === 1) send({e: 'focusin', tag: el.tagName.toLowerCase(), id: el.id || null, role: el.getAttribute('role'), names: names(el), inDialog: !!el.closest('dialog, [role="dialog"], [role="alertdialog"]')}); }, true);
+  // The element that took the focus is kept, numbered, until the runtime has asked the browser which DOM node it is (cdp.py `_resolve`): the focus may have moved on by then, and the names above are only a guess at the tree's.
+  const focused = window.__aeFocused = new Map(); let focusSeq = 0;
+  addEventListener('focusin', e => {
+    const el = e.target;
+    if (!e.isTrusted || !el || el.nodeType !== 1) return;
+    focused.set(++focusSeq, el); if (focused.size > 64) focused.delete(focused.keys().next().value);
+    send({e: 'focusin', seq: focusSeq, tag: el.tagName.toLowerCase(), id: el.id || null, role: el.getAttribute('role'), names: names(el), inDialog: !!el.closest('dialog, [role="dialog"], [role="alertdialog"]')});
+  }, true);
 
   // Live regions. The tree reaches the extension some tens of milliseconds after the page changes, and a test that ends on the change closes the page first; the page's own change does not wait.
   // These are the rules of nvdaHelper/remote/ia2LiveRegions.cpp (NVDA 2026.1.1, winEventProcHook, :147-189 and :233-255) on the DOM that Chromium's events are made from.
@@ -132,8 +139,8 @@ class Cdp:
             if self.ws is None: return
             self.installed.clear(); self.target_of.clear(); self.url_of.clear(); self.generation += 1
             with self.wake: self.wanted.clear()      # the tree reader takes from it under this lock
-            for slot in list(self.replies.values()): slot['message'] = {'error': {'message': 'the browser went away'}}; slot['event'].set()
-            self.replies.clear()
+            gone, self.replies = list(self.replies.values()), {}
+            for slot in gone: self._complete(slot, {'error': {'message': 'the browser went away'}})
             try:
                 self.on_connect()
                 # Where the trees come from this port, a page is held until its listener is in, so that a test that is quick still has its first tree read (everything but a page is let go at once, below)
@@ -146,7 +153,7 @@ class Cdp:
     def _handle(self, m):
         if 'id' in m:
             slot = self.replies.pop(m['id'], None)
-            if slot: slot['message'] = m; slot['event'].set()
+            if slot: self._complete(slot, m)
             return
         method = m.get('method')
         if method == 'Target.targetInfoChanged' and m['params']['targetInfo']['type'] == 'page': self.url_of[m['params']['targetInfo']['targetId']] = m['params']['targetInfo']['url']
@@ -162,23 +169,83 @@ class Cdp:
             self.converters.pop((self.generation, self.target_of.get(gone)), None)      # its uids are of no use to a page that is gone
             with self.wake: self.wanted.pop(gone, None)
             for ident, slot in list(self.replies.items()):
-                if slot.get('session') == gone: self.replies.pop(ident, None); slot['message'] = {'error': {'message': 'the page was closed'}}; slot['event'].set()
+                if slot.get('session') == gone: self.replies.pop(ident, None); self._complete(slot, {'error': {'message': 'the page was closed'}})
         elif method == 'Runtime.bindingCalled' and m['params']['name'] == '__ae':
             try: event = json.loads(m['params']['payload'])
             except ValueError: return
             session = m.get('sessionId')
             if event.get('e') == 'tick': self._want(session, event.get('why', 'tick')); return      # a note for the tree reader, not an event for the predictor
             event['pageUrl'] = self.url_of.get(self.target_of.get(session))      # the address of the page the frame is in: a frame's own address is not the page's
-            self.on_event(event)
-            self._want(session, event.get('e'))
+            if event.get('e') == 'focusin' and 'seq' in event: self._resolve(session, m['params'].get('executionContextId'), event)      # told on, and the tree read, once the browser has said which DOM node it is
+            else: self.on_event(event); self._want(session, event.get('e'))
+
+    def _send_then(self, method, params, session, then):
+        """Sends a command and calls `then(message)` when it is answered, from the thread that reads the socket (so `then` must not wait for an answer): the answer, or an error message if the page goes first."""
+        with self.lock:
+            self.next_id += 1
+            slot = {'event': threading.Event(), 'session': session, 'then': then}; self.replies[self.next_id] = slot
+            message = {'id': self.next_id, 'method': method, 'params': params or {}}
+            if session: message['sessionId'] = session
+            self.ws.send(json.dumps(message))
+
+    @staticmethod
+    def _complete(slot, message):
+        slot['message'] = message; slot['event'].set()
+        if slot.get('then'):
+            try: slot['then'](message)
+            except Exception: import traceback; traceback.print_exc()      # the reader of the socket must outlive what an answer is used for
+
+    def _resolve(self, session, context, event):
+        """Tells on a `focusin` after asking the browser which element it is, as the event arrives and without holding up the events behind it: the DOM node (`DOM.describeNode`; the number the accessibility tree holds as
+        `backendDOMNodeId`), and the role and name the browser computed for it (`Accessibility.getPartialAXTree`). Matching by these is exact where the page script's guess at a name is not (a name that CSS or a hidden span adds to
+        is not in the element's own text). Two round trips, asked before the tree is read again so that the read does not hold them up. A page that is closed first, or an element that is gone, leaves the event as the page sent it."""
+        told = []
+        def tell():
+            if not told: told.append(1); self.on_event(event); self._want(session, 'focusin')
+        def element(message):
+            held = ((message.get('result') or {}).get('result') or {}).get('objectId')
+            if not held: return tell()
+            answers = {}
+            def answered(name):
+                def then(reply):
+                    answers[name] = reply.get('result')
+                    if len(answers) < 2: return
+                    try:
+                        self._send('Runtime.releaseObject', {'objectId': held}, session)
+                        event.update(self._what_is(answers['node'], answers['ax']))
+                    finally: tell()
+                return then
+            try:
+                self._send_then('DOM.describeNode', {'objectId': held}, session, answered('node'))
+                self._send_then('Accessibility.getPartialAXTree', {'objectId': held, 'fetchRelatives': False}, session, answered('ax'))
+            except (OSError, ConnectionError): tell()
+        try: self._send_then('Runtime.evaluate', {'expression': f'window.__aeFocused && window.__aeFocused.get({int(event["seq"])})', 'contextId': context}, session, element)
+        except (OSError, ConnectionError, AttributeError): tell()
+
+    @staticmethod
+    def _what_is(node, ax):
+        """What the browser said of an element: `{backendNodeId, axName, axRole}`, with what it could not say left out."""
+        import axtree
+        backend = ((node or {}).get('node') or {}).get('backendNodeId')
+        if backend is None: return {}
+        own = next((n for n in (ax or {}).get('nodes') or [] if n.get('backendDOMNodeId') == backend and not n.get('ignored')), None)
+        if own is None: return {'backendNodeId': backend}
+        return {'backendNodeId': backend, 'axName': own['name'].get('value', '') if isinstance(own.get('name'), dict) else '', 'axRole': axtree.ROLES.get((own.get('chromeRole') or {}).get('value'))}
 
     def _want(self, session, why):
         if not self.on_tree or not session: return
         with self.wake: self.wanted.setdefault(session, set()).add(why); self.wake.notify()
 
+    def _read(self, session, target, generation):
+        """The converted tree of one page. The page's converter is taken before the read: a page that is closed while it is read forgets its converter (`Target.detachedFromTarget`), and a tree made by a new one
+        numbers every node again, which the predictor takes for a new document and speaks again."""
+        import axtree
+        converter = self.converters.get((generation, target))
+        if converter is None: converter = self.converters[(generation, target)] = axtree.Converter()
+        return converter.convert(axtree.fetch(lambda commands: self.call_many(commands, session)))
+
     def _trees(self):
         """Reads the trees of the pages that have changed, one page at a time, and rests as long as a read took when that was more than a tenth of a second (so that reading is at most half the time of a busy page)."""
-        import axtree
         while not self.stopped:
             with self.wake:
                 while not self.wanted and not self.stopped: self.wake.wait(0.5)
@@ -188,9 +255,7 @@ class Cdp:
             target = self.target_of.get(session)
             if target is None: continue
             started = time.time(); generation = self.generation
-            try:
-                raw = axtree.fetch(lambda commands: self.call_many(commands, session))
-                converted = self.converters.setdefault((generation, target), axtree.Converter()).convert(raw)
+            try: converted = self._read(session, target, generation)
             except (RuntimeError, TimeoutError, ConnectionError, OSError, ValueError): continue      # the page is gone, or navigating: the next note reads it again
             except Exception:      # a tree this cannot convert is one tree lost, and not the end of the trees
                 import traceback; traceback.print_exc(); continue

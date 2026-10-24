@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Steps</title></head>
+<body>
+<button id="next" type="button">Go to step two</button>
+<nav aria-label="Steps">
+<a href="/misses/same-page-route.html">Step one</a>
+<a href="/misses/same-page-route.html?step=2">Step two</a>
+<a href="/misses/same-page-route.html?step=2#questions">Step two, questions</a>
+<a href="/index.html">Another page</a>
+</nav>
+<main><h1>Steps</h1><p id="questions">Questions.</p></main>
+<script>document.getElementById('next').addEventListener('click', () => history.pushState({}, '', '/misses/same-page-route.html?step=2'));</script>
+</body></html>

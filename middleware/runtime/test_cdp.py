@@ -74,4 +74,76 @@ class Routing(unittest.TestCase):
         self.assertEqual(c.wanted, {})
 
 
+class Resolving(unittest.TestCase):
+    """A11-234: a `focusin` is told on once the browser has said which DOM node the element is, and what role and name it computed; and told on as it was if the browser cannot say."""
+    def setUp(self):
+        self.c = reader(); self.c.on_tree = lambda snap: None; self.c.target_of = {'s': 't'}; self.c.url_of = {'t': 'http://x/'}; self.told = []; self.c.on_event = self.told.append
+        self.c._handle({'method': 'Runtime.bindingCalled', 'sessionId': 's', 'params': {'name': '__ae', 'executionContextId': 7, 'payload': json.dumps({'e': 'focusin', 'seq': 3, 'tag': 'a', 'names': ['Read more']})}})
+
+    def answer(self, method, result=None, error=None):
+        sent = next(m for m in self.c.ws.sent if m['method'] == method)
+        self.c._handle({'id': sent['id'], **({'error': {'message': error}} if error else {'result': result})})
+        return sent
+
+    def test_the_element_is_asked_for_in_the_frame_it_was_focused_in_and_nothing_is_told_before_it_is_answered(self):
+        first = self.c.ws.sent[0]
+        self.assertEqual((first['method'], first['sessionId'], first['params']['contextId']), ('Runtime.evaluate', 's', 7))
+        self.assertIn('__aeFocused', first['params']['expression']); self.assertIn('get(3)', first['params']['expression'])
+        self.assertEqual(self.told, []); self.assertEqual(self.c.wanted, {})      # the tree is read after the element is resolved, not ahead of it
+
+    def test_the_dom_node_and_the_role_and_name_the_browser_computed_are_added_and_the_element_is_let_go(self):
+        self.answer('Runtime.evaluate', {'result': {'objectId': 'obj-1'}})
+        node = self.answer('DOM.describeNode', {'node': {'backendNodeId': 41}})
+        ax = next(m for m in self.c.ws.sent if m['method'] == 'Accessibility.getPartialAXTree')
+        self.assertEqual((node['params'], ax['params']), ({'objectId': 'obj-1'}, {'objectId': 'obj-1', 'fetchRelatives': False}))
+        self.assertEqual(self.told, [])      # both answers are needed
+        self.answer('Accessibility.getPartialAXTree', {'nodes': [{'backendDOMNodeId': 41, 'name': {'value': 'Read more (link opens a new window)'}, 'chromeRole': {'value': 110}}]})
+        self.assertEqual(len(self.told), 1)
+        self.assertEqual({k: self.told[0][k] for k in ('backendNodeId', 'axName', 'axRole')}, {'backendNodeId': 41, 'axName': 'Read more (link opens a new window)', 'axRole': 'link'})
+        self.assertIn('Runtime.releaseObject', [m['method'] for m in self.c.ws.sent])
+        self.assertEqual(self.c.wanted, {'s': {'focusin'}})      # and now the tree is read
+
+    def test_an_element_that_is_gone_is_told_on_as_the_page_sent_it(self):
+        self.answer('Runtime.evaluate', {'result': {'type': 'undefined'}})
+        self.assertEqual(len(self.told), 1); self.assertNotIn('backendNodeId', self.told[0]); self.assertEqual(self.told[0]['names'], ['Read more']); self.assertEqual(self.c.wanted, {'s': {'focusin'}})
+
+    def test_a_page_that_is_closed_before_the_browser_answers_is_told_on_as_the_page_sent_it_once(self):
+        self.c._handle({'method': 'Target.detachedFromTarget', 'params': {'sessionId': 's'}})
+        self.assertEqual(len(self.told), 1); self.assertNotIn('backendNodeId', self.told[0])
+
+    def test_an_element_the_browser_can_name_a_node_for_but_not_a_role_is_told_with_the_node(self):
+        self.answer('Runtime.evaluate', {'result': {'objectId': 'obj-1'}})
+        self.answer('DOM.describeNode', {'node': {'backendNodeId': 41}})
+        self.answer('Accessibility.getPartialAXTree', {'nodes': [{'backendDOMNodeId': 41, 'ignored': True}]})
+        self.assertEqual({k: self.told[0].get(k) for k in ('backendNodeId', 'axName', 'axRole')}, {'backendNodeId': 41, 'axName': None, 'axRole': None})
+
+    def test_an_event_from_an_older_listener_with_no_number_is_told_at_once(self):
+        c = reader(); c.on_tree = lambda snap: None; c.target_of = {'s': 't'}; c.url_of = {}; told = []; c.on_event = told.append
+        c._handle({'method': 'Runtime.bindingCalled', 'sessionId': 's', 'params': {'name': '__ae', 'payload': json.dumps({'e': 'focusin', 'tag': 'a'})}})
+        self.assertEqual(len(told), 1); self.assertEqual(c.ws.sent, [])
+
+
+class Converting(unittest.TestCase):
+    def test_a_page_closed_while_it_is_read_is_converted_by_the_converter_it_had_so_that_its_nodes_keep_their_numbers(self):
+        """The converter is forgotten when the page goes (`Target.detachedFromTarget`); a read in flight that took a new one would number the document's nodes again, and the predictor would speak the page's load again."""
+        import axtree
+        made = []
+        class Counting(axtree.Converter):
+            def __init__(self): super().__init__(); made.append(self)
+        c = reader(); c.target_of = {'s': 't'}
+        real_fetch, real_converter = axtree.fetch, axtree.Converter
+        raw = {'ax': [{'nodeId': '1', 'chromeRole': {'value': 5}, 'childIds': []}], 'dom': {'documents': [], 'strings': []}, 'viewport': {}, 'page': {'url': 'http://x/', 'title': 't', 'readyState': 'complete', 'lang': 'en', 'caret': None}, 'frames': {}}
+        reads = []
+        def fetch(call):
+            reads.append(1)
+            if len(reads) == 2: c._handle({'method': 'Target.detachedFromTarget', 'params': {'sessionId': 's'}})      # the page goes while its second tree is being read
+            return raw
+        axtree.fetch, axtree.Converter = fetch, Counting
+        try:
+            first = c._read('s', 't', 0); second = c._read('s', 't', 0)
+        finally: axtree.fetch, axtree.Converter = real_fetch, real_converter
+        self.assertEqual(len(made), 1)
+        self.assertEqual(first['nodes'][0]['uid'], second['nodes'][0]['uid'])
+
+
 if __name__ == '__main__': unittest.main()
