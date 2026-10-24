@@ -208,5 +208,115 @@
   "tests": 6,
   "flags": 1,
   "recordsOutsideAnyTest": 0
+ },
+ "final-run1": {
+  "startedAt": "2026-10-24T16:43:33Z",
+  "finishedAt": "2026-10-24T16:46:50Z",
+  "label": "predicted NVDA speech: run summary",
+  "wallMs": 193305,
+  "drainMs": 7716,
+  "workers": [
+   {
+    "bootMs": 908,
+    "startup": {
+     "extensionUpAfterFirstTestStartedMs": 406,
+     "devtoolsAttachedAfterFirstTestStartedMs": 796,
+     "desktopChildrenWhenUp": 1,
+     "chromeAutomationInWorker": "object"
+    },
+    "snapshots": 17,
+    "speechMs": 1075,
+    "sweepMs": [
+     307,
+     1437,
+     1447
+    ],
+    "keys": 46,
+    "focusEvents": 36,
+    "unresolvedFocus": 0,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   },
+   {
+    "bootMs": 906,
+    "startup": {
+     "extensionUpAfterFirstTestStartedMs": 393,
+     "devtoolsAttachedAfterFirstTestStartedMs": 798,
+     "desktopChildrenWhenUp": 1,
+     "chromeAutomationInWorker": "object"
+    },
+    "snapshots": 28,
+    "speechMs": 162776,
+    "sweepMs": [
+     397,
+     2918,
+     12922,
+     3821
+    ],
+    "keys": 413,
+    "focusEvents": 401,
+    "unresolvedFocus": 26,
+    "skippedSweeps": 0,
+    "lostSnapshots": 1
+   }
+  ],
+  "tests": 6,
+  "flags": 1,
+  "recordsOutsideAnyTest": 4
+ },
+ "final-run2": {
+  "startedAt": "2026-10-24T16:46:50Z",
+  "finishedAt": "2026-10-24T16:50:02Z",
+  "label": "predicted NVDA speech: run summary",
+  "wallMs": 188078,
+  "drainMs": 2384,
+  "workers": [
+   {
+    "bootMs": 245,
+    "startup": {
+     "extensionUpAfterFirstTestStartedMs": 351,
+     "devtoolsAttachedAfterFirstTestStartedMs": 235,
+     "desktopChildrenWhenUp": 1,
+     "chromeAutomationInWorker": "object"
+    },
+    "snapshots": 29,
+    "speechMs": 154714,
+    "sweepMs": [
+     367,
+     2896,
+     14928,
+     5510
+    ],
+    "keys": 414,
+    "focusEvents": 406,
+    "unresolvedFocus": 25,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   },
+   {
+    "bootMs": 243,
+    "startup": {
+     "extensionUpAfterFirstTestStartedMs": 362,
+     "devtoolsAttachedAfterFirstTestStartedMs": 237,
+     "desktopChildrenWhenUp": 1,
+     "chromeAutomationInWorker": "object"
+    },
+    "snapshots": 12,
+    "speechMs": 1186,
+    "sweepMs": [
+     445,
+     1485,
+     1436
+    ],
+    "keys": 48,
+    "focusEvents": 46,
+    "unresolvedFocus": 4,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   }
+  ],
+  "tests": 6,
+  "flags": 1,
+  "recordsOutsideAnyTest": 4
  }
 }

@@ -1,0 +1,3498 @@
+{
+ "status": {
+  "https://check-for-flooding.service.gov.uk/river-and-sea-levels": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "landmarks",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    }
+   ]
+  },
+  "https://find-and-update.company-information.service.gov.uk/company/00000006": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "field",
+     "fleet": true,
+     "passive": false
+    }
+   ]
+  },
+  "https://design-system.service.gov.uk/components/tabs/": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "title",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "landmarks",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    }
+   ]
+  },
+  "https://tfl.gov.uk/plan-a-journey/": {
+   "status": "comparable",
+   "unstable": []
+  },
+  "https://service-manual.nhs.uk/design-system/components/table": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "title",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "lists",
+     "fleet": false,
+     "passive": true
+    }
+   ]
+  },
+  "https://design-system.service.gov.uk/components/date-input/": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "title",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "landmarks",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "graphics",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "lists",
+     "fleet": false,
+     "passive": true
+    }
+   ]
+  }
+ },
+ "units": {
+  "field": [
+   1,
+   3
+  ],
+  "formFields": [
+   68,
+   98
+  ],
+  "frames": [
+   17,
+   21
+  ],
+  "graphics": [
+   4,
+   8
+  ],
+  "headings": [
+   61,
+   105
+  ],
+  "landmarks": [
+   39,
+   43
+  ],
+  "links": [
+   362,
+   375
+  ],
+  "lists": [
+   57,
+   61
+  ],
+  "stops": [
+   290,
+   393
+  ],
+  "title": [
+   3,
+   6
+  ],
+  "typed": [
+   12,
+   18
+  ]
+ },
+ "misses": [
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "stops",
+   "i": 21,
+   "expected": "GOV dot UK, link, focused, linked",
+   "predicted": "Accept analytics cookies, button, focused",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "stops",
+   "i": 22,
+   "expected": "Check for flooding, link, focused, linked",
+   "predicted": "Reject analytics cookies, button, focused",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "stops",
+   "i": 23,
+   "expected": "feedback, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "field",
+   "i": 0,
+   "expected": "Search river, town or postcode, edit, focused, blank",
+   "predicted": "Search river, town or postcode, edit, focused, 12",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "landmarks",
+   "i": 0,
+   "expected": "main landmark, Related content, navigation landmark, list, with 6 items, Get flood warnings by phone, text or email",
+   "predicted": "main landmark, Related content, navigation landmark, list, with 6 items, Get flood warnings by phone, text or email, link",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "landmarks",
+   "i": 2,
+   "expected": "Find river, sea, groundwater, heading, level 1",
+   "predicted": "section, Search river, town or postcode",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "landmarks",
+   "i": 4,
+   "expected": "banner landmark, GOV dot UK, link",
+   "predicted": "banner landmark, GOV dot UK, graphic, link",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "landmarks",
+   "i": 5,
+   "expected": "content info landmark, Support links",
+   "predicted": "Cookies on Check for flooding, region, Cookies on Check for flooding, heading, level 2",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "formFields",
+   "i": 0,
+   "expected": "main landmark, ￼, graphic, View map of levels (Visual only), button",
+   "predicted": "main landmark, View map of levels (Visual only), button",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "formFields",
+   "i": 1,
+   "expected": "Search, button",
+   "predicted": "section, Search, button",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "formFields",
+   "i": 2,
+   "expected": "Search river, town or postcode, edit, ￼",
+   "predicted": "Search river, town or postcode, edit",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "graphics",
+   "i": 0,
+   "expected": "banner landmark, GOV dot UK, link",
+   "predicted": "banner landmark, GOV dot UK, graphic, link",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "graphics",
+   "i": 1,
+   "expected": "main landmark, ￼, graphic, button",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "links",
+   "i": 1,
+   "expected": "Service information, region, Check for flooding, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "links",
+   "i": 2,
+   "expected": "banner landmark, GOV dot UK, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "links",
+   "i": 3,
+   "expected": "Skip to main content, same page, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "links",
+   "i": 17,
+   "expected": "￼ copyright Crown copyright, link",
+   "predicted": "copyright Crown copyright, link",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "lists",
+   "i": 0,
+   "expected": "main landmark, Related content, navigation landmark, list, with 6 items, Get flood warnings by phone, text or email",
+   "predicted": "main landmark, Related content, navigation landmark, list, with 6 items, Get flood warnings by phone, text or email, link",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "lists",
+   "i": 1,
+   "expected": "content info landmark, list, with 4 items, Accessibility statement",
+   "predicted": "content info landmark, list, with 4 items, Accessibility statement, link, Cookies, link, Privacy notice, link, Terms and conditions",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "frames",
+   "i": 0,
+   "expected": "Not supported in this document",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "stops",
+   "i": 6,
+   "expected": "Companies House does not check the accuracy of the information filed (link opens a new window), link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "stops",
+   "i": 10,
+   "expected": "Advanced company search Link opens in new window, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "stops",
+   "i": 17,
+   "expected": "Tell us what you think of this service (link opens a new window), link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "stops",
+   "i": 18,
+   "expected": "Is there anything wrong with this page? (link opens a new window), link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "title",
+   "i": 0,
+   "expected": "tabs gov uk design system",
+   "predicted": "tabs gov uk design system document",
+   "class": "unexplained",
+   "shape": [
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 39,
+   "expected": "Tabs, link, focused, linked, same page, current page",
+   "predicted": "Tabs, link, focused, linked, current page",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 48,
+   "expected": "Components, link, focused, linked",
+   "predicted": "Components, link, focused, linked, current",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 49,
+   "expected": "Open this example in a new tab : tabs, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 52,
+   "expected": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 55,
+   "expected": "Nunjucks, link, focused, linked",
+   "predicted": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 57,
+   "expected": "Open this example in a new tab : tabs second, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 59,
+   "expected": "HTML, tab, focused, expanded, 1 of 2",
+   "predicted": "HTML, tab, focused, collapsed, 1 of 2",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 60,
+   "expected": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 61,
+   "expected": "Copy code, button, focused",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 62,
+   "expected": "less div class equals govuk-tabs data-module equals govuk-tabs greater less h 2 class equals govuk-tabs title greater Contents less slash h 2 greater less ul class equals govuk-tabs list greater less li class equals govuk-tabs list-item govuk-tabs list-item--selected greater less a class equals govuk-tabs tab href equals number past-day greater Past day less slash a greater less slash li greater less li class equals govuk-tabs list-item greater less a class equals govuk-tabs tab href equals number past-week greater Past week less slash a greater less slash li greater less li class equals govuk-tabs list-item greater less a class, text frame, focused",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 83,
+   "expected": "Skip to main content, link, focused, linked, same page",
+   "predicted": "Accept analytics cookies, button, focused",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 84,
+   "expected": "GOV dot UK Design System, link, focused, linked",
+   "predicted": "Reject analytics cookies, button, focused",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 85,
+   "expected": "Search Design system, combo box, focused, collapsed, has auto complete, editable, When autocomplete results are available use up and down arrows to review and enter to select. Touch device users, explore by touch or with swipe gestures., Search Design System, blank",
+   "predicted": "View cookies, link, focused, linked",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 86,
+   "expected": "Get started, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 0,
+   "expected": "Past day, heading, level 2",
+   "predicted": "Support links, heading, level 2",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 8,
+   "expected": "Tabs second example, frame, Past day, property page, Past day, heading, level 2",
+   "predicted": "Cookies on GOV dot UK Design System, region, Cookies on GOV dot UK Design System, heading, level 2",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 9,
+   "expected": "The current tab gets stored in the URL, heading, level 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 10,
+   "expected": "Use clear labels, heading, level 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 11,
+   "expected": "Order the tabs according to user needs, heading, level 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 12,
+   "expected": "Do not disable tabs, heading, level 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 13,
+   "expected": "Avoid tabs that wrap over more than one line, heading, level 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 14,
+   "expected": "Add headings to tab content, heading, level 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 15,
+   "expected": "Research and testing, heading, level 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 16,
+   "expected": "Next steps, heading, level 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 17,
+   "expected": "Recent changes, heading, level 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 18,
+   "expected": "Help improve this component, heading, level 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 19,
+   "expected": "Need help?, heading, level 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 20,
+   "expected": "content info landmark, Support links, heading, level 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "formFields",
+   "i": 11,
+   "expected": "HTML, tab, expanded",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "formFields",
+   "i": 12,
+   "expected": "Copy code, button",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "stops",
+   "i": 0,
+   "expected": "View our partners to find out more., link, focused, linked, same page",
+   "predicted": "View our partners to find out more., link, focused, linked",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "stops",
+   "i": 5,
+   "expected": "View our partners to find out more., link, focused, linked, same page",
+   "predicted": "View our partners to find out more., link, focused, linked",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "field",
+   "i": 0,
+   "expected": "Search the site, edit, focused, Search, blank",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 0,
+   "expected": "1",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 1,
+   "expected": "2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 2,
+   "expected": "3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 3,
+   "expected": "4",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 4,
+   "expected": "5",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "typed",
+   "i": 5,
+   "expected": "6",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 1,
+   "expected": "main landmark, section, clickable, Journey preferences, grouping, Plan my journey, button",
+   "predicted": "Accept only essential cookies, button",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 3,
+   "expected": "From location, combo box, expanded, has auto complete, editable, opens list, From",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 4,
+   "expected": "banner landmark, Open Favourites, menu button, collapsed, sub Menu",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 5,
+   "expected": "search landmark, Search the site, edit, Search",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 6,
+   "expected": "Main menu, navigation landmark, list, with 5 items, clickable, Moremenu options, button, collapsed",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 7,
+   "expected": "Accept all cookies, button",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 8,
+   "expected": "Accept only essential cookies, button",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 9,
+   "expected": "Manage cookies, button",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 10,
+   "expected": "Open Favourites, menu button, expanded, sub Menu",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "formFields",
+   "i": 11,
+   "expected": "main landmark, section, clickable, Journey preferences, grouping, From location, combo box, expanded, has auto complete, editable, opens list, From",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "graphics",
+   "i": 1,
+   "expected": "content info landmark, Other public bodies, navigation landmark, Mayor of London, graphic, menu button, expanded, sub Menu",
+   "predicted": "content info landmark, Other public bodies, navigation landmark, Mayor of London, graphic, menu button, collapsed, sub Menu",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "graphics",
+   "i": 2,
+   "expected": "list, with 7 items, Greater London Authority, graphic",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 27,
+   "expected": "banner landmark, Main menu, navigation landmark, list, with 5 items, Fares, link",
+   "predicted": "banner landmark, clickable, , Now you can save your favourites Take a look, link, menu button, collapsed, sub Menu",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 47,
+   "expected": "Other public bodies, navigation landmark, list, with 7 items, Mayor of London, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 48,
+   "expected": "London Assembly, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 49,
+   "expected": "London and Partners, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 50,
+   "expected": "Metropolitan Police Service, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 51,
+   "expected": "London Fire Brigade, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "links",
+   "i": 52,
+   "expected": "The Mayor's Office for Policing and Crime, link",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://tfl.gov.uk/plan-a-journey/",
+   "channel": "lists",
+   "i": 6,
+   "expected": "Other public bodies, navigation landmark, list, with 7 items, Greater London Authority, graphic",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "title",
+   "i": 0,
+   "expected": "table nhs digital service manual",
+   "predicted": "table nhs digital service manual document",
+   "class": "unexplained",
+   "shape": [
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 9,
+   "expected": "Design system, link, focused, linked",
+   "predicted": "Design system, link, focused, linked, current",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 36,
+   "expected": "Table, link, focused, linked, same page",
+   "predicted": "Table, link, focused, linked",
+   "class": "unexplained",
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 49,
+   "expected": "basic, link, focused, linked, same page",
+   "predicted": "basic, link, focused, linked",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 50,
+   "expected": "compact, link, focused, linked, same page",
+   "predicted": "compact, link, focused, linked",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 51,
+   "expected": "striped, link, focused, linked, same page",
+   "predicted": "striped, link, focused, linked",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 52,
+   "expected": "responsive, link, focused, linked, same page",
+   "predicted": "responsive, link, focused, linked",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 53,
+   "expected": "scrolling, link, focused, linked, same page",
+   "predicted": "scrolling, link, focused, linked",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 54,
+   "expected": "sortable, link, focused, linked, same page",
+   "predicted": "sortable, link, focused, linked",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 55,
+   "expected": "use word breaks in a table, link, focused, linked, same page",
+   "predicted": "use word breaks in a table, link, focused, linked",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 56,
+   "expected": "display missing data, link, focused, linked, same page",
+   "predicted": "display missing data, link, focused, linked",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 57,
+   "expected": "display tables on dark backgrounds, link, focused, linked, same page",
+   "predicted": "display tables on dark backgrounds, link, focused, linked",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 61,
+   "expected": "Open this example in a new tab : table basic, link, focused, linked",
+   "predicted": "Nunjucks code for table sortable, tab, focused, selected, 2 of 2",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 62,
+   "expected": "Standalone example – NHS digital service manual, document, focused, read only, off screen, ￼",
+   "predicted": "responsive table, link, focused, linked",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 63,
+   "expected": "HTML code for table basic, tab, focused, selected, 1 of 2",
+   "predicted": "Nunjucks code for table sortable, tab, focused, selected, 2 of 2",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 64,
+   "expected": "Nunjucks code for table basic, tab, focused, selected, 2 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 65,
+   "expected": "Open this example in a new tab : table 3 column, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 66,
+   "expected": "Standalone example – NHS digital service manual, document, focused, read only, ￼",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 67,
+   "expected": "HTML code for table 3 column, tab, focused, selected, 1 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 68,
+   "expected": "Nunjucks code for table 3 column, tab, focused, selected, 2 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 69,
+   "expected": "responsive table, link, focused, linked, same page",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 70,
+   "expected": "Open this example in a new tab : table compact, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 71,
+   "expected": "Standalone example – NHS digital service manual, document, focused, read only, ￼",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 72,
+   "expected": "HTML code for table compact, tab, focused, selected, 1 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 73,
+   "expected": "Nunjucks code for table compact, tab, focused, selected, 2 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 74,
+   "expected": "Open this example in a new tab : table striped, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 75,
+   "expected": "Standalone example – NHS digital service manual, document, focused, read only, ￼",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 76,
+   "expected": "HTML code for table striped, tab, focused, selected, 1 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 77,
+   "expected": "Nunjucks code for table striped, tab, focused, selected, 2 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 78,
+   "expected": "Open this example in a new tab : table responsive, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 79,
+   "expected": "Standalone example – NHS digital service manual, document, focused, read only, ￼",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 80,
+   "expected": "HTML code for table responsive, tab, focused, selected, 1 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 81,
+   "expected": "Nunjucks code for table responsive, tab, focused, selected, 2 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 83,
+   "expected": "Open this example in a new tab : table scrolling, link, focused, linked",
+   "predicted": "section, focused",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 84,
+   "expected": "Childhood vaccination coverage by nation, region, focused",
+   "predicted": "Nunjucks code for table sortable, tab, focused, selected, 2 of 2",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 85,
+   "expected": "HTML code for table scrolling, tab, focused, selected, 1 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 86,
+   "expected": "Nunjucks code for table scrolling, tab, focused, selected, 2 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 87,
+   "expected": "less div class equals nhsuk-scroll data-module equals nhsuk-scroll greater less div class equals nhsuk-scroll content role equals region aria-labelledby equals table-caption-id greater, text frame, focused",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 88,
+   "expected": "Open this example in a new tab : table sortable, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 95,
+   "expected": "HTML code for table sortable, tab, focused, selected, 1 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 98,
+   "expected": "Open this example in a new tab : table sortable custom, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 104,
+   "expected": "HTML code for table sortable custom, tab, focused, selected, 1 of 2",
+   "predicted": "Nunjucks code for table sortable, tab, focused, selected, 2 of 2",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 105,
+   "expected": "Nunjucks code for table sortable custom, tab, focused, selected, 2 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 106,
+   "expected": "Open this example in a new tab : table sortable server side last login descending, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 12,
+   "expected": "Responsive table, heading, level 2",
+   "predicted": "Cookies on the NHS digital service manual, heading, level 2",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 13,
+   "expected": "When not to use a responsive table, heading, level 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 14,
+   "expected": "Scrolling table, heading, level 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 15,
+   "expected": "Sortable table, heading, level 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 16,
+   "expected": "When to use a sortable table, heading, level 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 17,
+   "expected": "How to use a sortable table, heading, level 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 18,
+   "expected": "Sort data on 1 page, heading, level 4",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 19,
+   "expected": "Sorting columns, heading, level 5",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 20,
+   "expected": "Sorting numbers, heading, level 5",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 21,
+   "expected": "Overriding the default sort order, heading, level 5",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 22,
+   "expected": "Sort more than 1 page of data, heading, level 4",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 23,
+   "expected": "Consider search and filter, heading, level 4",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 24,
+   "expected": "Using word-breaks in a table, heading, level 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 25,
+   "expected": "Displaying missing data, heading, level 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 26,
+   "expected": "Tables on dark backgrounds, heading, level 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 27,
+   "expected": "Accessibility, heading, level 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 28,
+   "expected": "Table captions, heading, level 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 29,
+   "expected": "Table headers, heading, level 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 30,
+   "expected": "Sortable tables, heading, level 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 31,
+   "expected": "Research, heading, level 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 32,
+   "expected": "Basic table, heading, level 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 33,
+   "expected": "Responsive table, heading, level 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 34,
+   "expected": "Sortable table, heading, level 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 35,
+   "expected": "Table in a card, heading, level 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 36,
+   "expected": "Help us improve this guidance, heading, level 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 37,
+   "expected": "Updates to this page, heading, level 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 38,
+   "expected": "content info landmark, Support links, heading, level 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "formFields",
+   "i": 15,
+   "expected": "Nunjucks code for table sortable, tab",
+   "predicted": "Nunjucks code for table sortable, tab, selected",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "title",
+   "i": 0,
+   "expected": "date input gov uk design system",
+   "predicted": "date input gov uk design system document",
+   "class": "unexplained",
+   "shape": [
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 2,
+   "expected": "View cookies, link, focused, visited, linked",
+   "predicted": "View cookies, link, focused, linked",
+   "class": "history",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 3,
+   "expected": "Skip to main content, link, focused, linked, same page",
+   "predicted": "Skip to main content, link, focused, linked",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 19,
+   "expected": "Date input, link, focused, linked, same page, current page",
+   "predicted": "Date input, link, focused, linked, current page",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 52,
+   "expected": "Components, link, focused, linked",
+   "predicted": "Components, link, focused, linked, current",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 53,
+   "expected": "Open this example in a new tab : date input, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 57,
+   "expected": "HTML, tab, focused, collapsed, 1 of 2",
+   "predicted": "section, focused",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 58,
+   "expected": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 62,
+   "expected": "Nunjucks, link, focused, linked",
+   "predicted": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 64,
+   "expected": "Open this example in a new tab : date input second, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 68,
+   "expected": "HTML, tab, focused, collapsed, 1 of 2",
+   "predicted": "section, focused",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 69,
+   "expected": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 71,
+   "expected": "Open this example in a new tab : date input without a heading – date input second, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 75,
+   "expected": "HTML, tab, focused, collapsed, 1 of 2",
+   "predicted": "section, focused",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 76,
+   "expected": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 77,
+   "expected": "Open this example in a new tab : date input to ask for date of birth – date input, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 78,
+   "expected": "Day, edit, focused, blank",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 79,
+   "expected": "Month, edit, focused, blank",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 80,
+   "expected": "Year, edit, focused, blank",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 81,
+   "expected": "HTML, tab, focused, expanded, 1 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 82,
+   "expected": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 84,
+   "expected": "less div class equals govuk-form-group greater less fieldset class equals govuk-fieldset role equals group aria-describedby equals dob-hint greater less legend class equals govuk-fieldset legend govuk-fieldset legend--l greater less h 1 class equals govuk-fieldset heading greater What is your date of birth? less slash h 1 greater less slash legend greater less div id equals dob-hint class equals govuk-hint greater For example, 31 3 1980 less slash div greater less div class equals govuk-date-input id equals dob greater less div class equals govuk-date-input item greater less div class equals govuk-form-group greater less label class equals govuk-label govuk-date-input label for, text frame, focused",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 86,
+   "expected": "Open this example in a new tab : date input with errors – date input, link, focused, linked",
+   "predicted": "section, focused",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 87,
+   "expected": "Day, edit, focused, selected 6",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 88,
+   "expected": "Month, edit, focused, selected 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 89,
+   "expected": "Year, edit, focused, selected 2076",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 90,
+   "expected": "HTML, tab, focused, collapsed, 1 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 91,
+   "expected": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 92,
+   "expected": "Open this example in a new tab : dates with errors – date input, link, focused, linked",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 93,
+   "expected": "Day, edit, focused, selected 6",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 94,
+   "expected": "Month, edit, focused, selected 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 95,
+   "expected": "Year, edit, focused, blank",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 96,
+   "expected": "HTML, tab, focused, expanded, 1 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 97,
+   "expected": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 98,
+   "expected": "Copy code, button, focused",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 99,
+   "expected": "less div class equals govuk-form-group govuk-form-group--error greater less fieldset class equals govuk-fieldset role equals group aria-describedby equals passport-issued-hint passport-issued-error greater less legend class equals govuk-fieldset legend govuk-fieldset legend--l greater less h 1 class equals govuk-fieldset heading greater When was your passport issued? less slash h 1 greater less slash legend greater less div id equals passport-issued-hint class equals govuk-hint greater For example, 27 3 2007 less slash div greater less p id equals passport-issued-error class equals govuk-error-message greater less span class equals govuk-visually-hidden greater Error: less slash span greater The date your passport was issued must include a year less slash p greater less div class equals govuk-date-input id, text frame, focused",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 113,
+   "expected": "Cookies, link, focused, visited, linked",
+   "predicted": "Cookies, link, focused, linked",
+   "class": "history",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 121,
+   "expected": "View cookies, link, focused, visited, linked",
+   "predicted": "View cookies, link, focused, linked",
+   "class": "history",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "headings",
+   "i": 17,
+   "expected": "Dates with errors – Date input example, frame, When was your passport issued?, grouping, When was your passport issued?, heading, level 1",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "headings",
+   "i": 18,
+   "expected": "Date input with errors – Date input example, frame, When was your passport issued?, grouping, When was your passport issued?, heading, level 1",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "headings",
+   "i": 20,
+   "expected": "Date input to ask for date of birth – Date input example, frame, What is your date of birth?, grouping, What is your date of birth?, heading, level 1",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "formFields",
+   "i": 1,
+   "expected": "HTML, tab, collapsed",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "formFields",
+   "i": 2,
+   "expected": "Dates with errors – Date input example, frame, When was your passport issued?, grouping, Year, edit",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "formFields",
+   "i": 3,
+   "expected": "Month, edit, 3",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "formFields",
+   "i": 4,
+   "expected": "Day, edit, 6",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "formFields",
+   "i": 5,
+   "expected": "Date input with errors – Date input example, frame, When was your passport issued?, grouping, Year, edit, 2076",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "formFields",
+   "i": 6,
+   "expected": "Copy code, button",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "formFields",
+   "i": 7,
+   "expected": "HTML, tab, expanded",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "formFields",
+   "i": 8,
+   "expected": "Date input to ask for date of birth – Date input example, frame, What is your date of birth?, grouping, Year, edit",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "formFields",
+   "i": 9,
+   "expected": "Month, edit",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "formFields",
+   "i": 10,
+   "expected": "Day, edit",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "formFields",
+   "i": 11,
+   "expected": "Date input without a heading – Date input second example, frame, When was your passport issued?, grouping, Year, edit",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "formFields",
+   "i": 12,
+   "expected": "Date input second example, frame, When was your passport issued?, grouping, Year, edit",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "formFields",
+   "i": 13,
+   "expected": "Date input example, frame, When was your passport issued?, grouping, Year, edit",
+   "predicted": null,
+   "class": "no counterpart",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "formFields",
+   "i": 20,
+   "expected": "Year, edit, 2076",
+   "predicted": "Date input without a heading – Date input second example, frame, When was your passport issued?, grouping, Day, edit",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "links",
+   "i": 1,
+   "expected": "Cookies on GOV dot UK Design System, region, View cookies, visited, link",
+   "predicted": "Cookies on GOV dot UK Design System, region, View cookies, link",
+   "class": "history",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "links",
+   "i": 72,
+   "expected": "Cookies, visited, link",
+   "predicted": "Cookies, link",
+   "class": "history",
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "lists",
+   "i": 6,
+   "expected": "content info landmark, list, with 5 items, Accessibility statement, link, Sitemap, link, Cookies, visited, link, Privacy, link, Contact the team",
+   "predicted": "content info landmark, list, with 5 items, Accessibility statement, link, Sitemap, link, Cookies, link, Privacy, link, Contact the team",
+   "class": "history",
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "frames",
+   "i": 3,
+   "expected": "Date input to ask for date of birth – Date input example, frame, What is your date of birth?, grouping, What is your date of birth?, heading, level 1",
+   "predicted": "Date input to ask for date of birth – Date input example, frame",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "frames",
+   "i": 4,
+   "expected": "Date input with errors – Date input example, frame, When was your passport issued?, grouping, When was your passport issued?, heading, level 1",
+   "predicted": "Date input with errors – Date input example, frame",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "frames",
+   "i": 5,
+   "expected": "Dates with errors – Date input example, frame, When was your passport issued?, grouping, When was your passport issued?, heading, level 1",
+   "predicted": "Dates with errors – Date input example, frame",
+   "class": "unexplained",
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": true
+  }
+ ]
+}
