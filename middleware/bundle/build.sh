@@ -67,7 +67,8 @@ tar -xzf "$W/python.tar.gz" -C "$B"
 "$B/python/bin/python3" -m pip install --quiet --no-cache-dir --disable-pip-version-check "setuptools==$SETUPTOOLS" wheel
 # what the build leaves in the extension it compiles (a build id, the build directory in its debug information) and in the scripts pip writes (the interpreter's absolute path) differs from one build to the next
 # and from one place to the next: none is wanted, so the compiler is told to leave it out and the scripts, which nothing here runs, are removed after
-export SOURCE_DATE_EPOCH=1767225600 CFLAGS="-g0 -ffile-prefix-map=$W=/build" CXXFLAGS="-g0 -ffile-prefix-map=$W=/build" LDFLAGS="-Wl,--build-id=none"
+export SOURCE_DATE_EPOCH=1767225600 CFLAGS="-g0 -ffile-prefix-map=$W=/build" CXXFLAGS="-g0 -ffile-prefix-map=$W=/build" LDFLAGS=""
+[ "$PLATFORM" = linux-x64 ] && export LDFLAGS="-Wl,--build-id=none"      # macOS's linker has no such option (its UUID is not controlled here, so only the linux bundle is checked for reproducibility)
 CC="${CC:-cc}" CXX="${CXX:-c++}" "$B/python/bin/python3" -m pip install --quiet --no-cache-dir --disable-pip-version-check --no-build-isolation $PYTHON_PACKAGES      # python-build-standalone was built with clang; the host's compiler is what is there
 # the console scripts pip wrote name the interpreter by the path it was built at, and the records of what pip installed hold their hashes; neither is used
 find "$B/python/bin" -type f ! -name 'python*' ! -name 'pip*' -delete
