@@ -28,6 +28,11 @@ printf '%s\n' "$nv" | grep -q '^\*\*Keep\.\*\*'
 printf '%s\n' "$nv" | grep -q '^\*\*Drop\.\*\*'
 ! printf '%s\n' "$nv" | grep -q '@'
 ! printf '%s\n' "$nv" | grep -Eq '^(Dear|Hello|Hi)\b'
+# the after-merge handoff names who runs each step: the chairman chooses and sends, a follow-up records
+after=$(awk '/^## 6\. After merge/{f=1;next} f' "$d")
+printf '%s\n' "$after" | grep -q 'the chairman'
+printf '%s\n' "$after" | grep -q 'Send a message to NV Access'
+printf '%s\n' "$after" | grep -q 'a follow-up'
 # only the document and this file changed
 test "$(git diff --name-only origin/main...HEAD | grep -vc -e '^docs/release-decisions.md$' -e '^\.acceptance/')" = 0
 ```

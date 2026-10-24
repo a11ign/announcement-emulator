@@ -224,3 +224,17 @@ The risk is that the boundary is a legal question that only a court settles (§3
 - A preview published with the wording of §1 and with no "NVDA" in its name is the case ADR 0047 item 1 describes; item 2 as written would still hold even this first release (§4). A rename costs little while the package has few users, and costs more later, so the question should be asked before the name has a following.
 - Keep would hold the preview, which A11-228 plans to ship; Drop would leave NV Access (which asserts registered marks for its logos, per ADR 0047) never asked.
 - The preview must be defined (§4), and the wording rules of §1 must hold from the first preview.
+
+## 6. After merge: who runs what
+
+Nothing here runs when the pull request merges. The ticket's after-merge line is run by **the chairman**, and a follow-up records the result in this file:
+
+| step | who | how it is run |
+|---|---|---|
+| Choose the name | the chairman | picks one of §2, or none; reserving the npm name and creating the repository are theirs to do or to order, and not done by this document |
+| Choose the licence | the chairman | picks A, B or C in §3 and "only" or "or later" for the runtime; counsel's reading of §3 is theirs to commission |
+| Choose the NV Access option | the chairman | picks keep, drop or move in §4 |
+| Send a message to NV Access | the chairman, only if the option chosen makes one due | **no message is drafted here** (the chairman's direction of 2026-10-24: no reason to reach out now). Under *Keep* or *Move*, a message becomes due before the release the option names, and is the chairman's to write and send, or to delegate |
+| Record the three choices in this file, amend ADR 0047 and apply the name and licence to `middleware/` | a follow-up ticket | as listed under "What the repository has to change" in §3 and the amendment text in §4 |
+
+**Who sends.** ADR 0047 item 2 says the message is "`ceo`'s to send or delegate". The ticket names the chairman as the sender. This document treats them as the same office and does not claim to know it; if they are different people, the amended item 2 should name the one the chairman wants, and the amendment texts in §4 (which keep the ADR's wording) should be edited when the follow-up applies them.
