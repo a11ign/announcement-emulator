@@ -125,7 +125,7 @@ def main():
                 send({'type': 'record', 'rec': {'kind': 'error', 'where': 'snapshot', 'message': f'{type(e).__name__}: {e}'}})
 
     while True:
-        if cdp and args.tree == 'extension' and fallback.due(args.fallback_after, switch['first_page'], switch['extension_up'] or ordered.expected is not None, switch['done'], time.time()): switch_to_devtools()
+        if cdp and args.tree == 'extension' and fallback.due(args.fallback_after, switch['first_page'], switch['extension_up'], switch['done'], time.time()): switch_to_devtools()
         try: kind, body, arrived = inbox.get(timeout=0.05)
         except queue.Empty:
             snapshots()
@@ -133,7 +133,7 @@ def main():
             continue
         if switch['done'] and fallback.from_extension_after_switch(kind, body): continue
         note(kind, body, arrived)
-        if kind == 'snap': ordered.add(body, arrived); snapshots()
+        if kind == 'snap': switch['extension_up'] = switch['extension_up'] or not body.get('devtools'); ordered.add(body, arrived); snapshots()
         elif kind == 'page': handle('page', body)
         elif kind == 'ready':      # the extension started again: what it told before is done with, and its numbers begin again
             snapshots(final=True); ordered.reset(); predictor.restart(); handle(kind, body, arrived)
