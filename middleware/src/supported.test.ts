@@ -148,3 +148,9 @@ test("the schema accepts a figure a round wrote and names what is wrong with its
   }
   assert.ok(problemsIn(rounds({ shapes: [] as never })).some((p) => p.includes("shapes is not a table of shapes")));
 });
+
+test("a population or a ceiling that is null is named by the schema and does not throw", () => {
+  const problems = problemsIn(rounds({ population: null as never, ceiling: null as never }));
+  assert.ok(problems.some((p) => p.includes("population is not a population")), problems.join("\n"));
+  assert.ok(problems.some((p) => p.includes("ceiling is not a ceiling")), problems.join("\n"));
+});

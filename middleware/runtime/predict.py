@@ -101,9 +101,9 @@ def focused_on(snap, node):
 
 def match_focus(snap, event, last_resort=True):
     """The node of the tree the page's `focusin` is about. In the order of how exactly each says it:
-    1. the DOM node the browser says took the focus (`backendNodeId`, cdp.py `_resolve`), where the tree holds its node (the DevTools source: `backendId`);
+    1. the DOM node the browser says took the focus (`backendNodeId`, cdp.py `Resolution`), where the tree holds its node (the DevTools source: `backendId`);
     2. an element of that tag (and id) whose name is the one the browser computed for it (`axName`): the extension's tree has no DOM node, and its name is Chromium's too;
-    3. an element of that tag (and id) whose accessible name is one of the strings the page script could make it from, and nothing better is known: only when `last_resort`, because it is a guess.
+    3. an element of that tag (and id) whose accessible name is one of the strings the page script could make it from: a guess, so only when `last_resort`, or when the browser could say nothing of the element.
     The node the tree itself has focused if several fit. None if the tree does not have it (yet)."""
     backend = event.get('backendNodeId')
     if backend is not None:
@@ -114,10 +114,14 @@ def match_focus(snap, event, last_resort=True):
         named = [n for n in fits if normal(n.get('name')) == normal(event['axName']) and (not event.get('axRole') or n['role'] == event['axRole'])]
         if named: return focused_of(snap, named)
         if not last_resort: return None      # the browser has named it and this tree does not have it yet: the next tree may
-    if backend is not None and not last_resort: return None      # named by the browser, and neither its node nor a node of its name is in this tree yet: not a guess, yet
-    names = {squashed(n) for n in event.get('names', [])}      # the tree puts a space where Chromium breaks a line between two elements (a hidden span, a block), and the element's own text has none
-    fits = [n for n in fits if (squashed(n.get('name')) in names) or (not names and not squashed(n.get('name'))) or event.get('role')]
-    return focused_of(snap, fits) if fits else None
+    elif backend is not None and not last_resort and any('backendId' in n for n in snap['nodes']): return None      # the browser has named its node and this tree does not have it yet
+    names = {normal(n) for n in event.get('names', [])}
+    guessed = [n for n in fits if normal(n.get('name')) in names or (not names and not normal(n.get('name')))]
+    if not guessed:      # the tree puts a space where Chromium broke a line between two elements (a hidden span, a block), and the element's own text has none
+        squashed_names = {squashed(n) for n in names}
+        guessed = [n for n in fits if squashed(n.get('name')) in squashed_names]
+    if guessed: return focused_of(snap, guessed)
+    return focused_of(snap, fits) if event.get('role') and fits else None      # an element with a role of its own: of that tag, whatever it is called
 
 
 def focused_of(snap, fits):
@@ -280,6 +284,7 @@ class Predictor:
     def answer(self, page, e, final):
         if e['e'] == 'focusin':
             self.stats['focusEvents'] += 1
+            if e.get('backendNodeId') is not None: page.reports_focus = True      # the browser has said an element took the focus: the tree's own focus, sampled, is not to speak for it while it waits for its node
             node = match_focus(page.last, e, last_resort=final or e.get('tries', 0) >= 2)
             if node is None:
                 if final or e.get('tries', 0) >= 2: self.stats['unresolvedFocus'] += 1; return True

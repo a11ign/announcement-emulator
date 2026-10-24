@@ -92,6 +92,17 @@ class FocusByNode(unittest.TestCase):
         self.assertIsNone(predict.match_focus(tree, {'tag': 'a', 'id': None, 'names': ['Something else']}))
 
 
+    def test_where_the_browser_could_not_name_the_element_a_guess_is_made_at_once_and_not_waited_for(self):
+        """An ignored accessibility node has no name to wait for (`backendNodeId` without `axName`), and the extension's tree has no DOM node to find."""
+        tree = predict.index_children(snap([node(0, 'rootWebArea', kids=[1]), node(1, 'button', 'Save', htmlTag='button')], focus=0))
+        self.assertEqual(predict.match_focus(tree, {'tag': 'button', 'id': None, 'names': ['Save'], 'backendNodeId': 9}, last_resort=False)['ix'], 1)
+
+    def test_a_name_that_fits_exactly_is_preferred_to_one_that_fits_once_the_spaces_are_left_out(self):
+        tree = predict.index_children(snap([node(0, 'rootWebArea', kids=[1, 2]), node(1, 'link', 'Save as', htmlTag='a'), node(2, 'link', 'Saveas', htmlTag='a')], focus=0))
+        self.assertEqual(predict.match_focus(tree, {'tag': 'a', 'id': None, 'names': ['Saveas']})['ix'], 2)
+        self.assertEqual(predict.match_focus(tree, {'tag': 'a', 'id': None, 'names': ['Save  as']})['ix'], 1)
+
+
 class DocumentAddress(unittest.TestCase):
     def test_the_address_is_the_documents_as_of_the_tree_and_not_the_web_areas_from_when_it_was_made(self):
         s = snap([node(0, 'rootWebArea', url='http://x/a', docUrl='http://x/a?step=2')])

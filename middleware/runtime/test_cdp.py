@@ -13,7 +13,7 @@ class FakeSocket:
 
 def reader():
     c = cdp.Cdp.__new__(cdp.Cdp)      # not connected: nothing is read from a browser
-    c.ws = FakeSocket(); c.lock = threading.Lock(); c.next_id = 0; c.replies = {}; c.wanted = {}; c.wake = threading.Condition(); c.on_tree = None; c.converters = {}; c.generation = 0; c.target_of = {}
+    c.ws = FakeSocket(); c.lock = threading.Lock(); c.next_id = 0; c.replies = {}; c.wanted = {}; c.wake = threading.Condition(); c.on_tree = None; c.converters = {}; c.generation = 0; c.target_of = {}; c.outbox = []; c.out = threading.Lock()
     return c
 
 
@@ -123,7 +123,54 @@ class Resolving(unittest.TestCase):
         self.assertEqual(len(told), 1); self.assertEqual(c.ws.sent, [])
 
 
+    def binding(self, payload, context=7):
+        self.c._handle({'method': 'Runtime.bindingCalled', 'sessionId': 's', 'params': {'name': '__ae', 'executionContextId': context, 'payload': json.dumps(payload)}})
+
+    def test_an_event_after_a_focus_that_waits_for_the_browser_is_told_after_it_and_not_before(self):
+        """A key typed after a focus move is heard after the move: events are handed on in the order the page made them."""
+        self.binding({'e': 'keydown', 'key': 'a'})
+        self.assertEqual(self.told, [])
+        self.answer('Runtime.evaluate', {'result': {'type': 'undefined'}})      # the focus is told on, and the key with it
+        self.assertEqual([e['e'] for e in self.told], ['focusin', 'keydown'])
+
+    def test_a_browser_that_does_not_answer_leaves_the_event_as_it_was_after_a_while_and_the_events_behind_it_are_not_held_for_ever(self):
+        import time
+        cdp.Resolution.WAIT = 0.05
+        try:
+            self.setUp(); self.binding({'e': 'keydown', 'key': 'a'})
+            for _ in range(100):
+                if len(self.told) == 2: break
+                time.sleep(0.02)
+        finally: cdp.Resolution.WAIT = 1.5
+        self.assertEqual([e['e'] for e in self.told], ['focusin', 'keydown']); self.assertNotIn('backendNodeId', self.told[0])
+        self.assertEqual(self.c.wanted, {'s': {'focusin', 'keydown'}})
+
+    def test_a_number_that_is_not_one_is_not_asked_about_and_does_not_end_the_reader(self):
+        for seq in ('x', None, [1], True):
+            c = reader(); c.on_tree = lambda snap: None; c.target_of = {'s': 't'}; c.url_of = {}; told = []; c.on_event = told.append
+            c._handle({'method': 'Runtime.bindingCalled', 'sessionId': 's', 'params': {'name': '__ae', 'payload': json.dumps({'e': 'focusin', 'seq': seq, 'tag': 'a'})}})
+            self.assertEqual(len(told), 1, seq); self.assertEqual(c.ws.sent, [], seq)
+
+    def test_a_frame_that_is_not_named_is_asked_in_the_default_context_and_the_page_is_not_left_holding_the_element(self):
+        c = reader(); c.on_tree = lambda snap: None; c.target_of = {'s': 't'}; c.url_of = {}; c.on_event = lambda e: None
+        c._handle({'method': 'Runtime.bindingCalled', 'sessionId': 's', 'params': {'name': '__ae', 'payload': json.dumps({'e': 'focusin', 'seq': 5, 'tag': 'a'})}})
+        self.assertNotIn('contextId', c.ws.sent[0]['params'])
+        for m in list(c.ws.sent): c._handle({'id': m['id'], 'result': {'result': {'objectId': 'o'}}})
+        c._handle({'id': c.ws.sent[1]['id'], 'result': {'node': {'backendNodeId': 4}}}); c._handle({'id': c.ws.sent[2]['id'], 'result': {'nodes': []}})
+        self.assertTrue(any(m['method'] == 'Runtime.evaluate' and 'delete(5)' in m['params']['expression'] for m in c.ws.sent))
+
+
 class Converting(unittest.TestCase):
+    def test_a_page_that_went_while_it_was_read_leaves_no_converter_behind(self):
+        import axtree
+        c = reader(); c.target_of = {'s': 't'}
+        raw = {'ax': [{'nodeId': '1', 'chromeRole': {'value': 5}, 'childIds': []}], 'dom': {'documents': [], 'strings': []}, 'viewport': {}, 'page': {'url': 'http://x/', 'title': 't', 'readyState': 'complete', 'lang': 'en', 'caret': None}, 'frames': {}}
+        real = axtree.fetch
+        axtree.fetch = lambda call: (c._handle({'method': 'Target.detachedFromTarget', 'params': {'sessionId': 's'}}), raw)[1]
+        try: c._read('s', 't', 0)
+        finally: axtree.fetch = real
+        self.assertEqual(c.converters, {})
+
     def test_a_page_closed_while_it_is_read_is_converted_by_the_converter_it_had_so_that_its_nodes_keep_their_numbers(self):
         """The converter is forgotten when the page goes (`Target.detachedFromTarget`); a read in flight that took a new one would number the document's nodes again, and the predictor would speak the page's load again."""
         import axtree

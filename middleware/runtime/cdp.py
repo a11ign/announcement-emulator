@@ -3,7 +3,7 @@
 The companion extension sees the tree but not the keyboard, and it sees the focus only as often as the browser sends tree updates, which batch: a test that presses Tab three times in ten
 milliseconds leaves the extension one update for the three (measured: a stop of seven was missing from its tree updates). The page itself sees every focus move and every key, so: an extension's content scripts do not run in the off-the-record contexts that `browser.newContext()` makes (measured:
 `chrome.extension.isAllowedIncognitoAccess()` is false, and no content script ran), and Playwright's contexts are those. So this connects to the browser's DevTools port
-(the middleware adds `--remote-debugging-port` beside Playwright's pipe), attaches to every page and installs a listener that reports each trusted `keydown` and each `focusin`. Nothing is sent to a page but that listener.
+(the middleware adds `--remote-debugging-port` beside Playwright's pipe), attaches to every page and installs a listener that reports each trusted `keydown` and each `focusin`. Nothing is sent to a page but that listener, and, for each `focusin`, questions that change nothing: which DOM node the element is and what the browser calls it (`Resolution`).
 """
 import json, re, threading, time, urllib.request
 from wsclient import WebSocket
@@ -96,7 +96,7 @@ class Cdp:
     DOM through the same port, and `on_tree(snapshot)` is called with what the extension would have posted. `on_connect()` is called each time the browser is reached (the first, and again after a launch)."""
     def __init__(self, port, on_event, on_attach=lambda target, browser: None, on_tree=None, on_connect=lambda: None):
         self.port, self.on_event, self.on_attach, self.on_tree, self.on_connect = port, on_event, on_attach, on_tree, on_connect
-        self.ws = None; self.browser = None; self.next_id = 0; self.stopped = False; self.installed = set(); self.lock = threading.Lock(); self.target_of = {}; self.url_of = {}
+        self.ws = None; self.browser = None; self.next_id = 0; self.stopped = False; self.installed = set(); self.lock = threading.Lock(); self.outbox = []; self.out = threading.Lock(); self.target_of = {}; self.url_of = {}
         self.replies = {}; self.wanted = {}; self.wake = threading.Condition(); self.seq = 0; self.page_numbers = {}; self.converters = {}; self.generation = 0
         self.thread = threading.Thread(target=self._run, daemon=True, name='cdp'); self.thread.start()
         if on_tree: self.trees = threading.Thread(target=self._trees, daemon=True, name='trees'); self.trees.start()
@@ -170,7 +170,7 @@ class Cdp:
             self._send('Target.attachToTarget', {'targetId': m['params']['targetInfo']['targetId'], 'flatten': True})
         elif method == 'Target.detachedFromTarget':      # a page that is closed answers nothing more: what is waiting for it is told so
             gone = m['params'].get('sessionId')
-            self.converters.pop((self.generation, self.target_of.get(gone)), None)      # its uids are of no use to a page that is gone
+            self.converters.pop((self.generation, self.target_of.pop(gone, None)), None)      # its uids are of no use to a page that is gone
             with self.wake: self.wanted.pop(gone, None)
             for ident, slot in list(self.replies.items()):
                 if slot.get('session') == gone: self.replies.pop(ident, None); self._complete(slot, {'error': {'message': 'the page was closed'}})
@@ -180,8 +180,8 @@ class Cdp:
             session = m.get('sessionId')
             if event.get('e') == 'tick': self._want(session, event.get('why', 'tick')); return      # a note for the tree reader, not an event for the predictor
             event['pageUrl'] = self.url_of.get(self.target_of.get(session))      # the address of the page the frame is in: a frame's own address is not the page's
-            if event.get('e') == 'focusin' and 'seq' in event: self._resolve(session, m['params'].get('executionContextId'), event)      # told on, and the tree read, once the browser has said which DOM node it is
-            else: self.on_event(event); self._want(session, event.get('e'))
+            if event.get('e') == 'focusin' and type(event.get('seq')) is int: self._resolve(session, m['params'].get('executionContextId'), event)      # told on, and the tree read, once the browser has said which DOM node it is
+            else: self._deliver(event); self._want(session, event.get('e'))
 
     @staticmethod
     def _complete(slot, message):
@@ -190,9 +190,21 @@ class Cdp:
             try: slot['then'](message)
             except Exception: import traceback; traceback.print_exc()      # the reader of the socket must outlive what an answer is used for
 
+    def _deliver(self, event, pending=False):
+        """Hands an event to `on_event` in the order the page made them: one that waits for the browser's answer (a `focusin`, see `Resolution`) holds back the events after it, so that a key typed after a focus move is heard after it. Returns the entry to `_release`."""
+        entry = {'event': event, 'ready': not pending}
+        with self.out: self.outbox.append(entry); self._flush()
+        return entry
+
+    def _release(self, entry):
+        with self.out: entry['ready'] = True; self._flush()
+
+    def _flush(self):
+        while self.outbox and self.outbox[0]['ready']: self.on_event(self.outbox.pop(0)['event'])
+
     def _resolve(self, session, context, event):
         """Tells on a `focusin` after asking the browser which element it is: see `Resolution`."""
-        Resolution(self, session, event).start(context)
+        Resolution(self, session, event, self._deliver(event, pending=True)).start(context)
 
     def _want(self, session, why):
         if not self.on_tree or not session: return
@@ -202,9 +214,10 @@ class Cdp:
         """The converted tree of one page. The page's converter is taken before the read: a page that is closed while it is read forgets its converter (`Target.detachedFromTarget`), and a tree made by a new one
         numbers every node again, which the predictor takes for a new document and speaks again."""
         import axtree
-        converter = self.converters.get((generation, target))
-        if converter is None: converter = self.converters[(generation, target)] = axtree.Converter()
-        return converter.convert(axtree.fetch(lambda commands: self.call_many(commands, session)))
+        converter = self.converters.get((generation, target)) or axtree.Converter()
+        converted = converter.convert(axtree.fetch(lambda commands: self.call_many(commands, session)))
+        if session in self.target_of: self.converters.setdefault((generation, target), converter)      # a page that went while it was read leaves nothing behind
+        return converted
 
     def _trees(self):
         """Reads the trees of the pages that have changed, one page at a time, and rests as long as a read took when that was more than a tenth of a second (so that reading is at most half the time of a busy page)."""
@@ -247,17 +260,21 @@ class Cdp:
 
 
 class Resolution:
-    """Tells on one `focusin` after asking the browser which element it was, as the event arrives and without holding up the events behind it: the DOM node (`DOM.describeNode`; the number the accessibility tree holds as
+    """Tells on one `focusin` after asking the browser which element it was, as the event arrives and without holding up the tree: the DOM node (`DOM.describeNode`; the number the accessibility tree holds as
     `backendDOMNodeId`), and the role and name the browser computed for it (`Accessibility.getPartialAXTree`). Matching by these is exact where the page script's guess at a name is not (a name that CSS or a hidden span adds
-    to is not in the element's own text). Two round trips, asked before the tree is read again so that the read does not hold them up. A page that is closed first, or an element that is gone, leaves the event as the page sent
-    it. Every step runs on the thread that reads the socket, so none of this is shared with another thread."""
-    def __init__(self, cdp, session, event):
-        self.cdp, self.session, self.event = cdp, session, event
-        self.held = None; self.answers = {}; self.told = False
+    to is not in the element's own text). Two round trips, asked before the tree is read again so that the read does not hold them up. A page that is closed first, an element that is gone, a browser that does not answer
+    within WAIT seconds (a page stopped in an alert, a socket that dropped) leave the event as the page sent it. Every answer is handled on the thread that reads the socket; the timer is the only other."""
+    WAIT = 1.5
+
+    def __init__(self, cdp, session, event, entry):
+        self.cdp, self.session, self.event, self.entry = cdp, session, event, entry
+        self.context = None; self.held = None; self.answers = {}; self.told = False; self.lock = threading.Lock()
+        self.timer = threading.Timer(self.WAIT, self.tell); self.timer.daemon = True
 
     def start(self, context):
-        expression = f'window.__aeFocused && window.__aeFocused.get({int(self.event["seq"])})'      # the element the listener kept (LISTENER)
-        self.ask('Runtime.evaluate', {'expression': expression, 'contextId': context}, self.on_element)
+        self.context = context; self.timer.start()
+        expression = f'window.__aeFocused && window.__aeFocused.get({self.event["seq"]})'      # the element the listener kept (LISTENER)
+        self.ask('Runtime.evaluate', {'expression': expression, **({'contextId': context} if context is not None else {})}, self.on_element)
 
     def ask(self, method, params, then):
         try: self.cdp._post(method, params, self.session, then)
@@ -274,12 +291,15 @@ class Resolution:
         if len(self.answers) < 2: return
         try:
             self.cdp._send('Runtime.releaseObject', {'objectId': self.held}, self.session)
+            self.cdp._send('Runtime.evaluate', {'expression': f'window.__aeFocused && window.__aeFocused.delete({self.event["seq"]})', **({'contextId': self.context} if self.context is not None else {})}, self.session)      # the page is not kept holding the element
             self.event.update(self.what_is(self.answers['node'], self.answers['ax']))
         finally: self.tell()
 
     def tell(self):
-        if self.told: return
-        self.told = True; self.cdp.on_event(self.event); self.cdp._want(self.session, 'focusin')      # and now the tree is read
+        with self.lock:
+            if self.told: return
+            self.told = True
+        self.timer.cancel(); self.cdp._release(self.entry); self.cdp._want(self.session, 'focusin')      # and now the tree is read
 
     @staticmethod
     def what_is(node, ax):

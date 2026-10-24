@@ -100,7 +100,7 @@ export function agreementFor(list: SupportedVersions, chromium: string | null, t
 
 const SHAPE_KEY = /^[A-Z]+( \+ [A-Z]+)*$/;
 
-const populationProblems = (where: string, p: Population, units: number): string[] => [
+const populationProblems = (where: string, p: Population, units: number): string[] => !p || typeof p !== "object" ? [`${where} is not a population`] : [
   ...(isCount(p.pages) ? [] : [`${where}.pages is not a count`]),
   ...(typeof p.heldOut === "boolean" ? [] : [`${where}.heldOut is not true or false`]),
   ...(p.units === units ? [] : [`${where}.units is not the units of the rate (${units})`]),
@@ -113,14 +113,21 @@ const shapeProblems = (where: string, shapes: Record<string, ShapeFigure>): stri
   ...(typeof f?.lowConfidence === "boolean" ? [] : [`${where}.${key}.lowConfidence is not true or false`]),
 ]);
 
+const ceilingProblems = (where: string, c: Ceiling): string[] => !c || typeof c !== "object" ? [`${where} is not a ceiling`] : [
+  ...(isRate(c.agreement) ? [] : [`${where}.agreement is not a rate between 0 and 1`]),
+  ...(isCount(c.units) ? [] : [`${where}.units is not a count`]),
+];
+
+const shapesProblems = (where: string, shapes: unknown): string[] => shapes && typeof shapes === "object" && !Array.isArray(shapes) ? shapeProblems(where, shapes as Record<string, ShapeFigure>) : [`${where} is not a table of shapes`];
+
 const figureProblems = (where: string, f: Figure): string[] => [
   ...(isRate(f.agreement) ? [] : [`${where}.agreement is not a rate between 0 and 1`]),
   ...(isCount(f.units) ? [] : [`${where}.units is not a count`]),
   ...(/^\d{4}-\d{2}-\d{2}$/.test(f.date ?? "") ? [] : [`${where}.date is not YYYY-MM-DD`]),
   ...(f.figure && typeof f.figure === "string" ? [] : [`${where}.figure is not a path`]),
   ...(f.population === undefined ? [] : populationProblems(`${where}.population`, f.population, f.units)),
-  ...(f.ceiling === undefined ? [] : [...(isRate(f.ceiling.agreement) ? [] : [`${where}.ceiling.agreement is not a rate between 0 and 1`]), ...(isCount(f.ceiling.units) ? [] : [`${where}.ceiling.units is not a count`])]),
-  ...(f.shapes === undefined ? [] : f.shapes && typeof f.shapes === "object" && !Array.isArray(f.shapes) ? shapeProblems(`${where}.shapes`, f.shapes) : [`${where}.shapes is not a table of shapes`]),
+  ...(f.ceiling === undefined ? [] : ceilingProblems(`${where}.ceiling`, f.ceiling)),
+  ...(f.shapes === undefined ? [] : shapesProblems(`${where}.shapes`, f.shapes)),
 ];
 
 const buildProblems = (at: string, b: SupportedBuild): string[] => [
