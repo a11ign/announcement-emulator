@@ -77,9 +77,17 @@ class Replay(unittest.TestCase):
         self.assertGreater(sweeps[0]['notDelivered'], 0)      # the keys the sweep pressed, and the page was not sent one
         self.assertEqual(sweeps[0]['errors'], [])
 
+    def test_a_state_is_swept_over_the_last_tree_it_had_and_not_the_first(self):
+        """A page's iframes and its late content are in the tree some time after it has loaded; a sweep over the first tree would not see them."""
+        import gzip
+        with gzip.open(HERE / 'fixtures' / 'basket-live.jsonl.gz', 'rt') as f: snaps = [json.loads(l)['body'] for l in f if json.loads(l)['k'] == 'snap']
+        sweep = next(r for r in replay('basket-live')['records'] if r['kind'] == 'sweep')
+        self.assertEqual(sweep['treeAt'], max(s['t'] for s in snaps))
+        self.assertGreater(sweep['treeAt'], min(s['t'] for s in snaps))
+
     def test_a_dialog_is_a_state_of_its_own(self):
         sweeps = [r['trigger'] for r in replay('delete-dialog')['records'] if r['kind'] == 'sweep']
-        self.assertEqual(sweeps, ['load', 'dialog'])
+        self.assertEqual(sorted(sweeps), ['dialog', 'load'])
 
     def test_with_the_report_flag_each_focus_move_also_carries_what_repeating_the_focus_says(self):
         records = [r for r in replay('tab-order', '--no-sweeps', '--report-focus')['records'] if r['kind'] == 'speech' and r['cause'] == 'focus']

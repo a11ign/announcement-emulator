@@ -107,7 +107,7 @@ def main():
         try: kind, body, arrived = inbox.get(timeout=0.05)
         except queue.Empty:
             snapshots()
-            if not ordered.held: predictor.settle_events(time.time()); predictor.run_sweep()      # idle: one sweep, between two events
+            if not ordered.held: predictor.settle_events(time.time()); predictor.settle_states(time.time()); predictor.run_sweep()      # idle: one sweep, between two events
             continue
         note(kind, body, arrived)
         if kind == 'snap': ordered.add(body, arrived); snapshots()

@@ -25,6 +25,7 @@ os.environ.setdefault('EMU_FLEET_VOICES', '1')
 import flags
 
 SWEEP_LIMIT = 12      # sweeps per run: each costs seconds on a real page, and a run that reaches more states than this is not one a transcript is read for
+STATE_QUIET = 1.5      # seconds without a new tree after which the state of a page is taken as complete and swept
 SETTLE_MS = 400      # an event of the page that no later tree has come to answer, after this long, is answered with the tree there is
 
 
@@ -71,7 +72,7 @@ def without_fragment(url): return (url or '').split('#')[0]
 class Page:
     def __init__(self, uid):
         self.uid = uid; self.last = None; self.root_uid = None; self.url = None; self.loaded = False; self.spoke_load = False; self.focus_uid = None
-        self.observed = set(); self.swept = set(); self.reports_focus = False; self.sweep_wanted = None
+        self.observed = set(); self.swept = set(); self.reports_focus = False; self.sweep_wanted = None; self.state = None
 
 
 def normal(text): return re.sub(r'\s+', ' ', text or '').strip()
@@ -173,6 +174,7 @@ class Predictor:
         new_document = page.last is None or page.root_uid != root['uid']
         route_change = not new_document and (root.get('docUrl') or snap['url']) != page.url      # a new address in the same document, a fragment too: a single-page app's route
         if new_document:
+            self.end_state(page)
             if self.doc_page == page.uid: self.doc = None; self.doc_page = None
             page.root_uid = root['uid']; page.loaded = False; page.spoke_load = False; page.focus_uid = None; page.observed = set(); page.last = None; page.reports_focus = False; page.sweep_wanted = None
             if len(snap['nodes']) > 1: self.emit({'kind': 'observe', 'what': 'navigation', 't': t, 'page': page.uid, 'url': snap['url'], 'node': None, 'text': snap['url']})
@@ -186,11 +188,12 @@ class Predictor:
             earliest = min([t] + [e['t'] for e in self.events if (e.get('pageUrl') or e.get('url') or '').split('#')[0] == without_fragment(page.url)])      # the document loaded before anything the page did in it
             self.speak('load', earliest - 1, page, self.node_info(root), lambda: self.load_speech(doc))
             page.focus_uid = root['uid']      # a document has the focus when it has loaded; if the test's first key was faster than the extension, the focus is already on a control, and that is a move
-            self.schedule_sweep(page, snap, t, 'load')
+            self.begin_state(page, snap, t, 'load')
         elif loaded:
             self.document_for(page, snap)
-            if route_change: self.schedule_sweep(page, snap, t, 'route')
+            if route_change: self.begin_state(page, snap, t, 'route')
         page.last = snap
+        if page.state and loaded: page.state['snap'] = snap; page.state['seen'] = time.time()      # the state's tree is the last one of it: what a page has loaded by the time the test has moved on
         self.sweep_dialog(page)
         if loaded:
             self.events_until(t)
@@ -283,6 +286,19 @@ class Predictor:
         self.speak('typed', event['t'], page, self.node_info(focus_node(page.last)), lambda: speech.speech.speakTypedCharacters(event['key']))
 
     # ---- sweeps
+    def begin_state(self, page, snap, t, trigger):
+        """A new state of the page (a document, a route): the one before it is over, and this one is swept when it is, or when it has been quiet."""
+        self.end_state(page)
+        page.state = {'trigger': trigger, 'snap': snap, 't': t, 'seen': time.time()}
+
+    def end_state(self, page):
+        if page.state: self.schedule_sweep(page, page.state['snap'], page.state['t'], page.state['trigger']); page.state = None
+
+    def settle_states(self, now):
+        """Sweep the states whose page has not changed for STATE_QUIET seconds."""
+        for page in self.pages.values():
+            if page.state and now - page.state['seen'] > STATE_QUIET: self.end_state(page)
+
     def sweep_dialog(self, page):
         """The first tree at or after the page's report of a dialog that has a dialog in it."""
         if not page.sweep_wanted or page.last is None or page.last['t'] < page.sweep_wanted[1]: return
@@ -313,13 +329,14 @@ class Predictor:
         counts = {k: len(v) for k, v in structure.items()}
         census = {k: v for k, v in doc.census().items() if k != 'roles'}      # the tree's heading, link, graphic and landmark counts: what the fleet's own census is compared with
         self.stats['sweeps'].append(round(ms))
-        self.emit({'kind': 'sweep', 't': t, 'page': page_uid, 'url': snap['url'], 'trigger': trigger, 'lists': structure, 'counts': counts, 'census': census, 'keys': w.actions, 'errors': w.errors,
+        self.emit({'kind': 'sweep', 't': t, 'treeAt': snap['t'], 'page': page_uid, 'url': snap['url'], 'trigger': trigger, 'lists': structure, 'counts': counts, 'census': census, 'keys': w.actions, 'errors': w.errors,
                    'stops': {m['type']: [m['prevStop'], m['nextStop']] for m in marks}, 'notDelivered': len(session.refused), 'ms': round(ms)})
         return True
 
     # ---- the end
     def finish(self):
         self.events_until(float('inf'), final=True)
+        for page in self.pages.values(): self.end_state(page)
         while self.run_sweep(): pass
         for f in flags.derive_flags(self.records): self.emit(f)
         return {'snapshots': self.stats['snapshots'], 'speechMs': round(self.stats['speechMs']), 'sweepMs': self.stats['sweeps'], 'keys': self.stats['keys'], 'focusEvents': self.stats['focusEvents'],
