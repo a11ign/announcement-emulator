@@ -83,12 +83,32 @@ class Measure(unittest.TestCase):
         self.assertEqual([u['channel'] for u in status[a]['unstable']], ['stops'])
         self.assertFalse([r for r in rows if r['channel'] == 'stops'])
 
+    def test_with_the_flag_a_channel_that_was_not_stable_is_compared_and_marked(self):
+        a = 'https://x.test/p'
+        args = ([a], {measure.slug(a): [fleet_record(), fleet_record(stops=('Other, link',))]}, [{a: prediction()}, {a: prediction()}])
+        rows, _ = measure.measure(*args, include_unstable=True)
+        stops = [r for r in rows if r['channel'] == 'stops' and r['kind'] == 'fleet-vs-passive']
+        self.assertTrue(stops and not any(r['stable'] for r in stops))
+        self.assertNotIn('stops', ' '.join(l for l in measure.report(rows, {a: {'status': 'comparable', 'unstable': []}}).splitlines() if 'stops' in l and ' / ' in l))
+
     def test_a_page_that_was_not_the_same_page_is_not_compared_at_all(self):
         a = 'https://x.test/p'
         rows, status = measure.measure([a], {measure.slug(a): [fleet_record(census=(9, 2)), fleet_record(census=(9, 2))]}, [{a: prediction()}, {a: prediction()}])
         self.assertEqual(status[a]['status'], 'not comparable'); self.assertEqual(rows, [])
         _, status = measure.measure([a], {measure.slug(a): [fleet_record(title='Something else entirely'), None]}, [{a: prediction()}])
         self.assertEqual(status[a]['status'], 'not comparable')
+
+    def test_a_page_the_middleware_predicted_nothing_for_is_listed_and_not_counted_as_a_miss(self):
+        a = 'https://x.test/p'
+        rows, status = measure.measure([a], {measure.slug(a): [fleet_record(), fleet_record()]}, [{a: {'predictedSpeech': [], 'sweeps': []}}])
+        self.assertEqual(status[a]['status'], 'no passive reading'); self.assertEqual(rows, [])
+
+    def test_with_the_flag_a_page_whose_counts_differ_but_whose_title_is_the_same_is_compared(self):
+        a = 'https://x.test/p'
+        args = ([a], {measure.slug(a): [fleet_record(census=(9, 2)), fleet_record(census=(9, 2))]}, [{a: prediction()}, {a: prediction()}])
+        self.assertEqual(measure.measure(*args)[1][a]['status'], 'not comparable')
+        rows, status = measure.measure(*args, tolerate_census=True)
+        self.assertEqual(status[a]['status'], 'comparable'); self.assertTrue(rows)
 
     def test_a_page_with_no_fleet_reading_is_listed(self):
         a = 'https://x.test/p'

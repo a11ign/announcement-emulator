@@ -134,7 +134,7 @@ def comparable(fleet_rec, fleet_c, passive_c, passive_census):
     return problems
 
 
-def measure(pages, fleet, passive_runs):
+def measure(pages, fleet, passive_runs, include_unstable=False, tolerate_census=False):
     """rows, per-page status. `fleet[slug] = [f1, f2]` records; `passive_runs = [{address: prediction}, {address: prediction}]`."""
     rows, status = [], {}
     for address in pages:
@@ -145,20 +145,24 @@ def measure(pages, fleet, passive_runs):
         if c1 is None: status[address] = {'status': 'no fleet reading'}; continue
         if preds[0] is None: status[address] = {'status': 'no passive reading'}; continue
         p1, census1 = passive_channels(preds[0])
+        if not p1['title']: status[address] = {'status': 'no passive reading', 'why': 'nothing was predicted for the page: it was closed before the extension had read its tree'}; continue
         p2 = passive_channels(preds[1])[0] if len(preds) > 1 and preds[1] else None
         problems = comparable(f1, c1, p1, census1)
+        if problems and tolerate_census and set(problems) <= {'heading', 'link'}: problems = {}      # the counts differ by a few and the title is the page's: compared, and listed
         if problems: status[address] = {'status': 'not comparable', 'problems': {k: list(v) for k, v in problems.items()}}; continue
         status[address] = {'status': 'comparable', 'unstable': []}
         for ch in CHANNELS:
             stable_fleet = c2 is None or c1[ch] == c2[ch]
             stable_passive = p2 is None or p1[ch] == p2[ch]
-            if not (stable_fleet and stable_passive):
-                status[address]['unstable'].append({'channel': ch, 'fleet': stable_fleet, 'passive': stable_passive}); continue
-            for r in compare(ch, c1[ch], p1[ch]): rows.append({'address': address, 'kind': 'fleet-vs-passive', **r})
+            stable = stable_fleet and stable_passive
+            if not stable:
+                status[address]['unstable'].append({'channel': ch, 'fleet': stable_fleet, 'passive': stable_passive})
+                if not include_unstable: continue
+            for r in compare(ch, c1[ch], p1[ch]): rows.append({'address': address, 'kind': 'fleet-vs-passive', 'stable': stable, **r})
             if c2 is not None:
-                for r in compare(ch, c1[ch], c2[ch]): rows.append({'address': address, 'kind': 'fleet-vs-fleet', **r})
+                for r in compare(ch, c1[ch], c2[ch]): rows.append({'address': address, 'kind': 'fleet-vs-fleet', 'stable': stable, **r})
             if p2 is not None:
-                for r in compare(ch, p1[ch], p2[ch]): rows.append({'address': address, 'kind': 'passive-vs-passive', **r})
+                for r in compare(ch, p1[ch], p2[ch]): rows.append({'address': address, 'kind': 'passive-vs-passive', 'stable': stable, **r})
     for r in rows: r['class'] = 'agree' if r['ok'] else classify(r)
     return rows, status
 
@@ -175,7 +179,8 @@ def tally(rows, key):
 def rate(ok, n): return f'{100 * ok / n:.1f}%' if n else 'n/a'
 
 
-def report(rows, status, top=10):
+def report(rows, status, top=10, stable_only=True):
+    rows = [r for r in rows if r.get('stable', True) or not stable_only]
     lines = []
     out = lines.append
     kinds = ('fleet-vs-passive', 'fleet-vs-fleet', 'passive-vs-passive')
@@ -205,6 +210,8 @@ def report(rows, status, top=10):
 def main(argv):
     ap = argparse.ArgumentParser(); ap.add_argument('--fleet', required=True); ap.add_argument('--passive', nargs='+', required=True); ap.add_argument('--pages', required=True)
     ap.add_argument('--freeze'); ap.add_argument('--out'); ap.add_argument('--top', type=int, default=10)
+    ap.add_argument('--tolerate-census', action='store_true', help='compare a page whose title is the same but whose heading or link count differs (added after the first figure was taken)')
+    ap.add_argument('--include-unstable', action='store_true', help='also compare a channel that is not the same in both fleet captures or in both passive runs (the first of each against the first), and report it as a second figure: added after the first figure was taken')
     a = ap.parse_args(argv)
     with open(a.pages) as f: pages = [p['url'] for p in json.load(f)['sample']]
     fleet = {}
@@ -213,8 +220,9 @@ def main(argv):
         with open(path) as f: return json.load(f)
     for address in pages: fleet[slug(address)] = [load(os.path.join(a.fleet, f'{slug(address)}.f{k}.json')) for k in (1, 2)]
     runs = [passive_predictions(load(p)) for p in a.passive]
-    rows, status = measure(pages, fleet, runs)
+    rows, status = measure(pages, fleet, runs, a.include_unstable, a.tolerate_census)
     text = report(rows, status, a.top)
+    if a.include_unstable: text += '\n\n==== the same, with the channels that were not stable counted too (first fleet capture against first passive run) ====\n' + report(rows, status, a.top, stable_only=False)
     print(text)
     if a.out:
         os.makedirs(a.out, exist_ok=True)
