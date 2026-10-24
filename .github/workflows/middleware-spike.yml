@@ -83,11 +83,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { platform: linux-x64, runner: ubuntu-latest, allow-failure: false }
-          # One probe, no promise: whether it works on macOS, and why not if it does not.
-          - { platform: darwin-arm64, runner: macos-latest, allow-failure: true }
+          - { platform: linux-x64, runner: ubuntu-latest, check: "" }
+          # One probe, no promise: whether it works on macOS, and why not if it does not. The answer in the write-up (Q7) is that Chrome gives the extension no desktop tree there, so the probe passes when the tests pass,
+          # carry their two labelled attachments and nothing was read, predicted or flagged; it fails if macOS starts to give a tree, because the write-up would then be out of date.
+          - { platform: darwin-arm64, runner: macos-latest, check: "--expect-no-tree" }
     runs-on: ${{ matrix.runner }}
-    continue-on-error: ${{ matrix.allow-failure }}
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -120,14 +120,15 @@ jobs:
         run: |
           cd "$RUNNER_TEMP/project"
           { time npx playwright test --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-with.log"
-          node check-report.mjs
+          node check-report.mjs ${{ matrix.check }}
           cp -R test-results/announcement-emulator "$RUNNER_TEMP/announcement-emulator-run"; cp test-results/report.json "$RUNNER_TEMP/announcement-emulator-run/report.json"
           rm -rf test-results
           mv playwright-report "$RUNNER_TEMP/playwright-report-one-line"
           { time npx announcement-emulator test --config playwright.plain.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-zero.log"
-          node check-report.mjs
+          node check-report.mjs ${{ matrix.check }}
           mv playwright-report "$RUNNER_TEMP/playwright-report-zero-lines"
           rm -rf test-results
+          [ -z "${{ matrix.check }}" ] || exit 0      # the cost is measured where a tree is read
           cache="${ANNOUNCEMENT_EMULATOR_PATH:-$(node -e "const os=require('os'),p=require('path');console.log(process.platform==='darwin'?p.join(os.homedir(),'Library/Caches/announcement-emulator'):p.join(process.env.XDG_CACHE_HOME||p.join(os.homedir(),'.cache'),'announcement-emulator'))")}"
           bundle=$(ls -d "$cache"/*/ | head -1)
           if [ "$(uname)" = Darwin ]; then chrome="$bundle/chrome/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"; else chrome="$bundle/chrome/chrome-linux64/chrome"; fi
