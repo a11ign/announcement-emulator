@@ -31,3 +31,5 @@ PY
 # `gate` is green on the pull request
 gh pr checks "$PR" --repo a11ign/announcement-emulator | grep -E '^gate\s+pass'
 ```
+
+Measured on the pull request's first `ci` run (2026-10-24): `middleware` passed in 24 s, `python` in 23 s and `gate` in 4 s. On a plain runner every Python directory ran and none was left out; the suites that need NVDA's source, the emulator's virtualenv, Chrome or the fleet skip themselves with their reason.
