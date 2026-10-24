@@ -32,24 +32,32 @@ const shipped = (browsers: BrowsersJson["browsers"], name: string): ShippedBrows
  */
 export function readPlaywright(from = process.cwd()): PlaywrightChromium | null {
   try {
-    const here = createRequire(join(from, "noop.js"));
-    const testPackage = here.resolve("@playwright/test/package.json");
-    const version = (JSON.parse(readFileSync(testPackage, "utf8")) as { version: string }).version;
-    const corePackage = createRequire(createRequire(testPackage).resolve("playwright/package.json")).resolve("playwright-core/package.json");
+    const { version, corePackage } = locatePlaywright(from);
     const browsers = (JSON.parse(readFileSync(join(dirname(corePackage), "browsers.json"), "utf8")) as BrowsersJson).browsers;
     const chromium = shipped(browsers, "chromium");
     if (!chromium) return null;
-    const executablePath = executablePathOf(createRequire(corePackage)(dirname(corePackage)));
-    const root = executablePath ? browsersRoot(executablePath) : null;
     const headlessShell = shipped(browsers, "chromium-headless-shell");
-    return {
-      version, chromium, headlessShell, executablePath,
-      fullInstalled: !!executablePath && existsSync(executablePath),
-      shellInstalled: !!root && !!headlessShell && existsSync(join(root, `chromium_headless_shell-${headlessShell.revision}`)),
-    };
+    const executablePath = executablePathOf(createRequire(corePackage)(dirname(corePackage)));
+    return { version, chromium, headlessShell, executablePath, ...installedAt(executablePath, headlessShell) };
   } catch {
     return null;
   }
+}
+
+/** The team's `@playwright/test` and the `playwright-core` it brings, found by the way Node would resolve them from the team's directory. */
+function locatePlaywright(from: string): { version: string; corePackage: string } {
+  const testPackage = createRequire(join(from, "noop.js")).resolve("@playwright/test/package.json");
+  const version = (JSON.parse(readFileSync(testPackage, "utf8")) as { version: string }).version;
+  const corePackage = createRequire(createRequire(testPackage).resolve("playwright/package.json")).resolve("playwright-core/package.json");
+  return { version, corePackage };
+}
+
+function installedAt(executablePath: string | null, headlessShell: ShippedBrowser | null): { fullInstalled: boolean; shellInstalled: boolean } {
+  const root = executablePath ? browsersRoot(executablePath) : null;
+  return {
+    fullInstalled: !!executablePath && existsSync(executablePath),
+    shellInstalled: !!root && !!headlessShell && existsSync(join(root, `chromium_headless_shell-${headlessShell.revision}`)),
+  };
 }
 
 function executablePathOf(core: { chromium?: { executablePath?: () => string } }): string | null {

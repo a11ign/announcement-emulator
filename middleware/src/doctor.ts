@@ -3,7 +3,7 @@ import { BundleMissing, findBundle, layout, platformId, readManifest } from "./b
 import { pickTree } from "./extension.ts";
 import { readPins } from "./pins.ts";
 import { extensionVerdict, readPlaywright, type PlaywrightChromium } from "./playwright-chromium.ts";
-import { buildFor, readSupported, SOURCE_KEYS, type SupportedVersions } from "./supported.ts";
+import { buildFor, percent, readSupported, SOURCE_KEYS, type SupportedVersions } from "./supported.ts";
 
 export interface DoctorOptions {
   /** Where the team's `@playwright/test` is resolved from: the directory the command is run in. */
@@ -57,7 +57,7 @@ function reportPlaywright(pw: PlaywrightChromium, supported: SupportedVersions, 
     log(`supported: yes, Chromium ${listed.chromium} is on the list (Playwright ${listed.playwright.join(", ")})`);
     for (const key of SOURCE_KEYS) {
       const f = listed.measured[key];
-      log(f ? `  ${key}: ${(f.agreement * 100).toFixed(1)}% of ${f.units} units, ${f.date} (${f.figure})` : `  ${key}: not measured`);
+      log(f ? `  ${key}: ${percent(f.agreement)} of ${f.units} units, ${f.date} (${f.figure})` : `  ${key}: not measured`);
     }
   } else {
     log(`supported: no. Chromium ${pw.chromium.build} is not on the list, so a report says "agreement not measured for Chromium ${pw.chromium.build}". It runs all the same.`);

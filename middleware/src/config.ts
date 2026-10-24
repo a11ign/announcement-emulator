@@ -45,7 +45,7 @@ export function announce<T extends PlaywrightTestConfig>(config: T, options: Opt
 }
 
 /** What `attach` needs of the run: the bundle, what the reporter published for the workers (null outside a worker), and the team's Playwright. */
-interface Worker { bundle: string; run: RunEnv | null; playwright: PlaywrightChromium | null }
+interface AttachContext { bundle: string; run: RunEnv | null; playwright: PlaywrightChromium | null }
 
 /** What a project launches with: the config's `use`, then the project's over it, as Playwright merges them. */
 function choiceOf(use: Use, inherited: Use | undefined): BrowserChoice {
@@ -75,7 +75,7 @@ function reportersOf(config: PlaywrightTestConfig): ReporterDescription[] {
  * The `use` of a worker the emulator is attached to: only inside a worker (the reporter has published the run, and the worker has an index) and only for chromium. The browser is not named:
  * `inherited` is the config's `use`, which a project's own is read over, so that a channel or executablePath the team set at the top is seen from a project.
  */
-function attach(use: Use, inherited: Use | undefined, { bundle, run, playwright }: Worker): Use {
+function attach(use: Use, inherited: Use | undefined, { bundle, run, playwright }: AttachContext): Use {
   const browser = (use as { browserName?: string }).browserName;
   const index = Number(process.env.TEST_PARALLEL_INDEX ?? NaN);
   if (!run || Number.isNaN(index) || (browser && browser !== "chromium")) return use;

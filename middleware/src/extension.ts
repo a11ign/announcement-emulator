@@ -1,6 +1,7 @@
 import { cpSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { layout } from "./bundle.ts";
+import type { Verdict } from "./playwright-chromium.ts";
 
 /**
  * A private copy of the companion extension for one runtime. The copy's manifest names `passive.js` as its service worker (the extension in the bundle keeps `bg.js`, which a session
@@ -34,7 +35,7 @@ export interface TreePick { source: TreeSource; why: string }
  * The environment decides when it is set. Otherwise macOS reads through the DevTools port, and so does a launch the extension cannot be expected to load in (`extension.ok` false: the team chose
  * its own browser, or Playwright's full Chromium is not installed). Anywhere else the extension is the default. No setup is broken by this: the DevTools source runs in any Chromium.
  */
-export function pickTree(platform: string = process.platform, env: NodeJS.ProcessEnv = process.env, extension: { ok: boolean; why: string } = { ok: true, why: "" }): TreePick {
+export function pickTree(platform: string = process.platform, env: NodeJS.ProcessEnv = process.env, extension: Verdict = { ok: true, why: "" }): TreePick {
   const given = env.ANNOUNCEMENT_EMULATOR_TREE;
   if (given === "extension" || given === "devtools") return { source: given, why: `ANNOUNCEMENT_EMULATOR_TREE=${given}` };
   if (platform === "darwin") return { source: "devtools", why: "macOS gives the extension no desktop tree" };

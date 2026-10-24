@@ -5,11 +5,12 @@ import { readManifest } from "./bundle.ts";
 import { annotationsFor, assign, attachments, browserBuild, describe, type Window } from "./format.ts";
 import { pickTree, prepareExtension, type TreeSource } from "./extension.ts";
 import { freePorts } from "./ports.ts";
+import type { Verdict } from "./playwright-chromium.ts";
 import { publishRun } from "./run.ts";
 import { Runtime, type DrainStats } from "./runtime.ts";
 import { agreementFor, readSupported, type Agreement, type SupportedVersions } from "./supported.ts";
 
-interface ReporterOptions { bundle: string; sweeps?: boolean; verify?: boolean; /** Whether the extension can be expected to load in the config's chromium projects (config.ts), and if not, why not. */ extension?: { ok: boolean; why: string } }
+interface ReporterOptions { bundle: string; sweeps?: boolean; verify?: boolean; /** Whether the extension can be expected to load in the config's chromium projects (config.ts), and if not, why not. */ extension?: Verdict }
 interface Seen { test: TestCase; result: TestResult; worker: number; window: Window }
 
 /**

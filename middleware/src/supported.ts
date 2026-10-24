@@ -36,7 +36,7 @@ export interface Agreement {
   figure?: string;
 }
 
-const percent = (agreement: number) => `${(agreement * 100).toFixed(1)}%`;
+export const percent = (agreement: number) => `${(agreement * 100).toFixed(1)}%`;
 
 /**
  * The agreement of the build a run used, for the tree source it used. A listed build with a figure for this source and platform says its rate; every other case says "not measured" and the run
