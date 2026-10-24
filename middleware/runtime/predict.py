@@ -15,7 +15,7 @@ to the key. What that leaves out is listed in docs/playwright-middleware-spike.m
 
 Every record it emits is a prediction (ADR 0047): `kind` is `speech`, `observe`, `sweep` or `flag`, and none of them is named for an a11ign evidence field.
 """
-import difflib, hashlib, json, os, re, sys, time
+import hashlib, json, os, re, sys, time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
@@ -71,7 +71,7 @@ def without_fragment(url): return (url or '').split('#')[0]
 
 class Page:
     def __init__(self, uid):
-        self.uid = uid; self.last = None; self.root_uid = None; self.url = None; self.loaded = False; self.spoke_load = False; self.focus_uid = None
+        self.uid = uid; self.last = None; self.root_uid = None; self.url = None; self.spoke_load = False; self.focus_uid = None
         self.observed = set(); self.swept = set(); self.reports_focus = False; self.sweep_wanted = None; self.state = None
 
 
@@ -176,7 +176,7 @@ class Predictor:
         if new_document:
             self.end_state(page)
             if self.doc_page == page.uid: self.doc = None; self.doc_page = None
-            page.root_uid = root['uid']; page.loaded = False; page.spoke_load = False; page.focus_uid = None; page.observed = set(); page.last = None; page.reports_focus = False; page.sweep_wanted = None
+            page.root_uid = root['uid']; page.spoke_load = False; page.focus_uid = None; page.observed = set(); page.last = None; page.reports_focus = False; page.sweep_wanted = None
             if len(snap['nodes']) > 1: self.emit({'kind': 'observe', 'what': 'navigation', 't': t, 'page': page.uid, 'url': snap['url'], 'node': None, 'text': snap['url']})
         page.url = root.get('docUrl') or snap['url']
         loaded = root.get('docLoaded', True)
