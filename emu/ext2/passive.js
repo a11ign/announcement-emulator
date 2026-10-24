@@ -35,6 +35,7 @@ function snapshot(item) {
   DIRTY.add(web); if (item.focus) DIRTY.add(item.focus);
   IX.clear(); number(web);
   const nodes = walkCached(web, 0, []);
+  lastNodes = nodes.length;
   const ms = performance.now() - t0;
   const f = item.focus, ix = o => o && IX.has(o) ? IX.get(o) : -1;
   // the focus inside this document: the browser's focus if it is in here; if not, the element the document itself has focused (a page that is not the active one)
@@ -65,10 +66,19 @@ function verify(web, cached) {
   } else post('verify', {ok: true, nodes: cached.length});
 }
 
+// A tree is posted whole, and on a page of thousands of nodes that is megabytes for each change: a test that presses Tab a hundred times would post hundreds of megabytes and read each tree after the
+// page was gone (measured: a 2,733-node page never got its tree to the runtime in a test of five seconds). So at most one tree for a page waits at a time (the newest, with the newest focus; the page's own
+// focus and key events carry the moves, and need only a tree from after them), and after a tree the worker rests for a tenth of a millisecond for each node.
+let lastNodes = 0;
 async function drain() {
   if (busy) return; busy = true;
-  try { while (QUEUE.length) { const item = QUEUE.shift(); try { snapshot(item); } catch (e) { post('error', {message: String(e && e.stack || e)}); } } }
-  finally { busy = false; }
+  try {
+    while (QUEUE.length) {
+      const item = QUEUE.shift();
+      try { snapshot(item); } catch (e) { post('error', {message: String(e && e.stack || e)}); }
+      await new Promise(resolve => setTimeout(resolve, Math.min(300, lastNodes / 10)));
+    }
+  } finally { busy = false; }
 }
 
 // The focus is read at the moment of the change, then the dump is taken from the queue: a test that presses Tab ten times in ten milliseconds leaves ten items with ten focuses.
@@ -77,12 +87,21 @@ function flush(why) {
   if (!pages.length) return;
   const t = Date.now(), reasons = new Map(pages.map(w => [w, [...PAGES.get(w).changed]]));
   for (const w of pages) PAGES.get(w).changed.clear();
-  chrome.automation.getFocus(f => { for (const w of pages) QUEUE.push({page: w, focus: f, t, why: reasons.get(w)}); drain(); });
+  chrome.automation.getFocus(f => {
+    for (const w of pages) {
+      const waiting = QUEUE.findIndex(q => q.page === w);
+      const why = [...new Set([...(waiting >= 0 ? QUEUE[waiting].why : []), ...reasons.get(w)])];
+      if (waiting >= 0) QUEUE.splice(waiting, 1);
+      QUEUE.push({page: w, focus: f, t, why});
+    }
+    drain();
+  });
 }
 
 function onChange(change) {
   const n = change.target;
   if (change.type === 'subtreeUpdateEnd') { flush(); return; }
+  if (change.type === 'nodeRemoved' && PAGES.has(n)) { PAGES.delete(n); return; }      // a page that is gone is not read again
   const web = topDocument(n);
   if (!web) return;
   // A node that changed changes what its ancestors say too (their text, their word breaks), and nothing reports that.
