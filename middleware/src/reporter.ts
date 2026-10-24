@@ -33,8 +33,8 @@ export default class AnnouncementsReporter implements Reporter {
     const numbers = await freePorts(count * 2);
     const ports = Array.from({ length: count }, (_, i) => ({ collector: numbers[2 * i]!, cdp: numbers[2 * i + 1]! }));
     const extensions = ports.map((p, i) => prepareExtension(this.options.bundle, join(this.dir, `extension-${i}`), p.collector, this.options.verify));
-    publishRun({ bundle: this.options.bundle, dir: this.dir, ports, extensions, verify: !!this.options.verify, sweeps: this.options.sweeps !== false });
-    this.runtimes = ports.map((p, i) => new Runtime(this.options.bundle, p, { sweeps: this.options.sweeps !== false, log: join(this.dir, `runtime-${i}.log`) }));
+    publishRun({ bundle: this.options.bundle, dir: this.dir, ports, extensions, verify: !!this.options.verify, sweeps: sweepsOn(this.options) });
+    this.runtimes = ports.map((p, i) => new Runtime(this.options.bundle, p, { sweeps: sweepsOn(this.options), log: join(this.dir, `runtime-${i}.log`) }));
   }
 
   onTestEnd(test: TestCase, result: TestResult): void {
@@ -70,6 +70,11 @@ export default class AnnouncementsReporter implements Reporter {
     writeFileSync(join(this.dir, "run.json"), JSON.stringify(run, null, 2));
     console.log(`announcement-emulator: predicted NVDA speech attached to ${this.seen.length} tests, ${flagged} flags; the runtime waited ${drainMs} ms at the end (${join(this.dir, "run.json")})`);
   }
+}
+
+/** Sweeps are on unless the config or ANNOUNCEMENT_EMULATOR_SWEEPS=0 says not: the second is how the cost of a sweep is measured without editing the config. */
+function sweepsOn(options: ReporterOptions): boolean {
+  return options.sweeps !== false && process.env.ANNOUNCEMENT_EMULATOR_SWEEPS !== "0";
 }
 
 function readManifestOrNull(bundle: string) {

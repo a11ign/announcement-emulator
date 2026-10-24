@@ -127,7 +127,12 @@ jobs:
           node check-report.mjs
           mv playwright-report "$RUNNER_TEMP/playwright-report-zero-lines"
           rm -rf test-results
-          { time npx playwright test --config playwright.plain.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-without.log" || true
+          cache="${ANNOUNCEMENT_EMULATOR_PATH:-$(node -e "const os=require('os'),p=require('path');console.log(process.platform==='darwin'?p.join(os.homedir(),'Library/Caches/announcement-emulator'):p.join(process.env.XDG_CACHE_HOME||p.join(os.homedir(),'.cache'),'announcement-emulator'))")}"
+          bundle=$(ls -d "$cache"/*/ | head -1)
+          if [ "$(uname)" = Darwin ]; then chrome="$bundle/chrome/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"; else chrome="$bundle/chrome/chrome-linux64/chrome"; fi
+          export BASELINE_CHROME="$chrome" BASELINE_LIBS="$bundle/libs/root/usr/lib/x86_64-linux-gnu"
+          { time npx playwright test --config playwright.baseline.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-without.log"
+          node cost.mjs --project fixtures --runs 3 --workers 1,2,4 --out "$RUNNER_TEMP/cost.json" 2>&1 | tee "$RUNNER_TEMP/cost.log"
       - if: always()
         run: |
           { echo "### Sample suite on ${{ matrix.platform }} (${{ matrix.runner }}, no container)"; echo; cat "$RUNNER_TEMP/install.log" 2>/dev/null || true
@@ -142,5 +147,6 @@ jobs:
             ${{ runner.temp }}/playwright-report-zero-lines
             ${{ runner.temp }}/announcement-emulator-run
             ${{ runner.temp }}/run-*.log
+            ${{ runner.temp }}/cost.*
             ${{ runner.temp }}/install.log
           if-no-files-found: warn
