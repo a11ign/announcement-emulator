@@ -40,6 +40,7 @@ jobs:
       - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_flags.py'
       - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_pure.py'
       - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_cdp.py'
+      - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_fallback.py'
       - run: python3 -m unittest discover -s middleware/bundle -t middleware/bundle
 
   # One bundle for each platform, built here: NVDA's source and the Chromium sources at their pins, the companion extension, and a self-contained Python with the packages in it. No browser and no browser library:

@@ -3,7 +3,7 @@ import { BundleMissing, findBundle, layout, platformId, readManifest } from "./b
 import { pickTree } from "./extension.ts";
 import { readPins } from "./pins.ts";
 import { extensionVerdict, readPlaywright, type PlaywrightChromium } from "./playwright-chromium.ts";
-import { buildFor, percent, readSupported, SOURCE_KEYS, type SupportedVersions } from "./supported.ts";
+import { buildFor, loadSupported, percent, SOURCE_KEYS, type SupportedVersions } from "./supported.ts";
 
 export interface DoctorOptions {
   /** Where the team's `@playwright/test` is resolved from: the directory the command is run in. */
@@ -14,6 +14,8 @@ export interface DoctorOptions {
   /** Starts a browser to ask its version; the tests give it a made-up one. */
   version?: (executable: string) => { status: number | null; out: string };
   supported?: SupportedVersions;
+  /** Where the list is read from when `supported` is not given (the package's own, unless a test says otherwise). */
+  supportedUrl?: URL;
   log?: (line: string) => void;
 }
 
@@ -38,7 +40,9 @@ type Log = (line: string) => void;
 function checkPlaywright(options: DoctorOptions, log: Log, fail: Log): void {
   const playwright = options.playwright === undefined ? readPlaywright(...(options.from ? [options.from] : [])) : options.playwright;
   if (!playwright) { fail("Playwright: @playwright/test is not installed here, or its browsers.json could not be read. Run: npm i -D @playwright/test"); return; }
-  reportPlaywright(playwright, options.supported ?? readSupported(), { env: options.env ?? process.env, platform: options.platform ?? process.platform, log, fail });
+  const { list, error } = options.supported ? { list: options.supported, error: null } : loadSupported(options.supportedUrl);
+  if (error) fail(`the package's supported-versions.json ${error}. Reinstall the package`);
+  reportPlaywright(playwright, list, { env: options.env ?? process.env, platform: options.platform ?? process.platform, log, fail });
   if (playwright.fullInstalled && playwright.executablePath) checkStarts(playwright.executablePath, options.version ?? browserVersion, log, fail);
 }
 

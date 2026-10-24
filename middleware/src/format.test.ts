@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { LAG_MS, annotationsFor, assign, attachments, browserBuild, describe, evidenceFieldsIn, type Window } from "./format.ts";
+import { LAG_MS, annotationsFor, assign, attachments, browserBuild, describe, evidenceFieldsIn, treeOfWorker, type Window } from "./format.ts";
 import { agreementFor, type Figure, type SupportedVersions } from "./supported.ts";
 import { ANNOTATION, ATTACH_JSON, ATTACH_TEXT, LABEL } from "./label.ts";
 import type { RuntimeRecord } from "./runtime.ts";
@@ -134,4 +134,12 @@ test("a build that is not listed says its agreement is not measured and no utter
 test("the report's sentence carries the population, the date and the ceiling the figure gives", () => {
   const out = rated(byShape(), ["NAME", "ROLE"]);
   assert.match(out.text, /^agreement measured for Chromium 156\.0\.8078\.4 \(Playwright 1\.64\.1\), extension: 83\.1% of 249 units on 6 held-out pages, 2026-10-26; the fleet agrees with itself on 95\.2% \(middleware\/results\/agreement-round-1\/held-out\/156\.0\.8078\.4\/extension-linux\/\)$/m);
+});
+
+test("a worker whose extension did not come up reads as the DevTools source from the runtime's own record, with the reason it gave; any other keeps the run's pick", () => {
+  const planned = { source: "extension" as const, why: "the default where the browser gives the extension a desktop tree" };
+  const fell: RuntimeRecord = { kind: "start", t: 5, what: "fallback", from: "extension", to: "devtools", why: "the extension did not come up within 5 s of the first page, so the trees are read through the DevTools port" };
+  assert.deepEqual(treeOfWorker([fell], planned), { source: "devtools", why: fell.why });
+  assert.deepEqual(treeOfWorker([{ kind: "start", t: 1, what: "extension" }], planned), planned);
+  assert.deepEqual(treeOfWorker([], planned), planned);
 });

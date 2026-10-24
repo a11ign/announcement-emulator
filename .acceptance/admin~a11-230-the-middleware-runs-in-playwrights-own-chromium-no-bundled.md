@@ -19,10 +19,11 @@ test -z "$(git grep -nE 'BASELINE_CHROME|BASELINE_LIBS' -- middleware .github)"
 # the demo job installs only Playwright's browser, for each listed version and one unlisted version
 grep -q 'npx playwright install \${{ matrix.deps }} chromium' .github/workflows/middleware-spike.yml
 for v in 1.64.1 1.63.0 1.62.1; do grep -q "playwright: \"$v\"" .github/workflows/middleware-spike.yml; done
-# the package: lint, types, tests (a supported version's wording, an unsupported version's wording, doctor, the launch options, the tree pick)
+# the package: lint, types, tests (a supported version's wording, an unsupported version's wording, doctor, the launch options, the tree pick and the wait for the extension)
 ( cd middleware && pnpm install --frozen-lockfile >/dev/null && pnpm run lint && pnpm run typecheck && pnpm test >/dev/null )
-# the Python tests: the browser's build reaches the report, and the bundle holds no browser
+# the Python tests: the browser's build reaches the report, the runtime reads the trees through the port when the extension does not come up, and the bundle holds no browser
 python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_cdp.py'
+python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_fallback.py'
 python3 -m unittest discover -s middleware/bundle -t middleware/bundle
 ```
 

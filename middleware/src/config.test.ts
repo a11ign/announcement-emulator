@@ -138,15 +138,14 @@ test("where the tree is read through the DevTools port the headless shell is lef
   });
 });
 
-test("a channel or an executablePath the team chose is not changed, and the reporter is told the extension is not expected to load there", () => {
+test("a channel or an executablePath the team chose is not changed, and the extension is tried there: the runtime falls back to the DevTools port if it does not come up", () => {
   const chrome = inWorker({ channel: "chrome" });
   assert.equal(chrome.use!.channel, "chrome");
   const own = inWorker({ launchOptions: { executablePath: "/team/chrome" } });
   assert.equal(own.use!.launchOptions!.executablePath, "/team/chrome");
   assert.equal(own.use!.channel, undefined);
-  assert.equal(extensionOf(chrome as PlaywrightTestConfig).ok, false);
-  assert.match(extensionOf(chrome as PlaywrightTestConfig).why, /channel "chrome"/);
-  assert.match(extensionOf(own as PlaywrightTestConfig).why, /executablePath/);
+  assert.equal(extensionOf(chrome as PlaywrightTestConfig).ok, true);
+  assert.equal(extensionOf(own as PlaywrightTestConfig).ok, true);
 });
 
 test("a channel the team set at the top is seen from a project that sets none, and the project is not given another", () => {
@@ -183,7 +182,7 @@ test("a Playwright that could not be read leaves every launch as it is, and the 
 test("the extension is expected to load only if it is in every chromium project, and a firefox project does not count", () => {
   const bundle = fakeBundle();
   withEnv({ ANNOUNCEMENT_EMULATOR_BUNDLE: bundle, [RUN_ENV]: undefined }, () => {
-    const mixed = withAnnouncements({ projects: [{ name: "a", use: { browserName: "chromium" } }, { name: "b", use: { browserName: "chromium", channel: "chrome" } }] });
+    const mixed = withAnnouncements({ projects: [{ name: "a", use: { browserName: "chromium" } }, { name: "b", use: { browserName: "chromium", headless: true } }] }, onlyShell);
     assert.equal(extensionOf(mixed).ok, false);
     const withFirefox = withAnnouncements({ projects: [{ name: "a", use: { browserName: "chromium" } }, { name: "ff", use: { browserName: "firefox", channel: "firefox-beta" } }] });
     assert.equal(extensionOf(withFirefox).ok, true);

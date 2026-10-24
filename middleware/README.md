@@ -39,9 +39,11 @@ The middleware downloads no browser and bundles none: it runs in **the Chromium 
 - **Install the full Chromium, not only the headless shell.** Since Playwright 1.49 a headless launch with no `channel` runs `chromium-headless-shell`, which loads no extension.
   `npx playwright install chromium` installs both (`--only-shell` installs only the shell). Where the extension is the tree source and your launch is headless and left to Playwright (no `channel`, no `executablePath`),
   the middleware adds `channel: "chromium"`, which runs the full Chromium in the new headless mode. On Linux CI use `npx playwright install --with-deps chromium`, Playwright's own route to the browser's system libraries.
-- **A `channel` or an `executablePath` you chose is yours.** The middleware does not change it, and does not assume that browser loads the extension: the tree then comes through the DevTools port, in whatever Chromium
-  that is, and each report says why (`ANNOUNCEMENT_EMULATOR_TREE=extension` forces the extension). The same holds with only the headless shell installed, and for a Playwright older than 1.49 launched headless.
-  Nothing breaks: the tests run as they did, with predicted speech from the DevTools source. The tree source is one for the whole run, so one such project in a config puts every project on the DevTools source.
+- **A `channel` or an `executablePath` you chose is yours.** The middleware does not change it. It cannot know whether that browser loads the extension, so it tries it: if the extension has said nothing
+  five seconds after the browser's first page (`ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT`, in seconds), the runtime reads the trees through the DevTools port from then on, in whatever Chromium that is, and each report says
+  so and why. Speech for what ran before the switch is lost. A source set with `ANNOUNCEMENT_EMULATOR_TREE` is never switched. Where it is known beforehand that the extension cannot load (only the headless shell is installed,
+  or a Playwright older than 1.49 launched headless), the DevTools port is used from the start. Nothing breaks: the tests run as they did.
+  The tree source is one for the whole run, and a project that is known not to load the extension puts every project on the DevTools source.
 - The team's Playwright is looked for from the working directory, then from where this package is installed. The channel the middleware adds is visible to a test as `testInfo.project.use.channel`.
 
 `npx announcement-emulator doctor` prints your Playwright version, the Chromium build its `browsers.json` names, which of the full browser and the headless shell are installed, whether that build is on
@@ -89,6 +91,7 @@ after each change) and through the DevTools port (the page's own focus moves, ke
 | `ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST` | where `install` fetches the bundle from. This spike has none: nothing is published |
 | `ANNOUNCEMENT_EMULATOR_BUNDLE` | use this unpacked bundle instead of the cache |
 | `ANNOUNCEMENT_EMULATOR_SWEEPS=0` | no sweeps |
+| `ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT` | seconds the runtime waits for an extension that has said nothing, after the first page, before it reads the trees through the DevTools port (default 5; 0 never) |
 | `ANNOUNCEMENT_EMULATOR_TREE` | `extension` or `devtools`: where the accessibility tree comes from. Unset, the middleware picks: the extension where the browser gives it a desktop tree and it is expected to load (Linux, Windows), the DevTools port on macOS and wherever the extension cannot be expected to load |
 
 ## Licence

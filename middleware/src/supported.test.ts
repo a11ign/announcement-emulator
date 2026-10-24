@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { agreementFor, buildFor, buildOfPlaywright, problemsIn, readSupported, readSupportedSafely, shapeRateFor, sourceKey, type Figure, type SupportedVersions } from "./supported.ts";
+import { agreementFor, buildFor, buildOfPlaywright, problemsIn, loadSupported, readSupported, shapeRateFor, sourceKey, withListError, type Figure, type SupportedVersions } from "./supported.ts";
 
 const figure = (agreement: number, units: number, key: string) => ({ agreement, units, date: "2026-10-26", figure: `middleware/results/playwright-versions/156.0.8078.4/${key}/` });
 const list: SupportedVersions = { builds: [
@@ -78,8 +78,20 @@ test("the list ships in the package, beside pins.json", () => {
   assert.ok(existsSync(join(root, "supported-versions.json")));
 });
 
-test("a list that cannot be read, or has an entry with no figures, never fails a report: the build reads as not measured", () => {
-  assert.deepEqual(readSupportedSafely(new URL("file:///no/such/list.json")), { builds: [] });
+test("a list that cannot be read, or fails its schema, is said so and is not taken for a build that is merely not measured", () => {
+  const missing = loadSupported(new URL("file:///no/such/list.json"));
+  assert.deepEqual(missing.list, { builds: [] });
+  assert.match(missing.error!, /^could not be read: /);
+  const line = withListError(agreementFor(missing.list, "156.0.8078.4", "extension", "linux"), missing.error).line;
+  assert.match(line, /^agreement not measured for Chromium 156\.0\.8078\.4 \(the package's supported-versions\.json could not be read: /);
+  assert.equal(withListError(agreementFor(list, "152.0.7999.1", "extension", "linux"), null).line, "agreement not measured for Chromium 152.0.7999.1");
+});
+
+test("the list the package ships loads without error", () => {
+  assert.deepEqual(loadSupported().error, null);
+});
+
+test("an entry with no figures never throws in a report: the build reads as not measured", () => {
   const broken = { builds: [{ chromium: "156.0.8078.4", playwright: ["1.64.1"] }] } as unknown as SupportedVersions;
   assert.equal(agreementFor(broken, "156.0.8078.4", "extension", "linux").line, "agreement not measured for Chromium 156.0.8078.4");
   assert.equal(agreementFor({ builds: [null] } as unknown as SupportedVersions, "156.0.8078.4", "extension", "linux").measured, false);
@@ -153,4 +165,11 @@ test("a population or a ceiling that is null is named by the schema and does not
   const problems = problemsIn(rounds({ population: null as never, ceiling: null as never }));
   assert.ok(problems.some((p) => p.includes("population is not a population")), problems.join("\n"));
   assert.ok(problems.some((p) => p.includes("ceiling is not a ceiling")), problems.join("\n"));
+});
+
+test("the list ships in the package, beside pins.json", () => {
+  const root = join(import.meta.dirname, "..");
+  const pkg = JSON.parse(readFileSync(join(root, "package.json"), "utf8")) as { files: string[] };
+  assert.ok(pkg.files.includes("supported-versions.json"));
+  assert.ok(existsSync(join(root, "supported-versions.json")));
 });

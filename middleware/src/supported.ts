@@ -32,14 +32,23 @@ export const sourceKey = (tree: TreeSource, platform: string = process.platform)
 export const buildFor = (list: SupportedVersions, chromium: string | null): SupportedBuild | undefined => list.builds.find((b) => b?.chromium === chromium);
 export const buildOfPlaywright = (list: SupportedVersions, version: string): SupportedBuild | undefined => list.builds.find((b) => b.playwright.includes(version));
 
-/** The list, or an empty one when it cannot be read or is not a list: the wording of a prediction must never fail a run. */
-export function readSupportedSafely(url?: URL): SupportedVersions {
+/** The list the package ships, and what is wrong with it if it cannot be used: a missing or corrupt list is a broken package, and is said so (in the console, in `run.json` and in each report's sentence), not reported as a build that is merely not measured. */
+export interface SupportedRead { list: SupportedVersions; error: string | null }
+
+/** Reads the list without ever throwing, so that a broken list cannot fail a test run, and without hiding it: a list that is unreadable or fails its schema reads as empty, with `error` saying why. */
+export function loadSupported(url?: URL): SupportedRead {
   try {
     const list = readSupported(url);
-    return Array.isArray(list?.builds) ? list : { builds: [] };
-  } catch {
-    return { builds: [] };
+    const problems = problemsIn(list);
+    return problems.length ? { list: { builds: [] }, error: `invalid: ${problems.slice(0, 3).join("; ")}` } : { list, error: null };
+  } catch (error) {
+    return { list: { builds: [] }, error: `could not be read: ${(error as Error).message}` };
   }
+}
+
+/** A report's sentence when the list was unusable: it still says the agreement is not measured, and also that the package's list is the reason. */
+export function withListError(agreement: Agreement, error: string | null): Agreement {
+  return error ? { ...agreement, line: `${agreement.line} (the package's supported-versions.json ${error})` } : agreement;
 }
 
 /** What a report says about the agreement of the Chromium it ran in. */

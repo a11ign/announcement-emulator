@@ -15,6 +15,12 @@ export function browserBuild(records: RuntimeRecord[]): string | null {
   return (found?.browser as string | undefined) ?? null;
 }
 
+/** Where a worker's trees came from: the run's pick, unless the runtime found the extension had not come up and read them through the DevTools port from then on (its `fallback` start record says when and why). */
+export function treeOfWorker(records: RuntimeRecord[], planned: { source: TreeSource; why: string }): { source: TreeSource; why: string } {
+  const fell = records.find((r) => r.kind === "start" && r.what === "fallback");
+  return fell ? { source: "devtools", why: String(fell.why) } : planned;
+}
+
 /** The slice of a run one test owns: what happened on its worker's browser while the test ran. */
 export interface Window { title: string; start: number; end: number }
 
