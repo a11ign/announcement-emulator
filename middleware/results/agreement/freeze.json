@@ -1,0 +1,23 @@
+{
+ "commit": "ca8145ad4797c301127b19b6df7497c73c5c9e9c",
+ "subject": "ci(middleware): the extension says whether the platform gave it chrome.automation (A11-208)",
+ "committedAt": "2026-10-24T16:38:10+01:00",
+ "namedAt": "2026-10-24T15:38:40Z",
+ "objects": {
+  "emu": "9076803053934daa0752d1cbf3e01b7c4b969960",
+  "middleware/runtime": "0ab0a60d13535bad3320c20d28a43a5d5cc7ca0a",
+  "middleware/src": "e2c54f35ada939da3bf4b6d0c137eda13b500210",
+  "middleware/agreement/measure.py": "3332071b7b207a3dcaee5b8493df68e57beb27c8",
+  "middleware/agreement/select_pages.py": "bc4e372a5e2c6d0987b1214869101beeb82886c2",
+  "middleware/agreement/capture_fleet.py": "c5988442300bc5e785a2e2afb7c121c0779efef1",
+  "middleware/agreement/dom_check.mjs": "4af780356a4ba760b3b1bc414d2701fe46cf41ef",
+  "middleware/sample-suite/tests/corpus": "1b9a55ea0522142058363bad615bf1f716acb56a",
+  "middleware/results/agreement/rule.md": "d42a2d691b5457f79cdf5052953acd438edc4b2d",
+  "middleware/results/agreement/pages.json": "0455e0d2e7b589315a7ddfaa89ddfe465f9b015e",
+  "q3/sweep.py": "4fc089be5bf22c9fc179ed98cc050ed18ab5d116",
+  "q3/livepage.py": "4e04a07df5ff4c42cb994437a644392bad436b99",
+  "q3/shapes.py": "d24a06b9a968e4e785d5879b3479f0266bae159a",
+  "q3/fleet_capture.mjs": "f0598b87ab05befc09c16d138a2d5122eac38e52",
+  "pins.env": "df87c3dda868a0ffb150ff94270c5539e8ab19ad"
+ }
+}
