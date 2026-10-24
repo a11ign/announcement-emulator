@@ -121,7 +121,7 @@ jobs:
           cd "$RUNNER_TEMP/project"
           { time npx playwright test --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-with.log"
           node check-report.mjs
-          cp -R test-results/announcement-emulator "$RUNNER_TEMP/announcement-emulator-run"
+          cp -R test-results/announcement-emulator "$RUNNER_TEMP/announcement-emulator-run"; cp test-results/report.json "$RUNNER_TEMP/announcement-emulator-run/report.json"
           rm -rf test-results
           mv playwright-report "$RUNNER_TEMP/playwright-report-one-line"
           { time npx announcement-emulator test --config playwright.plain.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-zero.log"
