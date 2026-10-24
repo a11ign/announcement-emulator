@@ -73,8 +73,8 @@ LISTENER = r"""(() => {
 
 class Cdp:
     """Calls `on_event(event)` for each trusted keydown and focusin in any page of the browser listening on `port`. Reconnects when the browser is launched again (a Playwright worker is restarted)."""
-    def __init__(self, port, on_event):
-        self.port, self.on_event = port, on_event
+    def __init__(self, port, on_event, on_attach=lambda target: None):
+        self.port, self.on_event, self.on_attach = port, on_event, on_attach
         self.ws = None; self.next_id = 0; self.stopped = False; self.installed = set(); self.lock = threading.Lock(); self.target_of = {}; self.url_of = {}
         self.thread = threading.Thread(target=self._run, daemon=True, name='cdp'); self.thread.start()
 
@@ -120,7 +120,7 @@ class Cdp:
 
     def _install(self, session, target):
         if target in self.installed: return
-        self.installed.add(target)
+        self.installed.add(target); self.on_attach(target)
         self._send('Runtime.enable', {}, session)      # without it the browser does not send `Runtime.bindingCalled`
         self._send('Runtime.addBinding', {'name': '__ae'}, session)
         self._send('Page.enable', {}, session)      # the script below is run on each new document only while the Page domain is enabled

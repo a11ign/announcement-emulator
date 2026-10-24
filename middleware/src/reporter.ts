@@ -51,7 +51,7 @@ export default class AnnouncementsReporter implements Reporter {
     let flagged = 0, unassigned = 0;
     this.runtimes.forEach((runtime, worker) => {
       const mine = this.seen.filter((s) => s.worker === worker);
-      const owned = assign(runtime.records, mine.map((s) => s.window));
+      const owned = assign(runtime.records.filter((rec) => rec.kind !== "start"), mine.map((s) => s.window));
       unassigned += owned.unassigned;
       for (const { test, result, window } of mine) {
         const output = describe(window, owned.byWindow.get(window) ?? [], emulator);
@@ -64,9 +64,16 @@ export default class AnnouncementsReporter implements Reporter {
     await Promise.all(this.runtimes.map((r) => r.stop()));
   }
 
+  /** When the browser's side came up, against when the worker's first test began: positive means the test began first, and what it did before then was not seen. */
+  private startup(runtime: Runtime, worker: number): Record<string, number | null> {
+    const first = Math.min(...this.seen.filter((s) => s.worker === worker).map((s) => s.window.start));
+    const at = (what: string) => { const t = runtime.records.find((r) => r.kind === "start" && r.what === what)?.t; return t === undefined || !Number.isFinite(first) ? null : t - first; };
+    return { extensionUpAfterFirstTestStartedMs: at("extension"), devtoolsAttachedAfterFirstTestStartedMs: at("devtools") };
+  }
+
   private write(stats: DrainStats[], drainMs: number, flagged: number, unassigned: number): void {
     this.runtimes.forEach((r, i) => writeFileSync(join(this.dir, `records-${i}.json`), JSON.stringify(r.records, null, 1)));
-    const run = { label: "predicted NVDA speech: run summary", wallMs: Date.now() - this.started, drainMs, workers: this.runtimes.map((r, i) => ({ bootMs: r.bootMs, ...stats[i] })), tests: this.seen.length, flags: flagged, recordsOutsideAnyTest: unassigned };
+    const run = { label: "predicted NVDA speech: run summary", wallMs: Date.now() - this.started, drainMs, workers: this.runtimes.map((r, i) => ({ bootMs: r.bootMs, startup: this.startup(r, i), ...stats[i] })), tests: this.seen.length, flags: flagged, recordsOutsideAnyTest: unassigned };
     writeFileSync(join(this.dir, "run.json"), JSON.stringify(run, null, 2));
     console.log(`announcement-emulator: predicted NVDA speech attached to ${this.seen.length} tests, ${flagged} flags; the runtime waited ${drainMs} ms at the end (${join(this.dir, "run.json")})`);
   }

@@ -1,7 +1,9 @@
 import { createHash } from "node:crypto";
 import { spawn } from "node:child_process";
 import { createWriteStream, mkdirSync, renameSync, rmSync } from "node:fs";
-import { Readable, Transform } from "node:stream";
+import { get as httpGet } from "node:http";
+import { get as httpsGet } from "node:https";
+import { Transform } from "node:stream";
 import { pipeline } from "node:stream/promises";
 import { join } from "node:path";
 import { bundleName, cacheRoot, isInstalled, platformId } from "./bundle.ts";
@@ -42,13 +44,19 @@ export async function install(pins: Pins, options: InstallOptions = {}): Promise
   return target;
 }
 
-async function download(url: string, file: string): Promise<string> {
-  const response = await fetch(url);
-  if (!response.ok || !response.body) throw new Error(`announcement-emulator: ${url} answered ${response.status}`);
-  const hash = createHash("sha256");
-  const summing = new Transform({ transform(chunk: Buffer, _encoding, done) { hash.update(chunk); done(null, chunk); } });
-  await pipeline(Readable.fromWeb(response.body as never), summing, createWriteStream(file));
-  return hash.digest("hex");
+/** node:http and node:https and not fetch: fetch's body stream, piped to a file, hit an assertion inside Node's http client on a macOS runner (`assert(!this.paused)`, undici) with a 300 MB body. */
+function download(url: string, file: string, hops = 0): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const get = url.startsWith("https:") ? httpsGet : httpGet;
+    get(url, (response) => {
+      const status = response.statusCode ?? 0;
+      if (status >= 300 && status < 400 && response.headers.location && hops < 5) { response.resume(); download(new URL(response.headers.location, url).href, file, hops + 1).then(resolve, reject); return; }
+      if (status !== 200) { response.resume(); reject(new Error(`announcement-emulator: ${url} answered ${status}`)); return; }
+      const hash = createHash("sha256");
+      const summing = new Transform({ transform(chunk: Buffer, _encoding, done) { hash.update(chunk); done(null, chunk); } });
+      pipeline(response, summing, createWriteStream(file)).then(() => resolve(hash.digest("hex")), reject);
+    }).on("error", reject);
+  });
 }
 
 function untar(archive: string, into: string): Promise<void> {

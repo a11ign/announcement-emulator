@@ -72,7 +72,7 @@ def main():
     cdp = None
     if args.cdp:
         import cdp as cdp_module
-        cdp = cdp_module.Cdp(args.cdp, lambda ev: inbox.put(('page', ev, time.time())))
+        cdp = cdp_module.Cdp(args.cdp, lambda ev: inbox.put(('page', ev, time.time())), lambda target: inbox.put(('attached', {'target': target}, time.time())))
     send({'type': 'ready', 'bootMs': round((time.time() - t0) * 1000)})
     ordered = Ordered()
     dump = open(os.environ['AE_DUMP'], 'a', buffering=1) if os.environ.get('AE_DUMP') else None      # a log of what arrived and when, for finding what a run lost
@@ -84,11 +84,13 @@ def main():
         if kind == 'snap': f = next((n for n in body['nodes'] if n['ix'] == body['focusIx']), None); row.update(nodes=len(body['nodes']), focus=f and f'{f["role"]} {f.get("name")}')
         dump.write(json.dumps(row) + '\n')
 
-    def handle(kind, body):
+    def handle(kind, body, arrived_at=0):
         try:
             if kind == 'snap': pass
             elif kind == 'page': predictor.on_page_event(body)
             elif kind in ('error', 'verify'): send({'type': 'record', 'rec': {'kind': kind, **body}})
+            elif kind == 'ready': send({'type': 'record', 'rec': {'kind': 'start', 'what': 'extension', 't': body['t']}})      # when the extension's service worker was up: a test that ran before it was up lost what it did
+            elif kind == 'attached': send({'type': 'record', 'rec': {'kind': 'start', 'what': 'devtools', 't': round(arrived_at * 1000)}})
         except BaseException as e:
             import traceback; traceback.print_exc()
             send({'type': 'record', 'rec': {'kind': 'error', 'where': kind, 'message': f'{type(e).__name__}: {e}'}})
@@ -120,13 +122,13 @@ def main():
                         if k == 'snap': ordered.add(b, a)
                         elif k == 'page': handle('page', b)
                         elif k == 'cmd' and b['cmd'] == 'quit': break
-                        else: handle(k, b)
+                        else: handle(k, b, a)
                         last = time.time()
                     except queue.Empty: pass
                 snapshots(final=True)
                 stats = predictor.finish(); stats['lostSnapshots'] = ordered.lost
                 send({'type': 'drained', 'id': body.get('id'), 'stats': stats})
-        else: handle(kind, body)
+        else: handle(kind, body, arrived)
     if cdp: cdp.stop()
     server.shutdown()
 

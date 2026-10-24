@@ -13,6 +13,14 @@ const EXPECTED = {
 const tests = [];
 (function walk(suite) { for (const s of suite.suites ?? []) walk(s); for (const spec of suite.specs ?? []) for (const t of spec.tests) tests.push({ title: spec.title, results: t.results }); })({ suites: report.suites });
 
+// A test that began before the extension of its worker's browser was up is not held to what it should have heard: it did what it did before anything was listening (run.json says when that was).
+let startup = [];
+try { startup = JSON.parse(readFileSync(process.argv[3] ?? "test-results/announcement-emulator/run.json", "utf8")).workers.map((w) => w.startup); } catch { /* no run summary: every test is held to it */ }
+const firstStart = {};
+for (const { results } of tests) { const r = results.at(-1); firstStart[r.parallelIndex] = Math.min(firstStart[r.parallelIndex] ?? Infinity, Date.parse(r.startTime)); }
+const cold = (r) => { const up = startup[r.parallelIndex]?.extensionUpAfterFirstTestStartedMs; return typeof up === "number" && Date.parse(r.startTime) < firstStart[r.parallelIndex] + up; };
+const skipped = [];
+
 const problems = [];
 let speech = 0, sweeps = 0, flags = 0;
 for (const { title, results } of tests) {
@@ -26,10 +34,11 @@ for (const { title, results } of tests) {
   if (!/^predicted NVDA speech: advisory, not a reading of NVDA, never evidence/.test(data.label)) problems.push(`${title}: the json does not say it is a prediction`);
   for (const banned of ["transcript", "structure", "interaction", "focusOrder"]) if (JSON.stringify(data).includes(`"${banned}"`)) problems.push(`${title}: a field is named ${banned}`);
   speech += data.predictedSpeech.length; sweeps += data.sweeps.length; flags += data.flags.length;
+  if (cold(result)) { skipped.push(title); continue; }
   const got = data.flags.map((f) => f.flag).sort(), want = (EXPECTED[title] ?? []).slice().sort();
   if (JSON.stringify(got) !== JSON.stringify(want)) problems.push(`${title}: flags ${JSON.stringify(got)}, wanted ${JSON.stringify(want)}`);
   if (!data.predictedSpeech.some((s) => s.cause === "load")) problems.push(`${title}: no page load was predicted`);
   if (!data.sweeps.length) problems.push(`${title}: no sweep`);
 }
-console.log(`${tests.length} tests, ${speech} predicted utterances, ${sweeps} sweeps, ${flags} flags`);
+console.log(`${tests.length} tests, ${speech} predicted utterances, ${sweeps} sweeps, ${flags} flags` + (skipped.length ? `; not held to what they should have heard, because they began before the browser's extension was up: ${skipped.join("; ")}` : ""));
 if (problems.length) { console.error(problems.join("\n")); process.exit(1); }
