@@ -21,7 +21,12 @@ type Format = (typeof FORMATS)[number];
 
 /** Whether this host's tar can write the format, and so unpack it: the bundle is read with the same tar (install.ts). */
 function tarCan(format: Format): boolean {
-  try { const dir = mkdtempSync(join(tmpdir(), "ae-tar-")); execFileSync("tar", [format.flag, "-cf", join(dir, `t.tar.${format.extension}`), "-C", dir, "."], { stdio: "ignore" }); return true; } catch { return false; }
+  try {
+    const source = mkdtempSync(join(tmpdir(), "ae-tar-src-")), out = mkdtempSync(join(tmpdir(), "ae-tar-out-"));
+    writeFileSync(join(source, "f"), "f");
+    execFileSync("tar", [format.flag, "-cf", join(out, `t.tar.${format.extension}`), "-C", source, "."], { stdio: "ignore" });
+    return true;
+  } catch { return false; }
 }
 
 /** A bundle as the build writes one (a tar with a bundle.json, compressed), served over http, and the pins that name it. */
