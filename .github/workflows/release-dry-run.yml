@@ -1,0 +1,107 @@
+# A dry-run release (A11-232): the bundles of release-bundles.yml, then everything a release does with them on a scratch copy of the working tree: `changeset version`, middleware/release/after-version.sh (the pins.json
+# and the changelog entry with the measured agreement), a pack, and an install of the packed package from the built bundles served as a mirror, on each platform. It publishes, tags and pushes nothing.
+#
+# It holds neither `id-token: write` nor `contents: write`, so it is safe to run from a pull request and from `workflow_dispatch`. The real release is release.yml, which runs from `main` only. This file is not part of
+# ci.yml's `gate`: building bundles on macOS takes many minutes, which the merge gate keeps out (ci.yml's header says the same of the spike's bundle jobs).
+#
+# What it shows, in the run's summary and in the `release-dry-run` artifact: every file the Release would carry with its size and sum, the reproducibility of each platform, the packed pins.json, the notes, and each
+# platform's mirror install log.
+name: release-dry-run
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/release*.yml"
+      - ".changeset/**"
+      - "package.json"
+      - "pnpm-workspace.yaml"
+      - "pnpm-lock.yaml"
+      - "middleware/bundle/**"
+      - "middleware/release/**"
+      - "middleware/runtime/**"
+      - "middleware/src/**"
+      - "middleware/package.json"
+      - "middleware/pins.json"
+      - "middleware/supported-versions.json"
+      - "pins.env"
+      - "emu/**"
+      - "q1/**"
+      - "q2/**"
+      - "q3/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-dry-run-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  bundles:
+    uses: ./.github/workflows/release-bundles.yml
+
+  rehearse:
+    needs: bundles
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with: { node-version: 22 }
+      - uses: actions/download-artifact@v8
+        with:
+          name: release-files
+          path: ${{ runner.temp }}/release-files
+      - name: The release of this branch's changesets, on a scratch copy
+        run: |
+          middleware/release/dry-run.sh "$RUNNER_TEMP/release-files" "$RUNNER_TEMP/release-dry-run"
+          cat "$RUNNER_TEMP/release-dry-run/summary.md" >> "$GITHUB_STEP_SUMMARY"
+        shell: bash
+      - uses: actions/upload-artifact@v7
+        with:
+          name: release-dry-run
+          path: ${{ runner.temp }}/release-dry-run
+          retention-days: 14
+          if-no-files-found: error
+
+  # The packed package installs the bundle it pins, from a mirror of the Release's assets (ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST), and its doctor finds it.
+  install:
+    needs: rehearse
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { platform: linux-x64, runner: ubuntu-latest, deps: "--with-deps" }
+          - { platform: darwin-arm64, runner: macos-latest, deps: "" }
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with: { node-version: 22 }
+      - uses: actions/download-artifact@v8
+        with:
+          name: release-files
+          path: ${{ runner.temp }}/release-files
+      - uses: actions/download-artifact@v8
+        with:
+          name: release-dry-run
+          path: ${{ runner.temp }}/release-dry-run
+      - name: Install the packed package and its bundle through the mirror
+        env:
+          PLAYWRIGHT_DEPS: ${{ matrix.deps }}
+        run: |
+          middleware/release/install-check.sh "$RUNNER_TEMP/release-dry-run" "$RUNNER_TEMP/release-files" "$RUNNER_TEMP/install-${{ matrix.platform }}.log"
+          { echo "### Mirror install, ${{ matrix.platform }}"; echo; echo '```'; cat "$RUNNER_TEMP/install-${{ matrix.platform }}.log"; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+        shell: bash
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: release-dry-run-install-${{ matrix.platform }}
+          path: ${{ runner.temp }}/install-${{ matrix.platform }}.log
+          retention-days: 14
+          if-no-files-found: warn

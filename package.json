@@ -1,0 +1,9 @@
+{
+  "name": "announcement-emulator-workspace",
+  "private": true,
+  "description": "The root of the repository, for releases only (A11-232): it holds @changesets/cli and names the one package it releases, middleware/. The emulator itself is Python and has no package here.",
+  "packageManager": "pnpm@10.34.5",
+  "devDependencies": {
+    "@changesets/cli": "3.0.3"
+  }
+}

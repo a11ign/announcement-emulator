@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { spawn } from "node:child_process";
-import { createWriteStream, mkdirSync, renameSync, rmSync } from "node:fs";
+import { createWriteStream, mkdirSync, readFileSync, renameSync, rmSync } from "node:fs";
 import { get as httpGet } from "node:http";
 import { get as httpsGet } from "node:https";
 import { Transform } from "node:stream";
@@ -9,13 +9,40 @@ import { join } from "node:path";
 import { bundleName, cacheRoot, isInstalled, platformId } from "./bundle.ts";
 import { pinFor, type Pins } from "./pins.ts";
 
-export interface InstallOptions { env?: NodeJS.ProcessEnv; platform?: string; log?: (line: string) => void }
+export interface InstallOptions {
+  env?: NodeJS.ProcessEnv; platform?: string; log?: (line: string) => void;
+  /** Where the version's Release is served, with its trailing slash, in place of github.com's. A seam for the tests: nothing sets it, and the default URL is never fetched in a test. */
+  releaseBase?: string;
+}
 
-/** Where bundles are fetched from, as PLAYWRIGHT_DOWNLOAD_HOST is for browsers. This spike publishes nothing, so there is no default: a real version needs a host (docs/playwright-middleware-spike.md). */
-export function downloadUrl(pins: Pins, platform: string, env: NodeJS.ProcessEnv): string {
+/** Where a bundle comes from: the Release of the package's version, or the mirror a team set. `via` is how the error names it. */
+export interface BundleSource { url: string; via: string }
+
+/** The `repository` of a package.json, as a plain https URL without a trailing slash or `.git`: `git+https://github.com/a11ign/announcement-emulator.git` is `https://github.com/a11ign/announcement-emulator`. */
+export function repositoryUrl(repository: unknown): string {
+  const raw = typeof repository === "string" ? repository : (repository as { url?: unknown } | undefined)?.url;
+  const url = typeof raw === "string" ? raw.trim().replace(/^git\+/, "").replace(/^git:\/\//, "https://").replace(/\/+$/, "").replace(/\.git$/, "") : "";
+  if (!/^https?:\/\/[^/]+\/./.test(url)) throw new Error("announcement-emulator: this package's package.json has no `repository` URL, so there is no Release to download the bundle from. Set ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST to a mirror of it.");
+  return url;
+}
+
+/** The Release of a version: the toolchain tags the package `v<version>`, and a Release serves its assets under `releases/download/<tag>/`. */
+export const releaseBaseUrl = (repository: unknown, version: string): string => `${repositoryUrl(repository)}/releases/download/v${version}/`;
+
+/** The package's own `repository` (package.json sits beside `dist`, as pins.json does). */
+function packageRepository(url = new URL("../package.json", import.meta.url)): unknown {
+  return (JSON.parse(readFileSync(url, "utf8")) as { repository?: unknown }).repository;
+}
+
+/**
+ * Where the pinned bundle is fetched from. By default the GitHub Release of this package's version. ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST replaces it, as PLAYWRIGHT_DOWNLOAD_HOST does for browsers, for a team that
+ * mirrors Releases (`gh release download v<version> --dir <mirror>/v<version>`): `<host>/v<version>/<file>`, so that one mirror serves every version a team pins. The pinned sha256 is checked whichever it is.
+ */
+export function bundleSource(pins: Pins, platform: string, env: NodeJS.ProcessEnv, releaseBase?: string): BundleSource {
+  const { file } = pinFor(pins, platform);
   const host = env.ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST;
-  if (!host) throw new Error("announcement-emulator: no download host is configured. This spike publishes no bundle; set ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST to where the bundle is served.");
-  return `${host.replace(/\/$/, "")}/${pinFor(pins, platform).file}`;
+  if (host) return { url: `${host.replace(/\/+$/, "")}/v${pins.version}/${file}`, via: "the mirror ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST" };
+  return { url: `${releaseBase ?? releaseBaseUrl(packageRepository(), pins.version)}${file}`, via: `the Release v${pins.version}` };
 }
 
 /** Download the pinned bundle into the cache, refuse it unless its sha256 is the pinned one, and unpack it where `findBundle` looks. Returns the directory. */
@@ -24,14 +51,14 @@ export async function install(pins: Pins, options: InstallOptions = {}): Promise
   const pin = pinFor(pins, platform);
   const root = cacheRoot(env), target = join(root, bundleName(pins.version, platform));
   if (isInstalled(target)) { log(`already installed: ${target}`); return target; }
-  const url = downloadUrl(pins, platform, env);
+  const { url, via } = bundleSource(pins, platform, env, options.releaseBase);
   mkdirSync(root, { recursive: true });
   const archive = join(root, `${bundleName(pins.version, platform)}.download`);
-  log(`downloading ${url}`);
+  log(`downloading ${url} (${via})`);
   const digest = await download(url, archive);
   if (digest !== pin.sha256) {
     rmSync(archive, { force: true });
-    throw new Error(`announcement-emulator: the bundle from ${url} has sha256 ${digest}, and this package pins ${pin.sha256}. Nothing was unpacked.`);
+    throw new Error(`announcement-emulator: the bundle from ${url} (${via}) has sha256 ${digest}, and this package pins ${pin.sha256}. Nothing was unpacked.`);
   }
   log(`sha256 ${digest} matches the pin`);
   const staging = `${target}.unpacking`;

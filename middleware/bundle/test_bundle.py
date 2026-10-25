@@ -145,6 +145,43 @@ class WritePins(unittest.TestCase):
         self.assertEqual(json.loads(out), {'version': '1.2.3', 'bundles': {p: {'file': f'b-{p}.tar.gz', 'sha256': 'ab' * 32, 'bytes': 5} for p in ('linux-x64', 'darwin-arm64')}})
 
 
+class WritePinsAgainstTheSums(unittest.TestCase):
+    PINS = {'linux-x64': 'ab' * 32, 'darwin-arm64': 'cd' * 32}
+
+    def run_pins(self, sums_lines, pins=None):
+        pins = pins or self.PINS
+        with tempfile.TemporaryDirectory() as d:
+            files = []
+            for platform, sha in pins.items():
+                f = pathlib.Path(d) / f'pin-{platform}.json'; f.write_text(json.dumps({'platform': platform, 'file': f'b-{platform}.tar.xz', 'sha256': sha, 'bytes': 5})); files.append(str(f))
+            sums = pathlib.Path(d) / 'SHA256SUMS'; sums.write_text(''.join(sums_lines))
+            return subprocess.run(['node', str(HERE / 'write-pins.mjs'), '1.2.3', '--sums', str(sums), *files], capture_output=True, text=True)
+
+    def lines(self, **replace):
+        return [f'{replace.get(p, sha)}  b-{p}.tar.xz\n' for p, sha in self.PINS.items()]
+
+    def test_pins_that_are_in_the_sums_are_written(self):
+        done = self.run_pins(self.lines())
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertEqual({p: b['sha256'] for p, b in json.loads(done.stdout)['bundles'].items()}, self.PINS)
+
+    def test_a_pin_with_another_sum_than_the_listing_is_refused_and_nothing_is_written(self):
+        done = self.run_pins(self.lines(**{'darwin-arm64': 'ee' * 32}))
+        self.assertNotEqual(done.returncode, 0)
+        self.assertEqual(done.stdout, '')
+        self.assertIn('darwin-arm64 pins b-darwin-arm64.tar.xz', done.stderr)
+        self.assertIn('ee' * 32, done.stderr)
+
+    def test_a_pin_the_listing_has_no_line_for_is_refused(self):
+        done = self.run_pins(self.lines()[:1])
+        self.assertNotEqual(done.returncode, 0)
+        self.assertIn('no line for it', done.stderr)
+
+    def test_a_binary_mode_listing_is_read(self):
+        done = self.run_pins([line.replace('  ', ' *') for line in self.lines()])
+        self.assertEqual(done.returncode, 0, done.stderr)
+
+
 def write_tree(root, files, links=()):
     for rel, text in files.items():
         path = pathlib.Path(root) / rel
