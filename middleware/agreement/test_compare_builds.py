@@ -62,6 +62,29 @@ class ChromiumBuild(unittest.TestCase):
         self.assertEqual(sum(len(ms) for b in attributed.values() for ms in b.values()), 2 * 1 + 2 * 2)      # NEW: one miss each source; OLD: two misses each source
 
 
+class Render(unittest.TestCase):
+    def test_a_builds_tables_are_compare_sources_own_and_no_line_ends_in_a_space(self):
+        builds, second = pair([('links', 0, 'a, link', 'a, link'), ('links', 1, 'b, link', 'x, link')], [('links', 0, 'a, link', 'a, link')])
+        attributed = cb.attribute_builds(builds, second)
+        text, result = cb.render_build(NEW, builds[NEW], second[NEW], attributed[NEW])
+        names = [n for n in cs.READINGS if n in builds[NEW]]
+        for block in (cs.by_channel_lines(builds[NEW], names), cs.cause_count_lines(names, attributed[NEW])):
+            self.assertIn('\n'.join(line.rstrip() for line in block), text)
+        self.assertFalse([line for line in text.split('\n') if line != line.rstrip()])
+        self.assertIn('reported, with no margin and no recommendation', text)
+        self.assertNotIn('recommendation by the frozen rule', text)
+        self.assertNotIn('recommendation', result)
+        self.assertEqual(result['units'], 2)
+
+    def test_compare_sources_prints_what_it_printed_before_its_blocks_were_shared(self):
+        a, b = pair([('links', 0, 'a, link', 'a, link'), ('links', 1, 'b, link', 'x, link')], [('links', 0, 'a, link', 'a, link')])
+        text, result, _ = cs.render(a[NEW], b[NEW], cs.attribute_all(a[NEW]))
+        self.assertIn('# what the extension buys over DevTools on this host (the units both readings compare)\n  units 2: extension 1 (50.0%), DevTools 1 (50.0%), lead +0.0 points', text)
+        self.assertIn('\n  by channel (extension / DevTools, agreed of units):\n    links', text)
+        self.assertIn('\n# recommendation by the frozen rule', text)
+        self.assertEqual(list(result)[-2:], ['byShape', 'byChannel'])
+
+
 class Between(unittest.TestCase):
     def test_how_far_the_builds_differ_whatever_the_oracle_says(self):
         builds, _ = pair([('links', 0, 'a', 'a'), ('links', 1, 'b', 'b')], [('links', 0, 'a', 'x'), ('links', 1, 'b', 'b')])
