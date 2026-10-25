@@ -13,13 +13,17 @@ def units(path):
 
 def common(readings):
     """{reading: [agreed, units]} over the units every reading has, and {address: units} of the common set."""
+    if not readings: raise ValueError('name at least one reading')
     shared = set.intersection(*(set(r) for r in readings.values()))
+    if not shared: raise ValueError('the readings have no unit in common')
     return {n: [sum(r[k]['ok'] for k in shared), len(shared)] for n, r in readings.items()}, collections.Counter(k[0] for k in shared)
 
 
 def main(argv):
     work, names = argv[0], argv[1:]
-    out, pages = common({n: units(os.path.join(work, n, 'agreement.json')) for n in names})
+    if not names: sys.exit('usage: common_units.py <work dir> <reading> [<reading> ...]')
+    try: out, pages = common({n: units(os.path.join(work, n, 'agreement.json')) for n in names})
+    except ValueError as e: sys.exit(f'common_units.py: {e}')
     for n, (ok, tot) in out.items(): print(f'{n:<20} {ok:>5} of {tot:<5} = {100 * ok / tot:.1f}%')
     for a, n in pages.items(): print(f'  {n:>4} units  {a}')
 
