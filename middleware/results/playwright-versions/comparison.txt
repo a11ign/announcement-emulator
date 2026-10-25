@@ -1,0 +1,135 @@
+## Chromium 156.0.8078.4
+# the readings, the headline: every channel, the first fleet capture against the first passive run
+  ext-linux              871 of 1072  =  81.2%    second capture against second run: 761 of 924 = 82.4%
+  devtools-linux         860 of 1072  =  80.2%    second capture against second run: 744 of 924 = 80.5%
+  devtools-macos         817 of 960   =  85.1%    second capture against second run: 647 of 812 = 79.7%
+  devtools-ubuntu-ci     806 of 960   =  84.0%    second capture against second run: 666 of 812 = 82.0%
+
+# what the extension buys over DevTools on this host (the units both readings compare); reported, with no margin and no recommendation
+  units 1072: extension 871 (81.2%), DevTools 860 (80.2%), lead +1.0 points
+  discordant units: the extension agrees and DevTools does not 19; DevTools agrees and the extension does not 8
+  the noise: the same lead from the second capture against the second run +1.8 points (761 against 744 of 924)
+    title          5 /    5 of 5    100.0% / 100.0%  lead +0.0
+    stops        269 /  270 of 372   72.3% /  72.6%  lead -0.3
+    field          0 /    1 of 2      0.0% /  50.0%  lead -50.0
+    typed          6 /    6 of 12    50.0% /  50.0%  lead +0.0
+    headings      59 /   60 of 103   57.3% /  58.3%  lead -1.0
+    landmarks     38 /   35 of 38   100.0% /  92.1%  lead +7.9
+    formFields    74 /   67 of 97    76.3% /  69.1%  lead +7.2
+    graphics       4 /    4 of 6     66.7% /  66.7%  lead +0.0
+    links        344 /  339 of 358   96.1% /  94.7%  lead +1.4
+    lists         55 /   55 of 59    93.2% /  93.2%  lead +0.0
+    frames        17 /   18 of 20    85.0% /  90.0%  lead -5.0
+
+# the readings side by side, by channel (agreed of units, the fleet against itself in brackets)
+              ext-linux              | devtools-linux         | devtools-macos         | devtools-ubuntu-ci    
+  title         5/5   100.0% (80.0%) |   5/5   100.0% (80.0%) |   4/4   100.0% (75.0%) |   4/4   100.0% (75.0%)
+  stops       269/372  72.3% (93.8%) | 270/372  72.6% (93.8%) | 280/364  76.9% (93.7%) | 278/364  76.4% (93.7%)
+  field         0/2     0.0% (100.0%) |   1/2    50.0% (100.0%) |   1/1   100.0% (100.0%) |   1/1   100.0% (100.0%)
+  typed         6/12   50.0% (100.0%) |   6/12   50.0% (100.0%) |   6/6   100.0% (100.0%) |   6/6   100.0% (100.0%)
+  headings     59/103  57.3% (98.1%) |  60/103  58.3% (98.1%) |  56/97   57.7% (97.9%) |  54/97   55.7% (97.9%)
+  landmarks    38/38  100.0% (84.2%) |  35/38   92.1% (84.2%) |  27/29   93.1% (79.3%) |  27/29   93.1% (79.3%)
+  formFields   74/97   76.3% (95.9%) |  67/97   69.1% (95.9%) |  82/84   97.6% (95.2%) |  77/84   91.7% (95.2%)
+  graphics      4/6    66.7% (66.7%) |   4/6    66.7% (66.7%) |   3/3   100.0% (33.3%) |   3/3   100.0% (33.3%)
+  links       344/358  96.1% (97.8%) | 339/358  94.7% (97.8%) | 290/301  96.3% (97.3%) | 290/301  96.3% (97.3%)
+  lists        55/59   93.2% (93.2%) |  55/59   93.2% (93.2%) |  48/51   94.1% (92.2%) |  48/51   94.1% (92.2%)
+  frames       17/20   85.0% (100.0%) |  18/20   90.0% (100.0%) |  20/20  100.0% (100.0%) |  18/20   90.0% (100.0%)
+
+# the readings side by side, by shape (the 10 commonest)
+                                               ext-linux              | devtools-linux         | devtools-macos         | devtools-ubuntu-ci    
+  NAME + ROLE                                  265/275  96.4% (99.3%) | 262/275  95.3% (99.3%) | 234/235  99.6% (99.1%) | 234/235  99.6% (99.1%)
+  NAME + ROLE + STATE + STATE                  196/223  87.9% (96.9%) | 197/223  88.3% (96.9%) | 195/221  88.2% (96.8%) | 195/221  88.2% (96.8%)
+  NAME + ROLE + LEVEL                           43/81   53.1% (100.0%) |  43/81   53.1% (100.0%) |  41/79   51.9% (100.0%) |  41/79   51.9% (100.0%)
+  NAME + ROLE + STATE                           29/37   78.4% (78.4%) |  30/37   81.1% (78.4%) |  27/33   81.8% (75.8%) |  27/33   81.8% (75.8%)
+  NAME + ROLE + STATE + STATE + POSITION         3/35    8.6% (100.0%) |   3/35    8.6% (100.0%) |   3/35    8.6% (100.0%) |   3/35    8.6% (100.0%)
+  NAME + ROLE + STATE + STATE + STATE            6/26   23.1% (69.2%) |   4/26   15.4% (69.2%) |  17/26   65.4% (69.2%) |  16/26   61.5% (69.2%)
+  NAME + STATE + ROLE                           22/25   88.0% (92.0%) |  22/25   88.0% (92.0%) |  18/21   85.7% (90.5%) |  18/21   85.7% (90.5%)
+  NAME + NAME + ROLE                            21/21  100.0% (100.0%) |  21/21  100.0% (100.0%) |  21/21  100.0% (100.0%) |  21/21  100.0% (100.0%)
+  NAME + ROLE + STATE + NAME                    13/21   61.9% (100.0%) |  15/21   71.4% (100.0%) |  15/20   75.0% (100.0%) |  15/20   75.0% (100.0%)
+  ROLE + COUNT + NAME                           20/20  100.0% (100.0%) |  20/20  100.0% (100.0%) |  19/19  100.0% (100.0%) |  19/19  100.0% (100.0%)
+
+# every miss has one cause (count of misses)
+  ext-linux: 201 misses; emulator 173, history 19, tree: focus 3, tree: node 2, tree: name+state 1, page moved 1, tree: name 1, tree: level+name+role 1
+    unexplained 0 of 201; read by a person (attribution-notes.json) 0
+  devtools-linux: 212 misses; emulator 173, history 19, conversion: name 7, conversion: node 6, page moved 4, conversion: clickable 3
+    unexplained 0 of 212; read by a person (attribution-notes.json) 0
+  devtools-macos: 143 misses; emulator 103, history 18, macos: name 10, conversion: name 5, conversion: clickable 2, macos: name+role 2, network/runner 2, chromium build 1
+    unexplained 0 of 143; read by a person (attribution-notes.json) 0
+  devtools-ubuntu-ci: 154 misses; emulator 112, history 18, network/runner 16, conversion: name 5, conversion: clickable 2, page moved 1
+    unexplained 0 of 154; read by a person (attribution-notes.json) 0
+
+## Chromium 153.0.8010.12
+# the readings, the headline: every channel, the first fleet capture against the first passive run
+  ext-linux              895 of 1072  =  83.5%    second capture against second run: 757 of 924 = 81.9%
+  devtools-linux         871 of 1072  =  81.2%    second capture against second run: 657 of 924 = 71.1%
+  devtools-macos         806 of 960   =  84.0%    second capture against second run: 673 of 812 = 82.9%
+  devtools-ubuntu-ci     777 of 960   =  80.9%    second capture against second run: 633 of 812 = 78.0%
+
+# what the extension buys over DevTools on this host (the units both readings compare); reported, with no margin and no recommendation
+  units 1072: extension 895 (83.5%), DevTools 871 (81.2%), lead +2.2 points
+  discordant units: the extension agrees and DevTools does not 28; DevTools agrees and the extension does not 4
+  the noise: the same lead from the second capture against the second run +10.8 points (757 against 657 of 924)
+    title          4 /    4 of 5     80.0% /  80.0%  lead +0.0
+    stops        283 /  271 of 372   76.1% /  72.8%  lead +3.2
+    field          0 /    1 of 2      0.0% /  50.0%  lead -50.0
+    typed          6 /    6 of 12    50.0% /  50.0%  lead +0.0
+    headings      62 /   62 of 103   60.2% /  60.2%  lead +0.0
+    landmarks     38 /   35 of 38   100.0% /  92.1%  lead +7.9
+    formFields    79 /   74 of 97    81.4% /  76.3%  lead +5.2
+    graphics       4 /    4 of 6     66.7% /  66.7%  lead +0.0
+    links        344 /  339 of 358   96.1% /  94.7%  lead +1.4
+    lists         55 /   55 of 59    93.2% /  93.2%  lead +0.0
+    frames        20 /   20 of 20   100.0% / 100.0%  lead +0.0
+
+# the readings side by side, by channel (agreed of units, the fleet against itself in brackets)
+              ext-linux              | devtools-linux         | devtools-macos         | devtools-ubuntu-ci    
+  title         4/5    80.0% (80.0%) |   4/5    80.0% (80.0%) |   4/4   100.0% (75.0%) |   2/4    50.0% (75.0%)
+  stops       283/372  76.1% (93.8%) | 271/372  72.8% (93.8%) | 269/364  73.9% (93.7%) | 251/364  69.0% (93.7%)
+  field         0/2     0.0% (100.0%) |   1/2    50.0% (100.0%) |   1/1   100.0% (100.0%) |   1/1   100.0% (100.0%)
+  typed         6/12   50.0% (100.0%) |   6/12   50.0% (100.0%) |   6/6   100.0% (100.0%) |   6/6   100.0% (100.0%)
+  headings     62/103  60.2% (98.1%) |  62/103  60.2% (98.1%) |  56/97   57.7% (97.9%) |  54/97   55.7% (97.9%)
+  landmarks    38/38  100.0% (84.2%) |  35/38   92.1% (84.2%) |  27/29   93.1% (79.3%) |  27/29   93.1% (79.3%)
+  formFields   79/97   81.4% (95.9%) |  74/97   76.3% (95.9%) |  82/84   97.6% (95.2%) |  77/84   91.7% (95.2%)
+  graphics      4/6    66.7% (66.7%) |   4/6    66.7% (66.7%) |   3/3   100.0% (33.3%) |   3/3   100.0% (33.3%)
+  links       344/358  96.1% (97.8%) | 339/358  94.7% (97.8%) | 290/301  96.3% (97.3%) | 290/301  96.3% (97.3%)
+  lists        55/59   93.2% (93.2%) |  55/59   93.2% (93.2%) |  48/51   94.1% (92.2%) |  48/51   94.1% (92.2%)
+  frames       20/20  100.0% (100.0%) |  20/20  100.0% (100.0%) |  20/20  100.0% (100.0%) |  18/20   90.0% (100.0%)
+
+# the readings side by side, by shape (the 10 commonest)
+                                               ext-linux              | devtools-linux         | devtools-macos         | devtools-ubuntu-ci    
+  NAME + ROLE                                  265/275  96.4% (99.3%) | 264/275  96.0% (99.3%) | 234/235  99.6% (99.1%) | 234/235  99.6% (99.1%)
+  NAME + ROLE + STATE + STATE                  197/223  88.3% (96.9%) | 197/223  88.3% (96.9%) | 189/221  85.5% (96.8%) | 180/221  81.4% (96.8%)
+  NAME + ROLE + LEVEL                           43/81   53.1% (100.0%) |  43/81   53.1% (100.0%) |  41/79   51.9% (100.0%) |  41/79   51.9% (100.0%)
+  NAME + ROLE + STATE                           30/37   81.1% (78.4%) |  30/37   81.1% (78.4%) |  26/33   78.8% (75.8%) |  27/33   81.8% (75.8%)
+  NAME + ROLE + STATE + STATE + POSITION         3/35    8.6% (100.0%) |   3/35    8.6% (100.0%) |   3/35    8.6% (100.0%) |   3/35    8.6% (100.0%)
+  NAME + ROLE + STATE + STATE + STATE           15/26   57.7% (69.2%) |   5/26   19.2% (69.2%) |  15/26   57.7% (69.2%) |   6/26   23.1% (69.2%)
+  NAME + STATE + ROLE                           22/25   88.0% (92.0%) |  22/25   88.0% (92.0%) |  18/21   85.7% (90.5%) |  18/21   85.7% (90.5%)
+  NAME + NAME + ROLE                            21/21  100.0% (100.0%) |  21/21  100.0% (100.0%) |  21/21  100.0% (100.0%) |  21/21  100.0% (100.0%)
+  NAME + ROLE + STATE + NAME                    14/21   66.7% (100.0%) |  15/21   71.4% (100.0%) |  15/20   75.0% (100.0%) |  15/20   75.0% (100.0%)
+  ROLE + COUNT + NAME                           20/20  100.0% (100.0%) |  20/20  100.0% (100.0%) |  19/19  100.0% (100.0%) |  19/19  100.0% (100.0%)
+
+# every miss has one cause (count of misses)
+  ext-linux: 177 misses; emulator 154, history 19, tree: name 2, tree: name+state 1, tree: node 1
+    unexplained 0 of 177; read by a person (attribution-notes.json) 0
+  devtools-linux: 201 misses; emulator 154, history 19, conversion: name 16, conversion: node 6, conversion: clickable 3, page moved 2, events: focus 1
+    unexplained 0 of 201; read by a person (attribution-notes.json) 0
+  devtools-macos: 154 misses; emulator 92, macos: node 21, history 18, network/runner 5, conversion: name 5, macos: name+role 5, macos: name 3, conversion: clickable 2, page moved 1, chromium build 1, macos: name+role+state 1
+    unexplained 0 of 154; read by a person (attribution-notes.json) 0
+  devtools-ubuntu-ci: 183 misses; emulator 115, network/runner 27, history 18, conversion: name 14, page moved 5, conversion: clickable 2, chromium build 1, events: focus 1
+    unexplained 0 of 183; read by a person (attribution-notes.json) 0
+
+## the builds against each other (the units both compare, the first fleet capture against the first run)
+  ext-linux             1072 units: the two builds predicted another string for 53; the oracle agrees with one build only on 30
+  devtools-linux        1072 units: the two builds predicted another string for 25; the oracle agrees with one build only on 15
+  devtools-macos         960 units: the two builds predicted another string for 34; the oracle agrees with one build only on 11
+  devtools-ubuntu-ci     960 units: the two builds predicted another string for 39; the oracle agrees with one build only on 29
+
+## causes by build and reading (misses)
+  156.0.8078.4 ext-linux            emulator 173, history 19, tree: focus 3, tree: node 2, tree: name+state 1, page moved 1, tree: name 1, tree: level+name+role 1
+  156.0.8078.4 devtools-linux       emulator 173, history 19, conversion: name 7, conversion: node 6, page moved 4, conversion: clickable 3
+  156.0.8078.4 devtools-macos       emulator 103, history 18, macos: name 10, conversion: name 5, conversion: clickable 2, macos: name+role 2, network/runner 2, chromium build 1
+  156.0.8078.4 devtools-ubuntu-ci   emulator 112, history 18, network/runner 16, conversion: name 5, conversion: clickable 2, page moved 1
+  153.0.8010.12 ext-linux            emulator 154, history 19, tree: name 2, tree: name+state 1, tree: node 1
+  153.0.8010.12 devtools-linux       emulator 154, history 19, conversion: name 16, conversion: node 6, conversion: clickable 3, page moved 2, events: focus 1
+  153.0.8010.12 devtools-macos       emulator 92, macos: node 21, history 18, network/runner 5, conversion: name 5, macos: name+role 5, macos: name 3, conversion: clickable 2, page moved 1, chromium build 1, macos: name+role+state 1
+  153.0.8010.12 devtools-ubuntu-ci   emulator 115, network/runner 27, history 18, conversion: name 14, page moved 5, conversion: clickable 2, chromium build 1, events: focus 1
