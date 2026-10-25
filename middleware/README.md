@@ -40,8 +40,8 @@ The middleware downloads no browser and bundles none: it runs in **the Chromium 
   `npx playwright install chromium` installs both (`--only-shell` installs only the shell). Where the extension is the tree source and your launch is headless and left to Playwright (no `channel`, no `executablePath`),
   the middleware adds `channel: "chromium"`, which runs the full Chromium in the new headless mode. On Linux CI use `npx playwright install --with-deps chromium`, Playwright's own route to the browser's system libraries.
 - **A `channel` or an `executablePath` you chose is yours.** The middleware does not change it. It cannot know whether that browser loads the extension, so it tries it: if the extension has said nothing
-  five seconds after the browser's first page (`ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT`, in seconds), the runtime reads the trees through the DevTools port from then on, in whatever Chromium that is, and each report says
-  so and why. Speech for what ran before the switch is lost. A source set with `ANNOUNCEMENT_EMULATOR_TREE` is never switched. Where it is known beforehand that the extension cannot load (only the headless shell is installed,
+  five seconds after the browser's first page (`ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT`, in seconds) it has posted no tree, the runtime reads the trees through the DevTools port from then on, in whatever Chromium that is, and each
+  report says so and why. Speech for what ran before the switch is lost. A source set with the `tree` option or `ANNOUNCEMENT_EMULATOR_TREE` is never switched. Where it is known beforehand that the extension cannot load (only the headless shell is installed,
   or a Playwright older than 1.49 launched headless), the DevTools port is used from the start. Nothing breaks: the tests run as they did.
   The tree source is one for the whole run, and a project that is known not to load the extension puts every project on the DevTools source.
 - The team's Playwright is looked for from the working directory, then from where this package is installed. The channel the middleware adds is visible to a test as `testInfo.project.use.channel`.
@@ -58,6 +58,20 @@ A version that is not on the list still runs and still gets predicted speech. It
 with no figure for the tree source the run used. A listed build says `agreement measured for Chromium <build> (Playwright <versions>), <source>: <rate>% of <units> units, <date>`.
 
 The list starts with the current Playwright release and the one before it: Playwright 1.64.x (Chromium 156.0.8078.4) and 1.63.0 (Chromium 153.0.8010.12). It has no entries yet: the measurement of each is the second step of A11-230.
+
+## Where the accessibility tree comes from
+
+Two sources, and the middleware picks. **The extension** (`chrome.automation`: the browser's fuller tree and its change events) is the default on Linux and Windows. **The DevTools port** (`Accessibility.getFullAXTree` and
+`DOMSnapshot`) is the baseline: it is the source on macOS, where `chrome.automation.getDesktop` gives nothing, and wherever the extension cannot be expected to load or posts no tree. Contexts your suite opens itself
+(`browser.newContext()`, which Playwright's `page` fixture is) are served by the extension; there is no rule against them.
+
+```ts
+export default defineConfig(withAnnouncements(config));                           // "auto", the default: the pick above
+export default defineConfig(withAnnouncements(config, { tree: "devtools" }));     // or "extension": that source, never switched
+```
+
+`ANNOUNCEMENT_EMULATOR_TREE` is the same option for the environment (CI, a measurement). When both name a source, the option wins. Every report says which source its speech came from and why (the platform, the option, the
+environment, or a switch at run time), and the rate that source agreed with a real NVDA when it was measured (`docs/playwright-middleware-spike.md`, "The tree sources, measured against the fleet").
 
 ## What you get
 
@@ -91,8 +105,8 @@ after each change) and through the DevTools port (the page's own focus moves, ke
 | `ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST` | where `install` fetches the bundle from. This spike has none: nothing is published |
 | `ANNOUNCEMENT_EMULATOR_BUNDLE` | use this unpacked bundle instead of the cache |
 | `ANNOUNCEMENT_EMULATOR_SWEEPS=0` | no sweeps |
-| `ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT` | seconds the runtime waits for an extension that has said nothing, after the first page, before it reads the trees through the DevTools port (default 5; 0 never) |
-| `ANNOUNCEMENT_EMULATOR_TREE` | `extension` or `devtools`: where the accessibility tree comes from. Unset, the middleware picks: the extension where the browser gives it a desktop tree and it is expected to load (Linux, Windows), the DevTools port on macOS and wherever the extension cannot be expected to load |
+| `ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT` | seconds the runtime waits for an extension that has posted no tree, after the first page, before it reads the trees through the DevTools port (default 5; 0 never) |
+| `ANNOUNCEMENT_EMULATOR_TREE` | `extension` or `devtools`: where the accessibility tree comes from, as the `tree` option of `withAnnouncements` (which wins over it). Unset, the middleware picks: the extension where the browser gives it a desktop tree and it is expected to load (Linux, Windows), the DevTools port on macOS and wherever the extension cannot be expected to load |
 
 ## Licence
 

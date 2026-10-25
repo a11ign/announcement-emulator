@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { LAG_MS, annotationsFor, assign, attachments, browserBuild, describe, evidenceFieldsIn, treeOfWorker, type Window } from "./format.ts";
 import { agreementFor, type SupportedVersions } from "./supported.ts";
+import { treeRate } from "./tree-rates.ts";
 import { ANNOTATION, ATTACH_JSON, ATTACH_TEXT, LABEL } from "./label.ts";
 import type { RuntimeRecord } from "./runtime.ts";
 
@@ -69,10 +70,29 @@ test("a test run in a build that is not listed says its agreement is not measure
   assert.match(out.text, /Save, button/);
 });
 
-test("the DevTools source says why it was used, beside its note that the tree is of lower fidelity", () => {
-  const out = describe(w("t", 0, 1), [], null, { tree: "devtools", treeWhy: "the extension was not used: run npx playwright install chromium, without --only-shell" });
-  assert.match(out.text, /lower fidelity than the extension's \(the extension was not used: run npx playwright install chromium, without --only-shell\)/);
-  assert.equal(out.json.treeSourceWhy, "the extension was not used: run npx playwright install chromium, without --only-shell");
+test("every output says which tree source it used, why, and how well that source agreed with NVDA when it was measured, for the extension as for the DevTools port", () => {
+  const devtools = describe(w("t", 0, 1), [], null, { tree: "devtools", treeWhy: "the extension was not used: run npx playwright install chromium, without --only-shell", treeRate: treeRate("devtools", "linux") });
+  assert.match(devtools.text, /^tree: the DevTools port's accessibility tree \(the extension was not used: run npx playwright install chromium, without --only-shell\); the devtools tree agreed with a real NVDA on 81\.4% of 1,138 units on Linux/m);
+  assert.equal(devtools.json.treeSourceWhy, "the extension was not used: run npx playwright install chromium, without --only-shell");
+  assert.equal(devtools.json.treeSourceAgreement, treeRate("devtools", "linux"));
+  const extension = describe(w("t", 0, 1), [], null, { tree: "extension", treeWhy: "the default where the browser gives the extension a desktop tree", treeRate: treeRate("extension", "linux") });
+  assert.match(extension.text, /^tree: the companion extension's accessibility tree \(the default where the browser gives the extension a desktop tree\); the extension tree agreed with a real NVDA on 82\.1% of 1,138 units on Linux/m);
+  assert.equal(extension.json.treeSource, "extension");
+  assert.equal(extension.json.treeSourceWhy, "the default where the browser gives the extension a desktop tree");
+});
+
+test("no output calls the DevTools tree of lower fidelity: what is said of it is the rate it was measured at", () => {
+  const out = describe(w("t", 0, 1), [], null, { tree: "devtools", treeWhy: "macOS gives the extension no desktop tree", treeRate: treeRate("devtools", "darwin") });
+  assert.doesNotMatch(out.text, /lower fidelity/);
+  assert.doesNotMatch(JSON.stringify(out.json), /lower fidelity/);
+  assert.match(out.text, /the devtools tree agreed with a real NVDA on 83\.6% of 1,026 units on macOS/);
+});
+
+test("a worker that fell back says so in its text and its json, with the runtime's reason", () => {
+  const out = describe(w("t", 0, 1), [], null, { tree: "devtools", treeWhy: "the extension posted no tree within 5 s of the first page, so the trees are read through the DevTools port", fellBack: true });
+  assert.equal(out.json.treeSourceFellBack, true);
+  assert.match(out.text, /^tree: the DevTools port's accessibility tree \(the extension posted no tree within 5 s/m);
+  assert.equal(describe(w("t", 0, 1), [], null, { tree: "devtools", treeWhy: "x" }).json.treeSourceFellBack, undefined);
 });
 
 test("the emulator line names the Chromium the mapping tables were read from, and no browser of the bundle's", () => {
@@ -89,8 +109,8 @@ test("the build a worker ran in is the one its browser named when the runtime re
 
 test("a worker whose extension did not come up reads as the DevTools source from the runtime's own record, with the reason it gave; any other keeps the run's pick", () => {
   const planned = { source: "extension" as const, why: "the default where the browser gives the extension a desktop tree" };
-  const fell: RuntimeRecord = { kind: "start", t: 5, what: "fallback", from: "extension", to: "devtools", why: "the extension did not come up within 5 s of the first page, so the trees are read through the DevTools port" };
-  assert.deepEqual(treeOfWorker([fell], planned), { source: "devtools", why: fell.why });
-  assert.deepEqual(treeOfWorker([{ kind: "start", t: 1, what: "extension" }], planned), planned);
-  assert.deepEqual(treeOfWorker([], planned), planned);
+  const fell: RuntimeRecord = { kind: "start", t: 5, what: "fallback", from: "extension", to: "devtools", why: "the extension posted no tree within 5 s of the first page, so the trees are read through the DevTools port" };
+  assert.deepEqual(treeOfWorker([fell], planned), { source: "devtools", why: fell.why, fellBack: true });
+  assert.deepEqual(treeOfWorker([{ kind: "start", t: 1, what: "extension" }], planned), { ...planned, fellBack: false });
+  assert.deepEqual(treeOfWorker([], planned), { ...planned, fellBack: false });
 });

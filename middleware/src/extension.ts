@@ -23,22 +23,32 @@ export interface BrowserPorts { collector: number; cdp: number }
 
 /**
  * Where the accessibility tree comes from. `extension`: the companion extension reads it with chrome.automation (a Linux, Windows or ChromeOS browser has a desktop tree to read it from).
- * `devtools`: the runtime reads it through the DevTools port (`Accessibility.getFullAXTree` and `DOMSnapshot`), the lower-fidelity source ADR 0047 allows. macOS gets the second because
- * `chrome.automation.getDesktop` never answers there (docs/playwright-middleware-spike.md, Q7). `ANNOUNCEMENT_EMULATOR_TREE` sets it by hand.
+ * `devtools`: the runtime reads it through the DevTools port (`Accessibility.getFullAXTree` and `DOMSnapshot`), the source ADR 0047 allows as a fallback (what each source agreed with a real NVDA is in tree-rates.ts). macOS gets the second because
+ * `chrome.automation.getDesktop` never answers there (docs/playwright-middleware-spike.md, Q7). The `tree` option of `withAnnouncements` and `ANNOUNCEMENT_EMULATOR_TREE` set it by hand.
  */
 export type TreeSource = "extension" | "devtools";
 
-/** Where the tree comes from, and why: what the report says when it is not the extension. */
-export interface TreePick { source: TreeSource; why: string; /** Set by hand: the runtime does not fall back from it. */ forced: boolean }
+/** What `withAnnouncements` is given to choose the tree source: `auto` (the default) lets the middleware pick, the others force one. */
+export type TreeOption = "auto" | TreeSource;
+
+/** Where the tree comes from, and why: what the report says. `forced` is set by the option or the environment, and the runtime does not fall back from a forced source. */
+export interface TreePick { source: TreeSource; why: string; forced: boolean }
+
+const isSource = (value: unknown): value is TreeSource => value === "extension" || value === "devtools";
 
 /**
- * The environment decides when it is set. Otherwise macOS reads through the DevTools port, and so does a launch the extension cannot be expected to load in (`extension.ok` false: the team chose
- * its own browser, or Playwright's full Chromium is not installed). Anywhere else the extension is the default, and where it is not forced the runtime reads the trees through the DevTools port
- * instead if the extension does not come up (runtime/fallback.py). No setup is broken by this: the DevTools source runs in any Chromium.
+ * The option decides when it names a source, then the environment (`ANNOUNCEMENT_EMULATOR_TREE`, the same option for CI and the measurement). When both name one, the option wins and the
+ * reason says the environment was set and not used. Otherwise macOS reads through the DevTools port, and so does a launch the extension cannot be expected to load in (`extension.ok` false: the
+ * team chose its own browser, or Playwright's full Chromium is not installed). Anywhere else the extension is the default, and where it is not forced the runtime reads the trees through the
+ * DevTools port instead if the extension does not come up (runtime/fallback.py). No setup is broken by this: the DevTools source runs in any Chromium.
  */
-export function pickTree(platform: string = process.platform, env: NodeJS.ProcessEnv = process.env, extension: Verdict = { ok: true, why: "" }): TreePick {
-  const given = env.ANNOUNCEMENT_EMULATOR_TREE;
-  if (given === "extension" || given === "devtools") return { source: given, why: `ANNOUNCEMENT_EMULATOR_TREE=${given}`, forced: true };
+export function pickTree(platform: string = process.platform, env: NodeJS.ProcessEnv = process.env, extension: Verdict = { ok: true, why: "" }, option: TreeOption | undefined = undefined): TreePick {
+  const fromEnv = isSource(env.ANNOUNCEMENT_EMULATOR_TREE) ? env.ANNOUNCEMENT_EMULATOR_TREE : null;
+  if (isSource(option)) {
+    const ignored = fromEnv ? ` (ANNOUNCEMENT_EMULATOR_TREE=${fromEnv} is set and is not used: the option wins)` : "";
+    return { source: option, why: `the tree option is "${option}"${ignored}`, forced: true };
+  }
+  if (fromEnv) return { source: fromEnv, why: `ANNOUNCEMENT_EMULATOR_TREE=${fromEnv}`, forced: true };
   if (platform === "darwin") return { source: "devtools", why: "macOS gives the extension no desktop tree", forced: false };
   if (!extension.ok) return { source: "devtools", why: `the extension was not used: ${extension.why}`, forced: false };
   return { source: "extension", why: "the default where the browser gives the extension a desktop tree", forced: false };
@@ -52,7 +62,7 @@ export function extensionWait(pick: TreePick, env: NodeJS.ProcessEnv = process.e
   return Number.isFinite(given) && given >= 0 && env.ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT ? given : EXTENSION_WAIT_S;
 }
 
-export const treeSource = (platform: string = process.platform, env: NodeJS.ProcessEnv = process.env): TreeSource => pickTree(platform, env).source;
+export const treeSource = (platform: string = process.platform, env: NodeJS.ProcessEnv = process.env, option?: TreeOption): TreeSource => pickTree(platform, env, undefined, option).source;
 
 /**
  * The flags the emulator's browser needs, which the ticket names (`--force-renderer-accessibility`, `--load-extension`, `--allowlisted-extension-id`) and two more:

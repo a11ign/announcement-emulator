@@ -93,15 +93,15 @@ jobs:
         include:
           # `tree` is where the first two runs get the accessibility tree (the default of the platform), `other` the third run's: each platform is run with both sources. The extension's source gives macOS no tree
           # (chrome.automation.getDesktop never answers there), so that run is held to saying so (--expect-no-tree), and fails if macOS starts to give one, because the write-up would then be out of date.
-          # The DevTools source is the lower-fidelity one ADR 0047 allows; its runs are held to --lower-fidelity.
+          # The DevTools source is the one ADR 0047 allows as a fallback; its runs are held to --devtools-tree: each says its tree came through the DevTools port, why, and the rate that source was measured at.
           # `chromium` is the build the row's Playwright ships (its playwright-core/browsers.json): the report of every worker is held to having run in it, and to the sentence "agreement not measured for Chromium <build>"
           # until middleware/supported-versions.json lists it. 1.63.0 and 1.64.1 are the two versions the list starts with; 1.62.1 is the newest 1.62 and is not meant to be listed: it holds the wording of an unlisted version.
           # `primary` rows also take the cost and the probes.
-          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.64.1", chromium: "156.0.8078.4", deps: "--with-deps", primary: true, check: "", other: devtools, other-check: "--lower-fidelity" }
-          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.63.0", chromium: "153.0.8010.12", deps: "--with-deps", primary: false, check: "", other: devtools, other-check: "--lower-fidelity" }
-          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.62.1", chromium: "151.0.7922.34", deps: "--with-deps", primary: false, check: "", other: devtools, other-check: "--lower-fidelity" }
-          - { platform: darwin-arm64, runner: macos-latest, playwright: "1.64.1", chromium: "156.0.8078.4", deps: "", primary: true, check: "--lower-fidelity", other: extension, other-check: "--expect-no-tree" }
-          - { platform: darwin-arm64, runner: macos-latest, playwright: "1.63.0", chromium: "153.0.8010.12", deps: "", primary: false, check: "--lower-fidelity", other: extension, other-check: "--expect-no-tree" }
+          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.64.1", chromium: "156.0.8078.4", deps: "--with-deps", primary: true, check: "", other: devtools, other-check: "--devtools-tree" }
+          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.63.0", chromium: "153.0.8010.12", deps: "--with-deps", primary: false, check: "", other: devtools, other-check: "--devtools-tree" }
+          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.62.1", chromium: "151.0.7922.34", deps: "--with-deps", primary: false, check: "", other: devtools, other-check: "--devtools-tree" }
+          - { platform: darwin-arm64, runner: macos-latest, playwright: "1.64.1", chromium: "156.0.8078.4", deps: "", primary: true, check: "--devtools-tree", other: extension, other-check: "--expect-no-tree" }
+          - { platform: darwin-arm64, runner: macos-latest, playwright: "1.63.0", chromium: "153.0.8010.12", deps: "", primary: false, check: "--devtools-tree", other: extension, other-check: "--expect-no-tree" }
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v7
@@ -135,7 +135,9 @@ jobs:
           cat "$RUNNER_TEMP/doctor.log"
           grep -q '^Chromium ${{ matrix.chromium }} ' "$RUNNER_TEMP/doctor.log"
           grep -q '^supported: no\. Chromium ${{ matrix.chromium }} is not on the list' "$RUNNER_TEMP/doctor.log"
-      # Run 1: the one line (playwright.config.ts). Run 2: no line at all (`announcement-emulator test` wraps playwright.plain.config.ts). Run 3: the platform's other tree source. Run 4: the same suite without the middleware.
+      # Run 1: the one line (playwright.config.ts). Run 2: no line at all (`announcement-emulator test` wraps playwright.plain.config.ts). Run 3: the platform's other tree source. Run 4: a test that opens
+      # a context of its own (`browser.newContext()`), the tree source left to the middleware (A11-229). Run 5, where the platform's pick is the extension: a team whose Chromium cannot serve it (the headless
+      # shell), which the runtime finds out and reads the DevTools port instead, and the report records. Run 6: the same suite without the middleware.
       - id: run
         run: |
           cd "$RUNNER_TEMP/project"
@@ -154,6 +156,18 @@ jobs:
           cp -R test-results/announcement-emulator "$RUNNER_TEMP/announcement-emulator-run-${{ matrix.other }}"; cp test-results/report.json "$RUNNER_TEMP/announcement-emulator-run-${{ matrix.other }}/report.json"
           mv playwright-report "$RUNNER_TEMP/playwright-report-${{ matrix.other }}"
           rm -rf test-results
+          # Run 4: contexts the suite opens itself, the source left to the middleware: the platform's own pick, held to the platform's check, and to both pages having speech.
+          WORKERS=1 npx playwright test --project=contexts 2>&1 | tee "$RUNNER_TEMP/run-contexts.log"
+          node check-report.mjs ${{ matrix.check }} --expect-unmeasured ${{ matrix.chromium }}
+          mv playwright-report "$RUNNER_TEMP/playwright-report-contexts"
+          rm -rf test-results
+          # Run 5: a setup the extension cannot serve. Only where the platform's pick is the extension.
+          if [ -z "${{ matrix.check }}" ]; then
+            ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT=2 npx playwright test --config playwright.fallback.config.ts 2>&1 | tee "$RUNNER_TEMP/run-fallback.log"
+            node check-report.mjs --expect-fallback --expect-unmeasured ${{ matrix.chromium }}
+            cp -R test-results/announcement-emulator "$RUNNER_TEMP/announcement-emulator-run-fallback"
+            rm -rf test-results playwright-report
+          fi
           [ -z "${{ matrix.check }}" ] && [ "${{ matrix.primary }}" = true ] || exit 0      # the cost is measured where a tree is read, once for each platform
           { time npx playwright test --config playwright.baseline.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-without.log"
           node cost.mjs --project fixtures --runs 3 --workers 1,2,4 --out "$RUNNER_TEMP/cost.json" 2>&1 | tee "$RUNNER_TEMP/cost.log"
@@ -171,7 +185,7 @@ jobs:
       - if: always()
         run: |
           { echo "### Sample suite on ${{ matrix.platform }} (${{ matrix.runner }}, no container), Playwright ${{ matrix.playwright }}, Chromium ${{ matrix.chromium }}"; echo; cat "$RUNNER_TEMP/install.log" 2>/dev/null || true
-            for f in run-with run-zero run-without; do echo; echo "#### $f"; tail -8 "$RUNNER_TEMP/$f.log" 2>/dev/null || true; done
+            for f in run-with run-zero run-contexts run-fallback run-without; do echo; echo "#### $f"; tail -8 "$RUNNER_TEMP/$f.log" 2>/dev/null || true; done
             echo; echo '```'; cat "$RUNNER_TEMP/announcement-emulator-run/run.json" 2>/dev/null || true; echo '```'; echo '#### extension probe'; echo '```'; cat "$RUNNER_TEMP/probe-extension.log" 2>/dev/null || true; echo '```'; echo '#### tab-tree probe'; echo '```'; cat "$RUNNER_TEMP/probe-tree.log" 2>/dev/null || true; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
       - if: always()
         uses: actions/upload-artifact@v7
@@ -182,7 +196,9 @@ jobs:
             ${{ runner.temp }}/playwright-report-zero-lines
             ${{ runner.temp }}/announcement-emulator-run
             ${{ runner.temp }}/announcement-emulator-run-${{ matrix.other }}
+            ${{ runner.temp }}/announcement-emulator-run-fallback
             ${{ runner.temp }}/playwright-report-${{ matrix.other }}
+            ${{ runner.temp }}/playwright-report-contexts
             ${{ runner.temp }}/project/test-results/announcement-emulator
             ${{ runner.temp }}/run-*.log
             ${{ runner.temp }}/cost.*

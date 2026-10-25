@@ -5,9 +5,11 @@ import type { TreeSource } from "./extension.ts";
 import type { Agreement } from "./supported.ts";
 
 const TREE_NOTE: Record<TreeSource, string> = {
-  extension: "Predicted by the announcement emulator from Chrome's accessibility tree and NVDA's own Python. Not what NVDA said. Nothing here may fill an a11ign evidence field.",
-  devtools: "Predicted by the announcement emulator from the accessibility tree the DevTools port gives (lower fidelity than the extension's: no table or set numbers from Chromium, word and sentence breaks by pattern, no visited or default states) and NVDA's own Python. Not what NVDA said. Nothing here may fill an a11ign evidence field.",
+  extension: "Predicted by the announcement emulator from Chrome's accessibility tree, read by the companion extension, and NVDA's own Python. Not what NVDA said. Nothing here may fill an a11ign evidence field.",
+  devtools: "Predicted by the announcement emulator from the accessibility tree the DevTools port gives (Accessibility.getFullAXTree and DOMSnapshot) and NVDA's own Python. Not what NVDA said. Nothing here may fill an a11ign evidence field.",
 };
+
+const TREE_NAME: Record<TreeSource, string> = { extension: "the companion extension's accessibility tree", devtools: "the DevTools port's accessibility tree" };
 
 /** The Chromium build a worker's browser named when the runtime reached it (`/json/version`), which is not always the one `browsers.json` names: a team's channel or executablePath may run another. */
 export function browserBuild(records: RuntimeRecord[]): string | null {
@@ -16,9 +18,9 @@ export function browserBuild(records: RuntimeRecord[]): string | null {
 }
 
 /** Where a worker's trees came from: the run's pick, unless the runtime found the extension had not come up and read them through the DevTools port from then on (its `fallback` start record says when and why). */
-export function treeOfWorker(records: RuntimeRecord[], planned: { source: TreeSource; why: string }): { source: TreeSource; why: string } {
+export function treeOfWorker(records: RuntimeRecord[], planned: { source: TreeSource; why: string }): { source: TreeSource; why: string; fellBack: boolean } {
   const fell = records.find((r) => r.kind === "start" && r.what === "fallback");
-  return fell ? { source: "devtools", why: String(fell.why) } : planned;
+  return fell ? { source: "devtools", why: String(fell.why), fellBack: true } : { ...planned, fellBack: false };
 }
 
 /** The slice of a run one test owns: what happened on its worker's browser while the test ran. */
@@ -50,8 +52,8 @@ export const EVIDENCE_FIELDS = ["transcript", "structure", "interaction", "obser
 const ms = (t: number, w: Window) => Math.max(0, Math.round(t - w.start));
 const seconds = (t: number, w: Window) => `+${(ms(t, w) / 1000).toFixed(2)}s`;
 
-/** What a run knows about a test's tree and browser that its own records do not say: why the tree came from where it did, and what is measured of the browser's build. */
-export interface RunNote { tree?: TreeSource; treeWhy?: string; agreement?: Agreement }
+/** What a run knows about a test's tree and browser that its own records do not say: where the tree came from and why (`fellBack`: the extension did not come up and the runtime switched), how well that source agreed with NVDA when it was measured, and what is measured of the browser's build. */
+export interface RunNote { tree?: TreeSource; treeWhy?: string; treeRate?: string; fellBack?: boolean; agreement?: Agreement }
 
 export interface Output { text: string; json: Record<string, unknown>; flags: { flag: string; detail: string }[] }
 
@@ -66,7 +68,7 @@ export function describe(w: Window, records: RuntimeRecord[], emulator: BundleMa
   const sweepRows = sweeps.map((r) => ({ atMs: ms(r.t, w), trigger: r.trigger, url: r.url, lists: r.lists, counts: r.counts, census: r.census, keysSent: r.keys, notDelivered: r.notDelivered, runtimeMs: r.ms }));
   const flagRows = flags.map((r) => ({ flag: r.flag as string, atMs: ms(r.t, w), detail: r.detail as string, node: r.node }));
   const json = {
-    label: LABEL, test: w.title, emulator, treeSource: tree, ...(note.treeWhy ? { treeSourceWhy: note.treeWhy } : {}), ...(note.agreement ? { agreement: note.agreement } : {}),
+    label: LABEL, test: w.title, emulator, treeSource: tree, ...(note.treeWhy ? { treeSourceWhy: note.treeWhy } : {}), ...(note.fellBack ? { treeSourceFellBack: true } : {}), ...(note.treeRate ? { treeSourceAgreement: note.treeRate } : {}), ...(note.agreement ? { agreement: note.agreement } : {}),
     notes: [TREE_NOTE[tree]],
     predictedSpeech: predicted, sweeps: sweepRows, flags: flagRows,
   };
@@ -76,7 +78,8 @@ export function describe(w: Window, records: RuntimeRecord[], emulator: BundleMa
 function textOf(w: Window, mine: RuntimeRecord[], emulator: BundleManifest | null, note: RunNote): string {
   const lines = [LABEL.toUpperCase(), `test: ${w.title}`];
   if (emulator) lines.push(`emulator: NVDA ${emulator.nvda.release} (${emulator.nvda.commit.slice(0, 8)}), Chromium ${emulator.chromiumTables} mapping tables, bundle ${emulator.name}`);
-  if (note.tree === "devtools") lines.push(`tree: the DevTools port's accessibility tree, lower fidelity than the extension's${note.treeWhy ? ` (${note.treeWhy})` : ""}`);
+  const tree = note.tree ?? "extension";
+  lines.push(`tree: ${TREE_NAME[tree]}${note.treeWhy ? ` (${note.treeWhy})` : ""}${note.treeRate ? `; ${note.treeRate}` : ""}`);
   if (note.agreement) lines.push(note.agreement.line);
   lines.push("");
   const speech = mine.filter((r) => r.kind === "speech");
