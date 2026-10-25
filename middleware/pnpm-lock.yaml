@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@a11ign/toolchain':
-        specifier: 0.10.2
-        version: 0.10.2(@rslib/core@1.0.3(typescript@6.0.3))(@rstest/core@0.12.3)(typescript@6.0.3)
+        specifier: 0.11.0
+        version: 0.11.0(@rslib/core@1.0.3(typescript@6.0.3))(@rstest/core@0.12.3)(typescript@6.0.3)
       '@eslint/js':
         specifier: ^9.0.0
         version: 9.39.5
@@ -44,8 +44,8 @@ importers:
 
 packages:
 
-  '@a11ign/toolchain@0.10.2':
-    resolution: {integrity: sha512-FfYrmbLEo3nxkEDaJfs/LTHBhHB4VeKMhpmlbOhROSXWd5SBTQXjF+/PjXxLKDuFLJrg94eE14Nrt/F2KO+glA==}
+  '@a11ign/toolchain@0.11.0':
+    resolution: {integrity: sha512-1WbkB2HgusR6o7u4XrCRhq/NxNS3Zsg3anUrFS4cjkv1ZfV/592UblAtCwvL60rltaHZKdInKvYNFka7TBsY2w==}
     engines: {node: '>=22.15.0'}
     hasBin: true
     peerDependencies:
@@ -790,7 +790,7 @@ packages:
 
 snapshots:
 
-  '@a11ign/toolchain@0.10.2(@rslib/core@1.0.3(typescript@6.0.3))(@rstest/core@0.12.3)(typescript@6.0.3)':
+  '@a11ign/toolchain@0.11.0(@rslib/core@1.0.3(typescript@6.0.3))(@rstest/core@0.12.3)(typescript@6.0.3)':
     dependencies:
       '@rstest/core': 0.12.3
     optionalDependencies:

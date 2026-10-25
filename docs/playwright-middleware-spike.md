@@ -17,6 +17,7 @@ Nothing here fills an a11ign evidence field, and nothing is published: the packa
 - **Q6:** about **+1.3 to +2.0 s** for a run of the 13-test sample suite and **+0.07 to +0.24 s** a test, on a plain runner. Fine on every short test; the runtime lags by minutes on a long walk of a big page.
 - **Q7: yes on a plain `ubuntu-latest` runner with no container** (the sample suite passes after `npm i -D` and `npx announcement-emulator install`; 298 MB bundle). **macOS: the extension's source produced 0 predictions** (`chrome.automation.getDesktop` answers "getDesktop is unsupported by this platform" there, and `chrome.automation.getTree` is not in Chrome 155's API at all), **and the DevTools source, which macOS now takes by default, predicts: all 13 tests of the sample suite had their page load predicted, 17 sweeps and the 4 flags** (CI run 40125495459). The bundle is built twice on the linux-x64 runner, byte for byte the same (sha256 96ea8aaae874a1d8…; not checked on macOS or on two runners).
 - **The tree sources, measured against the fleet (A11-229): the extension buys 0.7 points over the DevTools port on Linux (82.1% against 81.4% of 1,138 units, inside the frozen 1.0-point margin), so the recommendation by the rule is to drop it; DevTools on macOS 83.6% of 1,026. The chairman reads it** (the section after Q7).
+- **The structure safeguard (A11-229, step 2): on table- and list-heavy pages the frozen gate says STOP AND REPORT (the extension leads by +1.8 points on the table pages, 6 units from 342), while DevTools leads by 4.9 points over all the units both read and the extension read 6 of 8 pages; the fields behind the table lead are `clickable`, a typed value and a link's description words. The chairman reads it** (the section after the tree sources).
 - **Recommendation: go, conditionally, as an advisory tool whose first release prints its measured rate (about 80% on this sample); the chairman decides. What a real version needs is the last section.**
 
 ## Q1. One line of setup, no test changes
@@ -345,6 +346,117 @@ The causes by shape are in `comparison.txt`.
 
 **Recommendation by the frozen rule (the chairman reads it): DROP THE EXTENSION: its lead is +0.7 points (934 against 926 of 1,138 units), at most the 1.0-point margin.** What would change the reading, none of which the rule counts: (1) the lead is not distinguishable from zero here (p = 0.26) and the second reading goes the other way; (2) the corpus walks six pages by keyboard and types into a field, so it measures stops, typed echo and the load's lists, **not live-region or other change events**, which the extension reports from the browser and DevTools derives from a page listener, and that is where the extension may still buy something this measurement cannot see (A11-229 step 3 derives them from the tree and re-measures); (3) Windows was not measured; (4) six pages, not held out, an oracle one milestone ahead. The other side: 171 of the 204 misses of the extension are misses of DevTools too, and DevTools on macOS reads at the level of the Linux readings, so what the rule weighs is a second path for 20 units that only the extension gets right, against 14 that only DevTools does.
 
+## The structure safeguard: table- and list-heavy pages (A11-229, step 2)
+
+**By the gate frozen before the capture, the answer is STOP AND REPORT: on the table pages the extension leads DevTools by +1.8 points (323 against 317 of 342 units, 6 units), above the 1.0-point margin. Everywhere else the lead is the other way: on all the units both sources read, DevTools agrees with the fleet on 76.1% and the extension on 71.2% (−4.9 points, 1,492 units), and on the list pages DevTools leads by 6.9. The extension gave no reading of Beaufort scale in any run, and none of the legislation changes table in its first run (the run the headline reads): the two pages with the biggest tables. The fields that make the difference on the table pages are not table indices or set positions: they are `clickable` (6 units), a typed value in a text field (1) and the description words of a table cell's link (4).** The chairman reads it and decides whether step 3 (remove the extension) goes on.
+(*measured* 2026-10-25, 09:33 to 10:09 UTC; everything under `middleware/results/tree-source-structure/`; **not held out**; an oracle of the same milestone as the browser, not the same build.)
+
+`comparison.json`'s `extensionBuys.recommendation` is step 1's rule applied to these numbers (`compare_sources.py` was frozen with it); this measurement's decision is `extensionBuys.gate`, and `comparison.txt` prints only that.
+
+### Why a second measurement
+
+Step 1's six pages are light on tables and long lists, which is where the extension's extra fields (table indices, set positions) could matter. The chairman's decision of 2026-10-25 was to drop the extension, with one safeguard first: measure both sources on table- and list-heavy real pages, by a rule frozen before capture; if DevTools is within the 1.0-point margin there too, remove the extension; if the extension leads by more, stop and report which fields make the difference.
+
+### How it was measured
+
+`middleware/results/tree-source-structure/rule.md`, `candidates.json`, `pages.json`, `select_structure_pages.py`, `dom_check_structure.mjs`, `compare_sources.py` and the drivers were committed and named in `freeze.json` (`1cf8cd09f7`, named 09:33:30 UTC) **before** the first fleet capture (09:38:54 UTC); `make_freeze.py check freeze.json --head 1cf8cd09f7 --fleet <captures>` passes and says every capture is after the freeze. The rule is step 1's, and Q5's under it: the corpus walk, channels, units, shapes, matching, the headline (every channel, the first capture against the first run) and the 1.0-point margin. What is new is the pages and the gate.
+
+After the freeze `compare_sources.py` was refactored on main (A11-229's sibling, the per-build measurement of A11-230, moved its tables into helpers); the merged script, re-run on the same inputs, writes `comparison.txt`, `comparison.json` and both `figure-*/` directories byte for byte as committed, and `make_freeze.py check … --head 1cf8cd09f7` still passes at the freeze commit.
+
+**The pages.** 37 public pages named by hand, in two rounds (34 before the first run; after it three table pages were added: Beaufort scale, Companies House 00000086 and the legislation changes table, because the first pass found tables with links in their cells only on Wikipedia, and the Wikipedia ones were then over the size limit; three of the final four table pages come from that round, and `rule.md`'s sentence that the sample is the same ordering under the limit is imprecise on this: the ordering is over the widened list), of the shapes the chairman listed (data tables with headers, long navigation lists, nested lists, a grid, a tree view). Each in turn, in the order of the SHA-256 of its address, was opened and its DOM counted, and nothing else (`dom_check_structure.mjs`). A **table page** has at least 3 header cells, a table of at least 40 cells and at least 20 tab stops inside table cells; a **list page** has at least 20 tab stops inside list items and a list of at least 20 items or at least 3 nested lists; a page of more than 500 tab stops is neither. The first four of each class are the sample:
+
+| class | page | tab stops | what the DOM has |
+|---|---|---|---|
+| table | legislation.gov.uk, Changes to Legislation affecting the Human Rights Act 1998 | 284 | one table of 462 cells, 243 tab stops in cells |
+| table | Companies House, filing history of company 00000086 | 71 | a table of 78 cells, 26 tab stops in cells |
+| table | Companies House, filing history of company 00000006 | 68 | a table of 78 cells, 25 in cells |
+| table | Wikipedia, Beaufort scale | 293 | a table of 112 cells, 62 in cells |
+| list | W3C APG, scrollable listbox example | 59 | a list of 27 items |
+| list | Wikipedia, Outline of computer science | 409 | 7 nested lists, 349 tab stops in items |
+| list | legislation.gov.uk, Human Rights Act 1998 contents | 125 | a list of 38 items, 10 nested lists |
+| list | GOV.UK Design System, Table | 100 | a list of 39 items |
+
+**The first freeze and why it was replaced.** The rule was first frozen (`89ca720fff`, 08:50:50 UTC) without a limit on the size of a page, and its sample held four Wikipedia tables of 963 to 1,770 tab stops and the Equality Act 2010's contents (705). On the first of its four runs the middleware predicted nothing for those five pages, and a DevTools run of the small listbox page alone waited 69 s at its end for 59 focus events, so that the same run on pages of that size would have taken hours. Fifteen fleet captures of that sample were taken and discarded unread; no figure of any reading had been computed. The limit of 500 tab stops was chosen after seeing that, and says so in `rule.md`. A page with more than 500 tab stops is a page this middleware cannot yet predict at all, with either source; that is a finding of its own, and not a finding about tables.
+
+**The readings.** The extension and DevTools on this host, in Playwright 1.64.1's Chromium 156.0.8078.4, two runs each, interleaved (extension, DevTools, extension, DevTools; 09:33 to 09:52 UTC), in the `structure` project (the corpus walk, held equal to the corpus test by `test_structure_walk.py`). The fleet: each page twice on two of `a11y-worker-14`, `-15`, `-16` (16 captures, all 200, 09:38 to 10:08 UTC), boxes that agree on code hash `25bb45d9b38d7a62`, Windows 26300.9711 and Edge 156.0.4314.42 (`boxes.md`). **Nothing on the fleet was changed.** macOS and a control were not run: macOS takes DevTools whatever this finds. Windows was not measured.
+
+### The readings, and the gate
+
+| | pages read | units | agreed | headline |
+|---|---|---|---|---|
+| `ext-linux` | 6 of 8 | 1,492 | 1,062 | 71.2% |
+| `devtools-linux` | 8 of 8 | 2,199 | 1,609 | 73.2% |
+
+The headline rows are over different units, because the extension read six pages. The rule compares the units both read (1,492):
+
+| | extension | DevTools | lead (points) |
+|---|---|---|---|
+| **all pages** | 1,062 (71.2%) | 1,135 (76.1%) | **−4.9** |
+| **table pages** (2 pages read by both) | 323 (94.4%) | 317 (92.7%) | **+1.8** |
+| **list pages** (4 pages) | 739 (64.3%) | 818 (71.1%) | **−6.9** |
+| the second capture against the second run, all pages | 1,234 (66.3%) | 1,308 (70.2%) | −4.0 |
+
+**Gate by the frozen rule (the chairman reads it): STOP AND REPORT: the extension leads by more than the 1.0-point margin on table pages (+1.8).** Step 3 goes on only if the lead is at most the margin overall and on each class.
+
+How much weight the stop carries: the table lead is 6 units from 342, on two filing-history pages that share one template (the discordant units are 11 for the extension and 5 for DevTools; an exact two-sided sign test gives p = 0.21, not distinguishable from none). Over all pages the discordant units are 23 for the extension and 96 for DevTools (p < 10⁻¹¹), and on the list pages 12 and 91. The rule is applied as written; these are the facts beside it.
+
+By page (agreed of units; the extension's reading is empty where it has none):
+
+| page | class | extension | DevTools |
+|---|---|---|---|
+| legislation.gov.uk, changes affecting the HRA | table | **no reading** | 220 of 378 |
+| Companies House 00000086 | table | 166 of 173 | 161 of 173 |
+| Companies House 00000006 | table | 157 of 169 | 156 of 169 |
+| Wikipedia, Beaufort scale | table | **no reading** | 254 of 329 |
+| APG scrollable listbox | list | 58 of 159 | 137 of 159 |
+| Wikipedia, Outline of computer science | list | 190 of 454 | 185 of 454 |
+| legislation.gov.uk, HRA contents | list | 286 of 303 | 293 of 303 |
+| GOV.UK Design System, Table | list | 205 of 234 | 203 of 234 |
+
+**The extension's coverage.** On Beaufort scale the extension source gave one snapshot, no key and no focus event in both runs and in a third run alone (not diagnosed: the page loads and the walk completes in the browser); on the legislation changes table it gave nothing in the first run and 46 utterances in the second (against DevTools's 142 to 152). With the extension's units on those two pages counted as misses, its agreement over all eight pages would be 1,062 of 2,199 (48.3%). The pairing leaves them out.
+
+### The fields that make the difference
+
+Read after the figure (`fields_after_the_figure.py`, `fields-after-the-figure.txt`; not part of the frozen rule and labelled so): where the sources disagree on a unit, the field in which the loser's string differs from the fleet's.
+
+| | the extension agrees and DevTools does not | DevTools agrees and the extension does not |
+|---|---|---|
+| table pages | `clickable` 6, name 5 | no prediction 4, name 1 |
+| list pages | name 10, name+role+state 1, no prediction 1 | no prediction 85, set size 3, name 1, landmark+level+name 1, landmark+name+role+set size 1 |
+
+On the table pages the 11 units of the extension are:
+
+- **`clickable`, 6 units**, on the Companies House pages: DevTools says `clickable` on a landmark (the search landmark), a form field (a check box), and a grouping; the fleet and the extension do not. `axtree.py` takes `clickable` from `DOMSnapshot`'s `isClickable` (a node with a click listener); the extension's tree does not report it on these nodes.
+- **name, 5 units**: a typed value (`Search for a company or officer, edit, 12345`: DevTools's string has the digits the test typed into the field, the fleet's and the extension's do not: 1 unit); the words of a cell's link (`View / Download (PDF file, link opens in new window)`, 3 units) and the description of the document filed that a column's header carries (1 unit), which DevTools's tree does not name.
+
+The table index (`row 2, column 3`) and the set position are **not** among them. They agree with the fleet where DevTools reads the page: the only `set size` units (3) are ones where the extension is wrong. Where the DevTools source does lose table units is the header text NVDA speaks with a cell: on the two pages the extension did not read, **163 of DevTools's 233 misses are the fleet's string with words missing** around the `row N` or `column N` (`Made by, column 6, 2013 c. 22, link` against `column 6, 2013 c. 22, link`; 143 on the legislation changes table and 20 on Beaufort scale). They were given the cause `conversion: name` by a reader's note (`attribution-notes.json`), with the evidence in each reason: no source agrees where DevTools does not, since the extension has no reading, so whether the extension would have spoken the header text is not known from this measurement. `axtree.py` builds a cell's row and column indexes by counting; the header text is the field step 3 would need from `DOMSnapshot`, the table's `th` cells or `getPartialAXTree`.
+
+### The misses, every one attributed
+
+Each miss has one cause from step 1's closed list (`figure-*/misses.json`), assigned mechanically in the rule's order, and the reader's notes above. `unexplained` is 0 for the extension and 9 of 590 for DevTools, each with its reason (a stop that landed on another element, a combo box named `pane`, a skip link; `comparison.txt`).
+
+| cause | `ext-linux` | `devtools-linux` |
+|---|---|---|
+| `emulator`: both sources miss the unit | 315 | 315 |
+| `history` | 18 | 18 |
+| the extension's own (`tree:` node 58, focus 31, set size 3, name and others 4) | 96 | |
+| DevTools's own (`conversion:` name 177 of which 163 by a reader's note, clickable 6, others 2) | | 185 |
+| `prompt` (the image description prompt: Beaufort scale's pictures) | | 53 |
+| `no counterpart` 8, `unexplained` 9, `page moved` 1, `quick test` 1 | 1 | 19 |
+| **misses** | **430** | **590** |
+
+### Cost, which is also a finding
+
+The runtimes' time (`passive-runs.json`): the extension's runs took 113 to 130 s (the runtimes' speech time 136 to 167 s over 549 to 589 focus events), DevTools's 415 to 450 s (566 to 603 s over 890 to 892 events), **3.5 to 3.7 times as long for the same walks**, because DevTools reads and converts the whole tree again at each event. Pages of more than 700 tab stops produced no prediction with the extension in the first freeze's run, and were not run with DevTools. A DevTools-only middleware needs its tree read made cheaper before it can serve large pages.
+
+### What this measurement does not see
+
+The channels are step 1's. The walk presses Tab, so a grid or tree that moves focus by the arrow keys is entered once: the APG grid, treegrid and treeview pages had 1 to 7 tab stops in cells and were not in the sample. The structure sweep has no table channel. A table index reaches a figure through the focus phrase of a stop inside a cell and through the `lists` channel; set positions through stops inside list items. Change events (live regions) are not in the corpus walk. Two of the four table pages are one template. The gate cannot trip on a class of which the extension read no page, because the pairing leaves the class out (`lead_by_class` in the frozen `compare_sources.py`); here it read two pages of each class, so every class has units. The pages are public and move: `page moved` is 1 miss. The oracle's Edge (156.0.4314.42) is the same milestone as the runs' Chromium (156.0.8078.4), not the same build.
+
+### What I recommend, and what the chairman decides
+
+By the gate, step 3 (remove the extension) does not go on until the chairman reads this. The numbers beside the gate: DevTools is ahead overall and on lists by far more than the margin, the table-page lead of the extension is 6 units on one template (p = 0.21), and the fields that make it up are three that DevTools can work on without the extension: why `isClickable` marks a landmark, a check box and a grouping that the fleet does not call clickable (6 units); the typed digits in a field's string (1); and a link's and a header cell's description words (4). **My recommendation, which the chairman may overrule: take the stop as a work list rather than as a veto: fix those three and the header text in DevTools, re-run this measurement under a fresh freeze, and remove the extension once the table pages are within the margin.** If the chairman prefers to remove the extension now, step 3 carries the same work list. Either way the cost finding applies to DevTools alone.
+
 ## What a real version needs, and the recommendation
 
 **Go for building it properly, as an advisory tool with its measured rate printed first, if the chairman wants the product; the spike answers "can it be done the Playwright way" with yes and "how well" with "about four in five stops and lists, on a small sample, on one platform".** The decision is the chairman's.
@@ -448,4 +560,15 @@ sh middleware/agreement/measure_readings.sh <fleet dir> <work dir> ext-linux=<r1
 python3 middleware/agreement/compare_sources.py --work <work dir> --out middleware/results/tree-source [--notes attribution-notes.json]
 python3 middleware/agreement/make_freeze.py check middleware/results/tree-source/freeze.json --head bcec5908e7 --fleet <fleet dir>
 python3 middleware/agreement/common_units.py <work dir> ext-linux devtools-linux devtools-macos devtools-ubuntu-ci
+# the structure safeguard (A11-229, step 2): select the pages, freeze, capture, run, measure, compare, read the fields after the figure
+python3 middleware/agreement/select_structure_pages.py middleware/results/tree-source-structure/candidates.json middleware/results/tree-source-structure/pages.json   # once; DOM counts only
+python3 middleware/agreement/make_freeze.py name middleware/results/tree-source-structure/freeze.json --also middleware/results/tree-source-structure/rule.md --also middleware/results/tree-source-structure/candidates.json \
+  --also middleware/results/tree-source-structure/pages.json --also middleware/agreement/select_structure_pages.py --also middleware/agreement/dom_check_structure.mjs --also middleware/agreement/compare_sources.py \
+  --also middleware/agreement/run_linux_readings.sh --also middleware/agreement/measure_readings.sh --also middleware/sample-suite/tests/structure --also middleware/sample-suite/base.config.ts --also middleware/results/tree-source/rule.md   # BEFORE any capture
+python3 middleware/agreement/capture_fleet.py middleware/results/tree-source-structure/pages.json <fleet dir> --workers a11y-worker-14=http://<host>:8765,a11y-worker-15=...,a11y-worker-16=...
+sh middleware/agreement/run_linux_readings.sh <project with the package installed> <runs dir> structure
+PAGES=middleware/results/tree-source-structure/pages.json sh middleware/agreement/measure_readings.sh <fleet dir> <work dir> ext-linux=<r1>,<r2> devtools-linux=<r1>,<r2>
+python3 middleware/agreement/compare_sources.py --work <work dir> --out middleware/results/tree-source-structure --classes middleware/results/tree-source-structure/pages.json --notes middleware/results/tree-source-structure/attribution-notes.json
+python3 middleware/agreement/fields_after_the_figure.py --work <work dir> --classes middleware/results/tree-source-structure/pages.json     # after the figure; --write-notes wrote attribution-notes.json
+python3 middleware/agreement/make_freeze.py check middleware/results/tree-source-structure/freeze.json --head 1cf8cd09f7 --fleet <fleet dir>
 ```

@@ -1,0 +1,230 @@
+{
+ "readings": {
+  "ext-linux": {
+   "agreed": 1062,
+   "units": 1492
+  },
+  "devtools-linux": {
+   "agreed": 1609,
+   "units": 2199
+  }
+ },
+ "second": {
+  "ext-linux": {
+   "agreed": 1234,
+   "units": 1862
+  },
+  "devtools-linux": {
+   "agreed": 1563,
+   "units": 2191
+  }
+ },
+ "extensionBuys": {
+  "units": 1492,
+  "extension": 1062,
+  "devtools": 1135,
+  "leadPoints": -4.892761394101877,
+  "extensionOnly": 23,
+  "devtoolsOnly": 96,
+  "margin": 1.0,
+  "recommendation": "drop the extension",
+  "second": {
+   "units": 1862,
+   "extension": 1234,
+   "devtools": 1308,
+   "leadPoints": -3.9742212674543502,
+   "extensionOnly": 174,
+   "devtoolsOnly": 248,
+   "margin": 1.0,
+   "recommendation": "drop the extension"
+  },
+  "byShape": [
+   {
+    "label": "NAME + ROLE",
+    "units": 356,
+    "extension": 221,
+    "devtools": 242
+   },
+   {
+    "label": "NAME + ROLE + STATE + STATE",
+    "units": 329,
+    "extension": 305,
+    "devtools": 322
+   },
+   {
+    "label": "NAME + ROLE + NAME",
+    "units": 91,
+    "extension": 36,
+    "devtools": 37
+   },
+   {
+    "label": "NAME + NAME + NAME + NAME + ROLE",
+    "units": 46,
+    "extension": 46,
+    "devtools": 44
+   },
+   {
+    "label": "NAME + ROLE + STATE + STATE + STATE",
+    "units": 40,
+    "extension": 20,
+    "devtools": 27
+   },
+   {
+    "label": "ROLE + COUNT + NAME + ROLE",
+    "units": 39,
+    "extension": 32,
+    "devtools": 38
+   },
+   {
+    "label": "NAME + ROLE + STATE",
+    "units": 37,
+    "extension": 31,
+    "devtools": 32
+   },
+   {
+    "label": "NAME + ROLE + LEVEL",
+    "units": 30,
+    "extension": 16,
+    "devtools": 24
+   },
+   {
+    "label": "NAME + ROLE + NAME + ROLE + LEVEL",
+    "units": 27,
+    "extension": 25,
+    "devtools": 27
+   },
+   {
+    "label": "NAME + STATE + ROLE",
+    "units": 27,
+    "extension": 22,
+    "devtools": 23
+   }
+  ],
+  "byChannel": [
+   {
+    "label": "title",
+    "units": 6,
+    "extension": 5,
+    "devtools": 6
+   },
+   {
+    "label": "stops",
+    "units": 449,
+    "extension": 385,
+    "devtools": 414
+   },
+   {
+    "label": "field",
+    "units": 3,
+    "extension": 2,
+    "devtools": 2
+   },
+   {
+    "label": "typed",
+    "units": 18,
+    "extension": 12,
+    "devtools": 12
+   },
+   {
+    "label": "headings",
+    "units": 63,
+    "extension": 46,
+    "devtools": 56
+   },
+   {
+    "label": "landmarks",
+    "units": 64,
+    "extension": 58,
+    "devtools": 60
+   },
+   {
+    "label": "formFields",
+    "units": 64,
+    "extension": 55,
+    "devtools": 53
+   },
+   {
+    "label": "graphics",
+    "units": 20,
+    "extension": 20,
+    "devtools": 20
+   },
+   {
+    "label": "links",
+    "units": 694,
+    "extension": 407,
+    "devtools": 436
+   },
+   {
+    "label": "lists",
+    "units": 104,
+    "extension": 65,
+    "devtools": 69
+   },
+   {
+    "label": "frames",
+    "units": 7,
+    "extension": 7,
+    "devtools": 7
+   }
+  ],
+  "byClass": [
+   {
+    "label": "list",
+    "units": 1150,
+    "extension": 739,
+    "devtools": 818,
+    "leadPoints": -6.869565217391305
+   },
+   {
+    "label": "table",
+    "units": 342,
+    "extension": 323,
+    "devtools": 317,
+    "leadPoints": 1.7543859649122806
+   }
+  ],
+  "gate": {
+   "proceed": false,
+   "over": [
+    {
+     "label": "table pages",
+     "leadPoints": 1.7543859649122806
+    }
+   ],
+   "margin": 1.0
+  }
+ },
+ "causes": {
+  "ext-linux": {
+   "emulator": 315,
+   "tree: focus": 31,
+   "tree: node": 58,
+   "tree: set size": 3,
+   "tree: landmark+level+name": 1,
+   "quick test": 1,
+   "history": 18,
+   "tree: name": 2,
+   "tree: landmark+name+role+set size": 1
+  },
+  "devtools-linux": {
+   "emulator": 315,
+   "conversion: name": 177,
+   "conversion: node": 1,
+   "unexplained": 9,
+   "no counterpart": 8,
+   "quick test": 1,
+   "conversion: name+role+state": 1,
+   "history": 18,
+   "conversion: clickable": 6,
+   "page moved": 1,
+   "prompt": 53
+  }
+ },
+ "workList": {
+  "conversion: name [devtools-linux]": 177,
+  "conversion: node [devtools-linux]": 1,
+  "conversion: name+role+state [devtools-linux]": 1,
+  "conversion: clickable [devtools-linux]": 6
+ }
+}
