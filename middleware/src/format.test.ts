@@ -1,8 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { LAG_MS, annotationsFor, assign, attachments, browserBuild, describe, evidenceFieldsIn, treeOfWorker, type Window } from "./format.ts";
-import { agreementFor, type SupportedVersions } from "./supported.ts";
-import { treeRate } from "./tree-rates.ts";
+import { agreementFor, type Figure, type SupportedVersions } from "./supported.ts";
 import { ANNOTATION, ATTACH_JSON, ATTACH_TEXT, LABEL } from "./label.ts";
 import type { RuntimeRecord } from "./runtime.ts";
 
@@ -70,29 +69,10 @@ test("a test run in a build that is not listed says its agreement is not measure
   assert.match(out.text, /Save, button/);
 });
 
-test("every output says which tree source it used, why, and how well that source agreed with NVDA when it was measured, for the extension as for the DevTools port", () => {
-  const devtools = describe(w("t", 0, 1), [], null, { tree: "devtools", treeWhy: "the extension was not used: run npx playwright install chromium, without --only-shell", treeRate: treeRate("devtools", "linux") });
-  assert.match(devtools.text, /^tree: the DevTools port's accessibility tree \(the extension was not used: run npx playwright install chromium, without --only-shell\); the devtools tree agreed with a real NVDA on 81\.4% of 1,138 units on Linux/m);
-  assert.equal(devtools.json.treeSourceWhy, "the extension was not used: run npx playwright install chromium, without --only-shell");
-  assert.equal(devtools.json.treeSourceAgreement, treeRate("devtools", "linux"));
-  const extension = describe(w("t", 0, 1), [], null, { tree: "extension", treeWhy: "the default where the browser gives the extension a desktop tree", treeRate: treeRate("extension", "linux") });
-  assert.match(extension.text, /^tree: the companion extension's accessibility tree \(the default where the browser gives the extension a desktop tree\); the extension tree agreed with a real NVDA on 82\.1% of 1,138 units on Linux/m);
-  assert.equal(extension.json.treeSource, "extension");
-  assert.equal(extension.json.treeSourceWhy, "the default where the browser gives the extension a desktop tree");
-});
-
-test("no output calls the DevTools tree of lower fidelity: what is said of it is the rate it was measured at", () => {
-  const out = describe(w("t", 0, 1), [], null, { tree: "devtools", treeWhy: "macOS gives the extension no desktop tree", treeRate: treeRate("devtools", "darwin") });
-  assert.doesNotMatch(out.text, /lower fidelity/);
-  assert.doesNotMatch(JSON.stringify(out.json), /lower fidelity/);
-  assert.match(out.text, /the devtools tree agreed with a real NVDA on 83\.6% of 1,026 units on macOS/);
-});
-
-test("a worker that fell back says so in its text and its json, with the runtime's reason", () => {
-  const out = describe(w("t", 0, 1), [], null, { tree: "devtools", treeWhy: "the extension posted no tree within 5 s of the first page, so the trees are read through the DevTools port", fellBack: true });
-  assert.equal(out.json.treeSourceFellBack, true);
-  assert.match(out.text, /^tree: the DevTools port's accessibility tree \(the extension posted no tree within 5 s/m);
-  assert.equal(describe(w("t", 0, 1), [], null, { tree: "devtools", treeWhy: "x" }).json.treeSourceFellBack, undefined);
+test("the DevTools source says why it was used, beside its note that the tree is of lower fidelity", () => {
+  const out = describe(w("t", 0, 1), [], null, { tree: "devtools", treeWhy: "the extension was not used: run npx playwright install chromium, without --only-shell" });
+  assert.match(out.text, /lower fidelity than the extension's \(the extension was not used: run npx playwright install chromium, without --only-shell\)/);
+  assert.equal(out.json.treeSourceWhy, "the extension was not used: run npx playwright install chromium, without --only-shell");
 });
 
 test("the emulator line names the Chromium the mapping tables were read from, and no browser of the bundle's", () => {
@@ -107,10 +87,59 @@ test("the build a worker ran in is the one its browser named when the runtime re
   assert.equal(browserBuild([]), null);
 });
 
+const byShape = (over: Partial<Figure> = {}): SupportedVersions => ({ builds: [{ chromium: "156.0.8078.4", playwright: ["1.64.1"], measured: { "extension-linux": {
+  agreement: 0.831, units: 249, date: "2026-10-26", figure: "middleware/results/agreement-round-1/held-out/156.0.8078.4/extension-linux/", population: { pages: 6, heldOut: true, units: 249 }, ceiling: { agreement: 0.952, units: 249 },
+  shapes: { "NAME + ROLE": { agreement: 0.86, units: 57, lowConfidence: false }, "NAME": { agreement: 0.682, units: 22, lowConfidence: true } }, ...over } } }] });
+const withShape = (shape: string[], text: string): RuntimeRecord => ({ ...speech(1100, 1, text), shape });
+const rated = (list: SupportedVersions, shape: string[], build = "156.0.8078.4") =>
+  describe(w("t", 1000, 2000), [withShape(shape, "Save, button")], null, { tree: "extension", agreement: agreementFor(list, build, "extension", "linux") });
+
+test("an utterance whose shape was measured carries the rate of its shape and the units, in the text and in the json", () => {
+  const out = rated(byShape(), ["NAME", "ROLE"]);
+  assert.match(out.text, /^\+0\.10s {2}focus {3}Save, button {2}\[NAME \+ ROLE: 86\.0% of 57\]$/m);
+  const row = (out.json.predictedSpeech as Record<string, unknown>[])[0]!;
+  assert.deepEqual(row.shapeRate, { shape: "NAME + ROLE", measured: true, agreement: 0.86, units: 57 });
+  assert.equal("lowConfidence" in row, false);
+});
+
+test("an utterance of a shape the list marks low confidence says so, in the text and as lowConfidence: true in the json", () => {
+  const out = rated(byShape(), ["NAME"]);
+  assert.match(out.text, /\[NAME: 68\.2% of 22, low confidence\]$/m);
+  const row = (out.json.predictedSpeech as Record<string, unknown>[])[0]!;
+  assert.equal(row.lowConfidence, true);
+  assert.deepEqual(row.shapeRate, { shape: "NAME", measured: true, agreement: 0.682, units: 22, lowConfidence: true });
+});
+
+test("an utterance of a shape the round never saw says that its shape is not measured", () => {
+  const out = rated(byShape(), ["ROLE", "NAME", "LEVEL"]);
+  assert.match(out.text, /Save, button {2}\[shape not measured\]$/m);
+  const row = (out.json.predictedSpeech as Record<string, unknown>[])[0]!;
+  assert.deepEqual(row.shapeRate, { shape: "ROLE + NAME + LEVEL", measured: false });
+  assert.equal("lowConfidence" in row, false);
+});
+
+test("a listed build whose figure has no shapes (one from before a round measured them) leaves every utterance as it was", () => {
+  const out = rated(listed, ["NAME", "ROLE"]);
+  assert.match(out.text, /^\+0\.10s {2}focus {3}Save, button$/m);
+  assert.equal("shapeRate" in (out.json.predictedSpeech as Record<string, unknown>[])[0]!, false);
+});
+
+test("a build that is not listed says its agreement is not measured and no utterance carries a rate", () => {
+  const out = rated(byShape(), ["NAME", "ROLE"], "152.0.7999.1");
+  assert.match(out.text, /^agreement not measured for Chromium 152\.0\.7999\.1$/m);
+  assert.doesNotMatch(out.text, /shape not measured|% of /);
+  assert.equal("shapeRate" in (out.json.predictedSpeech as Record<string, unknown>[])[0]!, false);
+});
+
+test("the report's sentence carries the population, the date and the ceiling the figure gives", () => {
+  const out = rated(byShape(), ["NAME", "ROLE"]);
+  assert.match(out.text, /^agreement measured for Chromium 156\.0\.8078\.4 \(Playwright 1\.64\.1\), extension: 83\.1% of 249 units on 6 held-out pages, 2026-10-26; the fleet agrees with itself on 95\.2% \(middleware\/results\/agreement-round-1\/held-out\/156\.0\.8078\.4\/extension-linux\/\)$/m);
+});
+
 test("a worker whose extension did not come up reads as the DevTools source from the runtime's own record, with the reason it gave; any other keeps the run's pick", () => {
   const planned = { source: "extension" as const, why: "the default where the browser gives the extension a desktop tree" };
-  const fell: RuntimeRecord = { kind: "start", t: 5, what: "fallback", from: "extension", to: "devtools", why: "the extension posted no tree within 5 s of the first page, so the trees are read through the DevTools port" };
-  assert.deepEqual(treeOfWorker([fell], planned), { source: "devtools", why: fell.why, fellBack: true });
-  assert.deepEqual(treeOfWorker([{ kind: "start", t: 1, what: "extension" }], planned), { ...planned, fellBack: false });
-  assert.deepEqual(treeOfWorker([], planned), { ...planned, fellBack: false });
+  const fell: RuntimeRecord = { kind: "start", t: 5, what: "fallback", from: "extension", to: "devtools", why: "the extension did not come up within 5 s of the first page, so the trees are read through the DevTools port" };
+  assert.deepEqual(treeOfWorker([fell], planned), { source: "devtools", why: fell.why });
+  assert.deepEqual(treeOfWorker([{ kind: "start", t: 1, what: "extension" }], planned), planned);
+  assert.deepEqual(treeOfWorker([], planned), planned);
 });

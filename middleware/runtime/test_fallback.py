@@ -15,28 +15,10 @@ class Due(unittest.TestCase):
     def test_it_is_not_due_before_any_page_was_seen(self):
         self.assertFalse(fallback.due(5, None, False, False, 1000.0))
 
-    def test_it_is_not_due_once_the_extension_has_posted_a_tree_or_the_switch_is_made_or_nobody_asked_for_it(self):
+    def test_it_is_not_due_once_the_extension_has_spoken_or_the_switch_is_made_or_nobody_asked_for_it(self):
         self.assertFalse(fallback.due(5, 100.0, True, False, 200.0))
         self.assertFalse(fallback.due(5, 100.0, False, True, 200.0))
         self.assertFalse(fallback.due(0, 100.0, False, False, 200.0))
-
-
-class TreeSeen(unittest.TestCase):
-    def test_the_extensions_tree_is_one(self):
-        self.assertTrue(fallback.tree_seen(False, 'snap', {'seq': 1}))
-
-    def test_its_ready_is_one_only_when_the_desktop_it_reads_has_windows_in_it(self):
-        self.assertTrue(fallback.tree_seen(False, 'ready', {'t': 1, 'desktopChildren': 1}))      # a heavy first page takes seconds to read: the extension is up
-        self.assertFalse(fallback.tree_seen(False, 'ready', {'t': 1, 'desktopChildren': 0}))      # macOS: nothing will be posted
-        self.assertFalse(fallback.tree_seen(False, 'ready', {'t': 1}))
-
-    def test_the_ports_own_tree_is_not_the_extensions_and_once_seen_it_stays_seen(self):
-        self.assertFalse(fallback.tree_seen(False, 'snap', {'seq': 1, 'devtools': True}))
-        self.assertTrue(fallback.tree_seen(True, 'ready', {'t': 1}))
-
-    def test_an_extension_that_is_ready_with_an_empty_desktop_and_posts_no_tree_is_taken_over_after_the_wait(self):
-        seen = fallback.tree_seen(False, 'ready', {'t': 1, 'desktopChildren': 0})
-        self.assertTrue(fallback.due(5, 100.0, seen, False, 105.0))
 
 
 class AfterTheSwitch(unittest.TestCase):
@@ -50,7 +32,7 @@ class AfterTheSwitch(unittest.TestCase):
         for kind in ('page', 'attached', 'error', 'hello'): self.assertFalse(fallback.from_extension_after_switch(kind, {}))
 
     def test_the_reason_says_how_long_it_waited_and_where_the_trees_come_from_now(self):
-        self.assertEqual(fallback.reason(5), 'the extension posted no tree within 5 s of the first page, so the trees are read through the DevTools port')
+        self.assertEqual(fallback.reason(5), 'the extension did not come up within 5 s of the first page, so the trees are read through the DevTools port')
 
 
 class StartRecords(unittest.TestCase):

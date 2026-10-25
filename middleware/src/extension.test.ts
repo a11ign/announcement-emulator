@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { browserArgs, extensionWait, EXTENSION_WAIT_S, pickTree, prepareExtension, treeSource, type TreeOption } from "./extension.ts";
+import { browserArgs, extensionWait, EXTENSION_WAIT_S, pickTree, prepareExtension, treeSource } from "./extension.ts";
 
 test("the extension copy names passive.js as its service worker and carries the runtime's port, and the bundle's own copy is untouched", () => {
   const bundle = mkdtempSync(join(tmpdir(), "ae-ext-"));
@@ -67,44 +67,4 @@ test("the runtime waits for an extension that has said nothing only where the ex
   assert.equal(extensionWait(auto, { ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT: "nonsense" }), EXTENSION_WAIT_S);
   assert.equal(extensionWait(pickTree("linux", { ANNOUNCEMENT_EMULATOR_TREE: "extension" }), {}), 0, "forced: the readings of a source are not switched to the other");
   assert.equal(extensionWait(pickTree("darwin", {}), {}), 0, "already the DevTools port");
-});
-
-const yes = { ok: true, why: "" };
-
-test("the pick for each platform and option: auto is the extension on Linux and Windows and the DevTools port on macOS, and the option forces either source anywhere", () => {
-  const table: [string, TreeOption | undefined, string][] = [
-    ["linux", "auto", "extension"], ["win32", "auto", "extension"], ["darwin", "auto", "devtools"],
-    ["linux", undefined, "extension"], ["darwin", undefined, "devtools"],
-    ["linux", "devtools", "devtools"], ["win32", "devtools", "devtools"], ["darwin", "devtools", "devtools"],
-    ["linux", "extension", "extension"], ["win32", "extension", "extension"], ["darwin", "extension", "extension"],
-  ];
-  for (const [platform, option, source] of table) assert.equal(pickTree(platform, {}, yes, option).source, source, `${platform} / ${option}`);
-});
-
-test("a pick says why: the platform, the launch, the option, or the environment, and only a pick made by hand is forced", () => {
-  assert.deepEqual(pickTree("linux", {}, yes, "auto"), { source: "extension", why: "the default where the browser gives the extension a desktop tree", forced: false });
-  assert.deepEqual(pickTree("darwin", {}, yes, "auto"), { source: "devtools", why: "macOS gives the extension no desktop tree", forced: false });
-  assert.deepEqual(pickTree("linux", {}, { ok: false, why: "x" }, "auto"), { source: "devtools", why: "the extension was not used: x", forced: false });
-  assert.deepEqual(pickTree("linux", {}, yes, "devtools"), { source: "devtools", why: 'the tree option is "devtools"', forced: true });
-  assert.deepEqual(pickTree("darwin", {}, yes, "extension"), { source: "extension", why: 'the tree option is "extension"', forced: true });
-});
-
-test("the option wins over the environment, and the reason says the environment was set and not used", () => {
-  const picked = pickTree("linux", { ANNOUNCEMENT_EMULATOR_TREE: "extension" }, yes, "devtools");
-  assert.equal(picked.source, "devtools");
-  assert.equal(picked.why, 'the tree option is "devtools" (ANNOUNCEMENT_EMULATOR_TREE=extension is set and is not used: the option wins)');
-  assert.equal(pickTree("linux", { ANNOUNCEMENT_EMULATOR_TREE: "devtools" }, yes, "extension").source, "extension");
-});
-
-test("auto, and an option that names no source, leave the decision to the environment and then to the platform", () => {
-  assert.deepEqual(pickTree("linux", { ANNOUNCEMENT_EMULATOR_TREE: "devtools" }, yes, "auto"), { source: "devtools", why: "ANNOUNCEMENT_EMULATOR_TREE=devtools", forced: true });
-  assert.equal(pickTree("linux", {}, yes, "nonsense" as TreeOption).source, "extension");
-  assert.equal(pickTree("darwin", {}, yes, "nonsense" as TreeOption).source, "devtools");
-  assert.match(pickTree("linux", {}, yes, "Devtools" as TreeOption).why, /\(the tree option "Devtools" is not auto, extension or devtools: ignored\)$/, "a misspelt option is said, not silently taken for auto");
-  assert.equal(pickTree("linux", {}, yes, "auto").why.includes("ignored"), false);
-});
-
-test("a source forced by the option is not switched by the runtime, and one left to auto is", () => {
-  assert.equal(extensionWait(pickTree("linux", {}, yes, "extension"), {}), 0);
-  assert.equal(extensionWait(pickTree("linux", {}, yes, "auto"), {}), EXTENSION_WAIT_S);
 });

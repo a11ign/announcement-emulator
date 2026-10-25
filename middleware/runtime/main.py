@@ -87,7 +87,7 @@ def main():
                              on_connect=(lambda: inbox.put(('ready', {'t': round(time.time() * 1000), 'source': 'devtools'}, time.time()))) if devtools else lambda: None)
     send({'type': 'ready', 'bootMs': round((time.time() - t0) * 1000)})
     ordered = Ordered()
-    switch = {'first_page': None, 'extension_tree': False, 'done': False}      # the extension that does not come up: fallback.py
+    switch = {'first_page': None, 'extension_up': False, 'done': False}      # the extension that does not come up: fallback.py
     dump = open(os.environ['AE_DUMP'], 'a', buffering=1) if os.environ.get('AE_DUMP') else None      # a log of what arrived and when, for finding what a run lost
     record = open(os.environ['AE_RECORD'], 'a', buffering=1) if os.environ.get('AE_RECORD') else None      # everything the runtime was told, whole, for replay.py
     def note(kind, body, arrived):
@@ -110,8 +110,8 @@ def main():
             elif kind == 'page': predictor.on_page_event(body)
             elif kind in ('error', 'verify'): send({'type': 'record', 'rec': {'kind': kind, **body}})
             elif kind in ('ready', 'hello', 'attached'):
+                if kind == 'ready': switch['extension_up'] = switch['extension_up'] or body.get('source') != 'devtools'
                 if kind == 'attached': switch['first_page'] = switch['first_page'] or arrived_at
-                switch['extension_tree'] = fallback.tree_seen(switch['extension_tree'], kind, body)
                 send({'type': 'record', 'rec': start_record(kind, body, arrived_at)})
         except BaseException as e:
             import traceback; traceback.print_exc()
@@ -125,7 +125,7 @@ def main():
                 send({'type': 'record', 'rec': {'kind': 'error', 'where': 'snapshot', 'message': f'{type(e).__name__}: {e}'}})
 
     while True:
-        if cdp and args.tree == 'extension' and fallback.due(args.fallback_after, switch['first_page'], switch['extension_tree'], switch['done'], time.time()): switch_to_devtools()
+        if cdp and args.tree == 'extension' and fallback.due(args.fallback_after, switch['first_page'], switch['extension_up'], switch['done'], time.time()): switch_to_devtools()
         try: kind, body, arrived = inbox.get(timeout=0.05)
         except queue.Empty:
             snapshots()
@@ -133,7 +133,7 @@ def main():
             continue
         if switch['done'] and fallback.from_extension_after_switch(kind, body): continue
         note(kind, body, arrived)
-        if kind == 'snap': switch['extension_tree'] = fallback.tree_seen(switch['extension_tree'], kind, body); ordered.add(body, arrived); snapshots()
+        if kind == 'snap': switch['extension_up'] = switch['extension_up'] or not body.get('devtools'); ordered.add(body, arrived); snapshots()
         elif kind == 'page': handle('page', body)
         elif kind == 'ready':      # the extension started again: what it told before is done with, and its numbers begin again
             snapshots(final=True); ordered.reset(); predictor.restart(); handle(kind, body, arrived)
@@ -146,7 +146,6 @@ def main():
                         k, b, a = inbox.get(timeout=0.05)
                         if switch['done'] and fallback.from_extension_after_switch(k, b): continue
                         note(k, b, a)
-                        switch['extension_tree'] = fallback.tree_seen(switch['extension_tree'], k, b)
                         if k == 'snap': ordered.add(b, a)
                         elif k == 'page': handle('page', b)
                         elif k == 'cmd' and b['cmd'] == 'quit': break

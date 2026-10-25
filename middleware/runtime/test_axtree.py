@@ -26,6 +26,15 @@ class SignUp(unittest.TestCase):
         self.assertEqual([n.get('name') for n in self.tree['nodes'] if n['role'] == 'textField'], ['Full name', 'Email address'])
         self.assertEqual(len(self.tree['nodes']), 30)
 
+    def test_a_node_names_the_dom_node_the_browser_holds_for_it_and_a_node_with_no_element_names_none(self):
+        """The page's focus is matched to a node by this number (predict.py `match_focus`): the AX node's own `backendDOMNodeId`."""
+        with gzip.open(os.path.join(HERE, 'fixtures', 'devtools', 'signup.json.gz'), 'rt') as f: raw = json.load(f)
+        backend = {n['name']['value']: n['backendDOMNodeId'] for n in raw['ax'] if n.get('role', {}).get('value') == 'link' and 'backendDOMNodeId' in n}
+        self.assertEqual(find(self.tree, 'link', 'Home')['backendId'], backend['Home'])
+        self.assertNotEqual(backend['Home'], backend['Basket']); self.assertEqual(find(self.tree, 'link', 'Basket')['backendId'], backend['Basket'])
+        box = next(n for n in self.tree['nodes'] if n['role'] == 'inlineTextBox')
+        self.assertNotIn('backendId', box)
+
     def test_the_document_has_the_focus_until_something_takes_it(self):
         self.assertEqual(self.tree['focusIx'], 0)
         self.assertTrue(self.tree['nodes'][0]['state']['focused'])

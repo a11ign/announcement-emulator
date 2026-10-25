@@ -159,4 +159,56 @@ class ReplayDevtools(unittest.TestCase):
         self.assertEqual(flagged('devtools-tab-order'), [])
 
 
+def stops(name):
+    """What was said for each focus move of a recording, in order."""
+    return [t for c, t in said(name) if c == 'focus']
+
+
+def frame_lists(name): return [r['lists']['frames'] for r in replay(name)['records'] if r['kind'] == 'sweep']
+
+
+NEW_WINDOW = ['Read the guidance on accuracy(link opens a new window), link', 'Advanced search Link opens in new window, link', 'Tell us what you think (opens in a new tab), link', 'Home, link']
+SAME_PAGE = ['Top, same page, link', 'Details, same page, link', 'This page, same page, link', 'This page, questions, same page, link', 'A path in the fragment, link', 'Step two, link', 'Another page, link']
+AFTER_THE_ROUTE = ['Go to step two, button', 'Steps, navigation landmark, Step one, link', 'Step two, same page, link', 'Step two, questions, same page, link', 'Another page, link']
+NESTED = ['Billing address, frame, Billing address, heading, level 2', 'Card details, frame, Card details, heading, level 3', 'Delivery notes, frame, Delivery notes, heading, level 2']
+
+
+@unittest.skipUnless(HAVE, "needs the emulator's virtualenv and NVDA's source (setup.sh)")
+class Misses(unittest.TestCase):
+    """The faults the agreement measurement attributed to the middleware (A11-234), on pages written for them (middleware/sample-suite/pages/misses), recorded through the extension's tree (`PREFIX = ''`) and the
+    DevTools port's (`devtools-`). Each recording is of the test of the same name in middleware/sample-suite/tests/misses."""
+    PREFIX = ''
+
+    def name(self, what): return f'misses/{self.PREFIX}{what}'
+
+    def test_a_link_whose_name_is_longer_than_its_text_is_found_by_its_dom_node_and_every_stop_is_spoken(self):
+        """The names the page script could make from the element miss a hidden span written with no space before it and a name CSS generates: four stops, and none unresolved."""
+        self.assertEqual(stops(self.name('focus-by-node')), NEW_WINDOW)
+        self.assertEqual(replay(self.name('focus-by-node'), '--no-sweeps')['stats']['unresolvedFocus'], 0)
+
+    def test_a_link_to_the_address_of_the_page_is_same_page_and_a_link_that_goes_elsewhere_in_it_is_not(self):
+        """NVDA's own rule (utils/urlUtils.py isSamePageURL): the address without its fragment is the document's, and a fragment with a slash in it is not one."""
+        self.assertEqual(stops(self.name('same-page')), SAME_PAGE)
+
+    def test_the_links_of_a_page_are_same_page_by_the_address_it_has_now_and_not_the_address_it_loaded_at(self):
+        """pushState gives the document a new address with no load. Before the fix `Step one` was said `same page` and `Step two` was not (gecko_ia2.py:605: the buffer's address is the document's value, now)."""
+        self.assertEqual(stops(self.name('same-page-route')), AFTER_THE_ROUTE)
+
+    def test_every_frame_is_listed_as_quick_navigation_lists_it_nested_ones_too(self):
+        self.assertEqual(frame_lists(self.name('frames')), [NESTED])
+
+    def test_a_frame_below_the_fold_is_listed_with_what_the_browser_has_shown_of_it(self):
+        """A frame the page has not scrolled to is listed by its name alone in the extension's tree: Chromium does not tell the browser of a frame it does not draw (attributed `offscreen frame`, not fixed here). The DevTools port asks the page and gets it."""
+        listed = ['Opening hours, frame, Delivery notes, heading, level 2', 'Prices, frame' if self.PREFIX == '' else 'Prices, frame, Card details, heading, level 3']
+        self.assertEqual(frame_lists(self.name('frames-below-the-fold')), [listed])
+
+    def test_a_frame_the_test_scrolled_to_is_listed_with_its_first_line(self):
+        self.assertEqual(frame_lists(self.name('frames-scrolled-to')), [['Opening hours, frame, Delivery notes, heading, level 2', 'Prices, frame, Card details, heading, level 3']])
+
+
+@unittest.skipUnless(HAVE, "needs the emulator's virtualenv and NVDA's source (setup.sh)")
+class MissesDevtools(Misses):
+    PREFIX = 'devtools-'
+
+
 if __name__ == '__main__': unittest.main()

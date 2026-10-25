@@ -7,7 +7,6 @@ import type { PlaywrightTestConfig } from "@playwright/test";
 import { announce, ignoring } from "./config.ts";
 import type { PlaywrightChromium } from "./playwright-chromium.ts";
 import { readPins } from "./pins.ts";
-import { pickTree, type TreeOption } from "./extension.ts";
 import { RUN_ENV } from "./run.ts";
 
 /** A bundle as `findBundle` knows one: a directory with the manifest and the two files the config reads. */
@@ -243,29 +242,4 @@ test("a chromium project that shares the config's use with a firefox project can
   const config = inWorker({}, installed, [{ name: "plain" }, { name: "ff", use: { browserName: "firefox" } }]);
   assert.equal(extensionOf(config as PlaywrightTestConfig).ok, false);
   assert.match(extensionOf(config as PlaywrightTestConfig).why, /shares its launch/);
-});
-
-const reporterOptions = (config: PlaywrightTestConfig) => (config.reporter as unknown as [string, Record<string, unknown>][])[0]![1];
-
-test("the tree option reaches the reporter, which makes the pick, and an option left out reaches it as none", () => {
-  const bundle = fakeBundle();
-  withEnv({ ANNOUNCEMENT_EMULATOR_BUNDLE: bundle }, () => {
-    for (const tree of ["auto", "extension", "devtools"] as const) assert.equal(reporterOptions(announce({}, { tree }, installed)).tree, tree);
-    assert.equal(reporterOptions(announce({}, {}, installed)).tree, undefined);
-  });
-});
-
-test("the worker of each platform and option is launched with the tree source the pick gave it: the extension's flags for the extension, and none for the DevTools port", () => {
-  const rows: [string, TreeOption, "extension" | "devtools"][] = [["linux", "auto", "extension"], ["win32", "auto", "extension"], ["darwin", "auto", "devtools"], ["linux", "devtools", "devtools"], ["darwin", "extension", "extension"]];
-  const bundle = fakeBundle();
-  for (const [platform, option, source] of rows) {
-    const pick = pickTree(platform, {}, { ok: true, why: "" }, option);
-    assert.equal(pick.source, source, `${platform} / ${option}`);
-    withEnv({ ANNOUNCEMENT_EMULATOR_BUNDLE: bundle, [RUN_ENV]: run(bundle, pick.source), TEST_PARALLEL_INDEX: "0" }, () => {
-      const launch = (announce<PlaywrightTestConfig>({ use: {} }, { tree: option }, installed).use ?? {}).launchOptions!;
-      assert.equal(launch.args!.some((a) => a.startsWith("--load-extension=")), source === "extension", `${platform} / ${option}`);
-      assert.ok(launch.args!.includes("--remote-debugging-port=41002"), "the DevTools port is open for both sources");
-      assert.ok(pick.why.length > 0, "the pick says why");
-    });
-  }
 });

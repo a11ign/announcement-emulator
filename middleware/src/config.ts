@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import type { PlaywrightTestConfig, ReporterDescription } from "@playwright/test";
 import { BundleMissing, findBundle, layout } from "./bundle.ts";
-import { browserArgs, type TreeOption } from "./extension.ts";
+import { browserArgs } from "./extension.ts";
 import { readPins } from "./pins.ts";
 import { extensionVerdict, launchChannel, readPlaywright, type BrowserChoice, type PlaywrightChromium, type Verdict } from "./playwright-chromium.ts";
 import { readRun, type RunEnv } from "./run.ts";
@@ -12,12 +12,6 @@ export interface Options {
   sweeps?: boolean;
   /** Check every dump the extension makes against one read from scratch (the tests turn it on). */
   verify?: boolean;
-  /**
-   * Where the accessibility tree comes from. `"auto"` (the default): the extension on Linux and Windows, the DevTools port on macOS and wherever the extension cannot be expected to load, with a
-   * switch to the DevTools port at run time if the extension does not come up. `"extension"` or `"devtools"` forces that source and never switches, even where the extension is known not to load (no full Chromium installed). A value that is none of the three is ignored, and the report says so. It wins over `ANNOUNCEMENT_EMULATOR_TREE`,
-   * and the reports say so.
-   */
-  tree?: TreeOption;
 }
 
 type Use = NonNullable<PlaywrightTestConfig["use"]>;
