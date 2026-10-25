@@ -7,7 +7,7 @@
 #     box.sh afterrun <worker>  the two probes again, once the corpus is captured
 #     box.sh off <worker>       the replay set-up taken away, history back on, and the read-back of each; `fleet:status`
 #
-# Environment (RUNBOOK.md has each): EMU (this checkout), RUN_ID, R (the results directory), W (scratch), A11Y_CONTROL_HOST, A11Y_PVE_KEY, CAPTURE_HOST (this machine's address, for the boxes), PORTS ("worker=port,..."
+# Environment (RUNBOOK.md has each): EMU (this checkout), LABEL (the ticket key: every capture is a fleet job, and a job has a label), RUN_ID, R (the results directory), W (scratch), A11Y_CONTROL_HOST, A11Y_PVE_KEY, CAPTURE_HOST (this machine's address, for the boxes), PORTS ("worker=port,..."
 # of the replay servers), HISTORY_PROBE (the history probe page's address on capture-host), EMU_DOWNLOADS. fleet:status runs from ~/repos/control.
 set -euo pipefail
 B=${2:?a worker name}; verb=${1:?on|change|probes|afterrun|off}
@@ -17,7 +17,7 @@ worker_url() { python3 -c 'import yaml,sys; inv=yaml.safe_load(open(sys.argv[2])
 port_of() { tr ',' '\n' <<<"$PORTS" | sed -n "s/^$1=//p"; }
 scrub() { CAPTURE_HOST=$CAPTURE_HOST CONTROL_HOST=$A11Y_CONTROL_HOST python3 "$F/scrub.py" "$INV"; }
 on_plane() { plane "cd /root/control/ansible && $*" 2>&1 | scrub; }      # a play's or a module's own output, addresses taken out
-cap() { node "$EMU/q3/fleet_capture.mjs" "$B=$(worker_url "$B")" "$1" "$2"; }       # one capture of an address by the box
+cap() { python3 "$EMU/q3/fleet_capture.py" capture "$B" "$1" "$2" --label "${LABEL:?the ticket key}" --wait 30m; }       # one capture of an address by the box: a fleet job, one bounded wait
 replay_probe() {      # the archive-only page, through the box's own replay server; $1 the stage
   python3 -c 'import sys; sys.path.insert(0, sys.argv[1]); from control import control; control(int(sys.argv[2]), "/use?archive=probe.flows")' "$EMU/q3/replay" "$(port_of "$B")"
   cap https://replay-probe.test/ "$W/probes/$B.replay-$1.json"

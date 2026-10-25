@@ -2,6 +2,7 @@
 
 This is `q3/replay/RUNBOOK.md` with four things changed. Read that first: the recording, the servers, the fleet's set-up and restoration, the capture, the emulator's runs and the proof that both sides were served the same bytes are its steps 0 to 6 and 8, and they are not repeated here.
 Every fleet step is Ansible from the control plane, the first box alone and then one at a time, with a read-back after each; nothing is changed by hand on a box and no box is reached by ssh from this host.
+**Its step 4, the replayed corpus capture, is withdrawn on the fleet job service (A11-246)**: see that step's note. The capture below that this runbook builds on cannot be run until a replay server can serve a whole run's archives at once, which is a follow-up.
 Results go to `q3/results/gate/`. They name workers (`a11y-worker-N`) and `capture-host`, never an address (`check.py addresses`).
 
 ```sh

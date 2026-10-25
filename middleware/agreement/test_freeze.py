@@ -47,6 +47,19 @@ class Freeze(unittest.TestCase):
         run('commit', '-qam', 'compare')
         self.assertEqual(make_freeze.moved(freeze, d), ['compare.py'])
 
+    def test_a_named_thing_deleted_after_the_freeze_is_reported_as_moved_and_not_raised(self):
+        """q3/fleet_capture.mjs, which every freeze committed before A11-246 names, is gone from head: `check` lists it and exits 1; `check --head <the freeze commit>` still passes."""
+        files = {p + ('/x' if '.' not in os.path.basename(p) else ''): p for p in make_freeze.OBJECTS}
+        d, run = repo_with({**files, 'q3/fleet_capture.mjs': 'the old client'})
+        freeze = make_freeze.name(d, 'HEAD', extra=['q3/fleet_capture.mjs'])
+        freeze_commit = freeze['commit']
+        run('rm', '-q', 'q3/fleet_capture.mjs'); run('commit', '-qm', 'the client moved')
+        self.assertEqual(make_freeze.moved(freeze, d), ['q3/fleet_capture.mjs'])
+        path = os.path.join(d, 'freeze.json')
+        with open(path, 'w') as f: json.dump(freeze, f)
+        self.assertEqual(make_freeze.main(['check', path, '--repo', d]), 1)
+        self.assertEqual(make_freeze.main(['check', path, '--repo', d, '--head', freeze_commit]), 0)
+
     def test_also_is_for_naming_only(self):
         with self.assertRaises(SystemExit): make_freeze.main(['check', 'f.json', '--also', 'x'])
 

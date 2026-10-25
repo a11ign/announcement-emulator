@@ -2,14 +2,16 @@
 
 This is how the re-measure was run, and how to run it again. Every fleet step is Ansible from the control plane, one box first and then one at a time, with a read-back after each; nothing is changed by hand on a box.
 Workers are `a11y-worker-N` and the page server is `capture-host`: no step writes an address into a result.
+**Every capture is a fleet job** (A11-246): `q3/fleet_capture.py`, `q3/corpus_capture.py` and `q3/control_capture.py` submit it to the job service on the control plane, which books the boxes, and print the job ID. A job outlives the shell that submitted it. A person gives `--wait <duration>` for one foreground `fleet job wait` that collects when the job is done;
+an agent writes the job ID in its outcome (`waitingOn: fleetJob`), ends its turn and is woken when the job ends, then runs the same command with `collect` in place of the submit. Nothing here runs a capture in the shell, or waits in a loop.
 
 ```sh
 EMU=$PWD                                  # this checkout (it is also capture-host, where the probe page is served)
 R=$EMU/q3/results/remeasure; W=/tmp/remeasure; mkdir -p $R $W
 PY=$EMU_DOWNLOADS/q2/venv/bin/python      # the emulator's Python (setup.sh builds it); the Q3 steps run under it
 export A11Y_CONTROL_HOST=$(cat ~/.config/a11ign/control-host) A11Y_PVE_KEY=~/.ssh/agents-fleet_ed25519      # control's own commands (fleet:status) reach the plane with these
+LABEL=<the ticket key>                    # every capture below is a fleet job, and a job is labelled with the ticket that asked for it (fleet capture submit --label)
 plane() { ssh -i $A11Y_PVE_KEY -o StrictHostKeyChecking=no root@$A11Y_CONTROL_HOST "$@"; }                  # ansible runs ON the plane, which holds the fleet key; /root/control is its checkout
-worker_url() { python3 -c 'import yaml,sys; inv=yaml.safe_load(open("/home/agent/.config/a11ign/inventory.yml")); print("http://%s:8765" % inv["all"]["children"]["a11y_workers"]["hosts"][sys.argv[1]]["ansible_host"])' "$1"; }
 PROBE=http://<capture-host address>:8000/visited-probe.html
 ```
 
@@ -33,8 +35,8 @@ python3 q3/remeasure/policy_override.py <the plane's control>/ansible/roles/work
 python3 q3/remeasure/policy_override.py <the same file> --restore > $W/restore.yml                                           # the same list with it at 0; step 6
 
 # BEFORE: the first capture visits the probe page, a later one reads it back. Edge writes its history in batches, so allow up to three reads, thirty seconds apart.
-node q3/fleet_capture.mjs $B=$(worker_url $B) $PROBE $W/$B.before0.json
-node q3/fleet_capture.mjs $B=$(worker_url $B) $PROBE $W/$B.before1.json
+python3 q3/fleet_capture.py capture $B $PROBE $W/$B.before0.json --label $LABEL --wait 30m      # one job on the box; its records are written when it is done
+python3 q3/fleet_capture.py capture $B $PROBE $W/$B.before1.json --label $LABEL --wait 30m
 python3 q3/remeasure/readback.py probe $R/history-readback.json $B before $W/$B.before1.json
 
 # The worker keeps Edge alive between captures, and a running Edge holds its History file: stop it (ad hoc Ansible on the idle box), then the policy through the fleet's own play
@@ -49,8 +51,8 @@ done
 
 python3 q3/remeasure/readback.py policy $R/history-readback.json $B 1 "provision-role.yml --tags policy asserted all policy values; win_reg_stat read value 1"
 python3 q3/remeasure/readback.py emptied $R/history-readback.json $B "Default/History, History-journal removed by win_file"
-node q3/fleet_capture.mjs $B=$(worker_url $B) $PROBE $W/$B.after0.json                       # the visit
-node q3/fleet_capture.mjs $B=$(worker_url $B) $PROBE $W/$B.after1.json                       # the read
+python3 q3/fleet_capture.py capture $B $PROBE $W/$B.after0.json --label $LABEL --wait 30m     # the visit
+python3 q3/fleet_capture.py capture $B $PROBE $W/$B.after1.json --label $LABEL --wait 30m     # the read
 python3 q3/remeasure/readback.py probe $R/history-readback.json $B after $W/$B.after1.json
 ```
 
@@ -61,15 +63,18 @@ python3 q3/remeasure/readback.py probe $R/history-readback.json $B after $W/$B.a
 ## 2. Capture the same 102 addresses
 
 ```sh
-WORKERS=$(for B in $BOXES; do printf '%s=%s,' $B $(worker_url $B); done | sed 's/,$//')
-python3 q3/corpus_capture.py q3/results/corpus.json $W/oracle --workers "$WORKERS" --readback $R/history-readback.json --summary $R/capture-run.json
+BOXES=$(echo $BOXES | tr ' ' ',')                                    # the boxes that passed step 1, by name
+python3 q3/corpus_capture.py q3/results/corpus.json $W/oracle --boxes $BOXES --label $LABEL --readback $R/history-readback.json --summary $R/capture-run.json
+# prints the job ID: the corpus is one job on the boxes named, which it books (it queues behind a job that holds one of them).
+#   an agent: write the ID in the outcome (waitingOn: fleetJob), end the turn, and when woken run the next line;  a person: add `--wait 6h`, which makes one `fleet job wait` and collects
+python3 q3/corpus_capture.py collect $W/oracle                         # writes the stamped records and the summary; exit 1 names the pages whose capture failed
 ```
 
-**Pass:** exit 0, `capture-run.json` shows `captured: 102, failed: []`, and the boxes are the passing ones (a worker without a passing read-back is refused by name). A capture takes minutes: `fleet_capture.mjs` waits for the worker with `node:http`
-(600 s idle limit); with `fetch` it gave up after 300 s and the retries met `429 a capture is already in progress`. Then, per box, capture the probe once more and record it as `after-run` (a box without it is not counted as having held, and `check.py` refuses its records):
+**Pass:** `collect` exits 0, `capture-run.json` shows `captured: 102, failed: []`, and the boxes are the passing ones (a box without a passing read-back is refused by name, before anything is submitted). A capture takes minutes: the service holds the connection to the worker, so no limit of the caller's applies.
+The service does not re-capture a failed page: if `collect` names failed pages, run the same `corpus_capture.py` command again, which submits only the pages that have no kept record, and `collect` that job. Then, per box, capture the probe once more and record it as `after-run` (a box without it is not counted as having held, and `check.py` refuses its records):
 
 ```sh
-node q3/fleet_capture.mjs $B=$(worker_url $B) $PROBE $W/$B.afterrun.json
+python3 q3/fleet_capture.py capture $B $PROBE $W/$B.afterrun.json --label $LABEL --wait 30m
 python3 q3/remeasure/readback.py probe $R/history-readback.json $B after-run $W/$B.afterrun.json
 ```
 
@@ -136,7 +141,7 @@ A page that moved between the fleet's capture and the emulator's run says nothin
 python3 q3/remeasure/snapshot_all.py q3/results/corpus.json $W/static --jobs 6 --index $R/static/static-pages.json     # 102 copies (snapshot.mjs); --frames files / --lazy eager are options, not what the figures used
 ( cd $W/static && python3 -m http.server 8001 --bind 0.0.0.0 & )                                                         # on capture-host, beside the probe server on 8000
 # the fleet: step 1 again for each box (policy through the playbook, stop Edge, empty, `after` probe; no `before` probe is needed, the control was shown in the first run), RB=$R/static/history-readback.json
-python3 q3/corpus_capture.py q3/results/corpus.json $W/oracle-static --workers "$WORKERS" --readback $R/static/history-readback.json --summary $R/static/capture-run.json --static-base http://<capture-host address>:8001
+python3 q3/corpus_capture.py q3/results/corpus.json $W/oracle-static --boxes $BOXES --label $LABEL --readback $R/static/history-readback.json --summary $R/static/capture-run.json --static-base http://<capture-host address>:8001      # a job ID; then `collect $W/oracle-static`, as in step 2
 # then the after-run probe on each box, and step 5 (restore) with the same readback file
 python3 q3/remeasure/make_views.py $W/oracle-static $W/view-orig $W/view-run http://127.0.0.1:8001                         # view-orig: capture.url is the original address (measure.py, split); view-run: the copy's address (run_all.py)
 ( cd $W/emu-gate && $PY q3/run_all.py $W/view-run $W/emu-gate-static --split all --runs 2 --jobs 5 --port-base 10100 )     # 5fbd726; and at head into emu-head-static
