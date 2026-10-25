@@ -1,0 +1,74 @@
+tree source: devtools
+pages 6: not comparable 2, comparable 4
+  not comparable: https://www.w3.org/WAI/tutorials/images/functional/ {'title': ['c windows system 32 cmd exe', 'functional images web accessibility init']}
+  unstable channels on https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing: stops, formFields
+  unstable channels on https://www.w3.org/WAI/tutorials/forms/grouping/: title, stops
+  unstable channels on https://sheffield.ac.uk/postgraduate/taught/courses/2027: title, stops, headings, landmarks, formFields, graphics, links, lists
+  unstable channels on https://caselaw.nationalarchives.gov.uk/search?query=: title, stops
+  not comparable: https://www.mygov.scot/scottish-child-payment {'title': ['scottish child payment mygov scot', 'document'], 'heading': [3, 0], 'link': [26, 0]}
+
+agreement by channel: the passive predictions against the fleet / the fleet against itself / the passive runs against each other
+      1 / 1     100.0% |     1 / 1     100.0% |     1 / 1     100.0%  title
+      3 / 3     100.0% |     3 / 3     100.0% |     4 / 4     100.0%  field
+     18 / 18    100.0% |    18 / 18    100.0% |    24 / 24    100.0%  typed
+     16 / 17     94.1% |    17 / 17    100.0% |    26 / 26    100.0%  headings
+     28 / 30     93.3% |    30 / 30    100.0% |    39 / 39    100.0%  landmarks
+     25 / 90     27.8% |    90 / 90    100.0% |    33 / 33    100.0%  formFields
+      4 / 4     100.0% |     4 / 4     100.0% |     8 / 8     100.0%  graphics
+    119 / 125    95.2% |   125 / 125   100.0% |   303 / 303   100.0%  links
+     22 / 22    100.0% |    22 / 22    100.0% |    32 / 32    100.0%  lists
+
+agreement by shape (the 10 commonest of the fleet's units): the passive predictions against the fleet / the fleet against itself / the passive runs against each other
+     74 / 81     91.4% |    81 / 81    100.0% |   101 / 101   100.0%  NAME + ROLE
+      6 / 57     10.5% |    57 / 57    100.0% |     7 / 7     100.0%  NAME + ROLE + STATE
+     20 / 20    100.0% |    20 / 20    100.0% |    26 / 26    100.0%  NAME
+     20 / 20    100.0% |    20 / 20    100.0% |    23 / 23    100.0%  NAME + ROLE + ROLE + COUNT + NAME + ROLE
+     15 / 15    100.0% |    15 / 15    100.0% |    21 / 21    100.0%  ROLE + COUNT + NAME + ROLE
+     10 / 11     90.9% |    11 / 11    100.0% |    16 / 16    100.0%  NAME + ROLE + LEVEL
+     11 / 11    100.0% |    11 / 11    100.0% |    14 / 14    100.0%  NAME + NAME + ROLE
+      6 / 10     60.0% |    10 / 10    100.0% |    10 / 10    100.0%  NAME + ROLE + NAME + ROLE
+      5 / 7      71.4% |     7 / 7     100.0% |     5 / 5     100.0%  NAME + ROLE + NAME
+      6 / 6     100.0% |     6 / 6     100.0% |     9 / 9     100.0%  NAME + ROLE + ROLE
+
+all channels: 236 of 310 units agreed = 76.1%
+the 10 commonest shapes: 173 of 238 = 72.7%
+
+misses by cause (all channels): no counterpart 64, unexplained 10
+
+==== the same, with the channels that were not stable counted too (first fleet capture against first passive run) ====
+pages 6: not comparable 2, comparable 4
+  not comparable: https://www.w3.org/WAI/tutorials/images/functional/ {'title': ['c windows system 32 cmd exe', 'functional images web accessibility init']}
+  unstable channels on https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing: stops, formFields
+  unstable channels on https://www.w3.org/WAI/tutorials/forms/grouping/: title, stops
+  unstable channels on https://sheffield.ac.uk/postgraduate/taught/courses/2027: title, stops, headings, landmarks, formFields, graphics, links, lists
+  unstable channels on https://caselaw.nationalarchives.gov.uk/search?query=: title, stops
+  not comparable: https://www.mygov.scot/scottish-child-payment {'title': ['scottish child payment mygov scot', 'document'], 'heading': [3, 0], 'link': [26, 0]}
+
+agreement by channel: the passive predictions against the fleet / the fleet against itself / the passive runs against each other
+      4 / 4     100.0% |     4 / 4     100.0% |     1 / 4      25.0%  title
+    181 / 323    56.0% |   323 / 323   100.0% |   298 / 304    98.0%  stops
+      3 / 3     100.0% |     3 / 3     100.0% |     4 / 4     100.0%  field
+     18 / 18    100.0% |    18 / 18    100.0% |    24 / 24    100.0%  typed
+     39 / 41     95.1% |    41 / 41    100.0% |    26 / 50     52.0%  headings
+     41 / 44     93.2% |    44 / 44    100.0% |    39 / 53     73.6%  landmarks
+     38 / 108    35.2% |   108 / 108   100.0% |    37 / 52     71.2%  formFields
+     15 / 15    100.0% |    15 / 15    100.0% |     8 / 19     42.1%  graphics
+    313 / 355    88.2% |   354 / 355    99.7% |   303 / 498    60.8%  links
+     29 / 34     85.3% |    34 / 34    100.0% |    32 / 39     82.1%  lists
+
+agreement by shape (the 10 commonest of the fleet's units): the passive predictions against the fleet / the fleet against itself / the passive runs against each other
+    143 / 246    58.1% |   246 / 246   100.0% |   238 / 240    99.2%  NAME + ROLE + STATE + STATE
+    221 / 245    90.2% |   245 / 245   100.0% |   102 / 249    41.0%  NAME + ROLE
+     20 / 75     26.7% |    75 / 75    100.0% |    22 / 34     64.7%  NAME + ROLE + STATE
+     31 / 32     96.9% |    32 / 32    100.0% |    16 / 37     43.2%  NAME + ROLE + LEVEL
+     20 / 29     69.0% |    29 / 29    100.0% |    20 / 20    100.0%  NAME + ROLE + STATE + NAME
+     25 / 25    100.0% |    25 / 25    100.0% |    23 / 28     82.1%  NAME + ROLE + ROLE + COUNT + NAME + ROLE
+     25 / 25    100.0% |    25 / 25    100.0% |     6 / 26     23.1%  NAME + STATE + ROLE
+     23 / 23    100.0% |    23 / 23    100.0% |    26 / 29     89.7%  NAME
+     15 / 21     71.4% |    21 / 21    100.0% |    21 / 21    100.0%  ROLE + COUNT + NAME + ROLE
+      3 / 19     15.8% |    19 / 19    100.0% |     5 / 5     100.0%  NAME + ROLE + STATE + STATE + STATE
+
+all channels: 681 of 945 units agreed = 72.1%
+the 10 commonest shapes: 526 of 740 = 71.1%
+
+misses by cause (all channels): no counterpart 224, unexplained 40

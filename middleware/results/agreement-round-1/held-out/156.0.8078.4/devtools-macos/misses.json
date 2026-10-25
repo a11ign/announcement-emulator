@@ -1,0 +1,5448 @@
+{
+ "status": {
+  "https://www.w3.org/WAI/tutorials/images/functional/": {
+   "status": "not comparable",
+   "problems": {
+    "title": [
+     "c windows system 32 cmd exe",
+     "functional images web accessibility init"
+    ]
+   }
+  },
+  "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "formFields",
+     "fleet": true,
+     "passive": false
+    }
+   ]
+  },
+  "https://www.w3.org/WAI/tutorials/forms/grouping/": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": true,
+     "passive": false
+    }
+   ]
+  },
+  "https://sheffield.ac.uk/postgraduate/taught/courses/2027": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "headings",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "landmarks",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "formFields",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "graphics",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "lists",
+     "fleet": true,
+     "passive": false
+    }
+   ]
+  },
+  "https://caselaw.nationalarchives.gov.uk/search?query=": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "field",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "formFields",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "graphics",
+     "fleet": true,
+     "passive": false
+    }
+   ]
+  },
+  "https://www.mygov.scot/scottish-child-payment": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "field",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "headings",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "landmarks",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "formFields",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "graphics",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "links",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "lists",
+     "fleet": true,
+     "passive": false
+    }
+   ]
+  }
+ },
+ "units": {
+  "field": [
+   3,
+   4
+  ],
+  "formFields": [
+   40,
+   116
+  ],
+  "graphics": [
+   16,
+   18
+  ],
+  "headings": [
+   42,
+   44
+  ],
+  "landmarks": [
+   45,
+   53
+  ],
+  "links": [
+   343,
+   387
+  ],
+  "lists": [
+   29,
+   39
+  ],
+  "stops": [
+   208,
+   356
+  ],
+  "title": [
+   5,
+   5
+  ],
+  "typed": [
+   24,
+   24
+  ]
+ },
+ "misses": [
+  {
+   "address": "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing",
+   "channel": "headings",
+   "i": 0,
+   "expected": "How nidirect uses cookies, heading, level 2",
+   "predicted": "Links to supporting information, heading, level 2",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing",
+   "channel": "formFields",
+   "i": 0,
+   "expected": "Cookie settings, button",
+   "predicted": "Help improve this page - send your feedback, region, Help improve this page - send your feedback, button, collapsed, heading, level 2",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing",
+   "channel": "formFields",
+   "i": 1,
+   "expected": "Find out more about how nidirect uses cookies, button",
+   "predicted": "Translate this page, button, collapsed",
+   "measureClass": "unexplained",
+   "cause": "macos: clickable+landmark+name+state",
+   "reason": "macOS and the control predict different strings",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing",
+   "channel": "formFields",
+   "i": 2,
+   "expected": "Accept cookies, button",
+   "predicted": "banner landmark, site search, clickable, Search, button",
+   "measureClass": "unexplained",
+   "cause": "macos: clickable+landmark+name+role",
+   "reason": "macOS and the control predict different strings",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing",
+   "channel": "formFields",
+   "i": 3,
+   "expected": "Reject cookies, button",
+   "predicted": "Search n i direct, edit, Search nidirect",
+   "measureClass": "unexplained",
+   "cause": "macos: name+role",
+   "reason": "macOS and the control predict different strings",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "channel": "stops",
+   "i": 18,
+   "expected": "Grouping Controls, link, focused, linked, same page, current page",
+   "predicted": "Grouping Controls, link, focused, linked, current page",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "channel": "stops",
+   "i": 31,
+   "expected": "Grouping Controls, link, focused, linked, same page, current page",
+   "predicted": "Grouping Controls, link, focused, linked, current page",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "channel": "stops",
+   "i": 39,
+   "expected": "Associating related controls with fieldset, link, focused, linked, same page",
+   "predicted": "Associating related controls with fieldset, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "channel": "stops",
+   "i": 40,
+   "expected": "Radio buttons, link, focused, linked, same page",
+   "predicted": "Radio buttons, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "channel": "stops",
+   "i": 41,
+   "expected": "Checkboxes, link, focused, linked, same page",
+   "predicted": "Checkboxes, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "channel": "stops",
+   "i": 42,
+   "expected": "Related fields, link, focused, linked, same page",
+   "predicted": "Related fields, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "channel": "stops",
+   "i": 43,
+   "expected": "Associating related controls with WAI-ARIA, link, focused, linked, same page",
+   "predicted": "Associating related controls with WAI-ARIA, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "channel": "stops",
+   "i": 44,
+   "expected": "Grouping items in select elements, link, focused, linked, same page",
+   "predicted": "Grouping items in select elements, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "channel": "stops",
+   "i": 45,
+   "expected": "Text file, radio button, focused, checked, 1 of 3",
+   "predicted": "Text file, radio button, focused, checked, 1 of 1",
+   "measureClass": "unexplained",
+   "cause": "conversion: position in set",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "channel": "stops",
+   "i": 69,
+   "expected": "Course:, combo box, focused, collapsed",
+   "predicted": "Course:, pane, focused, collapsed, sub Menu",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "channel": "stops",
+   "i": 106,
+   "expected": "Skip to Content, link, focused, linked, same page",
+   "predicted": "Skip to Content, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "channel": "stops",
+   "i": 109,
+   "expected": "W 3C homepage, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "quick test",
+   "reason": "the last unit, nothing predicted, and the two runs differ in the channel",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "channel": "landmarks",
+   "i": 14,
+   "expected": "banner landmark, Meta and Search, navigation landmark, list, with 3 items, search landmark, Search:, Search, edit, Search,",
+   "predicted": "banner landmark, Meta and Search, navigation landmark, list, with 3 items, search landmark, clickable, Search:, Search, edit, Search,",
+   "measureClass": "unexplained",
+   "cause": "conversion: clickable",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "ROLE",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "channel": "landmarks",
+   "i": 19,
+   "expected": "search landmark, Search:, Search, edit, Search,",
+   "predicted": "search landmark, clickable, Search:, Search, edit, Search,",
+   "measureClass": "unexplained",
+   "cause": "conversion: clickable",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "channel": "formFields",
+   "i": 1,
+   "expected": "Course:, combo box, collapsed",
+   "predicted": "list, , 8.01 Physics I: Classical Mechanics, grouping, , , , out of grouping, 8.02 Physics II: Electricity and Magnestism, grouping, , , , out of grouping, 8.03 Physics III: Vibrations and Waves, grouping, , ,",
+   "measureClass": "unexplained",
+   "cause": "conversion: name+role+state",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "channel": "formFields",
+   "i": 15,
+   "expected": "Search, edit, Search",
+   "predicted": "clickable, Search, edit, Search",
+   "measureClass": "unexplained",
+   "cause": "conversion: clickable",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "channel": "formFields",
+   "i": 24,
+   "expected": "complementary landmark, section, Which course would you like to watch today?, grouping, Course:, combo box, collapsed",
+   "predicted": "complementary landmark, section, Which course would you like to watch today?, grouping, list, , 8.01 Physics I: Classical Mechanics, grouping, , , , out of grouping, 8.02 Physics II: Electricity and Magnestism, grouping, , , , out of grouping, 8.03 Physics III: Vibrations and Waves, grouping, , ,",
+   "measureClass": "unexplained",
+   "cause": "conversion: name+role+state",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "stops",
+   "i": 0,
+   "expected": "Skip to main content, link, focused, linked, same page",
+   "predicted": "Close Cookie Control, button, focused",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "stops",
+   "i": 1,
+   "expected": "Home, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "stops",
+   "i": 2,
+   "expected": "Log in to MUSE, link, focused, linked, Alt plus, m",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "NAME",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "stops",
+   "i": 3,
+   "expected": "Search our site, edit, focused, required, has auto complete, Search our site, blank",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "stops",
+   "i": 4,
+   "expected": "Site search, button, focused",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "stops",
+   "i": 5,
+   "expected": "University of Sheffield homepage, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "stops",
+   "i": 6,
+   "expected": "Study, button, focused, collapsed",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "stops",
+   "i": 7,
+   "expected": "Research, button, focused, collapsed",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "stops",
+   "i": 8,
+   "expected": "Collaborate, button, focused, collapsed",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "stops",
+   "i": 9,
+   "expected": "About, button, focused, expanded",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "stops",
+   "i": 10,
+   "expected": "About the University, link, focused, linked, About us",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "stops",
+   "i": 11,
+   "expected": "News, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "stops",
+   "i": 12,
+   "expected": "Events, link, focused, linked, What's on",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "stops",
+   "i": 13,
+   "expected": "Jobs, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "stops",
+   "i": 14,
+   "expected": "Who we are, link, focused, linked, Independent thinking. Shared ambition",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "headings",
+   "i": 0,
+   "expected": "content info landmark, Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "predicted": "Footer menu, navigation landmark, Footer menu, heading, level 2",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "landmarks",
+   "i": 8,
+   "expected": "search landmark, section, Search sheffield dot ac dot uk",
+   "predicted": "search landmark, section, clickable, Search sheffield dot ac dot uk",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "formFields",
+   "i": 10,
+   "expected": "Search our site, edit, sub Menu, required, has auto complete, Search our site",
+   "predicted": "Search our site, edit, sub Menu, has auto complete, Search our site",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 178,
+   "expected": "Site header, banner landmark, Global menu, navigation landmark, list, with 4 items, list, with 4 items, list, with 2 items, Cafes and bars, link, Cafés and Bars",
+   "predicted": "Site header, banner landmark, University of Sheffield homepage, graphic, link",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "macOS and the control predict the same string, and this host another",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "ROLE",
+    "COUNT",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 179,
+   "expected": "Conferences, events, visitor accommodation and weddings, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 180,
+   "expected": "Hospitality, link, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 181,
+   "expected": "list, with 2 items, Courses, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 182,
+   "expected": "Guide to Sheffield, link, Student experience at Sheffield",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 183,
+   "expected": "Studying at Sheffield, link, Study at Sheffield, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 184,
+   "expected": "list, with 3 items, Professional services, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 185,
+   "expected": "Faculties, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 186,
+   "expected": "Schools, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 187,
+   "expected": "Schools, departments and services, link, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 188,
+   "expected": "list, with 15 items, Nobel Prize winners, link, Nobel Laureates",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 189,
+   "expected": "Queen's Anniversary Prizes, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 190,
+   "expected": "A world top-100 university, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 191,
+   "expected": "Rankings, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 192,
+   "expected": "Governance and management, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 193,
+   "expected": "Our role in the city and region, link, Ambitious Plans. Made Together.",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 194,
+   "expected": "Our vision and strategic plan, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 195,
+   "expected": "Support for refugee students and scholars, link, Support for students and those seeking sanctuary",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 196,
+   "expected": "Inclusion at Sheffield, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 197,
+   "expected": "Sustainability at Sheffield, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 198,
+   "expected": "Education at Sheffield, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 199,
+   "expected": "Who we are, link, Independent thinking. Shared ambition",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 200,
+   "expected": "Events, link, What's on",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 201,
+   "expected": "News, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 202,
+   "expected": "About the University, link, About us, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 203,
+   "expected": "University of Sheffield homepage, graphic, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 209,
+   "expected": "Site header, banner landmark, University of Sheffield homepage, graphic, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 210,
+   "expected": "Global menu, navigation landmark, list, with 4 items, list, with 4 items, About the University, link, About us, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 211,
+   "expected": "list, with 15 items, News, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 212,
+   "expected": "Nobel Prize winners, link, Nobel Laureates",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 213,
+   "expected": "list, with 3 items, Schools, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 214,
+   "expected": "Professional services, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 215,
+   "expected": "list, with 2 items, Guide to Sheffield, link, Student experience at Sheffield",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 216,
+   "expected": "Courses, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 217,
+   "expected": "list, with 2 items, Conferences, events, visitor accommodation and weddings, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "links",
+   "i": 218,
+   "expected": "Cafes and bars, link, Cafés and Bars",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "lists",
+   "i": 2,
+   "expected": "list, with 4 items, About the University, link, About us, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "lists",
+   "i": 3,
+   "expected": "list, with 15 items, News, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "lists",
+   "i": 4,
+   "expected": "list, with 3 items, Schools, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "lists",
+   "i": 5,
+   "expected": "list, with 2 items, Guide to Sheffield, link, Student experience at Sheffield",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "channel": "lists",
+   "i": 6,
+   "expected": "list, with 2 items, Conferences, events, visitor accommodation and weddings, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 0,
+   "expected": "Home Understanding case law Search and browse About this service Permissions and licensing Help and support, section, focused",
+   "predicted": "Accept cookies, button, focused",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 3,
+   "expected": "Reading judgments, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 5,
+   "expected": "How to search Find Case Law, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 6,
+   "expected": "Advanced search, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 7,
+   "expected": "Types of courts and tribunals, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 9,
+   "expected": "What we provide, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "events: focus",
+   "reason": "nothing predicted from the DevTools tree; the extension predicted it",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 10,
+   "expected": "Courts and coverage, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "events: focus",
+   "reason": "nothing predicted from the DevTools tree; the extension predicted it",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 13,
+   "expected": "What you can do freely, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 14,
+   "expected": "When you need permission, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 15,
+   "expected": "How to get permission, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 16,
+   "expected": "Legal framework, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 19,
+   "expected": "Search tips, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "events: focus",
+   "reason": "nothing predicted from the DevTools tree; the extension predicted it",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 20,
+   "expected": "Contact us, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 21,
+   "expected": "Feedback, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 22,
+   "expected": "Glossary, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 26,
+   "expected": "Hide filters, button, focused, expanded",
+   "predicted": "Apply filters, button, focused, collapsed",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 27,
+   "expected": "Chancery Division, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 28,
+   "expected": "Business and Property Division, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 29,
+   "expected": "Business and Property Division, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 30,
+   "expected": "Day, edit, focused, blank",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 31,
+   "expected": "Month, edit, focused, blank",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 32,
+   "expected": "Year, edit, focused, blank",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 33,
+   "expected": "Day, edit, focused, blank",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 34,
+   "expected": "Month, edit, focused, blank",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 35,
+   "expected": "Year, edit, focused, blank",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 36,
+   "expected": "Search by party name, edit, focused, blank",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 37,
+   "expected": "Search by judge name, edit, focused, blank",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 38,
+   "expected": "Select all, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 39,
+   "expected": "Court of Appeal, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 40,
+   "expected": "Civil Division —2001 to 2026, check box, focused, not checked, off screen",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 41,
+   "expected": "Criminal Division —2003 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 42,
+   "expected": "Employment Appeal Tribunal —2021 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 43,
+   "expected": "High Court (England and Wales), check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 44,
+   "expected": "Administrative Court —2003 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 45,
+   "expected": "Admiralty Court —2003 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 46,
+   "expected": "Business and Property Division —2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 47,
+   "expected": "Chancery Division —2003 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 48,
+   "expected": "Commercial Court —2003 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 49,
+   "expected": "Family Division —2003 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 50,
+   "expected": "Intellectual Property Enterprise Court —2013 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 51,
+   "expected": "King's slash Queen's Bench Division —2003 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 52,
+   "expected": "Mercantile Court —2008 to 2014, check box, focused, not checked, off screen",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 53,
+   "expected": "Patents Court —2003 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 54,
+   "expected": "Senior Courts Costs Office —2003 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 55,
+   "expected": "Technology and Construction Court —2003 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 56,
+   "expected": "Investigatory Powers Tribunal —2023 to 2024, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 57,
+   "expected": "Privy Council —2009 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 58,
+   "expected": "Proscribed Organisations Appeal Commission —2020 to 2024, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 59,
+   "expected": "Special Immigration Appeals Commission —2003 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 60,
+   "expected": "United Kingdom Supreme Court —2009 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 61,
+   "expected": "Upper Tribunals, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 62,
+   "expected": "Administrative Appeals Chamber —2011 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 63,
+   "expected": "Immigration and Asylum Chamber —2007 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 64,
+   "expected": "Lands Chamber —2014 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 65,
+   "expected": "Tax and Chancery Chamber —2016 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 66,
+   "expected": "Select all, check box, focused, not checked, off screen",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 67,
+   "expected": "County Court —2019 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 68,
+   "expected": "Court of Protection —2009 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 69,
+   "expected": "Crown Court —2020 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 70,
+   "expected": "Family Court —2014 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 71,
+   "expected": "First-tier Tribunals, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 72,
+   "expected": "Care Standards —1985 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 73,
+   "expected": "General Regulatory Chamber —2009 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 74,
+   "expected": "Immigration and Asylum Chamber —2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 75,
+   "expected": "Land Registration Division (Property Chamber) —2024 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 76,
+   "expected": "Primary Health Lists —2025 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 77,
+   "expected": "Tax Chamber —2009 to 2026, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 78,
+   "expected": "Historic Tribunals, check box, focused, not checked, off screen",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 79,
+   "expected": "Claims Management Services Tribunal —2010 to 2011, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 80,
+   "expected": "Consumer Credit Appeals Tribunal —2008 to 2013, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 81,
+   "expected": "Estate Agents Tribunal —2010, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 82,
+   "expected": "Financial Services Tribunal —2002 to 2009, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 83,
+   "expected": "Immigration Services Tribunal —2001 to 2009, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 84,
+   "expected": "Information Tribunal —1990 to 2010, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 85,
+   "expected": "Pensions Regulator Tribunal —2006 to 2007, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 86,
+   "expected": "Special Commissioners of Income Tax —1999 to 2009, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 87,
+   "expected": "Transport Tribunal —2000 to 2009, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 88,
+   "expected": "VAT and Duties Tribunal —1989 to 2009, check box, focused, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 89,
+   "expected": "Update my results, button, focused, off screen",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 91,
+   "expected": "Stay up to date with this search Subscribe to this search using an Atom feed with a compatible feed reader to receive updates when new judgments matching this search are published., section, focused",
+   "predicted": "section, focused",
+   "measureClass": "unexplained",
+   "cause": "macos: name+role+state",
+   "reason": "macOS and the control predict different strings",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 92,
+   "expected": "Sort by, combo box, Newest, focused, collapsed",
+   "predicted": "Sort by, pane, Newest, focused, collapsed, sub Menu",
+   "measureClass": "unexplained",
+   "cause": "macos: name",
+   "reason": "macOS and the control predict different strings",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 93,
+   "expected": "Results per page, combo box, 10, focused, collapsed",
+   "predicted": "Results per page, pane, 10, focused, collapsed, sub Menu",
+   "measureClass": "unexplained",
+   "cause": "macos: node",
+   "reason": "macOS and the control predict different strings",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 96,
+   "expected": "Aqib Arif v The Secretary of State for the Home Department, link, focused, linked, off screen",
+   "predicted": "Aqib Arif v The Secretary of State for the Home Department, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 101,
+   "expected": "Mohammed Shalim Miah v The Registrar of Approved Driving Instructors, link, focused, linked, off screen",
+   "predicted": "Mohammed Shalim Miah v The Registrar of Approved Driving Instructors, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 111,
+   "expected": "Take a short survey, link, focused, linked, off screen",
+   "predicted": "Take a short survey, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 122,
+   "expected": "The National Archives home page, link, focused, linked, off screen",
+   "predicted": "Accept cookies, button, focused",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 123,
+   "expected": "Home, link, focused, linked",
+   "predicted": "Reject cookies, button, focused",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 124,
+   "expected": "Understanding case law, link, focused, linked",
+   "predicted": "Set cookie preferences, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 125,
+   "expected": "Reading judgments, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 126,
+   "expected": "Search and browse, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 127,
+   "expected": "How to search Find Case Law, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 128,
+   "expected": "Advanced search, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 129,
+   "expected": "Types of courts and tribunals, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 130,
+   "expected": "About this service, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 131,
+   "expected": "What we provide, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 132,
+   "expected": "Courts and coverage, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 133,
+   "expected": "Publishing policy, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 134,
+   "expected": "Permissions and licensing, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 135,
+   "expected": "What you can do freely, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 136,
+   "expected": "When you need permission, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 137,
+   "expected": "How to get permission, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 138,
+   "expected": "Legal framework, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 139,
+   "expected": "Apply for a licence, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 140,
+   "expected": "Help and support, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 141,
+   "expected": "Search tips, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 142,
+   "expected": "Contact us, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 143,
+   "expected": "Feedback, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 144,
+   "expected": "Glossary, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 145,
+   "expected": "Home, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 146,
+   "expected": "Search by keyword or neutral citation, edit, focused, Input your search term..., blank",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 147,
+   "expected": "Search, button, focused",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 148,
+   "expected": "Hide filters, button, focused, expanded",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "stops",
+   "i": 149,
+   "expected": "Chancery Division, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "quick test",
+   "reason": "the last unit, nothing predicted, and the two runs differ in the channel",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 0,
+   "expected": "main landmark, section, Results per page, combo box, collapsed, 10",
+   "predicted": "main landmark, section, list",
+   "measureClass": "unexplained",
+   "cause": "conversion: name+role+state",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 1,
+   "expected": "Sort by, combo box, collapsed, Newest",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 5,
+   "expected": "Hide filters, button, expanded",
+   "predicted": "Cookies on Find Case Law, region, Reject cookies, button",
+   "measureClass": "unexplained",
+   "cause": "macos: node",
+   "reason": "macOS and the control predict different strings",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 6,
+   "expected": "From date, grouping, Day, edit",
+   "predicted": "Accept cookies, button",
+   "measureClass": "unexplained",
+   "cause": "macos: node",
+   "reason": "macOS and the control predict different strings",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 7,
+   "expected": "Month, edit",
+   "predicted": "main landmark, Search by keyword or neutral citation, search landmark, Search by keyword or neutral citation, edit, Input your search term...",
+   "measureClass": "unexplained",
+   "cause": "macos: node",
+   "reason": "macOS and the control predict different strings",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 8,
+   "expected": "Year, edit",
+   "predicted": "Apply filters, button, collapsed",
+   "measureClass": "unexplained",
+   "cause": "macos: node",
+   "reason": "macOS and the control predict different strings",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 9,
+   "expected": "To date, grouping, Day, edit",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 10,
+   "expected": "Search by party name, edit",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 11,
+   "expected": "Search by judge name, edit",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 12,
+   "expected": "Higher courts and tribunals, grouping, Select all, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 13,
+   "expected": "Court of Appeal, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 14,
+   "expected": "Civil Division —2001 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 15,
+   "expected": "Criminal Division —2003 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 16,
+   "expected": "Employment Appeal Tribunal —2021 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 17,
+   "expected": "High Court (England and Wales), check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 18,
+   "expected": "Administrative Court —2003 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 19,
+   "expected": "Admiralty Court —2003 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 20,
+   "expected": "Business and Property Division —2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 21,
+   "expected": "Chancery Division —2003 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 22,
+   "expected": "Commercial Court —2003 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 23,
+   "expected": "Family Division —2003 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 24,
+   "expected": "Intellectual Property Enterprise Court —2013 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 25,
+   "expected": "King's slash Queen's Bench Division —2003 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 26,
+   "expected": "Mercantile Court —2008 to 2014, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 27,
+   "expected": "Patents Court —2003 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 28,
+   "expected": "Senior Courts Costs Office —2003 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 29,
+   "expected": "Technology and Construction Court —2003 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 30,
+   "expected": "Investigatory Powers Tribunal —2023 to 2024, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 31,
+   "expected": "Privy Council —2009 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 32,
+   "expected": "Proscribed Organisations Appeal Commission —2020 to 2024, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 33,
+   "expected": "Special Immigration Appeals Commission —2003 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 34,
+   "expected": "United Kingdom Supreme Court —2009 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 35,
+   "expected": "Upper Tribunals, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 36,
+   "expected": "Administrative Appeals Chamber —2011 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 37,
+   "expected": "Immigration and Asylum Chamber —2007 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 38,
+   "expected": "Lands Chamber —2014 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 39,
+   "expected": "Tax and Chancery Chamber —2016 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 40,
+   "expected": "Other courts and tribunals, grouping, Select all, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 41,
+   "expected": "County Court —2019 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 42,
+   "expected": "Court of Protection —2009 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 43,
+   "expected": "Crown Court —2020 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 44,
+   "expected": "Family Court —2014 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 45,
+   "expected": "First-tier Tribunals, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 46,
+   "expected": "Care Standards —1985 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 47,
+   "expected": "General Regulatory Chamber —2009 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 48,
+   "expected": "Immigration and Asylum Chamber —2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 49,
+   "expected": "Land Registration Division (Property Chamber) —2024 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 50,
+   "expected": "Primary Health Lists —2025 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 51,
+   "expected": "Tax Chamber —2009 to 2026, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 52,
+   "expected": "Historic Tribunals, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 53,
+   "expected": "Claims Management Services Tribunal —2010 to 2011, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 54,
+   "expected": "Consumer Credit Appeals Tribunal —2008 to 2013, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 55,
+   "expected": "Estate Agents Tribunal —2010, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 56,
+   "expected": "Financial Services Tribunal —2002 to 2009, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 57,
+   "expected": "Immigration Services Tribunal —2001 to 2009, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 58,
+   "expected": "Information Tribunal —1990 to 2010, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 59,
+   "expected": "Pensions Regulator Tribunal —2006 to 2007, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 60,
+   "expected": "Special Commissioners of Income Tax —1999 to 2009, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 61,
+   "expected": "Transport Tribunal —2000 to 2009, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 62,
+   "expected": "VAT and Duties Tribunal —1989 to 2009, check box, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "formFields",
+   "i": 63,
+   "expected": "Update my results, button",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "graphics",
+   "i": 0,
+   "expected": "banner landmark, The National Archives home page, graphic, link",
+   "predicted": "The National Archives home page, graphic, link",
+   "measureClass": "unexplained",
+   "cause": "macos: landmark",
+   "reason": "macOS and the control predict different strings",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "links",
+   "i": 8,
+   "expected": "table, with 21 rows and 3 columns, row 20, Documents, column 1, through 3, Nebahat Evyap İşbilen v Selman Turk and Ors, link",
+   "predicted": "table, with 21 rows and 3 columns, row 20, column 1, Nebahat Evyap İşbilen v Selman Turk and Ors, link",
+   "measureClass": "unexplained",
+   "cause": "conversion: name",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "links",
+   "i": 19,
+   "expected": "Search by keyword or neutral citation, search landmark, Business and Property Division, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "links",
+   "i": 20,
+   "expected": "Business and Property Division, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "links",
+   "i": 21,
+   "expected": "Chancery Division, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "links",
+   "i": 32,
+   "expected": "Search by keyword or neutral citation, search landmark, Chancery Division, link",
+   "predicted": "table, with 21 rows and 3 columns, row 2, column 1, Craig Alfred v The Information Commissioner, link",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "channel": "links",
+   "i": 33,
+   "expected": "table, with 21 rows and 3 columns, row 2, Documents, column 1, through 3, Craig Alfred v The Information Commissioner, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "conversion: node",
+   "reason": "the DevTools tree has no node for the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "stops",
+   "i": 1,
+   "expected": "Search, edit, focused, required, has auto complete, Search, blank",
+   "predicted": "Search, edit, focused, has auto complete, Search, blank",
+   "measureClass": "unexplained",
+   "cause": "conversion: state",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "stops",
+   "i": 14,
+   "expected": "NEXT Who should apply, link, focused, linked",
+   "predicted": "Who should apply, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "stops",
+   "i": 18,
+   "expected": "Yes, radio button, focused, not checked, 1 of 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "stops",
+   "i": 19,
+   "expected": "Continue, button, focused",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "stops",
+   "i": 29,
+   "expected": "Skip to main content, link, focused, linked, off screen, same page",
+   "predicted": "Skip to main content, link, focused, linked, same page",
+   "measureClass": "unexplained",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "stops",
+   "i": 30,
+   "expected": "mygov dot scot, link, focused, linked",
+   "predicted": "cookies, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "stops",
+   "i": 31,
+   "expected": "Search, edit, focused, required, has auto complete, Search, blank",
+   "predicted": "Accept all cookies, button, focused",
+   "measureClass": "unexplained",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "stops",
+   "i": 32,
+   "expected": "Search, button, focused",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "quick test",
+   "reason": "the last unit, nothing predicted, and the two runs differ in the channel",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "field",
+   "i": 0,
+   "expected": "Search, edit, focused, required, has auto complete, Search, blank",
+   "predicted": "Search, edit, focused, has auto complete, blank",
+   "measureClass": "unexplained",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "landmarks",
+   "i": 0,
+   "expected": "Article navigation, navigation landmark, NEXT, link",
+   "predicted": "Article navigation, navigation landmark, Who should apply, link",
+   "measureClass": "unexplained",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "landmarks",
+   "i": 3,
+   "expected": "Breadcrumb, navigation landmark, list, with 4 items, Home, link",
+   "predicted": "Breadcrumb, navigation landmark, list, with 4 items, 1., Home",
+   "measureClass": "unexplained",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "landmarks",
+   "i": 4,
+   "expected": "banner landmark, search landmark, Search",
+   "predicted": "banner landmark, search landmark, clickable, Search",
+   "measureClass": "unexplained",
+   "cause": "conversion: clickable",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "landmarks",
+   "i": 7,
+   "expected": "clickable, section, Was this page helpful?, grouping, Was this page helpful?",
+   "predicted": "content info landmark, list, with 6 items, bullet, About",
+   "measureClass": "unexplained",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "STATE",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "landmarks",
+   "i": 8,
+   "expected": "content info landmark, list, with 6 items, About, link, myaccount, link, Accessibility statement, link, Cookies, link, Feedback, link, Privacy",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "formFields",
+   "i": 0,
+   "expected": "main landmark, clickable, section, Continue, button",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "STATE",
+    "ROLE",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "formFields",
+   "i": 1,
+   "expected": "Was this page helpful?, grouping, Yes, but, radio button, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "formFields",
+   "i": 2,
+   "expected": "No, radio button, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "formFields",
+   "i": 3,
+   "expected": "Yes, radio button, not checked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "formFields",
+   "i": 5,
+   "expected": "Search, edit, required, has auto complete, opens list, Search",
+   "predicted": "Search, edit, has auto complete, opens list, 1234",
+   "measureClass": "unexplained",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "formFields",
+   "i": 6,
+   "expected": "main landmark, clickable, section, Was this page helpful?, grouping, Yes, radio button, not checked",
+   "predicted": "Use essential cookies only, button",
+   "measureClass": "unexplained",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "STATE",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "formFields",
+   "i": 7,
+   "expected": "Yes, but, radio button, not checked",
+   "predicted": "Accept all cookies, button",
+   "measureClass": "unexplained",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "graphics",
+   "i": 0,
+   "expected": "banner landmark, mygov dot scot, graphic, link",
+   "predicted": "mygov dot scot, graphic, link",
+   "measureClass": "unexplained",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "links",
+   "i": 11,
+   "expected": "Article navigation, navigation landmark, NEXT, Who should apply, link",
+   "predicted": "Article navigation, navigation landmark, Who should apply, link",
+   "measureClass": "unexplained",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "links",
+   "i": 18,
+   "expected": "Who should apply, link",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "lists",
+   "i": 0,
+   "expected": "Breadcrumb, navigation landmark, list, with 4 items, Home, link",
+   "predicted": "Breadcrumb, navigation landmark, list, with 4 items, 1., Home",
+   "measureClass": "unexplained",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "lists",
+   "i": 1,
+   "expected": "main landmark, list, with 1 item, Last updated:, , 14 Nov 2022",
+   "predicted": "main landmark, list, with 2 items, Last updated",
+   "measureClass": "unexplained",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "lists",
+   "i": 2,
+   "expected": "Sections, navigation landmark, list, with 6 items, current page, How it works",
+   "predicted": "Sections, navigation landmark, list, with 6 items, current page, bullet How it works",
+   "measureClass": "unexplained",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "lists",
+   "i": 3,
+   "expected": "complementary landmark, list, with 3 items, Best Start Grant and Best Start Foods, link",
+   "predicted": "complementary landmark, list, with 3 items, bullet, Best Start Grant and Best Start Foods",
+   "measureClass": "unexplained",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "channel": "lists",
+   "i": 4,
+   "expected": "content info landmark, list, with 6 items, About, link, myaccount, link, Accessibility statement, link, Cookies, link, Feedback, link, Privacy",
+   "predicted": "content info landmark, list, with 6 items, bullet, About",
+   "measureClass": "unexplained",
+   "cause": "unexplained",
+   "reason": "predicts another string than this host and there is no control reading of the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  }
+ ]
+}

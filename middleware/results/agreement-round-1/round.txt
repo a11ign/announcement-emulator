@@ -1,0 +1,705 @@
+## held-out pages (chosen and frozen before they were read)
+### Chromium 156.0.8078.4
+  extension-linux: 785 of 1046 units = 75.0% on 5 pages; the fleet agrees with itself on 1045 of 1046 = 99.9% (the ceiling: agreement above it cannot be told from the oracle's noise)
+    by channel (agreed / units, the fleet against itself beside it):
+      title          5 / 5    100.0%   fleet 100.0%
+      stops        210 / 356   59.0%   fleet 100.0%
+      field          4 / 4    100.0%   fleet 100.0%
+      typed         24 / 24   100.0%   fleet 100.0%
+      headings      42 / 44    95.5%   fleet 100.0%
+      landmarks     52 / 53    98.1%   fleet 100.0%
+      formFields    49 / 116   42.2%   fleet 100.0%
+      graphics      18 / 18   100.0%   fleet 100.0%
+      links        347 / 387   89.7%   fleet  99.7%
+      lists         34 / 39    87.2%   fleet 100.0%
+    by shape (the ten commonest; a flag is a low-confidence shape):
+      NAME + ROLE + STATE + STATE                           169 / 270   62.6%   fleet 100.0%   LOW CONFIDENCE
+      NAME + ROLE                                           238 / 264   90.2%   fleet 100.0%
+      NAME + ROLE + STATE                                    25 / 80    31.2%   fleet 100.0%   LOW CONFIDENCE
+      NAME + ROLE + LEVEL                                    32 / 33    97.0%   fleet 100.0%
+      NAME                                                   31 / 31   100.0%   fleet 100.0%
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE               30 / 30   100.0%   fleet 100.0%
+      NAME + ROLE + STATE + NAME                             20 / 29    69.0%   fleet 100.0%
+      NAME + STATE + ROLE                                    26 / 26   100.0%   fleet 100.0%
+      ROLE + COUNT + NAME + ROLE                             16 / 22    72.7%   fleet 100.0%
+      NAME + ROLE + STATE + STATE + STATE                     3 / 20    15.0%   fleet 100.0%   LOW CONFIDENCE
+    low-confidence shapes: 9 of 95 (all in rates.json); the commonest:
+      NAME + ROLE + STATE + STATE                           169 / 270   62.6%
+      NAME + ROLE + STATE                                    25 / 80    31.2%
+      NAME + ROLE + STATE + STATE + STATE                     3 / 20    15.0%
+      NAME + ROLE + NAME                                      7 / 15    46.7%
+      NAME + ROLE + STATE + STATE + NAME                      2 / 8     25.0%
+      NAME + ROLE + NAME + ROLE + STATE                       0 / 3      0.0%
+      ROLE + COUNT + NAME + ROLE + NAME                       0 / 3      0.0%
+      NAME + ROLE + NAME + STATE + STATE                      0 / 2      0.0%
+      ROLE + COUNT + NAME + NAME + NAME + ROLE                0 / 2      0.0%
+    every miss has one cause: emulator 245, tree: name 10, quick test 3, tree: node 1, tree: landmark+name+state 1, tree: name+role+state 1
+    causes by shape (the ten commonest):
+      NAME + ROLE + STATE + STATE                          emulator 99, quick test 2
+      NAME + ROLE                                          emulator 25, tree: node 1
+      NAME + ROLE + STATE                                  emulator 53, tree: name 1, quick test 1
+      NAME + ROLE + LEVEL                                  emulator 1
+      NAME + ROLE + STATE + NAME                           emulator 9
+      ROLE + COUNT + NAME + ROLE                           emulator 6
+      NAME + ROLE + STATE + STATE + STATE                  emulator 10, tree: name 7
+  devtools-linux: 518 of 1046 units = 49.5% on 5 pages; the fleet agrees with itself on 1045 of 1046 = 99.9% (the ceiling: agreement above it cannot be told from the oracle's noise)
+    by channel (agreed / units, the fleet against itself beside it):
+      title          5 / 5    100.0%   fleet 100.0%
+      stops        213 / 356   59.8%   fleet 100.0%
+      field          3 / 4     75.0%   fleet 100.0%
+      typed         24 / 24   100.0%   fleet 100.0%
+      headings      19 / 44    43.2%   fleet 100.0%
+      landmarks     36 / 53    67.9%   fleet 100.0%
+      formFields    33 / 116   28.4%   fleet 100.0%
+      graphics       7 / 18    38.9%   fleet 100.0%
+      links        151 / 387   39.0%   fleet  99.7%
+      lists         27 / 39    69.2%   fleet 100.0%
+    by shape (the ten commonest; a flag is a low-confidence shape):
+      NAME + ROLE + STATE + STATE                           165 / 270   61.1%   fleet 100.0%
+      NAME + ROLE                                            93 / 264   35.2%   fleet 100.0%   LOW CONFIDENCE
+      NAME + ROLE + STATE                                    16 / 80    20.0%   fleet 100.0%   LOW CONFIDENCE
+      NAME + ROLE + LEVEL                                    11 / 33    33.3%   fleet 100.0%
+      NAME                                                   31 / 31   100.0%   fleet 100.0%
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE               25 / 30    83.3%   fleet 100.0%
+      NAME + ROLE + STATE + NAME                             20 / 29    69.0%   fleet 100.0%
+      NAME + STATE + ROLE                                     6 / 26    23.1%   fleet 100.0%   LOW CONFIDENCE
+      ROLE + COUNT + NAME + ROLE                             16 / 22    72.7%   fleet 100.0%
+      NAME + ROLE + STATE + STATE + STATE                    10 / 20    50.0%   fleet 100.0%
+    low-confidence shapes: 6 of 95 (all in rates.json); the commonest:
+      NAME + ROLE                                            93 / 264   35.2%
+      NAME + ROLE + STATE                                    16 / 80    20.0%
+      NAME + STATE + ROLE                                     6 / 26    23.1%
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE + ROLE         0 / 4      0.0%
+      NAME + ROLE + STATE + STATE + STATE + NAME + NAME       0 / 4      0.0%
+      STATE + ROLE + ROLE + COUNT + NAME + ROLE + STATE       0 / 4      0.0%
+    every miss has one cause: conversion: node 262, emulator 245, conversion: clickable 4, events: focus 4, quick test 3, conversion: name+role+state 3, conversion: state 3, conversion: position in set 2, page moved 1, conversion: name 1
+    causes by shape (the ten commonest):
+      NAME + ROLE + STATE + STATE                          emulator 99, events: focus 4, quick test 2
+      NAME + ROLE                                          conversion: node 146, emulator 25
+      NAME + ROLE + STATE                                  emulator 53, conversion: node 9, conversion: name+role+state 1, quick test 1
+      NAME + ROLE + LEVEL                                  conversion: node 21, emulator 1
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE             conversion: node 5
+      NAME + ROLE + STATE + NAME                           emulator 9
+      NAME + STATE + ROLE                                  conversion: node 20
+      ROLE + COUNT + NAME + ROLE                           emulator 6
+      NAME + ROLE + STATE + STATE + STATE                  emulator 10
+  devtools-macos: 755 of 1046 units = 72.2% on 5 pages; the fleet agrees with itself on 1045 of 1046 = 99.9% (the ceiling: agreement above it cannot be told from the oracle's noise)
+    by channel (agreed / units, the fleet against itself beside it):
+      title          5 / 5    100.0%   fleet 100.0%
+      stops        208 / 356   58.4%   fleet 100.0%
+      field          3 / 4     75.0%   fleet 100.0%
+      typed         24 / 24   100.0%   fleet 100.0%
+      headings      42 / 44    95.5%   fleet 100.0%
+      landmarks     45 / 53    84.9%   fleet 100.0%
+      formFields    40 / 116   34.5%   fleet 100.0%
+      graphics      16 / 18    88.9%   fleet 100.0%
+      links        343 / 387   88.6%   fleet  99.7%
+      lists         29 / 39    74.4%   fleet 100.0%
+    by shape (the ten commonest; a flag is a low-confidence shape):
+      NAME + ROLE + STATE + STATE                           167 / 270   61.9%   fleet 100.0%   LOW CONFIDENCE
+      NAME + ROLE                                           239 / 264   90.5%   fleet 100.0%
+      NAME + ROLE + STATE                                    21 / 80    26.2%   fleet 100.0%   LOW CONFIDENCE
+      NAME + ROLE + LEVEL                                    32 / 33    97.0%   fleet 100.0%
+      NAME                                                   31 / 31   100.0%   fleet 100.0%
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE               28 / 30    93.3%   fleet 100.0%
+      NAME + ROLE + STATE + NAME                             20 / 29    69.0%   fleet 100.0%
+      NAME + STATE + ROLE                                    26 / 26   100.0%   fleet 100.0%
+      ROLE + COUNT + NAME + ROLE                             16 / 22    72.7%   fleet 100.0%
+      NAME + ROLE + STATE + STATE + STATE                     4 / 20    20.0%   fleet 100.0%   LOW CONFIDENCE
+    low-confidence shapes: 13 of 95 (all in rates.json); the commonest:
+      NAME + ROLE + STATE + STATE                           167 / 270   61.9%
+      NAME + ROLE + STATE                                    21 / 80    26.2%
+      NAME + ROLE + STATE + STATE + STATE                     4 / 20    20.0%
+      NAME + ROLE + NAME                                      7 / 15    46.7%
+      NAME + ROLE + STATE + STATE + STATE + NAME + NAME       0 / 4      0.0%
+      NAME + ROLE + STATE + STATE + STATE + NAME              0 / 3      0.0%
+      ROLE + COUNT + NAME + ROLE + NAME                       0 / 3      0.0%
+      NAME + ROLE + NAME + STATE + STATE                      0 / 2      0.0%
+      NAME + ROLE + STATE + STATE + POSITION                  0 / 2      0.0%
+      ROLE + COUNT + NAME + NAME + NAME + ROLE                0 / 2      0.0%
+    every miss has one cause: emulator 219, unexplained 25, network/runner 19, macos: node 5, conversion: clickable 4, quick test 3, conversion: name+role+state 3, events: focus 3, macos: clickable+landmark+name+state 1, macos: clickable+landmark+name+role 1, macos: name+role 1, conversion: position in set 1, macos: name+role+state 1, macos: name 1, macos: landmark 1, conversion: name 1, conversion: node 1, conversion: state 1
+    causes by shape (the ten commonest):
+      NAME + ROLE + STATE + STATE                          emulator 94, network/runner 3, events: focus 3, quick test 2, unexplained 1
+      NAME + ROLE                                          emulator 19, macos: node 2, macos: clickable+landmark+name+state 1, macos: clickable+landmark+name+role 1, macos: name+role 1, unexplained 1
+      NAME + ROLE + STATE                                  emulator 51, unexplained 3, conversion: name+role+state 1, network/runner 1, macos: name+role+state 1, macos: node 1, quick test 1
+      NAME + ROLE + LEVEL                                  emulator 1
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE             unexplained 2
+      NAME + ROLE + STATE + NAME                           emulator 9
+      ROLE + COUNT + NAME + ROLE                           emulator 6
+      NAME + ROLE + STATE + STATE + STATE                  emulator 9, network/runner 7
+  devtools-ubuntu-ci: 681 of 945 units = 72.1% on 4 pages; the fleet agrees with itself on 944 of 945 = 99.9% (the ceiling: agreement above it cannot be told from the oracle's noise)
+    by channel (agreed / units, the fleet against itself beside it):
+      title          4 / 4    100.0%   fleet 100.0%
+      stops        181 / 323   56.0%   fleet 100.0%
+      field          3 / 3    100.0%   fleet 100.0%
+      typed         18 / 18   100.0%   fleet 100.0%
+      headings      39 / 41    95.1%   fleet 100.0%
+      landmarks     41 / 44    93.2%   fleet 100.0%
+      formFields    38 / 108   35.2%   fleet 100.0%
+      graphics      15 / 15   100.0%   fleet 100.0%
+      links        313 / 355   88.2%   fleet  99.7%
+      lists         29 / 34    85.3%   fleet 100.0%
+    by shape (the ten commonest; a flag is a low-confidence shape):
+      NAME + ROLE + STATE + STATE                           143 / 246   58.1%   fleet 100.0%   LOW CONFIDENCE
+      NAME + ROLE                                           221 / 245   90.2%   fleet 100.0%
+      NAME + ROLE + STATE                                    20 / 75    26.7%   fleet 100.0%   LOW CONFIDENCE
+      NAME + ROLE + LEVEL                                    31 / 32    96.9%   fleet 100.0%
+      NAME + ROLE + STATE + NAME                             20 / 29    69.0%   fleet 100.0%
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE               25 / 25   100.0%   fleet 100.0%
+      NAME + STATE + ROLE                                    25 / 25   100.0%   fleet 100.0%
+      NAME                                                   23 / 23   100.0%   fleet 100.0%
+      ROLE + COUNT + NAME + ROLE                             15 / 21    71.4%   fleet 100.0%
+      NAME + ROLE + STATE + STATE + STATE                     3 / 19    15.8%   fleet 100.0%   LOW CONFIDENCE
+    low-confidence shapes: 7 of 83 (all in rates.json); the commonest:
+      NAME + ROLE + STATE + STATE                           143 / 246   58.1%
+      NAME + ROLE + STATE                                    20 / 75    26.7%
+      NAME + ROLE + STATE + STATE + STATE                     3 / 19    15.8%
+      NAME + ROLE + NAME                                      6 / 15    40.0%
+      ROLE + COUNT + NAME + ROLE + NAME                       0 / 3      0.0%
+      ROLE + COUNT + NAME + NAME + NAME + ROLE                0 / 2      0.0%
+      ROLE + NAME + NAME + NAME + NAME + NAME + NAME + ROL    0 / 2      0.0%
+    every miss has one cause: emulator 219, network/runner 30, conversion: clickable 3, conversion: name+role+state 3, events: focus 3, quick test 2, conversion: position in set 1, chromium build 1, conversion: name 1, conversion: node 1
+    causes by shape (the ten commonest):
+      NAME + ROLE + STATE + STATE                          emulator 94, network/runner 3, events: focus 3, quick test 2, chromium build 1
+      NAME + ROLE                                          emulator 19, network/runner 5
+      NAME + ROLE + STATE                                  emulator 51, network/runner 3, conversion: name+role+state 1
+      NAME + ROLE + LEVEL                                  emulator 1
+      NAME + ROLE + STATE + NAME                           emulator 9
+      ROLE + COUNT + NAME + ROLE                           emulator 6
+      NAME + ROLE + STATE + STATE + STATE                  emulator 9, network/runner 7
+### Chromium 153.0.8010.12
+  extension-linux: 792 of 1046 units = 75.7% on 5 pages; the fleet agrees with itself on 1045 of 1046 = 99.9% (the ceiling: agreement above it cannot be told from the oracle's noise)
+    by channel (agreed / units, the fleet against itself beside it):
+      title          5 / 5    100.0%   fleet 100.0%
+      stops        214 / 356   60.1%   fleet 100.0%
+      field          3 / 4     75.0%   fleet 100.0%
+      typed         24 / 24   100.0%   fleet 100.0%
+      headings      42 / 44    95.5%   fleet 100.0%
+      landmarks     52 / 53    98.1%   fleet 100.0%
+      formFields    53 / 116   45.7%   fleet 100.0%
+      graphics      18 / 18   100.0%   fleet 100.0%
+      links        347 / 387   89.7%   fleet  99.7%
+      lists         34 / 39    87.2%   fleet 100.0%
+    by shape (the ten commonest; a flag is a low-confidence shape):
+      NAME + ROLE + STATE + STATE                           165 / 270   61.1%   fleet 100.0%   LOW CONFIDENCE
+      NAME + ROLE                                           239 / 264   90.5%   fleet 100.0%
+      NAME + ROLE + STATE                                    25 / 80    31.2%   fleet 100.0%   LOW CONFIDENCE
+      NAME + ROLE + LEVEL                                    32 / 33    97.0%   fleet 100.0%
+      NAME                                                   31 / 31   100.0%   fleet 100.0%
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE               30 / 30   100.0%   fleet 100.0%
+      NAME + ROLE + STATE + NAME                             21 / 29    72.4%   fleet 100.0%
+      NAME + STATE + ROLE                                    26 / 26   100.0%   fleet 100.0%
+      ROLE + COUNT + NAME + ROLE                             16 / 22    72.7%   fleet 100.0%
+      NAME + ROLE + STATE + STATE + STATE                    10 / 20    50.0%   fleet 100.0%   LOW CONFIDENCE
+    low-confidence shapes: 8 of 95 (all in rates.json); the commonest:
+      NAME + ROLE + STATE + STATE                           165 / 270   61.1%
+      NAME + ROLE + STATE                                    25 / 80    31.2%
+      NAME + ROLE + STATE + STATE + STATE                    10 / 20    50.0%
+      NAME + ROLE + NAME                                      8 / 15    53.3%
+      NAME + ROLE + STATE + STATE + NAME                      2 / 8     25.0%
+      ROLE + COUNT + NAME + ROLE + NAME                       0 / 3      0.0%
+      NAME + ROLE + NAME + STATE + STATE                      0 / 2      0.0%
+      ROLE + COUNT + NAME + NAME + NAME + ROLE                0 / 2      0.0%
+    every miss has one cause: emulator 247, tree: name 3, tree: name+role+state 1, tree: name+state 1, tree: focus 1, quick test 1
+    causes by shape (the ten commonest):
+      NAME + ROLE + STATE + STATE                          emulator 102, tree: name 2, tree: focus 1
+      NAME + ROLE                                          emulator 25
+      NAME + ROLE + STATE                                  emulator 54, quick test 1
+      NAME + ROLE + LEVEL                                  emulator 1
+      NAME + ROLE + STATE + NAME                           emulator 8
+      ROLE + COUNT + NAME + ROLE                           emulator 6
+      NAME + ROLE + STATE + STATE + STATE                  emulator 10
+  devtools-linux: 509 of 1046 units = 48.7% on 5 pages; the fleet agrees with itself on 1045 of 1046 = 99.9% (the ceiling: agreement above it cannot be told from the oracle's noise)
+    by channel (agreed / units, the fleet against itself beside it):
+      title          5 / 5    100.0%   fleet 100.0%
+      stops        205 / 356   57.6%   fleet 100.0%
+      field          3 / 4     75.0%   fleet 100.0%
+      typed         24 / 24   100.0%   fleet 100.0%
+      headings      19 / 44    43.2%   fleet 100.0%
+      landmarks     36 / 53    67.9%   fleet 100.0%
+      formFields    32 / 116   27.6%   fleet 100.0%
+      graphics       7 / 18    38.9%   fleet 100.0%
+      links        151 / 387   39.0%   fleet  99.7%
+      lists         27 / 39    69.2%   fleet 100.0%
+    by shape (the ten commonest; a flag is a low-confidence shape):
+      NAME + ROLE + STATE + STATE                           167 / 270   61.9%   fleet 100.0%
+      NAME + ROLE                                            93 / 264   35.2%   fleet 100.0%   LOW CONFIDENCE
+      NAME + ROLE + STATE                                    14 / 80    17.5%   fleet 100.0%   LOW CONFIDENCE
+      NAME + ROLE + LEVEL                                    11 / 33    33.3%   fleet 100.0%
+      NAME                                                   31 / 31   100.0%   fleet 100.0%
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE               25 / 30    83.3%   fleet 100.0%
+      NAME + ROLE + STATE + NAME                             20 / 29    69.0%   fleet 100.0%
+      NAME + STATE + ROLE                                     6 / 26    23.1%   fleet 100.0%   LOW CONFIDENCE
+      ROLE + COUNT + NAME + ROLE                             16 / 22    72.7%   fleet 100.0%
+      NAME + ROLE + STATE + STATE + STATE                     3 / 20    15.0%   fleet 100.0%   LOW CONFIDENCE
+    low-confidence shapes: 4 of 95 (all in rates.json); the commonest:
+      NAME + ROLE                                            93 / 264   35.2%
+      NAME + ROLE + STATE                                    14 / 80    17.5%
+      NAME + STATE + ROLE                                     6 / 26    23.1%
+      NAME + ROLE + STATE + STATE + STATE                     3 / 20    15.0%
+    every miss has one cause: conversion: node 263, emulator 246, conversion: name 10, conversion: clickable 4, conversion: name+role+state 4, conversion: state 3, conversion: position in set 2, quick test 2, events: focus 1, chromium build 1, page moved 1
+    causes by shape (the ten commonest):
+      NAME + ROLE + STATE + STATE                          emulator 101, events: focus 1, quick test 1
+      NAME + ROLE                                          conversion: node 146, emulator 25
+      NAME + ROLE + STATE                                  emulator 54, conversion: node 9, chromium build 1, conversion: name+role+state 1, quick test 1
+      NAME + ROLE + LEVEL                                  conversion: node 21, emulator 1
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE             conversion: node 5
+      NAME + ROLE + STATE + NAME                           emulator 8, conversion: node 1
+      NAME + STATE + ROLE                                  conversion: node 20
+      ROLE + COUNT + NAME + ROLE                           emulator 6
+      NAME + ROLE + STATE + STATE + STATE                  emulator 10, conversion: name 7
+  devtools-macos: 421 of 945 units = 44.6% on 4 pages; the fleet agrees with itself on 944 of 945 = 99.9% (the ceiling: agreement above it cannot be told from the oracle's noise)
+    by channel (agreed / units, the fleet against itself beside it):
+      title          4 / 4    100.0%   fleet 100.0%
+      stops        183 / 323   56.7%   fleet 100.0%
+      field          2 / 3     66.7%   fleet 100.0%
+      typed         18 / 18   100.0%   fleet 100.0%
+      headings      16 / 41    39.0%   fleet 100.0%
+      landmarks     28 / 44    63.6%   fleet 100.0%
+      formFields    25 / 108   23.1%   fleet 100.0%
+      graphics       4 / 15    26.7%   fleet 100.0%
+      links        119 / 355   33.5%   fleet  99.7%
+      lists         22 / 34    64.7%   fleet 100.0%
+    by shape (the ten commonest; a flag is a low-confidence shape):
+      NAME + ROLE + STATE + STATE                           145 / 246   58.9%   fleet 100.0%
+      NAME + ROLE                                            74 / 245   30.2%   fleet 100.0%   LOW CONFIDENCE
+      NAME + ROLE + STATE                                    11 / 75    14.7%   fleet 100.0%   LOW CONFIDENCE
+      NAME + ROLE + LEVEL                                    10 / 32    31.2%   fleet 100.0%
+      NAME + ROLE + STATE + NAME                             20 / 29    69.0%   fleet 100.0%
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE               20 / 25    80.0%   fleet 100.0%
+      NAME + STATE + ROLE                                     5 / 25    20.0%   fleet 100.0%   LOW CONFIDENCE
+      NAME                                                   23 / 23   100.0%   fleet 100.0%
+      ROLE + COUNT + NAME + ROLE                             15 / 21    71.4%   fleet 100.0%
+      NAME + ROLE + STATE + STATE + STATE                     3 / 19    15.8%   fleet 100.0%   LOW CONFIDENCE
+    low-confidence shapes: 5 of 83 (all in rates.json); the commonest:
+      NAME + ROLE                                            74 / 245   30.2%
+      NAME + ROLE + STATE                                    11 / 75    14.7%
+      NAME + STATE + ROLE                                     5 / 25    20.0%
+      NAME + ROLE + STATE + STATE + STATE                     3 / 19    15.8%
+      ROLE + NAME + ROLE + ROLE                               3 / 16    18.8%
+    every miss has one cause: conversion: node 263, emulator 235, conversion: name 10, conversion: name+role+state 4, conversion: clickable 3, macos: name+state 2, quick test 2, macos: landmark+name+role 1, macos: name+role 1, conversion: position in set 1, page moved 1, network/runner 1
+    causes by shape (the ten commonest):
+      NAME + ROLE + STATE + STATE                          emulator 99, network/runner 1, quick test 1
+      NAME + ROLE                                          conversion: node 146, emulator 22, macos: landmark+name+role 1, macos: name+role 1, macos: name+state 1
+      NAME + ROLE + STATE                                  emulator 54, conversion: node 9, conversion: name+role+state 1
+      NAME + ROLE + LEVEL                                  conversion: node 21, emulator 1
+      NAME + ROLE + STATE + NAME                           emulator 8, conversion: node 1
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE             conversion: node 5
+      NAME + STATE + ROLE                                  conversion: node 20
+      ROLE + COUNT + NAME + ROLE                           emulator 6
+      NAME + ROLE + STATE + STATE + STATE                  emulator 9, conversion: name 7
+  devtools-ubuntu-ci: 419 of 945 units = 44.3% on 4 pages; the fleet agrees with itself on 944 of 945 = 99.9% (the ceiling: agreement above it cannot be told from the oracle's noise)
+    by channel (agreed / units, the fleet against itself beside it):
+      title          4 / 4    100.0%   fleet 100.0%
+      stops        180 / 323   55.7%   fleet 100.0%
+      field          3 / 3    100.0%   fleet 100.0%
+      typed         18 / 18   100.0%   fleet 100.0%
+      headings      16 / 41    39.0%   fleet 100.0%
+      landmarks     28 / 44    63.6%   fleet 100.0%
+      formFields    25 / 108   23.1%   fleet 100.0%
+      graphics       4 / 15    26.7%   fleet 100.0%
+      links        119 / 355   33.5%   fleet  99.7%
+      lists         22 / 34    64.7%   fleet 100.0%
+    by shape (the ten commonest; a flag is a low-confidence shape):
+      NAME + ROLE + STATE + STATE                           144 / 246   58.5%   fleet 100.0%
+      NAME + ROLE                                            74 / 245   30.2%   fleet 100.0%   LOW CONFIDENCE
+      NAME + ROLE + STATE                                    11 / 75    14.7%   fleet 100.0%   LOW CONFIDENCE
+      NAME + ROLE + LEVEL                                    10 / 32    31.2%   fleet 100.0%
+      NAME + ROLE + STATE + NAME                             20 / 29    69.0%   fleet 100.0%
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE               20 / 25    80.0%   fleet 100.0%
+      NAME + STATE + ROLE                                     5 / 25    20.0%   fleet 100.0%   LOW CONFIDENCE
+      NAME                                                   23 / 23   100.0%   fleet 100.0%
+      ROLE + COUNT + NAME + ROLE                             15 / 21    71.4%   fleet 100.0%
+      NAME + ROLE + STATE + STATE + STATE                     3 / 19    15.8%   fleet 100.0%   LOW CONFIDENCE
+    low-confidence shapes: 5 of 83 (all in rates.json); the commonest:
+      NAME + ROLE                                            74 / 245   30.2%
+      NAME + ROLE + STATE                                    11 / 75    14.7%
+      NAME + STATE + ROLE                                     5 / 25    20.0%
+      NAME + ROLE + STATE + STATE + STATE                     3 / 19    15.8%
+      ROLE + NAME + ROLE + ROLE                               3 / 16    18.8%
+    every miss has one cause: conversion: node 263, emulator 238, conversion: name 10, network/runner 4, conversion: name+role+state 4, conversion: clickable 3, quick test 2, conversion: position in set 1, page moved 1
+    causes by shape (the ten commonest):
+      NAME + ROLE + STATE + STATE                          emulator 99, quick test 2, network/runner 1
+      NAME + ROLE                                          conversion: node 146, emulator 22, network/runner 3
+      NAME + ROLE + STATE                                  emulator 54, conversion: node 9, conversion: name+role+state 1
+      NAME + ROLE + LEVEL                                  conversion: node 21, emulator 1
+      NAME + ROLE + STATE + NAME                           emulator 8, conversion: node 1
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE             conversion: node 5
+      NAME + STATE + ROLE                                  conversion: node 20
+      ROLE + COUNT + NAME + ROLE                           emulator 6
+      NAME + ROLE + STATE + STATE + STATE                  emulator 9, conversion: name 7
+## fitted pages (the six the emulator was fitted against: NOT held out)
+### Chromium 156.0.8078.4
+  extension-linux: 920 of 1138 units = 80.8% on 6 pages; the fleet agrees with itself on 1079 of 1138 = 94.8% (the ceiling: agreement above it cannot be told from the oracle's noise)
+    against the previous figure (871 of 1072 = 81.2%): -0.4 points, within
+    by channel (agreed / units, the fleet against itself beside it):
+      title          4 / 6     66.7%   fleet 100.0%
+      stops        283 / 396   71.5%   fleet  92.9%
+      field          2 / 3     66.7%   fleet 100.0%
+      typed         12 / 18    66.7%   fleet 100.0%
+      headings      62 / 106   58.5%   fleet  98.1%
+      landmarks     44 / 45    97.8%   fleet  84.4%
+      formFields    74 / 100   74.0%   fleet  96.0%
+      graphics       4 / 7     57.1%   fleet  57.1%
+      links        361 / 376   96.0%   fleet  97.3%
+      lists         57 / 61    93.4%   fleet  91.8%
+      frames        17 / 20    85.0%   fleet 100.0%
+    by shape (the ten commonest; a flag is a low-confidence shape):
+      NAME + ROLE                                           275 / 287   95.8%   fleet  99.0%   previous 96.4%: within
+      NAME + ROLE + STATE + STATE                           208 / 240   86.7%   fleet  95.8%   previous 87.9%: down
+      NAME + ROLE + LEVEL                                    44 / 82    53.7%   fleet 100.0%   previous 53.1%: within   LOW CONFIDENCE
+      NAME + ROLE + STATE                                    23 / 39    59.0%   fleet  79.5%   previous 78.4%: down   LOW CONFIDENCE
+      NAME + ROLE + STATE + STATE + POSITION                 10 / 35    28.6%   fleet 100.0%   previous 8.6%: up   LOW CONFIDENCE
+      NAME + ROLE + STATE + STATE + STATE                    14 / 29    48.3%   fleet  65.5%   previous 23.1%: up   LOW CONFIDENCE
+      NAME + STATE + ROLE                                    23 / 26    88.5%   fleet  92.3%   previous 88.0%: within
+      NAME                                                   16 / 24    66.7%   fleet 100.0%
+      NAME + NAME + ROLE                                     22 / 22   100.0%   fleet 100.0%   previous 100.0%: within
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE               19 / 21    90.5%   fleet  71.4%   previous 90.5%: within
+    low-confidence shapes: 23 of 114 (all in rates.json); the commonest:
+      NAME + ROLE + LEVEL                                    44 / 82    53.7%
+      NAME + ROLE + STATE                                    23 / 39    59.0%
+      NAME + ROLE + STATE + STATE + POSITION                 10 / 35    28.6%
+      NAME + ROLE + STATE + STATE + STATE                    14 / 29    48.3%
+      NAME + ROLE + STATE + NAME                              5 / 21    23.8%
+      NAME + ROLE + NAME + ROLE + NAME + ROLE + LEVEL         4 / 11    36.4%
+      NAME + ROLE + STATE + STATE + NAME                      4 / 9     44.4%
+      NAME + ROLE + NAME + ROLE + NAME + ROLE                 1 / 6     16.7%
+      NAME + ROLE + NAME + STATE + ROLE                       0 / 3      0.0%
+      NAME + ROLE + STATE + STATE + STATE + NAME              0 / 3      0.0%
+    every miss has one cause: emulator 107, tree: focus 31, history 22, tree: name 14, tree: name+position in set+role 12, tree: node 10, page moved 9, test blocked 7, offscreen frame 3, tree: name+position in set+role+state 1, chromium build 1, tree: name+role 1
+    causes by shape (the ten commonest):
+      NAME + ROLE                                          emulator 9, tree: node 2, chromium build 1
+      NAME + ROLE + STATE + STATE                          tree: name 10, tree: focus 10, tree: name+position in set+role 6, page moved 5, tree: name+position in set+role+state 1
+      NAME + ROLE + LEVEL                                  emulator 38
+      NAME + ROLE + STATE                                  emulator 6, tree: name+position in set+role 5, tree: focus 4, tree: node 1
+      NAME + ROLE + STATE + STATE + POSITION               emulator 19, tree: focus 6
+      NAME + ROLE + STATE + STATE + STATE                  history 9, page moved 4, tree: name 2
+      NAME + STATE + ROLE                                  history 3
+      NAME                                                 test blocked 6, tree: name 2
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE             emulator 2
+  devtools-linux: 963 of 1138 units = 84.6% on 6 pages; the fleet agrees with itself on 1079 of 1138 = 94.8% (the ceiling: agreement above it cannot be told from the oracle's noise)
+    against the previous figure (860 of 1072 = 80.2%): +4.4 points, up
+    by channel (agreed / units, the fleet against itself beside it):
+      title          6 / 6    100.0%   fleet 100.0%
+      stops        328 / 396   82.8%   fleet  92.9%
+      field          2 / 3     66.7%   fleet 100.0%
+      typed         12 / 18    66.7%   fleet 100.0%
+      headings      65 / 106   61.3%   fleet  98.1%
+      landmarks     40 / 45    88.9%   fleet  84.4%
+      formFields    73 / 100   73.0%   fleet  96.0%
+      graphics       4 / 7     57.1%   fleet  57.1%
+      links        356 / 376   94.7%   fleet  97.3%
+      lists         57 / 61    93.4%   fleet  91.8%
+      frames        20 / 20   100.0%   fleet 100.0%
+    by shape (the ten commonest; a flag is a low-confidence shape):
+      NAME + ROLE                                           274 / 287   95.5%   fleet  99.0%   previous 95.3%: within
+      NAME + ROLE + STATE + STATE                           238 / 240   99.2%   fleet  95.8%   previous 88.3%: up
+      NAME + ROLE + LEVEL                                    44 / 82    53.7%   fleet 100.0%   previous 53.1%: within   LOW CONFIDENCE
+      NAME + ROLE + STATE                                    32 / 39    82.1%   fleet  79.5%   previous 81.1%: up
+      NAME + ROLE + STATE + STATE + POSITION                 16 / 35    45.7%   fleet 100.0%   previous 8.6%: up   LOW CONFIDENCE
+      NAME + ROLE + STATE + STATE + STATE                     6 / 29    20.7%   fleet  65.5%   previous 15.4%: up   LOW CONFIDENCE
+      NAME + STATE + ROLE                                    23 / 26    88.5%   fleet  92.3%   previous 88.0%: within
+      NAME                                                   18 / 24    75.0%   fleet 100.0%
+      NAME + NAME + ROLE                                     22 / 22   100.0%   fleet 100.0%   previous 100.0%: within
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE               19 / 21    90.5%   fleet  71.4%   previous 90.5%: within
+    low-confidence shapes: 26 of 114 (all in rates.json); the commonest:
+      NAME + ROLE + LEVEL                                    44 / 82    53.7%
+      NAME + ROLE + STATE + STATE + POSITION                 16 / 35    45.7%
+      NAME + ROLE + STATE + STATE + STATE                     6 / 29    20.7%
+      NAME + ROLE + STATE + NAME                             12 / 21    57.1%
+      NAME + ROLE + STATE + STATE + NAME                      5 / 9     55.6%
+      NAME + ROLE + NAME + STATE + ROLE                       0 / 3      0.0%
+      NAME + ROLE + STATE + STATE + STATE + NAME              0 / 3      0.0%
+      ROLE + NAME + ROLE + STATE + ROLE                       0 / 3      0.0%
+      ROLE + ROLE + NAME                                      0 / 3      0.0%
+      NAME + NAME + NAME + NAME + ROLE                        0 / 2      0.0%
+    every miss has one cause: emulator 107, history 22, conversion: name 15, page moved 8, conversion: node 8, test blocked 7, conversion: clickable 4, events: focus 4
+    causes by shape (the ten commonest):
+      NAME + ROLE                                          emulator 9, conversion: node 3, page moved 1
+      NAME + ROLE + STATE + STATE                          page moved 2
+      NAME + ROLE + LEVEL                                  emulator 38
+      NAME + ROLE + STATE                                  emulator 6, conversion: node 1
+      NAME + ROLE + STATE + STATE + POSITION               emulator 19
+      NAME + ROLE + STATE + STATE + STATE                  history 9, conversion: name 9, page moved 4, events: focus 1
+      NAME + STATE + ROLE                                  history 3
+      NAME                                                 test blocked 6
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE             emulator 2
+  devtools-macos: 866 of 1026 units = 84.4% on 5 pages; the fleet agrees with itself on 967 of 1026 = 94.2% (the ceiling: agreement above it cannot be told from the oracle's noise)
+    against the previous figure (817 of 960 = 85.1%): -0.7 points, down
+    by channel (agreed / units, the fleet against itself beside it):
+      title          5 / 5    100.0%   fleet 100.0%
+      stops        311 / 388   80.2%   fleet  92.8%
+      field          1 / 2     50.0%   fleet 100.0%
+      typed         12 / 12   100.0%   fleet 100.0%
+      headings      57 / 100   57.0%   fleet  98.0%
+      landmarks     32 / 36    88.9%   fleet  80.6%
+      formFields    70 / 87    80.5%   fleet  95.4%
+      graphics       3 / 4     75.0%   fleet  25.0%
+      links        307 / 319   96.2%   fleet  96.9%
+      lists         50 / 53    94.3%   fleet  90.6%
+      frames        18 / 20    90.0%   fleet 100.0%
+    by shape (the ten commonest; a flag is a low-confidence shape):
+      NAME + ROLE                                           242 / 247   98.0%   fleet  98.8%   previous 99.6%: down
+      NAME + ROLE + STATE + STATE                           221 / 238   92.9%   fleet  95.8%   previous 88.2%: up
+      NAME + ROLE + LEVEL                                    42 / 80    52.5%   fleet 100.0%   previous 51.9%: up   LOW CONFIDENCE
+      NAME + ROLE + STATE                                    29 / 35    82.9%   fleet  77.1%   previous 81.8%: up
+      NAME + ROLE + STATE + STATE + POSITION                 17 / 35    48.6%   fleet 100.0%   previous 8.6%: up   LOW CONFIDENCE
+      NAME + ROLE + STATE + STATE + STATE                     6 / 29    20.7%   fleet  65.5%   previous 65.4%: down   LOW CONFIDENCE
+      NAME + NAME + ROLE                                     22 / 22   100.0%   fleet 100.0%   previous 100.0%: within
+      NAME + STATE + ROLE                                    19 / 22    86.4%   fleet  90.9%   previous 85.7%: up
+      NAME + ROLE + STATE + NAME                             15 / 20    75.0%   fleet 100.0%   previous 75.0%: within
+      ROLE + COUNT + NAME                                    19 / 19   100.0%   fleet 100.0%   previous 100.0%: within
+    low-confidence shapes: 20 of 85 (all in rates.json); the commonest:
+      NAME + ROLE + LEVEL                                    42 / 80    52.5%
+      NAME + ROLE + STATE + STATE + POSITION                 17 / 35    48.6%
+      NAME + ROLE + STATE + STATE + STATE                     6 / 29    20.7%
+      NAME + ROLE + NAME + ROLE + NAME + ROLE + LEVEL         6 / 11    54.5%
+      NAME + ROLE + STATE + STATE + NAME                      4 / 9     44.4%
+      NAME + ROLE + NAME                                      4 / 7     57.1%
+      NAME + ROLE + NAME + ROLE                               4 / 7     57.1%
+      NAME + ROLE + NAME + STATE + ROLE                       0 / 3      0.0%
+      NAME + ROLE + STATE + STATE + STATE + NAME              1 / 3     33.3%
+      ROLE + NAME + ROLE + STATE + ROLE                       0 / 3      0.0%
+    every miss has one cause: emulator 72, history 21, network/runner 18, macos: node 14, page moved 11, macos: name 8, conversion: name 7, macos: name+state 6, conversion: clickable 3
+    causes by shape (the ten commonest):
+      NAME + ROLE                                          macos: node 3, page moved 1, emulator 1
+      NAME + ROLE + STATE + STATE                          network/runner 12, page moved 5
+      NAME + ROLE + LEVEL                                  emulator 38
+      NAME + ROLE + STATE                                  emulator 4, macos: node 2
+      NAME + ROLE + STATE + STATE + POSITION               emulator 15, macos: node 3
+      NAME + ROLE + STATE + STATE + STATE                  history 9, macos: name 8, page moved 4, conversion: name 1, macos: node 1
+      NAME + STATE + ROLE                                  history 3
+      NAME + ROLE + STATE + NAME                           macos: name+state 5
+  devtools-ubuntu-ci: 873 of 1026 units = 85.1% on 5 pages; the fleet agrees with itself on 967 of 1026 = 94.2% (the ceiling: agreement above it cannot be told from the oracle's noise)
+    against the previous figure (806 of 960 = 84.0%): +1.1 points, up
+    by channel (agreed / units, the fleet against itself beside it):
+      title          5 / 5    100.0%   fleet 100.0%
+      stops        307 / 388   79.1%   fleet  92.8%
+      field          2 / 2    100.0%   fleet 100.0%
+      typed         12 / 12   100.0%   fleet 100.0%
+      headings      57 / 100   57.0%   fleet  98.0%
+      landmarks     32 / 36    88.9%   fleet  80.6%
+      formFields    80 / 87    92.0%   fleet  95.4%
+      graphics       3 / 4     75.0%   fleet  25.0%
+      links        307 / 319   96.2%   fleet  96.9%
+      lists         50 / 53    94.3%   fleet  90.6%
+      frames        18 / 20    90.0%   fleet 100.0%
+    by shape (the ten commonest; a flag is a low-confidence shape):
+      NAME + ROLE                                           246 / 247   99.6%   fleet  98.8%   previous 99.6%: within
+      NAME + ROLE + STATE + STATE                           216 / 238   90.8%   fleet  95.8%   previous 88.2%: up
+      NAME + ROLE + LEVEL                                    42 / 80    52.5%   fleet 100.0%   previous 51.9%: up   LOW CONFIDENCE
+      NAME + ROLE + STATE                                    27 / 35    77.1%   fleet  77.1%   previous 81.8%: down
+      NAME + ROLE + STATE + STATE + POSITION                 16 / 35    45.7%   fleet 100.0%   previous 8.6%: up   LOW CONFIDENCE
+      NAME + ROLE + STATE + STATE + STATE                    15 / 29    51.7%   fleet  65.5%   previous 61.5%: down   LOW CONFIDENCE
+      NAME + NAME + ROLE                                     22 / 22   100.0%   fleet 100.0%   previous 100.0%: within
+      NAME + STATE + ROLE                                    19 / 22    86.4%   fleet  90.9%   previous 85.7%: up
+      NAME + ROLE + STATE + NAME                             12 / 20    60.0%   fleet 100.0%   previous 75.0%: down   LOW CONFIDENCE
+      ROLE + COUNT + NAME                                    19 / 19   100.0%   fleet 100.0%   previous 100.0%: within
+    low-confidence shapes: 20 of 85 (all in rates.json); the commonest:
+      NAME + ROLE + LEVEL                                    42 / 80    52.5%
+      NAME + ROLE + STATE + STATE + POSITION                 16 / 35    45.7%
+      NAME + ROLE + STATE + STATE + STATE                    15 / 29    51.7%
+      NAME + ROLE + STATE + NAME                             12 / 20    60.0%
+      NAME + ROLE + NAME + ROLE + NAME + ROLE + LEVEL         6 / 11    54.5%
+      NAME + ROLE + STATE + STATE + NAME                      4 / 9     44.4%
+      NAME + ROLE + NAME                                      4 / 7     57.1%
+      NAME + ROLE + NAME + STATE + ROLE                       0 / 3      0.0%
+      NAME + ROLE + STATE + STATE + STATE + NAME              0 / 3      0.0%
+      ROLE + NAME + ROLE + STATE + ROLE                       0 / 3      0.0%
+    every miss has one cause: emulator 80, network/runner 30, history 21, page moved 9, conversion: name 7, conversion: clickable 3, events: focus 3
+    causes by shape (the ten commonest):
+      NAME + ROLE                                          emulator 1
+      NAME + ROLE + STATE + STATE                          network/runner 17, page moved 5
+      NAME + ROLE + LEVEL                                  emulator 38
+      NAME + ROLE + STATE                                  emulator 4, network/runner 4
+      NAME + ROLE + STATE + STATE + POSITION               emulator 16, network/runner 3
+      NAME + ROLE + STATE + STATE + STATE                  history 9, page moved 4, conversion: name 1
+      NAME + STATE + ROLE                                  history 3
+      NAME + ROLE + STATE + NAME                           emulator 5, events: focus 3
+### Chromium 153.0.8010.12
+  extension-linux: 902 of 1138 units = 79.3% on 6 pages; the fleet agrees with itself on 1079 of 1138 = 94.8% (the ceiling: agreement above it cannot be told from the oracle's noise)
+    against the previous figure (895 of 1072 = 83.5%): -4.2 points, down
+    by channel (agreed / units, the fleet against itself beside it):
+      title          5 / 6     83.3%   fleet 100.0%
+      stops        335 / 396   84.6%   fleet  92.9%
+      field          1 / 3     33.3%   fleet 100.0%
+      typed         12 / 18    66.7%   fleet 100.0%
+      headings      56 / 106   52.8%   fleet  98.1%
+      landmarks     35 / 45    77.8%   fleet  84.4%
+      formFields    76 / 100   76.0%   fleet  96.0%
+      graphics       3 / 7     42.9%   fleet  57.1%
+      links        312 / 376   83.0%   fleet  97.3%
+      lists         50 / 61    82.0%   fleet  91.8%
+      frames        17 / 20    85.0%   fleet 100.0%
+    by shape (the ten commonest; a flag is a low-confidence shape):
+      NAME + ROLE                                           244 / 287   85.0%   fleet  99.0%   previous 96.4%: down
+      NAME + ROLE + STATE + STATE                           234 / 240   97.5%   fleet  95.8%   previous 88.3%: up
+      NAME + ROLE + LEVEL                                    42 / 82    51.2%   fleet 100.0%   previous 53.1%: down   LOW CONFIDENCE
+      NAME + ROLE + STATE                                    33 / 39    84.6%   fleet  79.5%   previous 81.1%: up
+      NAME + ROLE + STATE + STATE + POSITION                 15 / 35    42.9%   fleet 100.0%   previous 8.6%: up   LOW CONFIDENCE
+      NAME + ROLE + STATE + STATE + STATE                    16 / 29    55.2%   fleet  65.5%   previous 57.7%: down   LOW CONFIDENCE
+      NAME + STATE + ROLE                                    19 / 26    73.1%   fleet  92.3%   previous 88.0%: down
+      NAME                                                   17 / 24    70.8%   fleet 100.0%
+      NAME + NAME + ROLE                                     22 / 22   100.0%   fleet 100.0%   previous 100.0%: within
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE               14 / 21    66.7%   fleet  71.4%   previous 90.5%: down
+    low-confidence shapes: 15 of 114 (all in rates.json); the commonest:
+      NAME + ROLE + LEVEL                                    42 / 82    51.2%
+      NAME + ROLE + STATE + STATE + POSITION                 15 / 35    42.9%
+      NAME + ROLE + STATE + STATE + STATE                    16 / 29    55.2%
+      NAME + ROLE + NAME + ROLE + NAME + ROLE + LEVEL         4 / 11    36.4%
+      NAME + ROLE + NAME                                      4 / 8     50.0%
+      NAME + ROLE + NAME + ROLE + LEVEL + STATE + ROLE        0 / 3      0.0%
+      NAME + ROLE + NAME + STATE + ROLE                       0 / 3      0.0%
+      NAME + ROLE + STATE + STATE + STATE + NAME              0 / 3      0.0%
+      ROLE + NAME + ROLE + ROLE + COUNT + NAME + ROLE         0 / 3      0.0%
+      ROLE + NAME + ROLE + STATE + ROLE                       0 / 3      0.0%
+    every miss has one cause: emulator 118, tree: node 75, history 21, test blocked 7, page moved 6, tree: focus 4, tree: name 2, tree: name+state 1, tree: state 1, offscreen frame 1
+    causes by shape (the ten commonest):
+      NAME + ROLE                                          tree: node 32, emulator 9, tree: name 1, tree: state 1
+      NAME + ROLE + STATE + STATE                          emulator 3, page moved 2, tree: focus 1
+      NAME + ROLE + LEVEL                                  emulator 38, tree: node 2
+      NAME + ROLE + STATE                                  emulator 5, tree: focus 1
+      NAME + ROLE + STATE + STATE + POSITION               emulator 19, tree: focus 1
+      NAME + ROLE + STATE + STATE + STATE                  history 9, page moved 4
+      NAME + STATE + ROLE                                  tree: node 4, history 3
+      NAME                                                 test blocked 6, tree: name 1
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE             tree: node 5, emulator 2
+  devtools-linux: 959 of 1138 units = 84.3% on 6 pages; the fleet agrees with itself on 1079 of 1138 = 94.8% (the ceiling: agreement above it cannot be told from the oracle's noise)
+    against the previous figure (871 of 1072 = 81.2%): +3.0 points, up
+    by channel (agreed / units, the fleet against itself beside it):
+      title          6 / 6    100.0%   fleet 100.0%
+      stops        331 / 396   83.6%   fleet  92.9%
+      field          2 / 3     66.7%   fleet 100.0%
+      typed         12 / 18    66.7%   fleet 100.0%
+      headings      63 / 106   59.4%   fleet  98.1%
+      landmarks     40 / 45    88.9%   fleet  84.4%
+      formFields    70 / 100   70.0%   fleet  96.0%
+      graphics       4 / 7     57.1%   fleet  57.1%
+      links        356 / 376   94.7%   fleet  97.3%
+      lists         57 / 61    93.4%   fleet  91.8%
+      frames        18 / 20    90.0%   fleet 100.0%
+    by shape (the ten commonest; a flag is a low-confidence shape):
+      NAME + ROLE                                           274 / 287   95.5%   fleet  99.0%   previous 96.0%: within
+      NAME + ROLE + STATE + STATE                           233 / 240   97.1%   fleet  95.8%   previous 88.3%: up
+      NAME + ROLE + LEVEL                                    44 / 82    53.7%   fleet 100.0%   previous 53.1%: within   LOW CONFIDENCE
+      NAME + ROLE + STATE                                    33 / 39    84.6%   fleet  79.5%   previous 81.1%: up
+      NAME + ROLE + STATE + STATE + POSITION                 16 / 35    45.7%   fleet 100.0%   previous 8.6%: up   LOW CONFIDENCE
+      NAME + ROLE + STATE + STATE + STATE                    14 / 29    48.3%   fleet  65.5%   previous 19.2%: up   LOW CONFIDENCE
+      NAME + STATE + ROLE                                    23 / 26    88.5%   fleet  92.3%   previous 88.0%: within
+      NAME                                                   18 / 24    75.0%   fleet 100.0%
+      NAME + NAME + ROLE                                     22 / 22   100.0%   fleet 100.0%   previous 100.0%: within
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE               19 / 21    90.5%   fleet  71.4%   previous 90.5%: within
+    low-confidence shapes: 29 of 114 (all in rates.json); the commonest:
+      NAME + ROLE + LEVEL                                    44 / 82    53.7%
+      NAME + ROLE + STATE + STATE + POSITION                 16 / 35    45.7%
+      NAME + ROLE + STATE + STATE + STATE                    14 / 29    48.3%
+      NAME + ROLE + STATE + NAME                             12 / 21    57.1%
+      NAME + ROLE + NAME + ROLE + NAME + ROLE + LEVEL         6 / 11    54.5%
+      NAME + ROLE + STATE + STATE + NAME                      5 / 9     55.6%
+      NAME + ROLE + NAME + ROLE + NAME + ROLE                 0 / 6      0.0%
+      NAME + ROLE + NAME + STATE + ROLE                       0 / 3      0.0%
+      NAME + ROLE + STATE + STATE + STATE + NAME              0 / 3      0.0%
+      ROLE + NAME + ROLE + STATE + ROLE                       0 / 3      0.0%
+    every miss has one cause: emulator 117, history 22, conversion: node 9, page moved 8, conversion: name 8, test blocked 7, conversion: clickable 3, events: focus 3, conversion: name+position in set+role+state 2
+    causes by shape (the ten commonest):
+      NAME + ROLE                                          emulator 9, conversion: node 3, page moved 1
+      NAME + ROLE + STATE + STATE                          emulator 3, page moved 2, conversion: name+position in set+role+state 2
+      NAME + ROLE + LEVEL                                  emulator 38
+      NAME + ROLE + STATE                                  emulator 5, conversion: node 1
+      NAME + ROLE + STATE + STATE + POSITION               emulator 19
+      NAME + ROLE + STATE + STATE + STATE                  history 9, page moved 4, conversion: name 2
+      NAME + STATE + ROLE                                  history 3
+      NAME                                                 test blocked 6
+      NAME + ROLE + ROLE + COUNT + NAME + ROLE             emulator 2
+  devtools-macos: 891 of 1026 units = 86.8% on 5 pages; the fleet agrees with itself on 967 of 1026 = 94.2% (the ceiling: agreement above it cannot be told from the oracle's noise)
+    against the previous figure (806 of 960 = 84.0%): +2.9 points, up
+    by channel (agreed / units, the fleet against itself beside it):
+      title          5 / 5    100.0%   fleet 100.0%
+      stops        338 / 388   87.1%   fleet  92.8%
+      field          2 / 2    100.0%   fleet 100.0%
+      typed         12 / 12   100.0%   fleet 100.0%
+      headings      57 / 100   57.0%   fleet  98.0%
+      landmarks     32 / 36    88.9%   fleet  80.6%
+      formFields    67 / 87    77.0%   fleet  95.4%
+      graphics       3 / 4     75.0%   fleet  25.0%
+      links        307 / 319   96.2%   fleet  96.9%
+      lists         50 / 53    94.3%   fleet  90.6%
+      frames        18 / 20    90.0%   fleet 100.0%
+    by shape (the ten commonest; a flag is a low-confidence shape):
+      NAME + ROLE                                           242 / 247   98.0%   fleet  98.8%   previous 99.6%: down
+      NAME + ROLE + STATE + STATE                           235 / 238   98.7%   fleet  95.8%   previous 85.5%: up
+      NAME + ROLE + LEVEL                                    42 / 80    52.5%   fleet 100.0%   previous 51.9%: up   LOW CONFIDENCE
+      NAME + ROLE + STATE                                    29 / 35    82.9%   fleet  77.1%   previous 78.8%: up
+      NAME + ROLE + STATE + STATE + POSITION                 17 / 35    48.6%   fleet 100.0%   previous 8.6%: up   LOW CONFIDENCE
+      NAME + ROLE + STATE + STATE + STATE                    17 / 29    58.6%   fleet  65.5%   previous 57.7%: up   LOW CONFIDENCE
+      NAME + NAME + ROLE                                     22 / 22   100.0%   fleet 100.0%   previous 100.0%: within
+      NAME + STATE + ROLE                                    19 / 22    86.4%   fleet  90.9%   previous 85.7%: up
+      NAME + ROLE + STATE + NAME                             15 / 20    75.0%   fleet 100.0%   previous 75.0%: within
+      ROLE + COUNT + NAME                                    19 / 19   100.0%   fleet 100.0%   previous 100.0%: within
+    low-confidence shapes: 20 of 85 (all in rates.json); the commonest:
+      NAME + ROLE + LEVEL                                    42 / 80    52.5%
+      NAME + ROLE + STATE + STATE + POSITION                 17 / 35    48.6%
+      NAME + ROLE + STATE + STATE + STATE                    17 / 29    58.6%
+      NAME + ROLE + NAME + ROLE + NAME + ROLE + LEVEL         6 / 11    54.5%
+      NAME + ROLE + STATE + STATE + NAME                      5 / 9     55.6%
+      NAME + ROLE + NAME                                      4 / 7     57.1%
+      NAME + ROLE + NAME + ROLE + NAME + ROLE                 0 / 6      0.0%
+      NAME + ROLE + NAME + STATE + ROLE                       0 / 3      0.0%
+      NAME + ROLE + STATE + STATE + STATE + NAME              1 / 3     33.3%
+      ROLE + NAME + ROLE + STATE + ROLE                       0 / 3      0.0%
+    every miss has one cause: emulator 80, history 21, macos: node 18, page moved 7, conversion: name 5, conversion: clickable 3, macos: name 1
+    causes by shape (the ten commonest):
+      NAME + ROLE                                          macos: node 3, emulator 1, page moved 1
+      NAME + ROLE + STATE + STATE                          page moved 2, macos: name 1
+      NAME + ROLE + LEVEL                                  emulator 38
+      NAME + ROLE + STATE                                  emulator 4, macos: node 2
+      NAME + ROLE + STATE + STATE + POSITION               emulator 17, macos: node 1
+      NAME + ROLE + STATE + STATE + STATE                  history 9, page moved 3
+      NAME + STATE + ROLE                                  history 3
+      NAME + ROLE + STATE + NAME                           emulator 5
+  devtools-ubuntu-ci: 886 of 1026 units = 86.4% on 5 pages; the fleet agrees with itself on 967 of 1026 = 94.2% (the ceiling: agreement above it cannot be told from the oracle's noise)
+    against the previous figure (777 of 960 = 80.9%): +5.4 points, up
+    by channel (agreed / units, the fleet against itself beside it):
+      title          4 / 5     80.0%   fleet 100.0%
+      stops        321 / 388   82.7%   fleet  92.8%
+      field          2 / 2    100.0%   fleet 100.0%
+      typed         12 / 12   100.0%   fleet 100.0%
+      headings      57 / 100   57.0%   fleet  98.0%
+      landmarks     32 / 36    88.9%   fleet  80.6%
+      formFields    80 / 87    92.0%   fleet  95.4%
+      graphics       3 / 4     75.0%   fleet  25.0%
+      links        307 / 319   96.2%   fleet  96.9%
+      lists         50 / 53    94.3%   fleet  90.6%
+      frames        18 / 20    90.0%   fleet 100.0%
+    by shape (the ten commonest; a flag is a low-confidence shape):
+      NAME + ROLE                                           246 / 247   99.6%   fleet  98.8%   previous 99.6%: within
+      NAME + ROLE + STATE + STATE                           231 / 238   97.1%   fleet  95.8%   previous 81.4%: up
+      NAME + ROLE + LEVEL                                    42 / 80    52.5%   fleet 100.0%   previous 51.9%: up   LOW CONFIDENCE
+      NAME + ROLE + STATE                                    30 / 35    85.7%   fleet  77.1%   previous 81.8%: up
+      NAME + ROLE + STATE + STATE + POSITION                 16 / 35    45.7%   fleet 100.0%   previous 8.6%: up   LOW CONFIDENCE
+      NAME + ROLE + STATE + STATE + STATE                     6 / 29    20.7%   fleet  65.5%   previous 23.1%: down   LOW CONFIDENCE
+      NAME + NAME + ROLE                                     22 / 22   100.0%   fleet 100.0%   previous 100.0%: within
+      NAME + STATE + ROLE                                    19 / 22    86.4%   fleet  90.9%   previous 85.7%: up
+      NAME + ROLE + STATE + NAME                             15 / 20    75.0%   fleet 100.0%   previous 75.0%: within
+      ROLE + COUNT + NAME                                    19 / 19   100.0%   fleet 100.0%   previous 100.0%: within
+    low-confidence shapes: 18 of 85 (all in rates.json); the commonest:
+      NAME + ROLE + LEVEL                                    42 / 80    52.5%
+      NAME + ROLE + STATE + STATE + POSITION                 16 / 35    45.7%
+      NAME + ROLE + STATE + STATE + STATE                     6 / 29    20.7%
+      NAME + ROLE + NAME + ROLE + NAME + ROLE + LEVEL         6 / 11    54.5%
+      NAME + ROLE + STATE + STATE + NAME                      5 / 9     55.6%
+      NAME + ROLE + NAME                                      4 / 7     57.1%
+      NAME + ROLE + NAME + STATE + ROLE                       0 / 3      0.0%
+      NAME + ROLE + STATE + STATE + STATE + NAME              1 / 3     33.3%
+      ROLE + NAME + ROLE + STATE + ROLE                       0 / 3      0.0%
+      NAME + NAME + NAME + NAME + ROLE                        0 / 2      0.0%
+    every miss has one cause: emulator 86, history 21, network/runner 15, conversion: name 7, page moved 6, conversion: clickable 3, conversion: name+position in set+role+state 2
+    causes by shape (the ten commonest):
+      NAME + ROLE                                          emulator 1
+      NAME + ROLE + STATE + STATE                          emulator 3, page moved 2, conversion: name+position in set+role+state 2
+      NAME + ROLE + LEVEL                                  emulator 38
+      NAME + ROLE + STATE                                  emulator 5
+      NAME + ROLE + STATE + STATE + POSITION               emulator 18, network/runner 1
+      NAME + ROLE + STATE + STATE + STATE                  history 9, network/runner 9, page moved 4, conversion: name 1
+      NAME + STATE + ROLE                                  history 3
+      NAME + ROLE + STATE + NAME                           emulator 5
