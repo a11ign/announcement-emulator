@@ -1,0 +1,102 @@
+# the readings, the headline: every channel, the first fleet capture against the first passive run
+  ext-linux             1062 of 1492  =  71.2%    second capture against second run: 1234 of 1862 = 66.3%
+  devtools-linux        1609 of 2199  =  73.2%    second capture against second run: 1563 of 2191 = 71.3%
+
+# what the extension buys over DevTools on this host (the units both readings compare)
+  units 1492: extension 1062 (71.2%), DevTools 1135 (76.1%), lead -4.9 points
+  discordant units: the extension agrees and DevTools does not 23; DevTools agrees and the extension does not 96
+  the noise: the same lead from the second capture against the second run -4.0 points (1234 against 1308 of 1862); the two leads differ by 0.9 points
+
+  by channel (extension / DevTools, agreed of units):
+    title          5 /    6 of 6     83.3% / 100.0%  lead -16.7
+    stops        385 /  414 of 449   85.7% /  92.2%  lead -6.5
+    field          2 /    2 of 3     66.7% /  66.7%  lead +0.0
+    typed         12 /   12 of 18    66.7% /  66.7%  lead +0.0
+    headings      46 /   56 of 63    73.0% /  88.9%  lead -15.9
+    landmarks     58 /   60 of 64    90.6% /  93.8%  lead -3.1
+    formFields    55 /   53 of 64    85.9% /  82.8%  lead +3.1
+    graphics      20 /   20 of 20   100.0% / 100.0%  lead +0.0
+    links        407 /  436 of 694   58.6% /  62.8%  lead -4.2
+    lists         65 /   69 of 104   62.5% /  66.3%  lead -3.8
+    frames         7 /    7 of 7    100.0% / 100.0%  lead +0.0
+
+  by shape (the 10 commonest of the paired units):
+    NAME + ROLE                                                 221 /  242 of 356   62.1% /  68.0%  lead -5.9
+    NAME + ROLE + STATE + STATE                                 305 /  322 of 329   92.7% /  97.9%  lead -5.2
+    NAME + ROLE + NAME                                           36 /   37 of 91    39.6% /  40.7%  lead -1.1
+    NAME + NAME + NAME + NAME + ROLE                             46 /   44 of 46   100.0% /  95.7%  lead +4.3
+    NAME + ROLE + STATE + STATE + STATE                          20 /   27 of 40    50.0% /  67.5%  lead -17.5
+    ROLE + COUNT + NAME + ROLE                                   32 /   38 of 39    82.1% /  97.4%  lead -15.4
+    NAME + ROLE + STATE                                          31 /   32 of 37    83.8% /  86.5%  lead -2.7
+    NAME + ROLE + LEVEL                                          16 /   24 of 30    53.3% /  80.0%  lead -26.7
+    NAME + ROLE + NAME + ROLE + LEVEL                            25 /   27 of 27    92.6% / 100.0%  lead -7.4
+    NAME + STATE + ROLE                                          22 /   23 of 27    81.5% /  85.2%  lead -3.7
+
+  by class of page (extension / DevTools, agreed of units):
+    list         739 /  818 of 1150  64.3% /  71.1%  lead -6.9
+    table        323 /  317 of 342   94.4% /  92.7%  lead +1.8
+
+# gate by the frozen rule (the chairman reads it): STOP AND REPORT: the extension leads by more than the 1.0-point margin on table pages (+1.8); the fields that make the difference are in the work list below
+
+# the readings side by side, by channel (agreed of units, the fleet against itself in brackets)
+              ext-linux              | devtools-linux        
+  title         5/6    83.3% (100.0%) |   8/8   100.0% (100.0%)
+  stops       385/449  85.7% (97.3%) | 558/599  93.2% (98.0%)
+  field         2/3    66.7% (100.0%) |   2/4    50.0% (100.0%)
+  typed        12/18   66.7% (100.0%) |  12/24   50.0% (100.0%)
+  headings     46/63   73.0% (98.4%) |  71/78   91.0% (98.7%)
+  landmarks    58/64   90.6% (95.3%) |  78/82   95.1% (96.3%)
+  formFields   55/64   85.9% (96.9%) |  66/78   84.6% (97.4%)
+  graphics     20/20  100.0% (95.0%) |  28/50   56.0% (98.0%)
+  links       407/694  58.6% (99.1%) | 692/1145  60.4% (99.5%)
+  lists        65/104  62.5% (98.1%) |  87/124  70.2% (98.4%)
+  frames        7/7   100.0% (100.0%) |   7/7   100.0% (100.0%)
+
+# the readings side by side, by shape (the 10 commonest)
+                                               ext-linux              | devtools-linux        
+  NAME + ROLE                                  221/356  62.1% (99.7%) | 361/475  76.0% (99.8%)
+  NAME + ROLE + STATE + STATE                  305/329  92.7% (99.4%) | 454/462  98.3% (99.6%)
+  NAME + ROLE + NAME                            36/91   39.6% (100.0%) |  97/152  63.8% (100.0%)
+  NAME + NAME + NAME + NAME + ROLE              46/46  100.0% (100.0%) |  44/121  36.4% (100.0%)
+  NAME + ROLE + STATE + STATE + STATE           20/40   50.0% (85.0%) |  27/44   61.4% (86.4%)
+  ROLE + COUNT + NAME + ROLE                    32/39   82.1% (100.0%) |  53/55   96.4% (100.0%)
+  NAME + ROLE + STATE                           31/37   83.8% (89.2%) |  33/38   86.8% (89.5%)
+  NAME + ROLE + LEVEL                           16/30   53.3% (100.0%) |  30/36   83.3% (100.0%)
+  NAME + ROLE + NAME + ROLE + LEVEL             25/27   92.6% (92.6%) |  32/32  100.0% (93.8%)
+  NAME + STATE + ROLE                           22/27   81.5% (92.6%) |  48/52   92.3% (96.2%)
+
+# every miss has one cause (count of misses)
+  ext-linux: 430 misses; emulator 315, tree: node 58, tree: focus 31, history 18, tree: set size 3, tree: name 2, tree: landmark+level+name 1, quick test 1, tree: landmark+name+role+set size 1
+    unexplained 0 of 430; read by a person (attribution-notes.json) 0
+  devtools-linux: 590 misses; emulator 315, conversion: name 177, prompt 53, history 18, unexplained 9, no counterpart 8, conversion: clickable 6, conversion: node 1, quick test 1, conversion: name+role+state 1, page moved 1
+    unexplained 9 of 590; read by a person (attribution-notes.json) 163
+
+# the causes by shape (the ten commonest), one block per reading
+  ext-linux
+    NAME + ROLE                                  emulator 113, tree: node 22
+    NAME + ROLE + STATE + STATE                  tree: focus 16, emulator 6, quick test 1, tree: name 1
+    NAME + ROLE + NAME                           emulator 54, tree: node 1
+    NAME + ROLE + STATE + STATE + STATE          tree: focus 9, history 9, emulator 2
+    ROLE + COUNT + NAME + ROLE                   tree: node 6, emulator 1
+    NAME + ROLE + STATE                          emulator 3, tree: focus 2, tree: node 1
+    NAME + ROLE + LEVEL                          tree: node 8, emulator 6
+    NAME + ROLE + NAME + ROLE + LEVEL            tree: node 1, tree: landmark+level+name 1
+    NAME + STATE + ROLE                          history 3, tree: node 1, emulator 1
+    (other shapes)                               emulator 129, tree: node 18, history 6, tree: focus 4, tree: set size 3, tree: landmark+name+role+set size 1, tree: name 1
+  devtools-linux
+    NAME + ROLE                                  emulator 113, conversion: name 1
+    NAME + ROLE + STATE + STATE                  emulator 6, unexplained 1, quick test 1
+    NAME + ROLE + NAME                           emulator 54, unexplained 1
+    NAME + NAME + NAME + NAME + ROLE             conversion: name 50, prompt 27
+    NAME + ROLE + STATE + STATE + STATE          history 9, unexplained 4, emulator 2, page moved 1, conversion: name 1
+    ROLE + COUNT + NAME + ROLE                   emulator 1, unexplained 1
+    NAME + ROLE + STATE                          emulator 3, conversion: clickable 2
+    NAME + ROLE + LEVEL                          emulator 6
+    NAME + STATE + ROLE                          history 3, emulator 1
+    (other shapes)                               emulator 129, conversion: name 125, prompt 26, no counterpart 8, history 6, conversion: clickable 4, unexplained 2, conversion: node 1, conversion: name+role+state 1
+
+# the work list of the DevTools source (conversion and events misses), by field and kind
+  conversion: name                   devtools-linux   177 units  channels: links 166, lists 4, landmarks 2, formFields 2, stops 2, graphics 1
+  conversion: clickable              devtools-linux     6 units  channels: formFields 4, landmarks 2
+  conversion: name+role+state        devtools-linux     1 units  channels: formFields 1
+  conversion: node                   devtools-linux     1 units  channels: lists 1

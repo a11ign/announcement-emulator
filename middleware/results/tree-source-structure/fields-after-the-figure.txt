@@ -1,0 +1,12 @@
+list pages: the extension agrees and DevTools does not 12; DevTools agrees and the extension does not 91
+  extension only: name 10, no prediction 1, name+role+state 1
+  devtools only: no prediction 85, set size 3, landmark+level+name 1, name 1, landmark+name+role+set size 1
+table pages: the extension agrees and DevTools does not 11; DevTools agrees and the extension does not 5
+  extension only: clickable 6, name 5
+  devtools only: no prediction 4, name 1
+all pages: the extension agrees and DevTools does not 23; DevTools agrees and the extension does not 96
+  extension only: name 15, clickable 6, no prediction 1, name+role+state 1
+  devtools only: no prediction 89, set size 3, name 2, landmark+level+name 1, landmark+name+role+set size 1
+pages the extension gave no reading of (left out of the paired comparison): DevTools units, misses, and misses that are the fleet's string with words missing
+  https://en.wikipedia.org/wiki/Beaufort_scale: 329 units, 75 missed, 20 with words missing
+  https://www.legislation.gov.uk/changes/affected/ukpga/1998/42: 378 units, 158 missed, 143 with words missing

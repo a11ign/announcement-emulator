@@ -1,0 +1,226 @@
+[
+ {
+  "file": "design-system-service-gov-uk-components-table-55d6c624.f1.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-25T09:58:14.808Z",
+  "status": 200,
+  "transcriptLines": 104,
+  "focusStops": 112,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "design-system-service-gov-uk-components-table-55d6c624.f2.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-25T09:56:53.126Z",
+  "status": 200,
+  "transcriptLines": 97,
+  "focusStops": 109,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "en-wikipedia-org-wiki-beaufort-scale-fc3f8d9a.f1.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-25T10:08:53.978Z",
+  "status": 200,
+  "transcriptLines": 444,
+  "focusStops": 0,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "en-wikipedia-org-wiki-beaufort-scale-fc3f8d9a.f2.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-25T10:05:52.537Z",
+  "status": 200,
+  "transcriptLines": 444,
+  "focusStops": 0,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "en-wikipedia-org-wiki-outline-of-computer-science-12b9b3ee.f1.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-25T09:46:17.985Z",
+  "status": 200,
+  "transcriptLines": 215,
+  "focusStops": 0,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "en-wikipedia-org-wiki-outline-of-computer-science-12b9b3ee.f2.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-25T09:41:05.443Z",
+  "status": 200,
+  "transcriptLines": 215,
+  "focusStops": 0,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "find-and-update-company-information-service-gov-uk-company-00000006-filing-histo-dcd8a89c.f1.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-25T10:01:34.447Z",
+  "status": 200,
+  "transcriptLines": 160,
+  "focusStops": 71,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "find-and-update-company-information-service-gov-uk-company-00000006-filing-histo-dcd8a89c.f2.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-25T10:01:17.602Z",
+  "status": 200,
+  "transcriptLines": 160,
+  "focusStops": 71,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "find-and-update-company-information-service-gov-uk-company-00000086-filing-histo-3dcfd4ae.f1.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-25T09:56:34.402Z",
+  "status": 200,
+  "transcriptLines": 160,
+  "focusStops": 74,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "find-and-update-company-information-service-gov-uk-company-00000086-filing-histo-3dcfd4ae.f2.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-25T09:52:42.101Z",
+  "status": 200,
+  "transcriptLines": 160,
+  "focusStops": 74,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "www-legislation-gov-uk-changes-affected-ukpga-1998-42-1cdd3c42.f1.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-25T09:47:58.909Z",
+  "status": 200,
+  "transcriptLines": 144,
+  "focusStops": 150,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "www-legislation-gov-uk-changes-affected-ukpga-1998-42-1cdd3c42.f2.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-25T09:45:50.386Z",
+  "status": 200,
+  "transcriptLines": 144,
+  "focusStops": 150,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "www-legislation-gov-uk-ukpga-1998-42-contents-3974caa2.f1.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-25T09:51:28.973Z",
+  "status": 200,
+  "transcriptLines": 110,
+  "focusStops": 128,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "www-legislation-gov-uk-ukpga-1998-42-contents-3974caa2.f2.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-25T09:51:55.704Z",
+  "status": 200,
+  "transcriptLines": 110,
+  "focusStops": 128,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "www-w3-org-wai-aria-apg-patterns-listbox-examples-listbox-scrollable-09e0a5b8.f1.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-25T09:38:56.484Z",
+  "status": 200,
+  "transcriptLines": 219,
+  "focusStops": 64,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "www-w3-org-wai-aria-apg-patterns-listbox-examples-listbox-scrollable-09e0a5b8.f2.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-25T09:38:54.792Z",
+  "status": 200,
+  "transcriptLines": 219,
+  "focusStops": 64,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ }
+]

@@ -4,9 +4,11 @@
 
 Prints the records as one JSON list. What the tests of the predictor are made from, and a way to see again what a run was told.
 """
-import gzip, json, os, sys
+import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import import_trace; import_trace.install()      # first, so that an import that fails is in the trace; only when ANNOUNCEMENT_EMULATOR_IMPORT_TRACE is set: what the run read from the bundle (A11-231)
+import gzip, json
 
 
 def replay(path, **options):

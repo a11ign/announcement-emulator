@@ -8,7 +8,7 @@
 set -eu
 HERE="$(cd "$(dirname "$0")" && pwd)"
 FLEET="${1:?the fleet capture directory}"; WORK="${2:?the work directory}"; shift 2
-PAGES="$HERE/../results/agreement/pages.json"
+PAGES="${PAGES:-$HERE/../results/agreement/pages.json}"      # PAGES=<pages.json> for another page list (the structure measurement)
 for spec in "$@"; do
   reading="${spec%%=*}"; reports="${spec#*=}"
   r1="${reports%%,*}"; r2="${reports#*,}"

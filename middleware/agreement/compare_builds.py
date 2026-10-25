@@ -57,54 +57,22 @@ def attribute_builds(builds, second, notes=()):
 
 
 def render_build(build, readings, second, attributed):
-    lines = []
-    out = lines.append
+    """(the text of one build's section of comparison.txt, what the extension buys there). The tables are compare_sources.py's own."""
     names = [n for n in cs.READINGS if n in readings]
-    out(f'## Chromium {build}')
-    out('# the readings, the headline: every channel, the first fleet capture against the first passive run')
-    for n in names:
-        ok, tot = cs.headline(readings[n]); s_ok, s_tot = cs.headline(second[n]) if n in second else (0, 0)
-        out(f'  {n:<20} {ok:>5} of {tot:<5} = {cs.rate(ok, tot):>6}' + (f'    second capture against second run: {s_ok} of {s_tot} = {cs.rate(s_ok, s_tot)}' if n in second else ''))
+    lines = [f'## Chromium {build}', *cs.headline_lines(readings, second, names)]
     result = None
     if 'ext-linux' in readings and 'devtools-linux' in readings:
         ext, dev = readings['ext-linux'], readings['devtools-linux']
         result = cs.buys(ext, dev)
         result.pop('recommendation'); result.pop('margin')       # this ticket has no margin and no recommendation: the lead is reported (rule.md)
-        out('\n# what the extension buys over DevTools on this host (the units both readings compare); reported, with no margin and no recommendation')
-        out(f"  units {result['units']}: extension {result['extension']} ({cs.rate(result['extension'], result['units'])}), DevTools {result['devtools']} ({cs.rate(result['devtools'], result['units'])}), lead {result['leadPoints']:+.1f} points")
-        out(f"  discordant units: the extension agrees and DevTools does not {result['extensionOnly']}; DevTools agrees and the extension does not {result['devtoolsOnly']}")
-        if 'ext-linux' in second and 'devtools-linux' in second:
-            s = cs.buys(second['ext-linux'], second['devtools-linux'])
-            result['secondLeadPoints'] = s['leadPoints']
-            out(f"  the noise: the same lead from the second capture against the second run {s['leadPoints']:+.1f} points ({s['extension']} against {s['devtools']} of {s['units']})")
-        result['byChannel'] = cs.lead_by(ext, dev, lambda x: x['channel'], CHANNELS)
-        for r in result['byChannel']:
-            out(f"    {r['label']:<11} {r['extension']:>4} / {r['devtools']:>4} of {r['units']:<4} {cs.rate(r['extension'], r['units']):>6} / {cs.rate(r['devtools'], r['units']):>6}  lead {100 * (r['extension'] - r['devtools']) / r['units']:+.1f}")
-    out('\n# the readings side by side, by channel (agreed of units, the fleet against itself in brackets)')
-    out(f'  {"":<11} ' + ' | '.join(f'{n:<{cs.CELL}}' for n in names))
-    for ch in CHANNELS:
-        cells = []
-        for n in names:
-            t = cs.tally([r for r in readings[n].main.values() if r['channel'] == ch], lambda r: 0).get(0, [0, 0])
-            f = cs.tally([r for r in readings[n].fleet.values() if r['channel'] == ch], lambda r: 0).get(0, [0, 0])
-            cells.append(f'{t[0]:>3}/{t[1]:<3} {cs.rate(*t):>6} ({cs.rate(*f)})'.ljust(cs.CELL))
-        out(f'  {ch:<11} ' + ' | '.join(cells))
-    ranked = cs.top_shapes([r for rd in readings.values() for r in rd.main.values()])
-    out(f'\n# the readings side by side, by shape (the {cs.TOP} commonest)')
-    out(f'  {"":<44} ' + ' | '.join(f'{n:<{cs.CELL}}' for n in names))
-    for sh in ranked:
-        cells = []
-        for n in names:
-            t = cs.tally([r for r in readings[n].main.values() if cs.shape_name(r) == sh], lambda r: 0).get(0, [0, 0])
-            f = cs.tally([r for r in readings[n].fleet.values() if cs.shape_name(r) == sh], lambda r: 0).get(0, [0, 0])
-            cells.append(f'{t[0]:>3}/{t[1]:<3} {cs.rate(*t):>6} ({cs.rate(*f)})'.ljust(cs.CELL))
-        out(f'  {sh[:44]:<44} ' + ' | '.join(cells))
-    out('\n# every miss has one cause (count of misses)')
-    for n in names:
-        c = collections.Counter(m['cause'] for m in attributed[n])
-        out(f'  {n}: {len(attributed[n])} misses; ' + ', '.join(f'{k} {v}' for k, v in c.most_common()))
-        out(f"    unexplained {c['unexplained']} of {len(attributed[n])}; read by a person (attribution-notes.json) {sum(m['read'] for m in attributed[n])}")
-    return '\n'.join(lines), result
+        second_lead = cs.buys(second['ext-linux'], second['devtools-linux']) if 'ext-linux' in second and 'devtools-linux' in second else None
+        if second_lead: result['secondLeadPoints'] = second_lead['leadPoints']
+        by_channel, result['byChannel'] = cs.lead_by_channel_lines(ext, dev)
+        lines += ['\n# what the extension buys over DevTools on this host (the units both readings compare); reported, with no margin and no recommendation', *cs.lead_lines(result, second_lead), *by_channel]
+    lines += cs.by_channel_lines(readings, names)
+    lines += cs.by_shape_lines(readings, names, cs.top_shapes([r for rd in readings.values() for r in rd.main.values()]))
+    lines += cs.cause_count_lines(names, attributed)
+    return '\n'.join(line.rstrip() for line in lines), result
 
 
 def differ_between_builds(builds):

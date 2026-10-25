@@ -17,7 +17,7 @@ export default tseslint.config(
       "no-empty": ["error", { allowEmptyCatch: false }],
     },
   },
-  // dom_check.mjs hands a function to the page; it runs in the browser
-  { files: ["agreement/dom_check.mjs"], languageOptions: { globals: { ...globals.browser } } },
+  // dom_check.mjs and dom_check_structure.mjs hand a function to the page; it runs in the browser
+  { files: ["agreement/dom_check.mjs", "agreement/dom_check_structure.mjs"], languageOptions: { globals: { ...globals.browser } } },
   ...tseslint.configs.recommended.map((c) => ({ ...c, files: ["**/*.ts"] })),
 );

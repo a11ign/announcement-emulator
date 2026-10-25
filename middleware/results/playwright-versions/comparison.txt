@@ -8,7 +8,7 @@
 # what the extension buys over DevTools on this host (the units both readings compare); reported, with no margin and no recommendation
   units 1072: extension 871 (81.2%), DevTools 860 (80.2%), lead +1.0 points
   discordant units: the extension agrees and DevTools does not 19; DevTools agrees and the extension does not 8
-  the noise: the same lead from the second capture against the second run +1.8 points (761 against 744 of 924)
+  the noise: the same lead from the second capture against the second run +1.8 points (761 against 744 of 924); the two leads differ by 0.8 points
     title          5 /    5 of 5    100.0% / 100.0%  lead +0.0
     stops        269 /  270 of 372   72.3% /  72.6%  lead -0.3
     field          0 /    1 of 2      0.0% /  50.0%  lead -50.0
@@ -22,7 +22,7 @@
     frames        17 /   18 of 20    85.0% /  90.0%  lead -5.0
 
 # the readings side by side, by channel (agreed of units, the fleet against itself in brackets)
-              ext-linux              | devtools-linux         | devtools-macos         | devtools-ubuntu-ci    
+              ext-linux              | devtools-linux         | devtools-macos         | devtools-ubuntu-ci
   title         5/5   100.0% (80.0%) |   5/5   100.0% (80.0%) |   4/4   100.0% (75.0%) |   4/4   100.0% (75.0%)
   stops       269/372  72.3% (93.8%) | 270/372  72.6% (93.8%) | 280/364  76.9% (93.7%) | 278/364  76.4% (93.7%)
   field         0/2     0.0% (100.0%) |   1/2    50.0% (100.0%) |   1/1   100.0% (100.0%) |   1/1   100.0% (100.0%)
@@ -36,7 +36,7 @@
   frames       17/20   85.0% (100.0%) |  18/20   90.0% (100.0%) |  20/20  100.0% (100.0%) |  18/20   90.0% (100.0%)
 
 # the readings side by side, by shape (the 10 commonest)
-                                               ext-linux              | devtools-linux         | devtools-macos         | devtools-ubuntu-ci    
+                                               ext-linux              | devtools-linux         | devtools-macos         | devtools-ubuntu-ci
   NAME + ROLE                                  265/275  96.4% (99.3%) | 262/275  95.3% (99.3%) | 234/235  99.6% (99.1%) | 234/235  99.6% (99.1%)
   NAME + ROLE + STATE + STATE                  196/223  87.9% (96.9%) | 197/223  88.3% (96.9%) | 195/221  88.2% (96.8%) | 195/221  88.2% (96.8%)
   NAME + ROLE + LEVEL                           43/81   53.1% (100.0%) |  43/81   53.1% (100.0%) |  41/79   51.9% (100.0%) |  41/79   51.9% (100.0%)
@@ -68,7 +68,7 @@
 # what the extension buys over DevTools on this host (the units both readings compare); reported, with no margin and no recommendation
   units 1072: extension 895 (83.5%), DevTools 871 (81.2%), lead +2.2 points
   discordant units: the extension agrees and DevTools does not 28; DevTools agrees and the extension does not 4
-  the noise: the same lead from the second capture against the second run +10.8 points (757 against 657 of 924)
+  the noise: the same lead from the second capture against the second run +10.8 points (757 against 657 of 924); the two leads differ by 8.6 points
     title          4 /    4 of 5     80.0% /  80.0%  lead +0.0
     stops        283 /  271 of 372   76.1% /  72.8%  lead +3.2
     field          0 /    1 of 2      0.0% /  50.0%  lead -50.0
@@ -82,7 +82,7 @@
     frames        20 /   20 of 20   100.0% / 100.0%  lead +0.0
 
 # the readings side by side, by channel (agreed of units, the fleet against itself in brackets)
-              ext-linux              | devtools-linux         | devtools-macos         | devtools-ubuntu-ci    
+              ext-linux              | devtools-linux         | devtools-macos         | devtools-ubuntu-ci
   title         4/5    80.0% (80.0%) |   4/5    80.0% (80.0%) |   4/4   100.0% (75.0%) |   2/4    50.0% (75.0%)
   stops       283/372  76.1% (93.8%) | 271/372  72.8% (93.8%) | 269/364  73.9% (93.7%) | 251/364  69.0% (93.7%)
   field         0/2     0.0% (100.0%) |   1/2    50.0% (100.0%) |   1/1   100.0% (100.0%) |   1/1   100.0% (100.0%)
@@ -96,7 +96,7 @@
   frames       20/20  100.0% (100.0%) |  20/20  100.0% (100.0%) |  20/20  100.0% (100.0%) |  18/20   90.0% (100.0%)
 
 # the readings side by side, by shape (the 10 commonest)
-                                               ext-linux              | devtools-linux         | devtools-macos         | devtools-ubuntu-ci    
+                                               ext-linux              | devtools-linux         | devtools-macos         | devtools-ubuntu-ci
   NAME + ROLE                                  265/275  96.4% (99.3%) | 264/275  96.0% (99.3%) | 234/235  99.6% (99.1%) | 234/235  99.6% (99.1%)
   NAME + ROLE + STATE + STATE                  197/223  88.3% (96.9%) | 197/223  88.3% (96.9%) | 189/221  85.5% (96.8%) | 180/221  81.4% (96.8%)
   NAME + ROLE + LEVEL                           43/81   53.1% (100.0%) |  43/81   53.1% (100.0%) |  41/79   51.9% (100.0%) |  41/79   51.9% (100.0%)

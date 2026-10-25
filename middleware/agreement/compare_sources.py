@@ -189,66 +189,133 @@ def lead_by(ext, dev, keyf, order):
     return out
 
 
+def lead_by_class(ext, dev, classes):
+    """The extension's lead over the units of each class of page (`classes` is {address: class}), in the order the classes first occur."""
+    pairs = paired(ext, dev)
+    out = []
+    for label in dict.fromkeys(classes.values()):
+        sel = [(a, b) for a, b in pairs if classes.get(a['address']) == label]
+        if sel:
+            e, d = sum(a['ok'] for a, _ in sel), sum(b['ok'] for _, b in sel)
+            out.append({'label': label, 'units': len(sel), 'extension': e, 'devtools': d, 'leadPoints': 100 * (e - d) / len(sel)})
+    return out
+
+
+def gate(result, by_class, margin=MARGIN):
+    """The structure measurement's decision (results/tree-source-structure/rule.md): step 3 goes on only if the extension's lead is at most the margin overall and on each class of page. {'proceed', 'over'}."""
+    leads = [('all pages', result['leadPoints'])] + [(c['label'] + ' pages', c['leadPoints']) for c in by_class]
+    over = [(label, lead) for label, lead in leads if lead > margin]
+    return {'proceed': not over, 'over': [{'label': label, 'leadPoints': lead} for label, lead in over], 'margin': margin}
+
+
+def gate_line(g):
+    if g['proceed']: return f"gate by the frozen rule (the chairman reads it): GO ON TO STEP 3: the extension's lead is at most the {g['margin']:.1f}-point margin on all pages and on each class of page"
+    return ('gate by the frozen rule (the chairman reads it): STOP AND REPORT: the extension leads by more than the ' + f"{g['margin']:.1f}-point margin on " + ', '.join(f"{o['label']} ({o['leadPoints']:+.1f})" for o in g['over'])
+            + '; the fields that make the difference are in the work list below')
+
+
+def gate_lines(result, ext, dev, classes, margin):
+    """The lead by class of page and the gate (the structure measurement), stored in `result`."""
+    result['byClass'] = lead_by_class(ext, dev, classes)
+    lines = ['\n  by class of page (extension / DevTools, agreed of units):']
+    lines += [f"    {c['label']:<11} {c['extension']:>4} / {c['devtools']:>4} of {c['units']:<4} {rate(c['extension'], c['units']):>6} / {rate(c['devtools'], c['units']):>6}  lead {c['leadPoints']:+.1f}" for c in result['byClass']]
+    result['gate'] = gate(result, result['byClass'], margin)
+    return lines + ['\n# ' + gate_line(result['gate'])]
+
+
 def recommendation_line(b):
     return (f"recommendation by the frozen rule (the chairman reads it): {b['recommendation'].upper()}: the extension's lead is {b['leadPoints']:+.1f} points ({b['extension']} against {b['devtools']} of {b['units']} units agreed), "
             f"{'at most' if b['leadPoints'] <= b['margin'] else 'above'} the {b['margin']:.1f}-point margin")
 
 
-def render(readings, second, attributed, margin=MARGIN):
-    lines, out = [], None
-    out = lines.append
-    names = [n for n in READINGS if n in readings]
-    out('# the readings, the headline: every channel, the first fleet capture against the first passive run')
+def headline_lines(readings, second, names):
+    """The headline of each reading, and of its second capture against its second run."""
+    lines = ['# the readings, the headline: every channel, the first fleet capture against the first passive run']
     for n in names:
         ok, tot = headline(readings[n]); s_ok, s_tot = headline(second[n]) if n in second else (0, 0)
-        out(f'  {n:<20} {ok:>5} of {tot:<5} = {rate(ok, tot):>6}' + (f'    second capture against second run: {s_ok} of {s_tot} = {rate(s_ok, s_tot)}' if n in second else ''))
+        lines.append(f'  {n:<20} {ok:>5} of {tot:<5} = {rate(ok, tot):>6}' + (f'    second capture against second run: {s_ok} of {s_tot} = {rate(s_ok, s_tot)}' if n in second else ''))
+    return lines
+
+
+def lead_lines(result, second_result):
+    """What the extension buys over DevTools on this host: the units, the discordant ones and the noise (the same lead from the second readings)."""
+    lines = [f"  units {result['units']}: extension {result['extension']} ({rate(result['extension'], result['units'])}), DevTools {result['devtools']} ({rate(result['devtools'], result['units'])}), lead {result['leadPoints']:+.1f} points",
+             f"  discordant units: the extension agrees and DevTools does not {result['extensionOnly']}; DevTools agrees and the extension does not {result['devtoolsOnly']}"]
+    if second_result:
+        lines.append(f"  the noise: the same lead from the second capture against the second run {second_result['leadPoints']:+.1f} points ({second_result['extension']} against {second_result['devtools']} of {second_result['units']}); "
+                     f"the two leads differ by {abs(result['leadPoints'] - second_result['leadPoints']):.1f} points")
+    return lines
+
+
+def lead_by_channel_lines(ext, dev):
+    """(the lines, the rows) of the extension's lead over DevTools in each channel."""
+    rows = lead_by(ext, dev, lambda x: x['channel'], ['title', 'stops', 'field', 'typed', *LISTS])
+    return [f"    {r['label']:<11} {r['extension']:>4} / {r['devtools']:>4} of {r['units']:<4} {rate(r['extension'], r['units']):>6} / {rate(r['devtools'], r['units']):>6}  lead {100 * (r['extension'] - r['devtools']) / r['units']:+.1f}" for r in rows], rows
+
+
+def lead_by_shape_lines(ext, dev, shapes):
+    rows = lead_by(ext, dev, shape_name, shapes)
+    return [f"    {r['label'][:58]:<58} {r['extension']:>4} / {r['devtools']:>4} of {r['units']:<4} {rate(r['extension'], r['units']):>6} / {rate(r['devtools'], r['units']):>6}  lead {100 * (r['extension'] - r['devtools']) / r['units']:+.1f}" for r in rows], rows
+
+
+def side_by_side(title, readings, names, labels, matches, width):
+    """One row for each label, one cell for each reading: the agreed of the units, and the fleet against itself in brackets."""
+    lines = [title, f'  {"":<{width}} ' + ' | '.join(f'{n:<{CELL}}' for n in names)]
+    for label in labels:
+        cells = []
+        for n in names:
+            t = tally([r for r in readings[n].main.values() if matches(r, label)], lambda r: 0).get(0, [0, 0])
+            f = tally([r for r in readings[n].fleet.values() if matches(r, label)], lambda r: 0).get(0, [0, 0])
+            cells.append(f'{t[0]:>3}/{t[1]:<3} {rate(*t):>6} ({rate(*f)})'.ljust(CELL))
+        lines.append(f'  {label[:width]:<{width}} ' + ' | '.join(cells))
+    return lines
+
+
+def by_channel_lines(readings, names):
+    return side_by_side('\n# the readings side by side, by channel (agreed of units, the fleet against itself in brackets)', readings, names, ('title', 'stops', 'field', 'typed', *LISTS), lambda r, label: r['channel'] == label, 11)
+
+
+def by_shape_lines(readings, names, ranked):
+    return side_by_side(f'\n# the readings side by side, by shape (the {TOP} commonest)', readings, names, ranked, lambda r, label: shape_name(r) == label, 44)
+
+
+def cause_count_lines(names, attributed):
+    """Every miss has one cause: the count of each, and how many were left `unexplained` or read by a person."""
+    lines = ['\n# every miss has one cause (count of misses)']
+    for n in names:
+        c = collections.Counter(m['cause'] for m in attributed[n])
+        lines.append(f'  {n}: {len(attributed[n])} misses; ' + ', '.join(f'{k} {v}' for k, v in c.most_common()))
+        lines.append(f"    unexplained {c['unexplained']} of {len(attributed[n])}; read by a person (attribution-notes.json) {sum(m['read'] for m in attributed[n])}")
+    return lines
+
+
+def render(readings, second, attributed, margin=MARGIN, classes=None):
+    lines = []
+    out = lines.append
+    names = [n for n in READINGS if n in readings]
+    lines += headline_lines(readings, second, names)
     result = None
     if 'ext-linux' in readings and 'devtools-linux' in readings:
         ext, dev = readings['ext-linux'], readings['devtools-linux']
         result = buys(ext, dev, margin)
         out('\n# what the extension buys over DevTools on this host (the units both readings compare)')
-        out(f"  units {result['units']}: extension {result['extension']} ({rate(result['extension'], result['units'])}), DevTools {result['devtools']} ({rate(result['devtools'], result['units'])}), lead {result['leadPoints']:+.1f} points")
-        out(f"  discordant units: the extension agrees and DevTools does not {result['extensionOnly']}; DevTools agrees and the extension does not {result['devtoolsOnly']}")
         if 'ext-linux' in second and 'devtools-linux' in second:
-            s = buys(second['ext-linux'], second['devtools-linux'], margin)
-            result['second'] = s
-            out(f"  the noise: the same lead from the second capture against the second run {s['leadPoints']:+.1f} points ({s['extension']} against {s['devtools']} of {s['units']}); the two leads differ by {abs(result['leadPoints'] - s['leadPoints']):.1f} points")
+            result['second'] = buys(second['ext-linux'], second['devtools-linux'], margin)
+        lines += lead_lines(result, result.get('second'))
         pairs = [a for a, _ in paired(ext, dev)]
         out('\n  by channel (extension / DevTools, agreed of units):')
-        for r in lead_by(ext, dev, lambda x: x['channel'], ['title', 'stops', 'field', 'typed', *LISTS]):
-            out(f"    {r['label']:<11} {r['extension']:>4} / {r['devtools']:>4} of {r['units']:<4} {rate(r['extension'], r['units']):>6} / {rate(r['devtools'], r['units']):>6}  lead {100 * (r['extension'] - r['devtools']) / r['units']:+.1f}")
+        by_channel, channel_rows = lead_by_channel_lines(ext, dev)
+        lines += by_channel
         shapes = top_shapes(pairs)
         out(f'\n  by shape (the {TOP} commonest of the paired units):')
-        result['byShape'] = lead_by(ext, dev, shape_name, shapes)
-        for r in result['byShape']:
-            out(f"    {r['label'][:58]:<58} {r['extension']:>4} / {r['devtools']:>4} of {r['units']:<4} {rate(r['extension'], r['units']):>6} / {rate(r['devtools'], r['units']):>6}  lead {100 * (r['extension'] - r['devtools']) / r['units']:+.1f}")
-        result['byChannel'] = lead_by(ext, dev, lambda x: x['channel'], ['title', 'stops', 'field', 'typed', *LISTS])
-        out('\n# ' + recommendation_line(result))
-    out('\n# the readings side by side, by channel (agreed of units, the fleet against itself in brackets)')
-    out(f'  {"":<11} ' + ' | '.join(f'{n:<{CELL}}' for n in names))
-    for ch in ('title', 'stops', 'field', 'typed', *LISTS):
-        cells = []
-        for n in names:
-            t = tally([r for r in readings[n].main.values() if r['channel'] == ch], lambda r: 0).get(0, [0, 0])
-            f = tally([r for r in readings[n].fleet.values() if r['channel'] == ch], lambda r: 0).get(0, [0, 0])
-            cells.append(f'{t[0]:>3}/{t[1]:<3} {rate(*t):>6} ({rate(*f)})'.ljust(CELL))
-        out(f'  {ch:<11} ' + ' | '.join(cells))
+        by_shape, result['byShape'] = lead_by_shape_lines(ext, dev, shapes)
+        result['byChannel'] = channel_rows
+        lines += by_shape
+        lines += gate_lines(result, ext, dev, classes, margin) if classes else ['\n# ' + recommendation_line(result)]
+    lines += by_channel_lines(readings, names)
     ranked = top_shapes([r for rd in readings.values() for r in rd.main.values()] if not result else [a for a, _ in paired(readings['ext-linux'], readings['devtools-linux'])])
-    out(f'\n# the readings side by side, by shape (the {TOP} commonest)')
-    out(f'  {"":<44} ' + ' | '.join(f'{n:<{CELL}}' for n in names))
-    for sh in ranked:
-        cells = []
-        for n in names:
-            t = tally([r for r in readings[n].main.values() if shape_name(r) == sh], lambda r: 0).get(0, [0, 0])
-            f = tally([r for r in readings[n].fleet.values() if shape_name(r) == sh], lambda r: 0).get(0, [0, 0])
-            cells.append(f'{t[0]:>3}/{t[1]:<3} {rate(*t):>6} ({rate(*f)})'.ljust(CELL))
-        out(f'  {sh[:44]:<44} ' + ' | '.join(cells))
-    out('\n# every miss has one cause (count of misses)')
-    causes = collections.Counter(m['cause'] for ms in attributed.values() for m in ms)
-    for n in names:
-        c = collections.Counter(m['cause'] for m in attributed[n])
-        out(f'  {n}: {len(attributed[n])} misses; ' + ', '.join(f'{k} {v}' for k, v in c.most_common()))
-        out(f"    unexplained {c['unexplained']} of {len(attributed[n])}; read by a person (attribution-notes.json) {sum(m['read'] for m in attributed[n])}")
+    lines += by_shape_lines(readings, names, ranked)
+    lines += cause_count_lines(names, attributed)
     out('\n# the causes by shape (the ten commonest), one block per reading')
     for n in names:
         out(f'  {n}')
@@ -269,7 +336,7 @@ def render(readings, second, attributed, margin=MARGIN):
 
 
 def main(argv):
-    ap = argparse.ArgumentParser(); ap.add_argument('--work', required=True); ap.add_argument('--out', required=True); ap.add_argument('--notes'); ap.add_argument('--margin', type=float, default=MARGIN)
+    ap = argparse.ArgumentParser(); ap.add_argument('--work', required=True); ap.add_argument('--out', required=True); ap.add_argument('--notes'); ap.add_argument('--margin', type=float, default=MARGIN); ap.add_argument('--classes', help='a pages.json whose sample entries have a `class`: adds the lead by class of page and the gate of the structure measurement')
     a = ap.parse_args(argv)
 
     def load(name):
@@ -280,7 +347,10 @@ def main(argv):
     second = {n: r for n in READINGS if (r := load(f'{n}-second'))}
     if 'ext-linux' not in readings or 'devtools-linux' not in readings: sys.exit('compare_sources.py: needs ext-linux and devtools-linux in --work')
     attributed = attribute_all(readings, load_notes(a.notes))
-    text, result, work = render(readings, second, attributed, a.margin)
+    classes = None
+    if a.classes:
+        with open(a.classes) as f: classes = {p['address']: p['class'] for p in json.load(f)['sample']}
+    text, result, work = render(readings, second, attributed, a.margin, classes)
     print(text)
     os.makedirs(a.out, exist_ok=True)
     with open(os.path.join(a.out, 'comparison.txt'), 'w') as f: f.write(text + '\n')

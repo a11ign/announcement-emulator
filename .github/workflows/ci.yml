@@ -36,6 +36,10 @@ jobs:
       - uses: actions/setup-node@v7
         with: { node-version: 22, cache: pnpm, cache-dependency-path: middleware/pnpm-lock.yaml }
       - run: pnpm install --frozen-lockfile
+      # `.github/dependabot.yml` is GENERATED (A11-253, under A11-251) by `@a11ign/toolchain`'s `dependabot-config`, which this package installs; the file must be exactly its output.
+      # The repository root is one level up from this job's working directory. To fix a failure: `pnpm --dir middleware exec dependabot-config --write --root .` from the root.
+      - name: The Dependabot config is what the toolchain generates
+        run: pnpm exec dependabot-config --check --root ..
       - run: pnpm run build
       - run: pnpm run lint
       - run: pnpm run typecheck
