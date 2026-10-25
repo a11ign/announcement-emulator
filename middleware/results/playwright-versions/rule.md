@@ -53,7 +53,7 @@ The oracle's Edge is a milestone of its own (156 at the plan's reading), and the
 ## The figure
 
 For each reading, `measure.py --include-unstable --tolerate-census` (the second block is the headline) and `--second`, into `middleware/results/playwright-versions/<build>/<source>-<os>/` (`agreement.txt` and `misses.json`). The list
-(`middleware/supported-versions.json`) holds, per build and per reading, the headline: `agreement` (agreed over units, the fraction `agreement.txt` prints as a percent), `units`, `date` (the day of the passive runs) and `figure`
+(`middleware/supported-versions.json`) holds, per build and per reading, the headline: `agreement` (the rate `agreement.txt` prints, as a fraction: 871 of 1072 is 81.25%, which `agreement.txt` prints as 81.2%, so the list holds 0.812), `units`, `date` (the day of the passive runs) and `figure`
 (that directory). `supported.test.ts` asserts that every listed figure directory exists and that its `agreement.txt` gives the same rate.
 
 **No margin and no target** (A11-228: a preview, improved every release, no fixed accuracy gate). Every build that is measured is listed, whatever its rate. What the extension buys is reported per build (the lead in points over

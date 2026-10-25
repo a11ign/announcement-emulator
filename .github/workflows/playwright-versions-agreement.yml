@@ -26,6 +26,8 @@ env:
 
 jobs:
   reading:
+    # a measurement is made on a branch, inside a capture window: merging the stamp to the default branch must not run it again
+    if: github.ref_name != github.event.repository.default_branch
     strategy:
       fail-fast: false
       matrix:

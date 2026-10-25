@@ -4,6 +4,16 @@ Acceptance (the checks that need no network, no fleet and no browser; the packag
 
 ```bash
 set -eu
+# step 1 still holds: the launch names no browser of the bundle's and no library path, and the bundle's layout has no chrome and no libs
+test -z "$(grep -nE 'LD_LIBRARY_PATH|files\.(chrome|libs)' middleware/src/config.ts)"
+test -z "$(grep -nE '^\s+(chrome|libs):' middleware/src/bundle.ts)"
+# the bundle build downloads no browser and no libraries for one, and refuses an archive that holds one
+test -z "$(grep -nE 'chrome-for-testing|CFT_DIR|apt-get download|dpkg-deb' middleware/bundle/build.sh)"
+grep -q 'check_no_browser.py' middleware/bundle/build.sh
+grep -q '"supported-versions.json"' middleware/package.json
+test -z "$(git grep -nE 'BASELINE_CHROME|BASELINE_LIBS' -- middleware .github)"
+grep -q 'npx playwright install \${{ matrix.deps }} chromium' .github/workflows/middleware-spike.yml
+for v in 1.64.1 1.63.0 1.62.1; do grep -q "playwright: \"$v\"" .github/workflows/middleware-spike.yml; done
 # both builds are listed, each with the three readings, and each figure is in the repository
 node -e '
 const l = require("./middleware/supported-versions.json");
@@ -38,6 +48,8 @@ PY
 # the measurement's scripts
 python3 -m unittest discover -s middleware/agreement -t middleware/agreement
 python3 -m unittest discover -s middleware/bundle -t middleware/bundle
+python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_cdp.py'
+python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_fallback.py'
 ```
 
-Pre-merge proof on both runners: the `demo` job of `.github/workflows/middleware-spike.yml` (Playwright 1.64.1 and 1.63.0 on ubuntu-latest and macos-latest, `--expect-measured`; 1.62.1 on ubuntu-latest, `--expect-unmeasured`). `middleware/results/playwright-versions/ci-run.txt` is the stamp that started the macOS and control readings (`.github/workflows/playwright-versions-agreement.yml`).
+Pre-merge proof on both runners: the `demo` job of `.github/workflows/middleware-spike.yml` (Playwright 1.64.1 and 1.63.0 on ubuntu-latest and macos-latest, `--expect-measured` for the default source's runs and for Ubuntu's DevTools run, `--expect-unmeasured` for macOS's third, extension, run, which has no figure; 1.62.1 on ubuntu-latest, `--expect-unmeasured`). `middleware/results/playwright-versions/ci-run.txt` is the stamp that started the macOS and control readings (`.github/workflows/playwright-versions-agreement.yml`).
