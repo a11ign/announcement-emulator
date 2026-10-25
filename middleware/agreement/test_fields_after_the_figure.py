@@ -34,7 +34,7 @@ class Discordant(unittest.TestCase):
         from test_compare_sources import row
         dev.main[(other, 'links', 0)] = row(0, 'Made by, column 2, x', 'column 2, x', 'links', address=other)
         dev.main[(other, 'links', 1)] = row(1, 'y', 'y', 'links', address=other)
-        self.assertEqual(dict(ff.unread(ext, dev, {})), {other: [2, 1, 1]})
+        self.assertEqual(dict(ff.unread(ext, dev)), {other: [2, 1, 1]})
         [note] = ff.notes(ext, dev)
         self.assertEqual((note['reading'], note['address'], note['cause'], note['contains']), ('devtools-linux', other, 'conversion: name', 'Made by, column 2, x'))
         import compare_sources as cs

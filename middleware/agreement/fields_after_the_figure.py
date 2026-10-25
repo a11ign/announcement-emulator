@@ -31,18 +31,22 @@ def words_missing(expected, predicted):
     return bool(left) and any(INDEX.match(t) for t in e) and any(INDEX.match(t) for t in p)
 
 
+def miss_field(row):
+    """The field in which the missed unit's predicted string differs from the fleet's, or `no prediction`."""
+    return cs.fields_differing(row['predicted'], row['expected']) if row['predicted'] is not None else 'no prediction'
+
+
 def discordant(ext, dev, classes):
     """{class: {'extension only': Counter(field), 'devtools only': Counter(field)}} over the units both readings compare, plus 'all'."""
     out = collections.defaultdict(lambda: {'extension only': collections.Counter(), 'devtools only': collections.Counter()})
     for a, b in cs.paired(ext, dev):
         if a['ok'] == b['ok']: continue
-        if a['ok']: field = cs.fields_differing(b['predicted'], b['expected']) if b['predicted'] is not None else 'no prediction'; side = 'extension only'
-        else: field = cs.fields_differing(a['predicted'], a['expected']) if a['predicted'] is not None else 'no prediction'; side = 'devtools only'
-        for label in (classes.get(a['address'], '?'), 'all'): out[label][side][field] += 1
+        side, loser = ('extension only', b) if a['ok'] else ('devtools only', a)
+        for label in (classes.get(a['address'], '?'), 'all'): out[label][side][miss_field(loser)] += 1
     return out
 
 
-def unread(ext, dev, classes):
+def unread(ext, dev):
     """DevTools's units on pages the extension has no unit of: {address: [units, misses, words missing]}."""
     pages = {a['address'] for a in ext.main.values()}
     out = collections.defaultdict(lambda: [0, 0, 0])
@@ -68,7 +72,7 @@ def render(ext, dev, classes):
         for side in ('extension only', 'devtools only'):
             lines.append(f'  {side}: ' + (', '.join(f'{f} {n}' for f, n in sides[side].most_common()) or 'none'))
     lines.append('pages the extension gave no reading of (left out of the paired comparison): DevTools units, misses, and misses that are the fleet\'s string with words missing')
-    for address, (units, misses, missing) in sorted(unread(ext, dev, classes).items()):
+    for address, (units, misses, missing) in sorted(unread(ext, dev).items()):
         lines.append(f'  {address}: {units} units, {misses} missed, {missing} with words missing')
     return '\n'.join(lines)
 

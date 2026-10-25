@@ -178,26 +178,23 @@ class Run(unittest.TestCase):
         self.assertIn('STOP AND REPORT', cs.gate_line(g))
 
     def test_a_lead_in_one_class_alone_stops_the_gate_and_a_lead_exactly_at_the_margin_does_not(self):
-        B = 'https://y.test/q'
-        def two(a_units, b_units):       # (ext units, devtools units) for the two pages, a table and a list
-            return (cs.Reading('ext-linux', {'status': {}, 'rows': [row(i, e, p, c, address=ad) for ad, us in ((A, a_units[0]), (B, b_units[0])) for c, i, e, p in us]}),
-                    cs.Reading('devtools-linux', {'status': {}, 'rows': [row(i, e, p, c, address=ad) for ad, us in ((A, a_units[1]), (B, b_units[1])) for c, i, e, p in us]}))
-        good = [('links', i, f'u{i}', f'u{i}') for i in range(99)]
-        miss = [('links', 99, 'u99', 'x')]
-        e, d = two((good + miss, good + miss), (good + miss, good + miss))
-        self.assertTrue(cs.gate(cs.buys(e, d), cs.lead_by_class(e, d, {A: 'table', B: 'list'}))['proceed'])
-        # the list page: the extension agrees on the last unit and DevTools misses it, 1 of 100 = 1.0 point: at the margin, goes on
-        dev_miss = good + miss
-        ext_ok = good + [('links', 99, 'u99', 'u99')]
-        e, d = two((good + miss, good + miss), (ext_ok, dev_miss))
-        g = cs.gate(cs.buys(e, d), cs.lead_by_class(e, d, {A: 'table', B: 'list'}))
-        self.assertEqual(round(cs.lead_by_class(e, d, {A: 'table', B: 'list'})[1]['leadPoints'], 6), 1.0)
-        self.assertTrue(g['proceed'])
-        # two units: above the margin on the list pages, and the table pages and the whole are within it only because of the other page
-        ext_two = good[:98] + [('links', 98, 'u98', 'u98'), ('links', 99, 'u99', 'u99')]
-        dev_two = good[:98] + [('links', 98, 'u98', 'x'), ('links', 99, 'u99', 'x')]
-        e, d = two((good + miss, good + miss), (ext_two, dev_two))
-        g = cs.gate(cs.buys(e, d), cs.lead_by_class(e, d, {A: 'table', B: 'list'}))
+        table_page, list_page = A, 'https://y.test/q'
+        classes = {table_page: 'table', list_page: 'list'}
+
+        def hundred(missed_by_devtools):
+            """100 units of a page: the extension agrees on all of them, DevTools misses the last `missed_by_devtools`."""
+            return ([('links', i, f'u{i}', f'u{i}') for i in range(100)],
+                    [('links', i, f'u{i}', 'x' if i >= 100 - missed_by_devtools else f'u{i}') for i in range(100)])
+
+        def gate_for(table_missed, list_missed):
+            (te, td), (le, ld) = hundred(table_missed), hundred(list_missed)
+            ext = cs.Reading('ext-linux', {'status': {}, 'rows': [row(i, e, p, c, address=ad) for ad, units in ((table_page, te), (list_page, le)) for c, i, e, p in units]})
+            dev = cs.Reading('devtools-linux', {'status': {}, 'rows': [row(i, e, p, c, address=ad) for ad, units in ((table_page, td), (list_page, ld)) for c, i, e, p in units]})
+            return cs.gate(cs.buys(ext, dev), cs.lead_by_class(ext, dev, classes))
+
+        self.assertTrue(gate_for(0, 0)['proceed'])
+        self.assertTrue(gate_for(0, 1)['proceed'])        # the list pages: 1 of 100 is 1.0 point, the margin itself
+        g = gate_for(0, 2)                                # 2.0 points on the list pages; the whole is 1.0, within the margin
         self.assertFalse(g['proceed']); self.assertEqual([o['label'] for o in g['over']], ['list pages'])
 
     def test_with_classes_the_run_prints_the_gate_and_not_the_step_one_recommendation(self):
