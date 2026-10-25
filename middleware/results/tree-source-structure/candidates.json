@@ -1,5 +1,5 @@
 {
- "about": "The candidate pages of the structure measurement (A11-229, step 2), named by hand before any fleet capture: public pages of the shapes the chairman listed (data tables with headers, long navigation lists, nested lists, a grid, a tree view). The list was widened once, after a first look at their DOM counts (no accessibility tree, no fleet, no emulator, no agreement figure had been looked at), because the first pass found data tables with links in their cells only on Wikipedia. It is fixed from here; select_structure_pages.py keeps from it by DOM counts only (rule.md).",
+ "about": "The candidate pages of the structure measurement (A11-229, step 2), named by hand before any fleet capture: public pages of the shapes the chairman listed (data tables with headers, long navigation lists, nested lists, a grid, a tree view). The list was widened once, after a first look at their DOM counts (no accessibility tree, no fleet, no emulator, no agreement figure had been looked at), because the first pass found data tables with links in their cells only on Wikipedia. It was widened a second time when the first sample proved too large to run (rule.md, 'The first freeze'): table pages with at most 500 tab stops were added. It is fixed from here; select_structure_pages.py keeps from it by DOM counts only (rule.md).",
  "candidates": [
   {
    "url": "https://www.w3.org/WAI/ARIA/apg/patterns/grid/examples/data-grids/",
@@ -136,6 +136,18 @@
   {
    "url": "https://www.nice.org.uk/guidance/published",
    "kind": "list"
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/Beaufort_scale",
+   "kind": "table"
+  },
+  {
+   "url": "https://find-and-update.company-information.service.gov.uk/company/00000086/filing-history",
+   "kind": "table"
+  },
+  {
+   "url": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+   "kind": "table"
   }
  ]
 }

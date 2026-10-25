@@ -1,6 +1,6 @@
 {
  "rule": "results/tree-source-structure/rule.md",
- "candidates": 34,
+ "candidates": 37,
  "sample": [
   {
    "url": "https://www.w3.org/WAI/ARIA/apg/patterns/listbox/examples/listbox-scrollable/",
@@ -18,25 +18,10 @@
    "title": "Scrollable Listbox Example | APG | WAI | W3C"
   },
   {
-   "url": "https://www.legislation.gov.uk/ukpga/2010/15/contents",
-   "address": "https://www.legislation.gov.uk/ukpga/2010/15/contents",
-   "class": "list",
-   "tabStops": 705,
-   "tableCells": 0,
-   "headerCells": 0,
-   "largestTable": 0,
-   "tabStopsInCells": 0,
-   "listItems": 379,
-   "largestList": 342,
-   "nestedLists": 79,
-   "tabStopsInItems": 685,
-   "title": "Equality Act 2010"
-  },
-  {
    "url": "https://en.wikipedia.org/wiki/Outline_of_computer_science",
    "address": "https://en.wikipedia.org/wiki/Outline_of_computer_science",
    "class": "list",
-   "tabStops": 427,
+   "tabStops": 409,
    "tableCells": 40,
    "headerCells": 19,
    "largestTable": 38,
@@ -48,19 +33,19 @@
    "title": "Outline of computer science - Wikipedia"
   },
   {
-   "url": "https://en.wikipedia.org/wiki/List_of_sovereign_states",
-   "address": "https://en.wikipedia.org/wiki/List_of_sovereign_states",
+   "url": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+   "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
    "class": "table",
-   "tabStops": 1770,
-   "tableCells": 925,
-   "headerCells": 65,
-   "largestTable": 809,
-   "tabStopsInCells": 1100,
-   "listItems": 527,
-   "largestList": 78,
-   "nestedLists": 20,
-   "tabStopsInItems": 928,
-   "title": "List of sovereign states - Wikipedia"
+   "tabStops": 284,
+   "tableCells": 462,
+   "headerCells": 11,
+   "largestTable": 462,
+   "tabStopsInCells": 243,
+   "listItems": 24,
+   "largestList": 9,
+   "nestedLists": 0,
+   "tabStopsInItems": 25,
+   "title": "Changes To Legislation"
   },
   {
    "url": "https://www.legislation.gov.uk/ukpga/1998/42/contents",
@@ -78,49 +63,64 @@
    "title": "Human Rights Act 1998"
   },
   {
-   "url": "https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines",
-   "address": "https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines",
+   "url": "https://find-and-update.company-information.service.gov.uk/company/00000086/filing-history",
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000086/filing-history",
    "class": "table",
-   "tabStops": 963,
-   "tableCells": 364,
-   "headerCells": 48,
-   "largestTable": 283,
-   "tabStopsInCells": 675,
-   "listItems": 741,
-   "largestList": 209,
-   "nestedLists": 21,
-   "tabStopsInItems": 820,
-   "title": "Web Content Accessibility Guidelines - Wikipedia"
+   "tabStops": 71,
+   "tableCells": 78,
+   "headerCells": 3,
+   "largestTable": 78,
+   "tabStopsInCells": 26,
+   "listItems": 21,
+   "largestList": 10,
+   "nestedLists": 0,
+   "tabStopsInItems": 21,
+   "title": "KENTSTONE PROPERTIES LIMITED filing history - Find and update company information - GOV.UK"
   },
   {
-   "url": "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population",
-   "address": "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population",
-   "class": "table",
-   "tabStops": 1753,
-   "tableCells": 1474,
-   "headerCells": 20,
-   "largestTable": 1446,
-   "tabStopsInCells": 866,
-   "listItems": 466,
-   "largestList": 252,
-   "nestedLists": 7,
-   "tabStopsInItems": 978,
-   "title": "List of countries and dependencies by population - Wikipedia"
+   "url": "https://design-system.service.gov.uk/components/table/",
+   "address": "https://design-system.service.gov.uk/components/table/",
+   "class": "list",
+   "tabStops": 100,
+   "tableCells": 18,
+   "headerCells": 3,
+   "largestTable": 18,
+   "tabStopsInCells": 5,
+   "listItems": 68,
+   "largestList": 39,
+   "nestedLists": 1,
+   "tabStopsInItems": 69,
+   "title": "Table \u2013 GOV.UK Design System"
   },
   {
-   "url": "https://en.wikipedia.org/wiki/List_of_largest_cities",
-   "address": "https://en.wikipedia.org/wiki/List_of_largest_cities",
+   "url": "https://find-and-update.company-information.service.gov.uk/company/00000006/filing-history",
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006/filing-history",
    "class": "table",
-   "tabStops": 1383,
-   "tableCells": 1185,
-   "headerCells": 132,
-   "largestTable": 1121,
-   "tabStopsInCells": 834,
-   "listItems": 542,
-   "largestList": 109,
-   "nestedLists": 43,
-   "tabStopsInItems": 860,
-   "title": "List of largest cities - Wikipedia"
+   "tabStops": 68,
+   "tableCells": 78,
+   "headerCells": 3,
+   "largestTable": 78,
+   "tabStopsInCells": 25,
+   "listItems": 22,
+   "largestList": 9,
+   "nestedLists": 0,
+   "tabStopsInItems": 20,
+   "title": "MARINE AND GENERAL MUTUAL LIFE ASSURANCE SOCIETY filing history - Find and update company information - GOV.UK"
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/Beaufort_scale",
+   "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+   "class": "table",
+   "tabStops": 293,
+   "tableCells": 166,
+   "headerCells": 31,
+   "largestTable": 112,
+   "tabStopsInCells": 62,
+   "listItems": 72,
+   "largestList": 20,
+   "nestedLists": 0,
+   "tabStopsInItems": 128,
+   "title": "Beaufort scale - Wikipedia"
   }
  ],
  "rejected": [
@@ -136,7 +136,21 @@
    "nestedLists": 0,
    "tabStopsInItems": 59,
    "title": "Population estimates - Office for National Statistics",
-   "why": "neither a table page nor a list page by the rule"
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
+  },
+  {
+   "url": "https://www.legislation.gov.uk/ukpga/2010/15/contents",
+   "tabStops": 705,
+   "tableCells": 0,
+   "headerCells": 0,
+   "largestTable": 0,
+   "tabStopsInCells": 0,
+   "listItems": 379,
+   "largestList": 342,
+   "nestedLists": 79,
+   "tabStopsInItems": 685,
+   "title": "Equality Act 2010",
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
   },
   {
    "url": "https://data.gov.uk/search",
@@ -150,7 +164,7 @@
    "nestedLists": 0,
    "tabStopsInItems": 6,
    "title": "Search directory - National Data Library",
-   "why": "neither a table page nor a list page by the rule"
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
   },
   {
    "url": "https://www.gov.uk/government/publications",
@@ -164,7 +178,7 @@
    "nestedLists": 2,
    "tabStopsInItems": 47,
    "title": "Search - GOV.UK",
-   "why": "neither a table page nor a list page by the rule"
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
   },
   {
    "url": "https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/table/",
@@ -178,7 +192,21 @@
    "nestedLists": 0,
    "tabStopsInItems": 32,
    "title": "Table Example | APG | WAI | W3C",
-   "why": "neither a table page nor a list page by the rule"
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/List_of_sovereign_states",
+   "tabStops": 1770,
+   "tableCells": 925,
+   "headerCells": 65,
+   "largestTable": 809,
+   "tabStopsInCells": 1100,
+   "listItems": 527,
+   "largestList": 78,
+   "nestedLists": 20,
+   "tabStopsInItems": 928,
+   "title": "List of sovereign states - Wikipedia",
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
   },
   {
    "url": "https://caselaw.nationalarchives.gov.uk/search?query=",
@@ -192,7 +220,7 @@
    "nestedLists": 0,
    "tabStopsInItems": 22,
    "title": "Search results - Find Case Law - The National Archives",
-   "why": "neither a table page nor a list page by the rule"
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
   },
   {
    "url": "https://www.nice.org.uk/guidance/published",
@@ -206,22 +234,7 @@
    "nestedLists": 0,
    "tabStopsInItems": 0,
    "title": "403 Forbidden",
-   "why": "neither a table page nor a list page by the rule"
-  },
-  {
-   "url": "https://design-system.service.gov.uk/components/table/",
-   "tabStops": 100,
-   "tableCells": 18,
-   "headerCells": 3,
-   "largestTable": 18,
-   "tabStopsInCells": 5,
-   "listItems": 68,
-   "largestList": 39,
-   "nestedLists": 1,
-   "tabStopsInItems": 69,
-   "title": "Table \u2013 GOV.UK Design System",
-   "class": "list",
-   "why": "the first 4 list pages were already kept"
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
   },
   {
    "url": "https://design-patterns.service.justice.gov.uk/components/sortable-table/",
@@ -250,8 +263,35 @@
    "nestedLists": 120,
    "tabStopsInItems": 1086,
    "title": "Departments, agencies and public bodies - GOV.UK",
-   "class": "list",
-   "why": "the first 4 list pages were already kept"
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines",
+   "tabStops": 963,
+   "tableCells": 364,
+   "headerCells": 48,
+   "largestTable": 283,
+   "tabStopsInCells": 675,
+   "listItems": 741,
+   "largestList": 209,
+   "nestedLists": 21,
+   "tabStopsInItems": 820,
+   "title": "Web Content Accessibility Guidelines - Wikipedia",
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population",
+   "tabStops": 1753,
+   "tableCells": 1474,
+   "headerCells": 20,
+   "largestTable": 1446,
+   "tabStopsInCells": 866,
+   "listItems": 466,
+   "largestList": 252,
+   "nestedLists": 7,
+   "tabStopsInItems": 978,
+   "title": "List of countries and dependencies by population - Wikipedia",
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
   },
   {
    "url": "https://reports.ofsted.gov.uk/search?q=school",
@@ -265,7 +305,7 @@
    "nestedLists": 25,
    "tabStopsInItems": 19,
    "title": "Search - Find an Inspection Report - Ofsted",
-   "why": "neither a table page nor a list page by the rule"
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
   },
   {
    "url": "https://www.w3.org/WAI/tutorials/tables/",
@@ -279,7 +319,7 @@
    "nestedLists": 2,
    "tabStopsInItems": 57,
    "title": "Tables Tutorial | Web Accessibility Initiative (WAI) | W3C",
-   "why": "neither a table page nor a list page by the rule"
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
   },
   {
    "url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-index",
@@ -293,7 +333,7 @@
    "nestedLists": 0,
    "tabStopsInItems": 38,
    "title": "Immigration Rules - Immigration Rules: Index - Guidance - GOV.UK",
-   "why": "neither a table page nor a list page by the rule"
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
   },
   {
    "url": "https://www.w3.org/WAI/standards-guidelines/wcag/",
@@ -322,8 +362,165 @@
    "nestedLists": 0,
    "tabStopsInItems": 891,
    "title": "Conditions A to Z - NHS",
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/List_of_largest_cities",
+   "tabStops": 1383,
+   "tableCells": 1185,
+   "headerCells": 132,
+   "largestTable": 1121,
+   "tabStopsInCells": 834,
+   "listItems": 542,
+   "largestList": 109,
+   "nestedLists": 43,
+   "tabStopsInItems": 860,
+   "title": "List of largest cities - Wikipedia",
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
+  },
+  {
+   "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table",
+   "tabStops": 253,
+   "tableCells": 16,
+   "headerCells": 8,
+   "largestTable": 14,
+   "tabStopsInCells": 11,
+   "listItems": 83,
+   "largestList": 9,
+   "nestedLists": 1,
+   "tabStopsInItems": 90,
+   "title": "<table> HTML table element - HTML | MDN",
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
+  },
+  {
+   "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/",
+   "tabStops": 2026,
+   "tableCells": 0,
+   "headerCells": 0,
+   "largestTable": 0,
+   "tabStopsInCells": 0,
+   "listItems": 415,
+   "largestList": 10,
+   "nestedLists": 0,
+   "tabStopsInItems": 2015,
+   "title": "Research guides - The National Archives",
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
+  },
+  {
+   "url": "https://www.gov.uk/government/statistics",
+   "tabStops": 85,
+   "tableCells": 0,
+   "headerCells": 0,
+   "largestTable": 0,
+   "tabStopsInCells": 0,
+   "listItems": 125,
+   "largestList": 86,
+   "nestedLists": 21,
+   "tabStopsInItems": 60,
+   "title": "Research and statistics - GOV.UK",
    "class": "list",
    "why": "the first 4 list pages were already kept"
+  },
+  {
+   "url": "https://www.w3.org/WAI/ARIA/apg/patterns/menubar/examples/menubar-navigation/",
+   "tabStops": 62,
+   "tableCells": 146,
+   "headerCells": 57,
+   "largestTable": 44,
+   "tabStopsInCells": 2,
+   "listItems": 110,
+   "largestList": 13,
+   "nestedLists": 5,
+   "tabStopsInItems": 40,
+   "title": "Navigation Menubar Example | APG | WAI | W3C",
+   "class": "list",
+   "why": "the first 4 list pages were already kept"
+  },
+  {
+   "url": "https://www.gov.uk/browse",
+   "tabStops": 61,
+   "tableCells": 0,
+   "headerCells": 0,
+   "largestTable": 0,
+   "tabStopsInCells": 0,
+   "listItems": 51,
+   "largestList": 16,
+   "nestedLists": 0,
+   "tabStopsInItems": 51,
+   "title": "Services and information - GOV.UK",
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
+  },
+  {
+   "url": "https://www.w3.org/WAI/ARIA/apg/patterns/treegrid/examples/treegrid-1/",
+   "tabStops": 60,
+   "tableCells": 87,
+   "headerCells": 31,
+   "largestTable": 48,
+   "tabStopsInCells": 1,
+   "listItems": 89,
+   "largestList": 8,
+   "nestedLists": 0,
+   "tabStopsInItems": 40,
+   "title": "Treegrid Email Inbox Example | APG | WAI | W3C",
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
+  },
+  {
+   "url": "https://environment.data.gov.uk/flood-monitoring/doc/reference",
+   "tabStops": 188,
+   "tableCells": 597,
+   "headerCells": 84,
+   "largestTable": 88,
+   "tabStopsInCells": 9,
+   "listItems": 150,
+   "largestList": 100,
+   "nestedLists": 3,
+   "tabStopsInItems": 130,
+   "title": "Real-time API reference",
+   "class": "list",
+   "why": "the first 4 list pages were already kept"
+  },
+  {
+   "url": "https://www.w3.org/WAI/ARIA/apg/patterns/grid/examples/layout-grids/",
+   "tabStops": 70,
+   "tableCells": 87,
+   "headerCells": 25,
+   "largestTable": 40,
+   "tabStopsInCells": 7,
+   "listItems": 105,
+   "largestList": 10,
+   "nestedLists": 6,
+   "tabStopsInItems": 40,
+   "title": "Layout Grid Examples | APG | WAI | W3C",
+   "class": "list",
+   "why": "the first 4 list pages were already kept"
+  },
+  {
+   "url": "https://www.cqc.org.uk/search/all?query=hospital",
+   "tabStops": 120,
+   "tableCells": 0,
+   "headerCells": 0,
+   "largestTable": 0,
+   "tabStopsInCells": 0,
+   "listItems": 59,
+   "largestList": 9,
+   "nestedLists": 0,
+   "tabStopsInItems": 64,
+   "title": "Search Results - Care Quality Commission",
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
+  },
+  {
+   "url": "https://www.w3.org/WAI/ARIA/apg/patterns/treeview/examples/treeview-navigation/",
+   "tabStops": 62,
+   "tableCells": 96,
+   "headerCells": 36,
+   "largestTable": 48,
+   "tabStopsInCells": 1,
+   "listItems": 98,
+   "largestList": 9,
+   "nestedLists": 2,
+   "tabStopsInItems": 38,
+   "title": "Navigation Treeview Example | APG | WAI | W3C",
+   "why": "neither a table page nor a list page by the rule, or more than 500 tab stops"
   }
  ]
 }

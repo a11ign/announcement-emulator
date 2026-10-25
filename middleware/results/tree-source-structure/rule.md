@@ -19,14 +19,23 @@ is *measured* and **not held out**: the emulator has never been fitted to these 
 
 `agreement/select_structure_pages.py`, run once on `candidates.json`, gave `pages.json`:
 
-1. The candidates are the 34 addresses of `candidates.json`, named by hand: public pages of the shapes the chairman listed (data tables with headers, long navigation lists, nested lists, a grid, a tree view). The list was
+1. The candidates are the 37 addresses of `candidates.json`, named by hand: public pages of the shapes the chairman listed (data tables with headers, long navigation lists, nested lists, a grid, a tree view). The list was
    widened once, after a first look at their DOM counts (no accessibility tree, no fleet record, no emulator and no figure was looked at), because the first pass found data tables with links in their cells only on Wikipedia.
-   It is fixed from here. The six pages of step 1 are left out if they appear.
+   It was widened a second time after the first freeze (below). It is fixed from here. The six pages of step 1 are left out if they appear.
 2. They are put in the order of the SHA-256 of their address, read as a number (the order `select_pages.py` used).
-3. Each in turn is opened in a browser (Playwright's Chromium) and its DOM counted, and nothing else (`agreement/dom_check_structure.mjs`). It is a **table page** with at least 3 header cells (`th`, `columnheader`,
+3. Each in turn is opened in a browser (Playwright's Chromium) and its DOM counted, and nothing else (`agreement/dom_check_structure.mjs`). A page with **more than 500 tab stops** is left out (see the first freeze, below). Otherwise it is a **table page** with at least 3 header cells (`th`, `columnheader`,
    `rowheader`), one table (`table`, `grid`, `treegrid`) of at least 40 cells and at least 20 tab stops inside table cells; otherwise a **list page** with at least 20 tab stops inside list items (`li`, `listitem`,
    `treeitem`, `option`, `menuitem`) and a list of at least 20 items or at least 3 nested lists.
 4. The first four table pages and the first four list pages are the sample: eight pages. The candidates that failed and those left over are listed in `pages.json` with the reason.
+
+## The first freeze, and why it was replaced
+
+The rule was first frozen at `89ca720fff` (2026-10-25 08:50:50 UTC) without a limit on the size of a page, and its eight pages included four Wikipedia tables of 963 to 1,770 tab stops and the Equality Act 2010's contents (705).
+On the first extension run of the four interleaved ones, the middleware predicted **nothing** for those five pages (no load speech and no focus event; the other three pages had 56, 150 and 27 utterances), and a DevTools run
+of the small listbox page alone waited 69 s at its end for 59 focus events, so that the same run on pages of that size would have taken hours. Sixteen fleet captures of that sample had been started (fifteen taken) and were
+discarded unread. Nothing was compared: no figure, no agreement and no miss of any reading had been computed. The size limit is a limit of what the middleware can predict at all, and it was chosen after seeing that, so
+it is stated here; the sample is the first four table pages and the first four list pages of the same ordering under the limit. The pages of the first freeze that remain in the sample are the listbox, Outline of
+computer science and the Human Rights Act's contents. The first freeze stays in git history; `freeze.json` is the second.
 
 **What the channels can and cannot see.** The walk presses Tab, so a grid or tree that moves focus with the arrow keys (one tab stop, a roving tabindex) is entered once and not walked: the four APG pages show it (1 to 7 tab stops in
 cells). The structure sweep's lists (`headings`, `landmarks`, `formFields`, `graphics`, `links`, `lists`, `frames`) have no table channel. A table index or a set position reaches a figure through a Tab stop inside a cell or an

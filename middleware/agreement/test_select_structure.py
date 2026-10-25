@@ -5,8 +5,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import select_structure_pages as rule
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-TABLE = {'headerCells': 3, 'largestTable': 40, 'tabStopsInCells': 20, 'tabStopsInItems': 0, 'largestList': 0, 'nestedLists': 0}
-LIST = {'headerCells': 0, 'largestTable': 0, 'tabStopsInCells': 0, 'tabStopsInItems': 20, 'largestList': 20, 'nestedLists': 0}
+TABLE = {'tabStops': 100, 'headerCells': 3, 'largestTable': 40, 'tabStopsInCells': 20, 'tabStopsInItems': 0, 'largestList': 0, 'nestedLists': 0}
+LIST = {'tabStops': 100, 'headerCells': 0, 'largestTable': 0, 'tabStopsInCells': 0, 'tabStopsInItems': 20, 'largestList': 20, 'nestedLists': 0}
 
 
 class Classes(unittest.TestCase):
@@ -20,6 +20,11 @@ class Classes(unittest.TestCase):
         self.assertEqual(rule.classify({**LIST, 'largestList': 19, 'nestedLists': 3}), 'list')
         self.assertIsNone(rule.classify({**LIST, 'largestList': 19, 'nestedLists': 2}))
         self.assertIsNone(rule.classify({**LIST, 'tabStopsInItems': 19}))
+
+    def test_a_page_with_more_than_500_tab_stops_is_neither(self):
+        self.assertEqual(rule.classify({**TABLE, 'tabStops': 500}), 'table')
+        self.assertIsNone(rule.classify({**TABLE, 'tabStops': 501}))
+        self.assertIsNone(rule.classify({**LIST, 'tabStops': 501}))
 
     def test_a_page_that_is_both_is_a_table_page(self):
         self.assertEqual(rule.classify({**TABLE, **{k: v for k, v in LIST.items() if k.startswith('tabStopsInItems') or k in ('largestList',)}}), 'table')
