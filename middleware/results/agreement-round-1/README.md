@@ -231,7 +231,7 @@ reading has two pages without a second passive reading (989 units), and DevTools
 
 * `rule.md`, `freeze.json`, `held-out-pages.json`, `ci-run.txt`: the rule and what was fixed before the first capture.
 * `boxes.md`, `fleet-readings.json`, `passive-runs.json`: where the oracle's captures and the passive runs came from.
-* `<held-out|fitted>/<build>/<reading>/`: `agreement.txt` (the figure's source), `agreement-second.txt`, `misses.json`, `rates.json`. `middleware/supported-versions.json` is filled from the held-out ones and `supported.test.ts` holds it to them.
+* `<held-out|fitted>/<build>/<reading>/`: `agreement.txt` (the figure's source), `agreement-second.txt` (copied by hand from the `<reading>-second/agreement.txt` that `measure_round.sh` writes: `round.py`, frozen, does not copy it), `misses.json`, `rates.json`. `middleware/supported-versions.json` is filled from the held-out ones and `supported.test.ts` holds it to them.
 * `round.txt`, `round.json`: the tables of every reading, with the movement against A11-230.
 * `step-1-misses.md`: step 1's findings on the fitted pages' misses.
 * Reproduce: `agreement/run_round_readings.sh` (this host), `.github/workflows/agreement-round.yml` (macOS and the control), `agreement/measure_round.sh`, then `agreement/round.py report --work <dir> --out middleware/results/agreement-round-1 --previous middleware/results/playwright-versions --list middleware/supported-versions.json --dates <build>=<day> ...`.
