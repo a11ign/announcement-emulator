@@ -1,8 +1,8 @@
 {
- "commit": "89ca720fff5a2f00e0f29ebb590599f84051bda0",
- "subject": "test(middleware): the rule, pages and gate of the structure measurement, frozen before capture (A11-229, step 2)",
- "committedAt": "2026-10-25T08:50:43Z",
- "namedAt": "2026-10-25T08:50:45Z",
+ "commit": "1cf8cd09f7127728d326c65429ffedad92da3a39",
+ "subject": "test(middleware): leave pages of more than 500 tab stops out of the structure sample, the first freeze being replaced (A11-229, step 2)",
+ "committedAt": "2026-10-25T09:33:28Z",
+ "namedAt": "2026-10-25T09:33:30Z",
  "objects": {
   "emu": "d6b44b5259cf763fb6cee04076f498d83840dadb",
   "middleware/runtime": "1fcdc40189008bdcd8ec54240ed54321137080af",
@@ -19,15 +19,15 @@
   "q3/shapes.py": "d24a06b9a968e4e785d5879b3479f0266bae159a",
   "q3/fleet_capture.mjs": "f0598b87ab05befc09c16d138a2d5122eac38e52",
   "pins.env": "2bfb0d48aba2e111ee491850daf59744e94e290b",
-  "middleware/results/tree-source-structure/rule.md": "f386ac4ee605274b1d8b7caf312171d05b845b6e",
-  "middleware/results/tree-source-structure/candidates.json": "066abe7baef764ed01c9a7e24c311c7dbf740b9b",
-  "middleware/results/tree-source-structure/pages.json": "d828e54b64dffac9fd4cf7fdb767dfe2c5a22a81",
-  "middleware/agreement/select_structure_pages.py": "8e3bb0b620d2b0454253c2876dc8e2c90170b8e2",
+  "middleware/results/tree-source-structure/rule.md": "998f6134d8700f2d4418d72293c4079e40b9af4c",
+  "middleware/results/tree-source-structure/candidates.json": "8e32960b7747feb6969dc5bb7144456e2f45f372",
+  "middleware/results/tree-source-structure/pages.json": "34360aae11e0696b6529d7fc31321f9758b3fff1",
+  "middleware/agreement/select_structure_pages.py": "67cbf6e8b1a52de301d53d6eccd7135070b78079",
   "middleware/agreement/dom_check_structure.mjs": "84ba8676a9efd627ce134640aa8d2bb87bce4f7a",
   "middleware/agreement/compare_sources.py": "c84ea67a12282401448858652c60b5050a8ec967",
   "middleware/agreement/run_linux_readings.sh": "82b8aff97dad25ac94d235f2f26930a098fb90a3",
   "middleware/agreement/measure_readings.sh": "17ee1ae882e0c8d8aaf7ad127f46f2527c3c3349",
-  "middleware/sample-suite/tests/structure": "4043dc1fe40b35fd5285f7320eb50949cce31d3c",
+  "middleware/sample-suite/tests/structure": "cf37b353e9ed2d5730f60eab776e8f45d4bd994f",
   "middleware/sample-suite/base.config.ts": "9226254797a59afb597824a7b7094664f87acfd1",
   "middleware/results/tree-source/rule.md": "208a9e534aad82ffe511c9c7e64e99145dd2b5e1"
  }
