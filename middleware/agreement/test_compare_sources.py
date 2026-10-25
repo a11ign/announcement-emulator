@@ -112,17 +112,16 @@ class Causes(unittest.TestCase):
         self.assertEqual(cause(r, 'ext-linux', (A, 'links', 0)), 'no counterpart')
 
     def test_macos_differs_from_the_control_by_the_os_and_from_this_host_by_the_runner(self):
-        u = lambda p: [('links', 0, 'a, link', p), ('links', 1, 'b', 'b')]      # noqa: E731
+        def u(predicted): return [('links', 0, 'a, link', predicted), ('links', 1, 'b', 'b')]
         base = self.rs([('links', 0, 'a, link', 'x, link'), ('links', 1, 'b', 'b')], [('links', 0, 'a, link', 'y, link'), ('links', 1, 'b', 'b')])      # this host: the extension says x, DevTools y, both wrong
-        mac = lambda p, c: {**base, 'devtools-macos': reading('devtools-macos', u(p)), 'devtools-ubuntu-ci': reading('devtools-ubuntu-ci', u(c))}      # noqa: E731
+        def mac(macos_predicts, control_predicts): return {**base, 'devtools-macos': reading('devtools-macos', u(macos_predicts)), 'devtools-ubuntu-ci': reading('devtools-ubuntu-ci', u(control_predicts))}
         self.assertEqual(cause(mac('m, link', 'y, link'), 'devtools-macos', (A, 'links', 0)), 'macos: name')       # macOS and the control disagree
         self.assertEqual(cause(mac('z, link', 'z, link'), 'devtools-macos', (A, 'links', 0)), 'network/runner')   # they agree, and this host says another thing
         self.assertEqual(cause(mac('z, link', 'z, link'), 'devtools-ubuntu-ci', (A, 'links', 0)), 'network/runner')
         self.assertEqual(cause(mac('y, link', 'y, link'), 'devtools-macos', (A, 'links', 0)), 'emulator')          # the same as this host's DevTools reading: this host's cause, both sources missing it
 
     def test_a_note_names_a_cause_for_what_the_rules_left_and_only_from_the_list(self):
-        r = self.rs([('links', 0, 'a', 'b')], [('links', 0, 'a', None)], ext={})
-        r = {**r, 'devtools-linux': reading('devtools-linux', [])}
+        r = {'ext-linux': reading('ext-linux', [('links', 0, 'a', 'b')]), 'devtools-linux': reading('devtools-linux', [])}      # nothing from the other source: no rule gives a cause
         notes = [{'reading': '*', 'address': A, 'channel': 'links', 'cause': 'oracle milestone', 'reason': 'Edge 156 names it'}]
         attributed = cs.attribute_all(r, notes)
         self.assertEqual((attributed['ext-linux'][0]['cause'], attributed['ext-linux'][0]['read']), ('oracle milestone', True))
