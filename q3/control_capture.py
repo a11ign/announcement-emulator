@@ -21,24 +21,25 @@ def slug_of(rel): return rel.replace('/', '__')[:-len('.html')]
 
 
 def collect(out, job=None):
-    _, _, found = fc.results(out, job)
+    _, manifest, found = fc.results(out, job)
     for r in found:
         fc.write_record(out, r.name, r.record)
         print(r.name[:-len('.json')], r.record['status'], r.box, flush=True)
     print('done')
+    return fc.exit_code(manifest)
 
 
 def submit(a):
     base = a.host_url.rstrip('/')
     todo = [(rel, f'{base}/{rel}') for rel in sample(a.pages_dir, a.n) if not os.path.exists(os.path.join(a.out_dir, slug_of(rel) + '.json'))]
-    if not todo: sys.exit('every page of the sample has a record in the output directory: nothing to capture')
+    if not todo: return print('every page of the sample has a record in the output directory: nothing to capture')
     job = fc.submit([address for _, address in todo], a.boxes, a.label)
     fc.write_pending(a.out_dir, job, a.label, {address: {'1': slug_of(rel) + '.json'} for rel, address in todo})
-    if fc.follow(job, a.wait, f'python3 {os.path.abspath(__file__)} collect {a.out_dir} {job}'): collect(a.out_dir, job)
+    if fc.follow(job, a.wait, f'python3 {os.path.abspath(__file__)} collect {os.path.abspath(a.out_dir)} {job}'): sys.exit(collect(a.out_dir, job))
 
 
 def main(argv):
-    if argv[:1] == ['collect'] and 2 <= len(argv) <= 3: return collect(*argv[1:])
+    if argv[:1] == ['collect'] and 2 <= len(argv) <= 3: sys.exit(collect(*argv[1:]))
     if '--workers' in argv: sys.exit('--workers is gone: the fleet job service finds each box\'s address itself. Give --boxes <n|ready|name,name,...> and --label <the ticket key>.')
     ap = argparse.ArgumentParser(description=__doc__.split('\n\n')[0]); ap.add_argument('pages_dir'); ap.add_argument('host_url'); ap.add_argument('out_dir'); ap.add_argument('n', type=int)
     ap.add_argument('--boxes', required=True); ap.add_argument('--label', required=True); ap.add_argument('--wait', metavar='DURATION')

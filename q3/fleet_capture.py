@@ -110,12 +110,15 @@ def record_of(entry, folder):
 
 
 def results(out, job=None, name=None):
-    """Fetch the job and read its manifest: (pending file, manifest, [Result]). Only a job that is done has results to collect; the manifest, with no address of ours in it, is kept as `<out>/.fleet-jobs/<job>.manifest.json`."""
+    """Fetch the job and read its manifest: (pending file, manifest, [Result]) for each capture that has ended. A job that is queued or running has no results yet. One that failed or was cancelled keeps the records it made, which are collected
+    (the pages it never reached have none), and `exit_code` is 1 for it. The manifest, with no address of ours in it, is kept as `<out>/.fleet-jobs/<job>.manifest.json`."""
     pending = read_pending(out, job, name)
     with fetched(pending['job']) as (manifest, folder):
-        if manifest.get('state') != 'done': sys.exit(f'{pending["job"]} is {manifest.get("state")}{": " + manifest["reason"] if manifest.get("reason") else ""}: only a job that is done has results to collect')
+        state = manifest.get('state')
+        if state not in ('done', 'failed', 'cancelled'): sys.exit(f'{pending["job"]} is {state}: it has no results to collect yet')
+        if state != 'done': print(f'{pending["job"]} {state}{": " + manifest["reason"] if manifest.get("reason") else ""}: the records it made are collected, the pages it did not reach have none', file=sys.stderr)
         found = []
-        for entry in manifest['captures']:
+        for entry in (e for e in manifest['captures'] if e['status'] in ('done', 'failed')):
             page = named(entry['page'], [entry['page']])
             try: file_name = pending['names'][page][str(entry['pass'])]
             except KeyError: sys.exit(f'{pending["job"]} captured {page} (pass {entry["pass"]}), which this entry point did not submit')
@@ -124,23 +127,27 @@ def results(out, job=None, name=None):
     return pending, manifest, found
 
 
-def write_record(out, name, record, overwrite=False):
-    """Write one record under its name; an existing record is kept unless `overwrite`, so that a stale file is never mistaken for this job's and a record collected before is not written twice. True when written."""
+def exit_code(manifest): return 0 if manifest.get('state') == 'done' else 1
+
+
+def write_record(out, name, record):
+    """Write one record under its name, whole or not at all. The pages a job captured are the pages it was submitted for, so a record of an earlier run under the same name is the job's to replace: a page is never left with one pass from one job and one from another."""
     path = os.path.join(out, name)
-    if os.path.exists(path) and not overwrite: return False
     os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
-    with open(path, 'w', encoding='utf-8') as f: json.dump(record, f, indent=1, ensure_ascii=False)
-    return True
+    with open(path + '.part', 'w', encoding='utf-8') as f: json.dump(record, f, indent=1)
+    os.replace(path + '.part', path)
 
 
 def collect_one(out_file, job=None):
     """The record of a `capture`, written to the file it was named for (overwritten: a probe is captured again under the same name)."""
     out, name = os.path.dirname(out_file) or '.', os.path.basename(out_file)
-    _, _, found = results(out, job, name)
-    for r in found: write_record(out, r.name, r.record, overwrite=True)
+    pending, manifest, found = results(out, job, name)
+    if not found: sys.exit(f'{pending["job"]} captured nothing: there is no record to write')
+    for r in found: write_record(out, r.name, r.record)
     record = found[0].record
     error = (record.get('capture') or {}).get('error')
     print(record['status'], error if error else f'{len((record["capture"] or {}).get("transcript") or [])} lines')
+    return exit_code(manifest)
 
 
 def capture(argv):
@@ -148,17 +155,17 @@ def capture(argv):
     ap.add_argument('box'); ap.add_argument('address'); ap.add_argument('out'); ap.add_argument('steps', nargs='?', type=int, default=600)
     ap.add_argument('--tables', action='store_true'); ap.add_argument('--typing-dialog', action='store_true'); ap.add_argument('--label', required=True); ap.add_argument('--wait', metavar='DURATION')
     a = ap.parse_intermixed_args(argv)
-    if not re.fullmatch(r'[\w-]+', a.box): sys.exit(f'the first argument is a box name, e.g. a11y-worker-2 ({a.box!r} is not one): the fleet job service finds the box\'s address itself, so a name=address pair is not given any more')
+    if a.box == 'ready' or not re.fullmatch(r'[A-Za-z][\w-]*', a.box): sys.exit(f'the first argument is the name of one box, e.g. a11y-worker-2 ({a.box!r} is not): the fleet job service finds the box\'s address itself, so a name=address pair is not given any more')
     probes = [*(['tables'] if a.tables else []), *(['typing', 'dialog'] if a.typing_dialog else [])]
     job = submit([a.address], a.box, a.label, steps=a.steps, probes=probes)
     out = os.path.dirname(a.out) or '.'
     write_pending(out, job, a.label, {a.address: {'1': os.path.basename(a.out)}})
-    if follow(job, a.wait, f'python3 {os.path.abspath(__file__)} collect {a.out} {job}'): collect_one(a.out, job)
+    if follow(job, a.wait, f'python3 {os.path.abspath(__file__)} collect {os.path.abspath(a.out)} {job}'): sys.exit(collect_one(a.out, job))
 
 
 def main(argv):
     if argv[:1] == ['capture']: capture(argv[1:])
-    elif argv[:1] == ['collect'] and 2 <= len(argv) <= 3: collect_one(*argv[1:])
+    elif argv[:1] == ['collect'] and 2 <= len(argv) <= 3: sys.exit(collect_one(*argv[1:]))
     else: sys.exit(USAGE)
 
 

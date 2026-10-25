@@ -161,6 +161,13 @@ class CorpusCapture(unittest.TestCase):
         code, out, _ = self.collect()
         self.assertEqual((code, rb.read_json(self.summary)['failed']), (1, [gone])); self.assertIn('left the fleet', out)
 
+    def test_a_job_that_failed_gives_the_pages_it_captured_and_names_the_others_as_failed(self):
+        done, lost = 'https://example.org/done', 'https://example.org/lost'
+        self.submit(self.corpus(done, lost)); self.results([done, lost], state='failed', reason='no box is left', unreached={(lost, 1)})
+        code, _, err = self.collect()
+        self.assertEqual((code, rb.read_json(self.summary)['failed']), (1, [lost])); self.assertIn('no box is left', err)
+        self.assertEqual(sorted(f for f in os.listdir(self.out) if f.endswith('.json')), [cc.slug_of(done) + '.json'])
+
     def test_a_record_of_a_box_the_readback_does_not_know_is_not_stamped_and_fails_its_page(self):
         url = 'https://example.org/a'; self.submit(self.corpus(url))
         self.stub.results([url], ['a11y-worker-9']); code, _, _ = self.collect()

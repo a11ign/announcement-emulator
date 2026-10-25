@@ -63,14 +63,15 @@ class FleetStub:
 
     def set(self, **config): self.config.update(config); self.save()
 
-    def results(self, pages, boxes, passes=1, label='A11-246', missing=(), failed=(), state='done', consistent=True, mismatches=(), reason=None, records=None):
+    def results(self, pages, boxes, passes=1, label='A11-246', missing=(), failed=(), unreached=(), state='done', consistent=True, mismatches=(), reason=None, records=None):
         """The results of a job of `pages` x `passes` on `boxes`, planned as the service plans them (pass k of page i on box (i+k-1) mod n). `missing`: (page, pass) pairs with no record file (a box that left the fleet before the
-        page was sent); `failed`: (page, pass) pairs whose record is a failed capture; `records`: {(page, pass): record} to put in place of the default."""
+        page was sent); `failed`: (page, pass) pairs whose record is a failed capture; `unreached`: (page, pass) pairs a job that failed or was cancelled never sent (status `pending`, no file); `records`: {(page, pass): record} to put in place of the default."""
         captures, files = [], {}
         for i, page in enumerate(pages):
             for k in range(1, passes + 1):
                 box, name = boxes[(i + k - 1) % len(boxes)], record_file(page, k)
                 capture = {'page': page, 'pass': k, 'file': name, 'box': box, 'status': 'done', 'startedAt': '2026-10-25T10:00:00.000Z', 'finishedAt': '2026-10-25T10:01:00.000Z', 'httpStatus': 200, 'error': None, 'note': None}
+                if (page, k) in unreached: capture.update(status='pending', startedAt=None, finishedAt=None, httpStatus=None); captures.append(capture); continue
                 if (page, k) in missing: capture.update(status='failed', httpStatus=None, error=f'{box} left the fleet: three captures in a row failed on it'); captures.append(capture); continue
                 record = (records or {}).get((page, k)) or (ok_record(box, page) if (page, k) not in failed else {'capturedAt': '2026-10-25T10:01:00.000Z', 'worker': box, 'status': 429, 'capture': {'error': 'a capture is already in progress'}})
                 if (page, k) in failed: capture.update(status='failed', httpStatus=429, error='a capture is already in progress')

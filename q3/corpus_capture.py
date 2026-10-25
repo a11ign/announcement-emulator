@@ -94,10 +94,10 @@ def collect(out, job=None):
     for r in found:
         entry, box = by_address[r.page], readback['workers'].get(r.record.get('worker'))
         ok = box is not None and captured_ok(r.record)
-        if ok: fc.write_record(out, r.name, stamp(r.record, entry, box), overwrite=True); kept.add(entry['url'])
+        if ok: rb.write_json(os.path.join(out, r.name), stamp(r.record, entry, box)); kept.add(entry['url'])
         print(slug_of(entry['url']), r.box, 'ok' if ok else f'failed: {(r.record.get("capture") or {}).get("error") or "no good capture"}', flush=True)
     failed = [e['url'] for e in pending['entries'] if e['url'] not in kept and not already_captured(os.path.join(out, slug_of(e['url']) + '.json'), readback)]
-    return finish(pending, summary_of(pending, manifest['startedAt'], manifest['finishedAt'], failed))
+    return finish(pending, summary_of(pending, manifest['startedAt'], manifest['finishedAt'], failed)) or fc.exit_code(manifest)
 
 
 def submit(a):

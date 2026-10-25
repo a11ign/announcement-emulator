@@ -63,6 +63,12 @@ class Submit(Base):
         self.assertEqual(code, 1); self.assertIn('the control plane could not be reached', err)
         self.assertFalse(os.path.exists(os.path.join(self.dir, fc.PENDING_DIR)))
 
+    def test_a_count_or_ready_is_not_the_name_of_a_box(self):
+        for box in ('3', 'ready'):
+            code, _, err = run(fc.main, ['capture', box, PAGE, os.path.join(self.dir, 'out.json'), '--label', 'A11-246'])
+            self.assertEqual(code, 1, box); self.assertIn('name of one box', err)
+        self.assertEqual(self.stub.calls(), [])
+
     def test_an_old_name_equals_url_argument_is_refused_with_the_reason(self):
         code, _, err = run(fc.main, ['capture', 'a11y-worker-2=http://10.0.0.5:8765', PAGE, os.path.join(self.dir, 'out.json'), '--label', 'A11-246'])
         self.assertEqual(code, 1); self.assertIn('finds the box\'s address itself', err); self.assertEqual(self.stub.calls(), [])
@@ -138,20 +144,39 @@ class Results(Base):
         self.assertEqual(self.read(fc.PENDING_DIR, FleetStub.JOB + '.manifest.json')['job'], FleetStub.JOB)
         self.assertEqual(sorted(f for f in os.listdir(self.dir) if f.endswith('.json')), ['out.json'])
 
-    def test_write_record_keeps_an_existing_record_unless_it_is_told_to_overwrite(self):
-        self.assertTrue(fc.write_record(self.dir, 'r.json', {'v': 1}))
-        self.assertFalse(fc.write_record(self.dir, 'r.json', {'v': 2})); self.assertEqual(self.read('r.json'), {'v': 1})
-        self.assertTrue(fc.write_record(self.dir, 'r.json', {'v': 3}, overwrite=True)); self.assertEqual(self.read('r.json'), {'v': 3})
+    def test_write_record_replaces_a_record_whole_and_leaves_no_part_file(self):
+        fc.write_record(self.dir, 'r.json', {'v': 1}); fc.write_record(self.dir, 'r.json', {'v': 2})
+        self.assertEqual(self.read('r.json'), {'v': 2}); self.assertEqual(sorted(os.listdir(self.dir)), ['r.json', *[f for f in os.listdir(self.dir) if f.startswith('.')]])
+
+    def test_a_lone_surrogate_in_a_record_is_escaped_as_it_always_was_and_does_not_stop_the_write(self):
+        fc.write_record(self.dir, 'r.json', {'t': 'a\ud83d'})
+        self.assertEqual(self.read('r.json'), {'t': 'a\ud83d'})
 
     def test_a_capture_is_written_again_over_the_file_it_was_named_for(self):
         with open(os.path.join(self.dir, 'out.json'), 'w') as f: json.dump({'stale': True}, f)
         self.collect()
         self.assertNotIn('stale', self.read('out.json'))
 
-    def test_a_job_that_has_not_finished_has_no_results_to_collect(self):
-        for state in ('running', 'failed', 'cancelled'):
-            code, _, err = self.collect(state=state, reason='no box is left' if state == 'failed' else None)
+    def test_a_job_that_is_queued_or_running_has_no_results_to_collect(self):
+        for state in ('queued', 'running'):
+            code, _, err = self.collect(state=state)
             self.assertEqual(code, 1, state); self.assertIn(state, err); self.assertFalse(os.path.exists(os.path.join(self.dir, 'out.json')))
+
+    def test_a_job_that_failed_or_was_cancelled_still_gives_the_records_it_made_and_exits_1(self):
+        pages = (PAGE, 'https://example.com/b')
+        for state in ('failed', 'cancelled'):
+            self.stub.results(list(pages), ['a11y-worker-2'], state=state, reason='no box is left', unreached={(pages[1], 1)})
+            fc.write_pending(self.dir, FleetStub.JOB, 'A11-246', {PAGE: {'1': 'a.json'}, pages[1]: {'1': 'b.json'}})
+            code, _, err = run(ctl.main, ['collect', self.dir])
+            self.assertEqual(code, 1, state); self.assertIn(state, err); self.assertIn('no box is left', err)
+            self.assertEqual(self.read('a.json')['capture']['url'], PAGE); self.assertFalse(os.path.exists(os.path.join(self.dir, 'b.json')))
+            os.remove(os.path.join(self.dir, 'a.json'))
+
+    def test_a_capture_that_is_the_only_one_of_a_job_that_made_nothing_says_so(self):
+        self.stub.results([PAGE], ['a11y-worker-2'], state='failed', reason='no box is left', unreached={(PAGE, 1)})
+        fc.write_pending(self.dir, FleetStub.JOB, 'A11-246', {PAGE: {'1': 'out.json'}})
+        code, _, err = run(fc.main, ['collect', os.path.join(self.dir, 'out.json')])
+        self.assertEqual(code, 1); self.assertIn('captured nothing', err)
 
     def test_a_capture_this_entry_point_did_not_submit_is_refused(self):
         self.stub.results(['https://other.example/'], ['a11y-worker-2'])
@@ -192,14 +217,12 @@ class ControlCapture(Base):
         self.submit('2')
         self.assertEqual(self.stub.submits()[0]['pages'], [self.addresses[0], self.addresses[2]])
 
-    def test_collect_writes_each_page_to_its_slug_and_leaves_an_existing_record(self):
+    def test_collect_writes_each_page_to_its_slug(self):
         self.submit()
-        os.makedirs(self.out, exist_ok=True)
-        with open(os.path.join(self.out, 'bad__c.json'), 'w') as f: json.dump({'earlier': True}, f)
         self.stub.results(self.addresses, ['a11y-worker-2', 'a11y-worker-3'])
         code, out, _ = run(ctl.main, ['collect', self.out])
         self.assertEqual(code, 0); self.assertEqual(sorted(f for f in os.listdir(self.out) if f.endswith('.json')), ['bad__c.json', 'bad__d.json', 'good__a.json', 'good__b.json'])
-        self.assertEqual(self.read('control', 'bad__c.json'), {'earlier': True}); self.assertEqual(self.read('control', 'good__a.json')['capture']['url'], 'http://capture-host:8000/good/a.html')
+        self.assertEqual(self.read('control', 'good__a.json')['capture']['url'], 'http://capture-host:8000/good/a.html')
 
     def test_a_page_with_a_record_is_left_out_of_the_job(self):
         os.makedirs(self.out)
@@ -211,6 +234,14 @@ class ControlCapture(Base):
         self.stub.results(self.addresses, ['a11y-worker-2', 'a11y-worker-3'])
         code, _, _ = self.submit('4', '--wait', '1h')
         self.assertEqual(self.stub.others()[0], ['job', 'wait', FleetStub.JOB, '--timeout', '1h']); self.assertEqual((code, len(os.listdir(self.out)) - 1), (0, 4))
+
+    def test_a_sample_that_has_all_its_records_submits_nothing_and_exits_0(self):
+        self.submit()
+        for rel in ('bad__c', 'bad__d', 'good__a', 'good__b'):
+            with open(os.path.join(self.out, rel + '.json'), 'w') as f: f.write('{}')
+        self.stub.set(); calls_before = len(self.stub.calls())
+        code, out, _ = self.submit()
+        self.assertEqual(code, 0); self.assertIn('nothing to capture', out); self.assertEqual(len(self.stub.calls()), calls_before)
 
     def test_the_old_workers_file_is_refused_with_the_new_form(self):
         code, _, err = self.submit('4', '--workers', 'w.txt')

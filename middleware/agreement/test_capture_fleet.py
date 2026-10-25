@@ -49,8 +49,8 @@ class CaptureFleet(unittest.TestCase):
 
     def test_a_sample_with_nothing_left_to_capture_submits_nothing(self):
         for p in PAGES: self.put(f'{slug(p)}.f1.json'); self.put(f'{slug(p)}.f2.json')
-        code, _, err = self.submit()
-        self.assertEqual((code, self.stub.calls()), (1, [])); self.assertIn('nothing to capture', err)
+        code, out, _ = self.submit()
+        self.assertEqual((code, self.stub.calls()), (0, [])); self.assertIn('nothing to capture', out)
 
     def test_without_wait_nothing_waits_and_nothing_is_written(self):
         self.submit()
@@ -73,10 +73,14 @@ class CaptureFleet(unittest.TestCase):
             f1, f2 = (json.load(open(os.path.join(self.out, f'{slug(p)}.f{k}.json'))) for k in (1, 2))
             self.assertEqual((f1['capture']['url'], f2['capture']['url']), (p, p)); self.assertNotEqual(f1['worker'], f2['worker'])
 
-    def test_an_existing_record_is_not_written_over(self):
+    def test_a_page_with_one_record_is_captured_whole_again_so_both_passes_are_one_jobs_on_two_boxes(self):
         self.put(f'{slug(PAGES[0])}.f1.json'); self.submit(); self.collect()
-        self.assertEqual(json.load(open(os.path.join(self.out, f'{slug(PAGES[0])}.f1.json'))), {'earlier': True})
-        self.assertIn('worker', json.load(open(os.path.join(self.out, f'{slug(PAGES[0])}.f2.json'))))
+        f1, f2 = (json.load(open(os.path.join(self.out, f'{slug(PAGES[0])}.f{k}.json'))) for k in (1, 2))
+        self.assertNotEqual(f1, {'earlier': True}); self.assertNotEqual(f1['worker'], f2['worker'])
+
+    def test_a_job_that_failed_gives_the_records_it_made_and_exits_1(self):
+        self.submit(); code, _, err = self.collect(state='failed', reason='no box is left', unreached={(PAGES[2], 1), (PAGES[2], 2)})
+        self.assertEqual(code, 1); self.assertIn('no box is left', err); self.assertEqual(self.written(), sorted(f'{slug(p)}.f{k}.json' for p in PAGES[:2] for k in (1, 2)))
 
     def test_a_manifest_whose_boxes_disagree_writes_no_record_and_names_the_mismatch(self):
         self.submit(); code, _, err = self.collect(consistent=False, mismatches=['edge: a11y-worker-13 is 141.0.1 and a11y-worker-14 is 142.0.2'])

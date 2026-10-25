@@ -40,20 +40,21 @@ def collect(out, job=None):
         fc.write_record(out, r.name, r.record)
         print(r.box, r.pass_number, r.page, r.record['status'], flush=True)
     print('done')
+    return fc.exit_code(manifest)
 
 
 def submit(a):
     with open(a.pages) as f: addresses = [p['url'] for p in json.load(f)['sample']]
     os.makedirs(a.out, exist_ok=True)
     todo = [address for address in addresses if not all(os.path.exists(os.path.join(a.out, file_name(address, k))) for k in range(1, PASSES + 1))]
-    if not todo: sys.exit('every page has both records in the output directory: nothing to capture')
+    if not todo: return print('every page has both records in the output directory: nothing to capture')
     job = fc.submit(todo, a.boxes, a.label, passes=PASSES, steps=STEPS, probes=PROBES, freeze=a.freeze)
     fc.write_pending(a.out, job, a.label, {address: {str(k): file_name(address, k) for k in range(1, PASSES + 1)} for address in todo})
-    if fc.follow(job, a.wait, f'python3 {os.path.abspath(__file__)} collect {a.out} {job}'): collect(a.out, job)
+    if fc.follow(job, a.wait, f'python3 {os.path.abspath(__file__)} collect {os.path.abspath(a.out)} {job}'): sys.exit(collect(a.out, job))
 
 
 def main(argv):
-    if argv[:1] == ['collect'] and 2 <= len(argv) <= 3: return collect(*argv[1:])
+    if argv[:1] == ['collect'] and 2 <= len(argv) <= 3: sys.exit(collect(*argv[1:]))
     if '--workers' in argv: sys.exit('--workers is gone: the fleet job service finds each box\'s address itself. Give --boxes <n|ready|name,name,...> (at least 2: the two captures of a page go to two boxes) and --label <the ticket key>.')
     ap = argparse.ArgumentParser(description=__doc__.split('\n\n')[0]); ap.add_argument('pages'); ap.add_argument('out')
     ap.add_argument('--boxes', required=True); ap.add_argument('--label', required=True); ap.add_argument('--freeze'); ap.add_argument('--wait', metavar='DURATION')
