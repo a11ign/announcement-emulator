@@ -11,7 +11,7 @@ const b64 = (text: string) => Buffer.from(text).toString("base64");
 const LABEL = "predicted NVDA speech: advisory, not a reading of NVDA, never evidence (a11ign ADR 0047, Decision 2)";
 
 /** A report of tests that have the two labelled attachments, with the run summary of a worker that read `snapshots` trees. */
-function report(tests: { title: string; data: Record<string, unknown>; text?: string }[], snapshots = 0) {
+function report(tests: { title: string; data: Record<string, unknown>; text?: string }[], snapshots = 0, chromium: string | null = null) {
   const dir = mkdtempSync(join(tmpdir(), "ae-check-"));
   const specs = tests.map(({ title, data, text }) => ({
     title,
@@ -22,7 +22,7 @@ function report(tests: { title: string; data: Record<string, unknown>; text?: st
   }));
   const reportPath = join(dir, "report.json"), run = join(dir, "run.json");
   writeFileSync(reportPath, JSON.stringify({ suites: [{ specs }] }));
-  writeFileSync(run, JSON.stringify({ workers: [{ snapshots, startup: { extensionUpAfterFirstTestStartedMs: null, desktopChildrenWhenUp: null } }] }));
+  writeFileSync(run, JSON.stringify({ workers: [{ snapshots, startup: { extensionUpAfterFirstTestStartedMs: null, desktopChildrenWhenUp: null, chromium } }] }));
   return { report: reportPath, run };
 }
 
@@ -80,4 +80,42 @@ test("with --lower-fidelity a run in which most tests have no page load fails", 
   const { report: path, run } = report([{ title: "a", data: { treeSource: "devtools" }, text: `PREDICTED NVDA SPEECH: ADVISORY, NOT A READING OF NVDA, NEVER EVIDENCE\n${lower}` }], 0);
   const result = check("--lower-fidelity", path, run);
   assert.equal(result.status, 1); assert.match(result.stderr, /fewer than three in five/);
+});
+
+const PREDICTION = "PREDICTED NVDA SPEECH: ADVISORY, NOT A READING OF NVDA, NEVER EVIDENCE\n";
+const lowerData = { treeSource: "devtools", predictedSpeech: speech, sweeps: sweep };
+const lowerOf = (agreement: string, chromium: string | null = "156.0.8078.4", line?: string) => report([{ title: "the cookie panel opens", data: { ...lowerData, flags: [{ flag: "silent-dialog" }], agreement: { line: line ?? agreement } },
+  text: `${PREDICTION}${lower}${agreement}\n` }], 5, chromium);
+
+test("with --expect-unmeasured a run in a build that is not listed passes when every test says exactly so, and the worker ran in that build", () => {
+  const line = "agreement not measured for Chromium 156.0.8078.4";
+  const { report: path, run } = lowerOf(line);
+  const result = check("--lower-fidelity", "--expect-unmeasured", "156.0.8078.4", path, run);
+  assert.equal(result.status, 0, result.stderr);
+  assert.match(result.stdout, /Chromium 156\.0\.8078\.4, agreement not measured/);
+});
+
+test("with --expect-unmeasured a test that says another build, another wording or carries the line only in its json fails", () => {
+  const other = lowerOf("agreement not measured for Chromium 153.0.8010.12");
+  assert.match(check("--lower-fidelity", "--expect-unmeasured", "156.0.8078.4", other.report, other.run).stderr, /wanted "agreement not measured for Chromium 156\.0\.8078\.4"/);
+  const measured = lowerOf("agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.1), devtools: 80.4% of 10 units, 2026-10-26 (x)");
+  assert.equal(check("--lower-fidelity", "--expect-unmeasured", "156.0.8078.4", measured.report, measured.run).status, 1);
+  const jsonOnly = report([{ title: "a", data: { ...lowerData, agreement: { line: "agreement not measured for Chromium 156.0.8078.4" } }, text: `${PREDICTION}${lower}` }], 5, "156.0.8078.4");
+  assert.match(check("--lower-fidelity", "--expect-unmeasured", "156.0.8078.4", jsonOnly.report, jsonOnly.run).stderr, /does not carry the agreement line/);
+});
+
+test("with --expect-unmeasured a worker that ran in another Chromium than the one wanted fails: the suite ran in a browser of the bundle's or the wrong Playwright's", () => {
+  const { report: path, run } = lowerOf("agreement not measured for Chromium 156.0.8078.4", "155.0.8059.84");
+  const result = check("--lower-fidelity", "--expect-unmeasured", "156.0.8078.4", path, run);
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /worker 0: ran in Chromium 155\.0\.8059\.84, wanted 156\.0\.8078\.4/);
+});
+
+test("with --expect-measured a listed build's sentence passes and an unmeasured one fails", () => {
+  const good = lowerOf("agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 80.4% of 1131 units, 2026-10-26 (middleware/results/x/)");
+  assert.equal(check("--lower-fidelity", "--expect-measured", "156.0.8078.4", good.report, good.run).status, 0);
+  const bad = lowerOf("agreement not measured for Chromium 156.0.8078.4");
+  const result = check("--lower-fidelity", "--expect-measured", "156.0.8078.4", bad.report, bad.run);
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /wanted a measured one for Chromium 156\.0\.8078\.4/);
 });

@@ -1,12 +1,12 @@
 #!/bin/sh
-# Build the runtime bundle for one platform (A11-208): everything the Playwright middleware needs to predict NVDA's speech, so that the user needs no Python, no NVDA and no browser of ours.
+# Build the runtime bundle for one platform (A11-208): everything the Playwright middleware needs to predict NVDA's speech, so that the user needs no Python and no NVDA. The browser is never ours: the middleware runs in the Chromium the team's Playwright installed (A11-230), so the bundle holds no browser and no browser library (check_no_browser.py fails on one).
 #
 #     middleware/bundle/build.sh <linux-x64|darwin-arm64> <output directory>
 #
 # It writes <output>/announcement-emulator-bundle-<platform>.tar.gz, its sha256, and <output>/pin-<platform>.json (what the package pins). The revisions are pins.env's. The archive is the same
 # bytes for the same inputs (mktar.py), so that CI can build it twice and compare.
 #
-# Needs: git, curl, tar, python3, base64, and sha256sum or shasum. On Linux also dpkg-deb and apt-get download (nothing is installed).
+# Needs: git, curl, tar, python3, base64, a C++ compiler, and sha256sum or shasum.
 set -eu
 PLATFORM="${1:?platform: linux-x64 or darwin-arm64}"
 OUT="${2:?output directory}"
@@ -20,8 +20,8 @@ trap 'rm -rf "${W:?}"' EXIT
 sha256() { if command -v sha256sum >/dev/null 2>&1; then sha256sum "$1" | cut -d' ' -f1; else shasum -a 256 "$1" | cut -d' ' -f1; fi; }
 
 case "$PLATFORM" in
-  linux-x64)    CFT=linux64;     CFT_DIR=chrome-linux64;     TRIPLE=x86_64-unknown-linux-gnu; PBS_SHA="$PBS_SHA256_LINUX_X64" ;;
-  darwin-arm64) CFT=mac-arm64;   CFT_DIR=chrome-mac-arm64;   TRIPLE=aarch64-apple-darwin;     PBS_SHA="$PBS_SHA256_DARWIN_ARM64" ;;
+  linux-x64)    TRIPLE=x86_64-unknown-linux-gnu; PBS_SHA="$PBS_SHA256_LINUX_X64" ;;
+  darwin-arm64) TRIPLE=aarch64-apple-darwin;     PBS_SHA="$PBS_SHA256_DARWIN_ARM64" ;;
   *) echo "no bundle for $PLATFORM" >&2; exit 2 ;;
 esac
 
@@ -35,30 +35,12 @@ git clone -q --filter=blob:none --no-checkout https://github.com/nvaccess/nvda-c
 git -C "$W/cldr" checkout -q "$CLDR_REV"
 mkdir -p "$B/cldr-src/locale/en"; cp "$W/cldr/locale/en/cldr.dic" "$B/cldr-src/locale/en/cldr.dic"
 cp -R "$B/nvda-src/source" "$B/nvda-appdir"; cp "$B/cldr-src/locale/en/cldr.dic" "$B/nvda-appdir/locale/en/cldr.dic"
-# 3. Chromium's Windows accessibility mapping, as read
+# 3. Chromium's Windows accessibility mapping, as read: the source files of milestone $CHROME (source text, not a browser)
 mkdir -p "$B/chromium-src"
 for p in $CHROMIUM_FILES; do
   curl -fsSL "https://chromium.googlesource.com/chromium/src/+/refs/tags/$CHROME/$p?format=TEXT" | base64 -d > "$B/chromium-src/$(basename "$p")"
 done
-# 4. the pinned browser
-mkdir -p "$B/chrome"
-curl -fsSL -o "$W/chrome.zip" "https://storage.googleapis.com/chrome-for-testing-public/$CHROME/$CFT/$CFT_DIR.zip"
-python3 - "$W/chrome.zip" "$B/chrome" <<'PY'      # python's zipfile does not keep the executable bits; they are set from the archive's own modes
-import os, sys, zipfile
-z = zipfile.ZipFile(sys.argv[1])
-for i in z.infolist():
-    z.extract(i, sys.argv[2])
-    mode = i.external_attr >> 16
-    if mode and not i.is_dir(): os.chmod(os.path.join(sys.argv[2], i.filename), mode & 0o777)
-PY
-# 5. the libraries Chrome needs that a minimal host lacks (Linux), unpacked without root
-if [ "$PLATFORM" = linux-x64 ]; then
-  mkdir -p "$W/debs" "$B/libs/root"
-  ( cd "$W/debs" && apt-get download libasound2t64 libatk-bridge2.0-0t64 libatk1.0-0t64 libatspi2.0-0t64 libavahi-client3 libavahi-common-data libavahi-common3 libcups2t64 libfontenc1 \
-      libgl1-mesa-dri libunwind8 libxdamage1 libxfont2 libxkbfile1 libxres1 x11-xkb-utils xkb-data xvfb )
-  for f in "$W"/debs/*.deb; do dpkg-deb -x "$f" "$B/libs/root"; done
-fi
-# 6. a self-contained Python, from python-build-standalone, refused unless it is the pinned build; the packages go straight into it, with no virtualenv
+# 4. a self-contained Python, from python-build-standalone, refused unless it is the pinned build; the packages go straight into it, with no virtualenv
 PBS_FILE="cpython-$PYTHON%2B$PBS_RELEASE-$TRIPLE-install_only.tar.gz"
 curl -fsSL -o "$W/python.tar.gz" "https://github.com/astral-sh/python-build-standalone/releases/download/$PBS_RELEASE/$PBS_FILE"
 [ "$(sha256 "$W/python.tar.gz")" = "$PBS_SHA" ] || { echo "python-build-standalone $PBS_RELEASE for $TRIPLE is not the pinned build" >&2; exit 1; }
@@ -74,7 +56,7 @@ CC="${CC:-cc}" CXX="${CXX:-c++}" "$B/python/bin/python3" -m pip install --quiet 
 find "$B/python/bin" -type f ! -name 'python*' ! -name 'pip*' -delete
 find "$B/python/lib" -path '*-info/RECORD' -delete
 find "$B/python/bin" -name 'pip*' -delete      # and pip's own scripts, for the same reason
-# 7. this repository's runtime: the emulator, the sweep it runs, the companion extension, and the middleware's runtime process
+# 5. this repository's runtime: the emulator, the sweep it runs, the companion extension, and the middleware's runtime process
 cd "$REPO"
 git ls-files --cached --others --exclude-standard -- 'emu/*.py' emu/tables.json 'emu/ext2' emu/langnames q1/ext-id.txt q2/stubs.py q3/sweep.py q3/livepage.py q3/shapes.py q3/nvda-fleet.ini middleware/runtime LICENSE \
   | grep -Ev '^emu/(t[0-9]+|run_cases|extract_cases|gen_tables|boot_(before|objects)[a-z_]*)\.py$|__pycache__|/test_[^/]*\.py$' | tar -cf - -T - | tar -xf - -C "$B"
@@ -84,14 +66,15 @@ cat > "$B/bundle.json" <<JSON
   "name": "announcement-emulator-bundle-$PLATFORM",
   "platform": "$PLATFORM",
   "nvda": { "release": "$NVDA_TAG", "commit": "$NVDA_REV" },
-  "chrome": "$CHROME",
+  "chromiumTables": "$CHROME",
   "python": "$PYTHON",
   "pythonBuild": "python-build-standalone $PBS_RELEASE",
   "commit": "$(git rev-parse HEAD)"
 }
 JSON
-# 8. the archive
+# 6. the archive
 FILE="announcement-emulator-bundle-$PLATFORM.tar.gz"
+python3 "$HERE/check_no_browser.py" "$B"      # a browser or a browser library in the bundle is a failed build
 python3 "$HERE/mktar.py" "$B" "$OUT/$FILE"
 SUM="$(sha256 "$OUT/$FILE")"
 echo "$SUM  $FILE" > "$OUT/$FILE.sha256"
