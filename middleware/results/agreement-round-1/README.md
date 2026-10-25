@@ -14,10 +14,10 @@ passive run. **A listed figure is this column**, with its population and the cei
 
 | Playwright | Chromium | reading | agreement | units | pages | the fleet against itself (ceiling) | second reading |
 |---|---|---|---|---|---|---|---|
-| 1.64.0, 1.64.1 | 156.0.8078.4 | extension, Linux | **75.0%** (785 of 1046) | 1046 | 5 of 6 | 99.9% (1045 of 1046) | 59.0% (764 of 1294) |
-| 1.64.0, 1.64.1 | 156.0.8078.4 | DevTools, Linux | **49.5%** (518 of 1046) | 1046 | 5 of 6 | 99.9% (1045 of 1046) | 57.9% (749 of 1294) |
-| 1.64.0, 1.64.1 | 156.0.8078.4 | DevTools, macOS | **72.2%** (755 of 1046) | 1046 | 5 of 6 | 99.9% (1045 of 1046) | 57.7% (746 of 1294) |
-| 1.64.0, 1.64.1 | 156.0.8078.4 | DevTools, ubuntu-latest (control, not listed) | **72.1%** (681 of 945) | 945 | 4 of 6 | 99.9% (944 of 945) | 56.8% (735 of 1294) |
+| 1.64.1 (1.64.0 not run) | 156.0.8078.4 | extension, Linux | **75.0%** (785 of 1046) | 1046 | 5 of 6 | 99.9% (1045 of 1046) | 59.0% (764 of 1294) |
+| 1.64.1 (1.64.0 not run) | 156.0.8078.4 | DevTools, Linux | **49.5%** (518 of 1046) | 1046 | 5 of 6 | 99.9% (1045 of 1046) | 57.9% (749 of 1294) |
+| 1.64.1 (1.64.0 not run) | 156.0.8078.4 | DevTools, macOS | **72.2%** (755 of 1046) | 1046 | 5 of 6 | 99.9% (1045 of 1046) | 57.7% (746 of 1294) |
+| 1.64.1 (1.64.0 not run) | 156.0.8078.4 | DevTools, ubuntu-latest (control, not listed) | **72.1%** (681 of 945) | 945 | 4 of 6 | 99.9% (944 of 945) | 56.8% (735 of 1294) |
 | 1.63.0 | 153.0.8010.12 | extension, Linux | **75.7%** (792 of 1046) | 1046 | 5 of 6 | 99.9% (1045 of 1046) | 47.9% (474 of 989) |
 | 1.63.0 | 153.0.8010.12 | DevTools, Linux | **48.7%** (509 of 1046) | 1046 | 5 of 6 | 99.9% (1045 of 1046) | 57.0% (738 of 1294) |
 | 1.63.0 | 153.0.8010.12 | DevTools, macOS | **44.6%** (421 of 945) | 945 | 4 of 6 | 99.9% (944 of 945) | 78.2% (1012 of 1294) |
@@ -25,12 +25,12 @@ passive run. **A listed figure is this column**, with its population and the cei
 
 * **The ceiling is the fleet against itself** on the same units: the first capture against the second. The fleet agrees with itself on 1045 of the 1046 units, so on these pages the oracle's own noise is not what separates
   the predictions from NVDA: **a prediction at 75% is 25 points below a ceiling of 99.9%**. A rate above the ceiling could not be told from the oracle's noise; none is near it.
-* **The population is five of the six pages** on this host, four on the CI runners. `www.w3.org/WAI/tutorials/images/functional/` is not comparable in any reading: the fleet's first capture of it landed on a console window
+* **The population is five of the six pages** on this host and on macOS at 156, four on `ubuntu-latest` and on macOS at 153. `www.w3.org/WAI/tutorials/images/functional/` is not comparable in any reading: the fleet's first capture of it landed on a console window
   (`boxes.md`). On the macOS and `ubuntu-latest` runners `www.mygov.scot/scottish-child-payment` was also not comparable (the runners got a page titled "document" with no headings or links) in the 156 `ubuntu-latest` row and in both 153 rows.
   Rates over different pages are not a difference between operating systems.
 * **Five pages is a small population.** The `caselaw.nationalarchives.gov.uk` page alone holds 176 of the extension's 261 misses at 156, and the Sheffield page another 58; the rate moves with a single page.
 * **The 49.5% and 48.7% of DevTools on this host are one page.** 320 of the 528 misses of `devtools-linux` at 156 are on `sheffield.ac.uk/postgraduate/taught/courses/2027`, and 261 of them are `conversion: node`: the DevTools tree has no node
-  for the unit (194 links, 23 headings, 14 form fields, 13 landmarks, 11 graphics, 7 lists). The same build read through DevTools on macOS and on `ubuntu-latest` has 59 misses on that page, and the extension on this host 58. At 153 all three DevTools readings
+  for the unit (193 links, 23 headings, 14 form fields, 13 landmarks, 11 graphics, 7 lists). The same build read through DevTools on macOS and on `ubuntu-latest` has 59 misses on that page, and the extension on this host 58. At 153 all three DevTools readings
   lose the same page the same way (320 misses on it each, 261 `conversion: node`; 44.6% on macOS and 44.3% on `ubuntu-latest` over four pages). The attribution is the rule's and is not changed; **why the DevTools source loses that page's nodes on this host at 156 and on every host at 153 is not investigated this round**
   and is the first thing the next round can look at. It is a finding about one page and one tree source, listed as measured.
 
@@ -44,11 +44,11 @@ passive run. **A listed figure is this column**, with its population and the cei
 | www.w3.org/WAI/tutorials/forms/grouping/ | 14 | 10 | 17 |
 | www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing | 6 | 6 | 5 |
 
-Counts of misses (156.0.8078.4). The misses are not spread over the pages: **the two pages that open a cookie banner hold nine in ten of the extension's misses** (176 + 58 of 261). On both, the unit the fleet read first is the
-page's own first link (caselaw: "Home Understanding case law Search and browse …"; Sheffield: "Skip to main content, link"), and the passive browser's first stop is the banner's button ("Accept cookies, button" and "Close Cookie Control, button").
-The fleet's Edge (an adopted profile) evidently read the page without the banner, and Playwright's clean Chromium shows it. Stops are compared by their order, so one extra stop at the start misaligns the rest, and the form-field and link units
-that follow. The closed cause list has no cause for "the passive page was in another state", so these are `emulator` (the rule's: both tree sources miss the unit). That label is true of the rule and misleading for the finding: **the next round's first
-question is the consent banner, and whether the middleware should predict a page with it dismissed**. Nothing was changed against these pages (the held-out discipline).
+Counts of misses (156.0.8078.4). The misses are not spread over the pages: **the caselaw and Sheffield pages hold nine in ten of the extension's misses** (176 + 58 of 261). On both, the fleet's first stop differs from the passive browser's: the fleet's first stop is
+the page's own first control (caselaw: a "Home Understanding case law Search and browse …" section; Sheffield: "Skip to main content, link"), and the passive browser's first stop is a cookie banner's button ("Accept cookies, button" and "Close Cookie Control, button").
+Other held-out pages also show cookie controls (nidirect's and mygov's), and the fleet's Sheffield read has a "Cookie preferences" region, so **whether the fleet's browser had the banner open or dismissed is not in the data**. A stop that the passive side has and the fleet does not
+(or the reverse) can shift the stops after it; the misses show many `no counterpart` stops on caselaw rather than a shifted string, so the shift is a hypothesis and not shown. The closed cause list has no cause for "the passive page was in another state", so these are `emulator`
+(the rule's: both tree sources miss the unit). That label is true of the rule and may mislead for the finding: **the next round's first question is the consent banner**, and whether the middleware should predict a page with it dismissed. Nothing was changed against these pages (the held-out discipline).
 
 By channel (156.0.8078.4):
 
@@ -87,20 +87,20 @@ ceilings 94.8% and 99.9%), and they are the like-for-like comparison with A11-23
 
 | Playwright | Chromium | reading | agreement | units | pages | ceiling | A11-230's figure (same pages) | movement | second reading |
 |---|---|---|---|---|---|---|---|---|---|
-| 1.64.0, 1.64.1 | 156.0.8078.4 | extension, Linux | **80.8%** (920 of 1138) | 1138 | 6 of 6 | 94.8% | 81.2% (871 of 1072) | -0.4 points: **within** | 81.6% (928 of 1137) |
-| 1.64.0, 1.64.1 | 156.0.8078.4 | DevTools, Linux | **84.6%** (963 of 1138) | 1138 | 6 of 6 | 94.8% | 80.2% (860 of 1072) | +4.4 points: **up** | 76.6% (871 of 1137) |
-| 1.64.0, 1.64.1 | 156.0.8078.4 | DevTools, macOS | **84.4%** (866 of 1026) | 1026 | 5 of 6 | 94.2% | 85.1% (817 of 960) | -0.7 points: **down** | 83.7% (858 of 1025) |
-| 1.64.0, 1.64.1 | 156.0.8078.4 | DevTools, ubuntu-latest (control, not listed) | **85.1%** (873 of 1026) | 1026 | 5 of 6 | 94.2% | 84.0% (806 of 960) | +1.1 points: **up** | 83.6% (857 of 1025) |
+| 1.64.1 (1.64.0 not run) | 156.0.8078.4 | extension, Linux | **80.8%** (920 of 1138) | 1138 | 6 of 6 | 94.8% | 81.2% (871 of 1072) | -0.4 points: **within** | 81.6% (928 of 1137) |
+| 1.64.1 (1.64.0 not run) | 156.0.8078.4 | DevTools, Linux | **84.6%** (963 of 1138) | 1138 | 6 of 6 | 94.8% | 80.2% (860 of 1072) | +4.4 points: **up** | 76.6% (871 of 1137) |
+| 1.64.1 (1.64.0 not run) | 156.0.8078.4 | DevTools, macOS | **84.4%** (866 of 1026) | 1026 | 5 of 6 | 94.2% | 85.1% (817 of 960) | -0.7 points: **down** | 83.7% (858 of 1025) |
+| 1.64.1 (1.64.0 not run) | 156.0.8078.4 | DevTools, ubuntu-latest (control, not listed) | **85.1%** (873 of 1026) | 1026 | 5 of 6 | 94.2% | 84.0% (806 of 960) | +1.1 points: **up** | 83.6% (857 of 1025) |
 | 1.63.0 | 153.0.8010.12 | extension, Linux | **79.3%** (902 of 1138) | 1138 | 6 of 6 | 94.8% | 83.5% (895 of 1072) | -4.2 points: **down** | 82.1% (933 of 1137) |
 | 1.63.0 | 153.0.8010.12 | DevTools, Linux | **84.3%** (959 of 1138) | 1138 | 6 of 6 | 94.8% | 81.2% (871 of 1072) | +3.0 points: **up** | 83.3% (947 of 1137) |
 | 1.63.0 | 153.0.8010.12 | DevTools, macOS | **86.8%** (891 of 1026) | 1026 | 5 of 6 | 94.2% | 84.0% (806 of 960) | +2.9 points: **up** | 85.0% (871 of 1025) |
 | 1.63.0 | 153.0.8010.12 | DevTools, ubuntu-latest (control, not listed) | **86.4%** (886 of 1026) | 1026 | 5 of 6 | 94.2% | 80.9% (777 of 960) | +5.4 points: **up** | 86.5% (887 of 1025) |
 
-* **Up on DevTools**: +4.4 and +3.0 points on Linux, +2.9 (macOS, 153), +1.1 and +5.4 (`ubuntu-latest` control). These are the readings step 1 (a11ign/announcement-emulator#11: focus by DOM node, "same page", frames, the report's rates) was meant to move.
+* **Up on DevTools** on Linux (+4.4, +3.0), on macOS at 153 (+2.9) and on `ubuntu-latest` (+1.1, +5.4); **down on macOS at 156** (-0.7). These are the readings step 1 (a11ign/announcement-emulator#11: focus by DOM node, "same page", frames, the report's rates) was meant to move.
 * **Within** on the extension at 156 (-0.4); **down** on the extension at 153 (-4.2) and on macOS at 156 (-0.7, 0.1 outside the band). Of the extension's 236 misses at 153, 83 are `tree`, and 75 of those are `tree: node` ("nothing predicted from the extension tree; DevTools predicted it"), 74 of them on `tfl.gov.uk`. Not investigated further this round.
 * **The populations differ from A11-230's**: its Linux rows compared five pages (1072 units) and its macOS rows four (960); this round compares six (1138) and five (1026) because `check-for-flooding.service.gov.uk` was comparable this time. A movement is therefore a movement over
   different units, as well as over a different emulator; the shape rows in `round.txt` compare like shapes.
-* The `NAME + ROLE + STATE + STATE + POSITION` shape, which A11-230 printed at 8.6%, reads 28.6% to 48.6%; the `NAME + ROLE + LEVEL` shape (headings) is unmoved at about 53% and is the commonest fitted-page shape that the closed list calls `emulator` (38 misses).
+* The `NAME + ROLE + STATE + STATE + POSITION` shape, which A11-230 printed at 8.6%, reads 28.6% to 48.6%; the `NAME + ROLE + LEVEL` shape (headings) is within the band on five readings and moves 1.9 points down on the 153 extension and 0.6 up on macOS, at about 53% throughout and is the commonest fitted-page shape that the closed list calls `emulator` (38 misses).
 
 By channel (156.0.8078.4, fitted):
 
@@ -193,7 +193,7 @@ A shape is low confidence when the upper bound of the Wilson 95% interval of its
 | NAME + ROLE + NAME + STATE + STATE | 0 / 2 = 0.0% | 100.0% | emulator 2 |
 | ROLE + COUNT + NAME + NAME + NAME + ROLE | 0 / 2 = 0.0% | 100.0% | emulator 2 |
 
-13 of 95 shapes are low confidence (held-out, 156.0.8078.4, DevTools, macOS); the most misses first:
+13 of 95 shapes are low confidence (held-out, 156.0.8078.4, DevTools, macOS); the twelve with the most units, most misses first:
 
 | shape | agreed / units | the fleet against itself | misses by cause |
 |---|---|---|---|
@@ -221,7 +221,7 @@ reading has two pages without a second passive reading (989 units), and DevTools
 ## What this does and does not say
 
 * It says how often the middleware's predicted speech equals the fleet's NVDA, per unit, on these pages, on 2026-10-25, with Chromium 156.0.8078.4 and 153.0.8010.12. It does not say what a page you have not measured gets.
-* Five held-out pages and a cookie banner on two of them dominate the figure; a second set of six would move it. The next round measures another six and prints both.
+* Five held-out pages, and a difference in the first stop on two of them, dominate the figure; a second set of six would move it. The next round measures another six and prints both.
 * The fleet runs one Edge version, 156.0.4314.42, on all fifteen workers (`/health`, read after the captures); the captures are on three of them, and three workers are off the group by Windows build or worker code and were left out (`boxes.md`).
 * The extension readings are kept as the plan has them; the chairman's later A11-229 decision to drop the extension is held pending step 3 there.
 * The macOS workflow was started by committing `ci-run.txt`, as A11-229 and A11-230 did; the first push also started A11-230's own workflow on this branch, which was cancelled.
