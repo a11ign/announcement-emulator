@@ -120,9 +120,8 @@ after each change) and through the DevTools port (the page's own focus moves, ke
 | **Total unpacked** | **838.0** | **420.4** | **40.3** | **224.7** | **26.1** |
 | **Archive** | 298.0 (gz) | 111.7 (gz) | **10.2** (xz) | 63.2 (gz) | **7.5** (xz) |
 
-The same bundle as gzip, xz and zstd (archive MB; median of three unpacks with the host's `tar -xf`): linux-x64 14.9 (0.28 s), **10.2 (0.69 s)**, 11.3 (0.09 s); darwin-arm64 10.3 (0.12 s), **7.5 (0.42 s)**, 8.3 (0.10 s).
-The interpreter is 31.6 MB of the 40.3 on linux: python-build-standalone links OpenSSL, SQLite and the rest into it, and the stripped build still holds its symbol table (`strip --strip-unneeded` on it leaves an interpreter that fails to start with a symbol lookup error). Two builds of each platform's bundle are the same bytes
-(CI run 40188115211).
+The same bundle as gzip, xz and zstd (archive MB; median of three unpacks with the host's `tar -xf`): linux-x64 14.9 (0.28 s), **10.2 (0.65 s)**, 11.3 (0.09 s); darwin-arm64 10.3 (0.26 s), **7.5 (0.57 s)**, 8.3 (0.13 s).
+The interpreter is 31.6 MB of the 40.3 on linux: python-build-standalone links OpenSSL, SQLite and the rest into it, and the stripped build still holds its symbol table (`strip --strip-unneeded` on it leaves an interpreter that fails to start with a symbol lookup error). Two builds of each platform's bundle are the same bytes (CI checks both).
 
 **It is traced, not guessed.** `bundle/keep/<platform>.txt` lists every file of `python/` and `nvda-src/` that a run read. `bundle/trace.sh <platform>` makes it: it runs every recorded session under `runtime/fixtures/`
 (with sweeps, without, and with `--report-focus`) and the sample suite's offline project live with each tree source, in the unpruned layout, with `runtime/import_trace.py` on (`ANNOUNCEMENT_EMULATOR_IMPORT_TRACE=<file>`
