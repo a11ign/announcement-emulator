@@ -1,0 +1,170 @@
+[
+ {
+  "file": "check-for-flooding-service-gov-uk-river-and-sea-levels-02ac4374.f1.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-24T20:49:41.095Z",
+  "status": 200,
+  "transcriptLines": 30,
+  "focusStops": 24,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "check-for-flooding-service-gov-uk-river-and-sea-levels-02ac4374.f2.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-24T20:49:57.770Z",
+  "status": 200,
+  "transcriptLines": 37,
+  "focusStops": 27,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "design-system-service-gov-uk-components-date-input-1b727a81.f1.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-24T21:09:27.880Z",
+  "status": 200,
+  "transcriptLines": 269,
+  "focusStops": 122,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "design-system-service-gov-uk-components-date-input-1b727a81.f2.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-24T21:05:31.678Z",
+  "status": 200,
+  "transcriptLines": 262,
+  "focusStops": 119,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "design-system-service-gov-uk-components-tabs-0a2a18f0.f1.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-24T20:55:07.286Z",
+  "status": 200,
+  "transcriptLines": 122,
+  "focusStops": 90,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "design-system-service-gov-uk-components-tabs-0a2a18f0.f2.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-24T20:54:42.926Z",
+  "status": 200,
+  "transcriptLines": 115,
+  "focusStops": 87,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "find-and-update-company-information-service-gov-uk-company-00000006-081efa96.f1.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-24T20:53:04.435Z",
+  "status": 200,
+  "transcriptLines": 46,
+  "focusStops": 29,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "find-and-update-company-information-service-gov-uk-company-00000006-081efa96.f2.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-24T20:49:57.337Z",
+  "status": 200,
+  "transcriptLines": 46,
+  "focusStops": 29,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "service-manual-nhs-uk-design-system-components-table-1332f01c.f1.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-24T21:04:10.554Z",
+  "status": 200,
+  "transcriptLines": 166,
+  "focusStops": 123,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "service-manual-nhs-uk-design-system-components-table-1332f01c.f2.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-24T21:02:21.329Z",
+  "status": 200,
+  "transcriptLines": 174,
+  "focusStops": 125,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "tfl-gov-uk-plan-a-journey-0f85db50.f1.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-24T20:58:39.417Z",
+  "status": 200,
+  "transcriptLines": 79,
+  "focusStops": 8,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "tfl-gov-uk-plan-a-journey-0f85db50.f2.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-24T20:56:59.124Z",
+  "status": 200,
+  "transcriptLines": 79,
+  "focusStops": 8,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ }
+]

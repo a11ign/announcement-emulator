@@ -1,0 +1,2900 @@
+{
+ "status": {
+  "https://check-for-flooding.service.gov.uk/river-and-sea-levels": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "landmarks",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    }
+   ]
+  },
+  "https://find-and-update.company-information.service.gov.uk/company/00000006": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "lists",
+     "fleet": false,
+     "passive": true
+    }
+   ]
+  },
+  "https://design-system.service.gov.uk/components/tabs/": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "title",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "landmarks",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "graphics",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "lists",
+     "fleet": false,
+     "passive": true
+    }
+   ]
+  },
+  "https://tfl.gov.uk/plan-a-journey/": {
+   "status": "not comparable",
+   "problems": {
+    "title": [
+     "plan a journey transport for london",
+     "just a moment"
+    ],
+    "heading": [
+     6,
+     2
+    ],
+    "link": [
+     41,
+     0
+    ]
+   }
+  },
+  "https://service-manual.nhs.uk/design-system/components/table": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "lists",
+     "fleet": false,
+     "passive": true
+    }
+   ]
+  },
+  "https://design-system.service.gov.uk/components/date-input/": {
+   "status": "comparable",
+   "unstable": [
+    {
+     "channel": "title",
+     "fleet": true,
+     "passive": false
+    },
+    {
+     "channel": "stops",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "headings",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "landmarks",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "formFields",
+     "fleet": false,
+     "passive": false
+    },
+    {
+     "channel": "graphics",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "links",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "lists",
+     "fleet": false,
+     "passive": true
+    },
+    {
+     "channel": "frames",
+     "fleet": true,
+     "passive": false
+    }
+   ]
+  }
+ },
+ "units": {
+  "field": [
+   2,
+   2
+  ],
+  "formFields": [
+   85,
+   87
+  ],
+  "frames": [
+   20,
+   20
+  ],
+  "graphics": [
+   4,
+   4
+  ],
+  "headings": [
+   59,
+   100
+  ],
+  "landmarks": [
+   33,
+   36
+  ],
+  "links": [
+   310,
+   319
+  ],
+  "lists": [
+   51,
+   53
+  ],
+  "stops": [
+   301,
+   388
+  ],
+  "title": [
+   3,
+   5
+  ],
+  "typed": [
+   12,
+   12
+  ]
+ },
+ "misses": [
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "stops",
+   "i": 21,
+   "expected": "GOV dot UK, link, focused, linked",
+   "predicted": "Accept analytics cookies, button, focused",
+   "measureClass": "unexplained",
+   "cause": "page moved",
+   "reason": "the second fleet capture does not have this unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "stops",
+   "i": 22,
+   "expected": "Check for flooding, link, focused, linked",
+   "predicted": "Reject analytics cookies, button, focused",
+   "measureClass": "unexplained",
+   "cause": "page moved",
+   "reason": "the second fleet capture does not have this unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "stops",
+   "i": 23,
+   "expected": "feedback, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "page moved",
+   "reason": "the second fleet capture does not have this unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "channel": "landmarks",
+   "i": 2,
+   "expected": "section, Search river, town or postcode",
+   "predicted": "section, clickable, Search river, town or postcode",
+   "measureClass": "unexplained",
+   "cause": "conversion: clickable",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "stops",
+   "i": 6,
+   "expected": "Companies House does not check the accuracy of the information filed (link opens a new window), link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "stops",
+   "i": 10,
+   "expected": "Advanced company search Link opens in new window, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "stops",
+   "i": 17,
+   "expected": "Tell us what you think of this service (link opens a new window), link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "stops",
+   "i": 18,
+   "expected": "Is there anything wrong with this page? (link opens a new window), link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "channel": "landmarks",
+   "i": 0,
+   "expected": "main landmark, search landmark, Search for a company or officer",
+   "predicted": "main landmark, search landmark, clickable, Search for a company or officer",
+   "measureClass": "unexplained",
+   "cause": "conversion: clickable",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "title",
+   "i": 0,
+   "expected": "tabs gov uk design system",
+   "predicted": "tabs gov uk design system document",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 2,
+   "expected": "View cookies, link, focused, visited, linked",
+   "predicted": "View cookies, link, focused, linked",
+   "measureClass": "history",
+   "cause": "history",
+   "reason": "",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 3,
+   "expected": "Skip to main content, link, focused, linked, same page",
+   "predicted": "Skip to main content, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "page moved",
+   "reason": "the second fleet capture does not have this unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 43,
+   "expected": "Tabs, link, focused, linked, same page, current page",
+   "predicted": "Tabs, link, focused, linked, current page",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 52,
+   "expected": "Components, link, focused, linked",
+   "predicted": "Components, link, focused, linked, current",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 53,
+   "expected": "Open this example in a new tab : tabs, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 55,
+   "expected": "HTML, tab, focused, collapsed, 1 of 2",
+   "predicted": "GOV dot UK Design System team, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 56,
+   "expected": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 59,
+   "expected": "Nunjucks, link, focused, linked",
+   "predicted": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 61,
+   "expected": "Open this example in a new tab : tabs second, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 63,
+   "expected": "HTML, tab, focused, expanded, 1 of 2",
+   "predicted": "GOV dot UK Design System team, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 64,
+   "expected": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 65,
+   "expected": "Copy code, button, focused",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 66,
+   "expected": "less div class equals govuk-tabs data-module equals govuk-tabs greater less h 2 class equals govuk-tabs title greater Contents less slash h 2 greater less ul class equals govuk-tabs list greater less li class equals govuk-tabs list-item govuk-tabs list-item--selected greater less a class equals govuk-tabs tab href equals number past-day greater Past day less slash a greater less slash li greater less li class equals govuk-tabs list-item greater less a class equals govuk-tabs tab href equals number past-week greater Past week less slash a greater less slash li greater less li class equals govuk-tabs list-item greater less a class, text frame, focused",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 81,
+   "expected": "Cookies, link, focused, visited, linked",
+   "predicted": "Cookies, link, focused, linked",
+   "measureClass": "history",
+   "cause": "history",
+   "reason": "",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "stops",
+   "i": 89,
+   "expected": "View cookies, link, focused, visited, linked",
+   "predicted": "View cookies, link, focused, linked",
+   "measureClass": "history",
+   "cause": "history",
+   "reason": "",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 0,
+   "expected": "Past day, heading, level 2",
+   "predicted": "Support links, heading, level 2",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 9,
+   "expected": "Tabs second example, frame, Past day, property page, Past day, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 10,
+   "expected": "The current tab gets stored in the URL, heading, level 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 11,
+   "expected": "Use clear labels, heading, level 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 12,
+   "expected": "Order the tabs according to user needs, heading, level 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 13,
+   "expected": "Do not disable tabs, heading, level 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 14,
+   "expected": "Avoid tabs that wrap over more than one line, heading, level 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 15,
+   "expected": "Add headings to tab content, heading, level 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 16,
+   "expected": "Research and testing, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 17,
+   "expected": "Next steps, heading, level 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 18,
+   "expected": "Recent changes, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 19,
+   "expected": "Help improve this component, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 20,
+   "expected": "Need help?, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "headings",
+   "i": 21,
+   "expected": "content info landmark, Support links, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "formFields",
+   "i": 13,
+   "expected": "HTML, tab, expanded",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "formFields",
+   "i": 14,
+   "expected": "Copy code, button",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "links",
+   "i": 1,
+   "expected": "Cookies on GOV dot UK Design System, region, View cookies, visited, link",
+   "predicted": "Cookies on GOV dot UK Design System, region, View cookies, link",
+   "measureClass": "history",
+   "cause": "history",
+   "reason": "",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "links",
+   "i": 54,
+   "expected": "table, with 6 rows and 3 columns, row 2, Changed, column 2, GOV dot UK Frontend v 5.5.0, link",
+   "predicted": "table, with 6 rows and 3 columns, row 2, column 2, GOV dot UK Frontend v 5.5.0, link",
+   "measureClass": "unexplained",
+   "cause": "conversion: name",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "links",
+   "i": 56,
+   "expected": "row 6, Description, column 3, Accordion, link",
+   "predicted": "row 6, column 3, Accordion, link",
+   "measureClass": "unexplained",
+   "cause": "conversion: name",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "links",
+   "i": 65,
+   "expected": "Cookies, visited, link",
+   "predicted": "Cookies, link",
+   "measureClass": "history",
+   "cause": "history",
+   "reason": "",
+   "read": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/tabs/",
+   "channel": "lists",
+   "i": 11,
+   "expected": "content info landmark, list, with 5 items, Accessibility statement, link, Sitemap, link, Cookies, visited, link, Privacy, link, Contact the team",
+   "predicted": "content info landmark, list, with 5 items, Accessibility statement, link, Sitemap, link, Cookies, link, Privacy, link, Contact the team",
+   "measureClass": "history",
+   "cause": "history",
+   "reason": "",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 9,
+   "expected": "Design system, link, focused, linked",
+   "predicted": "Design system, link, focused, linked, current",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 61,
+   "expected": "Open this example in a new tab : table basic, link, focused, linked",
+   "predicted": "Open this example in a new tab : table striped, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 62,
+   "expected": "Standalone example – NHS digital service manual, document, focused, read only, off screen, ￼",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 63,
+   "expected": "HTML code for table basic, tab, focused, selected, 1 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 64,
+   "expected": "Nunjucks code for table basic, tab, focused, selected, 2 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 65,
+   "expected": "Open this example in a new tab : table 3 column, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 66,
+   "expected": "Standalone example – NHS digital service manual, document, focused, read only, ￼",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 67,
+   "expected": "HTML code for table 3 column, tab, focused, selected, 1 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 68,
+   "expected": "Nunjucks code for table 3 column, tab, focused, selected, 2 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 70,
+   "expected": "Open this example in a new tab : table compact, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 71,
+   "expected": "Standalone example – NHS digital service manual, document, focused, read only, ￼",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 72,
+   "expected": "HTML code for table compact, tab, focused, selected, 1 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 73,
+   "expected": "Nunjucks code for table compact, tab, focused, selected, 2 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 75,
+   "expected": "Standalone example – NHS digital service manual, document, focused, read only, ￼",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 76,
+   "expected": "HTML code for table striped, tab, focused, selected, 1 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 77,
+   "expected": "Nunjucks code for table striped, tab, focused, selected, 2 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 78,
+   "expected": "Open this example in a new tab : table responsive, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 79,
+   "expected": "Standalone example – NHS digital service manual, document, focused, read only, ￼",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 80,
+   "expected": "HTML code for table responsive, tab, focused, selected, 1 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 81,
+   "expected": "Nunjucks code for table responsive, tab, focused, selected, 2 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 83,
+   "expected": "Open this example in a new tab : table scrolling, link, focused, linked",
+   "predicted": "section, focused",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 84,
+   "expected": "Childhood vaccination coverage by nation, region, focused",
+   "predicted": "Open this example in a new tab : table striped, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 85,
+   "expected": "HTML code for table scrolling, tab, focused, selected, 1 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 86,
+   "expected": "Nunjucks code for table scrolling, tab, focused, selected, 2 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 87,
+   "expected": "less div class equals nhsuk-scroll data-module equals nhsuk-scroll greater less div class equals nhsuk-scroll content role equals region aria-labelledby equals table-caption-id greater, text frame, focused",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 88,
+   "expected": "Open this example in a new tab : table sortable, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 95,
+   "expected": "HTML code for table sortable, tab, focused, selected, 1 of 2",
+   "predicted": "Open this example in a new tab : table striped, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 96,
+   "expected": "Nunjucks code for table sortable, tab, focused, selected, 2 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 98,
+   "expected": "Open this example in a new tab : table sortable custom, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 104,
+   "expected": "HTML code for table sortable custom, tab, focused, selected, 1 of 2",
+   "predicted": "Open this example in a new tab : table striped, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 105,
+   "expected": "Nunjucks code for table sortable custom, tab, focused, selected, 2 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "stops",
+   "i": 106,
+   "expected": "Open this example in a new tab : table sortable server side last login descending, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 12,
+   "expected": "Responsive table, heading, level 2",
+   "predicted": "Cookies on the NHS digital service manual, heading, level 2",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 13,
+   "expected": "When not to use a responsive table, heading, level 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 14,
+   "expected": "Scrolling table, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 15,
+   "expected": "Sortable table, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 16,
+   "expected": "When to use a sortable table, heading, level 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 17,
+   "expected": "How to use a sortable table, heading, level 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 18,
+   "expected": "Sort data on 1 page, heading, level 4",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 19,
+   "expected": "Sorting columns, heading, level 5",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 20,
+   "expected": "Sorting numbers, heading, level 5",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 21,
+   "expected": "Overriding the default sort order, heading, level 5",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 22,
+   "expected": "Sort more than 1 page of data, heading, level 4",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 23,
+   "expected": "Consider search and filter, heading, level 4",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 24,
+   "expected": "Using word-breaks in a table, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 25,
+   "expected": "Displaying missing data, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 26,
+   "expected": "Tables on dark backgrounds, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 27,
+   "expected": "Accessibility, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 28,
+   "expected": "Table captions, heading, level 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 29,
+   "expected": "Table headers, heading, level 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 30,
+   "expected": "Sortable tables, heading, level 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 31,
+   "expected": "Research, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 32,
+   "expected": "Basic table, heading, level 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 33,
+   "expected": "Responsive table, heading, level 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 34,
+   "expected": "Sortable table, heading, level 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 35,
+   "expected": "Table in a card, heading, level 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 36,
+   "expected": "Help us improve this guidance, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 37,
+   "expected": "Updates to this page, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "headings",
+   "i": 38,
+   "expected": "content info landmark, Support links, heading, level 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "LEVEL"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "landmarks",
+   "i": 5,
+   "expected": "search landmark, section, Search the NHS digital service manual",
+   "predicted": "search landmark, section, clickable, Search the NHS digital service manual",
+   "measureClass": "unexplained",
+   "cause": "conversion: clickable",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": true
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "links",
+   "i": 13,
+   "expected": "Users (Column headers are sortable), table, with 11 rows and 3 columns, row 11, Action, column 3, Change details for Reuben Tate, link",
+   "predicted": "Users (Column headers are sortable), table, with 11 rows and 3 columns, row 11, column 3, Change details for Reuben Tate, link",
+   "measureClass": "unexplained",
+   "cause": "conversion: name",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://service-manual.nhs.uk/design-system/components/table",
+   "channel": "links",
+   "i": 115,
+   "expected": "row 2, Action, column 3, Change details for Ro Nkosi, link",
+   "predicted": "row 2, column 3, Change details for Ro Nkosi, link",
+   "measureClass": "unexplained",
+   "cause": "conversion: name",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "title",
+   "i": 0,
+   "expected": "date input gov uk design system",
+   "predicted": "date input gov uk design system document",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 2,
+   "expected": "View cookies, link, focused, visited, linked",
+   "predicted": "View cookies, link, focused, linked",
+   "measureClass": "history",
+   "cause": "history",
+   "reason": "",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 3,
+   "expected": "Skip to main content, link, focused, linked, same page",
+   "predicted": "Skip to main content, link, focused, linked",
+   "measureClass": "unexplained",
+   "cause": "page moved",
+   "reason": "the second fleet capture does not have this unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 19,
+   "expected": "Date input, link, focused, linked, same page, current page",
+   "predicted": "Date input, link, focused, linked, current page",
+   "measureClass": "unexplained",
+   "cause": "conversion: name",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 52,
+   "expected": "Components, link, focused, linked",
+   "predicted": "Components, link, focused, linked, current",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 53,
+   "expected": "Open this example in a new tab : date input, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 57,
+   "expected": "HTML, tab, focused, collapsed, 1 of 2",
+   "predicted": "section, focused",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 58,
+   "expected": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 62,
+   "expected": "Nunjucks, link, focused, linked",
+   "predicted": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 64,
+   "expected": "Open this example in a new tab : date input second, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 68,
+   "expected": "HTML, tab, focused, collapsed, 1 of 2",
+   "predicted": "section, focused",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 69,
+   "expected": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 71,
+   "expected": "Open this example in a new tab : date input without a heading – date input second, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 75,
+   "expected": "HTML, tab, focused, collapsed, 1 of 2",
+   "predicted": "section, focused",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 76,
+   "expected": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 77,
+   "expected": "Open this example in a new tab : date input to ask for date of birth – date input, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 81,
+   "expected": "HTML, tab, focused, expanded, 1 of 2",
+   "predicted": "section, focused",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 82,
+   "expected": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 84,
+   "expected": "less div class equals govuk-form-group greater less fieldset class equals govuk-fieldset role equals group aria-describedby equals dob-hint greater less legend class equals govuk-fieldset legend govuk-fieldset legend--l greater less h 1 class equals govuk-fieldset heading greater What is your date of birth? less slash h 1 greater less slash legend greater less div id equals dob-hint class equals govuk-hint greater For example, 31 3 1980 less slash div greater less div class equals govuk-date-input id equals dob greater less div class equals govuk-date-input item greater less div class equals govuk-form-group greater less label class equals govuk-label govuk-date-input label for, text frame, focused",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 86,
+   "expected": "Open this example in a new tab : date input with errors – date input, link, focused, linked",
+   "predicted": "Day, edit, focused, blank",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 87,
+   "expected": "Day, edit, focused, selected 6",
+   "predicted": "Month, edit, focused, blank",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 88,
+   "expected": "Month, edit, focused, selected 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 89,
+   "expected": "Year, edit, focused, selected 2076",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 90,
+   "expected": "HTML, tab, focused, collapsed, 1 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 91,
+   "expected": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 92,
+   "expected": "Open this example in a new tab : dates with errors – date input, link, focused, linked",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 93,
+   "expected": "Day, edit, focused, selected 6",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 94,
+   "expected": "Month, edit, focused, selected 3",
+   "predicted": null,
+   "measureClass": "no counterpart",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "NAME"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 96,
+   "expected": "HTML, tab, focused, expanded, 1 of 2",
+   "predicted": "section, focused",
+   "measureClass": "unexplained",
+   "cause": "emulator",
+   "reason": "both tree sources miss the unit",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 97,
+   "expected": "Nunjucks, tab, focused, collapsed, 2 of 2",
+   "predicted": "Day, edit, focused, blank",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "POSITION"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 98,
+   "expected": "Copy code, button, focused",
+   "predicted": "Month, edit, focused, blank",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 99,
+   "expected": "less div class equals govuk-form-group govuk-form-group--error greater less fieldset class equals govuk-fieldset role equals group aria-describedby equals passport-issued-hint passport-issued-error greater less legend class equals govuk-fieldset legend govuk-fieldset legend--l greater less h 1 class equals govuk-fieldset heading greater When was your passport issued? less slash h 1 greater less slash legend greater less div id equals passport-issued-hint class equals govuk-hint greater For example, 27 3 2007 less slash div greater less p id equals passport-issued-error class equals govuk-error-message greater less span class equals govuk-visually-hidden greater Error: less slash span greater The date your passport was issued must include a year less slash p greater less div class equals govuk-date-input id, text frame, focused",
+   "predicted": "Year, edit, focused, blank",
+   "measureClass": "unexplained",
+   "cause": "network/runner",
+   "reason": "the control predicts what this host does not",
+   "read": false,
+   "shape": [
+    "NAME",
+    "NAME",
+    "ROLE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 113,
+   "expected": "Cookies, link, focused, visited, linked",
+   "predicted": "Cookies, link, focused, linked",
+   "measureClass": "history",
+   "cause": "history",
+   "reason": "",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "stops",
+   "i": 121,
+   "expected": "View cookies, link, focused, visited, linked",
+   "predicted": "View cookies, link, focused, linked",
+   "measureClass": "history",
+   "cause": "history",
+   "reason": "",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "STATE",
+    "STATE",
+    "STATE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "links",
+   "i": 1,
+   "expected": "Cookies on GOV dot UK Design System, region, View cookies, visited, link",
+   "predicted": "Cookies on GOV dot UK Design System, region, View cookies, link",
+   "measureClass": "history",
+   "cause": "history",
+   "reason": "",
+   "read": false,
+   "shape": [
+    "NAME",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "links",
+   "i": 61,
+   "expected": "table, with 6 rows and 3 columns, row 2, Changed, column 2, GOV dot UK Frontend v 6.4.0, link",
+   "predicted": "table, with 6 rows and 3 columns, row 2, column 2, GOV dot UK Frontend v 6.4.0, link",
+   "measureClass": "unexplained",
+   "cause": "conversion: name",
+   "reason": "the extension agrees",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "NAME",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "links",
+   "i": 72,
+   "expected": "Cookies, visited, link",
+   "predicted": "Cookies, link",
+   "measureClass": "history",
+   "cause": "history",
+   "reason": "",
+   "read": false,
+   "shape": [
+    "NAME",
+    "STATE",
+    "ROLE"
+   ],
+   "stable": false
+  },
+  {
+   "address": "https://design-system.service.gov.uk/components/date-input/",
+   "channel": "lists",
+   "i": 6,
+   "expected": "content info landmark, list, with 5 items, Accessibility statement, link, Sitemap, link, Cookies, visited, link, Privacy, link, Contact the team",
+   "predicted": "content info landmark, list, with 5 items, Accessibility statement, link, Sitemap, link, Cookies, link, Privacy, link, Contact the team",
+   "measureClass": "history",
+   "cause": "history",
+   "reason": "",
+   "read": false,
+   "shape": [
+    "ROLE",
+    "ROLE",
+    "COUNT",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME",
+    "STATE",
+    "ROLE",
+    "NAME",
+    "ROLE",
+    "NAME"
+   ],
+   "stable": false
+  }
+ ]
+}
