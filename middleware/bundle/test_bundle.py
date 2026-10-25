@@ -248,7 +248,6 @@ class Lean(unittest.TestCase):
     def test_the_command_line_makes_a_tree_lean_in_place(self):
         with tempfile.TemporaryDirectory() as d:
             write_tree(d, full_layout()); keep = pathlib.Path(d) / 'keep.txt'; keep.write_text('\n'.join(KEEP) + '\n')
-            os.makedirs(pathlib.Path(d) / 'sub')
             ran = subprocess.run([sys.executable, str(HERE / 'lean.py'), d, str(keep)], capture_output=True, text=True)
             self.assertEqual(ran.returncode, 0, ran.stderr)
             self.assertFalse((pathlib.Path(d) / 'nvda-appdir').exists()); self.assertFalse((pathlib.Path(d) / LIB / 'test').exists())

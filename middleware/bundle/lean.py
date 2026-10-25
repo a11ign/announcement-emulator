@@ -45,10 +45,15 @@ def module_name(entry):
     return entry.split('.')[0].lower()
 
 
+def python_libraries(root):
+    """The names of the standard-library directories under python/lib ('python3.13')."""
+    return sorted(d for d in os.listdir(os.path.join(root, 'python', 'lib')) if re.match(r'python3\.\d+$', d))
+
+
 def distributions_kept(root, tops):
     """The *.dist-info directories whose distribution has a module in `tops` (its top_level.txt, else its name)."""
     kept = set()
-    for lib in sorted(d for d in os.listdir(os.path.join(root, 'python', 'lib')) if re.match(r'python3\.\d+$', d)):
+    for lib in python_libraries(root):
         site = os.path.join(root, 'python', 'lib', lib, 'site-packages')
         if not os.path.isdir(site): continue
         for entry in sorted(os.listdir(site)):
@@ -69,6 +74,11 @@ def files_of(root):
             yield os.path.relpath(os.path.join(here, name), root).replace(os.sep, '/')
 
 
+def wanted(rel, keep):
+    """Whether a path is kept whatever the trace says, or because it is listed."""
+    return rel.startswith(RUNTIME) or any(p.match(rel) for p in ALWAYS) or rel in keep
+
+
 def decide(root, keep):
     """The set of paths (files and links) to keep from the tree at `root`, given the listed paths."""
     present = set(files_of(root))
@@ -77,9 +87,7 @@ def decide(root, keep):
     kept = set()
     for rel in present:
         if '/__pycache__/' in rel: continue
-        lib = library_of(rel)
-        if rel.startswith(RUNTIME) or any(p.match(rel) for p in ALWAYS) or rel in keep: kept.add(rel); continue
-        if rel.endswith('.pyc') and not lib is None and rel[:-1] in (keep | present) and (rel[:-1] in keep or any(p.match(rel[:-1]) for p in ALWAYS)): kept.add(rel); continue
+        if wanted(rel, keep) or (rel.endswith('.pyc') and library_of(rel) and wanted(rel[:-1], keep)): kept.add(rel); continue      # the bytecode build.sh compiled beside a module that is wanted
         top = top_of_site_packages(rel)
         if top and (module_name(top) in tops or any(rel.startswith(d + '/') for d in dists)): kept.add(rel)
     # a standard-library .py that has its .pyc beside it ships as the .pyc alone
@@ -92,7 +100,7 @@ def decide(root, keep):
 def prune(root, keep):
     """Remove everything from `root` that is not kept; returns the number of files removed. Fails when `keep` names a file the tree lacks."""
     present = set(files_of(root))
-    stale = sorted(p for p in keep if p.startswith(PRUNED) and p not in present and not os.path.lexists(os.path.join(root, p)))
+    stale = sorted(p for p in keep if p.startswith(PRUNED) and p not in present)
     if stale: raise SystemExit('the keep list names ' + str(len(stale)) + ' files the full layout lacks, such as ' + ', '.join(stale[:3]) + ': run middleware/bundle/trace.sh again')
     kept = decide(root, keep)
     removed = 0
@@ -107,7 +115,7 @@ def prune(root, keep):
             if os.path.islink(path):
                 if not os.path.exists(path): os.unlink(path)
             elif not os.listdir(path): os.rmdir(path)
-    for lib in sorted(d for d in os.listdir(os.path.join(root, 'python', 'lib')) if re.match(r'python3\.\d+$', d)):
+    for lib in python_libraries(root):
         os.makedirs(os.path.join(root, 'python', 'lib', lib, 'lib-dynload'), exist_ok=True)      # where the interpreter looks for its extension modules: without it, it warns at every start that it "could not find platform dependent libraries"
     return removed
 

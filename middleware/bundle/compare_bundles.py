@@ -111,7 +111,7 @@ def main(argv):
         for line in failures: print(line, file=sys.stderr)
         print(f'{runs} replays over {len(recordings(args.fixtures))} recordings' + (f', {"byte-identical" if not failures else str(len(failures)) + " differ or failed"}' if len(args.layouts) == 2 else ''))
         return 1 if failures else 0
-    imports, files = misses(args.full, args.lean, getattr(args, 'full_trace'), getattr(args, 'lean_trace'))
+    imports, files = misses(args.full, args.lean, args.full_trace, args.lean_trace)
     for name in imports: print(f'import the lean bundle lacks: {name}', file=sys.stderr)
     for name in files: print(f'file the lean bundle lacks: {name}', file=sys.stderr)
     print('no import and no file the lean bundle lacks and the full layout has' if not (imports or files) else f'{len(imports)} imports and {len(files)} files are missing from the lean bundle: run middleware/bundle/trace.sh')
