@@ -31,9 +31,9 @@ def recordings(directory):
 def replay(layout, recording, flags, trace=None):
     """The output of replay.py over `recording` in the bundle or layout at `layout`, as text."""
     layout = pathlib.Path(layout).resolve()
-    env = {**os.environ, 'EMU_DOWNLOADS': str(layout), 'PYTHONDONTWRITEBYTECODE': '1', 'PYTHONUTF8': '1'}      # as runtime.ts starts it: the run leaves no cache in the bundle
+    env = {**os.environ, 'EMU_DOWNLOADS': str(layout)}
     if trace: env['ANNOUNCEMENT_EMULATOR_IMPORT_TRACE'] = str(trace)
-    ran = subprocess.run([str(layout / 'python' / 'bin' / 'python3'), '-I', str(layout / 'middleware' / 'runtime' / 'replay.py'), str(recording), *flags], capture_output=True, text=True, env=env, timeout=TIMEOUT)
+    ran = subprocess.run([str(layout / 'python' / 'bin' / 'python3'), '-I', '-B', str(layout / 'middleware' / 'runtime' / 'replay.py'), str(recording), *flags], capture_output=True, text=True, env=env, timeout=TIMEOUT)
     if ran.returncode: raise RuntimeError(f'{layout.name}: replay of {recording.name} {" ".join(flags)} exited {ran.returncode}: {ran.stderr[-1500:]}')
     return ran.stdout
 

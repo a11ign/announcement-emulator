@@ -510,10 +510,20 @@ class AppDir(unittest.TestCase):
     def test_the_development_layout_keeps_its_overlay_and_the_bundle_uses_nvdas_source_in_place(self):
         with tempfile.TemporaryDirectory() as d:
             root = pathlib.Path(d)
-            (root / 'nvda-src' / 'source').mkdir(parents=True)
+            write_tree(root, {'nvda-src/source/locale/en/cldr.dic': 'pinned names'})      # the bundle: the pinned names are in NVDA's file, and there is no overlay
             self.assertEqual(paths.app_dir(root), root / 'nvda-src' / 'source')
-            (root / 'nvda-appdir').mkdir()
+            (root / 'nvda-appdir').mkdir()      # setup.sh's layout
             self.assertEqual(paths.app_dir(root), root / 'nvda-appdir')
+
+    def test_a_layout_with_neither_an_overlay_nor_the_pinned_names_is_not_taken_for_the_bundle(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = pathlib.Path(d); write_tree(root, {'nvda-src/source/speech/speech.py': ''})      # NVDA's checkout, set up without its overlay
+            self.assertEqual(paths.app_dir(root), root / 'nvda-appdir')
+
+    def test_the_pinned_names_must_be_somewhere_for_a_lean_tree_to_be_made(self):
+        with tempfile.TemporaryDirectory() as d:
+            write_tree(d, {'nvda-src/source/speech/speech.py': ''})
+            with self.assertRaises(SystemExit): lean.overlay_in_place(d)
 
     def test_boot_asks_paths_for_the_app_dir(self):
         self.assertIn('globalVars.appDir = str(app_dir(R))', (ROOT / 'emu' / 'boot.py').read_text())

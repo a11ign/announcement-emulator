@@ -124,12 +124,13 @@ def overlay_in_place(root):
     """The pinned CLDR names go over NVDA's own file where it is, and the overlay, the CLDR checkout and the Chromium sources go: one copy of NVDA."""
     names = os.path.join(root, 'cldr-src', 'locale', 'en', 'cldr.dic')
     if os.path.exists(names): shutil.copyfile(names, os.path.join(root, 'nvda-src', 'source', 'locale', 'en', 'cldr.dic'))
+    if not os.path.exists(os.path.join(root, 'nvda-src', 'source', 'locale', 'en', 'cldr.dic')): raise SystemExit('no locale/en/cldr.dic in NVDA\'s source, and no pinned one to put there')
     for extra in ('nvda-appdir', 'cldr-src', 'chromium-src'): shutil.rmtree(os.path.join(root, extra), ignore_errors=True)
 
 
 def make_lean(root, keep):
     overlay_in_place(root)
-    for here, directories, _ in os.walk(root):      # the caches pip and the compile left; the interpreter writes none (PYTHONDONTWRITEBYTECODE)
+    for here, directories, _ in os.walk(root):      # the caches pip and the compile left (the runtime writes its own as it runs)
         for name in [d for d in directories if d == '__pycache__']:
             shutil.rmtree(os.path.join(here, name)); directories.remove(name)
     return prune(root, keep)

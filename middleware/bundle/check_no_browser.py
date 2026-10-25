@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""python3 middleware/bundle/check_no_browser.py <bundle directory | bundle .tar.gz>
+"""python3 middleware/bundle/check_no_browser.py <bundle directory | bundle .tar.gz or .tar.xz>
 
 Fails (exit 1, one line for each entry) on an entry of the runtime bundle that is a browser or a browser library. The middleware runs in the Chromium the team's Playwright installed (A11-230),
 so the bundle holds none. The rule is a closed list of patterns, and it names what a Chrome for Testing archive and the libraries it needs contain, so that a browser put back in is found

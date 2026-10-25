@@ -85,6 +85,7 @@ jobs:
             python3 middleware/bundle/sizes.py table "$RUNNER_TEMP/unpacked" --platform ${{ matrix.platform }} --archive "$RUNNER_TEMP/bundle/${{ steps.build.outputs.archive }}" --column "Full layout (nothing pruned)=$RUNNER_TEMP/full"
             echo; echo "### Formats ${{ matrix.platform }}"; echo
             python3 middleware/bundle/sizes.py formats "$RUNNER_TEMP/unpacked" --json "$RUNNER_TEMP/formats-out/formats-${{ matrix.platform }}.json" --keep "$RUNNER_TEMP/formats"; } | tee -a "$GITHUB_STEP_SUMMARY"
+        shell: bash
       # What a plain ubuntu:24.04 container's tar does with each format is reported with the sizes, and does not decide: that image has neither an xz nor a zstd program, so it unpacks only gzip (A11-231).
       - if: matrix.platform == 'linux-x64'
         run: |
@@ -119,11 +120,11 @@ jobs:
       - run: |
           cd "$RUNNER_TEMP/formats"
           containers=""; for line in $(cat container.txt); do containers="$containers --container $line"; done
-          python3 "$GITHUB_WORKSPACE/middleware/bundle/sizes.py" choose formats-linux-x64.json formats-darwin-arm64.json $containers | tee "$RUNNER_TEMP/choice.txt" >> "$GITHUB_STEP_SUMMARY"
+          python3 "$GITHUB_WORKSPACE/middleware/bundle/sizes.py" choose formats-linux-x64.json formats-darwin-arm64.json $containers | tee "$RUNNER_TEMP/choice.txt" >> "$GITHUB_STEP_SUMMARY" || true      # it exits 1 when no format is acceptable; the test below then fails on the empty choice
           chosen="$(sed -n 's/^ships: //p' "$RUNNER_TEMP/choice.txt")"
           built="$(sed -n 's/^FORMAT=\([a-z]*\);.*/\1/p' "$GITHUB_WORKSPACE/middleware/bundle/build.sh")"
           echo "measured: $chosen; build.sh builds: $built"
-          [ "$chosen" = "$built" ]
+          [ -n "$chosen" ] && [ "$chosen" = "$built" ]
 
   # The transcripts: every recorded session, replayed with sweeps, without and with --report-focus, under the full layout and under the lean bundle as it was archived, on each platform. The outputs must be the same bytes
   # (the clock left out). The full layout is built again here, from the same pins.
@@ -143,8 +144,7 @@ jobs:
       - run: |
           middleware/bundle/build.sh ${{ matrix.platform }} "$RUNNER_TEMP/unused" --full-dir "$RUNNER_TEMP/full" --layout-only
           mkdir "$RUNNER_TEMP/lean" && tar -xf "$(ls "$RUNNER_TEMP"/bundle/announcement-emulator-bundle-*.tar.* | grep -v '\.sha256$')" -C "$RUNNER_TEMP/lean"
-          { echo "### Transcripts ${{ matrix.platform }}"; echo; echo '```'; python3 middleware/bundle/compare_bundles.py replay "$RUNNER_TEMP/full" "$RUNNER_TEMP/lean" --trace "$RUNNER_TEMP/traces/replay.txt" 2>&1; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
-          python3 middleware/bundle/compare_bundles.py replay "$RUNNER_TEMP/full" "$RUNNER_TEMP/lean"
+          { echo "### Transcripts ${{ matrix.platform }}"; echo; echo '```'; python3 middleware/bundle/compare_bundles.py replay "$RUNNER_TEMP/full" "$RUNNER_TEMP/lean" 2>&1; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
         shell: bash
 
   # The lists again: trace.sh runs everything the lists are made from (every recording, the sample suite's offline project live with each tree source) in the full layout, and the job fails when a run read a file that
