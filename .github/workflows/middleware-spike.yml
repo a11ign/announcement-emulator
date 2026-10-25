@@ -96,12 +96,14 @@ jobs:
           # The DevTools source is the lower-fidelity one ADR 0047 allows; its runs are held to --lower-fidelity.
           # `chromium` is the build the row's Playwright ships (its playwright-core/browsers.json): the report of every worker is held to having run in it, and to the sentence "agreement not measured for Chromium <build>"
           # until middleware/supported-versions.json lists it. 1.63.0 and 1.64.1 are the two versions the list starts with; 1.62.1 is the newest 1.62 and is not meant to be listed: it holds the wording of an unlisted version.
+          # `agreement` is what the first two runs' reports say: `measured` for a build that middleware/supported-versions.json lists with a figure for the platform's default source, `unmeasured` for any other (supported.test.ts holds
+          # every row to the list). `other-agreement` is the third run's: macOS's other source is the extension, which has no figure there, so it reads `unmeasured` whatever the list holds.
           # `primary` rows also take the cost and the probes.
-          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.64.1", chromium: "156.0.8078.4", deps: "--with-deps", primary: true, check: "", other: devtools, other-check: "--lower-fidelity" }
-          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.63.0", chromium: "153.0.8010.12", deps: "--with-deps", primary: false, check: "", other: devtools, other-check: "--lower-fidelity" }
-          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.62.1", chromium: "151.0.7922.34", deps: "--with-deps", primary: false, check: "", other: devtools, other-check: "--lower-fidelity" }
-          - { platform: darwin-arm64, runner: macos-latest, playwright: "1.64.1", chromium: "156.0.8078.4", deps: "", primary: true, check: "--lower-fidelity", other: extension, other-check: "--expect-no-tree" }
-          - { platform: darwin-arm64, runner: macos-latest, playwright: "1.63.0", chromium: "153.0.8010.12", deps: "", primary: false, check: "--lower-fidelity", other: extension, other-check: "--expect-no-tree" }
+          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.64.1", agreement: unmeasured, other-agreement: unmeasured, chromium: "156.0.8078.4", deps: "--with-deps", primary: true, check: "", other: devtools, other-check: "--lower-fidelity" }
+          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.63.0", agreement: unmeasured, other-agreement: unmeasured, chromium: "153.0.8010.12", deps: "--with-deps", primary: false, check: "", other: devtools, other-check: "--lower-fidelity" }
+          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.62.1", agreement: unmeasured, other-agreement: unmeasured, chromium: "151.0.7922.34", deps: "--with-deps", primary: false, check: "", other: devtools, other-check: "--lower-fidelity" }
+          - { platform: darwin-arm64, runner: macos-latest, playwright: "1.64.1", agreement: unmeasured, other-agreement: unmeasured, chromium: "156.0.8078.4", deps: "", primary: true, check: "--lower-fidelity", other: extension, other-check: "--expect-no-tree" }
+          - { platform: darwin-arm64, runner: macos-latest, playwright: "1.63.0", agreement: unmeasured, other-agreement: unmeasured, chromium: "153.0.8010.12", deps: "", primary: false, check: "--lower-fidelity", other: extension, other-check: "--expect-no-tree" }
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v7
@@ -134,23 +136,23 @@ jobs:
           npx announcement-emulator doctor > "$RUNNER_TEMP/doctor.log" || { cat "$RUNNER_TEMP/doctor.log"; exit 1; }      # a pipe to tee would lose its exit code
           cat "$RUNNER_TEMP/doctor.log"
           grep -q '^Chromium ${{ matrix.chromium }} ' "$RUNNER_TEMP/doctor.log"
-          grep -q '^supported: no\. Chromium ${{ matrix.chromium }} is not on the list' "$RUNNER_TEMP/doctor.log"
+          if [ "${{ matrix.agreement }}" = measured ]; then grep -q '^supported: yes, Chromium ${{ matrix.chromium }} is on the list' "$RUNNER_TEMP/doctor.log"; else grep -q '^supported: no\. Chromium ${{ matrix.chromium }} is not on the list' "$RUNNER_TEMP/doctor.log"; fi
       # Run 1: the one line (playwright.config.ts). Run 2: no line at all (`announcement-emulator test` wraps playwright.plain.config.ts). Run 3: the platform's other tree source. Run 4: the same suite without the middleware.
       - id: run
         run: |
           cd "$RUNNER_TEMP/project"
           { time npx playwright test --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-with.log"
-          node check-report.mjs ${{ matrix.check }} --expect-unmeasured ${{ matrix.chromium }}
+          node check-report.mjs ${{ matrix.check }} --expect-${{ matrix.agreement }} ${{ matrix.chromium }}
           cp -R test-results/announcement-emulator "$RUNNER_TEMP/announcement-emulator-run"; cp test-results/report.json "$RUNNER_TEMP/announcement-emulator-run/report.json"
           rm -rf test-results
           mv playwright-report "$RUNNER_TEMP/playwright-report-one-line"
           { time npx announcement-emulator test --config playwright.plain.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-zero.log"
-          node check-report.mjs ${{ matrix.check }} --expect-unmeasured ${{ matrix.chromium }}
+          node check-report.mjs ${{ matrix.check }} --expect-${{ matrix.agreement }} ${{ matrix.chromium }}
           mv playwright-report "$RUNNER_TEMP/playwright-report-zero-lines"
           rm -rf test-results
           # Run 3: the platform's other tree source.
           { time ANNOUNCEMENT_EMULATOR_TREE=${{ matrix.other }} npx playwright test --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-${{ matrix.other }}.log"
-          node check-report.mjs ${{ matrix.other-check }} --expect-unmeasured ${{ matrix.chromium }}
+          node check-report.mjs ${{ matrix.other-check }} --expect-${{ matrix.other-agreement }} ${{ matrix.chromium }}
           cp -R test-results/announcement-emulator "$RUNNER_TEMP/announcement-emulator-run-${{ matrix.other }}"; cp test-results/report.json "$RUNNER_TEMP/announcement-emulator-run-${{ matrix.other }}/report.json"
           mv playwright-report "$RUNNER_TEMP/playwright-report-${{ matrix.other }}"
           rm -rf test-results

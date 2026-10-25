@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { agreementFor, buildFor, buildOfPlaywright, problemsIn, loadSupported, readSupported, sourceKey, withListError, type SupportedVersions } from "./supported.ts";
+import { agreementFor, buildFor, buildOfPlaywright, percent, problemsIn, loadSupported, readSupported, sourceKey, withListError, type SupportedVersions } from "./supported.ts";
 
 const figure = (agreement: number, units: number, key: string) => ({ agreement, units, date: "2026-10-26", figure: `middleware/results/playwright-versions/156.0.8078.4/${key}/` });
 const list: SupportedVersions = { builds: [
@@ -102,4 +102,58 @@ test("the list ships in the package, beside pins.json", () => {
   const pkg = JSON.parse(readFileSync(join(root, "package.json"), "utf8")) as { files: string[] };
   assert.ok(pkg.files.includes("supported-versions.json"));
   assert.ok(existsSync(join(root, "supported-versions.json")));
+});
+
+const repoRoot = join(import.meta.dirname, "..", "..");
+const shipped = readSupported();
+
+test("every figure the list ships is in the repository, and its agreement.txt gives the same rate and units", () => {
+  for (const build of shipped.builds) {
+    for (const [key, figure] of Object.entries(build.measured)) {
+      const file = join(repoRoot, figure.figure, "agreement.txt");
+      assert.ok(figure.figure.includes(`/${build.chromium}/${key}/`), `${build.chromium} ${key}: the figure path names its build and reading (${figure.figure})`);
+      assert.ok(existsSync(file), `${build.chromium} ${key}: ${file} exists`);
+      // the headline is the last block's "all channels" line: every channel, the first fleet capture against the first passive run (middleware/results/playwright-versions/rule.md)
+      const lines = readFileSync(file, "utf8").split("\n").filter((l) => l.startsWith("all channels: "));
+      const headline = /^all channels: (\d+) of (\d+) units agreed = ([\d.]+)%$/.exec(lines.at(-1) ?? "");
+      assert.ok(headline, `${build.chromium} ${key}: agreement.txt has a headline line`);
+      assert.equal(Number(headline![2]), figure.units, `${build.chromium} ${key}: units`);
+      assert.equal(`${headline![3]}%`, percent(figure.agreement), `${build.chromium} ${key}: the rate agreement.txt prints`);
+      assert.equal(Number(headline![1]) / Number(headline![2]), figure.agreement, `${build.chromium} ${key}: the fraction is the one agreement.txt counts`);
+      assert.ok(existsSync(join(repoRoot, figure.figure, "misses.json")), `${build.chromium} ${key}: misses.json, with a cause for each miss`);
+    }
+  }
+});
+
+// The demo job of middleware-spike.yml: one row for each platform and Playwright version, and what each row's reports are held to saying (check-report.mjs).
+const rows = [...readFileSync(join(repoRoot, ".github", "workflows", "middleware-spike.yml"), "utf8").matchAll(/- \{ platform: ([\w-]+), runner: ([\w-]+), playwright: "([\d.]+)", agreement: (\w+), other-agreement: (\w+), chromium: "([\d.]+)"/g)]
+  .map(([, platform, , playwright, agreement, otherAgreement, chromium]) => ({ platform: platform!, playwright: playwright!, agreement: agreement!, otherAgreement: otherAgreement!, chromium: chromium! }));
+
+test("the sample suite's CI rows are held to the list: a listed version's rows expect a measured sentence, every other version's the not-measured one", () => {
+  assert.ok(rows.length >= 4, "the matrix is read");
+  for (const row of rows) {
+    const listed = buildOfPlaywright(shipped, row.playwright);
+    assert.equal(row.agreement, listed?.measured[row.platform === "darwin-arm64" ? "devtools-macos" : "extension-linux"] ? "measured" : "unmeasured", `${row.platform} Playwright ${row.playwright}`);
+    if (listed) assert.equal(row.chromium, listed.chromium, `${row.platform} Playwright ${row.playwright} runs the build the list names`);
+  }
+});
+
+test("the third run of a row is the platform's other source: devtools on Linux (measured when the default is), the extension on macOS (never a figure there)", () => {
+  for (const row of rows) {
+    const listed = buildOfPlaywright(shipped, row.playwright);
+    const wanted = row.platform === "darwin-arm64" ? "unmeasured" : listed?.measured["devtools-linux"] ? "measured" : "unmeasured";
+    assert.equal(row.otherAgreement, wanted, `${row.platform} Playwright ${row.playwright}`);
+  }
+});
+
+test("each listed build is run in CI on both platforms by its newest Playwright, and one version that is not listed holds the not-measured wording", () => {
+  for (const build of shipped.builds) {
+    const newest = build.playwright.at(-1)!;
+    for (const platform of ["linux-x64", "darwin-arm64"]) assert.ok(rows.some((r) => r.platform === platform && r.playwright === newest && r.chromium === build.chromium), `${build.chromium}: Playwright ${newest} on ${platform}`);
+  }
+  assert.ok(rows.some((r) => r.platform === "linux-x64" && !buildOfPlaywright(shipped, r.playwright)), "a Linux row runs a Playwright that is not on the list");
+  for (const row of rows) {
+    const listed = buildOfPlaywright(shipped, row.playwright);
+    if (listed) assert.equal(row.playwright, listed.playwright.at(-1), `${row.playwright} is listed, so only the newest Playwright of its build (${listed.chromium}) has a row`);
+  }
 });
