@@ -2,7 +2,7 @@
 supplies for real (NVDAHelper.localLib, oleacc constants, IA2 constants), so IAccessibleHandler's role/state tables are NVDA's."""
 import sys, os, types, ast, json, tempfile, builtins, pathlib
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from paths import CODE, DOWNLOADS as R      # R: the downloads (nvda-src, nvda-appdir, ...); the code is CODE
+from paths import CODE, DOWNLOADS as R, app_dir      # R: the downloads (nvda-src, nvda-appdir, ...); the code is CODE
 SRC = str(R / 'nvda-src/source')
 sys.path[:0] = [str(CODE / 'q2'), str(CODE / 'emu'), SRC]
 os.chdir(SRC)
@@ -70,7 +70,7 @@ import kernel32_standin      # the locale calls of winBindings.kernel32 that NVD
 import winBindings; sys.modules['winBindings.kernel32'] = winBindings.kernel32 = kernel32_standin.m
 stubs.LEDGER.append('winBindings.kernel32')      # still a stub for every name but those two locale calls
 import globalVars
-globalVars.appDir = str(R / 'nvda-appdir'); globalVars.appArgs.configPath = tempfile.mkdtemp(prefix='nvda-cfg-'); globalVars.appArgs.disableAddons = True
+globalVars.appDir = str(app_dir(R)); globalVars.appArgs.configPath = tempfile.mkdtemp(prefix='nvda-cfg-'); globalVars.appArgs.disableAddons = True
 # The system tests' own NVDA settings (tests/system/nvdaSettingsFiles/standard-dontShowWelcomeDialog.ini, chromeTests.robot:32), unmodified:
 # they turn reportLinkType and unicodeNormalization OFF, which changes the expected speech.
 import shutil; shutil.copy(os.environ.get('EMU_NVDA_INI') or R / 'nvda-src/tests/system/nvdaSettingsFiles/standard-dontShowWelcomeDialog.ini', globalVars.appArgs.configPath + '/nvda.ini')      # EMU_NVDA_INI: Q3 runs with the fleet's settings (q3/nvda-fleet.ini)

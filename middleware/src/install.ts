@@ -61,7 +61,8 @@ function download(url: string, file: string, hops = 0): Promise<string> {
 
 function untar(archive: string, into: string): Promise<void> {
   return new Promise((resolve, reject) => {
-    const tar = spawn("tar", ["-xzf", archive, "-C", into], { stdio: ["ignore", "inherit", "inherit"] });
+    // `-xf` and not `-xzf`: the host's tar reads the compression off the archive (gzip, xz or zstd), so the bundle's format is the build's choice and not this code's
+    const tar = spawn("tar", ["-xf", archive, "-C", into], { stdio: ["ignore", "inherit", "inherit"] });
     tar.on("error", reject);
     tar.on("exit", (code) => (code === 0 ? resolve() : reject(new Error(`tar exited ${code}`))));
   });

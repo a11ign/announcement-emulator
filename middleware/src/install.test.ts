@@ -12,14 +12,26 @@ import type { Pins } from "./pins.ts";
 
 const PLATFORM = "linux-x64";
 
-/** A bundle as the build writes one (a tar.gz with a bundle.json), served over http, and the pins that name it. */
-async function served(tamper = false) {
+const FORMATS = [
+  { extension: "gz", flag: "-z" },
+  { extension: "xz", flag: "-J" },
+  { extension: "zst", flag: "--zstd" },
+] as const;
+type Format = (typeof FORMATS)[number];
+
+/** Whether this host's tar can write the format, and so unpack it: the bundle is read with the same tar (install.ts). */
+function tarCan(format: Format): boolean {
+  try { const dir = mkdtempSync(join(tmpdir(), "ae-tar-")); execFileSync("tar", [format.flag, "-cf", join(dir, `t.tar.${format.extension}`), "-C", dir, "."], { stdio: "ignore" }); return true; } catch { return false; }
+}
+
+/** A bundle as the build writes one (a tar with a bundle.json, compressed), served over http, and the pins that name it. */
+async function served(tamper = false, format: Format = FORMATS[0]) {
   const work = mkdtempSync(join(tmpdir(), "ae-install-"));
   mkdirSync(join(work, "src", "python"), { recursive: true });
   writeFileSync(join(work, "src", "bundle.json"), JSON.stringify({ name: "x" }));
   writeFileSync(join(work, "src", "python", "marker"), "m");
-  const file = "announcement-emulator-bundle-linux-x64.tar.gz";
-  execFileSync("tar", ["-czf", join(work, file), "-C", join(work, "src"), "."]);
+  const file = `announcement-emulator-bundle-linux-x64.tar.${format.extension}`;
+  execFileSync("tar", [format.flag, "-cf", join(work, file), "-C", join(work, "src"), "."]);
   const bytes = readFileSync(join(work, file));
   const server = createServer((_, res) => { res.end(tamper ? Buffer.concat([bytes, Buffer.from("x")]) : bytes); });
   await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
@@ -38,6 +50,18 @@ test("install downloads the bundle, checks its sha256 against the pin and unpack
     assert.equal(findBundle("9.9.9", env), dir);
   } finally { server.close(); }
 });
+
+for (const format of FORMATS) {
+  test(`install unpacks a .tar.${format.extension} bundle with the host's tar`, { skip: !tarCan(format) && `this host's tar cannot write .${format.extension}` }, async () => {
+    const { pins, env, server } = await served(false, format);
+    try {
+      assert.ok(pins.bundles[PLATFORM]!.file.endsWith(`.tar.${format.extension}`));
+      const dir = await install(pins, { env, platform: PLATFORM });
+      assert.ok(existsSync(join(dir, "python", "marker")));
+      assert.equal(readFileSync(join(dir, "bundle.json"), "utf8"), JSON.stringify({ name: "x" }));
+    } finally { server.close(); }
+  });
+}
 
 test("a bundle whose sha256 is not the pinned one is refused and nothing is unpacked", async () => {
   const { pins, env, server, cache } = await served(true);
