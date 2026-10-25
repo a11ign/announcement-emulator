@@ -17,6 +17,9 @@ const args = process.argv.slice(2);
 const valueOf = (flag) => { const at = args.indexOf(flag); return at < 0 ? null : args.splice(at, 2)[1]; };
 const unmeasured = valueOf("--expect-unmeasured"), measured = valueOf("--expect-measured");
 const expectNoTree = args.includes("--expect-no-tree"), devtoolsTree = args.includes("--devtools-tree"), expectFallback = args.includes("--expect-fallback");
+const KNOWN = ["--expect-no-tree", "--devtools-tree", "--expect-fallback"];
+const unknown = args.filter((a) => a.startsWith("--") && !KNOWN.includes(a));
+if (unknown.length) { console.error(`unknown option ${unknown.join(", ")}; known: ${KNOWN.join(", ")}, --expect-unmeasured <build>, --expect-measured <build>`); process.exit(2); }
 const [reportPath, runPath] = args.filter((a) => !a.startsWith("--"));
 const expectedBuild = unmeasured ?? measured;
 const report = JSON.parse(readFileSync(reportPath ?? "test-results/report.json", "utf8"));
@@ -31,6 +34,8 @@ const HEARD = {
   "a context the suite opens itself is announced like the page the fixture gives it": ["Full name", "Add a mug"],
   "a page opened after the runtime switched to the DevTools port gets its predicted speech": ["Email address"],
 };
+// Tests that raise no flag, and are not held to the flags: those of the contexts and fallback projects. Any other test is, so renaming one cannot silently stop the flag check.
+const FLAGLESS = new Set([...Object.keys(HEARD), "a page open while the browser comes up", "a page that outlives the wait for the extension"]);
 const tests = [];
 (function walk(suite) { for (const s of suite.suites ?? []) walk(s); for (const spec of suite.specs ?? []) for (const t of spec.tests) tests.push({ title: spec.title, results: t.results }); })({ suites: report.suites });
 
@@ -101,7 +106,7 @@ for (const { title, results } of tests) {
 }
 if (devtoolsTree) {
   if (loads < Math.ceil(tests.length * 0.6)) problems.push(`a page load was predicted for ${loads} of ${tests.length} tests: fewer than three in five`);
-  if (tests.some((t) => EXPECTED[t.title]) && !expectedFlags) problems.push("none of the flags the sample suite is built to raise was raised");
+  if (tests.some((t) => !FLAGLESS.has(t.title)) && !expectedFlags) problems.push("none of the flags the sample suite is built to raise was raised");
   if (!sweeps) problems.push("no sweep was made");
 }
 if (expectFallback) {

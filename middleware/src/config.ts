@@ -14,7 +14,7 @@ export interface Options {
   verify?: boolean;
   /**
    * Where the accessibility tree comes from. `"auto"` (the default): the extension on Linux and Windows, the DevTools port on macOS and wherever the extension cannot be expected to load, with a
-   * switch to the DevTools port at run time if the extension does not come up. `"extension"` or `"devtools"` forces that source and never switches. It wins over `ANNOUNCEMENT_EMULATOR_TREE`,
+   * switch to the DevTools port at run time if the extension does not come up. `"extension"` or `"devtools"` forces that source and never switches, even where the extension is known not to load (no full Chromium installed). A value that is none of the three is ignored, and the report says so. It wins over `ANNOUNCEMENT_EMULATOR_TREE`,
    * and the reports say so.
    */
   tree?: TreeOption;

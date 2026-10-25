@@ -22,15 +22,19 @@ class Due(unittest.TestCase):
 
 
 class TreeSeen(unittest.TestCase):
-    def test_the_extensions_tree_is_one_and_its_ready_is_not(self):
-        self.assertFalse(fallback.tree_seen(False, 'ready', {'t': 1, 'desktopChildren': 1}))
+    def test_the_extensions_tree_is_one(self):
         self.assertTrue(fallback.tree_seen(False, 'snap', {'seq': 1}))
+
+    def test_its_ready_is_one_only_when_the_desktop_it_reads_has_windows_in_it(self):
+        self.assertTrue(fallback.tree_seen(False, 'ready', {'t': 1, 'desktopChildren': 1}))      # a heavy first page takes seconds to read: the extension is up
+        self.assertFalse(fallback.tree_seen(False, 'ready', {'t': 1, 'desktopChildren': 0}))      # macOS: nothing will be posted
+        self.assertFalse(fallback.tree_seen(False, 'ready', {'t': 1}))
 
     def test_the_ports_own_tree_is_not_the_extensions_and_once_seen_it_stays_seen(self):
         self.assertFalse(fallback.tree_seen(False, 'snap', {'seq': 1, 'devtools': True}))
         self.assertTrue(fallback.tree_seen(True, 'ready', {'t': 1}))
 
-    def test_an_extension_that_is_ready_and_posts_no_tree_is_taken_over_after_the_wait(self):
+    def test_an_extension_that_is_ready_with_an_empty_desktop_and_posts_no_tree_is_taken_over_after_the_wait(self):
         seen = fallback.tree_seen(False, 'ready', {'t': 1, 'desktopChildren': 0})
         self.assertTrue(fallback.due(5, 100.0, seen, False, 105.0))
 

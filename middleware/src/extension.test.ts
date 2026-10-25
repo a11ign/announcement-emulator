@@ -100,6 +100,8 @@ test("auto, and an option that names no source, leave the decision to the enviro
   assert.deepEqual(pickTree("linux", { ANNOUNCEMENT_EMULATOR_TREE: "devtools" }, yes, "auto"), { source: "devtools", why: "ANNOUNCEMENT_EMULATOR_TREE=devtools", forced: true });
   assert.equal(pickTree("linux", {}, yes, "nonsense" as TreeOption).source, "extension");
   assert.equal(pickTree("darwin", {}, yes, "nonsense" as TreeOption).source, "devtools");
+  assert.match(pickTree("linux", {}, yes, "Devtools" as TreeOption).why, /\(the tree option "Devtools" is not auto, extension or devtools: ignored\)$/, "a misspelt option is said, not silently taken for auto");
+  assert.equal(pickTree("linux", {}, yes, "auto").why.includes("ignored"), false);
 });
 
 test("a source forced by the option is not switched by the runtime, and one left to auto is", () => {

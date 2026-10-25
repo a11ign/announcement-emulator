@@ -180,3 +180,14 @@ test("a test that opens a context of its own is held to the speech of both its p
   assert.equal(result.status, 1);
   assert.match(result.stderr, /nothing predicted contains "Add a mug"/);
 });
+
+test("an option check-report does not know is refused, and the flag check is not skipped for a suite whose tests were renamed", () => {
+  const { report: path, run } = noTreeRun(0);
+  const misspelt = check("--expect-fallbak", path, run);
+  assert.equal(misspelt.status, 2);
+  assert.match(misspelt.stderr, /unknown option --expect-fallbak/);
+  const renamed = report([{ title: "a test nobody listed", data: { ...viaExtension, predictedSpeech: speech, sweeps: sweep }, text: `${PREDICTION}${extensionLine}` }], 5);
+  assert.equal(check(renamed.report, renamed.run).status, 0, "the extension's run is held to its flags, and a test with none expected passes");
+  const viaPort = report([{ title: "a test nobody listed", data: { ...viaDevtools, predictedSpeech: speech, sweeps: sweep }, text: `${PREDICTION}${lower}` }], 5);
+  assert.match(check("--devtools-tree", viaPort.report, viaPort.run).stderr, /none of the flags the sample suite is built to raise was raised/);
+});

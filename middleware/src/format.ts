@@ -6,7 +6,7 @@ import type { Agreement } from "./supported.ts";
 
 const TREE_NOTE: Record<TreeSource, string> = {
   extension: "Predicted by the announcement emulator from Chrome's accessibility tree, read by the companion extension, and NVDA's own Python. Not what NVDA said. Nothing here may fill an a11ign evidence field.",
-  devtools: "Predicted by the announcement emulator from the accessibility tree the DevTools port gives (Accessibility.getFullAXTree and DOMSnapshot) and NVDA's own Python. Not what NVDA said. Nothing here may fill an a11ign evidence field.",
+  devtools: "Predicted by the announcement emulator from the accessibility tree the DevTools port gives (Accessibility.getFullAXTree and DOMSnapshot; table indexes and set sizes are counted from the tree, and word and sentence breaks come from a pattern) and NVDA's own Python. Not what NVDA said. Nothing here may fill an a11ign evidence field.",
 };
 
 const TREE_NAME: Record<TreeSource, string> = { extension: "the companion extension's accessibility tree", devtools: "the DevTools port's accessibility tree" };

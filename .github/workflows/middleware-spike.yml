@@ -166,7 +166,8 @@ jobs:
             ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT=2 npx playwright test --config playwright.fallback.config.ts 2>&1 | tee "$RUNNER_TEMP/run-fallback.log"
             node check-report.mjs --expect-fallback --expect-unmeasured ${{ matrix.chromium }}
             cp -R test-results/announcement-emulator "$RUNNER_TEMP/announcement-emulator-run-fallback"
-            rm -rf test-results playwright-report
+            mv playwright-report "$RUNNER_TEMP/playwright-report-fallback"
+            rm -rf test-results
           fi
           [ -z "${{ matrix.check }}" ] && [ "${{ matrix.primary }}" = true ] || exit 0      # the cost is measured where a tree is read, once for each platform
           { time npx playwright test --config playwright.baseline.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-without.log"
@@ -199,6 +200,7 @@ jobs:
             ${{ runner.temp }}/announcement-emulator-run-fallback
             ${{ runner.temp }}/playwright-report-${{ matrix.other }}
             ${{ runner.temp }}/playwright-report-contexts
+            ${{ runner.temp }}/playwright-report-fallback
             ${{ runner.temp }}/project/test-results/announcement-emulator
             ${{ runner.temp }}/run-*.log
             ${{ runner.temp }}/cost.*

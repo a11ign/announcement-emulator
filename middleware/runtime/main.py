@@ -111,6 +111,7 @@ def main():
             elif kind in ('error', 'verify'): send({'type': 'record', 'rec': {'kind': kind, **body}})
             elif kind in ('ready', 'hello', 'attached'):
                 if kind == 'attached': switch['first_page'] = switch['first_page'] or arrived_at
+                switch['extension_tree'] = fallback.tree_seen(switch['extension_tree'], kind, body)
                 send({'type': 'record', 'rec': start_record(kind, body, arrived_at)})
         except BaseException as e:
             import traceback; traceback.print_exc()
@@ -145,6 +146,7 @@ def main():
                         k, b, a = inbox.get(timeout=0.05)
                         if switch['done'] and fallback.from_extension_after_switch(k, b): continue
                         note(k, b, a)
+                        switch['extension_tree'] = fallback.tree_seen(switch['extension_tree'], k, b)
                         if k == 'snap': ordered.add(b, a)
                         elif k == 'page': handle('page', b)
                         elif k == 'cmd' and b['cmd'] == 'quit': break

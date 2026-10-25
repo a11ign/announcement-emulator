@@ -1,6 +1,6 @@
 """When the extension is the tree source and does not give a tree, the DevTools port is (A11-230, A11-229). The middleware picks the extension where it can be expected to load, and cannot know that it did, or that
 it can see the test's pages: a team's own channel or executablePath may run a browser that ignores it, and a browser may load it and give it no desktop tree. So the runtime waits a while after the first page of the
-browser and, if the extension has not posted a tree (a `ready` alone is not one: it comes up before it has read anything), reads the trees through the port instead. The two rules are here so that they can be
+browser and, if the extension is giving none (fallback.tree_seen: no tree posted, and no `ready` that shows a desktop with windows in it), reads the trees through the port instead. The two rules are here so that they can be
 tested without a browser."""
 
 
@@ -10,8 +10,12 @@ def due(wait, first_page_at, tree_seen, switched, now):
 
 
 def tree_seen(seen, kind, body):
-    """Whether the extension has posted a tree, once `kind`/`body` has arrived: its `snap`, and not the port's own (`devtools`). Its `ready` says it started and nothing more, and a browser that gives it no desktop tree posts that and no tree."""
-    return seen or (kind == 'snap' and not body.get('devtools'))
+    """Whether the extension is giving trees, once `kind`/`body` has arrived: it has posted one (`snap`, and not the port's own, which carries `devtools`), or it said `ready` with browser windows in the desktop
+    tree it reads, which is all a page's first read waits for, and a heavy page takes seconds. A `ready` with an empty desktop (macOS, where the browser is not drawn by Views) says it will post nothing."""
+    if seen: return True
+    if kind == 'snap': return not body.get('devtools')
+    if kind == 'ready': return body.get('source') != 'devtools' and (body.get('desktopChildren') or 0) > 0
+    return False
 
 
 def from_extension_after_switch(kind, body):
