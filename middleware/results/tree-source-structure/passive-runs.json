@@ -1,0 +1,114 @@
+{
+ "devtools-linux-run1": {
+  "startedAt": "2026-10-25T09:35:54Z",
+  "finishedAt": "2026-10-25T09:43:28Z",
+  "tests": 8,
+  "flags": 0,
+  "wallMs": 449842,
+  "drainMs": 417957,
+  "workers": [
+   {
+    "snapshots": 22,
+    "keys": 383,
+    "focusEvents": 359,
+    "unresolvedFocus": 2,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 228147
+   },
+   {
+    "snapshots": 22,
+    "keys": 560,
+    "focusEvents": 533,
+    "unresolvedFocus": 1,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 374413
+   }
+  ]
+ },
+ "devtools-linux-run2": {
+  "startedAt": "2026-10-25T09:45:25Z",
+  "finishedAt": "2026-10-25T09:52:24Z",
+  "tests": 8,
+  "flags": 0,
+  "wallMs": 415034,
+  "drainMs": 395147,
+  "workers": [
+   {
+    "snapshots": 15,
+    "keys": 383,
+    "focusEvents": 357,
+    "unresolvedFocus": 16,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 208582
+   },
+   {
+    "snapshots": 13,
+    "keys": 553,
+    "focusEvents": 533,
+    "unresolvedFocus": 12,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 357711
+   }
+  ]
+ },
+ "ext-linux-run1": {
+  "startedAt": "2026-10-25T09:33:40Z",
+  "finishedAt": "2026-10-25T09:35:54Z",
+  "tests": 8,
+  "flags": 0,
+  "wallMs": 129856,
+  "drainMs": 106012,
+  "workers": [
+   {
+    "snapshots": 21,
+    "keys": 225,
+    "focusEvents": 206,
+    "unresolvedFocus": 27,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 35462
+   },
+   {
+    "snapshots": 27,
+    "keys": 408,
+    "focusEvents": 383,
+    "unresolvedFocus": 9,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 100145
+   }
+  ]
+ },
+ "ext-linux-run2": {
+  "startedAt": "2026-10-25T09:43:28Z",
+  "finishedAt": "2026-10-25T09:45:25Z",
+  "tests": 8,
+  "flags": 0,
+  "wallMs": 113129,
+  "drainMs": 92776,
+  "workers": [
+   {
+    "snapshots": 24,
+    "keys": 279,
+    "focusEvents": 259,
+    "unresolvedFocus": 16,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 86415
+   },
+   {
+    "snapshots": 21,
+    "keys": 307,
+    "focusEvents": 290,
+    "unresolvedFocus": 5,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 80865
+   }
+  ]
+ }
+}

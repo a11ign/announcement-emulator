@@ -1,0 +1,1306 @@
+[
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "graphics",
+  "contains": "table, with 52 rows and 9 columns, row 2, Changes that affect, column 4, Type of effect help, graphic, same page, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by, column 6, Sort by Year and Number, up arrow, link, Sort by Year and Number",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by, column 5, Sort by Affecting Legislation Title, up arrow, link, Sort by Affecting Legislation Title",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect, column 4, , Type of effect help, same page, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect, column 2, Sort by Year and Number, up arrow, link, Sort by Year and Number",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect, column 1, Sort by Changed Legislation, up arrow, link, Sort by Changed Legislation",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "table, with 52 rows and 9 columns, row 2, Changes that affect, column 1, Sort by Changed Legislation, up arrow, link, Sort by Changed Legislation",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 3, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, Act, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 1998 c. 46, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, s. 29, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 4, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 1998 No. 2882, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, art. 2, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 5, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2001 No. 3500, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, Sch. 1, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 6, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2003 No. 1887, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, art. 4, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 7, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2018 c. 16, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, Sch. 8, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 8, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2020 c. 2, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, s. 2(8), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 9, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, Sch. 2 Pt. 1, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 10, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 1, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, Sch. 2, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 11, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 1(1)(c), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2004 No. 1574, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, art. 2(1), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 12, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 1(4), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 13, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 2, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2024 c. 8, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, s. 2(5)(b), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 14, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 2(3)(a), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 15, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2005 No. 3429, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, art. 3(2), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 16, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, Sch., link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 17, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 3, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2023 c. 37, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, s. 1(5), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 18, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 19, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2024 c. 21, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, s. 69, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 20, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, s. 70, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 21, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, s. 71, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 22, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 4(5)(a), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2005 c. 4, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, Sch. 9, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 23, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 4(5)(c), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2006 c. 52, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, Sch. 16, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 24, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 4(5)(f), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2005 c. 9, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, Sch. 6, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 25, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2013 c. 22, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, Sch. 14, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 26, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2026 No. 723, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 27, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 5(2), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2017 c. 4, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, Sch. 4, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 28, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 5(4), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 29, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 5(5), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 30, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 6, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 1999 c. 33, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, s. 65(2), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 31, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2015 c. 7, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, s. 8(3)(b), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 32, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 33, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 6(3)(b), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2008 c. 14, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, s. 145, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 34, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2014 c. 23, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, s. 73(2), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 35, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2025 c. 33, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, s. 51, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 36, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 6(4), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 37, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 7, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2000 c. 23, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, s. 65(2)(a), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 38, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2005 c. 2, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, s. 11(2), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 39, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 7(1), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2000 c. 11, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, s. 9(2), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 40, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 7(1)(a), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2000 No. 301, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, rule 3, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 41, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 7(9)(a), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 42, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 43, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 44, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2021 c. 23, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 45, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 9(1), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, rule 4, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 46, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 9(3), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2020 No. 1160, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 47, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 9(5), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2002 c. 26, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 48, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 14, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 49, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 14(1), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Sort by Year and Number up arrow, column 6, 2001 No. 1216, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Made by Affecting Provision, column 7, art. 2(a), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "row 50, Changes that affect Sort by Year and Number up arrow, column 2, 1998 c. 42, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+  "channel": "links",
+  "contains": "Changes that affect Changed Provision, column 3, s. 14(1)(b), link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "External links, region, Authority control databases Edit this at Wikidata, navigation landmark, table, with 1 row and 2 columns, Authority control databases Edit this at Wikidata, row 1, column 2, list, with 1 item, GND, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "table, with 19 rows and 2 columns, row 13, Interpretation, column 2, squally, link, Squally",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "Description, column 2, , 12, , same page, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "Land conditions, column 6, slates, link, Roof tiles",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "Description, column 2, Gale, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "Sea conditions, column 5, spindrift, link, Spindrift",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "Sea conditions, column 5, spray, link, Sea spray",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "Sea conditions, column 5, foam, link, Sea foam",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "Land conditions, column 6, wind vane, link, Weather vane",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "Wind speed, column 3, m slash s, link, Metre per second",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "0, row 2, Wind speed, column 3, knot, link, Knot (unit)",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "2, row 4, Land conditions, column 6, wind vane, link, Weather vane",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "3, row 5, Sea conditions, column 5, foam, link, Sea foam",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "5, row 7, Sea conditions, column 5, spray, link, Sea spray",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "7, row 9, Sea conditions, column 5, spindrift, link, Spindrift",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "8, row 10, Description, column 2, Gale, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "9, row 11, Land conditions, column 6, chimney pots, link, Chimney",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "10, row 12, Description, column 2, Storm, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "links",
+  "contains": "12, row 14, Description, column 2, Hurricane, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ },
+ {
+  "reading": "devtools-linux",
+  "address": "https://en.wikipedia.org/wiki/Beaufort_scale",
+  "channel": "lists",
+  "contains": "Authority control databases Edit this at Wikidata, navigation landmark, table, with 1 row and 2 columns, Authority control databases Edit this at Wikidata, row 1, column 2, list, with 1 item, GND, link",
+  "cause": "conversion: name",
+  "reason": "read after the figure: the spoken string is the fleet's with words missing around the cell's row or column index (the header text NVDA speaks with a table cell); the extension has no reading of the page, so no source agrees where DevTools does not"
+ }
+]
