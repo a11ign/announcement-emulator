@@ -1,0 +1,214 @@
+{
+ "ext-linux-run1": {
+  "startedAt": "2026-10-24T20:47:38Z",
+  "finishedAt": "2026-10-24T20:51:22Z",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 220378,
+  "workers": [
+   {
+    "snapshots": 17,
+    "keys": 46,
+    "focusEvents": 36,
+    "unresolvedFocus": 0,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   },
+   {
+    "snapshots": 20,
+    "keys": 422,
+    "focusEvents": 421,
+    "unresolvedFocus": 26,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   }
+  ]
+ },
+ "ext-linux-run2": {
+  "startedAt": "2026-10-24T20:55:03Z",
+  "finishedAt": "2026-10-24T20:58:29Z",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 202466,
+  "workers": [
+   {
+    "snapshots": 16,
+    "keys": 46,
+    "focusEvents": 36,
+    "unresolvedFocus": 0,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   },
+   {
+    "snapshots": 24,
+    "keys": 422,
+    "focusEvents": 417,
+    "unresolvedFocus": 26,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   }
+  ]
+ },
+ "devtools-linux-run1": {
+  "startedAt": "2026-10-24T20:51:22Z",
+  "finishedAt": "2026-10-24T20:55:03Z",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 217539,
+  "workers": [
+   {
+    "snapshots": 145,
+    "keys": 46,
+    "focusEvents": 36,
+    "unresolvedFocus": 0,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   },
+   {
+    "snapshots": 23,
+    "keys": 422,
+    "focusEvents": 407,
+    "unresolvedFocus": 29,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   }
+  ]
+ },
+ "devtools-linux-run2": {
+  "startedAt": "2026-10-24T20:58:29Z",
+  "finishedAt": "2026-10-24T21:03:25Z",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 290909,
+  "workers": [
+   {
+    "snapshots": 129,
+    "keys": 46,
+    "focusEvents": 36,
+    "unresolvedFocus": 0,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   },
+   {
+    "snapshots": 24,
+    "keys": 422,
+    "focusEvents": 402,
+    "unresolvedFocus": 26,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   }
+  ]
+ },
+ "devtools-macos-run1": {
+  "startedAt": "2026-10-24T20:49:15Z",
+  "finishedAt": "2026-10-24T20:51:16Z",
+  "runner": "macos-latest",
+  "os": "macOS",
+  "arch": "ARM64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 118174,
+  "workers": [
+   {
+    "snapshots": 25,
+    "keys": 259,
+    "focusEvents": 242,
+    "unresolvedFocus": 9,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   },
+   {
+    "snapshots": 19,
+    "keys": 202,
+    "focusEvents": 191,
+    "unresolvedFocus": 17,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   }
+  ]
+ },
+ "devtools-macos-run2": {
+  "startedAt": "2026-10-24T20:51:16Z",
+  "finishedAt": "2026-10-24T20:52:52Z",
+  "runner": "macos-latest",
+  "os": "macOS",
+  "arch": "ARM64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 93805,
+  "workers": [
+   {
+    "snapshots": 37,
+    "keys": 200,
+    "focusEvents": 184,
+    "unresolvedFocus": 13,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   },
+   {
+    "snapshots": 31,
+    "keys": 264,
+    "focusEvents": 259,
+    "unresolvedFocus": 13,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   }
+  ]
+ },
+ "devtools-ubuntu-ci-run1": {
+  "startedAt": "2026-10-24T20:49:34Z",
+  "finishedAt": "2026-10-24T20:50:47Z",
+  "runner": "ubuntu-latest",
+  "os": "Linux",
+  "arch": "X64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 70415,
+  "workers": [
+   {
+    "snapshots": 34,
+    "keys": 196,
+    "focusEvents": 175,
+    "unresolvedFocus": 13,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   },
+   {
+    "snapshots": 23,
+    "keys": 264,
+    "focusEvents": 256,
+    "unresolvedFocus": 13,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   }
+  ]
+ },
+ "devtools-ubuntu-ci-run2": {
+  "startedAt": "2026-10-24T20:50:47Z",
+  "finishedAt": "2026-10-24T20:52:05Z",
+  "runner": "ubuntu-latest",
+  "os": "Linux",
+  "arch": "X64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 75503,
+  "workers": [
+   {
+    "snapshots": 24,
+    "keys": 291,
+    "focusEvents": 264,
+    "unresolvedFocus": 15,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   },
+   {
+    "snapshots": 28,
+    "keys": 169,
+    "focusEvents": 160,
+    "unresolvedFocus": 11,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0
+   }
+  ]
+ }
+}

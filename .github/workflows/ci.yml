@@ -1,0 +1,75 @@
+# The merge gate. Every pull request and every merge-queue entry runs the tests, and the single job `gate` below is the check the
+# `merge-queue-main` ruleset requires (`.github/rulesets/merge-queue-main.json`). `merge_group` is what lets the queue's temporary
+# branches run it: a required check that never runs on one blocks the queue for ever.
+#
+# A job added later (a changeset check, a release dry run) goes into `gate`'s `needs` and nowhere else.
+#
+# `middleware-spike.yml` is not part of the gate: its bundle and demo jobs build on macOS and Linux for many minutes and are the spike's
+# evidence, not the merge gate.
+name: ci
+
+on:
+  # `edited` because a pull request that was open before this file merged has no `gate` run, and a body edit gives it one without a push.
+  # The concurrency group below cancels the run an edit interrupts.
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+  merge_group:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  # The middleware package: build first, so that a build which fails reads red here, then lint, typecheck and the rstest suite.
+  middleware:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: middleware
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+        with: { package_json_file: middleware/package.json }
+      - uses: actions/setup-node@v7
+        with: { node-version: 22, cache: pnpm, cache-dependency-path: middleware/pnpm-lock.yaml }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run build
+      - run: pnpm run lint
+      - run: pnpm run typecheck
+      - run: pnpm test
+
+  # Every Python suite in the tree that runs without the fleet, one step per directory so that a failure names its directory. A suite
+  # that needs NVDA's source, the emulator's virtualenv, Chrome or the fleet skips itself and prints why (`setup.sh` downloads them);
+  # on this plain runner those skip and the rest run.
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - run: python3 -m unittest discover -s emu/gatefixes -t emu/gatefixes -p 'test_*.py' -v
+      - run: python3 -m unittest discover -s emu/langnames -t emu/langnames -p 'test_*.py' -v
+      - run: python3 -m unittest discover -s q3 -t q3 -p 'test_fleet_capture.py' -v
+      - run: python3 -m unittest discover -s q3/gate -t q3/gate -p 'test_*.py' -v
+      - run: python3 -m unittest discover -s q3/remeasure -t q3/remeasure -p 'test_*.py' -v
+      - run: python3 -m unittest discover -s q3/replay -t q3/replay -p 'test_*.py' -v
+      - run: python3 -m unittest discover -s middleware/agreement -t middleware/agreement -p 'test_*.py' -v
+      - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_*.py' -v
+      - run: python3 -m unittest discover -s middleware/bundle -t middleware/bundle -p 'test_*.py' -v
+
+  # THE REQUIRED CHECK. `if: always()` because a job whose need failed is SKIPPED, and a skipped required check counts as passed; the step
+  # accepts `success` ONLY, so a job that was skipped or cancelled fails the gate.
+  gate:
+    needs: [middleware, python]
+    if: always() && !cancelled()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Every job ran, and ran clean
+        run: |
+          for result in "${{ needs.middleware.result }}" "${{ needs.python.result }}"; do
+            if [ "$result" != "success" ]; then
+              echo "::error::a job reported '$result', not success"
+              exit 1
+            fi
+          done

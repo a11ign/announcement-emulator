@@ -40,6 +40,7 @@ def early(freeze, fleet_dir):
 def main(argv):
     ap = argparse.ArgumentParser(); ap.add_argument('command', choices=['name', 'check']); ap.add_argument('file'); ap.add_argument('--commit', default='HEAD'); ap.add_argument('--fleet'); ap.add_argument('--also', action='append', default=[], metavar='PATH', help='a path to name beside the standard objects (repeatable); `name` only'); ap.add_argument('--repo', default='.'); ap.add_argument('--head', default='HEAD', help='the commit to check against the freeze: the freeze commit itself, after later commits changed what it names')
     a = ap.parse_args(argv)
+    if a.also and a.command != 'name': ap.error('--also names objects when the freeze is written; `check` reads them from the freeze file')
     if a.command == 'name':
         freeze = name(a.repo, a.commit, extra=a.also)
         with open(a.file, 'w') as f: json.dump(freeze, f, indent=1); f.write('\n')

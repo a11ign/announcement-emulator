@@ -47,6 +47,9 @@ class Freeze(unittest.TestCase):
         run('commit', '-qam', 'compare')
         self.assertEqual(make_freeze.moved(freeze, d), ['compare.py'])
 
+    def test_also_is_for_naming_only(self):
+        with self.assertRaises(SystemExit): make_freeze.main(['check', 'f.json', '--also', 'x'])
+
     def test_a_capture_older_than_the_freeze_is_found(self):
         freeze = {'namedAt': '2026-10-24T20:00:00Z'}
         with tempfile.TemporaryDirectory() as d:
