@@ -45,16 +45,18 @@ git clone -q --filter=blob:none --no-checkout https://github.com/nvaccess/nvda "
 git -C "$W/nvda" checkout -q "$NVDA_REV"
 mkdir -p "$B/nvda-src"
 git -C "$W/nvda" archive "$NVDA_REV" source copying.txt tests/system/libraries/SystemTestSpy tests/system/nvdaSettingsFiles/standard-dontShowWelcomeDialog.ini | tar -x -C "$B/nvda-src"
-# 2. the CLDR names, and (in the full layout) the overlay of NVDA's source/ whose locale/en/cldr.dic is the pinned one. Copies, not links: nothing in the bundle names a path outside it. The lean bundle has no overlay: lean.py puts the pinned names over NVDA's file in place
+# 2. the CLDR names, and (in the full layout, which --full-dir asks for) the overlay of NVDA's source/ whose locale/en/cldr.dic is the pinned one. Copies, not links: nothing in the bundle names a path outside it. The lean bundle has no overlay: lean.py puts the pinned names over NVDA's file in place
 git clone -q --filter=blob:none --no-checkout https://github.com/nvaccess/nvda-cldr "$W/cldr"
 git -C "$W/cldr" checkout -q "$CLDR_REV"
 mkdir -p "$B/cldr-src/locale/en"; cp "$W/cldr/locale/en/cldr.dic" "$B/cldr-src/locale/en/cldr.dic"
-cp -R "$B/nvda-src/source" "$B/nvda-appdir"; cp "$B/cldr-src/locale/en/cldr.dic" "$B/nvda-appdir/locale/en/cldr.dic"
-# 3. Chromium's Windows accessibility mapping, as read (full layout only): the source files of milestone $CHROME, which emu/tables.json was generated from. Nothing reads them at run time, and the lean bundle ships the tables and not these
-mkdir -p "$B/chromium-src"
-for p in $CHROMIUM_FILES; do
-  curl -fsSL "https://chromium.googlesource.com/chromium/src/+/refs/tags/$CHROME/$p?format=TEXT" | base64 -d > "$B/chromium-src/$(basename "$p")"
-done
+[ -z "$FULL_DIR" ] || { cp -R "$B/nvda-src/source" "$B/nvda-appdir"; cp "$B/cldr-src/locale/en/cldr.dic" "$B/nvda-appdir/locale/en/cldr.dic"; }
+# 3. Chromium's Windows accessibility mapping, as read (full layout only, so a build that makes only the lean bundle does not fetch it): the source files of milestone $CHROME, which emu/tables.json was generated from. Nothing reads them at run time, and the lean bundle ships the tables and not these
+if [ -n "$FULL_DIR" ]; then
+  mkdir -p "$B/chromium-src"
+  for p in $CHROMIUM_FILES; do
+    curl -fsSL "https://chromium.googlesource.com/chromium/src/+/refs/tags/$CHROME/$p?format=TEXT" | base64 -d > "$B/chromium-src/$(basename "$p")"
+  done
+fi
 # 4. a self-contained Python, from python-build-standalone, refused unless it is the pinned build (install_only_stripped); the packages go straight into it, with no virtualenv
 PBS_FILE="cpython-$PYTHON%2B$PBS_RELEASE-$TRIPLE-install_only_stripped.tar.gz"
 curl -fsSL -o "$W/python.tar.gz" "https://github.com/astral-sh/python-build-standalone/releases/download/$PBS_RELEASE/$PBS_FILE"

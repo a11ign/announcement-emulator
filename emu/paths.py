@@ -7,6 +7,8 @@ DOWNLOADS = pathlib.Path(os.environ.get('EMU_DOWNLOADS') or pathlib.Path.home() 
 
 def app_dir(downloads=DOWNLOADS):
     """NVDA's appDir: the overlay of its source whose locale/en/cldr.dic is the pinned one, which setup.sh builds as links so that the checkout stays unmodified. The runtime bundle has no second tree
-    (A11-231): its nvda-src/source has the pinned names in place, and is the appDir."""
-    overlay = pathlib.Path(downloads) / 'nvda-appdir'
-    return overlay if overlay.is_dir() else pathlib.Path(downloads) / 'nvda-src' / 'source'
+    (A11-231): its nvda-src/source has the pinned names in place (NVDA's own checkout has no cldr.dic), and is the appDir. A layout with neither is not made to look like the bundle: the overlay's path is
+    returned, and what NVDA reads from it fails where it is missing."""
+    root = pathlib.Path(downloads)
+    overlay, source = root / 'nvda-appdir', root / 'nvda-src' / 'source'
+    return source if not overlay.is_dir() and (source / 'locale' / 'en' / 'cldr.dic').exists() else overlay
