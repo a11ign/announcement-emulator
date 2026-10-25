@@ -10,10 +10,12 @@ stdin: {"cmd": "drain", "id": n} (finish what is queued, run the sweeps, derive 
 
 This is GPL code, as the emulator is. The middleware that starts it is a separate program and never imports it (ADR 0047, Decision 3).
 """
-import argparse, http.server, json, os, queue, sys, threading, time
+import os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
+import import_trace; import_trace.install()      # first, so that an import that fails is in the trace; only when ANNOUNCEMENT_EMULATOR_IMPORT_TRACE is set: what the run read from the bundle (A11-231)
+import argparse, http.server, json, queue, threading, time
 QUIET = 0.25      # seconds without anything new before a drain takes the queue as complete
 REORDER_WAIT = 0.4      # how long a snapshot is held for the one before it, which was posted first and may arrive second
 

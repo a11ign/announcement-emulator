@@ -2,6 +2,10 @@
 # middleware attached on a plain GitHub-hosted runner: no container, no Docker, no setup beyond `npm i -D`, `npx playwright install chromium` and `npx announcement-emulator install`. The browser is the one
 # Playwright installs for the team's version (A11-230): the bundle holds none.
 #
+# The runtime bundle is lean (A11-231): a stripped Python and the files a trace of the runtime read, in one copy of NVDA's source (middleware/bundle/trace.sh makes the list, keep/<platform>.txt). Three proofs run
+# here: the transcripts of every recorded session are byte for byte the full layout's (`bundle-identical`), a run of the sample suite that wants a file the bundle lacks fails (`demo`), and the linux build is the
+# same bytes twice (`bundle`). `trace` makes the lists again and fails on a file they lack.
+#
 # Nothing is published. The bundle travels as a workflow artifact and the `demo` jobs serve it from a static server on the runner, so that `install` does its real http download, its
 # checksum and its unpack. A released version would serve the bundle from a host; this spike has none (docs/playwright-middleware-spike.md).
 name: middleware-spike
@@ -41,10 +45,11 @@ jobs:
       - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_pure.py'
       - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_cdp.py'
       - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_fallback.py'
+      - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_import_trace.py'
       - run: python3 -m unittest discover -s middleware/bundle -t middleware/bundle
 
-  # One bundle for each platform, built here: NVDA's source and the Chromium sources at their pins, the companion extension, and a self-contained Python with the packages in it. No browser and no browser library:
-  # check_no_browser.py fails the job on an archive that holds one.
+  # One lean bundle for each platform, built here: a stripped Python with the packages in it, and the files of NVDA's source and of the standard library that a trace of the runtime read (keep/<platform>.txt), in one copy.
+  # The full layout is built beside it (--full-dir): what a run could read, nothing pruned, which the other jobs compare the lean bundle to. No browser and no browser library: check_no_browser.py fails the job on an archive that holds one.
   bundle:
     strategy:
       fail-fast: false
@@ -58,29 +63,120 @@ jobs:
       - id: build
         run: |
           start=$(date +%s)
-          middleware/bundle/build.sh ${{ matrix.platform }} "$RUNNER_TEMP/bundle"
+          middleware/bundle/build.sh ${{ matrix.platform }} "$RUNNER_TEMP/bundle" --full-dir "$RUNNER_TEMP/full"
           echo "seconds=$(( $(date +%s) - start ))" >> "$GITHUB_OUTPUT"
-      # The archive is the same bytes for the same inputs (mktar.py), and the pin in the package is its sha256: build it a second time and compare.
+          echo "archive=$(basename "$(ls "$RUNNER_TEMP"/bundle/announcement-emulator-bundle-*.tar.* | grep -v '\.sha256$')")" >> "$GITHUB_OUTPUT"
+      # The archive is the same bytes for the same inputs (mktar.py), and the pin in the package is its sha256: build it a second time and compare. Required on linux-x64; on darwin-arm64 it is reported, because the linker's UUID
+      # there is not controlled (build.sh).
       - id: again
-        if: matrix.platform == 'linux-x64'
         run: |
           middleware/bundle/build.sh ${{ matrix.platform }} "$RUNNER_TEMP/bundle2"
-          if cmp -s "$RUNNER_TEMP/bundle/announcement-emulator-bundle-${{ matrix.platform }}.tar.gz" "$RUNNER_TEMP/bundle2/announcement-emulator-bundle-${{ matrix.platform }}.tar.gz"; then echo "same=true" >> "$GITHUB_OUTPUT"; else echo "same=false" >> "$GITHUB_OUTPUT"; fi
-          sha256sum "$RUNNER_TEMP"/bundle*/announcement-emulator-bundle-${{ matrix.platform }}.tar.gz
-      # No browser and no browser library in the archive that is shipped, and the size that is: the archive and what it unpacks to.
+          if cmp -s "$RUNNER_TEMP/bundle/${{ steps.build.outputs.archive }}" "$RUNNER_TEMP/bundle2/${{ steps.build.outputs.archive }}"; then echo "same=true" >> "$GITHUB_OUTPUT"; else echo "same=false" >> "$GITHUB_OUTPUT"; fi
+          shasum -a 256 "$RUNNER_TEMP"/bundle*/${{ steps.build.outputs.archive }}
+      - if: matrix.platform == 'linux-x64'
+        run: '[ "${{ steps.again.outputs.same }}" = true ] || { echo "two builds of the lean linux-x64 bundle are not the same bytes"; exit 1; }'
+      # No browser and no browser library in the archive that is shipped; the size, by part, against the spike's and against the full layout; the three formats' sizes and unpack times.
       - run: |
-          python3 middleware/bundle/check_no_browser.py "$RUNNER_TEMP/bundle/announcement-emulator-bundle-${{ matrix.platform }}.tar.gz"
-          mkdir "$RUNNER_TEMP/unpacked" && tar -xzf "$RUNNER_TEMP/bundle/announcement-emulator-bundle-${{ matrix.platform }}.tar.gz" -C "$RUNNER_TEMP/unpacked"
+          python3 middleware/bundle/check_no_browser.py "$RUNNER_TEMP/bundle/${{ steps.build.outputs.archive }}"
+          mkdir "$RUNNER_TEMP/unpacked" && tar -xf "$RUNNER_TEMP/bundle/${{ steps.build.outputs.archive }}" -C "$RUNNER_TEMP/unpacked"
           python3 middleware/bundle/check_no_browser.py "$RUNNER_TEMP/unpacked"
-          { echo "### Bundle size ${{ matrix.platform }}"; echo; echo "archive: $(wc -c < "$RUNNER_TEMP/bundle/announcement-emulator-bundle-${{ matrix.platform }}.tar.gz") bytes; unpacked: $(du -sk "$RUNNER_TEMP/unpacked" | cut -f1) KiB; no browser and no browser library in either"; } >> "$GITHUB_STEP_SUMMARY"
+          mkdir "$RUNNER_TEMP/formats-out"
+          { echo "### Bundle size ${{ matrix.platform }}"; echo
+            python3 middleware/bundle/sizes.py table "$RUNNER_TEMP/unpacked" --platform ${{ matrix.platform }} --archive "$RUNNER_TEMP/bundle/${{ steps.build.outputs.archive }}" --column "Full layout (nothing pruned)=$RUNNER_TEMP/full"
+            echo; echo "### Formats ${{ matrix.platform }}"; echo
+            python3 middleware/bundle/sizes.py formats "$RUNNER_TEMP/unpacked" --json "$RUNNER_TEMP/formats-out/formats-${{ matrix.platform }}.json" --keep "$RUNNER_TEMP/formats"; } | tee -a "$GITHUB_STEP_SUMMARY"
+        shell: bash
+      # What a plain ubuntu:24.04 container's tar does with each format is reported with the sizes, and does not decide: that image has neither an xz nor a zstd program, so it unpacks only gzip (A11-231).
+      - if: matrix.platform == 'linux-x64'
+        run: |
+          for fmt in xz zst; do
+            if docker run --rm -v "$RUNNER_TEMP/formats:/f:ro" ubuntu:24.04 sh -c "mkdir /o && tar -xf /f/bundle.tar.$fmt -C /o && test -f /o/bundle.json"; then result=ok; else result=failed; fi
+            echo "$fmt=$result" | tee -a "$RUNNER_TEMP/formats-out/container.txt"
+          done
       - run: |
           { echo "### Bundle ${{ matrix.platform }}"; echo; echo "built in ${{ steps.build.outputs.seconds }} s"; echo; ls -l "$RUNNER_TEMP/bundle"; cat "$RUNNER_TEMP/bundle"/pin-*.json
-            echo; echo "built twice, byte-identical: ${{ steps.again.outputs.same || 'not checked on this platform' }}"; } >> "$GITHUB_STEP_SUMMARY"
+            echo; echo "built twice, byte-identical: ${{ steps.again.outputs.same }}"; } >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v7
         with:
           name: bundle-${{ matrix.platform }}
           path: ${{ runner.temp }}/bundle
           compression-level: 0
+          retention-days: 14
+      - uses: actions/upload-artifact@v7
+        with:
+          name: formats-${{ matrix.platform }}
+          path: ${{ runner.temp }}/formats-out
+          retention-days: 14
+
+  # The format the bundle is built in is the one that was measured: the smaller of xz and zstd among those that unpack in 5 s or less on both runners with the host's tar. The job fails when build.sh's default is
+  # any other.
+  bundle-format:
+    needs: bundle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with: { pattern: "formats-*", path: "${{ runner.temp }}/formats", merge-multiple: true }
+      - run: |
+          cd "$RUNNER_TEMP/formats"
+          containers=""; for line in $(cat container.txt); do containers="$containers --container $line"; done
+          python3 "$GITHUB_WORKSPACE/middleware/bundle/sizes.py" choose formats-linux-x64.json formats-darwin-arm64.json $containers | tee "$RUNNER_TEMP/choice.txt" >> "$GITHUB_STEP_SUMMARY" || true      # it exits 1 when no format is acceptable; the test below then fails on the empty choice
+          chosen="$(sed -n 's/^ships: //p' "$RUNNER_TEMP/choice.txt")"
+          built="$(sed -n 's/^FORMAT=\([a-z]*\);.*/\1/p' "$GITHUB_WORKSPACE/middleware/bundle/build.sh")"
+          echo "measured: $chosen; build.sh builds: $built"
+          [ -n "$chosen" ] && [ "$chosen" = "$built" ]
+
+  # The transcripts: every recorded session, replayed with sweeps, without and with --report-focus, under the full layout and under the lean bundle as it was archived, on each platform. The outputs must be the same bytes
+  # (the clock left out). The full layout is built again here, from the same pins.
+  bundle-identical:
+    needs: bundle
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { platform: linux-x64, runner: ubuntu-latest }
+          - { platform: darwin-arm64, runner: macos-latest }
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with: { name: "bundle-${{ matrix.platform }}", path: "${{ runner.temp }}/bundle" }
+      - run: |
+          middleware/bundle/build.sh ${{ matrix.platform }} "$RUNNER_TEMP/unused" --full-dir "$RUNNER_TEMP/full" --layout-only
+          mkdir "$RUNNER_TEMP/lean" && tar -xf "$(ls "$RUNNER_TEMP"/bundle/announcement-emulator-bundle-*.tar.* | grep -v '\.sha256$')" -C "$RUNNER_TEMP/lean"
+          { echo "### Transcripts ${{ matrix.platform }}"; echo; echo '```'; python3 middleware/bundle/compare_bundles.py replay "$RUNNER_TEMP/full" "$RUNNER_TEMP/lean" 2>&1; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
+        shell: bash
+
+  # The lists again: trace.sh runs everything the lists are made from (every recording, the sample suite's offline project live with each tree source) in the full layout, and the job fails when a run read a file that
+  # keep/<platform>.txt lacks. The lists made here are uploaded: the darwin-arm64 one is made on this runner, and committed from here.
+  trace:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { platform: linux-x64, runner: ubuntu-latest, deps: "--with-deps" }
+          - { platform: darwin-arm64, runner: macos-latest, deps: "" }
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+        with: { package_json_file: middleware/package.json }
+      - uses: actions/setup-node@v7
+        with: { node-version: 22 }
+      - run: |
+          cp "middleware/bundle/keep/${{ matrix.platform }}.txt" "$RUNNER_TEMP/committed.txt" 2>/dev/null || : > "$RUNNER_TEMP/committed.txt"
+          PLAYWRIGHT_DEPS="${{ matrix.deps }}" middleware/bundle/trace.sh ${{ matrix.platform }} --traces "$RUNNER_TEMP/traces"
+          cp "middleware/bundle/keep/${{ matrix.platform }}.txt" "$RUNNER_TEMP/keep-${{ matrix.platform }}.txt"
+          { echo "### Trace ${{ matrix.platform }}"; echo; echo "files the runs read that keep/${{ matrix.platform }}.txt lacks:"; echo '```'; comm -13 "$RUNNER_TEMP/committed.txt" "$RUNNER_TEMP/keep-${{ matrix.platform }}.txt"; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
+          [ -z "$(comm -13 "$RUNNER_TEMP/committed.txt" "$RUNNER_TEMP/keep-${{ matrix.platform }}.txt")" ]
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: keep-${{ matrix.platform }}
+          path: |
+            ${{ runner.temp }}/keep-${{ matrix.platform }}.txt
+            ${{ runner.temp }}/traces
+          if-no-files-found: warn
           retention-days: 14
 
   # The acceptance: the sample suite, with the middleware attached by the one line, after `npx playwright install chromium` and `npx announcement-emulator install`, on a plain runner with no container.
@@ -158,6 +254,28 @@ jobs:
           [ -z "${{ matrix.check }}" ] && [ "${{ matrix.primary }}" = true ] || exit 0      # the cost is measured where a tree is read, once for each platform
           { time npx playwright test --config playwright.baseline.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-without.log"
           node cost.mjs --project fixtures --runs 3 --workers 1,2,4 --out "$RUNNER_TEMP/cost.json" 2>&1 | tee "$RUNNER_TEMP/cost.log"
+      # The lean bundle against the full layout, live (A11-231). The lean bundle is the one `install` just unpacked; the full layout is built here beside it. The fixtures project runs with each tree source, ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1
+      # and the import trace on: twice in the full layout and once in the lean bundle. The check fails on an import or a file the lean run wanted and could not find, where the full layout has it (compare_bundles.py misses), and reports
+      # the tests whose predicted speech or flags differ in the lean run where the two full-layout runs agree (compare_live.py: reported, not a failure, because a live run's timing moves a quick test's last event). The traces are uploaded: the darwin-arm64 row's are what keep/darwin-arm64.txt is made from.
+      - if: matrix.primary
+        run: |
+          set -e
+          cache="$(ls -d ~/.cache/announcement-emulator/*/ ~/Library/Caches/announcement-emulator/*/ 2>/dev/null | head -1)"; cache="${cache%/}"
+          middleware/bundle/build.sh ${{ matrix.platform }} "$RUNNER_TEMP/unused" --full-dir "$RUNNER_TEMP/full" --layout-only
+          mkdir -p "$RUNNER_TEMP/traces"; cd "$RUNNER_TEMP/project"
+          status=0
+          for tree in devtools extension; do
+            for which in full-a full-b lean; do
+              dir="$RUNNER_TEMP/full"; [ "$which" = lean ] && dir="$cache"
+              rm -rf test-results
+              ANNOUNCEMENT_EMULATOR_BUNDLE="$dir" ANNOUNCEMENT_EMULATOR_TREE="$tree" ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1 ANNOUNCEMENT_EMULATOR_IMPORT_TRACE="$RUNNER_TEMP/traces/live-$which.txt" npx playwright test --project=fixtures || true
+              cp test-results/report.json "$RUNNER_TEMP/traces/report-$tree-$which.json"
+            done
+            { echo "### Live comparison, $tree tree, ${{ matrix.platform }}"; echo '```'; python3 "$GITHUB_WORKSPACE/middleware/bundle/compare_live.py" "$RUNNER_TEMP/traces/report-$tree-full-a.json" "$RUNNER_TEMP/traces/report-$tree-full-b.json" "$RUNNER_TEMP/traces/report-$tree-lean.json"; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
+          done
+          cat "$RUNNER_TEMP/traces/live-full-a.txt" "$RUNNER_TEMP/traces/live-full-b.txt" > "$RUNNER_TEMP/traces/live-full.txt"
+          python3 "$GITHUB_WORKSPACE/middleware/bundle/compare_bundles.py" misses --full "$RUNNER_TEMP/full" --lean "$cache" --full-trace "$RUNNER_TEMP/traces/live-full.txt" --lean-trace "$RUNNER_TEMP/traces/live-lean.txt" || status=1
+          exit $status
       # Whether the companion extension is up in this platform's Playwright Chromium, and has chrome.automation: the macOS probe's answer, and the ubuntu one beside it.
       - if: always() && matrix.primary
         run: |
@@ -191,4 +309,5 @@ jobs:
             ${{ runner.temp }}/probe-tree.log
             ${{ runner.temp }}/install.log
             ${{ runner.temp }}/doctor.log
+            ${{ runner.temp }}/traces
           if-no-files-found: warn

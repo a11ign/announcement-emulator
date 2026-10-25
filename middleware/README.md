@@ -94,6 +94,49 @@ Three processes. Playwright's main process holds the reporter, which starts one 
 starts it and reads its JSON lines and **never imports it** (the runtime is GPL-3.0, ADR 0047 Decision 3). The test's browser reports to the runtime through the companion extension (the accessibility tree,
 after each change) and through the DevTools port (the page's own focus moves, keys, live-region changes, dialogs and error messages).
 
+## The runtime bundle is lean
+
+`npx announcement-emulator install` downloads one archive, checks its sha256 against the pin in the package and unpacks it with the host's `tar -xf` (A11-231). What is in it:
+
+- **Python**: python-build-standalone's `install_only_stripped` build (3.13), its standard library as bytecode, and only the modules the runtime was seen to import; the `encodings` package whole (a page's charset picks a codec at run time);
+  the packages NVDA's source needs. No tests, `idlelib`, `tkinter`, `ensurepip`, `turtle`, headers, static libraries or `pip`.
+- **NVDA's source**, one tree (`nvda-src/source`): the files the runtime was seen to import or read, `locale/en`, and the pinned CLDR names (`cldr.dic`) put over NVDA's own file in place. No other locale, no docs, images or tests, no second copy.
+- **This repository's runtime** (the emulator, the sweep, the runtime process, `emu/tables.json`) and, until A11-229 removes it, the companion extension. The Chromium source files `emu/tables.json` was generated from are not shipped:
+  nothing reads them at run time.
+- No browser and no browser library (`bundle/check_no_browser.py`).
+
+**Measured** (CI, `middleware-spike.yml`; MB of 10^6 bytes; the spike is A11-208's bundle, which had Chrome and a full Python, and A11-230's had no browser):
+
+| MB, unpacked | spike (linux-x64) | A11-230 linux-x64 | **lean linux-x64** | A11-230 darwin-arm64 | **lean darwin-arm64** |
+|---|---|---|---|---|---|
+| Chrome, and the libraries it needs | 411.0 | 0 | 0 | 0 | 0 |
+| Python | 278.0 | 272.6 | **37.2** | 76.9 | **23.1** |
+| &nbsp;&nbsp;interpreter | | 240.3 | 31.6 | 45.9 | 17.6 |
+| &nbsp;&nbsp;standard library | | 17.0 | 4.4 | 14.1 | 4.4 |
+| &nbsp;&nbsp;packages | | 15.3 | 1.2 | 17.0 | 1.0 |
+| NVDA (the spike's and A11-230's hold it twice) | 149.0 | 146.1 | **2.6** | 146.1 | **2.6** |
+| Chromium sources | | 1.2 | 0 | 1.2 | 0 |
+| This repository's runtime, the extension, the rest | | 0.4 | 0.4 | 0.4 | 0.4 |
+| **Total unpacked** | **838.0** | **420.4** | **40.3** | **224.7** | **26.1** |
+| **Archive** | 298.0 (gz) | 111.7 (gz) | **10.2** (xz) | 63.2 (gz) | **7.5** (xz) |
+
+The same bundle as gzip, xz and zstd (archive MB; median of three unpacks with the host's `tar -xf`): linux-x64 14.9 (0.28 s), **10.2 (0.65 s)**, 11.3 (0.09 s); darwin-arm64 10.3 (0.26 s), **7.5 (0.57 s)**, 8.3 (0.13 s).
+The interpreter is 31.6 MB of the 40.3 on linux: python-build-standalone links OpenSSL, SQLite and the rest into it, and the stripped build still holds its symbol table (`strip --strip-unneeded` on it leaves an interpreter that fails to start with a symbol lookup error). Two builds of each platform's bundle are the same bytes (CI checks both).
+
+**It is traced, not guessed.** `bundle/keep/<platform>.txt` lists every file of `python/` and `nvda-src/` that a run read. `bundle/trace.sh <platform>` makes it: it runs every recorded session under `runtime/fixtures/`
+(with sweeps, without, and with `--report-focus`) and the sample suite's offline project live with each tree source, in the unpruned layout, with `runtime/import_trace.py` on (`ANNOUNCEMENT_EMULATOR_IMPORT_TRACE=<file>`
+records the files imported or opened, and the imports that failed, which NVDA's own `try: import … except ImportError` would otherwise hide), and adds what NVDA's Chrome system tests read (`keep/nvda-system-tests.txt`,
+made on Linux by `trace.sh --system-tests`). `bundle/lean.py` prunes to it, and `build.sh` refuses to build without it. **When the runtime starts to import or read something new, run `trace.sh <platform>` and commit
+the list.** CI says when: the `demo` job runs the sample suite in the lean bundle and in the full layout with the trace on and fails on a file or import the lean run wanted and could not find (`compare_bundles.py misses`),
+and the `trace` job fails when a run reads a file the committed list lacks.
+
+**Unchanged behaviour.** `bundle-identical` replays every recorded session under the full layout and under the lean bundle, with sweeps, without and with `--report-focus`, on both platforms, and fails unless the outputs
+are the same bytes (the clock, `ms`, is left out, because two runs of one layout differ in it). `demo` also reports, test by test, where the live suite's predicted speech or flags differ between the lean bundle and the full layout (`compare_live.py`; a report and not a failure, because a live run's timing moves a quick test's last event).
+
+**Compression** is measured on every build (`bundle/sizes.py formats`): gzip, xz and zstd, each archive's size and its median unpack time with the host's `tar -xf`. The bundle ships in the smaller of xz and zstd that unpacks
+in 5 s or less on both runners; `bundle-format` fails if `build.sh`'s default is any other. **`install` needs a `tar` that reads xz**: macOS's does, and a GNU tar needs the `xz` program (`xz-utils`), which a minimal container
+such as `ubuntu:24.04` lacks (it has no zstd either; `bundle-format` reports what that image's tar does). The same inputs make the same archive (`mktar.py`): CI builds the linux-x64 bundle twice and compares the bytes.
+
 ## Environment
 
 | variable | |
@@ -101,6 +144,7 @@ after each change) and through the DevTools port (the page's own focus moves, ke
 | `ANNOUNCEMENT_EMULATOR_PATH` | where the bundle is cached (default `~/.cache/announcement-emulator`, `~/Library/Caches/announcement-emulator` on macOS) |
 | `ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST` | where `install` fetches the bundle from. This spike has none: nothing is published |
 | `ANNOUNCEMENT_EMULATOR_BUNDLE` | use this unpacked bundle instead of the cache |
+| `ANNOUNCEMENT_EMULATOR_IMPORT_TRACE` | a file the runtime appends the files it read from the bundle to, and the imports that failed (`bundle/trace.sh` and the CI miss check use it; unset, nothing is recorded) |
 | `ANNOUNCEMENT_EMULATOR_SWEEPS=0` | no sweeps |
 | `ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT` | seconds the runtime waits for an extension that has said nothing, after the first page, before it reads the trees through the DevTools port (default 5; 0 never) |
 | `ANNOUNCEMENT_EMULATOR_TREE` | `extension` or `devtools`: where the accessibility tree comes from. Unset, the middleware picks: the extension where the browser gives it a desktop tree and it is expected to load (Linux, Windows), the DevTools port on macOS and wherever the extension cannot be expected to load |
