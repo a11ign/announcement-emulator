@@ -5,7 +5,7 @@
     python readback.py emptied <readback.json> <worker> <what was emptied>
     python readback.py restored <readback.json> <worker> <what the read-back showed>
 
-`probe` reads a fleet_capture.mjs record of q3/remeasure/visited-probe.html and stores what it says about `visited`; the stage is `before` (the positive control:
+`probe` reads a fleet_capture.py record of q3/remeasure/visited-probe.html and stores what it says about `visited`; the stage is `before` (the positive control:
 it must read visited), `after` (the box passes only if nothing reads visited) or `after-run` (read again once the corpus is captured). `policy` stores the value the
 Ansible policy task asserted. `emptied` stores that the history store was emptied; `restored` that the policy value was removed again, after which the box can no longer be captured from.
 The values `policy`, `emptied` and `restored` store are what the operator read from the Ansible output; they are not parsed from it. `before` is taken after a first capture has visited the probe page (the first capture puts the page in the box's history, a later one reads it); it is recorded as read, whatever it read. Workers are named (`a11y-worker-2`), never addressed."""

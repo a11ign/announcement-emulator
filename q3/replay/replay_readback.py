@@ -7,7 +7,7 @@
     python replay_readback.py removed <file> <worker> <evidence>
     python replay_readback.py status <file> <worker> <state> <evidence>
 
-The three readings of the set-up (`proxy`, `certificate`, `removed`, `status`) are what the operator read from the play's own assertion and from `fleet:status`; they are stored, not parsed. `probe` reads a fleet_capture.mjs record of the
+The three readings of the set-up (`proxy`, `certificate`, `removed`, `status`) are what the operator read from the play's own assertion and from `fleet:status`; they are stored, not parsed. `probe` reads a fleet_capture.py record of the
 archive-only page (make_probe.py) and stores whether its heading is the run's marker. Before the corpus a box must read the marker (`on`: it is behind the replay server), and again after the corpus (`after-run`: it stayed);
 after the restore it must not (`off`: the page is nowhere else), with the proxy values and the certificate gone and `fleet:status` `ready`. Workers are named, never addressed."""
 import sys, os, re

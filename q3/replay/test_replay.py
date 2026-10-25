@@ -159,13 +159,6 @@ class ReplayReadback(unittest.TestCase):
         self.assertFalse(rrb.box_restored(self.restored(off={'capturedAt': '2026-10-21T11:02:00.000Z', 'read': False})))      # read before the values were removed
 
 
-def stub_capture(dir_):
-    path = os.path.join(dir_, 'stub.mjs')
-    write(path, """import { writeFileSync } from 'node:fs'; const [, , w, url, out] = process.argv;
-writeFileSync(out, JSON.stringify({ capturedAt: 'now', worker: w.split('=')[0], status: 200, capture: { url, transcript: [], structure: { links: ['a, link'], headings: [] } } }));""")
-    return path
-
-
 class FleetHooks(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory(); self.dir = self.tmp.name; self.calls = []
@@ -190,16 +183,12 @@ class FleetHooks(unittest.TestCase):
     def test_a_server_that_changed_archive_during_the_capture_is_refused(self):
         with self.assertRaises(RuntimeError): self.hooks.after('a11y-worker-2', self.slug, {'sha256': 'c' * 64})
 
-    def test_the_capture_stamps_the_record_with_the_replay_block(self):
-        stub = stub_capture(self.dir); dest = os.path.join(self.dir, 'oracle', self.slug + '.json'); os.makedirs(os.path.dirname(dest))
-        ok, why = cc.capture_one({'url': 'https://e.org/', 'role': None}, 'a11y-worker-2', 'http://w', ReplayBox.history(), dest, stub, self.hooks); self.assertTrue(ok, why)
-        rec = json.loads(read(dest)); self.assertEqual(rec['replay']['unmatched'], 2); self.assertEqual(rec['replay']['runId'], 'run1'); self.assertEqual(rec['capture']['url'], 'https://e.org/')
-
-    def test_the_log_of_a_failed_capture_is_dropped_so_a_page_keeps_only_the_log_of_the_capture_that_was_kept(self):
-        broken = os.path.join(self.dir, 'broken.mjs'); write(broken, "import { writeFileSync } from 'node:fs'; const [, , w, url, out] = process.argv; writeFileSync(out, JSON.stringify({ worker: 'a11y-worker-2', status: 500, capture: { error: 'HTTP 503' } }));")
-        dest = os.path.join(self.dir, 'oracle', self.slug + '.json'); os.makedirs(os.path.dirname(dest))
-        ok, why = cc.capture_one({'url': 'https://e.org/', 'role': None}, 'a11y-worker-2', 'http://w', ReplayBox.history(), dest, broken, self.hooks); self.assertFalse(ok)
-        self.assertFalse(os.path.exists(os.path.join(self.dir, 'fleet-logs', f'{self.slug}.a11y-worker-2.json'))); self.assertFalse(os.path.exists(dest))
+    def test_a_replay_capture_is_refused_by_the_corpus_capture_with_its_reason(self):
+        """A replay capture loads the page's archive into the box's own server before the capture and keeps its log after it: a hook between captures on one box, which a submitted fleet job has no place for (A11-246)."""
+        base = ['corpus.json', 'out', '--boxes', 'a11y-worker-2,a11y-worker-3,a11y-worker-4', '--label', 'A11-246', '--readback', 'rb.json']
+        for extra in (['--replay-run', 'r'], ['--replay-ports', 'a=1'], ['--replay-readback', 'x.json']):
+            with self.assertRaises(SystemExit) as e: cc.main(base + extra)
+            self.assertIn('a hook between captures on one box', str(e.exception), extra); self.assertIn(extra[0], str(e.exception))
 
     def test_a_record_on_disk_is_kept_only_if_it_is_this_runs_from_the_archive_now_on_disk_by_a_box_that_passes(self):
         """What a resumed run keeps: a record of another run, of another archive, or by a box that no longer passes is captured again."""
@@ -207,35 +196,15 @@ class FleetHooks(unittest.TestCase):
         history = {'workers': {'a11y-worker-2': ReplayBox.history()}}; dest = os.path.join(self.dir, self.slug + '.json')
         archive_sha = self.hooks.archive_sha256(self.slug)
         record = lambda **block: {'history': {'x': 1}, 'worker': 'a11y-worker-2', 'replay': {'runId': 'run1', 'archiveSha256': archive_sha, **block}}
-        write(dest, json.dumps(record())); self.assertTrue(cc.already_captured(dest, history, self.hooks))
+        slug = self.slug
+        self.assertTrue(self.hooks.is_current(record(), slug))
         for stale in (record(runId='an-earlier-run'), record(archiveSha256='0' * 64), {**record(), 'worker': 'a11y-worker-9'}, {k: v for k, v in record().items() if k != 'replay'}):
-            write(dest, json.dumps(stale)); self.assertFalse(cc.already_captured(dest, history, self.hooks), stale)
-        write(dest, json.dumps(record())); self.assertTrue(cc.already_captured(dest, history, None))      # without a replay the base rule: stamped, and its worker passes
+            self.assertFalse(self.hooks.is_current(stale, slug), stale)
+        write(dest, json.dumps(record())); self.assertTrue(cc.already_captured(dest, history))      # the corpus capture's own rule: stamped, and its worker passes
 
-    def test_a_worker_must_pass_both_read_backs(self):
-        history = {'workers': {f'a11y-worker-{n}': passing for n in (2, 3, 4) for passing in [ReplayBox.history()]}}
-        replay = {'workers': {f'a11y-worker-{n}': ReplayBox.box() for n in (2, 3, 4)}}
-        replay['workers']['a11y-worker-4'].pop('on')
-        with self.assertRaises(SystemExit): cc.usable_workers({f'a11y-worker-{n}': 'http://w' for n in (2, 3, 4)}, history, replay)      # only two pass both: fewer than three
-        replay['workers']['a11y-worker-4'] = ReplayBox.box(); self.assertEqual(sorted(cc.usable_workers({f'a11y-worker-{n}': 'http://w' for n in (2, 3, 4)}, history, replay)), ['a11y-worker-2', 'a11y-worker-3', 'a11y-worker-4'])
-
-    def test_the_live_capture_imports_nothing_of_the_replay_until_one_is_asked_for(self):
+    def test_the_corpus_capture_imports_nothing_of_the_replay(self):
         done = subprocess.run([sys.executable, '-c', "import sys; sys.path.insert(0, %r); import corpus_capture; print('replay_readback' in sys.modules, 'capture_hooks' in sys.modules)" % Q3], capture_output=True, text=True)
         self.assertEqual(done.stdout.strip(), 'False False', done.stderr)
-
-    def test_the_replay_flags_go_together_and_not_with_static_copies(self):
-        base = ['corpus.json', 'out', '--workers', 'a11y-worker-2=http://w', '--readback', 'rb.json']
-        for extra in (['--replay-run', 'r'], ['--replay-run', 'r', '--replay-ports', 'a=1'], ['--replay-ports', 'a=1'], ['--replay-readback', 'x.json']):
-            with self.assertRaises(SystemExit) as e: cc.main(base + extra)
-            self.assertIn('go together', str(e.exception), extra)
-        with self.assertRaises(SystemExit) as e: cc.main(base + ['--replay-run', 'r', '--replay-ports', 'a=1', '--replay-readback', 'x.json', '--static-base', 'http://h'])
-        self.assertIn('--static-base', str(e.exception))
-
-    def test_a_worker_refused_for_its_replay_read_back_is_told_so(self):
-        history = {'workers': {f'a11y-worker-{n}': ReplayBox.history() for n in (2, 3, 4)}}; replay = {'workers': {f'a11y-worker-{n}': ReplayBox.box() for n in (2, 3, 4)}}; replay['workers']['a11y-worker-4'].pop('on')
-        err = io.StringIO()
-        with contextlib.redirect_stderr(err), self.assertRaises(SystemExit): cc.usable_workers({f'a11y-worker-{n}': 'http://w' for n in (2, 3, 4)}, history, replay)
-        self.assertIn('history and replay', err.getvalue()); self.assertIn('a11y-worker-4', err.getvalue())
 
 
 class ReplayBox:

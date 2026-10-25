@@ -1,0 +1,3 @@
+# The one package the repository releases. sample-suite stays out: the demo jobs install it from a packed tarball.
+packages:
+  - middleware

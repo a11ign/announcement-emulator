@@ -10,7 +10,7 @@ A later measurement (A11-229, the tree sources) names what it adds to the figure
 import argparse, datetime, glob, json, os, subprocess, sys
 
 OBJECTS = ['emu', 'middleware/runtime', 'middleware/src', 'middleware/agreement/measure.py', 'middleware/agreement/select_pages.py', 'middleware/agreement/capture_fleet.py', 'middleware/agreement/dom_check.mjs',
-           'middleware/sample-suite/tests/corpus', 'middleware/results/agreement/rule.md', 'middleware/results/agreement/pages.json', 'q3/sweep.py', 'q3/livepage.py', 'q3/shapes.py', 'q3/fleet_capture.mjs', 'pins.env']
+           'middleware/sample-suite/tests/corpus', 'middleware/results/agreement/rule.md', 'middleware/results/agreement/pages.json', 'q3/sweep.py', 'q3/livepage.py', 'q3/shapes.py', 'q3/fleet_capture.py', 'pins.env']
 
 
 def git(*args, repo='.'): return subprocess.run(['git', '-C', repo, *args], capture_output=True, text=True, check=True).stdout.strip()
@@ -23,9 +23,15 @@ def name(repo, commit, now=None, extra=()):
             'objects': {path: git('rev-parse', '--verify', f'{full}:{path}', repo=repo) for path in [*OBJECTS, *(p for p in extra if p not in OBJECTS)]}}
 
 
+def object_at(path, repo='.', head='HEAD'):
+    """The git object of `path` at `head`, or None when there is none there: a thing that was named and has been deleted since (q3/fleet_capture.mjs, which q3/fleet_capture.py replaced)."""
+    done = subprocess.run(['git', '-C', repo, 'rev-parse', '--verify', '--quiet', f'{head}:{path}'], capture_output=True, text=True)
+    return done.stdout.strip() if done.returncode == 0 else None
+
+
 def moved(freeze, repo='.', head='HEAD'):
-    """The named things whose git object at `head` is not the one in the freeze."""
-    return [p for p, obj in freeze['objects'].items() if git('rev-parse', '--verify', f'{head}:{p}', repo=repo) != obj]
+    """The named things whose git object at `head` is not the one in the freeze, and the ones that are not at `head` at all."""
+    return [p for p, obj in freeze['objects'].items() if object_at(p, repo, head) != obj]
 
 
 def early(freeze, fleet_dir):

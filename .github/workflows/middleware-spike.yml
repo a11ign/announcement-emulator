@@ -7,7 +7,7 @@
 # same bytes twice (`bundle`). `trace` makes the lists again and fails on a file they lack.
 #
 # Nothing is published. The bundle travels as a workflow artifact and the `demo` jobs serve it from a static server on the runner, so that `install` does its real http download, its
-# checksum and its unpack. A released version would serve the bundle from a host; this spike has none (docs/playwright-middleware-spike.md).
+# checksum and its unpack. A release serves it from its GitHub Release (release-bundles.yml builds it, release-dry-run.yml rehearses it); here it is a mirror, as ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST names one: <host>/v<version>/<file>.
 name: middleware-spike
 
 on:
@@ -223,7 +223,8 @@ jobs:
           npx playwright install ${{ matrix.deps }} chromium
       # The bundle is served over http from this runner, as a host would serve it; `install` downloads it, refuses it unless it is the pinned sha256, and unpacks it into the cache.
       - run: |
-          (cd "$RUNNER_TEMP/bundle" && python3 -m http.server 8099 --bind 127.0.0.1 >/dev/null 2>&1 &)
+          mkdir "$RUNNER_TEMP/mirror" && ln -s "$RUNNER_TEMP/bundle" "$RUNNER_TEMP/mirror/v$(node -p "require('./middleware/package.json').version")"      # a mirror lays a Release out as <host>/v<version>/<file>
+          (cd "$RUNNER_TEMP/mirror" && python3 -m http.server 8099 --bind 127.0.0.1 >/dev/null 2>&1 &)
           sleep 2
           cd "$RUNNER_TEMP/project"
           export ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST=http://127.0.0.1:8099

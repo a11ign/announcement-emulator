@@ -19,7 +19,7 @@ Web Page Replay needs a Go toolchain built from Chromium's `catapult`, which thi
 - `http://replay.control/use?archive=<file>` loads an archive and clears the log; `http://replay.control/log` returns every request since, each as `exact`, `fuzzy`, `miss` or `blocked`, with the archive's sha256.
 
 ```sh
-. ./env.sh      # see 0.; EMU is this checkout, EMU_DOWNLOADS the persistent directory, RUN the run's directory, R the results directory, W scratch
+. ./env.sh      # see 0.; EMU is this checkout, EMU_DOWNLOADS the persistent directory, RUN the run's directory, R the results directory, W scratch, LABEL the ticket key (every fleet capture is a job, and a job is labelled)
 PYR=$EMU_DOWNLOADS/replay/venv/bin/python; PY=$EMU_DOWNLOADS/q2/venv/bin/python
 ```
 
@@ -61,27 +61,23 @@ On the control plane (`/tmp/replay/$RUN_ID/`): this repository's two plays, the 
 ## 3. One box at a time, the first alone: history off, replay on, probes
 
 ```sh
-q3/replay/fleet/box.sh on a11y-worker-2          # the first box alone; then each other box one at a time: `box.sh change <box>` (the Ansible changes, one box at a time), and `box.sh probes <box>` (the captures, which may overlap)
+LABEL=<the ticket key> q3/replay/fleet/box.sh on a11y-worker-2          # the first box alone; then each other box one at a time: `box.sh change <box>` (the Ansible changes, one box at a time), and `box.sh probes <box>` (the captures, which may overlap)
 ```
 
 `box.sh on` runs, for the box: the idle check; Edge stopped (ad hoc Ansible); **history off** through control's own play (`provision-role.yml --tags policy -e @override.yml`, as A11-155) and read back (`win_reg_stat` value 1); the history store emptied (`win_file`);
 **replay on** through this repository's play (`q3/replay/fleet/replay-on.yml`: Edge's `ProxyMode`, `ProxyServer` and `ProxyBypassList`, the run's CA in `LocalMachine\Root`, the browser profile's cache, cookies and script storage emptied; it reads each back and fails if one did not land); then the two probes.
+Each probe capture is a fleet job on that one box, submitted and waited for once (`python3 q3/fleet_capture.py capture <box> <address> <out.json> --label $LABEL --wait 30m`, in `box.sh`'s `cap`): the visit and the read of the history probe are two jobs in turn, as the probe needs, and there is no loop over jobs.
 Each is stored by `readback.py` (history) and `replay_readback.py` (replay) in `$R/history-readback.json` and `$R/replay-readback.json`; the plays' output, with every address taken out by `fleet/scrub.py`, is in `$R/fleet/plays/`.
 (control's `apply_dwords` writes DWORDs only and the proxy policy is a string, so the proxy and the certificate go through this repository's play, run from `/root/control/ansible` with control's own `ansible.cfg` and inventory. control is not changed.)
 
 **Pass, per box:** the policy play's recap is `failed=0`; `replay-on.yml`'s last task prints `replay on: ProxyMode=fixed_servers ProxyServer=capture-host:<port> ...; certificate <thumbprint> found once in LocalMachine\Root`; the history `after` probe reads neither link `visited`; **the replay probe reads the run's marker as its heading**
 (a page that exists only in the archive: the box is behind the server); `replay_readback.py` ends with `<box> passes`. **A box that does not pass stays off the run**; name it in the write-up.
 
-## 4. Capture the same 102 addresses, at their own addresses
+## 4. Capture the same 102 addresses, at their own addresses: withdrawn on the job service (A11-246)
 
-```sh
-python3 q3/corpus_capture.py q3/results/corpus.json $W/oracle --workers "$WORKERS" --readback $R/history-readback.json --summary $R/capture-run.json \
-  --replay-run $RUN --replay-ports "$PORTS" --replay-readback $R/replay-readback.json
-for B in $BOXES; do q3/replay/fleet/box.sh afterrun $B; done      # both probes again, once the corpus is captured
-```
-
-Before each capture the page's archive is loaded into the box's own server, and after it the server's log is kept (`$RUN/fleet-logs/<slug>.<worker>.json`). Each record is stamped with a `replay` block (the run, the archive and its sha256, the number of requests and of unanswered ones, the box's read-back).
-A worker without a passing history and replay read-back is refused by name. **Pass:** exit 0, `captured: 102, failed: []`.
+**This step cannot be run as it was.** It was `corpus_capture.py --replay-run $RUN --replay-ports "$PORTS" --replay-readback $R/replay-readback.json`: before each capture the page's archive was loaded into the box's own replay server, and after it the server's log was kept. That is a hook between two captures on one box, and a fleet job
+(`fleet capture submit`) has no place for one; running it in the caller's shell is what A11-246 removed from every capture entry point. `corpus_capture.py` refuses the three `--replay-*` flags and says why, and `q3/replay/capture_hooks.py` and `replay_readback.py` stay as they are.
+What a replay re-measure needs is a replay server that holds every archive of the run at once and logs per page, so that the whole corpus is one job; that is a follow-up of A11-246. The probes of step 3 (`box.sh`) are jobs and still run.
 
 ## 5. The emulator, the same bytes
 

@@ -1,10 +1,11 @@
-"""python3 -m unittest discover -s q3/remeasure -t q3/remeasure   (from the repository root; needs node, as the capture does)"""
+"""python3 -m unittest discover -s q3/remeasure -t q3/remeasure   (from the repository root)"""
 import sys, os, json, shutil, datetime, tempfile, subprocess, unittest, io, contextlib, threading, time, http.server
 HERE = os.path.dirname(os.path.abspath(__file__)); Q3 = os.path.dirname(HERE)
 sys.path.insert(0, HERE); sys.path.insert(0, Q3)
 import readback as rb, check, corpus_capture as cc, policy_override as po, explain_visited as ev, make_views
 sys.path.insert(0, os.path.join(Q3, 'replay')); sys.path.insert(0, os.path.join(Q3, 'gate'))
 import replay_readback as rrb, make_freeze
+from fleet_stub import FleetStub, run_main
 
 def write(path, text):
     with open(path, 'w') as f: f.write(text)
@@ -67,68 +68,131 @@ class BoxPasses(unittest.TestCase):
 
 
 class CorpusCapture(unittest.TestCase):
+    """corpus_capture.py against a stand-in `fleet` (q3/fleet_stub.py): what it submits, and what it writes from the job's results."""
+    BOXES = ['a11y-worker-2', 'a11y-worker-3', 'a11y-worker-4']
+
     def setUp(self):
-        self.tmp = tempfile.TemporaryDirectory(); self.dir = self.tmp.name
+        self.tmp = tempfile.TemporaryDirectory(); self.dir = self.tmp.name; self.addCleanup(self.tmp.cleanup)
         self.readback = {'workers': {f'a11y-worker-{n}': passing_box() for n in (2, 3, 4)} | {'a11y-worker-5': passing_box(visited_after=True)}}
-        self.stub = os.path.join(self.dir, 'stub.mjs')       # stands in for fleet_capture.mjs: writes a record for the address, or fails for one address
-        write(self.stub, """import { writeFileSync } from 'node:fs'; const [, , w, url, out] = process.argv; const name = w.split('=')[0];
-if (url.endsWith('/silent')) process.exit(0);        // the worker was unreachable: nothing is written
-if (url.endsWith('/garbled')) { writeFileSync(out, '{not json'); process.exit(0); }
-if (url.endsWith('/broken')) { writeFileSync(out, JSON.stringify({ worker: name, status: 500, capture: { error: 'boom' } })); process.exit(0); }
-writeFileSync(out, JSON.stringify({ capturedAt: 'now', worker: name, status: 200, capture: { url, transcript: [], structure: { links: ['a, link'], headings: [] } } }));""")
-    def tearDown(self): self.tmp.cleanup()
+        self.readback_path = os.path.join(self.dir, 'readback.json'); rb.write_json(self.readback_path, self.readback)
+        self.out = os.path.join(self.dir, 'oracle'); self.summary = os.path.join(self.dir, 'capture-run.json')
+        self.stub = FleetStub(self)
 
-    def test_a_failing_capture_command_fails_the_page_without_killing_the_worker(self):
-        out = os.path.join(self.dir, 'oracle'); crash = os.path.join(self.dir, 'crash.mjs'); write(crash, "process.exit(3);")
-        s = cc.run([{'url': f'https://example.org/{i}', 'role': None} for i in range(3)], self.workers('a11y-worker-2', 'a11y-worker-3', 'a11y-worker-4'), self.readback, out, crash, attempts=1, log=lambda *a, **k: None)
-        self.assertEqual((s['captured'], len(s['failed'])), (0, 3))
-        s = cc.run([{'url': 'https://example.org/x', 'role': None}], self.workers('a11y-worker-2', 'a11y-worker-3', 'a11y-worker-4'), self.readback, out, os.path.join(self.dir, 'missing.mjs'), attempts=1, log=lambda *a, **k: None)
-        self.assertEqual(len(s['failed']), 1)
-    def test_an_unreadable_record_fails_its_page_and_the_run_goes_on(self):
-        out = os.path.join(self.dir, 'oracle'); bad, good = 'https://example.org/garbled', 'https://example.org/fine'
-        s = cc.run([{'url': bad, 'role': None}, {'url': good, 'role': None}], self.workers('a11y-worker-2', 'a11y-worker-3', 'a11y-worker-4'), self.readback, out, self.stub, attempts=1, log=lambda *a, **k: None)
-        self.assertEqual((s['captured'], s['failed']), (1, [bad]))
-    def test_a_record_of_an_earlier_unstamped_run_is_captured_again(self):
-        out = os.path.join(self.dir, 'oracle'); os.makedirs(out); url = 'https://example.org/old'
-        rb.write_json(os.path.join(out, cc.slug_of(url) + '.json'), record(url=url))
-        s = cc.run([{'url': url, 'role': None}], self.workers('a11y-worker-2', 'a11y-worker-3', 'a11y-worker-4'), self.readback, out, self.stub, log=lambda *a, **k: None)
-        self.assertIn('history', rb.read_json(os.path.join(out, cc.slug_of(url) + '.json'))); self.assertEqual(s['captured'], 1)
-    def test_a_part_file_left_by_an_interrupted_run_is_not_taken_for_a_capture(self):
-        out = os.path.join(self.dir, 'oracle'); os.makedirs(out); url = 'https://example.org/broken'
-        url = 'https://example.org/silent'
-        rb.write_json(os.path.join(out, cc.slug_of(url) + '.json.part'), record(url=url))      # a good-looking record left by the interrupted run; the stub writes nothing for this address
-        s = cc.run([{'url': url, 'role': None}], self.workers('a11y-worker-2', 'a11y-worker-3', 'a11y-worker-4'), self.readback, out, self.stub, attempts=1, log=lambda *a, **k: None)
-        self.assertEqual(s['failed'], [url])
+    def corpus(self, *urls, roles=None):
+        path = os.path.join(self.dir, 'corpus.json'); rb.write_json(path, [{'url': u, 'role': (roles or {}).get(u)} for u in urls]); return path
 
-    def workers(self, *names): return {n: f'http://box-{n}:8765' for n in names}
-    def test_a_worker_without_a_passing_readback_is_refused(self):
-        err = io.StringIO()
-        with contextlib.redirect_stderr(err): use = cc.usable_workers(self.workers('a11y-worker-2', 'a11y-worker-3', 'a11y-worker-4', 'a11y-worker-5', 'a11y-worker-9'), self.readback)
-        self.assertEqual(sorted(use), ['a11y-worker-2', 'a11y-worker-3', 'a11y-worker-4'])
-        self.assertIn('a11y-worker-5', err.getvalue()); self.assertIn('a11y-worker-9', err.getvalue())
-    def test_fewer_than_three_passing_workers_stop_the_run(self):
-        with self.assertRaises(SystemExit): cc.usable_workers(self.workers('a11y-worker-2', 'a11y-worker-3', 'a11y-worker-5'), self.readback)
+    def submit(self, corpus, boxes='a11y-worker-2,a11y-worker-3,a11y-worker-4', *extra):
+        return run_main(cc.main, [corpus, self.out, '--boxes', boxes, '--label', 'A11-246', '--readback', self.readback_path, '--summary', self.summary, *extra])
+
+    def results(self, urls, **kw): return self.stub.results(urls, self.BOXES, **kw)
+    def stored(self, url): return rb.read_json(os.path.join(self.out, cc.slug_of(url) + '.json'))
+    def collect(self): return run_main(cc.main, ['collect', self.out])
+
+    def test_a_box_without_a_passing_readback_is_refused_and_the_job_names_only_the_others(self):
+        code, out, err = self.submit(self.corpus('https://example.org/a'), 'a11y-worker-2,a11y-worker-3,a11y-worker-4,a11y-worker-5,a11y-worker-9')
+        (submit,) = self.stub.submits()
+        self.assertEqual((code, out.strip().splitlines()[0]), (0, FleetStub.JOB)); self.assertEqual(submit['options']['--boxes'], 'a11y-worker-2,a11y-worker-3,a11y-worker-4')
+        self.assertIn('a11y-worker-5', err); self.assertIn('a11y-worker-9', err)
+
+    def test_fewer_than_three_passing_boxes_stop_the_run_before_anything_is_submitted(self):
+        code, _, err = self.submit(self.corpus('https://example.org/a'), 'a11y-worker-2,a11y-worker-3,a11y-worker-5')
+        self.assertNotEqual(code, 0); self.assertIn('needs at least 3', err); self.assertEqual(self.stub.calls(), [])
+
+    def test_a_count_or_ready_is_not_a_box_to_run_the_history_gate_on(self):
+        for boxes in ('3', 'ready'):
+            code, _, err = self.submit(self.corpus('https://example.org/a'), boxes)
+            self.assertNotEqual(code, 0, boxes); self.assertIn('--boxes', err)
+        self.assertEqual(self.stub.calls(), [])
+
+    def test_the_job_is_every_page_once_with_the_label_and_the_default_body(self):
+        urls = [f'https://example.org/{i}' for i in range(4)]
+        self.submit(self.corpus(*urls))
+        (submit,) = self.stub.submits()
+        self.assertEqual(submit['pages'], urls); self.assertEqual({k: submit['options'][k] for k in ('--label', '--passes', '--steps')}, {'--label': 'A11-246', '--passes': '1', '--steps': '600'})
+        self.assertNotIn('--probe', submit['options'])
+
+    def test_a_page_with_a_kept_record_is_left_out_of_the_job_and_one_with_an_unstamped_record_is_not(self):
+        kept, stale, new = 'https://example.org/kept', 'https://example.org/old', 'https://example.org/new'
+        os.makedirs(self.out)
+        rb.write_json(os.path.join(self.out, cc.slug_of(kept) + '.json'), record(url=kept) | {'history': {'x': 1}})
+        rb.write_json(os.path.join(self.out, cc.slug_of(stale) + '.json'), record(url=stale))      # an earlier, unstamped run
+        self.submit(self.corpus(kept, stale, new))
+        self.assertEqual(self.stub.submits()[0]['pages'], [stale, new])
+
+    def test_nothing_is_submitted_when_every_page_has_a_kept_record_and_the_summary_says_so(self):
+        url = 'https://example.org/kept'; os.makedirs(self.out)
+        rb.write_json(os.path.join(self.out, cc.slug_of(url) + '.json'), record(url=url) | {'history': {'x': 1}})
+        code, out, _ = self.submit(self.corpus(url))
+        self.assertEqual((code, self.stub.calls()), (0, [])); self.assertEqual((rb.read_json(self.summary)['captured'], rb.read_json(self.summary)['failed']), (1, []))
+
+    def test_without_wait_the_job_id_is_the_result_and_nothing_is_written(self):
+        code, out, _ = self.submit(self.corpus('https://example.org/a'))
+        self.assertEqual(self.stub.others(), []); self.assertEqual([f for f in os.listdir(self.out) if f.endswith('.json')], []); self.assertFalse(os.path.exists(self.summary))
+
+    def test_with_wait_one_job_wait_runs_and_a_done_job_is_collected(self):
+        urls = ['https://example.org/a', 'https://example.org/b']; self.results(urls)
+        code, out, _ = self.submit(self.corpus(*urls), 'a11y-worker-2,a11y-worker-3,a11y-worker-4', '--wait', '2h')
+        self.assertEqual(self.stub.others()[0], ['job', 'wait', FleetStub.JOB, '--timeout', '2h'])
+        self.assertEqual(code, 0); self.assertEqual(len([f for f in os.listdir(self.out) if f.endswith('.json')]), 2)
+
     def test_every_record_is_stamped_with_the_history_block_and_the_role(self):
-        out = os.path.join(self.dir, 'oracle')
-        entries = [{'url': f'https://example.org/{i}', 'role': 'training'} for i in range(5)]
-        s = cc.run(entries, self.workers('a11y-worker-2', 'a11y-worker-3', 'a11y-worker-4'), self.readback, out, self.stub, log=lambda *a, **k: None)
-        self.assertEqual((s['captured'], s['failed']), (5, []))
-        files = sorted(os.listdir(out)); self.assertEqual(len(files), 5)
-        for f in files:
-            rec = rb.read_json(os.path.join(out, f))
+        urls = [f'https://example.org/{i}' for i in range(5)]; self.submit(self.corpus(*urls, roles={u: 'training' for u in urls})); self.results(urls)
+        code, out, _ = self.collect()
+        self.assertEqual(code, 0); files = sorted(f for f in os.listdir(self.out) if f.endswith('.json')); self.assertEqual(len(files), 5)
+        for url in urls:
+            rec = self.stored(url)
             self.assertEqual(rec['history']['policy'], {'name': rb.POLICY, 'value': 1}); self.assertTrue(rec['history']['storeEmptied']); self.assertEqual(rec['role'], 'training')
-            self.assertFalse(rec['history']['probeAfter']['visited'])
+            self.assertFalse(rec['history']['probeAfter']['visited']); self.assertIn(rec['worker'], self.BOXES)
+
+    def test_collect_writes_the_summary_the_runbook_reads(self):
+        urls = [f'https://example.org/{i}' for i in range(3)]; self.submit(self.corpus(*urls)); self.results(urls); self.collect()
+        self.assertEqual(rb.read_json(self.summary), {'startedAt': '2026-10-25T10:00:00.000Z', 'endedAt': '2026-10-25T10:05:00.000Z', 'workers': self.BOXES, 'pages': 3, 'captured': 3, 'failed': []})
+
     def test_a_page_that_fails_is_named_and_leaves_no_record(self):
-        out = os.path.join(self.dir, 'oracle')
-        s = cc.run([{'url': 'https://example.org/broken', 'role': None}, {'url': 'https://example.org/fine', 'role': None}], self.workers('a11y-worker-2', 'a11y-worker-3', 'a11y-worker-4'), self.readback, out, self.stub, log=lambda *a, **k: None)
-        self.assertEqual(s['failed'], ['https://example.org/broken']); self.assertEqual(len(os.listdir(out)), 1)
+        broken, fine = 'https://example.org/broken', 'https://example.org/fine'
+        self.submit(self.corpus(broken, fine)); self.results([broken, fine], failed={(broken, 1)})
+        code, _, _ = self.collect()
+        self.assertEqual(code, 1); self.assertEqual(rb.read_json(self.summary)['failed'], [broken]); self.assertEqual(rb.read_json(self.summary)['captured'], 1)
+        self.assertEqual(sorted(f for f in os.listdir(self.out) if f.endswith('.json')), [cc.slug_of(fine) + '.json'])
+
+    def test_a_capture_with_no_record_file_fails_its_page_and_the_run_goes_on(self):
+        gone, fine = 'https://example.org/gone', 'https://example.org/fine'
+        self.submit(self.corpus(gone, fine)); self.results([gone, fine], missing={(gone, 1)})
+        code, out, _ = self.collect()
+        self.assertEqual((code, rb.read_json(self.summary)['failed']), (1, [gone])); self.assertIn('left the fleet', out)
+
+    def test_a_job_that_failed_gives_the_pages_it_captured_and_names_the_others_as_failed(self):
+        done, lost = 'https://example.org/done', 'https://example.org/lost'
+        self.submit(self.corpus(done, lost)); self.results([done, lost], state='failed', reason='no box is left', unreached={(lost, 1)})
+        code, _, err = self.collect()
+        self.assertEqual((code, rb.read_json(self.summary)['failed']), (1, [lost])); self.assertIn('no box is left', err)
+        self.assertEqual(sorted(f for f in os.listdir(self.out) if f.endswith('.json')), [cc.slug_of(done) + '.json'])
+
+    def test_a_record_of_a_box_the_readback_does_not_know_is_not_stamped_and_fails_its_page(self):
+        url = 'https://example.org/a'; self.submit(self.corpus(url))
+        self.stub.results([url], ['a11y-worker-9']); code, _, _ = self.collect()
+        self.assertEqual((code, rb.read_json(self.summary)['failed']), (1, [url]))
+
+    def test_an_earlier_unstamped_record_is_replaced_by_the_collected_one(self):
+        url = 'https://example.org/old'; os.makedirs(self.out)
+        rb.write_json(os.path.join(self.out, cc.slug_of(url) + '.json'), record(url=url))
+        self.submit(self.corpus(url)); self.results([url]); self.collect()
+        self.assertIn('history', self.stored(url))
+
     def test_a_static_copy_is_captured_at_its_address_and_the_record_stays_the_originals(self):
-        out = os.path.join(self.dir, 'oracle'); url = 'https://example.org/live/page'
-        entries = cc.entries_of([{'url': url, 'role': 'training'}], 'http://capture-host:8001/')
+        url = 'https://example.org/live/page'; entries = cc.entries_of([{'url': url, 'role': 'training'}], 'http://capture-host:8001/')
         self.assertEqual(entries[0]['address'], f'http://capture-host:8001/{cc.slug_of(url)}/index.html')
-        s = cc.run(entries, self.workers('a11y-worker-2', 'a11y-worker-3', 'a11y-worker-4'), self.readback, out, self.stub, log=lambda *a, **k: None)
-        rec = rb.read_json(os.path.join(out, cc.slug_of(url) + '.json'))
-        self.assertEqual((s['captured'], rec['staticOf'], rec['capture']['url']), (1, url, entries[0]['address']))
+        self.submit(self.corpus(url), 'a11y-worker-2,a11y-worker-3,a11y-worker-4', '--static-base', 'http://capture-host:8001/')
+        self.assertEqual(self.stub.submits()[0]['pages'], [entries[0]['address']])
+        self.results([entries[0]['address']]); self.collect()
+        rec = self.stored(url); self.assertEqual((rec['staticOf'], rec['capture']['url']), (url, entries[0]['address']))
+
+    def test_the_flags_of_the_old_route_are_refused_with_what_to_do_instead(self):
+        base = ['corpus.json', 'out', '--label', 'A11-246', '--readback', 'rb.json']
+        for flag, said in (('--workers', '--boxes'), ('--attempts', 'run the same command again'), ('--capture-script', 'no capture script')):
+            code, _, err = run_main(cc.main, [*base, flag, 'x']); self.assertNotEqual(code, 0, flag); self.assertIn(said, err, flag)
+        self.assertEqual(self.stub.calls(), [])
+
     def test_the_views_give_the_scripts_the_address_each_needs(self):
         src, orig, run = (os.path.join(self.dir, d) for d in ('src', 'orig', 'run')); os.makedirs(src); url = 'https://example.org/live/page'
         rb.write_json(os.path.join(src, cc.slug_of(url) + '.json'), record(url='http://capture-host:8001/x/index.html') | {'staticOf': url, 'role': 'training'})
@@ -149,49 +213,6 @@ class PolicyOverride(unittest.TestCase):
         self.assertEqual(list(po.override(self.DEFAULTS)), ['worker_edge_policy'])
     def test_it_refuses_when_the_policy_is_already_declared(self):
         with self.assertRaises(SystemExit): po.override(self.DEFAULTS + "  - { name: SavingBrowserHistoryDisabled, value: 1 }\n")
-
-
-class FleetCapture(unittest.TestCase):
-    """fleet_capture.mjs against a worker that answers late, as a real one does (the answer comes when the capture is done)."""
-    def serve(self, status, body, delay):
-        class H(http.server.BaseHTTPRequestHandler):
-            def do_POST(self):
-                self.rfile.read(int(self.headers['content-length'])); time.sleep(delay)
-                self.send_response(status); self.end_headers(); self.wfile.write(body.encode())
-            def log_message(self, *a): pass
-        server = http.server.HTTPServer(('127.0.0.1', 0), H); threading.Thread(target=server.serve_forever, daemon=True).start(); self.addCleanup(server.shutdown); self.addCleanup(server.server_close)
-        return f'http://127.0.0.1:{server.server_port}'
-    def capture(self, worker_url, address='http://127.0.0.1:8000/page.html'):
-        out = tempfile.NamedTemporaryFile(suffix='.json', delete=False); out.close(); self.addCleanup(os.remove, out.name)
-        done = subprocess.run(['node', os.path.join(Q3, 'fleet_capture.mjs'), f'a11y-worker-2={worker_url}', address, out.name], capture_output=True, text=True, timeout=60)
-        return done, rb.read_json(out.name)
-    def test_a_late_answer_is_written_as_the_workers_record(self):
-        done, rec = self.capture(self.serve(200, json.dumps({'url': 'http://127.0.0.1:8000/page.html', 'transcript': ['a'], 'structure': {}}), delay=2))
-        self.assertEqual((rec['status'], rec['worker'], rec['capture']['transcript']), (200, 'a11y-worker-2', ['a']))
-    def test_a_busy_worker_is_a_record_with_its_status_and_reason(self):
-        done, rec = self.capture(self.serve(429, 'a capture is already in progress', delay=0))
-        self.assertEqual((rec['status'], rec['capture']['error']), (429, 'a capture is already in progress'))
-    def test_a_refused_connection_is_a_record_that_names_the_worker_and_not_its_address(self):
-        import socket
-        with socket.socket() as sock: sock.bind(('127.0.0.1', 0)); port = sock.getsockname()[1]      # a port nothing listens on
-        done, rec = self.capture(f'http://127.0.0.1:{port}')
-        self.assertEqual(rec['status'], 0); self.assertIn('a11y-worker-2', rec['capture']['error']); self.assertNotIn('127.0.0.1', json.dumps(rec)); self.assertEqual(done.returncode, 0)
-    def test_an_answer_cut_off_midway_is_a_record_with_an_error_not_a_hang(self):
-        import socket
-        server = socket.socket(); server.bind(('127.0.0.1', 0)); server.listen(1); self.addCleanup(server.close)
-        def cut():
-            conn, _ = server.accept(); conn.recv(65536); conn.sendall(b'HTTP/1.1 200 OK\r\ncontent-length: 100\r\n\r\n{"tran'); conn.close()
-        threading.Thread(target=cut, daemon=True).start()
-        done, rec = self.capture(f'http://127.0.0.1:{server.getsockname()[1]}')
-        self.assertEqual(rec['status'], 0); self.assertIn('aborted', rec['capture']['error'])
-    def test_a_worker_url_that_is_not_http_is_refused(self):
-        done = subprocess.run(['node', os.path.join(Q3, 'fleet_capture.mjs'), 'a11y-worker-2=https://127.0.0.1:8765', 'http://127.0.0.1:8000/p.html', os.path.join(self.tmpdir(), 'x.json')], capture_output=True, text=True, timeout=30)
-        self.assertNotEqual(done.returncode, 0); self.assertIn('http: the workers speak no other', done.stderr)
-    def tmpdir(self):
-        d = tempfile.TemporaryDirectory(); self.addCleanup(d.cleanup); return d.name
-    def test_the_server_is_written_by_name_when_given_as_an_address(self):
-        done, rec = self.capture(self.serve(200, json.dumps({'url': 'http://192.0.2.7:8000/p.html', 'structure': {}}), delay=0), address='http://192.0.2.7:8000/p.html')
-        self.assertEqual(rec['capture']['url'], 'http://capture-host:8000/p.html')
 
 
 CHROME = os.path.join(os.environ.get('EMU_DOWNLOADS') or os.path.expanduser('~/spikes/announcement-emulator-5661'), 'chrome155/chrome-linux64/chrome')
