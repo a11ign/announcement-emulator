@@ -1,0 +1,32 @@
+{
+ "commit": "5bf6c5b8a85ee064690441359f1f58201ed9b072",
+ "subject": "feat(middleware): the rule, the comparison and the macOS workflow for measuring each supported Chromium build (A11-230)",
+ "committedAt": "2026-10-25T07:53:20Z",
+ "namedAt": "2026-10-25T07:53:20Z",
+ "objects": {
+  "emu": "d6b44b5259cf763fb6cee04076f498d83840dadb",
+  "middleware/runtime": "6a6905bca1945c8b6a845d4d8b8a4f1f710f5a77",
+  "middleware/src": "89c79e3a1aab6321a8d7ed7a917eddfa83af470a",
+  "middleware/agreement/measure.py": "64a86905abec4db71cdee4812c8925d5ff7e0c09",
+  "middleware/agreement/select_pages.py": "bc4e372a5e2c6d0987b1214869101beeb82886c2",
+  "middleware/agreement/capture_fleet.py": "c5988442300bc5e785a2e2afb7c121c0779efef1",
+  "middleware/agreement/dom_check.mjs": "4af780356a4ba760b3b1bc414d2701fe46cf41ef",
+  "middleware/sample-suite/tests/corpus": "1b9a55ea0522142058363bad615bf1f716acb56a",
+  "middleware/results/agreement/rule.md": "d42a2d691b5457f79cdf5052953acd438edc4b2d",
+  "middleware/results/agreement/pages.json": "0455e0d2e7b589315a7ddfaa89ddfe465f9b015e",
+  "q3/sweep.py": "4fc089be5bf22c9fc179ed98cc050ed18ab5d116",
+  "q3/livepage.py": "4e04a07df5ff4c42cb994437a644392bad436b99",
+  "q3/shapes.py": "d24a06b9a968e4e785d5879b3479f0266bae159a",
+  "q3/fleet_capture.mjs": "f0598b87ab05befc09c16d138a2d5122eac38e52",
+  "pins.env": "2bfb0d48aba2e111ee491850daf59744e94e290b",
+  "middleware/results/playwright-versions/rule.md": "4f6b1758bc4a7add94be37090349555d0b99fdc9",
+  "middleware/agreement/compare_builds.py": "5056213c2bec932d4f813fdc6556ce932abb5c1b",
+  "middleware/agreement/compare_sources.py": "f9c1650452885250e22866f3a15a8b1c4a72a37b",
+  "middleware/agreement/run_build_readings.sh": "d450836317888e80f769d93d396a2d7de63630de",
+  "middleware/agreement/measure_readings.sh": "d998e79588d83b0f209ea0ff000b9ffaba8e58c9",
+  "middleware/agreement/export_misses.py": "fd30b3053c06088827a6d0de2fcd0ffbbf3b1fa6",
+  ".github/workflows/playwright-versions-agreement.yml": "e87d5652041c3bc99808e6ac98f08c7995a30cf6",
+  "middleware/src/supported.test.ts": "9a9224824690f99e8459c75febe8c9e5677fc24c",
+  "middleware/results/tree-source/rule.md": "208a9e534aad82ffe511c9c7e64e99145dd2b5e1"
+ }
+}

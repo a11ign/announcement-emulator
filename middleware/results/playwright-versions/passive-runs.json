@@ -1,0 +1,466 @@
+{
+ "ci/devtools-macos/153.0.8010.12/devtools-1": {
+  "reading": "devtools-macos",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 1,
+  "startedAt": "2026-10-25T07:58:47Z",
+  "finishedAt": "2026-10-25T08:00:40Z",
+  "runner": "macos-latest",
+  "os": "macOS",
+  "arch": "ARM64",
+  "where": "macos-latest macOS ARM64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 108953,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 153.0.8010.12"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 153.0.8010.12"
+   }
+  ]
+ },
+ "ci/devtools-macos/153.0.8010.12/devtools-2": {
+  "reading": "devtools-macos",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 2,
+  "startedAt": "2026-10-25T08:02:04Z",
+  "finishedAt": "2026-10-25T08:03:42Z",
+  "runner": "macos-latest",
+  "os": "macOS",
+  "arch": "ARM64",
+  "where": "macos-latest macOS ARM64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 95653,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 153.0.8010.12"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 153.0.8010.12"
+   }
+  ]
+ },
+ "ci/devtools-macos/156.0.8078.4/devtools-1": {
+  "reading": "devtools-macos",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 1,
+  "startedAt": "2026-10-25T07:56:53Z",
+  "finishedAt": "2026-10-25T07:58:47Z",
+  "runner": "macos-latest",
+  "os": "macOS",
+  "arch": "ARM64",
+  "where": "macos-latest macOS ARM64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 110161,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 156.0.8078.4"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 156.0.8078.4"
+   }
+  ]
+ },
+ "ci/devtools-macos/156.0.8078.4/devtools-2": {
+  "reading": "devtools-macos",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 2,
+  "startedAt": "2026-10-25T08:00:40Z",
+  "finishedAt": "2026-10-25T08:02:04Z",
+  "runner": "macos-latest",
+  "os": "macOS",
+  "arch": "ARM64",
+  "where": "macos-latest macOS ARM64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 80564,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 156.0.8078.4"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 156.0.8078.4"
+   }
+  ]
+ },
+ "ci/devtools-ubuntu-ci/153.0.8010.12/devtools-1": {
+  "reading": "devtools-ubuntu-ci",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 1,
+  "startedAt": "2026-10-25T07:58:27Z",
+  "finishedAt": "2026-10-25T07:59:34Z",
+  "runner": "ubuntu-latest",
+  "os": "Linux",
+  "arch": "X64",
+  "where": "ubuntu-latest Linux X64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 64613,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 153.0.8010.12"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 153.0.8010.12"
+   }
+  ]
+ },
+ "ci/devtools-ubuntu-ci/153.0.8010.12/devtools-2": {
+  "reading": "devtools-ubuntu-ci",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 2,
+  "startedAt": "2026-10-25T08:00:42Z",
+  "finishedAt": "2026-10-25T08:01:38Z",
+  "runner": "ubuntu-latest",
+  "os": "Linux",
+  "arch": "X64",
+  "where": "ubuntu-latest Linux X64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 53905,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 153.0.8010.12"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 153.0.8010.12"
+   }
+  ]
+ },
+ "ci/devtools-ubuntu-ci/156.0.8078.4/devtools-1": {
+  "reading": "devtools-ubuntu-ci",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 1,
+  "startedAt": "2026-10-25T07:57:10Z",
+  "finishedAt": "2026-10-25T07:58:27Z",
+  "runner": "ubuntu-latest",
+  "os": "Linux",
+  "arch": "X64",
+  "where": "ubuntu-latest Linux X64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 73275,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 156.0.8078.4"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 156.0.8078.4"
+   }
+  ]
+ },
+ "ci/devtools-ubuntu-ci/156.0.8078.4/devtools-2": {
+  "reading": "devtools-ubuntu-ci",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 2,
+  "startedAt": "2026-10-25T07:59:34Z",
+  "finishedAt": "2026-10-25T08:00:42Z",
+  "runner": "ubuntu-latest",
+  "os": "Linux",
+  "arch": "X64",
+  "where": "ubuntu-latest Linux X64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 65226,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 156.0.8078.4"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 156.0.8078.4"
+   }
+  ]
+ },
+ "linux/153.0.8010.12/devtools-1": {
+  "reading": "devtools-linux",
+  "chromium": "153.0.8010.12",
+  "run": 1,
+  "startedAt": "2026-10-25T08:06:34Z",
+  "finishedAt": "2026-10-25T08:10:53Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 254523,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 153.0.8010.12"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 153.0.8010.12"
+   }
+  ]
+ },
+ "linux/153.0.8010.12/devtools-2": {
+  "reading": "devtools-linux",
+  "chromium": "153.0.8010.12",
+  "run": 2,
+  "startedAt": "2026-10-25T08:22:01Z",
+  "finishedAt": "2026-10-25T08:25:37Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 212648,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 153.0.8010.12"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 153.0.8010.12"
+   }
+  ]
+ },
+ "linux/153.0.8010.12/extension-1": {
+  "reading": "extension-linux",
+  "chromium": "153.0.8010.12",
+  "run": 1,
+  "startedAt": "2026-10-25T07:57:51Z",
+  "finishedAt": "2026-10-25T08:01:14Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 199871,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 153.0.8010.12"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 153.0.8010.12"
+   }
+  ]
+ },
+ "linux/153.0.8010.12/extension-2": {
+  "reading": "extension-linux",
+  "chromium": "153.0.8010.12",
+  "run": 2,
+  "startedAt": "2026-10-25T08:15:23Z",
+  "finishedAt": "2026-10-25T08:18:35Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 189225,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 153.0.8010.12"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 153.0.8010.12"
+   }
+  ]
+ },
+ "linux/156.0.8078.4/devtools-1": {
+  "reading": "devtools-linux",
+  "chromium": "156.0.8078.4",
+  "run": 1,
+  "startedAt": "2026-10-25T08:01:14Z",
+  "finishedAt": "2026-10-25T08:06:34Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 315883,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 156.0.8078.4"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 156.0.8078.4"
+   }
+  ]
+ },
+ "linux/156.0.8078.4/devtools-2": {
+  "reading": "devtools-linux",
+  "chromium": "156.0.8078.4",
+  "run": 2,
+  "startedAt": "2026-10-25T08:18:35Z",
+  "finishedAt": "2026-10-25T08:22:01Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 202295,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 156.0.8078.4"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 156.0.8078.4"
+   }
+  ]
+ },
+ "linux/156.0.8078.4/extension-1": {
+  "reading": "extension-linux",
+  "chromium": "156.0.8078.4",
+  "run": 1,
+  "startedAt": "2026-10-25T07:54:41Z",
+  "finishedAt": "2026-10-25T07:57:51Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 186613,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 156.0.8078.4"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 156.0.8078.4"
+   }
+  ]
+ },
+ "linux/156.0.8078.4/extension-2": {
+  "reading": "extension-linux",
+  "chromium": "156.0.8078.4",
+  "run": 2,
+  "startedAt": "2026-10-25T08:10:54Z",
+  "finishedAt": "2026-10-25T08:15:22Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 265039,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 156.0.8078.4"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement not measured for Chromium 156.0.8078.4"
+   }
+  ]
+ }
+}
