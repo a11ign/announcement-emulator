@@ -10,6 +10,8 @@ export const config: PlaywrightTestConfig = {
   use: { baseURL: "http://127.0.0.1:4173" },
   projects: [
     { name: "fixtures", testDir: "./tests/fixtures" },
+    // pages written for the faults the agreement measurement attributed to the middleware (A11-234): one test for each, recorded and replayed in middleware/runtime
+    { name: "misses", testDir: "./tests/misses" },
     // the window the fleet's Edge reports (innerWidth x innerHeight, as emu/session.mjs sets it), so that what is on the screen when a stop is read is what was on its screen
     { name: "corpus", testDir: "./tests/corpus", timeout: 180_000, use: { viewport: { width: 1008, height: 729 } } },
   ],

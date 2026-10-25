@@ -119,3 +119,56 @@ test("with --expect-measured a listed build's sentence passes and an unmeasured 
   assert.equal(result.status, 1);
   assert.match(result.stderr, /wanted a measured one for Chromium 156\.0\.8078\.4/);
 });
+
+const FIGURE = "middleware/results/agreement-round-1/held-out/156.0.8078.4/extension-linux/";
+const ROUND_LINE = `agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.1), devtools: 83.1% of 249 units on 6 held-out pages, 2026-10-26; the fleet agrees with itself on 95.2% (${FIGURE})`;
+
+test("with --expect-measured the sentence a round's figure makes, with its population, date and ceiling, passes", () => {
+  const good = lowerOf(ROUND_LINE);
+  const result = check("--lower-fidelity", "--expect-measured", "156.0.8078.4", good.report, good.run);
+  assert.equal(result.status, 0, result.stderr);
+  assert.match(result.stdout, /Chromium 156\.0\.8078\.4, agreement measured/);
+});
+
+/** A run of one test whose one utterance has the rate the figure gives its shape; `text` is the utterance's line, as the report writes it. */
+interface Shaped { rate?: Record<string, unknown>; text: string; line?: string; row?: Record<string, unknown>; measured?: boolean }
+function shaped({ rate, text, line = ROUND_LINE, row = {}, measured = true }: Shaped) {
+  const utterance = { cause: "load", text: "Save, button", ...(rate ? { shapeRate: rate } : {}), ...row };
+  return report([{ title: "the cookie panel opens", data: { ...lowerData, flags: [{ flag: "silent-dialog" }], predictedSpeech: [utterance], agreement: { line, measured, shapes: measured ? { "NAME + ROLE": {} } : undefined } },
+    text: `${PREDICTION}${lower}${line}\n\n${text}\n` }], 5, "156.0.8078.4");
+}
+const checkRates = (r: { report: string; run: string }) => check("--lower-fidelity", "--expect-shape-rates", r.report, r.run);
+const NOT_MEASURED = "agreement not measured for Chromium 156.0.8078.4";
+
+test("with --expect-shape-rates an utterance that carries its shape's rate in the text and in the json passes, weak or not measured as well", () => {
+  const ok = checkRates(shaped({ rate: { shape: "NAME + ROLE", measured: true, agreement: 0.86, units: 57 }, text: "+0.10s  load    Save, button  [NAME + ROLE: 86.0% of 57]" }));
+  assert.equal(ok.status, 0, ok.stderr); assert.match(ok.stdout, /a rate by shape on 1 utterances \(0 low confidence\)/);
+  const weak = checkRates(shaped({ rate: { shape: "NAME", measured: true, agreement: 0.682, units: 22, lowConfidence: true }, text: "+0.10s  load    Save, button  [NAME: 68.2% of 22, low confidence]", row: { lowConfidence: true } }));
+  assert.equal(weak.status, 0, weak.stderr); assert.match(weak.stdout, /\(1 low confidence\)/);
+  const unseen = checkRates(shaped({ rate: { shape: "ROLE + NAME", measured: false }, text: "+0.10s  load    Save, button  [shape not measured]" }));
+  assert.equal(unseen.status, 0, unseen.stderr);
+});
+
+test("with --expect-shape-rates an utterance with no rate, a rate the text does not carry, or a weak one that is not flagged fails", () => {
+  assert.match(checkRates(shaped({ text: "+0.10s  load    Save, button" })).stderr, /"Save, button" carries no rate for its shape/);
+  assert.match(checkRates(shaped({ rate: { shape: "NAME + ROLE", measured: true, agreement: 0.86, units: 57 }, text: "+0.10s  load    Save, button" })).stderr, /the text does not carry "\[NAME \+ ROLE: 86\.0% of 57\]"/);
+  const unflagged = checkRates(shaped({ rate: { shape: "NAME", measured: true, agreement: 0.682, units: 22, lowConfidence: true }, text: "+0.10s  load    Save, button  [NAME: 68.2% of 22, low confidence]" }));
+  assert.equal(unflagged.status, 1); assert.match(unflagged.stderr, /is low confidence in its rate, and not flagged/);
+});
+
+test("with --expect-shape-rates a run whose figure has no shapes is held to carrying none", () => {
+  const none = checkRates(shaped({ text: "+0.10s  load    Save, button", line: NOT_MEASURED, measured: false }));
+  assert.equal(none.status, 0, none.stderr);
+  const claimed = checkRates(shaped({ rate: { shape: "NAME + ROLE", measured: false }, text: "+0.10s  load    Save, button  [shape not measured]", line: NOT_MEASURED, measured: false }));
+  assert.equal(claimed.status, 1); assert.match(claimed.stderr, /carries a rate by shape, and the build's figure has none/);
+});
+
+test("a test whose error message may be in the tree it was read from passes with the flag or without it, and any other flag still fails", () => {
+  const title = "an empty email is refused and the field is focused";
+  const run = (flags: { flag: string }[]) => { const r = report([{ title, data: { predictedSpeech: speech, sweeps: sweep, flags } }], 5); return check(r.report, r.run); };
+  assert.equal(run([{ flag: "unheard-error" }]).status, 0);
+  assert.equal(run([]).status, 0);
+  assert.match(run([{ flag: "silent-dialog" }]).stderr, /flags \["silent-dialog"\], wanted \["unheard-error"\]/);
+  const strict = report([{ title: "an empty email is refused", data: { predictedSpeech: speech, sweeps: sweep, flags: [] } }], 5);
+  assert.match(check(strict.report, strict.run).stderr, /an empty email is refused: flags \[\], wanted \["unheard-error"\]/);
+});

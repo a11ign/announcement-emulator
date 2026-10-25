@@ -38,7 +38,10 @@ class SnapshotSession:
     def __init__(self, snap):
         self.snap = snap; self.sel = snap['sel']; self.refused = []
 
-    def dump(self): self.sel = self.snap['sel']; return self.snap['nodes'], self.snap['focusIx']
+    def dump(self):
+        """The nodes as the emulator reads them, with the document's value (its address) the one it has as of this tree: the web area's own `url` is the one it had when it was made, and a link is "same page" or not by the document's."""
+        self.sel = self.snap['sel']; nodes = self.snap['nodes']
+        return [dict(nodes[0], url=address_of(self.snap)), *nodes[1:]], self.snap['focusIx']
     def _refuse(self, what, *args, **kwargs): self.refused.append(what)
     def key(self, *a, **k): self._refuse('key')
     def focus(self, *a, **k): self._refuse('focus')
@@ -69,6 +72,12 @@ def tree_signature(snap):
 def without_fragment(url): return (url or '').split('#')[0]
 
 
+def address_of(snap):
+    """The address of the document as of this tree: the document's own (`docUrl`: the tree data's, which follows a pushState), else the web area's."""
+    root = snap['nodes'][0]
+    return root.get('docUrl') or root.get('url') or snap['url']
+
+
 class Page:
     def __init__(self, uid):
         self.uid = uid; self.last = None; self.root_uid = None; self.url = None; self.spoke_load = False; self.focus_uid = None
@@ -76,6 +85,7 @@ class Page:
 
 
 def normal(text): return re.sub(r'\s+', ' ', text or '').strip()
+def squashed(text): return re.sub(r'\s+', '', text or '')
 
 
 def focused_on(snap, node):
@@ -89,16 +99,34 @@ def focused_on(snap, node):
     return dict(snap, focusIx=node['ix'], nodes=nodes)
 
 
-def match_focus(snap, event):
-    """The node of the tree the page's `focusin` is about: an element of that tag (and id), whose accessible name is one of the strings the page could make it from; the node the
-    tree itself has focused if several fit. None if the tree does not have it (yet)."""
+def match_focus(snap, event, last_resort=True):
+    """The node of the tree the page's `focusin` is about. In the order of how exactly each says it:
+    1. the DOM node the browser says took the focus (`backendNodeId`, cdp.py `Resolution`), where the tree holds its node (the DevTools source: `backendId`);
+    2. an element of that tag (and id) whose name is the one the browser computed for it (`axName`): the extension's tree has no DOM node, and its name is Chromium's too;
+    3. an element of that tag (and id) whose accessible name is one of the strings the page script could make it from: a guess, so only when `last_resort`, or when the browser could say nothing of the element.
+    The node the tree itself has focused if several fit. None if the tree does not have it (yet)."""
+    backend = event.get('backendNodeId')
+    if backend is not None:
+        exact = next((n for n in snap['nodes'] if n.get('backendId') == backend), None)
+        if exact is not None: return exact
+    fits = [n for n in snap['nodes'] if n.get('htmlTag') == event['tag'] and (not event.get('id') or n.get('htmlId') == event['id'])]
+    if event.get('axName') is not None:
+        named = [n for n in fits if normal(n.get('name')) == normal(event['axName']) and (not event.get('axRole') or n['role'] == event['axRole'])]
+        if named: return focused_of(snap, named)
+        if not last_resort: return None      # the browser has named it and this tree does not have it yet: the next tree may
+    elif backend is not None and not last_resort and any('backendId' in n for n in snap['nodes']): return None      # the browser has named its node and this tree does not have it yet
     names = {normal(n) for n in event.get('names', [])}
-    fits = [n for n in snap['nodes'] if n.get('htmlTag') == event['tag'] and (not event.get('id') or n.get('htmlId') == event['id'])
-            and ((normal(n.get('name')) in names) or (not names and not normal(n.get('name'))) or event.get('role'))]
-    if len(fits) > 1:
-        own = [n for n in fits if n['ix'] == snap['focusIx']]
-        fits = own or fits
-    return fits[0] if fits else None
+    guessed = [n for n in fits if normal(n.get('name')) in names or (not names and not normal(n.get('name')))]
+    if not guessed:      # the tree puts a space where Chromium broke a line between two elements (a hidden span, a block), and the element's own text has none
+        squashed_names = {squashed(n) for n in names}
+        guessed = [n for n in fits if squashed(n.get('name')) in squashed_names]
+    if guessed: return focused_of(snap, guessed)
+    return focused_of(snap, fits) if event.get('role') and fits else None      # an element with a role of its own: of that tag, whatever it is called
+
+
+def focused_of(snap, fits):
+    """Of several nodes that fit, the one the tree itself has focused, else the first in tree order."""
+    return next((n for n in fits if n['ix'] == snap['focusIx']), fits[0])
 
 
 class Predictor:
@@ -154,7 +182,9 @@ class Predictor:
         """The NVDA document for this page's snapshot: the one in use when it is the same page, else a new one, built without a sound, with the focus where the page last had it
         (the document itself for a page that has just loaded)."""
         if self.doc is not None and self.doc_page == page.uid:
-            self.doc.s.snap = snap; return self.doc
+            self.doc.s.snap = snap
+            self.doc.b._emuUrl = address_of(snap)      # the document's address is the one it has now: a page that changes it without a load (pushState) makes other links "same page" (browseMode.py:2192-2200, gecko_ia2.py:605; Chromium: ax_platform_node_win.cc:8389-8393)
+            return self.doc
         self.doc = self.live.LiveDoc(session=SnapshotSession(snap)); self.doc_page = page.uid
         self.doc.b._initialScrollObj = None
         f = (by_uid(snap).get(page.focus_uid) if page.focus_uid is not None else None) or focus_node(snap)
@@ -172,13 +202,13 @@ class Predictor:
         page = self.pages.setdefault(snap['page'], Page(snap['page']))
         root = snap['nodes'][0]
         new_document = page.last is None or page.root_uid != root['uid']
-        route_change = not new_document and (root.get('docUrl') or snap['url']) != page.url      # a new address in the same document, a fragment too: a single-page app's route
+        route_change = not new_document and address_of(snap) != page.url      # a new address in the same document, a fragment too: a single-page app's route
         if new_document:
             self.end_state(page)
             if self.doc_page == page.uid: self.doc = None; self.doc_page = None
             page.root_uid = root['uid']; page.spoke_load = False; page.focus_uid = None; page.observed = set(); page.last = None; page.reports_focus = False; page.sweep_wanted = None
             if len(snap['nodes']) > 1: self.emit({'kind': 'observe', 'what': 'navigation', 't': t, 'page': page.uid, 'url': snap['url'], 'node': None, 'text': snap['url']})
-        page.url = root.get('docUrl') or snap['url']
+        page.url = address_of(snap)
         loaded = root.get('docLoaded', True)
         if loaded and not page.spoke_load and len(snap['nodes']) <= 1:      # the blank page a browser opens a tab with: nothing is there to hear
             page.last = snap; return
@@ -254,7 +284,8 @@ class Predictor:
     def answer(self, page, e, final):
         if e['e'] == 'focusin':
             self.stats['focusEvents'] += 1
-            node = match_focus(page.last, e)
+            if e.get('backendNodeId') is not None: page.reports_focus = True      # the browser has said an element took the focus: the tree's own focus, sampled, is not to speak for it while it waits for its node
+            node = match_focus(page.last, e, last_resort=final or e.get('tries', 0) >= 2)
             if node is None:
                 if final or e.get('tries', 0) >= 2: self.stats['unresolvedFocus'] += 1; return True
                 return False

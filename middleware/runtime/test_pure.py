@@ -56,6 +56,67 @@ class Snapshot(unittest.TestCase):
         self.assertEqual(predict.phrase(['Save  ', 'button  ', 3, ' ']), 'Save, button')
 
 
+class FocusByNode(unittest.TestCase):
+    """A11-234: the page's focus is matched to the tree's node by the DOM node the browser names, and by the name the browser computed, before it is guessed from the element's own text."""
+    def links(self, **extra):
+        return predict.index_children(snap([node(0, 'rootWebArea', kids=[1, 2]),
+                                            node(1, 'link', 'Read more (link opens a new window)', htmlTag='a', backendId=40, **extra), node(2, 'link', 'Read more (link opens a new window)', htmlTag='a', backendId=41, **extra)], focus=1))
+
+    def test_the_dom_node_the_browser_names_is_the_node_even_where_the_name_the_page_could_make_is_not_the_trees(self):
+        event = {'tag': 'a', 'id': None, 'names': ['Read more'], 'backendNodeId': 41}
+        self.assertEqual(predict.match_focus(self.links(), event, last_resort=False)['ix'], 2)
+
+    def test_the_dom_node_wins_over_the_node_the_tree_has_focused_and_over_a_name_that_fits_both(self):
+        event = {'tag': 'a', 'id': None, 'names': ['Read more (link opens a new window)'], 'backendNodeId': 41, 'axName': 'Read more (link opens a new window)'}
+        self.assertEqual(predict.match_focus(self.links(), event)['ix'], 2)
+
+    def test_a_tree_that_does_not_hold_the_dom_node_yet_is_waited_for_and_not_guessed_at(self):
+        event = {'tag': 'a', 'id': None, 'names': ['Read more (link opens a new window)'], 'backendNodeId': 99}
+        self.assertIsNone(predict.match_focus(self.links(), event, last_resort=False))
+        self.assertEqual(predict.match_focus(self.links(), event, last_resort=True)['ix'], 1)      # the last try is a guess from the names, as it was
+
+    def test_the_extensions_tree_has_no_dom_node_and_is_matched_by_the_name_and_role_the_browser_computed(self):
+        tree = predict.index_children(snap([node(0, 'rootWebArea', kids=[1, 2]), node(1, 'link', 'Home', htmlTag='a'), node(2, 'link', 'Advanced search Link opens in new window', htmlTag='a')], focus=1))
+        event = {'tag': 'a', 'id': None, 'names': ['Advanced searchLink opens in new window x'], 'backendNodeId': 7, 'axName': 'Advanced search Link opens in new window', 'axRole': 'link'}
+        self.assertEqual(predict.match_focus(tree, event, last_resort=False)['ix'], 2)
+        self.assertIsNone(predict.match_focus(tree, dict(event, axRole='button'), last_resort=False))
+
+    def test_of_several_nodes_the_browser_names_the_same_the_tree_has_focused_wins(self):
+        event = {'tag': 'a', 'id': None, 'names': [], 'backendNodeId': 7, 'axName': 'Read more (link opens a new window)', 'axRole': 'link'}
+        two = predict.index_children(snap([node(0, 'rootWebArea', kids=[1, 2]), node(1, 'link', 'Read more (link opens a new window)', htmlTag='a'), node(2, 'link', 'Read more (link opens a new window)', htmlTag='a')], focus=2))
+        self.assertEqual(predict.match_focus(two, event)['ix'], 2)
+
+    def test_where_the_browser_could_not_be_asked_the_names_are_still_a_guess_that_ignores_where_the_lines_broke(self):
+        tree = predict.index_children(snap([node(0, 'rootWebArea', kids=[1]), node(1, 'link', 'Read the guidance on accuracy (link opens a new window)', htmlTag='a')], focus=0))
+        self.assertEqual(predict.match_focus(tree, {'tag': 'a', 'id': None, 'names': ['Read the guidance on accuracy(link opens a new window)']})['ix'], 1)
+        self.assertIsNone(predict.match_focus(tree, {'tag': 'a', 'id': None, 'names': ['Something else']}))
+
+
+    def test_where_the_browser_could_not_name_the_element_a_guess_is_made_at_once_and_not_waited_for(self):
+        """An ignored accessibility node has no name to wait for (`backendNodeId` without `axName`), and the extension's tree has no DOM node to find."""
+        tree = predict.index_children(snap([node(0, 'rootWebArea', kids=[1]), node(1, 'button', 'Save', htmlTag='button')], focus=0))
+        self.assertEqual(predict.match_focus(tree, {'tag': 'button', 'id': None, 'names': ['Save'], 'backendNodeId': 9}, last_resort=False)['ix'], 1)
+
+    def test_a_name_that_fits_exactly_is_preferred_to_one_that_fits_once_the_spaces_are_left_out(self):
+        tree = predict.index_children(snap([node(0, 'rootWebArea', kids=[1, 2]), node(1, 'link', 'Save as', htmlTag='a'), node(2, 'link', 'Saveas', htmlTag='a')], focus=0))
+        self.assertEqual(predict.match_focus(tree, {'tag': 'a', 'id': None, 'names': ['Saveas']})['ix'], 2)
+        self.assertEqual(predict.match_focus(tree, {'tag': 'a', 'id': None, 'names': ['Save  as']})['ix'], 1)
+
+
+class DocumentAddress(unittest.TestCase):
+    def test_the_address_is_the_documents_as_of_the_tree_and_not_the_web_areas_from_when_it_was_made(self):
+        s = snap([node(0, 'rootWebArea', url='http://x/a', docUrl='http://x/a?step=2')])
+        self.assertEqual(predict.address_of(s), 'http://x/a?step=2')
+        self.assertEqual(predict.address_of(snap([node(0, 'rootWebArea', url='http://x/a')])), 'http://x/a')
+        self.assertEqual(predict.address_of(snap([node(0, 'rootWebArea')])), 'http://x/')
+
+    def test_the_emulator_is_given_the_document_with_that_address_and_the_tree_itself_is_not_changed(self):
+        s = snap([node(0, 'rootWebArea', url='http://x/a', docUrl='http://x/a?step=2', kids=[1]), node(1, 'link', 'Next', url='http://x/a?step=2')]); s['sel'] = {}
+        nodes, focus = predict.SnapshotSession(s).dump()
+        self.assertEqual((nodes[0]['url'], nodes[1]['name'], focus), ('http://x/a?step=2', 'Next', 0))
+        self.assertEqual(s['nodes'][0]['url'], 'http://x/a')
+
+
 class Order(unittest.TestCase):
     def test_snapshots_come_out_in_the_order_they_were_made(self):
         o = main.Ordered()

@@ -206,6 +206,7 @@ class Converter:
         if n.get('description', {}).get('value'): out['description'] = n['description']['value']; out['descriptionFrom'] = 'relatedElement' if attrs.get('aria-describedby') else 'title' if attrs.get('title') else 'ariaDescription'
         if d.get('tag') and d['tag'] != '#text': out['htmlTag'] = '#document' if d['tag'] == '#document' else d['tag']
         if attrs.get('id'): out['htmlId'] = attrs['id']
+        if backend is not None: out['backendId'] = backend      # the DOM node the browser holds for this one: what the page's focus is matched to (predict.py `match_focus`)
         if d.get('tag') == 'input': out['inputType'] = (attrs.get('type') or 'text').lower()
         if style.get('display') and d.get('type') == 1: out['display'] = style['display']
         out['language'] = (d['language'] if d.get('language') is not None else None) or (parent_lang if parent_lang is not None else page.get('lang') or '')

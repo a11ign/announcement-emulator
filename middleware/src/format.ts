@@ -2,7 +2,7 @@ import { ANNOTATION, ATTACH_JSON, ATTACH_TEXT, LABEL } from "./label.ts";
 import type { BundleManifest } from "./bundle.ts";
 import type { RuntimeRecord } from "./runtime.ts";
 import type { TreeSource } from "./extension.ts";
-import type { Agreement } from "./supported.ts";
+import { percent, shapeRateFor, type Agreement, type ShapeRate } from "./supported.ts";
 
 const TREE_NOTE: Record<TreeSource, string> = {
   extension: "Predicted by the announcement emulator from Chrome's accessibility tree and NVDA's own Python. Not what NVDA said. Nothing here may fill an a11ign evidence field.",
@@ -55,6 +55,9 @@ export interface RunNote { tree?: TreeSource; treeWhy?: string; agreement?: Agre
 
 export interface Output { text: string; json: Record<string, unknown>; flags: { flag: string; detail: string }[] }
 
+/** How a report says the measured rate of an announcement's shape: `NAME + ROLE: 86.0% of 57`, with `, low confidence` where the list marks the shape weak, or `shape not measured`. */
+export const shapeNote = (rate: ShapeRate): string => rate.measured ? `${rate.shape}: ${percent(rate.agreement!)} of ${rate.units}${rate.lowConfidence ? ", low confidence" : ""}` : "shape not measured";
+
 /** The output for one test, from the records `assign` gave it. */
 export function describe(w: Window, records: RuntimeRecord[], emulator: BundleManifest | null, note: RunNote = {}): Output {
   const tree = note.tree ?? "extension";
@@ -62,7 +65,10 @@ export function describe(w: Window, records: RuntimeRecord[], emulator: BundleMa
   const speech = mine.filter((r) => r.kind === "speech");
   const sweeps = mine.filter((r) => r.kind === "sweep");
   const flags = mine.filter((r) => r.kind === "flag");
-  const predicted = speech.map((r) => ({ atMs: ms(r.t, w), cause: r.cause, text: r.text, utterances: r.utterances, shape: r.shape, node: r.node, runtimeMs: r.ms, ...(r.repeatFocus === undefined ? {} : { repeatFocus: r.repeatFocus, repeatFocusShape: r.repeatFocusShape }) }));
+  const predicted = speech.map((r) => {
+    const rate = shapeRateFor(note.agreement, r.shape);
+    return { atMs: ms(r.t, w), cause: r.cause, text: r.text, utterances: r.utterances, shape: r.shape, ...(rate ? { shapeRate: rate } : {}), ...(rate?.lowConfidence ? { lowConfidence: true } : {}), node: r.node, runtimeMs: r.ms, ...(r.repeatFocus === undefined ? {} : { repeatFocus: r.repeatFocus, repeatFocusShape: r.repeatFocusShape }) };
+  });
   const sweepRows = sweeps.map((r) => ({ atMs: ms(r.t, w), trigger: r.trigger, url: r.url, lists: r.lists, counts: r.counts, census: r.census, keysSent: r.keys, notDelivered: r.notDelivered, runtimeMs: r.ms }));
   const flagRows = flags.map((r) => ({ flag: r.flag as string, atMs: ms(r.t, w), detail: r.detail as string, node: r.node }));
   const json = {
@@ -81,7 +87,10 @@ function textOf(w: Window, mine: RuntimeRecord[], emulator: BundleManifest | nul
   lines.push("");
   const speech = mine.filter((r) => r.kind === "speech");
   if (!speech.length) lines.push("(no speech was predicted while this test ran)");
-  for (const r of speech) lines.push(`${seconds(r.t, w)}  ${String(r.cause).padEnd(6)}  ${r.text}`);
+  for (const r of speech) {
+    const rate = shapeRateFor(note.agreement, r.shape);
+    lines.push(`${seconds(r.t, w)}  ${String(r.cause).padEnd(6)}  ${r.text}${rate ? `  [${shapeNote(rate)}]` : ""}`);
+  }
   for (const r of mine.filter((x) => x.kind === "sweep")) lines.push("", ...sweepLines(r, w));
   const flags = mine.filter((r) => r.kind === "flag");
   lines.push("", flags.length ? "Flags:" : "Flags: none");
