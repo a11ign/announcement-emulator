@@ -5,9 +5,9 @@ Step 2 of 2 (announcement-emulator): `.github/dependabot.yml` is now the output 
 Acceptance:
 
 ```bash
-(cd middleware && pnpm install --frozen-lockfile)
+pnpm --dir middleware install --frozen-lockfile
 # the committed file is exactly the template's output (exit 1 and a diff on drift)
-(cd middleware && pnpm exec dependabot-config --check --root ..)
+pnpm --dir middleware exec dependabot-config --check --root ..
 # weekly at one fixed time, one group per ecosystem
 grep -q 'interval: weekly' .github/dependabot.yml
 grep -q 'time: "05:23"' .github/dependabot.yml
