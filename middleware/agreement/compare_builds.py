@@ -111,7 +111,7 @@ def differ_between_builds(builds):
     """Per reading, the units both builds compare, and the ones where they predicted another string: how much the builds differ from each other, whatever the oracle says."""
     out = {}
     names = sorted({n for rs in builds.values() for n in rs}, key=cs.READINGS.index)
-    keys = list(builds)
+    keys = sorted(builds, reverse=True)      # the list has two builds; with more, the two newest are compared
     for n in names:
         if len(keys) < 2 or not all(n in builds[b] for b in keys[:2]): continue
         a, b = builds[keys[0]][n], builds[keys[1]][n]
@@ -130,26 +130,26 @@ def fill_list(listing, figures, dates, playwright):
     return {**listing, 'builds': builds + [b for b in listing.get('builds', []) if b['chromium'] not in figures]}
 
 
-def main(argv):
-    ap = argparse.ArgumentParser(); ap.add_argument('--work', required=True); ap.add_argument('--out', required=True); ap.add_argument('--notes')
-    ap.add_argument('--list'); ap.add_argument('--dates', nargs='*', default=[], metavar='BUILD=DAY'); ap.add_argument('--playwright', nargs='*', default=[], metavar='BUILD=V,V')
-    a = ap.parse_args(argv)
-
+def load_builds(work):
+    """({build: {reading: Reading}}, the same for the `--second` readings) of every build directory in `work`."""
     def load(build, name):
-        path = os.path.join(a.work, build, name, 'agreement.json')
+        path = os.path.join(work, build, name, 'agreement.json')
         if not os.path.exists(path): return None
         with open(path) as f: return cs.Reading(name, json.load(f))
-    builds_found = sorted(d for d in os.listdir(a.work) if os.path.isdir(os.path.join(a.work, d)) and d[:1].isdigit())
-    builds = {b: {n: r for n in cs.READINGS if (r := load(b, n))} for b in builds_found}
-    second = {b: {n: r for n in cs.READINGS if (r := load(b, f'{n}-second'))} for b in builds_found}
-    for b in builds_found:
+    found = sorted(d for d in os.listdir(work) if os.path.isdir(os.path.join(work, d)) and d[:1].isdigit())
+    builds = {b: {n: r for n in cs.READINGS if (r := load(b, n))} for b in found}
+    second = {b: {n: r for n in cs.READINGS if (r := load(b, f'{n}-second'))} for b in found}
+    for b in found:
         if 'ext-linux' not in builds[b] or 'devtools-linux' not in builds[b]: sys.exit(f'compare_builds.py: Chromium {b} needs ext-linux and devtools-linux in --work')
-    attributed = attribute_builds(builds, second, cs.load_notes(a.notes))
+    return builds, second
+
+
+def render_all(builds, second, attributed, between):
+    """(the text of comparison.txt, {build: what the extension buys there})."""
     texts, results = [], {}
     for b in sorted(builds, reverse=True):
         text, results[b] = render_build(b, builds[b], second[b], attributed[b])
         texts.append(text)
-    between = differ_between_builds(builds)
     tail = ['## the builds against each other (the units both compare, the first fleet capture against the first run)']
     for n, d in between.items(): tail.append(f"  {n:<20} {d['units']:>5} units: the two builds predicted another string for {d['predictionsDiffer']}; the oracle agrees with one build only on {d['agreeInOneOnly']}")
     tail.append('\n## causes by build and reading (misses)')
@@ -157,33 +157,49 @@ def main(argv):
         for n, ms in attributed[b].items():
             c = collections.Counter(m['cause'] for m in ms)
             tail.append(f'  {b} {n:<20} ' + ', '.join(f'{k} {v}' for k, v in c.most_common()))
-    text = '\n\n'.join([*texts, '\n'.join(tail)])
+    return '\n\n'.join([*texts, '\n'.join(tail)]), results
+
+
+def write_figure(work, out, build, name, reading, misses):
+    """`<out>/<build>/<source>-<os>/{misses.json,agreement.txt}` of one reading; returns its place in the list: (agreed, units, path)."""
+    key = FIGURE_KEY[name]
+    d = os.path.join(out, build, key); os.makedirs(d, exist_ok=True)
+    counts = collections.Counter((r['channel'], bool(r['ok'])) for r in reading.main.values())
+    with open(os.path.join(d, 'misses.json'), 'w') as f:
+        json.dump({'status': reading.status, 'units': {ch: [counts[(ch, True)], counts[(ch, True)] + counts[(ch, False)]] for ch in sorted({c for c, _ in counts})}, 'misses': misses}, f, indent=1, ensure_ascii=False)
+    src = os.path.join(work, build, name, 'agreement.txt')
+    if os.path.exists(src): shutil.copy(src, os.path.join(d, 'agreement.txt'))
+    return key, (*cs.headline(reading), f'middleware/results/playwright-versions/{build}/{key}/')
+
+
+def summarize(build, readings, second, results, attributed):
+    return {'readings': {n: dict(zip(('agreed', 'units'), cs.headline(r))) for n, r in readings.items()}, 'second': {n: dict(zip(('agreed', 'units'), cs.headline(r))) for n, r in second.items()},
+            'extensionBuys': results, 'causes': {n: dict(collections.Counter(m['cause'] for m in ms)) for n, ms in attributed.items()}}
+
+
+def update_list(path, figures, dates, playwright):
+    dates = dict(x.split('=', 1) for x in dates); playwright = {k: v.split(',') for k, v in (x.split('=', 1) for x in playwright)}
+    missing = [b for b in figures if b not in dates or b not in playwright]
+    if missing: sys.exit(f'compare_builds.py: --list needs --dates and --playwright for {missing}')
+    with open(path) as f: listing = json.load(f)
+    with open(path, 'w') as f: json.dump(fill_list(listing, figures, dates, playwright), f, indent=2); f.write('\n')
+
+
+def main(argv):
+    ap = argparse.ArgumentParser(); ap.add_argument('--work', required=True); ap.add_argument('--out', required=True); ap.add_argument('--notes')
+    ap.add_argument('--list'); ap.add_argument('--dates', nargs='*', default=[], metavar='BUILD=DAY'); ap.add_argument('--playwright', nargs='*', default=[], metavar='BUILD=V,V')
+    a = ap.parse_args(argv)
+    builds, second = load_builds(a.work)
+    attributed = attribute_builds(builds, second, cs.load_notes(a.notes))
+    between = differ_between_builds(builds)
+    text, results = render_all(builds, second, attributed, between)
     print(text)
     os.makedirs(a.out, exist_ok=True)
     with open(os.path.join(a.out, 'comparison.txt'), 'w') as f: f.write(text + '\n')
-    figures = {}
-    summary = {'builds': {}, 'betweenBuilds': between}
-    for b in builds:
-        summary['builds'][b] = {'readings': {n: dict(zip(('agreed', 'units'), cs.headline(r))) for n, r in builds[b].items()}, 'second': {n: dict(zip(('agreed', 'units'), cs.headline(r))) for n, r in second[b].items()},
-                                'extensionBuys': results[b], 'causes': {n: dict(collections.Counter(m['cause'] for m in ms)) for n, ms in attributed[b].items()}}
-        figures[b] = {}
-        for n, ms in attributed[b].items():
-            key = FIGURE_KEY[n]
-            d = os.path.join(a.out, b, key); os.makedirs(d, exist_ok=True)
-            counts = collections.Counter((r['channel'], bool(r['ok'])) for r in builds[b][n].main.values())
-            with open(os.path.join(d, 'misses.json'), 'w') as f:
-                json.dump({'status': builds[b][n].status, 'units': {ch: [counts[(ch, True)], counts[(ch, True)] + counts[(ch, False)]] for ch in sorted({c for c, _ in counts})}, 'misses': ms}, f, indent=1, ensure_ascii=False)
-            src = os.path.join(a.work, b, n, 'agreement.txt')
-            if os.path.exists(src): shutil.copy(src, os.path.join(d, 'agreement.txt'))
-            agreed, units = cs.headline(builds[b][n])
-            figures[b][key] = (agreed, units, f'middleware/results/playwright-versions/{b}/{key}/')
+    figures = {b: dict(write_figure(a.work, a.out, b, n, builds[b][n], ms) for n, ms in attributed[b].items()) for b in builds}
+    summary = {'builds': {b: summarize(b, builds[b], second[b], results[b], attributed[b]) for b in builds}, 'betweenBuilds': between}
     with open(os.path.join(a.out, 'comparison.json'), 'w') as f: json.dump(summary, f, indent=1)
-    if a.list:
-        dates = dict(x.split('=', 1) for x in a.dates); playwright = {k: v.split(',') for k, v in (x.split('=', 1) for x in a.playwright)}
-        missing = [b for b in builds if b not in dates or b not in playwright]
-        if missing: sys.exit(f'compare_builds.py: --list needs --dates and --playwright for {missing}')
-        with open(a.list) as f: listing = json.load(f)
-        with open(a.list, 'w') as f: json.dump(fill_list(listing, figures, dates, playwright), f, indent=2); f.write('\n')
+    if a.list: update_list(a.list, figures, a.dates, a.playwright)
     return 0
 
 
