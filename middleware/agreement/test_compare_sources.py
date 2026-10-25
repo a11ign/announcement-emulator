@@ -161,6 +161,59 @@ class Run(unittest.TestCase):
             self.assertIn('recommendation by the frozen rule (the chairman reads it): KEEP BOTH', text)
             with open(os.path.join(out, 'comparison.json')) as f: self.assertEqual(json.load(f)['extensionBuys']['second']['units'], 8)
 
+    def test_the_structure_gate_goes_on_only_when_the_lead_is_within_the_margin_everywhere(self):
+        ext = [('links', 0, 'a', 'a'), ('links', 1, 'b', 'b'), ('links', 2, 'c', 'c')]
+        B = 'https://y.test/q'
+        dev = [('links', 0, 'a', 'a'), ('links', 1, 'b', 'b'), ('links', 2, 'c', 'c')]
+        def readings(ext_units, dev_units): return reading('ext-linux', ext_units), reading('devtools-linux', dev_units)
+        e, d = readings(ext, dev)
+        classes = {A: 'table', B: 'list'}
+        # the same figure on both sources: nothing leads
+        g = cs.gate(cs.buys(e, d), cs.lead_by_class(e, d, classes))
+        self.assertTrue(g['proceed']); self.assertEqual(g['over'], [])
+        # the extension agrees on a unit DevTools misses: 1 of 3 is far above 1.0 point, overall and for the class
+        e, d = readings(ext, [('links', 0, 'a', 'a'), ('links', 1, 'b', 'b'), ('links', 2, 'c', 'x')])
+        g = cs.gate(cs.buys(e, d), cs.lead_by_class(e, d, classes))
+        self.assertFalse(g['proceed']); self.assertEqual([o['label'] for o in g['over']], ['all pages', 'table pages'])
+        self.assertIn('STOP AND REPORT', cs.gate_line(g))
+
+    def test_a_lead_in_one_class_alone_stops_the_gate_and_a_lead_exactly_at_the_margin_does_not(self):
+        B = 'https://y.test/q'
+        def two(a_units, b_units):       # (ext units, devtools units) for the two pages, a table and a list
+            return (cs.Reading('ext-linux', {'status': {}, 'rows': [row(i, e, p, c, address=ad) for ad, us in ((A, a_units[0]), (B, b_units[0])) for c, i, e, p in us]}),
+                    cs.Reading('devtools-linux', {'status': {}, 'rows': [row(i, e, p, c, address=ad) for ad, us in ((A, a_units[1]), (B, b_units[1])) for c, i, e, p in us]}))
+        good = [('links', i, f'u{i}', f'u{i}') for i in range(99)]
+        miss = [('links', 99, 'u99', 'x')]
+        e, d = two((good + miss, good + miss), (good + miss, good + miss))
+        self.assertTrue(cs.gate(cs.buys(e, d), cs.lead_by_class(e, d, {A: 'table', B: 'list'}))['proceed'])
+        # the list page: the extension agrees on the last unit and DevTools misses it, 1 of 100 = 1.0 point: at the margin, goes on
+        dev_miss = good + miss
+        ext_ok = good + [('links', 99, 'u99', 'u99')]
+        e, d = two((good + miss, good + miss), (ext_ok, dev_miss))
+        g = cs.gate(cs.buys(e, d), cs.lead_by_class(e, d, {A: 'table', B: 'list'}))
+        self.assertEqual(round(cs.lead_by_class(e, d, {A: 'table', B: 'list'})[1]['leadPoints'], 6), 1.0)
+        self.assertTrue(g['proceed'])
+        # two units: above the margin on the list pages, and the table pages and the whole are within it only because of the other page
+        ext_two = good[:98] + [('links', 98, 'u98', 'u98'), ('links', 99, 'u99', 'u99')]
+        dev_two = good[:98] + [('links', 98, 'u98', 'x'), ('links', 99, 'u99', 'x')]
+        e, d = two((good + miss, good + miss), (ext_two, dev_two))
+        g = cs.gate(cs.buys(e, d), cs.lead_by_class(e, d, {A: 'table', B: 'list'}))
+        self.assertFalse(g['proceed']); self.assertEqual([o['label'] for o in g['over']], ['list pages'])
+
+    def test_with_classes_the_run_prints_the_gate_and_not_the_step_one_recommendation(self):
+        units = [('links', i, f'u{i}', f'u{i}') for i in range(4)]
+        with tempfile.TemporaryDirectory() as work, tempfile.TemporaryDirectory() as out:
+            for name in ('ext-linux', 'devtools-linux'):
+                rd = reading(name, units)
+                os.makedirs(os.path.join(work, name))
+                with open(os.path.join(work, name, 'agreement.json'), 'w') as f: json.dump({'status': rd.status, 'rows': list(rd.main.values())}, f)
+            pages = os.path.join(work, 'pages.json')
+            with open(pages, 'w') as f: json.dump({'sample': [{'address': A, 'class': 'table'}]}, f)
+            with contextlib.redirect_stdout(io.StringIO()): self.assertEqual(cs.main(['--work', work, '--out', out, '--classes', pages]), 0)
+            with open(os.path.join(out, 'comparison.txt')) as f: text = f.read()
+            self.assertIn('GO ON TO STEP 3', text); self.assertNotIn('recommendation by the frozen rule', text)
+            with open(os.path.join(out, 'comparison.json')) as f: self.assertTrue(json.load(f)['extensionBuys']['gate']['proceed'])
+
     def test_without_both_linux_readings_it_refuses(self):
         with tempfile.TemporaryDirectory() as work, tempfile.TemporaryDirectory() as out:
             with self.assertRaises(SystemExit): cs.main(['--work', work, '--out', out])

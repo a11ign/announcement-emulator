@@ -14,5 +14,7 @@ export const config: PlaywrightTestConfig = {
     { name: "misses", testDir: "./tests/misses" },
     // the window the fleet's Edge reports (innerWidth x innerHeight, as emu/session.mjs sets it), so that what is on the screen when a stop is read is what was on its screen
     { name: "corpus", testDir: "./tests/corpus", timeout: 180_000, use: { viewport: { width: 1008, height: 729 } } },
+    // the same walk on table- and list-heavy pages (A11-229, step 2: results/tree-source-structure/rule.md)
+    { name: "structure", testDir: "./tests/structure", timeout: 180_000, use: { viewport: { width: 1008, height: 729 } } },
   ],
 };

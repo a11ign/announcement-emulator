@@ -1,0 +1,141 @@
+{
+ "about": "The candidate pages of the structure measurement (A11-229, step 2), named by hand before any fleet capture: public pages of the shapes the chairman listed (data tables with headers, long navigation lists, nested lists, a grid, a tree view). The list was widened once, after a first look at their DOM counts (no accessibility tree, no fleet, no emulator, no agreement figure had been looked at), because the first pass found data tables with links in their cells only on Wikipedia. It is fixed from here; select_structure_pages.py keeps from it by DOM counts only (rule.md).",
+ "candidates": [
+  {
+   "url": "https://www.w3.org/WAI/ARIA/apg/patterns/grid/examples/data-grids/",
+   "kind": "grid"
+  },
+  {
+   "url": "https://www.w3.org/WAI/ARIA/apg/patterns/grid/examples/layout-grids/",
+   "kind": "grid"
+  },
+  {
+   "url": "https://www.w3.org/WAI/ARIA/apg/patterns/treegrid/examples/treegrid-1/",
+   "kind": "grid"
+  },
+  {
+   "url": "https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/table/",
+   "kind": "table"
+  },
+  {
+   "url": "https://www.w3.org/WAI/ARIA/apg/patterns/treeview/examples/treeview-navigation/",
+   "kind": "tree"
+  },
+  {
+   "url": "https://www.w3.org/WAI/ARIA/apg/patterns/listbox/examples/listbox-scrollable/",
+   "kind": "list"
+  },
+  {
+   "url": "https://www.w3.org/WAI/ARIA/apg/patterns/menubar/examples/menubar-navigation/",
+   "kind": "nested list"
+  },
+  {
+   "url": "https://design-patterns.service.justice.gov.uk/components/sortable-table/",
+   "kind": "table"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/table/",
+   "kind": "table"
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/List_of_largest_cities",
+   "kind": "table"
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/List_of_sovereign_states",
+   "kind": "table"
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population",
+   "kind": "table"
+  },
+  {
+   "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table",
+   "kind": "table"
+  },
+  {
+   "url": "https://www.gov.uk/government/organisations",
+   "kind": "list"
+  },
+  {
+   "url": "https://www.gov.uk/browse",
+   "kind": "list"
+  },
+  {
+   "url": "https://www.gov.uk/government/publications",
+   "kind": "list"
+  },
+  {
+   "url": "https://www.gov.uk/government/statistics",
+   "kind": "table"
+  },
+  {
+   "url": "https://www.nhs.uk/conditions/",
+   "kind": "list"
+  },
+  {
+   "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/",
+   "kind": "list"
+  },
+  {
+   "url": "https://www.cqc.org.uk/search/all?query=hospital",
+   "kind": "list"
+  },
+  {
+   "url": "https://reports.ofsted.gov.uk/search?q=school",
+   "kind": "list"
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines",
+   "kind": "nested list"
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/Outline_of_computer_science",
+   "kind": "nested list"
+  },
+  {
+   "url": "https://www.w3.org/WAI/standards-guidelines/wcag/",
+   "kind": "nested list"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/tables/",
+   "kind": "table"
+  },
+  {
+   "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates",
+   "kind": "list"
+  },
+  {
+   "url": "https://data.gov.uk/search",
+   "kind": "list"
+  },
+  {
+   "url": "https://find-and-update.company-information.service.gov.uk/company/00000006/filing-history",
+   "kind": "table"
+  },
+  {
+   "url": "https://www.legislation.gov.uk/ukpga/2010/15/contents",
+   "kind": "nested list"
+  },
+  {
+   "url": "https://www.legislation.gov.uk/ukpga/1998/42/contents",
+   "kind": "nested list"
+  },
+  {
+   "url": "https://environment.data.gov.uk/flood-monitoring/doc/reference",
+   "kind": "table"
+  },
+  {
+   "url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-index",
+   "kind": "table"
+  },
+  {
+   "url": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "kind": "table"
+  },
+  {
+   "url": "https://www.nice.org.uk/guidance/published",
+   "kind": "list"
+  }
+ ]
+}

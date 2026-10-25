@@ -189,12 +189,37 @@ def lead_by(ext, dev, keyf, order):
     return out
 
 
+def lead_by_class(ext, dev, classes):
+    """The extension's lead over the units of each class of page (`classes` is {address: class}), in the order the classes first occur."""
+    pairs = paired(ext, dev)
+    out = []
+    for label in dict.fromkeys(classes.values()):
+        sel = [(a, b) for a, b in pairs if classes.get(a['address']) == label]
+        if sel:
+            e, d = sum(a['ok'] for a, _ in sel), sum(b['ok'] for _, b in sel)
+            out.append({'label': label, 'units': len(sel), 'extension': e, 'devtools': d, 'leadPoints': 100 * (e - d) / len(sel)})
+    return out
+
+
+def gate(result, by_class, margin=MARGIN):
+    """The structure measurement's decision (results/tree-source-structure/rule.md): step 3 goes on only if the extension's lead is at most the margin overall and on each class of page. {'proceed', 'over'}."""
+    over = [('all pages', result['leadPoints'])] + [(c['label'] + ' pages', c['leadPoints']) for c in by_class]
+    over = [(label, lead) for label, lead in over if lead > margin]
+    return {'proceed': not over, 'over': [{'label': label, 'leadPoints': lead} for label, lead in over], 'margin': margin}
+
+
+def gate_line(g):
+    if g['proceed']: return f"gate by the frozen rule (the chairman reads it): GO ON TO STEP 3: the extension's lead is at most the {g['margin']:.1f}-point margin on all pages and on each class of page"
+    return ('gate by the frozen rule (the chairman reads it): STOP AND REPORT: the extension leads by more than the ' + f"{g['margin']:.1f}-point margin on " + ', '.join(f"{o['label']} ({o['leadPoints']:+.1f})" for o in g['over'])
+            + '; the fields that make the difference are in the work list below')
+
+
 def recommendation_line(b):
     return (f"recommendation by the frozen rule (the chairman reads it): {b['recommendation'].upper()}: the extension's lead is {b['leadPoints']:+.1f} points ({b['extension']} against {b['devtools']} of {b['units']} units agreed), "
             f"{'at most' if b['leadPoints'] <= b['margin'] else 'above'} the {b['margin']:.1f}-point margin")
 
 
-def render(readings, second, attributed, margin=MARGIN):
+def render(readings, second, attributed, margin=MARGIN, classes=None):
     lines, out = [], None
     out = lines.append
     names = [n for n in READINGS if n in readings]
@@ -223,7 +248,14 @@ def render(readings, second, attributed, margin=MARGIN):
         for r in result['byShape']:
             out(f"    {r['label'][:58]:<58} {r['extension']:>4} / {r['devtools']:>4} of {r['units']:<4} {rate(r['extension'], r['units']):>6} / {rate(r['devtools'], r['units']):>6}  lead {100 * (r['extension'] - r['devtools']) / r['units']:+.1f}")
         result['byChannel'] = lead_by(ext, dev, lambda x: x['channel'], ['title', 'stops', 'field', 'typed', *LISTS])
-        out('\n# ' + recommendation_line(result))
+        if not classes: out('\n# ' + recommendation_line(result))
+        else:
+            result['byClass'] = lead_by_class(ext, dev, classes)
+            out('\n  by class of page (extension / DevTools, agreed of units):')
+            for c in result['byClass']:
+                out(f"    {c['label']:<11} {c['extension']:>4} / {c['devtools']:>4} of {c['units']:<4} {rate(c['extension'], c['units']):>6} / {rate(c['devtools'], c['units']):>6}  lead {c['leadPoints']:+.1f}")
+            result['gate'] = gate(result, result['byClass'], margin)
+            out('\n# ' + gate_line(result['gate']))
     out('\n# the readings side by side, by channel (agreed of units, the fleet against itself in brackets)')
     out(f'  {"":<11} ' + ' | '.join(f'{n:<{CELL}}' for n in names))
     for ch in ('title', 'stops', 'field', 'typed', *LISTS):
@@ -269,7 +301,7 @@ def render(readings, second, attributed, margin=MARGIN):
 
 
 def main(argv):
-    ap = argparse.ArgumentParser(); ap.add_argument('--work', required=True); ap.add_argument('--out', required=True); ap.add_argument('--notes'); ap.add_argument('--margin', type=float, default=MARGIN)
+    ap = argparse.ArgumentParser(); ap.add_argument('--work', required=True); ap.add_argument('--out', required=True); ap.add_argument('--notes'); ap.add_argument('--margin', type=float, default=MARGIN); ap.add_argument('--classes', help='a pages.json whose sample entries have a `class`: adds the lead by class of page and the gate of the structure measurement')
     a = ap.parse_args(argv)
 
     def load(name):
@@ -280,7 +312,10 @@ def main(argv):
     second = {n: r for n in READINGS if (r := load(f'{n}-second'))}
     if 'ext-linux' not in readings or 'devtools-linux' not in readings: sys.exit('compare_sources.py: needs ext-linux and devtools-linux in --work')
     attributed = attribute_all(readings, load_notes(a.notes))
-    text, result, work = render(readings, second, attributed, a.margin)
+    classes = None
+    if a.classes:
+        with open(a.classes) as f: classes = {p['address']: p['class'] for p in json.load(f)['sample']}
+    text, result, work = render(readings, second, attributed, a.margin, classes)
     print(text)
     os.makedirs(a.out, exist_ok=True)
     with open(os.path.join(a.out, 'comparison.txt'), 'w') as f: f.write(text + '\n')
