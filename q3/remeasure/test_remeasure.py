@@ -5,15 +5,7 @@ sys.path.insert(0, HERE); sys.path.insert(0, Q3)
 import readback as rb, check, corpus_capture as cc, policy_override as po, explain_visited as ev, make_views
 sys.path.insert(0, os.path.join(Q3, 'replay')); sys.path.insert(0, os.path.join(Q3, 'gate'))
 import replay_readback as rrb, make_freeze
-from fleet_stub import FleetStub
-
-def run_main(main, argv):
-    """(exit code, stdout, stderr) of an entry point's `main(argv)`."""
-    out, err, code = io.StringIO(), io.StringIO(), 0
-    with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
-        try: main(argv)
-        except SystemExit as e: code = e.code if isinstance(e.code, int) else (1 if e.code else 0); err.write(e.code if isinstance(e.code, str) else '')
-    return code, out.getvalue(), err.getvalue()
+from fleet_stub import FleetStub, run_main
 
 def write(path, text):
     with open(path, 'w') as f: f.write(text)

@@ -1,24 +1,19 @@
 """python3 -m unittest discover -s middleware/agreement -t middleware/agreement -p test_capture_fleet.py   (from the repository root)
 
 capture_fleet.py against a stand-in `fleet` command (q3/fleet_stub.py): what it submits, and what it writes from the job's results."""
-import contextlib, io, json, os, sys, tempfile, unittest
+import json, os, sys, tempfile, unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE); sys.path.append(os.path.join(HERE, '..', '..', 'q3'))
 import capture_fleet
 from measure import slug
-from fleet_stub import FleetStub
+from fleet_stub import FleetStub, run_main
 
 PAGES = ['https://example.com/a', 'https://example.com/b', 'https://example.com/c']
 BOXES = ['a11y-worker-13', 'a11y-worker-14', 'a11y-worker-16']
 
 
-def run(argv):
-    out, err, code = io.StringIO(), io.StringIO(), 0
-    with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
-        try: capture_fleet.main(argv)
-        except SystemExit as e: code = e.code if isinstance(e.code, int) else (1 if e.code else 0); err.write(e.code if isinstance(e.code, str) else '')
-    return code, out.getvalue(), err.getvalue()
+def run(argv): return run_main(capture_fleet.main, argv)
 
 
 class CaptureFleet(unittest.TestCase):

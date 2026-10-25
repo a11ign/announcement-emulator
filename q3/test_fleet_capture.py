@@ -1,22 +1,16 @@
 """python3 -m unittest discover -s q3 -t q3 -p test_fleet_capture.py   (from the repository root; standard library only)
 
 fleet_capture.py is the one client of the fleet job service: every test here runs it against a stand-in `fleet` command (fleet_stub.py) that logs what it is asked and answers as the service does. Nothing reaches a fleet."""
-import contextlib, io, json, os, re, tempfile, unittest, unittest.mock
+import json, os, re, tempfile, unittest, unittest.mock
 
 import fleet_capture as fc, control_capture as ctl
-from fleet_stub import FleetStub, ok_record
+from fleet_stub import FleetStub, ok_record, run_main
 
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
 PAGE = 'https://example.com/'
 
 
-def run(main, argv):
-    """(exit code, stdout, stderr) of an entry point's `main(argv)`."""
-    out, err, code = io.StringIO(), io.StringIO(), 0
-    with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
-        try: main(argv)
-        except SystemExit as e: code = e.code if isinstance(e.code, int) else (1 if e.code else 0); err.write(e.code if isinstance(e.code, str) else '')
-    return code, out.getvalue(), err.getvalue()
+run = run_main
 
 
 class Base(unittest.TestCase):
@@ -133,6 +127,7 @@ class Results(Base):
         manifest_path = os.path.join(self.dir, fc.PENDING_DIR, FleetStub.JOB + '.manifest.json')
         with open(manifest_path) as f: text = f.read()
         self.assertNotIn('192.0.2.7', text); self.assertIn('http://capture-host:8000/p.html', text)
+        with open(os.path.join(self.dir, fc.PENDING_DIR, FleetStub.JOB + '.json')) as f: self.assertNotIn('192.0.2.7', f.read())      # nor does the pending file hold the address
 
     def test_a_host_name_is_left_as_it_is(self):
         self.collect()

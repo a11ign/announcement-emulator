@@ -6,7 +6,7 @@
     stub.calls()                                            # every call, as its argument list; stub.submits() the `capture submit` calls with their options and the pages file's content
 
 `capture submit` prints the job ID, `job wait` exits with `wait_exit`, `job fetch --to D` writes `D/<job>/manifest.json` and the records. Standard library only."""
-import hashlib, json, os, re, stat, sys, tempfile, unittest.mock
+import contextlib, hashlib, io, json, os, re, stat, sys, tempfile, unittest.mock
 
 SCRIPT = '''#!{python}
 import json, os, shutil, sys
@@ -25,6 +25,15 @@ elif args[:2] == ['job', 'fetch']:
     for name, record in config['files'].items(): json.dump(record, open(os.path.join(folder, name), 'w'))
 else: sys.exit(2)
 '''
+
+
+def run_main(main, argv):
+    """(exit code, stdout, stderr) of an entry point's `main(argv)`; the text of a `sys.exit(message)` is in stderr."""
+    out, err, code = io.StringIO(), io.StringIO(), 0
+    with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+        try: main(argv)
+        except SystemExit as e: code = e.code if isinstance(e.code, int) else (1 if e.code else 0); err.write(e.code if isinstance(e.code, str) else '')
+    return code, out.getvalue(), err.getvalue()
 
 
 def record_file(page, pass_number):

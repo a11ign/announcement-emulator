@@ -58,10 +58,10 @@ def follow(job, wait, collect_command):
 
 
 def write_pending(out, job, label, names, **extra):
-    """What `collect` needs to know about the job: `names` is {page: {pass: file name in `out`}}, `extra` whatever the entry point reads when it collects."""
+    """What `collect` needs to know about the job: `names` is {page: {pass: file name in `out`}}, `extra` whatever the entry point reads when it collects. No address of ours is kept in it, any more than in a record: a page is under its name as `results` gives it."""
     os.makedirs(os.path.join(out, PENDING_DIR), exist_ok=True)
-    with open(os.path.join(out, PENDING_DIR, job + '.json'), 'w') as f:
-        json.dump({'job': job, 'label': label, 'submittedAt': datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'), 'names': names, **extra}, f, indent=1)
+    text = json.dumps({'job': job, 'label': label, 'submittedAt': datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'), 'names': names, **extra}, indent=1)
+    with open(os.path.join(out, PENDING_DIR, job + '.json'), 'w') as f: f.write(named(text, re.findall(r'https?://[^\s"\\]+', text)))
 
 
 def read_pending(out, job=None, name=None):
@@ -116,9 +116,10 @@ def results(out, job=None, name=None):
         if manifest.get('state') != 'done': sys.exit(f'{pending["job"]} is {manifest.get("state")}{": " + manifest["reason"] if manifest.get("reason") else ""}: only a job that is done has results to collect')
         found = []
         for entry in manifest['captures']:
-            try: file_name = pending['names'][entry['page']][str(entry['pass'])]
-            except KeyError: sys.exit(f'{pending["job"]} captured {entry["page"]} (pass {entry["pass"]}), which this entry point did not submit')
-            found.append(Result(entry['page'], entry['pass'], entry['box'], file_name, json.loads(named(json.dumps(record_of(entry, folder)), manifest['pages']))))
+            page = named(entry['page'], [entry['page']])
+            try: file_name = pending['names'][page][str(entry['pass'])]
+            except KeyError: sys.exit(f'{pending["job"]} captured {page} (pass {entry["pass"]}), which this entry point did not submit')
+            found.append(Result(page, entry['pass'], entry['box'], file_name, json.loads(named(json.dumps(record_of(entry, folder)), manifest['pages']))))
     with open(os.path.join(out, PENDING_DIR, pending['job'] + '.manifest.json'), 'w') as f: f.write(named(json.dumps(manifest, indent=1), manifest['pages']))
     return pending, manifest, found
 
