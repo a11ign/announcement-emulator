@@ -14,6 +14,8 @@ npx playwright install chromium               # Playwright's own Chromium: the b
 npx announcement-emulator install             # downloads the pinned, checksummed runtime bundle into a cache, as `npx playwright install` does for browsers
 ```
 
+Until the first release nothing is on npm: install the tarball `npm pack` makes in `middleware/`, with the bundle served as a mirror (`middleware/release/install-check.sh` does exactly that).
+
 `install` downloads the bundle from **the GitHub Release of the version you installed** (`<repository>/releases/download/v<version>/`, the `repository` of this package's `package.json`), refuses it unless its sha256 is the one this
 package's `pins.json` names (nothing is unpacked, and the download is deleted), and unpacks it into the cache. A team that cannot reach github.com mirrors the Release: see `ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST` below.
 

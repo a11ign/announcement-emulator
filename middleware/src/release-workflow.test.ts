@@ -104,16 +104,24 @@ test("after-version.sh fails when a pin's sum is not the one SHA256SUMS lists, a
   assert.ok(!existsSync(join(root, "middleware/pins.json.new")));
 });
 
-test("after-version.sh fails when a pin has no line in SHA256SUMS, with no RELEASE_FILES, and with no bundle built", () => {
-  const missing = scratch({ "linux-x64": SUMS["linux-x64"] });
-  assert.match(missing.run().stderr, /no line for it/);
-  assert.notEqual(missing.run().status, 0);
-  const none = scratch();
-  assert.notEqual(none.run({}).status, 0);
-  assert.match(none.run({}).stderr, /RELEASE_FILES/);
-  const empty = scratch();
-  for (const pin of readdirSync(join(empty.files, "pins"))) rmSync(join(empty.files, "pins", pin));
-  assert.match(empty.run().stderr, /has no pin-<platform>\.json/);
+test("after-version.sh fails when a pin has no line in SHA256SUMS", () => {
+  const done = scratch({ "linux-x64": SUMS["linux-x64"] }).run();
+  assert.notEqual(done.status, 0);
+  assert.match(done.stderr, /no line for it/);
+});
+
+test("after-version.sh fails with no RELEASE_FILES", () => {
+  const done = scratch().run({});
+  assert.notEqual(done.status, 0);
+  assert.match(done.stderr, /RELEASE_FILES/);
+});
+
+test("after-version.sh fails when no bundle was built", () => {
+  const { files, run } = scratch();
+  for (const pin of readdirSync(join(files, "pins"))) rmSync(join(files, "pins", pin));
+  const done = run();
+  assert.notEqual(done.status, 0);
+  assert.match(done.stderr, /has no pin-<platform>\.json/);
 });
 
 /** Legs as the two build jobs upload them, merged into one directory: archives, their .sha256 files, pins and the reproducibility records. */

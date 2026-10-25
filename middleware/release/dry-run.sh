@@ -16,6 +16,24 @@ mkdir -p "${2:?an output directory}"; OUT="$(cd "$2" && pwd)"
 REPO="$(cd "$(dirname "$0")/../.." && pwd)"
 W="$(mktemp -d)"; trap 'rm -rf "${W:?}"' EXIT
 
+# what a reviewer reads: every file with its size and sum, the reproducibility of each platform, the package as packed, its pins.json and the notes
+summary() {
+  echo "## Dry-run release $VERSION"; echo
+  echo "Nothing was published, tagged or pushed. This is the release of this branch's changesets on a scratch copy of the working tree."; echo
+  echo "### Files the Release would carry"; echo
+  echo "| file | bytes | sha256 |"; echo "| --- | --- | --- |"
+  for f in "$FILES"/assets/announcement-emulator-bundle-*; do
+    case "$f" in *.sha256) continue ;; esac
+    echo "| $(basename "$f") | $(wc -c < "$f" | tr -d ' ') | \`$(sha256sum "$f" | cut -d' ' -f1)\` |"
+  done
+  echo; echo "SHA256SUMS as attached:"; echo '```'; cat "$FILES/assets/SHA256SUMS"; echo '```'; echo
+  echo "### Reproducibility (the bundle built twice, compared byte for byte)"; echo
+  for f in "$FILES"/report/reproducible-*.json; do node -e 'const r=require(process.argv[1]); console.log(`- ${r.platform}: ${r.reproducible ? "identical" : "DIFFERENT"} (${r.required ? "required" : "reported, not required"})`)' "$f"; done; echo
+  echo "### The packed package: $(basename "$PACKED") ($(wc -c < "$PACKED" | tr -d ' ') bytes)"; echo; echo '```'; tar -tzvf "$PACKED" | awk '{print $3, $6}'; echo '```'; echo
+  echo "pins.json as packed:"; echo '```json'; cat "$OUT/pins.json"; echo '```'; echo
+  echo "### The Release's notes (the changelog entry)"; echo; sed -n "/^## $VERSION\$/,/^## [0-9]/p" "$OUT/CHANGELOG.md" | sed '$ { /^## [0-9]/d }'
+}
+
 # the working tree as a repository of its own: `changeset version` reads git, and writes files
 git -C "$REPO" ls-files -z --cached --others --exclude-standard | tar --null --ignore-failed-read -cf - -C "$REPO" -T - | tar -xf - -C "$W"
 cd "$W"
@@ -40,20 +58,5 @@ node -e 'const p=require(process.argv[1]); console.log(Object.values(p.bundles).
 sort "$FILES/assets/SHA256SUMS" | diff - "$W/pinned.txt" || { echo "the packed pins.json and SHA256SUMS name different sums" >&2; exit 1; }
 node -e 'const p=require(process.argv[1]); if (p.version !== process.argv[2]) { console.error(`pins.json is for ${p.version}, the package is ${process.argv[2]}`); process.exit(1) }' "$OUT/pins.json" "$VERSION"
 
-{
-  echo "## Dry-run release $VERSION"; echo
-  echo "Nothing was published, tagged or pushed. This is the release of this branch's changesets on a scratch copy of the working tree."; echo
-  echo "### Files the Release would carry"; echo
-  echo "| file | bytes | sha256 |"; echo "| --- | --- | --- |"
-  for f in "$FILES"/assets/announcement-emulator-bundle-*; do
-    case "$f" in *.sha256) continue ;; esac
-    echo "| $(basename "$f") | $(wc -c < "$f" | tr -d ' ') | \`$(sha256sum "$f" | cut -d' ' -f1)\` |"
-  done
-  echo; echo "SHA256SUMS as attached:"; echo '```'; cat "$FILES/assets/SHA256SUMS"; echo '```'; echo
-  echo "### Reproducibility (the bundle built twice, compared byte for byte)"; echo
-  for f in "$FILES"/report/reproducible-*.json; do node -e 'const r=require(process.argv[1]); console.log(`- ${r.platform}: ${r.reproducible ? "identical" : "DIFFERENT"} (${r.required ? "required" : "reported, not required"})`)' "$f"; done; echo
-  echo "### The packed package: $(basename "$PACKED") ($(wc -c < "$PACKED" | tr -d ' ') bytes)"; echo; echo '```'; tar -tzvf "$PACKED" | awk '{print $3, $6}'; echo '```'; echo
-  echo "pins.json as packed:"; echo '```json'; cat "$OUT/pins.json"; echo '```'; echo
-  echo "### The Release's notes (the changelog entry)"; echo; sed -n "/^## $VERSION\$/,/^## [0-9]/p" "$OUT/CHANGELOG.md" | sed '$ { /^## [0-9]/d }'
-} > "$OUT/summary.md"
+summary > "$OUT/summary.md"
 echo "dry run of $VERSION: $PACKED; summary in $OUT/summary.md"
