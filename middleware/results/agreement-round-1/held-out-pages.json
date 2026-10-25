@@ -1,0 +1,70 @@
+{
+ "rule": "middleware/results/agreement-round-1/rule.md",
+ "candidates": 46,
+ "skipped": [
+  "middleware/results/agreement/pages.json"
+ ],
+ "excluded": [
+  "https://european-union.europa.eu/index_en",
+  "https://ico.org.uk/action-weve-taken/enforcement/",
+  "https://www.adobe.com/",
+  "https://www.hubspot.com/",
+  "https://www.ons.gov.uk/economy/inflationandpriceindices",
+  "https://www.w3.org/WAI/demos/bad/before/news.html",
+  "https://www.w3.org/WAI/tutorials/carousels/structure/"
+ ],
+ "sample": [
+  {
+   "url": "https://www.w3.org/WAI/tutorials/images/functional/",
+   "address": "https://www.w3.org/WAI/tutorials/images/functional/",
+   "tabStops": 87,
+   "textFields": 2,
+   "title": "Functional Images | Web Accessibility Initiative (WAI) | W3C"
+  },
+  {
+   "url": "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing",
+   "address": "https://www.nidirect.gov.uk/information-and-services/motoring/mot-and-vehicle-testing",
+   "tabStops": 48,
+   "textFields": 1,
+   "title": "MOT and vehicle testing | nidirect"
+  },
+  {
+   "url": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "address": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+   "tabStops": 109,
+   "textFields": 21,
+   "title": "Grouping Controls | Web Accessibility Initiative (WAI) | W3C"
+  },
+  {
+   "url": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "address": "https://sheffield.ac.uk/postgraduate/taught/courses/2027",
+   "tabStops": 199,
+   "textFields": 1,
+   "title": "Postgraduate taught courses 2027-2028 | The University of Sheffield"
+  },
+  {
+   "url": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "address": "https://caselaw.nationalarchives.gov.uk/search?query=",
+   "tabStops": 46,
+   "textFields": 1,
+   "title": "Search results - Find Case Law - The National Archives"
+  },
+  {
+   "url": "https://www.mygov.scot/scottish-child-payment",
+   "address": "https://www.mygov.scot/scottish-child-payment",
+   "tabStops": 36,
+   "textFields": 1,
+   "title": "Scottish Child Payment - mygov.scot"
+  }
+ ],
+ "rejected": [
+  {
+   "url": "https://www.nationalarchives.gov.uk/about-us/",
+   "address": "https://www.nationalarchives.gov.uk/about-us/",
+   "tabStops": 52,
+   "textFields": 0,
+   "title": "About us - The National Archives",
+   "why": "fewer than 10 tab stops or no text field"
+  }
+ ]
+}
