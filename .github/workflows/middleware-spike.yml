@@ -82,7 +82,7 @@ jobs:
           python3 middleware/bundle/check_no_browser.py "$RUNNER_TEMP/unpacked"
           mkdir "$RUNNER_TEMP/formats-out"
           { echo "### Bundle size ${{ matrix.platform }}"; echo
-            python3 middleware/bundle/sizes.py table "$RUNNER_TEMP/unpacked" --archive "$RUNNER_TEMP/bundle/${{ steps.build.outputs.archive }}" --column "Full layout (nothing pruned)=$RUNNER_TEMP/full"
+            python3 middleware/bundle/sizes.py table "$RUNNER_TEMP/unpacked" --platform ${{ matrix.platform }} --archive "$RUNNER_TEMP/bundle/${{ steps.build.outputs.archive }}" --column "Full layout (nothing pruned)=$RUNNER_TEMP/full"
             echo; echo "### Formats ${{ matrix.platform }}"; echo
             python3 middleware/bundle/sizes.py formats "$RUNNER_TEMP/unpacked" --json "$RUNNER_TEMP/formats-out/formats-${{ matrix.platform }}.json" --keep "$RUNNER_TEMP/formats"; } | tee -a "$GITHUB_STEP_SUMMARY"
       # A plain ubuntu:24.04 container's tar must unpack the format too (the container has no zstd program, and xz is part of the image).

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """What the runtime bundle weighs, by part and by compression (A11-231). Markdown on stdout, so that CI can write it to the job summary.
 
-    python3 sizes.py table <unpacked bundle> [--archive <file>] [--column <label>=<unpacked directory>]...
+    python3 sizes.py table <unpacked bundle> --platform <linux-x64|darwin-arm64> [--archive <file>] [--column <label>=<unpacked directory>]...
     python3 sizes.py formats <unpacked bundle> [--json <file>] [--keep <directory>]
     python3 sizes.py choose <formats json>... [--container <format>=ok|failed]...
 
-`table`: the unpacked size of each part, beside the spike's (A11-208, docs/playwright-middleware-spike.md, Q7) and each --column (another bundle, unpacked: A11-230's, which had no browser). Sizes are the
-bytes of the files (what `ls -l` adds up), in MB of 10^6 bytes.
+`table`: the unpacked size of each part, beside the spike's (A11-208, docs/playwright-middleware-spike.md, Q7), A11-230's (the bundle with no browser, #15) and each --column (another bundle, unpacked). Sizes are
+the bytes of the files (what `ls -l` adds up), in MB of 10^6 bytes.
 `formats`: packs the bundle as gz, xz and zst with mktar.py, and for each gives the archive's bytes and the median of 3 unpacks by the host's `tar -xf` (the unpack `install` does). --keep leaves the
 archives, as bundle.tar.<format>, in a directory (CI unpacks them in a plain ubuntu:24.04 container).
 `choose`: the format the bundle ships in. A format is acceptable when, on every platform given, its unpack took UNPACK_SECONDS or less and `tar -xf` unpacked it to the same files, and, where --container
@@ -25,6 +25,17 @@ FORMATS = ('gz', 'xz', 'zst')
 CHOOSABLE = ('xz', 'zst')
 # The spike's bundle (A11-208, Q7): unpacked MB by part, and the archive as tar.gz in MB, for each platform. Its Python was the full install-only build, its NVDA source and a second copy of it as the overlay.
 SPIKE = {'Chrome': 400, 'Browser libraries': 11, 'Python': 278, 'NVDA': 149, 'Total': 838, 'Archive': {'linux-x64': 298, 'darwin-arm64': 242}}
+# A11-230's bundle (a11ign/announcement-emulator#15: no browser, the full install-only Python, NVDA's source and a second copy of it), measured by unpacking its archive: darwin-arm64 from CI run 40184473231's
+# artifact, linux-x64 built from the commit before this one. The linux build was made from a `git archive`, which has no .git for the list of this repository's runtime files, so its runtime parts here are the
+# darwin bundle's, the same files.
+RUNTIME_A11_230 = {'Runtime (this repository)': 407165, 'Companion extension': 14162}
+A11_230 = {
+    'linux-x64': {'archive': 111658603, 'parts': {'Chrome': 0, 'Browser libraries': 0, 'Python: interpreter and its libraries': 240252387, 'Python: standard library': 17042750, 'Python: packages': 15344378, 'NVDA': 146132145,
+                                                  'Chromium sources': 1171163, 'The rest': 310 + 35195, **RUNTIME_A11_230}},
+    'darwin-arm64': {'archive': 63166404, 'parts': {'Chrome': 0, 'Browser libraries': 0, 'Python: interpreter and its libraries': 45873639, 'Python: standard library': 14072629, 'Python: packages': 16992876, 'NVDA': 146132145,
+                                                    'Chromium sources': 1171163, 'The rest': 35505, **RUNTIME_A11_230}},
+}
+for _platform in A11_230.values(): _platform['parts']['Total'] = sum(v for k, v in _platform['parts'].items())
 
 
 def size_of(path):
@@ -57,9 +68,9 @@ def parts(root):
 def mb(n): return '-' if n is None else f'{n / MB:.1f}'
 
 
-def table(root, archive=None, columns=()):
+def table(root, platform, archive=None, columns=()):
     ours = parts(root)
-    others = [(label, parts(path)) for label, path in columns]
+    others = [('A11-230 (no browser)', A11_230[platform]['parts'])] + [(label, parts(path)) for label, path in columns]
     python = lambda p: p['Python: interpreter and its libraries'] + p['Python: standard library'] + p['Python: packages']
     header = ['Part (MB unpacked)', 'Spike', *[l for l, _ in others], 'This bundle']
     rows = []
@@ -73,8 +84,8 @@ def table(root, archive=None, columns=()):
     add('NVDA (source, and the overlay in the spike)', SPIKE['NVDA'], lambda p: p['NVDA']); add('Chromium sources', None, lambda p: p['Chromium sources'])
     add('Runtime (this repository)', None, lambda p: p['Runtime (this repository)']); add('Companion extension', None, lambda p: p['Companion extension']); add('The rest', None, lambda p: p['The rest'])
     add('**Total unpacked**', SPIKE['Total'], lambda p: p['Total'])
+    if archive: rows.append(['**Archive** (tar.gz in the spike and A11-230; ' + os.path.basename(archive).split('.tar.')[1] + ' here)', mb(SPIKE['Archive'][platform] * MB), mb(A11_230[platform]['archive']), *['-'] * len(columns), mb(size_of(archive))])
     out = ['| ' + ' | '.join(header) + ' |', '|' + '---|' * len(header)] + ['| ' + ' | '.join(r) + ' |' for r in rows]
-    if archive: out += ['', f'Archive: {os.path.basename(archive)}, {mb(size_of(archive))} MB (the spike: {SPIKE["Archive"]["linux-x64"]} MB on linux-x64 and {SPIKE["Archive"]["darwin-arm64"]} MB on darwin-arm64, as tar.gz).']
     return '\n'.join(out)
 
 
@@ -140,12 +151,12 @@ def choose(platforms, containers=None):
 def main(argv):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest='mode', required=True)
-    t = sub.add_parser('table'); t.add_argument('bundle'); t.add_argument('--archive'); t.add_argument('--column', action='append', default=[])
+    t = sub.add_parser('table'); t.add_argument('bundle'); t.add_argument('--platform', required=True, choices=sorted(A11_230)); t.add_argument('--archive'); t.add_argument('--column', action='append', default=[])
     f = sub.add_parser('formats'); f.add_argument('bundle'); f.add_argument('--json'); f.add_argument('--keep')
     c = sub.add_parser('choose'); c.add_argument('files', nargs='+'); c.add_argument('--container', action='append', default=[])
     args = parser.parse_args(argv[1:])
     if args.mode == 'table':
-        print(table(args.bundle, args.archive, [tuple(x.split('=', 1)) for x in args.column]))
+        print(table(args.bundle, args.platform, args.archive, [tuple(x.split('=', 1)) for x in args.column]))
     elif args.mode == 'formats':
         measurements = measure(args.bundle, keep=args.keep)
         if args.json: pathlib.Path(args.json).write_text(json.dumps(measurements, indent=1))
