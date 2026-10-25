@@ -51,7 +51,8 @@ jobs:
           cd "$RUNNER_TEMP/project"
           npm i -D "$RUNNER_TEMP"/a11ign-announcement-emulator-*.tgz @playwright/test@1.64.1
       - run: |
-          (cd "$RUNNER_TEMP/bundle" && python3 -m http.server 8099 --bind 127.0.0.1 >/dev/null 2>&1 &)
+          mkdir "$RUNNER_TEMP/mirror" && ln -s "$RUNNER_TEMP/bundle" "$RUNNER_TEMP/mirror/v$(node -p "require('./middleware/package.json').version")"      # a mirror lays a Release out as <host>/v<version>/<file>
+          (cd "$RUNNER_TEMP/mirror" && python3 -m http.server 8099 --bind 127.0.0.1 >/dev/null 2>&1 &)
           sleep 2
           cd "$RUNNER_TEMP/project"
           ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST=http://127.0.0.1:8099 npx announcement-emulator install

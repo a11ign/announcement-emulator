@@ -6,5 +6,5 @@
     "allowJs": false
   },
   "include": ["src"],
-  "exclude": ["src/**/*.test.ts"]
+  "exclude": ["src/**/*.test.ts", "src/release-notes.ts"]
 }

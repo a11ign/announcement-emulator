@@ -1,0 +1,89 @@
+# The runtime bundles of a release (A11-232): each platform's lean bundle built twice and compared, checked for a browser, and gathered into the `release-files` artifact that the release workflow attaches to the GitHub
+# Release and pins in the package (middleware/release/gather.sh says the layout). A reusable workflow, called by release.yml (a release) and by release-dry-run.yml (a rehearsal on a pull request).
+#
+# It holds `contents: read` and no secret, and publishes nothing: it only builds and uploads an artifact of the run.
+#
+# Reproducibility: the archive is the same bytes for the same inputs (mktar.py), and the pin in the package is its sha256, so each leg builds it a second time and compares. A difference fails the linux leg. On
+# darwin-arm64 it is reported in the run's summary and does not fail, because the macOS linker's UUID is not controlled (build.sh): requiring it there would block every release on a thing nobody can fix here.
+#
+# linux-arm64 is not built yet: it needs build.sh's case, a pinned python-build-standalone sum and a keep list that trace.sh makes on an arm runner (middleware/bundle/keep/linux-arm64.txt), none of which exist. The ticket asks
+# for it only "if cheap" (A11-232).
+name: release-bundles
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  bundle:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { platform: linux-x64, runner: ubuntu-latest, required: true }
+          - { platform: darwin-arm64, runner: macos-latest, required: false }
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Build the bundle
+        env:
+          PLATFORM: ${{ matrix.platform }}
+        run: middleware/bundle/build.sh "$PLATFORM" "$RUNNER_TEMP/first"
+      - name: Build it again and compare
+        id: again
+        env:
+          PLATFORM: ${{ matrix.platform }}
+          REQUIRED: ${{ matrix.required }}
+        run: |
+          middleware/bundle/build.sh "$PLATFORM" "$RUNNER_TEMP/second"
+          mkdir "$RUNNER_TEMP/leg"
+          cp "$RUNNER_TEMP"/first/* "$RUNNER_TEMP/leg/"
+          archive="$(basename "$(ls "$RUNNER_TEMP"/first/announcement-emulator-bundle-*.tar.* | grep -v '\.sha256$')")"
+          if cmp -s "$RUNNER_TEMP/first/$archive" "$RUNNER_TEMP/second/$archive"; then same=true; else same=false; fi
+          printf '{ "platform": "%s", "reproducible": %s, "required": %s }\n' "$PLATFORM" "$same" "$REQUIRED" > "$RUNNER_TEMP/leg/reproducible-$PLATFORM.json"
+          { echo "### $PLATFORM: $archive"; echo; echo "built twice, byte-identical: $same ($([ "$REQUIRED" = true ] && echo required || echo 'reported, not required'))"; echo; shasum -a 256 "$RUNNER_TEMP"/first/"$archive" "$RUNNER_TEMP"/second/"$archive"; } >> "$GITHUB_STEP_SUMMARY"
+          echo "archive=$archive" >> "$GITHUB_OUTPUT"
+          [ "$same" = true ] || [ "$REQUIRED" != true ] || { echo "::error::two builds of the $PLATFORM bundle are not the same bytes"; exit 1; }
+      # No browser and no browser library in the archive that is shipped, packed or unpacked (the bundle runs in the team's Playwright Chromium, A11-230).
+      - name: No browser in the archive
+        env:
+          ARCHIVE: ${{ steps.again.outputs.archive }}
+        run: |
+          python3 middleware/bundle/check_no_browser.py "$RUNNER_TEMP/first/$ARCHIVE"
+          mkdir "$RUNNER_TEMP/unpacked" && tar -xf "$RUNNER_TEMP/first/$ARCHIVE" -C "$RUNNER_TEMP/unpacked"
+          python3 middleware/bundle/check_no_browser.py "$RUNNER_TEMP/unpacked"
+      - uses: actions/upload-artifact@v7
+        with:
+          name: release-bundle-${{ matrix.platform }}
+          path: ${{ runner.temp }}/leg
+          compression-level: 0
+          retention-days: 14
+          if-no-files-found: error
+
+  # The legs laid out as the artifact the release workflow takes: assets/ (the bundles and SHA256SUMS), pins/ and report/.
+  files:
+    needs: bundle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: release-bundle-*
+          path: ${{ runner.temp }}/legs
+          merge-multiple: true
+      - name: Gather the release files
+        run: middleware/release/gather.sh "$RUNNER_TEMP/legs" "$RUNNER_TEMP/release-files" | tee -a "$GITHUB_STEP_SUMMARY"
+        shell: bash
+      - uses: actions/upload-artifact@v7
+        with:
+          name: release-files
+          path: ${{ runner.temp }}/release-files
+          compression-level: 0
+          retention-days: 14
+          if-no-files-found: error

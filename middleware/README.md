@@ -9,10 +9,13 @@ tree and NVDA's own Python; the write-up (`docs/playwright-middleware-spike.md`)
 ## Setup
 
 ```sh
-npm i -D @playwright/test <this package>      # this spike: the tarball `npm pack` makes in middleware/
+npm i -D @playwright/test @a11ign/announcement-emulator   # the working name: the name and the licence are undecided (docs/release-decisions.md), and nothing is published until they are
 npx playwright install chromium               # Playwright's own Chromium: the browser your tests, and the middleware, run in. Not `--only-shell`: see below
 npx announcement-emulator install             # downloads the pinned, checksummed runtime bundle into a cache, as `npx playwright install` does for browsers
 ```
+
+`install` downloads the bundle from **the GitHub Release of the version you installed** (`<repository>/releases/download/v<version>/`, the `repository` of this package's `package.json`), refuses it unless its sha256 is the one this
+package's `pins.json` names (nothing is unpacked, and the download is deleted), and unpacks it into the cache. A team that cannot reach github.com mirrors the Release: see `ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST` below.
 
 Then **one line** in `playwright.config.ts`:
 
@@ -143,12 +146,24 @@ such as `ubuntu:24.04` lacks (it has no zstd either; `bundle-format` reports wha
 | variable | |
 |---|---|
 | `ANNOUNCEMENT_EMULATOR_PATH` | where the bundle is cached (default `~/.cache/announcement-emulator`, `~/Library/Caches/announcement-emulator` on macOS) |
-| `ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST` | where `install` fetches the bundle from. This spike has none: nothing is published |
+| `ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST` | a mirror of the Releases, for a team that cannot reach github.com, as `PLAYWRIGHT_DOWNLOAD_HOST` is for browsers. It replaces `https://github.com/<owner>/<repository>/releases/download`: `install` fetches `<host>/v<version>/<file>`, so that one mirror holds every version a team pins. Fill it with `gh release download v<version> --dir <mirror>/v<version>`. The sha256 is checked against `pins.json` whatever the source, so a mirror cannot change what is installed |
 | `ANNOUNCEMENT_EMULATOR_BUNDLE` | use this unpacked bundle instead of the cache |
 | `ANNOUNCEMENT_EMULATOR_IMPORT_TRACE` | a file the runtime appends the files it read from the bundle to, and the imports that failed (`bundle/trace.sh` and the CI miss check use it; unset, nothing is recorded) |
 | `ANNOUNCEMENT_EMULATOR_SWEEPS=0` | no sweeps |
 | `ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT` | seconds the runtime waits for an extension that has said nothing, after the first page, before it reads the trees through the DevTools port (default 5; 0 never) |
 | `ANNOUNCEMENT_EMULATOR_TREE` | `extension` or `devtools`: where the accessibility tree comes from. Unset, the middleware picks: the extension where the browser gives it a desktop tree and it is expected to load (Linux, Windows), the DevTools port on macOS and wherever the extension cannot be expected to load |
+
+## Releases
+
+Each version is a GitHub Release `v<version>` of this repository (`middleware/release/`, `.github/workflows/release-bundles.yml`). It carries:
+
+- the runtime bundle of each platform it supports (`linux-x64`, `darwin-arm64`), `announcement-emulator-bundle-<platform>.tar.xz`, built twice and compared (the linux build must be the same bytes both times; darwin's is reported, because the macOS linker's UUID is not controlled);
+- `SHA256SUMS`, the sum of every bundle, which is also what the `pins.json` of that version's package names: `middleware/release/after-version.sh` writes it into the release commit from the very files attached to the Release, and fails the release if the two differ;
+- notes that carry **the measured agreement of that version** (per Chromium build and tree source, with the units, the date and, where the figure has them, the pages and the rate of each announcement shape) and **the Playwright versions it supports**, as `supported-versions.json` lists them.
+
+Nothing is published yet: the package is `private` until the name, the licence and the NV Access question are decided (`docs/release-decisions.md`), and the org's release workflow never publishes a private package. Until then `.github/workflows/release-dry-run.yml`
+rehearses a release on every pull request that changes one: it builds the bundles, versions this branch's changesets on a scratch copy, packs the package and installs it with its bundle through the mirror variable on both platforms,
+and shows every file with its size and sum. The same rehearsal runs on your machine with `middleware/release/dry-run.sh <release-files> <out>` (and `install-check.sh`) after `release-bundles.yml`'s legs are gathered by `middleware/release/gather.sh`.
 
 ## Licence
 
