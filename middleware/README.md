@@ -57,7 +57,18 @@ each entry is a Chromium build, the Playwright versions that ship it, and the me
 A version that is not on the list still runs and still gets predicted speech. Its report says **`agreement not measured for Chromium <build>`**, in the text, the JSON attachment and `run.json`; so does a listed build
 with no figure for the tree source the run used. A listed build says `agreement measured for Chromium <build> (Playwright <versions>), <source>: <rate>% of <units> units, <date>`.
 
-The list starts with the current Playwright release and the one before it: Playwright 1.64.x (Chromium 156.0.8078.4) and 1.63.0 (Chromium 153.0.8010.12). It has no entries yet: the measurement of each is the second step of A11-230.
+The list starts with the current Playwright release and the one before it: Playwright 1.64.x (Chromium 156.0.8078.4) and 1.63.0 (Chromium 153.0.8010.12). Each is measured by the method of [`results/playwright-versions/rule.md`](results/playwright-versions/rule.md), against the fleet's NVDA, on six real pages (not held out; a preview, with no target). Measured 2026-10-25:
+
+| Playwright | Chromium | source | agreement | units | date |
+|---|---|---|---|---|---|
+| 1.64.0, 1.64.1 | 156.0.8078.4 | extension, Linux | 81.2% | 1072 | 2026-10-25 |
+| 1.64.0, 1.64.1 | 156.0.8078.4 | DevTools, Linux | 80.2% | 1072 | 2026-10-25 |
+| 1.64.0, 1.64.1 | 156.0.8078.4 | DevTools, macOS | 85.1% | 960 | 2026-10-25 |
+| 1.63.0 | 153.0.8010.12 | extension, Linux | 83.5% | 1072 | 2026-10-25 |
+| 1.63.0 | 153.0.8010.12 | DevTools, Linux | 81.2% | 1072 | 2026-10-25 |
+| 1.63.0 | 153.0.8010.12 | DevTools, macOS | 84.0% | 960 | 2026-10-25 |
+
+The macOS rows are over four pages and the Linux rows over five (see the write-up), so they are not a comparison of the operating systems. Windows has no figure: it reads "not measured". To add a Playwright release, measure its Chromium by that rule and add it to the list.
 
 ## What you get
 
