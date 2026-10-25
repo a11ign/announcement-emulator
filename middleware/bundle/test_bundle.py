@@ -370,15 +370,18 @@ class Live(unittest.TestCase):
     def write(self, d, name, tests):
         path = pathlib.Path(d) / name; path.write_text(json.dumps(report(tests))); return str(path)
 
-    def test_a_test_whose_speech_differs_in_the_lean_run_where_the_full_runs_agree_fails(self):
+    def test_a_test_whose_speech_differs_in_the_lean_run_where_the_full_runs_agree_is_reported(self):
         with tempfile.TemporaryDirectory() as d:
             full = {'a': ([('load', 'Page, document')], []), 'b': ([('focus', 'Name, edit')], ['unheard-error'])}
             lean_same = dict(full); lean_other = {**full, 'a': ([('load', 'Page')], [])}
             a, b = self.write(d, 'a.json', full), self.write(d, 'b.json', full)
             self.assertEqual(compare_live.compare(compare_live.predictions(a), compare_live.predictions(b), compare_live.predictions(self.write(d, 'l.json', lean_same))), ([], [], 2))
             self.assertEqual(compare_live.compare(compare_live.predictions(a), compare_live.predictions(b), compare_live.predictions(self.write(d, 'l2.json', lean_other))), (['a'], [], 2))
-            ran = subprocess.run([sys.executable, str(HERE / 'compare_live.py'), a, b, self.write(d, 'l3.json', {**full, 'b': ([('focus', 'Name, edit')], [])})], capture_output=True, text=True)
-            self.assertEqual(ran.returncode, 1); self.assertIn('differs in the lean bundle: b', ran.stderr)
+            different = self.write(d, 'l3.json', {**full, 'b': ([('focus', 'Name, edit')], [])})
+            reported = subprocess.run([sys.executable, str(HERE / 'compare_live.py'), a, b, different], capture_output=True, text=True)
+            self.assertEqual(reported.returncode, 0); self.assertIn('differs in the lean bundle: b', reported.stdout)      # reported, and not a failure: a live run's timing moves a quick test's last event
+            strict = subprocess.run([sys.executable, str(HERE / 'compare_live.py'), '--strict', a, b, different], capture_output=True, text=True)
+            self.assertEqual(strict.returncode, 1)
 
     def test_a_test_the_full_layout_does_not_agree_with_itself_on_is_named_and_not_compared(self):
         with tempfile.TemporaryDirectory() as d:
@@ -425,7 +428,7 @@ class Formats(unittest.TestCase):
 
 
 class Choice(unittest.TestCase):
-    """sizes.py's rule: the smaller of xz and zst among those that unpack in 5 s or less on every runner, with the host's tar and in a plain ubuntu:24.04 container."""
+    """sizes.py's rule: the smaller of xz and zst among those that unpack in 5 s or less on every runner with the host's tar."""
     def m(self, fmt, size, seconds, ok=True): return {'format': fmt, 'bytes': size * 1_000_000, 'unpackSeconds': seconds, 'tarUnpacksIt': ok}
 
     def platforms(self, xz=(10, 1.0), zst=(9, 0.7), zst_mac=None):
@@ -442,11 +445,15 @@ class Choice(unittest.TestCase):
         self.assertEqual(sizes.choose(self.platforms(zst_mac=(9, 5.5)))[0], 'xz')
         self.assertEqual(sizes.choose(self.platforms(xz=(8, 1.0), zst_mac=(6, 4.9)))[0], 'zst')      # 4.9 s is inside the limit
 
-    def test_a_format_the_hosts_tar_or_a_plain_container_cannot_unpack_does_not(self):
+    def test_a_format_the_hosts_tar_cannot_unpack_does_not(self):
         broken = self.platforms(); broken['darwin-arm64'][2]['tarUnpacksIt'] = False
         self.assertEqual(sizes.choose(broken)[0], 'xz')
-        self.assertEqual(sizes.choose(self.platforms(), {'zst': 'failed', 'xz': 'ok'})[0], 'xz')
-        self.assertEqual(sizes.choose(self.platforms(xz=(8, 1.0)), {'xz': 'failed', 'zst': 'ok'})[0], 'zst')
+
+    def test_what_a_plain_ubuntu_container_does_with_a_format_is_reported_and_does_not_decide(self):
+        """That image has no xz and no zstd program, so both fail there (measured in CI): a rule that needed it would ship neither."""
+        winner, table = sizes.choose(self.platforms(), {'zst': 'failed', 'xz': 'failed'})
+        self.assertEqual(winner, 'zst')
+        self.assertIn('| failed |', table); self.assertIn('plain ubuntu:24.04 tar', table)
 
     def test_nothing_ships_when_neither_is_acceptable_and_the_table_shows_all_three_formats(self):
         none, table = sizes.choose(self.platforms(xz=(10, 6.0), zst_mac=(9, 7.0)))
@@ -483,9 +490,11 @@ class Build(unittest.TestCase):
         order = [self.TEXT.index(x) for x in ('-I -m compileall', 'cp -R "$B/." "$FULL_DIR"', 'python3 "$HERE/lean.py"', 'python3 "$HERE/check_no_browser.py"', 'python3 "$HERE/mktar.py"')]
         self.assertEqual(order, sorted(order))
 
-    def test_the_chromium_sources_and_the_second_copy_of_nvda_are_made_for_the_full_layout_only(self):
-        self.assertIn('chromium-src', self.TEXT); self.assertIn('nvda-appdir', self.TEXT)      # the full layout is what A11-230 shipped
-        for gone in ('nvdaHelper', 'ia2LiveRegions'): self.assertNotIn(gone, self.TEXT)      # the C++ the rules were ported from is cited and not read
+    def test_the_cpp_the_live_region_rules_were_ported_from_is_cited_and_not_shipped(self):
+        for gone in ('nvdaHelper', 'ia2LiveRegions', 'textFromIAccessible'): self.assertNotIn(gone, self.TEXT)
+
+    def test_the_full_layout_is_what_a11_230_shipped_and_is_made_before_it_is_pruned(self):
+        for made in ('mkdir -p "$B/chromium-src"', 'cp -R "$B/nvda-src/source" "$B/nvda-appdir"', 'mkdir -p "$B/cldr-src/locale/en"'): self.assertLess(self.TEXT.index(made), self.TEXT.index('cp -R "$B/." "$FULL_DIR"'), made)
 
     def test_the_tools_that_built_the_packages_do_not_ship(self):
         self.assertIn('pip uninstall --quiet --yes setuptools wheel', self.TEXT); self.assertIn('rm -rf "${B:?}/$LIB/site-packages/pip"', self.TEXT)

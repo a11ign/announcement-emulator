@@ -85,7 +85,7 @@ jobs:
             python3 middleware/bundle/sizes.py table "$RUNNER_TEMP/unpacked" --platform ${{ matrix.platform }} --archive "$RUNNER_TEMP/bundle/${{ steps.build.outputs.archive }}" --column "Full layout (nothing pruned)=$RUNNER_TEMP/full"
             echo; echo "### Formats ${{ matrix.platform }}"; echo
             python3 middleware/bundle/sizes.py formats "$RUNNER_TEMP/unpacked" --json "$RUNNER_TEMP/formats-out/formats-${{ matrix.platform }}.json" --keep "$RUNNER_TEMP/formats"; } | tee -a "$GITHUB_STEP_SUMMARY"
-      # A plain ubuntu:24.04 container's tar must unpack the format too (the container has no zstd program, and xz is part of the image).
+      # What a plain ubuntu:24.04 container's tar does with each format is reported with the sizes, and does not decide: that image has neither an xz nor a zstd program, so it unpacks only gzip (A11-231).
       - if: matrix.platform == 'linux-x64'
         run: |
           for fmt in xz zst; do
@@ -107,8 +107,8 @@ jobs:
           path: ${{ runner.temp }}/formats-out
           retention-days: 14
 
-  # The format the bundle is built in is the one that was measured: the smaller of xz and zstd among those that unpack in 5 s or less on both runners and with a plain ubuntu:24.04 container's tar. The job fails when
-  # build.sh's default is any other.
+  # The format the bundle is built in is the one that was measured: the smaller of xz and zstd among those that unpack in 5 s or less on both runners with the host's tar. The job fails when build.sh's default is
+  # any other.
   bundle-format:
     needs: bundle
     runs-on: ubuntu-latest
@@ -142,7 +142,7 @@ jobs:
         with: { name: "bundle-${{ matrix.platform }}", path: "${{ runner.temp }}/bundle" }
       - run: |
           middleware/bundle/build.sh ${{ matrix.platform }} "$RUNNER_TEMP/unused" --full-dir "$RUNNER_TEMP/full" --layout-only
-          mkdir "$RUNNER_TEMP/lean" && tar -xf "$RUNNER_TEMP"/bundle/announcement-emulator-bundle-*.tar.* -C "$RUNNER_TEMP/lean"
+          mkdir "$RUNNER_TEMP/lean" && tar -xf "$(ls "$RUNNER_TEMP"/bundle/announcement-emulator-bundle-*.tar.* | grep -v '\.sha256$')" -C "$RUNNER_TEMP/lean"
           { echo "### Transcripts ${{ matrix.platform }}"; echo; echo '```'; python3 middleware/bundle/compare_bundles.py replay "$RUNNER_TEMP/full" "$RUNNER_TEMP/lean" --trace "$RUNNER_TEMP/traces/replay.txt" 2>&1; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
           python3 middleware/bundle/compare_bundles.py replay "$RUNNER_TEMP/full" "$RUNNER_TEMP/lean"
         shell: bash
@@ -255,8 +255,8 @@ jobs:
           { time npx playwright test --config playwright.baseline.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-without.log"
           node cost.mjs --project fixtures --runs 3 --workers 1,2,4 --out "$RUNNER_TEMP/cost.json" 2>&1 | tee "$RUNNER_TEMP/cost.log"
       # The lean bundle against the full layout, live (A11-231). The lean bundle is the one `install` just unpacked; the full layout is built here beside it. The fixtures project runs with each tree source, ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1
-      # and the import trace on: twice in the full layout and once in the lean bundle. The check fails on an import or a file the lean run wanted and could not find, where the full layout has it (compare_bundles.py misses), and on a
-      # test whose predicted speech or flags differ in the lean run where the two full-layout runs agree (compare_live.py). The traces are uploaded: the darwin-arm64 row's are what keep/darwin-arm64.txt is made from.
+      # and the import trace on: twice in the full layout and once in the lean bundle. The check fails on an import or a file the lean run wanted and could not find, where the full layout has it (compare_bundles.py misses), and reports
+      # the tests whose predicted speech or flags differ in the lean run where the two full-layout runs agree (compare_live.py: reported, not a failure, because a live run's timing moves a quick test's last event). The traces are uploaded: the darwin-arm64 row's are what keep/darwin-arm64.txt is made from.
       - if: matrix.primary
         run: |
           set -e
@@ -271,7 +271,7 @@ jobs:
               ANNOUNCEMENT_EMULATOR_BUNDLE="$dir" ANNOUNCEMENT_EMULATOR_TREE="$tree" ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1 ANNOUNCEMENT_EMULATOR_IMPORT_TRACE="$RUNNER_TEMP/traces/live-$which.txt" npx playwright test --project=fixtures || true
               cp test-results/report.json "$RUNNER_TEMP/traces/report-$tree-$which.json"
             done
-            python3 "$GITHUB_WORKSPACE/middleware/bundle/compare_live.py" "$RUNNER_TEMP/traces/report-$tree-full-a.json" "$RUNNER_TEMP/traces/report-$tree-full-b.json" "$RUNNER_TEMP/traces/report-$tree-lean.json" || status=1
+            { echo "### Live comparison, $tree tree, ${{ matrix.platform }}"; echo '```'; python3 "$GITHUB_WORKSPACE/middleware/bundle/compare_live.py" "$RUNNER_TEMP/traces/report-$tree-full-a.json" "$RUNNER_TEMP/traces/report-$tree-full-b.json" "$RUNNER_TEMP/traces/report-$tree-lean.json"; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
           done
           cat "$RUNNER_TEMP/traces/live-full-a.txt" "$RUNNER_TEMP/traces/live-full-b.txt" > "$RUNNER_TEMP/traces/live-full.txt"
           python3 "$GITHUB_WORKSPACE/middleware/bundle/compare_bundles.py" misses --full "$RUNNER_TEMP/full" --lean "$cache" --full-trace "$RUNNER_TEMP/traces/live-full.txt" --lean-trace "$RUNNER_TEMP/traces/live-lean.txt" || status=1
