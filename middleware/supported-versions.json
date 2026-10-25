@@ -1,1 +1,57 @@
-{ "builds": [] }
+{
+  "builds": [
+    {
+      "chromium": "156.0.8078.4",
+      "playwright": [
+        "1.64.0",
+        "1.64.1"
+      ],
+      "measured": {
+        "devtools-linux": {
+          "agreement": 0.802,
+          "units": 1072,
+          "date": "2026-10-25",
+          "figure": "middleware/results/playwright-versions/156.0.8078.4/devtools-linux/"
+        },
+        "devtools-macos": {
+          "agreement": 0.851,
+          "units": 960,
+          "date": "2026-10-25",
+          "figure": "middleware/results/playwright-versions/156.0.8078.4/devtools-macos/"
+        },
+        "extension-linux": {
+          "agreement": 0.812,
+          "units": 1072,
+          "date": "2026-10-25",
+          "figure": "middleware/results/playwright-versions/156.0.8078.4/extension-linux/"
+        }
+      }
+    },
+    {
+      "chromium": "153.0.8010.12",
+      "playwright": [
+        "1.63.0"
+      ],
+      "measured": {
+        "devtools-linux": {
+          "agreement": 0.812,
+          "units": 1072,
+          "date": "2026-10-25",
+          "figure": "middleware/results/playwright-versions/153.0.8010.12/devtools-linux/"
+        },
+        "devtools-macos": {
+          "agreement": 0.84,
+          "units": 960,
+          "date": "2026-10-25",
+          "figure": "middleware/results/playwright-versions/153.0.8010.12/devtools-macos/"
+        },
+        "extension-linux": {
+          "agreement": 0.835,
+          "units": 1072,
+          "date": "2026-10-25",
+          "figure": "middleware/results/playwright-versions/153.0.8010.12/extension-linux/"
+        }
+      }
+    }
+  ]
+}

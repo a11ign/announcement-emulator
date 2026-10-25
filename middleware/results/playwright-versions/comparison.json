@@ -1,0 +1,335 @@
+{
+ "builds": {
+  "153.0.8010.12": {
+   "readings": {
+    "ext-linux": {
+     "agreed": 895,
+     "units": 1072
+    },
+    "devtools-linux": {
+     "agreed": 871,
+     "units": 1072
+    },
+    "devtools-macos": {
+     "agreed": 806,
+     "units": 960
+    },
+    "devtools-ubuntu-ci": {
+     "agreed": 777,
+     "units": 960
+    }
+   },
+   "second": {
+    "ext-linux": {
+     "agreed": 757,
+     "units": 924
+    },
+    "devtools-linux": {
+     "agreed": 657,
+     "units": 924
+    },
+    "devtools-macos": {
+     "agreed": 673,
+     "units": 812
+    },
+    "devtools-ubuntu-ci": {
+     "agreed": 633,
+     "units": 812
+    }
+   },
+   "extensionBuys": {
+    "units": 1072,
+    "extension": 895,
+    "devtools": 871,
+    "leadPoints": 2.2388059701492535,
+    "extensionOnly": 28,
+    "devtoolsOnly": 4,
+    "secondLeadPoints": 10.822510822510823,
+    "byChannel": [
+     {
+      "label": "title",
+      "units": 5,
+      "extension": 4,
+      "devtools": 4
+     },
+     {
+      "label": "stops",
+      "units": 372,
+      "extension": 283,
+      "devtools": 271
+     },
+     {
+      "label": "field",
+      "units": 2,
+      "extension": 0,
+      "devtools": 1
+     },
+     {
+      "label": "typed",
+      "units": 12,
+      "extension": 6,
+      "devtools": 6
+     },
+     {
+      "label": "headings",
+      "units": 103,
+      "extension": 62,
+      "devtools": 62
+     },
+     {
+      "label": "landmarks",
+      "units": 38,
+      "extension": 38,
+      "devtools": 35
+     },
+     {
+      "label": "formFields",
+      "units": 97,
+      "extension": 79,
+      "devtools": 74
+     },
+     {
+      "label": "graphics",
+      "units": 6,
+      "extension": 4,
+      "devtools": 4
+     },
+     {
+      "label": "links",
+      "units": 358,
+      "extension": 344,
+      "devtools": 339
+     },
+     {
+      "label": "lists",
+      "units": 59,
+      "extension": 55,
+      "devtools": 55
+     },
+     {
+      "label": "frames",
+      "units": 20,
+      "extension": 20,
+      "devtools": 20
+     }
+    ]
+   },
+   "causes": {
+    "ext-linux": {
+     "history": 19,
+     "emulator": 154,
+     "tree: name+state": 1,
+     "tree: name": 2,
+     "tree: node": 1
+    },
+    "devtools-linux": {
+     "history": 19,
+     "emulator": 154,
+     "conversion: clickable": 3,
+     "page moved": 2,
+     "conversion: name": 16,
+     "events: focus": 1,
+     "conversion: node": 6
+    },
+    "devtools-macos": {
+     "history": 18,
+     "emulator": 92,
+     "conversion: clickable": 2,
+     "page moved": 1,
+     "macos: name": 3,
+     "network/runner": 5,
+     "conversion: name": 5,
+     "macos: node": 21,
+     "macos: name+role": 5,
+     "chromium build": 1,
+     "macos: name+role+state": 1
+    },
+    "devtools-ubuntu-ci": {
+     "history": 18,
+     "emulator": 115,
+     "conversion: clickable": 2,
+     "page moved": 5,
+     "network/runner": 27,
+     "conversion: name": 14,
+     "chromium build": 1,
+     "events: focus": 1
+    }
+   }
+  },
+  "156.0.8078.4": {
+   "readings": {
+    "ext-linux": {
+     "agreed": 871,
+     "units": 1072
+    },
+    "devtools-linux": {
+     "agreed": 860,
+     "units": 1072
+    },
+    "devtools-macos": {
+     "agreed": 817,
+     "units": 960
+    },
+    "devtools-ubuntu-ci": {
+     "agreed": 806,
+     "units": 960
+    }
+   },
+   "second": {
+    "ext-linux": {
+     "agreed": 761,
+     "units": 924
+    },
+    "devtools-linux": {
+     "agreed": 744,
+     "units": 924
+    },
+    "devtools-macos": {
+     "agreed": 647,
+     "units": 812
+    },
+    "devtools-ubuntu-ci": {
+     "agreed": 666,
+     "units": 812
+    }
+   },
+   "extensionBuys": {
+    "units": 1072,
+    "extension": 871,
+    "devtools": 860,
+    "leadPoints": 1.0261194029850746,
+    "extensionOnly": 19,
+    "devtoolsOnly": 8,
+    "secondLeadPoints": 1.8398268398268398,
+    "byChannel": [
+     {
+      "label": "title",
+      "units": 5,
+      "extension": 5,
+      "devtools": 5
+     },
+     {
+      "label": "stops",
+      "units": 372,
+      "extension": 269,
+      "devtools": 270
+     },
+     {
+      "label": "field",
+      "units": 2,
+      "extension": 0,
+      "devtools": 1
+     },
+     {
+      "label": "typed",
+      "units": 12,
+      "extension": 6,
+      "devtools": 6
+     },
+     {
+      "label": "headings",
+      "units": 103,
+      "extension": 59,
+      "devtools": 60
+     },
+     {
+      "label": "landmarks",
+      "units": 38,
+      "extension": 38,
+      "devtools": 35
+     },
+     {
+      "label": "formFields",
+      "units": 97,
+      "extension": 74,
+      "devtools": 67
+     },
+     {
+      "label": "graphics",
+      "units": 6,
+      "extension": 4,
+      "devtools": 4
+     },
+     {
+      "label": "links",
+      "units": 358,
+      "extension": 344,
+      "devtools": 339
+     },
+     {
+      "label": "lists",
+      "units": 59,
+      "extension": 55,
+      "devtools": 55
+     },
+     {
+      "label": "frames",
+      "units": 20,
+      "extension": 17,
+      "devtools": 18
+     }
+    ]
+   },
+   "causes": {
+    "ext-linux": {
+     "history": 19,
+     "emulator": 173,
+     "tree: name+state": 1,
+     "page moved": 1,
+     "tree: name": 1,
+     "tree: focus": 3,
+     "tree: node": 2,
+     "tree: level+name+role": 1
+    },
+    "devtools-linux": {
+     "history": 19,
+     "emulator": 173,
+     "conversion: clickable": 3,
+     "page moved": 4,
+     "conversion: name": 7,
+     "conversion: node": 6
+    },
+    "devtools-macos": {
+     "history": 18,
+     "emulator": 103,
+     "conversion: clickable": 2,
+     "macos: name+role": 2,
+     "conversion: name": 5,
+     "macos: name": 10,
+     "network/runner": 2,
+     "chromium build": 1
+    },
+    "devtools-ubuntu-ci": {
+     "history": 18,
+     "emulator": 112,
+     "conversion: clickable": 2,
+     "conversion: name": 5,
+     "network/runner": 16,
+     "page moved": 1
+    }
+   }
+  }
+ },
+ "betweenBuilds": {
+  "ext-linux": {
+   "units": 1072,
+   "predictionsDiffer": 53,
+   "agreeInOneOnly": 30
+  },
+  "devtools-linux": {
+   "units": 1072,
+   "predictionsDiffer": 25,
+   "agreeInOneOnly": 15
+  },
+  "devtools-macos": {
+   "units": 960,
+   "predictionsDiffer": 34,
+   "agreeInOneOnly": 11
+  },
+  "devtools-ubuntu-ci": {
+   "units": 960,
+   "predictionsDiffer": 39,
+   "agreeInOneOnly": 29
+  }
+ }
+}

@@ -78,7 +78,8 @@ class FillList(unittest.TestCase):
         self.assertEqual(listing['builds'][0]['playwright'], ['1.64.0', '1.64.1'])
         self.assertEqual(sorted(listing['builds'][0]['measured']), ['devtools-linux', 'devtools-macos', 'extension-linux'])
         self.assertEqual(listing['builds'][0]['measured']['extension-linux'], {'agreement': 0.86, 'units': 100, 'date': '2026-10-25', 'figure': 'p/ext/'})
-        self.assertEqual(listing['builds'][0]['measured']['devtools-macos']['agreement'], 0.3333)
+        self.assertEqual(listing['builds'][0]['measured']['devtools-macos']['agreement'], 0.333)
+        self.assertEqual(cb.fill_list({'builds': []}, {NEW: {'extension-linux': (871, 1072, 'p/')}}, {NEW: 'd'}, {NEW: ['1']})['builds'][0]['measured']['extension-linux']['agreement'], 0.812)      # 81.25%: agreement.txt prints 81.2
 
     def test_a_build_already_listed_is_replaced_and_one_not_measured_now_is_kept(self):
         before = {'builds': [{'chromium': NEW, 'playwright': ['1.64.1'], 'measured': {}}, {'chromium': '150.0.1.1', 'playwright': ['1.60.0'], 'measured': {}}]}

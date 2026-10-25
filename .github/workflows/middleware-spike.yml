@@ -99,11 +99,11 @@ jobs:
           # `agreement` is what the first two runs' reports say: `measured` for a build that middleware/supported-versions.json lists with a figure for the platform's default source, `unmeasured` for any other (supported.test.ts holds
           # every row to the list). `other-agreement` is the third run's: macOS's other source is the extension, which has no figure there, so it reads `unmeasured` whatever the list holds.
           # `primary` rows also take the cost and the probes.
-          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.64.1", agreement: unmeasured, other-agreement: unmeasured, chromium: "156.0.8078.4", deps: "--with-deps", primary: true, check: "", other: devtools, other-check: "--lower-fidelity" }
-          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.63.0", agreement: unmeasured, other-agreement: unmeasured, chromium: "153.0.8010.12", deps: "--with-deps", primary: false, check: "", other: devtools, other-check: "--lower-fidelity" }
+          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.64.1", agreement: measured, other-agreement: measured, chromium: "156.0.8078.4", deps: "--with-deps", primary: true, check: "", other: devtools, other-check: "--lower-fidelity" }
+          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.63.0", agreement: measured, other-agreement: measured, chromium: "153.0.8010.12", deps: "--with-deps", primary: false, check: "", other: devtools, other-check: "--lower-fidelity" }
           - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.62.1", agreement: unmeasured, other-agreement: unmeasured, chromium: "151.0.7922.34", deps: "--with-deps", primary: false, check: "", other: devtools, other-check: "--lower-fidelity" }
-          - { platform: darwin-arm64, runner: macos-latest, playwright: "1.64.1", agreement: unmeasured, other-agreement: unmeasured, chromium: "156.0.8078.4", deps: "", primary: true, check: "--lower-fidelity", other: extension, other-check: "--expect-no-tree" }
-          - { platform: darwin-arm64, runner: macos-latest, playwright: "1.63.0", agreement: unmeasured, other-agreement: unmeasured, chromium: "153.0.8010.12", deps: "", primary: false, check: "--lower-fidelity", other: extension, other-check: "--expect-no-tree" }
+          - { platform: darwin-arm64, runner: macos-latest, playwright: "1.64.1", agreement: measured, other-agreement: unmeasured, chromium: "156.0.8078.4", deps: "", primary: true, check: "--lower-fidelity", other: extension, other-check: "--expect-no-tree" }
+          - { platform: darwin-arm64, runner: macos-latest, playwright: "1.63.0", agreement: measured, other-agreement: unmeasured, chromium: "153.0.8010.12", deps: "", primary: false, check: "--lower-fidelity", other: extension, other-check: "--expect-no-tree" }
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v7

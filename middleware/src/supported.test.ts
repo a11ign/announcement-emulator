@@ -119,7 +119,7 @@ test("every figure the list ships is in the repository, and its agreement.txt gi
       assert.ok(headline, `${build.chromium} ${key}: agreement.txt has a headline line`);
       assert.equal(Number(headline![2]), figure.units, `${build.chromium} ${key}: units`);
       assert.equal(`${headline![3]}%`, percent(figure.agreement), `${build.chromium} ${key}: the rate agreement.txt prints`);
-      assert.equal(Number(headline![1]) / Number(headline![2]), figure.agreement, `${build.chromium} ${key}: the fraction is the one agreement.txt counts`);
+      assert.ok(Math.abs(Number(headline![1]) / Number(headline![2]) - figure.agreement) <= 0.0005, `${build.chromium} ${key}: the fraction is the one agreement.txt counts (to the tenth of a percent it prints)`);
       assert.ok(existsSync(join(repoRoot, figure.figure, "misses.json")), `${build.chromium} ${key}: misses.json, with a cause for each miss`);
     }
   }

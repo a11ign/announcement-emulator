@@ -122,10 +122,10 @@ def differ_between_builds(builds):
 
 
 def fill_list(listing, figures, dates, playwright):
-    """`listing` (supported-versions.json) with each build's figures: `figures` is {build: {key: (agreed, units, figure path)}}, `dates` {build: day}, `playwright` {build: [versions]}. A build already listed is replaced."""
+    """`listing` (supported-versions.json) with each build's figures: `figures` is {build: {key: (agreed, units, figure path)}}, `dates` {build: day}, `playwright` {build: [versions]}. The rate is the one `agreement.txt` prints (one decimal of a percent, as measure.py rounds it), so that the list and the figure never read differently. A build already listed is replaced."""
     builds = []
     for build in sorted(figures, key=lambda b: [int(x) for x in b.split('.')], reverse=True):
-        measured = {key: {'agreement': round(agreed / units, 4), 'units': units, 'date': dates[build], 'figure': path} for key, (agreed, units, path) in figures[build].items() if key in LISTED and units}
+        measured = {key: {'agreement': round(float(f'{100 * agreed / units:.1f}') / 100, 3), 'units': units, 'date': dates[build], 'figure': path} for key, (agreed, units, path) in figures[build].items() if key in LISTED and units}
         builds.append({'chromium': build, 'playwright': playwright[build], 'measured': dict(sorted(measured.items()))})
     return {**listing, 'builds': builds + [b for b in listing.get('builds', []) if b['chromium'] not in figures]}
 
