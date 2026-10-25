@@ -1,5 +1,5 @@
 // What the middleware adds to the sample suite's run (A11-208, question 6): the same project run with it and without it, several times, at one or more worker counts.
-//   BASELINE_CHROME=<the bundle's chrome> [BASELINE_LIBS=<its libs>] node cost.mjs [--project fixtures] [--runs 3] [--workers 1,2,4] [--out cost.json]
+//   node cost.mjs [--project fixtures] [--runs 3] [--workers 1,2,4] [--out cost.json]
 // Each run is `playwright test`; its wall time is the process's, its tests' time is the sum of the JSON report's durations, and the middleware's own counts are in test-results/announcement-emulator/run.json.
 import { spawnSync } from "node:child_process";
 import { readFileSync, rmSync, writeFileSync } from "node:fs";

@@ -18,6 +18,15 @@ QUIET = 0.25      # seconds without anything new before a drain takes the queue 
 REORDER_WAIT = 0.4      # how long a snapshot is held for the one before it, which was posted first and may arrive second
 
 
+def start_record(kind, body, arrived_at):
+    """The record that tells the middleware when a part of the browser's side came up (`kind: start`), or None for what is not one. `attached` carries the build of the browser that was reached
+    (cdp.py reads it from `/json/version`): the middleware names it in each report, and it is not the one Playwright's browsers.json names where the team chose its own browser."""
+    if kind == 'ready': return {'kind': 'start', 'what': 'tree-source' if body.get('source') == 'devtools' else 'extension', 't': body['t'], 'desktopChildren': body.get('desktopChildren'), 'documents': body.get('documents')}      # when the extension's service worker was up: a test that ran before it was up lost what it did
+    if kind == 'hello': return {'kind': 'start', 'what': 'worker', 't': body['t'], 'automation': body.get('automation'), 'getDesktop': body.get('getDesktop')}
+    if kind == 'attached': return {'kind': 'start', 'what': 'devtools', 't': round(arrived_at * 1000), 'browser': body.get('browser')}
+    return None
+
+
 class Collector(http.server.ThreadingHTTPServer):
     daemon_threads = True
     allow_reuse_address = True
@@ -59,7 +68,7 @@ class Ordered:
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('--port', type=int, required=True); ap.add_argument('--cdp', type=int, default=0); ap.add_argument('--tree', choices=['extension', 'devtools'], default='extension'); ap.add_argument('--no-sweeps', action='store_true'); ap.add_argument('--report-focus', action='store_true', help='also record what NVDA+Tab says for each focus move (the fleet probe\'s phrase), for the agreement measure')
+    ap = argparse.ArgumentParser(); ap.add_argument('--port', type=int, required=True); ap.add_argument('--cdp', type=int, default=0); ap.add_argument('--tree', choices=['extension', 'devtools'], default='extension'); ap.add_argument('--no-sweeps', action='store_true'); ap.add_argument('--fallback-after', type=float, default=0, help='with --tree extension: seconds after the first page without a word from the extension before the trees are read through the DevTools port instead (0: never)'); ap.add_argument('--report-focus', action='store_true', help='also record what NVDA+Tab says for each focus move (the fleet probe\'s phrase), for the agreement measure')
     args = ap.parse_args()
     protocol = os.fdopen(os.dup(1), 'w', buffering=1); sys.stdout = sys.stderr      # nothing NVDA prints may be taken for a record
     def send(message): protocol.write(json.dumps(message, separators=(',', ':')) + '\n'); protocol.flush()
@@ -67,17 +76,18 @@ def main():
     server = Collector(('127.0.0.1', args.port), make_handler(inbox)); threading.Thread(target=server.serve_forever, daemon=True).start()
     threading.Thread(target=lambda: [inbox.put(('cmd', json.loads(line), time.time())) for line in sys.stdin if line.strip()] or inbox.put(('cmd', {'cmd': 'quit'}, time.time())), daemon=True).start()
     t0 = time.time()
-    import predict      # NVDA's boot: seconds
+    import fallback, predict      # NVDA's boot: seconds
     predictor = predict.Predictor(lambda rec: send({'type': 'record', 'rec': rec}), sweeps=not args.no_sweeps, report_focus=args.report_focus)
     cdp = None
     if args.cdp:
         import cdp as cdp_module
         devtools = args.tree == 'devtools'      # the trees come through this port as well (axtree.py), where the extension is given none
-        cdp = cdp_module.Cdp(args.cdp, lambda ev: inbox.put(('page', ev, time.time())), lambda target: inbox.put(('attached', {'target': target}, time.time())),
+        cdp = cdp_module.Cdp(args.cdp, lambda ev: inbox.put(('page', ev, time.time())), lambda target, browser: inbox.put(('attached', {'target': target, 'browser': browser}, time.time())),
                              on_tree=(lambda snap: inbox.put(('snap', snap, time.time()))) if devtools else None,
                              on_connect=(lambda: inbox.put(('ready', {'t': round(time.time() * 1000), 'source': 'devtools'}, time.time()))) if devtools else lambda: None)
     send({'type': 'ready', 'bootMs': round((time.time() - t0) * 1000)})
     ordered = Ordered()
+    switch = {'first_page': None, 'extension_up': False, 'done': False}      # the extension that does not come up: fallback.py
     dump = open(os.environ['AE_DUMP'], 'a', buffering=1) if os.environ.get('AE_DUMP') else None      # a log of what arrived and when, for finding what a run lost
     record = open(os.environ['AE_RECORD'], 'a', buffering=1) if os.environ.get('AE_RECORD') else None      # everything the runtime was told, whole, for replay.py
     def note(kind, body, arrived):
@@ -87,14 +97,22 @@ def main():
         if kind == 'snap': f = next((n for n in body['nodes'] if n['ix'] == body['focusIx']), None); row.update(nodes=len(body['nodes']), focus=f and f'{f["role"]} {f.get("name")}')
         dump.write(json.dumps(row) + '\n')
 
+    def switch_to_devtools():
+        """The extension has not come up: from here the trees come through the DevTools port, and anything the extension says is dropped. A test that ran before this lost what it did."""
+        switch['done'] = True
+        send({'type': 'record', 'rec': {'kind': 'start', 'what': 'fallback', 't': round(time.time() * 1000), 'from': 'extension', 'to': 'devtools', 'why': fallback.reason(args.fallback_after)}})
+        cdp.enable_trees(lambda snap: inbox.put(('snap', {**snap, 'devtools': True}, time.time())))
+        inbox.put(('ready', {'t': round(time.time() * 1000), 'source': 'devtools'}, time.time()))
+
     def handle(kind, body, arrived_at=0):
         try:
             if kind == 'snap': pass
             elif kind == 'page': predictor.on_page_event(body)
             elif kind in ('error', 'verify'): send({'type': 'record', 'rec': {'kind': kind, **body}})
-            elif kind == 'ready': send({'type': 'record', 'rec': {'kind': 'start', 'what': 'tree-source' if body.get('source') == 'devtools' else 'extension', 't': body['t'], 'desktopChildren': body.get('desktopChildren'), 'documents': body.get('documents')}})      # when the extension's service worker was up: a test that ran before it was up lost what it did
-            elif kind == 'hello': send({'type': 'record', 'rec': {'kind': 'start', 'what': 'worker', 't': body['t'], 'automation': body.get('automation'), 'getDesktop': body.get('getDesktop')}})
-            elif kind == 'attached': send({'type': 'record', 'rec': {'kind': 'start', 'what': 'devtools', 't': round(arrived_at * 1000)}})
+            elif kind in ('ready', 'hello', 'attached'):
+                if kind == 'ready': switch['extension_up'] = switch['extension_up'] or body.get('source') != 'devtools'
+                if kind == 'attached': switch['first_page'] = switch['first_page'] or arrived_at
+                send({'type': 'record', 'rec': start_record(kind, body, arrived_at)})
         except BaseException as e:
             import traceback; traceback.print_exc()
             send({'type': 'record', 'rec': {'kind': 'error', 'where': kind, 'message': f'{type(e).__name__}: {e}'}})
@@ -107,13 +125,15 @@ def main():
                 send({'type': 'record', 'rec': {'kind': 'error', 'where': 'snapshot', 'message': f'{type(e).__name__}: {e}'}})
 
     while True:
+        if cdp and args.tree == 'extension' and fallback.due(args.fallback_after, switch['first_page'], switch['extension_up'], switch['done'], time.time()): switch_to_devtools()
         try: kind, body, arrived = inbox.get(timeout=0.05)
         except queue.Empty:
             snapshots()
             if not ordered.held: predictor.settle_events(time.time()); predictor.settle_states(time.time()); predictor.run_sweep()      # idle: one sweep, between two events
             continue
+        if switch['done'] and fallback.from_extension_after_switch(kind, body): continue
         note(kind, body, arrived)
-        if kind == 'snap': ordered.add(body, arrived); snapshots()
+        if kind == 'snap': switch['extension_up'] = switch['extension_up'] or not body.get('devtools'); ordered.add(body, arrived); snapshots()
         elif kind == 'page': handle('page', body)
         elif kind == 'ready':      # the extension started again: what it told before is done with, and its numbers begin again
             snapshots(final=True); ordered.reset(); predictor.restart(); handle(kind, body, arrived)
@@ -124,6 +144,7 @@ def main():
                 while time.time() - last < QUIET:      # whatever the browser is still posting
                     try:
                         k, b, a = inbox.get(timeout=0.05)
+                        if switch['done'] and fallback.from_extension_after_switch(k, b): continue
                         note(k, b, a)
                         if k == 'snap': ordered.add(b, a)
                         elif k == 'page': handle('page', b)

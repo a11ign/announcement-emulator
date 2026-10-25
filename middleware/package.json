@@ -23,6 +23,7 @@
   "files": [
     "dist",
     "pins.json",
+    "supported-versions.json",
     "README.md"
   ],
   "peerDependencies": {

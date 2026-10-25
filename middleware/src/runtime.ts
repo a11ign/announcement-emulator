@@ -25,12 +25,12 @@ export class Runtime {
 
   readonly ports: BrowserPorts;
 
-  constructor(bundle: string, ports: BrowserPorts, options: { sweeps?: boolean; log?: string; tree?: TreeSource } = {}) {
+  constructor(bundle: string, ports: BrowserPorts, options: { sweeps?: boolean; log?: string; tree?: TreeSource; fallbackAfter?: number } = {}) {
     this.ports = ports;
     const files = layout(bundle);
     if (options.log) mkdirSync(dirname(options.log), { recursive: true });
     const stderr = options.log ? openSync(options.log, "w") : "ignore";
-    this.child = spawn(files.python, ["-I", files.runtime, "--port", String(ports.collector), "--cdp", String(ports.cdp), "--tree", options.tree ?? "extension", ...(options.sweeps === false ? ["--no-sweeps"] : []), ...(process.env.ANNOUNCEMENT_EMULATOR_REPORT_FOCUS ? ["--report-focus"] : [])], {
+    this.child = spawn(files.python, ["-I", files.runtime, "--port", String(ports.collector), "--cdp", String(ports.cdp), "--tree", options.tree ?? "extension", ...(options.fallbackAfter ? ["--fallback-after", String(options.fallbackAfter)] : []), ...(options.sweeps === false ? ["--no-sweeps"] : []), ...(process.env.ANNOUNCEMENT_EMULATOR_REPORT_FOCUS ? ["--report-focus"] : [])], {
       env: { ...process.env, EMU_DOWNLOADS: bundle, PYTHONDONTWRITEBYTECODE: "1", PYTHONUTF8: "1" },
       stdio: ["pipe", "pipe", stderr],
     });

@@ -1,5 +1,6 @@
 # The Playwright middleware spike (A11-208): the package is tested, the runtime bundle is built for each platform, and the sample suite, which has no screen-reader code in it, is run with the
-# middleware attached on a plain GitHub-hosted runner: no container, no Docker, no setup beyond `npm i -D` and `npx announcement-emulator install`.
+# middleware attached on a plain GitHub-hosted runner: no container, no Docker, no setup beyond `npm i -D`, `npx playwright install chromium` and `npx announcement-emulator install`. The browser is the one
+# Playwright installs for the team's version (A11-230): the bundle holds none.
 #
 # Nothing is published. The bundle travels as a workflow artifact and the `demo` jobs serve it from a static server on the runner, so that `install` does its real http download, its
 # checksum and its unpack. A released version would serve the bundle from a host; this spike has none (docs/playwright-middleware-spike.md).
@@ -38,9 +39,12 @@ jobs:
         working-directory: middleware
       - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_flags.py'
       - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_pure.py'
+      - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_cdp.py'
+      - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_fallback.py'
       - run: python3 -m unittest discover -s middleware/bundle -t middleware/bundle
 
-  # One bundle for each platform, built here: NVDA's source and the Chromium sources at their pins, the pinned Chrome, the companion extension, and a self-contained Python with the packages in it.
+  # One bundle for each platform, built here: NVDA's source and the Chromium sources at their pins, the companion extension, and a self-contained Python with the packages in it. No browser and no browser library:
+  # check_no_browser.py fails the job on an archive that holds one.
   bundle:
     strategy:
       fail-fast: false
@@ -51,9 +55,6 @@ jobs:
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v7
-      # the Chrome libraries are downloaded as .deb files and unpacked into the bundle; nothing is installed on the runner
-      - if: matrix.platform == 'linux-x64'
-        run: sudo apt-get update
       - id: build
         run: |
           start=$(date +%s)
@@ -66,6 +67,12 @@ jobs:
           middleware/bundle/build.sh ${{ matrix.platform }} "$RUNNER_TEMP/bundle2"
           if cmp -s "$RUNNER_TEMP/bundle/announcement-emulator-bundle-${{ matrix.platform }}.tar.gz" "$RUNNER_TEMP/bundle2/announcement-emulator-bundle-${{ matrix.platform }}.tar.gz"; then echo "same=true" >> "$GITHUB_OUTPUT"; else echo "same=false" >> "$GITHUB_OUTPUT"; fi
           sha256sum "$RUNNER_TEMP"/bundle*/announcement-emulator-bundle-${{ matrix.platform }}.tar.gz
+      # No browser and no browser library in the archive that is shipped, and the size that is: the archive and what it unpacks to.
+      - run: |
+          python3 middleware/bundle/check_no_browser.py "$RUNNER_TEMP/bundle/announcement-emulator-bundle-${{ matrix.platform }}.tar.gz"
+          mkdir "$RUNNER_TEMP/unpacked" && tar -xzf "$RUNNER_TEMP/bundle/announcement-emulator-bundle-${{ matrix.platform }}.tar.gz" -C "$RUNNER_TEMP/unpacked"
+          python3 middleware/bundle/check_no_browser.py "$RUNNER_TEMP/unpacked"
+          { echo "### Bundle size ${{ matrix.platform }}"; echo; echo "archive: $(wc -c < "$RUNNER_TEMP/bundle/announcement-emulator-bundle-${{ matrix.platform }}.tar.gz") bytes; unpacked: $(du -sk "$RUNNER_TEMP/unpacked" | cut -f1) KiB; no browser and no browser library in either"; } >> "$GITHUB_STEP_SUMMARY"
       - run: |
           { echo "### Bundle ${{ matrix.platform }}"; echo; echo "built in ${{ steps.build.outputs.seconds }} s"; echo; ls -l "$RUNNER_TEMP/bundle"; cat "$RUNNER_TEMP/bundle"/pin-*.json
             echo; echo "built twice, byte-identical: ${{ steps.again.outputs.same || 'not checked on this platform' }}"; } >> "$GITHUB_STEP_SUMMARY"
@@ -76,7 +83,8 @@ jobs:
           compression-level: 0
           retention-days: 14
 
-  # The acceptance: the sample suite, with the middleware attached by the one line, after `npx announcement-emulator install`, on a plain runner with no container.
+  # The acceptance: the sample suite, with the middleware attached by the one line, after `npx playwright install chromium` and `npx announcement-emulator install`, on a plain runner with no container.
+  # The browser is Playwright's: each row installs one Playwright version and the Chromium that version ships, and nothing else (`--with-deps` on Ubuntu is Playwright's own route to its browser's system libraries).
   demo:
     needs: [checks, bundle]
     strategy:
@@ -86,8 +94,14 @@ jobs:
           # `tree` is where the first two runs get the accessibility tree (the default of the platform), `other` the third run's: each platform is run with both sources. The extension's source gives macOS no tree
           # (chrome.automation.getDesktop never answers there), so that run is held to saying so (--expect-no-tree), and fails if macOS starts to give one, because the write-up would then be out of date.
           # The DevTools source is the lower-fidelity one ADR 0047 allows; its runs are held to --lower-fidelity.
-          - { platform: linux-x64, runner: ubuntu-latest, check: "", other: devtools, other-check: "--lower-fidelity" }
-          - { platform: darwin-arm64, runner: macos-latest, check: "--lower-fidelity", other: extension, other-check: "--expect-no-tree" }
+          # `chromium` is the build the row's Playwright ships (its playwright-core/browsers.json): the report of every worker is held to having run in it, and to the sentence "agreement not measured for Chromium <build>"
+          # until middleware/supported-versions.json lists it. 1.63.0 and 1.64.1 are the two versions the list starts with; 1.62.1 is the newest 1.62 and is not meant to be listed: it holds the wording of an unlisted version.
+          # `primary` rows also take the cost and the probes.
+          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.64.1", chromium: "156.0.8078.4", deps: "--with-deps", primary: true, check: "", other: devtools, other-check: "--lower-fidelity" }
+          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.63.0", chromium: "153.0.8010.12", deps: "--with-deps", primary: false, check: "", other: devtools, other-check: "--lower-fidelity" }
+          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.62.1", chromium: "151.0.7922.34", deps: "--with-deps", primary: false, check: "", other: devtools, other-check: "--lower-fidelity" }
+          - { platform: darwin-arm64, runner: macos-latest, playwright: "1.64.1", chromium: "156.0.8078.4", deps: "", primary: true, check: "--lower-fidelity", other: extension, other-check: "--expect-no-tree" }
+          - { platform: darwin-arm64, runner: macos-latest, playwright: "1.63.0", chromium: "153.0.8010.12", deps: "", primary: false, check: "--lower-fidelity", other: extension, other-check: "--expect-no-tree" }
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v7
@@ -103,11 +117,13 @@ jobs:
           cat pins.json
           pnpm install --frozen-lockfile && pnpm run build && npm pack --pack-destination "$RUNNER_TEMP"
         working-directory: middleware
-      # A user's project: the sample suite, a package.json, `npm i -D` of the package and of Playwright. Playwright's own browsers are not installed: the tests use the bundle's Chrome.
+      # A user's project: the sample suite, a package.json, `npm i -D` of the package and of this row's Playwright, and Playwright's own Chromium (`npx playwright install chromium`). Nothing else is installed:
+      # the runtime bundle holds no browser, and the tests run in the one Playwright installed.
       - run: |
           cp -R middleware/sample-suite "$RUNNER_TEMP/project"
           cd "$RUNNER_TEMP/project"
-          npm i -D "$RUNNER_TEMP"/a11ign-announcement-emulator-*.tgz @playwright/test@1.64.1
+          npm i -D "$RUNNER_TEMP"/a11ign-announcement-emulator-*.tgz @playwright/test@${{ matrix.playwright }}
+          npx playwright install ${{ matrix.deps }} chromium
       # The bundle is served over http from this runner, as a host would serve it; `install` downloads it, refuses it unless it is the pinned sha256, and unpacks it into the cache.
       - run: |
           (cd "$RUNNER_TEMP/bundle" && python3 -m http.server 8099 --bind 127.0.0.1 >/dev/null 2>&1 &)
@@ -115,40 +131,38 @@ jobs:
           cd "$RUNNER_TEMP/project"
           export ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST=http://127.0.0.1:8099
           { time npx announcement-emulator install; } 2>&1 | tee "$RUNNER_TEMP/install.log"
-          npx announcement-emulator doctor
+          npx announcement-emulator doctor > "$RUNNER_TEMP/doctor.log" || { cat "$RUNNER_TEMP/doctor.log"; exit 1; }      # a pipe to tee would lose its exit code
+          cat "$RUNNER_TEMP/doctor.log"
+          grep -q '^Chromium ${{ matrix.chromium }} ' "$RUNNER_TEMP/doctor.log"
+          grep -q '^supported: no\. Chromium ${{ matrix.chromium }} is not on the list' "$RUNNER_TEMP/doctor.log"
       # Run 1: the one line (playwright.config.ts). Run 2: no line at all (`announcement-emulator test` wraps playwright.plain.config.ts). Run 3: the platform's other tree source. Run 4: the same suite without the middleware.
       - id: run
         run: |
           cd "$RUNNER_TEMP/project"
           { time npx playwright test --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-with.log"
-          node check-report.mjs ${{ matrix.check }}
+          node check-report.mjs ${{ matrix.check }} --expect-unmeasured ${{ matrix.chromium }}
           cp -R test-results/announcement-emulator "$RUNNER_TEMP/announcement-emulator-run"; cp test-results/report.json "$RUNNER_TEMP/announcement-emulator-run/report.json"
           rm -rf test-results
           mv playwright-report "$RUNNER_TEMP/playwright-report-one-line"
           { time npx announcement-emulator test --config playwright.plain.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-zero.log"
-          node check-report.mjs ${{ matrix.check }}
+          node check-report.mjs ${{ matrix.check }} --expect-unmeasured ${{ matrix.chromium }}
           mv playwright-report "$RUNNER_TEMP/playwright-report-zero-lines"
           rm -rf test-results
           # Run 3: the platform's other tree source.
           { time ANNOUNCEMENT_EMULATOR_TREE=${{ matrix.other }} npx playwright test --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-${{ matrix.other }}.log"
-          node check-report.mjs ${{ matrix.other-check }}
+          node check-report.mjs ${{ matrix.other-check }} --expect-unmeasured ${{ matrix.chromium }}
           cp -R test-results/announcement-emulator "$RUNNER_TEMP/announcement-emulator-run-${{ matrix.other }}"; cp test-results/report.json "$RUNNER_TEMP/announcement-emulator-run-${{ matrix.other }}/report.json"
           mv playwright-report "$RUNNER_TEMP/playwright-report-${{ matrix.other }}"
           rm -rf test-results
-          [ -z "${{ matrix.check }}" ] || exit 0      # the cost is measured where a tree is read
-          cache="${ANNOUNCEMENT_EMULATOR_PATH:-$(node -e "const os=require('os'),p=require('path');console.log(process.platform==='darwin'?p.join(os.homedir(),'Library/Caches/announcement-emulator'):p.join(process.env.XDG_CACHE_HOME||p.join(os.homedir(),'.cache'),'announcement-emulator'))")}"
-          bundle=$(ls -d "$cache"/*/ | head -1)
-          if [ "$(uname)" = Darwin ]; then chrome="$bundle/chrome/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"; else chrome="$bundle/chrome/chrome-linux64/chrome"; fi
-          export BASELINE_CHROME="$chrome" BASELINE_LIBS="$bundle/libs/root/usr/lib/x86_64-linux-gnu"
+          [ -z "${{ matrix.check }}" ] && [ "${{ matrix.primary }}" = true ] || exit 0      # the cost is measured where a tree is read, once for each platform
           { time npx playwright test --config playwright.baseline.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-without.log"
           node cost.mjs --project fixtures --runs 3 --workers 1,2,4 --out "$RUNNER_TEMP/cost.json" 2>&1 | tee "$RUNNER_TEMP/cost.log"
-      # Whether the companion extension is up in this platform's Chrome, and has chrome.automation: the macOS probe's answer, and the ubuntu one beside it.
-      - if: always()
+      # Whether the companion extension is up in this platform's Playwright Chromium, and has chrome.automation: the macOS probe's answer, and the ubuntu one beside it.
+      - if: always() && matrix.primary
         run: |
           cd "$RUNNER_TEMP/project"
           cache="$(ls -d ~/.cache/announcement-emulator/*/ ~/Library/Caches/announcement-emulator/*/ 2>/dev/null | head -1)"
-          if [ "$(uname)" = Darwin ]; then export BASELINE_CHROME="$cache/chrome/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"; else export BASELINE_CHROME="$cache/chrome/chrome-linux64/chrome"; fi
-          export BASELINE_LIBS="$cache/libs/root/usr/lib/x86_64-linux-gnu" EXTENSION_DIR="$RUNNER_TEMP/project/test-results/announcement-emulator/extension-0" EXTENSION_ID="$(cat "$cache/q1/ext-id.txt")"
+          export EXTENSION_DIR="$RUNNER_TEMP/project/test-results/announcement-emulator/extension-0" EXTENSION_ID="$(cat "$cache/q1/ext-id.txt")"
           ls "$EXTENSION_DIR" > /dev/null 2>&1 || { mkdir -p "$RUNNER_TEMP/ext" && cp -R "$cache/emu/ext2/." "$RUNNER_TEMP/ext/" && EXTENSION_DIR="$RUNNER_TEMP/ext"; }
           node probe-extension.mjs 2>&1 | tee "$RUNNER_TEMP/probe-extension.log" || true
           # Whether the platform gives the extension the tab's own tree (chrome.automation.getTree) beside the desktop's: the macOS probe's second question.
@@ -156,13 +170,13 @@ jobs:
           node probe-tree.mjs 2>&1 | tee "$RUNNER_TEMP/probe-tree.log" || true
       - if: always()
         run: |
-          { echo "### Sample suite on ${{ matrix.platform }} (${{ matrix.runner }}, no container)"; echo; cat "$RUNNER_TEMP/install.log" 2>/dev/null || true
+          { echo "### Sample suite on ${{ matrix.platform }} (${{ matrix.runner }}, no container), Playwright ${{ matrix.playwright }}, Chromium ${{ matrix.chromium }}"; echo; cat "$RUNNER_TEMP/install.log" 2>/dev/null || true
             for f in run-with run-zero run-without; do echo; echo "#### $f"; tail -8 "$RUNNER_TEMP/$f.log" 2>/dev/null || true; done
             echo; echo '```'; cat "$RUNNER_TEMP/announcement-emulator-run/run.json" 2>/dev/null || true; echo '```'; echo '#### extension probe'; echo '```'; cat "$RUNNER_TEMP/probe-extension.log" 2>/dev/null || true; echo '```'; echo '#### tab-tree probe'; echo '```'; cat "$RUNNER_TEMP/probe-tree.log" 2>/dev/null || true; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
       - if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: sample-suite-report-${{ matrix.platform }}
+          name: sample-suite-report-${{ matrix.platform }}-playwright-${{ matrix.playwright }}
           path: |
             ${{ runner.temp }}/playwright-report-one-line
             ${{ runner.temp }}/playwright-report-zero-lines
@@ -175,4 +189,5 @@ jobs:
             ${{ runner.temp }}/probe-extension.log
             ${{ runner.temp }}/probe-tree.log
             ${{ runner.temp }}/install.log
+            ${{ runner.temp }}/doctor.log
           if-no-files-found: warn

@@ -7,7 +7,8 @@ export interface BundleManifest {
   name: string;
   platform: string;
   nvda: { release: string; commit: string };
-  chrome: string;
+  /** The Chromium milestone the mapping tables were read from (pins.env `CHROME`). Not a browser: the bundle holds none. */
+  chromiumTables: string;
   python: string;
   commit: string;
 }
@@ -29,10 +30,6 @@ export const layout = (root: string) => ({
   runtime: join(root, "middleware", "runtime", "main.py"),
   extension: join(root, "emu", "ext2"),
   extensionId: join(root, "q1", "ext-id.txt"),
-  chrome: process.platform === "darwin"
-    ? join(root, "chrome", "chrome-mac-arm64", "Google Chrome for Testing.app", "Contents", "MacOS", "Google Chrome for Testing")
-    : join(root, "chrome", "chrome-linux64", "chrome"),
-  libs: join(root, "libs", "root", "usr", "lib", "x86_64-linux-gnu"),
   manifest: join(root, "bundle.json"),
 });
 

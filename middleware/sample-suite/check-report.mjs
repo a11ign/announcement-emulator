@@ -1,16 +1,21 @@
 // Reads the JSON report of a run of this suite and checks what the middleware put in it (A11-208's acceptance): every test has the two attachments, every attachment says what it is, and the
 // flags are on the tests whose pages have what the flags look for and on none of the others.
-//   node check-report.mjs [--expect-no-tree | --lower-fidelity] [test-results/report.json [test-results/announcement-emulator/run.json]]
+//   node check-report.mjs [--expect-no-tree | --lower-fidelity] [--expect-unmeasured <build> | --expect-measured <build>] [test-results/report.json [test-results/announcement-emulator/run.json]]
 // --expect-no-tree is for a platform where Chrome gives the extension no desktop tree (macOS, Q7): the tests are still held to carrying the two labelled attachments, and the run summary is held to saying what the write-up says:
 // nothing was read (no snapshot, no desktop tree) and so nothing was predicted or flagged. If such a platform starts to give a tree, this fails, and the write-up is out of date.
+// --expect-unmeasured <build> holds every test, and the run summary of every worker, to the Chromium <build> the team's Playwright installed and to the sentence "agreement not measured for Chromium <build>": the build
+// is not on the supported list (A11-230). --expect-measured <build> holds them to the sentence of a listed build, "agreement measured for Chromium <build> (Playwright ...), <source>: <rate>% of <units> units, <date>".
 // --lower-fidelity is for a run whose tree came through the DevTools port (macOS, and the same on Linux for comparison): the tests are held to carrying the two labelled attachments, to saying where their tree came
 // from, and, over the suite, to a page load predicted for most tests, a sweep and at least one of the flags. Which flags are raised for a quick test depends on how soon the browser's answer comes: one may
 // be missing, and one the extension's run does not raise may appear (counted and printed, not a failure).
 import { readFileSync } from "node:fs";
 
 const args = process.argv.slice(2);
+const valueOf = (flag) => { const at = args.indexOf(flag); return at < 0 ? null : args.splice(at, 2)[1]; };
+const unmeasured = valueOf("--expect-unmeasured"), measured = valueOf("--expect-measured");
 const expectNoTree = args.includes("--expect-no-tree"), lowerFidelity = args.includes("--lower-fidelity");
 const [reportPath, runPath] = args.filter((a) => !a.startsWith("--"));
+const expectedBuild = unmeasured ?? measured;
 const report = JSON.parse(readFileSync(reportPath ?? "test-results/report.json", "utf8"));
 const EXPECTED = {
   "the toolbar buttons can be reached by keyboard": ["focus-without-name"],
@@ -43,6 +48,13 @@ for (const { title, results } of tests) {
   const data = JSON.parse(Buffer.from(json.body, "base64").toString());
   if (!/^predicted NVDA speech: advisory, not a reading of NVDA, never evidence/.test(data.label)) problems.push(`${title}: the json does not say it is a prediction`);
   for (const banned of ["transcript", "structure", "interaction", "focusOrder"]) if (JSON.stringify(data).includes(`"${banned}"`)) problems.push(`${title}: a field is named ${banned}`);
+  if (expectedBuild) {
+    const line = data.agreement?.line ?? "";
+    const wanted = unmeasured ? `agreement not measured for Chromium ${unmeasured}` : null;
+    if (wanted && line !== wanted) problems.push(`${title}: the agreement line is "${line}", wanted "${wanted}"`);
+    if (measured && !line.startsWith(`agreement measured for Chromium ${measured} (Playwright `)) problems.push(`${title}: the agreement line is "${line}", wanted a measured one for Chromium ${measured}`);
+    if (!body.split("\n").includes(line)) problems.push(`${title}: the text does not carry the agreement line`);
+  }
   speech += data.predictedSpeech.length; sweeps += data.sweeps.length; flags += data.flags.length;
   if (expectNoTree) { if (data.flags.length || data.predictedSpeech.length || data.sweeps.length) problems.push(`${title}: something was predicted, flagged or swept where the write-up says no tree is read`); continue; }
   if (lowerFidelity) {
@@ -64,9 +76,13 @@ if (lowerFidelity) {
   if (!expectedFlags) problems.push("none of the flags the sample suite is built to raise was raised");
   if (!sweeps) problems.push("no sweep was made");
 }
+if (expectedBuild) {
+  if (!workers.length) problems.push("no run summary: cannot say which Chromium the workers ran in");
+  workers.forEach((w, i) => { if (w.startup?.chromium !== expectedBuild) problems.push(`worker ${i}: ran in Chromium ${w.startup?.chromium}, wanted ${expectedBuild}`); });
+}
 if (expectNoTree) {
   if (!workers.length) problems.push("no run summary: cannot say whether a tree was read");
   workers.forEach((w, i) => { if (w.snapshots || w.startup?.desktopChildrenWhenUp) problems.push(`worker ${i}: read ${w.snapshots} snapshots (desktop children ${w.startup?.desktopChildrenWhenUp}), but the write-up says this platform gives no tree`); });
 }
-console.log(`${tests.length} tests, ${speech} predicted utterances, ${sweeps} sweeps, ${flags} flags` + (expectNoTree ? "; no tree was read, as the write-up says of this platform" : "") + (lowerFidelity ? `; a page load for ${loads} of ${tests.length} tests, tree through the DevTools port` + (extra.length ? `; ${extra.length} flag(s) the extension's run does not raise: ${extra.join("; ")}` : "") : "") + (skipped.length ? `; not held to what they should have heard, because they began before the browser's extension was up: ${skipped.join("; ")}` : ""));
+console.log(`${tests.length} tests, ${speech} predicted utterances, ${sweeps} sweeps, ${flags} flags` + (expectNoTree ? "; no tree was read, as the write-up says of this platform" : "") + (lowerFidelity ? `; a page load for ${loads} of ${tests.length} tests, tree through the DevTools port` + (extra.length ? `; ${extra.length} flag(s) the extension's run does not raise: ${extra.join("; ")}` : "") : "") + (expectedBuild ? `; Chromium ${expectedBuild}, agreement ${unmeasured ? "not measured" : "measured"}` : "") + (skipped.length ? `; not held to what they should have heard, because they began before the browser's extension was up: ${skipped.join("; ")}` : ""));
 if (problems.length) { console.error(problems.join("\n")); process.exit(1); }

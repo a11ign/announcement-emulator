@@ -5,7 +5,7 @@ milliseconds leaves the extension one update for the three (measured: a stop of 
 `chrome.extension.isAllowedIncognitoAccess()` is false, and no content script ran), and Playwright's contexts are those. So this connects to the browser's DevTools port
 (the middleware adds `--remote-debugging-port` beside Playwright's pipe), attaches to every page and installs a listener that reports each trusted `keydown` and each `focusin`. Nothing is sent to a page but that listener.
 """
-import json, threading, time, urllib.request
+import json, re, threading, time, urllib.request
 from wsclient import WebSocket
 
 LISTENER = r"""(() => {
@@ -21,8 +21,9 @@ LISTENER = r"""(() => {
   const where = () => { const a = document.activeElement; return a ? {tag: a.tagName, type: a.type || null, editable: !!(a.isContentEditable || /^(INPUT|TEXTAREA)$/.test(a.tagName))} : null; };
   const send = o => { try { window.__ae(JSON.stringify({t: Date.now(), url: location.href, ...o})); } catch (x) {} };
   // Only where the tree comes from this port and not from the extension (axtree.py): a note that something changed, for the runtime to read the tree again after. One note at a time, a moment after the change.
-  const TICKS = __TICKS__; let ticking = false, again = null;
-  const tick = why => { if (!TICKS) return; if (ticking) { again = why; return; } ticking = true; send({e: 'tick', why}); setTimeout(() => { ticking = false; if (again) { const w = again; again = null; tick(w); } }, 20); };
+  // `__aeTicksOn` is set by the runtime when it takes over the trees from an extension that did not come up (Cdp.enable_trees): from then on the page notes its changes, as it did from the start where `__TICKS__` is true.
+  const ticksOn = () => __TICKS__ || window.__aeTicksOn === true; let ticking = false, again = null;
+  const tick = why => { if (!ticksOn()) return; if (ticking) { again = why; return; } ticking = true; send({e: 'tick', why}); setTimeout(() => { ticking = false; if (again) { const w = again; again = null; tick(w); } }, 20); };
   for (const type of ['input', 'change', 'keyup', 'load', 'hashchange', 'popstate', 'pageshow', 'readystatechange', 'scroll']) addEventListener(type, () => tick(type), true);
   tick('installed');
   addEventListener('keydown', e => { if (e.isTrusted) send({e: 'keydown', key: e.key, code: e.code, ctrl: e.ctrlKey, alt: e.altKey, meta: e.metaKey, shift: e.shiftKey, at: where()}); }, true);
@@ -76,14 +77,23 @@ LISTENER = r"""(() => {
 })()"""
 
 
+TICKS_ON = 'window.__aeTicksOn = true'
+
+
+def browser_build(version):
+    """The Chromium build a browser names in `/json/version`'s `Browser` field ('HeadlessChrome/156.0.8078.4', 'Chrome/156.0.8078.4', 'Edg/155.0.4283.1'), or None when it names none."""
+    found = re.search(r'/(\d+\.\d+\.\d+\.\d+)\b', version or '')
+    return found.group(1) if found else None
+
+
 class Cdp:
     """Calls `on_event(event)` for each trusted keydown and focusin in any page of the browser listening on `port`. Reconnects when the browser is launched again (a Playwright worker is restarted).
 
     With `on_tree` it is also where the trees come from (a platform where the extension is given none: axtree.py): each note that a page changed makes it read the page's accessibility tree and
     DOM through the same port, and `on_tree(snapshot)` is called with what the extension would have posted. `on_connect()` is called each time the browser is reached (the first, and again after a launch)."""
-    def __init__(self, port, on_event, on_attach=lambda target: None, on_tree=None, on_connect=lambda: None):
+    def __init__(self, port, on_event, on_attach=lambda target, browser: None, on_tree=None, on_connect=lambda: None):
         self.port, self.on_event, self.on_attach, self.on_tree, self.on_connect = port, on_event, on_attach, on_tree, on_connect
-        self.ws = None; self.next_id = 0; self.stopped = False; self.installed = set(); self.lock = threading.Lock(); self.target_of = {}; self.url_of = {}
+        self.ws = None; self.browser = None; self.next_id = 0; self.stopped = False; self.installed = set(); self.lock = threading.Lock(); self.target_of = {}; self.url_of = {}
         self.replies = {}; self.wanted = {}; self.wake = threading.Condition(); self.seq = 0; self.page_numbers = {}; self.converters = {}; self.generation = 0
         self.thread = threading.Thread(target=self._run, daemon=True, name='cdp'); self.thread.start()
         if on_tree: self.trees = threading.Thread(target=self._trees, daemon=True, name='trees'); self.trees.start()
@@ -116,6 +126,7 @@ class Cdp:
         while not self.stopped:
             try:
                 version = json.load(urllib.request.urlopen(f'http://127.0.0.1:{self.port}/json/version', timeout=1))
+                self.browser = browser_build(version.get('Browser'))      # the build that is running, which is not always the one Playwright's browsers.json names (a team's channel or executablePath)
                 return WebSocket(version['webSocketDebuggerUrl'])
             except (OSError, ValueError, KeyError): time.sleep(0.02)      # Playwright makes its first page a few hundred ms after the browser starts; this is there before it
 
@@ -165,6 +176,19 @@ class Cdp:
             self.on_event(event)
             self._want(session, event.get('e'))
 
+    def enable_trees(self, on_tree):
+        """Become the place the trees come from, from now on: the extension was to give them and did not come up (main.py's fallback). Pages already open are told to note their changes and are read once,
+        pages opened later are held until their listener is in, as where the trees came from this port from the start. Does nothing if they already do."""
+        if self.on_tree: return
+        self.on_tree = on_tree
+        self.trees = threading.Thread(target=self._trees, daemon=True, name='trees'); self.trees.start()
+        if not self.ws: return
+        self._send('Target.setAutoAttach', {'autoAttach': True, 'waitForDebuggerOnStart': True, 'flatten': True})
+        for session in list(self.target_of):
+            self._send('Runtime.evaluate', {'expression': TICKS_ON}, session)
+            self._send('Page.addScriptToEvaluateOnNewDocument', {'source': TICKS_ON}, session)
+            self._want(session, 'fallback')
+
     def _want(self, session, why):
         if not self.on_tree or not session: return
         with self.wake: self.wanted.setdefault(session, set()).add(why); self.wake.notify()
@@ -197,7 +221,7 @@ class Cdp:
 
     def _install(self, session, target):
         if target in self.installed: return
-        self.installed.add(target); self.on_attach(target)
+        self.installed.add(target); self.on_attach(target, self.browser)
         listener = LISTENER.replace('__TICKS__', 'true' if self.on_tree else 'false')
         self._send('Runtime.enable', {}, session)      # without it the browser does not send `Runtime.bindingCalled`
         self._send('Runtime.addBinding', {'name': '__ae'}, session)

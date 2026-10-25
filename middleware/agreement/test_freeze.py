@@ -37,6 +37,16 @@ class Freeze(unittest.TestCase):
         run('commit', '-qam', 'runtime')
         self.assertEqual(make_freeze.moved(freeze, d), ['middleware/runtime'])
 
+    def test_a_later_measurement_names_what_it_adds_and_a_change_to_it_is_found(self):
+        files = {p + ('/x' if '.' not in os.path.basename(p) else ''): p for p in make_freeze.OBJECTS}
+        d, run = repo_with({**files, 'rule.md': 'a', 'compare.py': 'a'})
+        freeze = make_freeze.name(d, 'HEAD', extra=['rule.md', 'compare.py', 'middleware/runtime'])      # a path the standard list has is named once
+        self.assertEqual(sorted(freeze['objects']), sorted([*make_freeze.OBJECTS, 'rule.md', 'compare.py']))
+        self.assertEqual(make_freeze.moved(freeze, d), [])
+        with open(os.path.join(d, 'compare.py'), 'w') as f: f.write('b')
+        run('commit', '-qam', 'compare')
+        self.assertEqual(make_freeze.moved(freeze, d), ['compare.py'])
+
     def test_a_capture_older_than_the_freeze_is_found(self):
         freeze = {'namedAt': '2026-10-24T20:00:00Z'}
         with tempfile.TemporaryDirectory() as d:
