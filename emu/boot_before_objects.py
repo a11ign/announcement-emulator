@@ -26,7 +26,7 @@ ia2 = stubs.StubModule('comInterfaces.IAccessible2Lib')
 for k, v in {**json.loads((R / 'emu/tables.json').read_text())['ia2_role'], **json.loads((R / 'emu/tables.json').read_text())['ia2_state']}.items(): setattr(ia2, k, v)
 sys.modules['comInterfaces.IAccessible2Lib'] = ia2; ci.IAccessible2Lib = ia2
 import globalVars
-globalVars.appDir = str(R / 'nvda-appdir'); globalVars.appArgs.configPath = tempfile.mkdtemp(prefix='nvda-cfg-'); globalVars.appArgs.disableAddons = True
+globalVars.appDir = str(R / 'nvda-appdir'); globalVars.appArgs.configPath = tempfile.mkdtemp(prefix='nvda-cfg-'); import atexit, shutil; atexit.register(shutil.rmtree, globalVars.appArgs.configPath, True); globalVars.appArgs.disableAddons = True      # A11-279: removed when the process ends
 # The system tests' own NVDA settings (tests/system/nvdaSettingsFiles/standard-dontShowWelcomeDialog.ini, chromeTests.robot:32), unmodified:
 # they turn reportLinkType and unicodeNormalization OFF, which changes the expected speech.
 import shutil; shutil.copy(R / 'nvda-src/tests/system/nvdaSettingsFiles/standard-dontShowWelcomeDialog.ini', globalVars.appArgs.configPath + '/nvda.ini')
