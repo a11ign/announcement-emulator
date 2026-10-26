@@ -3,7 +3,7 @@
 // makes ONE private directory for the whole run, points TMPDIR at it before the workers fork (rstest hands a globalSetup's
 // environment changes to every worker), and removes it when the run ends. Every `tmpdir()` in the tests then lands inside it, so no
 // test is edited and /tmp gains nothing.
-import { mkdirSync, rmSync } from "node:fs";
+import { mkdirSync, mkdtempSync, rmSync } from "node:fs";
 import { homedir } from "node:os";
 import { basename, join, resolve } from "node:path";
 
@@ -18,12 +18,14 @@ export function privateBase(env = process.env) {
   return env.A11Y_PRIVATE_TMP_BASE ? resolve(env.A11Y_PRIVATE_TMP_BASE) : join(homedir(), ".cache", "a11ign", "tmp");
 }
 
-/** Makes `<base>/ae-run-<UTC stamp>-<pid>` and returns its path. The pid keeps two runs at the same second apart. */
-export function makeRunTmp({ env = process.env, now = new Date(), pid = process.pid } = {}) {
-  const stamp = now.toISOString().replaceAll(/[:.]/g, "-");
-  const dir = join(privateBase(env), `${RUN_PREFIX}${stamp}-${pid}`);
-  mkdirSync(dir, { recursive: true });
-  return dir;
+/**
+ * Makes `<base>/ae-run-XXXXXX` and returns its path. The name is kept short on purpose: Chromium puts a socket under `$TMPDIR` and refuses
+ * a path over 107 characters (measured: a TMPDIR of 63 characters or more kills Playwright's Chromium at launch), and mkdtemp makes the name unique per run.
+ */
+export function makeRunTmp(env = process.env) {
+  const base = privateBase(env);
+  mkdirSync(base, { recursive: true });
+  return mkdtempSync(join(base, RUN_PREFIX));
 }
 
 /** Removes a directory `makeRunTmp` made, and nothing else: a path not named `ae-run-*` is refused. */
