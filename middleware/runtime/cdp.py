@@ -81,11 +81,87 @@ LISTENER = r"""(() => {
   let pending = false;
   new MutationObserver(() => { tick('mutation'); if (!pending) { pending = true; queueMicrotask(() => { pending = false; observe(); }); } }).observe(document, {childList: true, subtree: true, attributes: true, characterData: true});
   addEventListener('load', observe);
+
+  // What the runtime asks of the page before it reads the tree again (incremental.py): could anything but the focus and the value of a control have changed since the last read?
+  //   muts      a count of the document's mutations: the elements, the text, and every attribute but the ones in SOFT
+  //   soft      the elements whose `title`, `class`, `style` or `data-*` attribute changed and nothing else did, with all their attributes: a name or a look, which can be read again alone
+  //   layout    how many elements have another box, `display` or `visibility` than at the last commit (the elements of the document, in document order, are numbered 0..n-1)
+  //   forms     a digest of each form control's value, in document order
+  //   active    the number of the element that has the focus (-1: none, -2: one this cannot number: in a shadow tree)
+  //   looks     the computed style (axtree.py STYLES) of the focused element, the elements above it and below it, those of the elements that had the focus (`before`: a number or a list) and of the ones in `soft`, and of what is below
+  //             them: which is what a :focus rule or a class changes
+  // `baseline` takes what it sees as the state the runtime has read; otherwise the runtime says so with `__aeCommit` once it has used the answer, and until then the next answer is about the same state.
+  let mutations = 0;
+  const SOFT = name => name === 'title' || name === 'class' || name === 'style' || name.startsWith('data-');
+  const soft = new Set(); let reported = new Set();
+  const tally = records => { for (const r of records) { if (r.type === 'attributes' && r.target.nodeType === 1 && SOFT(r.attributeName)) soft.add(r.target); else mutations++; } };
+  const counter = new MutationObserver(tally);
+  const counted = root => counter.observe(root, {childList: true, subtree: true, attributes: true, characterData: true, attributeOldValue: false});
+  counted(document);
+  const documentId = Math.random().toString(36).slice(2);
+  const LOOK = ['display', 'color', 'background-color', 'font-family', 'font-size', 'font-weight', 'font-style', 'text-decoration-line', 'visibility'];      // the computed styles axtree.py STYLES reads
+  let committed = null, latest = null;
+  const lookOf = (el, pseudo) => { const cs = getComputedStyle(el, pseudo); return LOOK.map(name => cs.getPropertyValue(name)); };
+  const pseudoLooks = el => { const out = {}; for (const kind of ['before', 'after', 'marker']) { const content = getComputedStyle(el, '::' + kind).content; if (kind === 'marker' || (content && content !== 'none' && content !== 'normal')) out[kind] = lookOf(el, '::' + kind); } return out; };      // the pseudo-elements that are generated: their style may follow the element's
+  window.__aeProbe = (baseline, before) => {
+    tally(counter.takeRecords());
+    const els = document.querySelectorAll('*'), n = els.length, boxes = new Int32Array(n), sx = scrollX, sy = scrollY;      // a box is where it is on the page, as DOMSnapshot says: a fixed or sticky one moves with the scroll
+    const words = new Map(); const word = s => { let id = words.get(s); if (id === undefined) words.set(s, id = words.size + 1); return id; };
+    let shadows = 0, active = -1; const focus = document.activeElement;
+    for (let i = 0; i < n; i++) {
+      const el = els[i], r = el.getBoundingClientRect(), cs = getComputedStyle(el);
+      let h = Math.round((r.x + sx) * 64);
+      h = (Math.imul(h, 31) + Math.round((r.y + sy) * 64)) | 0; h = (Math.imul(h, 31) + Math.round(r.width * 64)) | 0; h = (Math.imul(h, 31) + Math.round(r.height * 64)) | 0;
+      h = (Math.imul(h, 31) + word(cs.display)) | 0; h = (Math.imul(h, 31) + word(cs.visibility)) | 0;
+      boxes[i] = h;
+      if (el.shadowRoot) { shadows++; counted(el.shadowRoot); }
+      if (el === focus) active = i;
+    }
+    if (focus && active < 0 && focus !== document.body && focus !== document.documentElement) active = -2;
+    if (baseline) committed = boxes;
+    latest = boxes;
+    let changed = -1;      // -1: there is nothing to compare with (or the document has other elements)
+    if (!baseline && committed && committed.length === n) { changed = 0; for (let i = 0; i < n; i++) if (committed[i] !== boxes[i]) changed++; }
+    if (baseline) soft.clear();
+    reported = new Set(soft);
+    let looks = [], softs = [];      // null: more than 1500 elements, which is not a focus rule's work
+    {
+      const at = new Map(); const reached = new Set(); const index = el => { if (!at.size) for (let k = 0; k < n; k++) at.set(els[k], k); return at.get(el); };
+      for (const i of [active, ...(Array.isArray(before) ? before : Number.isInteger(before) ? [before] : [])]) {
+        if (i < 0) continue;
+        for (let el = els[i]; el; el = el.parentElement) reached.add(index(el));      // the element, and the ones above it
+        for (const el of els[i].querySelectorAll('*')) reached.add(index(el));      // and the ones below it, which inherit
+      }
+      for (const el of reported) {
+        const i = index(el);
+        if (i === undefined) { softs = null; break; }      // an element that is no longer in the document: that is a mutation the runtime has to read
+        const texts = [];      // the text below it, in order: where each is drawn, or null where it is not (a class can show text that was not shown, and no element's box says so)
+        for (const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); walker.nextNode();) {
+          const range = document.createRange(); range.selectNodeContents(walker.currentNode);
+          if (!range.getClientRects().length) texts.push(null); else { const b = range.getBoundingClientRect(); texts.push([b.x + sx, b.y + sy, b.width, b.height]); }
+        }
+        if (texts.length > 400) { softs = null; break; }
+        softs.push([i, el.localName, Object.fromEntries([...el.attributes].map(a => [a.name, a.value])), texts]);
+        reached.add(i); for (const below of el.querySelectorAll('*')) reached.add(index(below));
+      }
+      if (reached.size > 1500) looks = null; else for (const i of reached) looks.push([i, els[i].localName, lookOf(els[i]), pseudoLooks(els[i])]);
+    }
+    const forms = [...document.querySelectorAll('input, select, textarea')].map(el => {
+      let a = 7; const eat = s => { for (let i = 0; i < s.length; i++) a = (Math.imul(a, 31) + s.charCodeAt(i)) | 0; };
+      if (el.tagName === 'SELECT') { eat(String(el.selectedIndex)); for (const o of el.selectedOptions) eat(o.value + '|'); }
+      else { eat(el.type === 'checkbox' || el.type === 'radio' ? (el.checked ? 'on' : 'off') + (el.indeterminate ? '~' : '') : String(el.value)); }
+      return a;
+    });
+    return JSON.stringify({doc: documentId, muts: mutations, soft: softs, elements: n, layout: changed, shadows, active, looks, forms});
+  };
+  window.__aeCommit = () => { if (latest) committed = latest; for (const el of reported) soft.delete(el); reported = new Set(); };
 })()"""
 
 
 TICKS_ON = 'window.__aeTicksOn = true'
 RAW_LOG = os.environ.get('AE_RAW')      # a file to append the raw answers of each tree read to: how a DevTools fixture is made
+CONVERSATION_LOG = os.environ.get('AE_CONVERSATION')      # a file to append one line to for each tree read: the commands it sent, what the browser answered, and the tree it made (middleware/runtime/fixtures/incremental)
+PROFILE_LOG = os.environ.get('AE_PROFILE')      # a file to append one line to for each tree read: what it cost (the round trip to the browser, the conversion, the whole read) and how it was made (A11-229)
 
 
 def browser_build(version):
@@ -99,10 +175,11 @@ class Cdp:
 
     With `on_tree` it is also where the trees come from (a platform where the extension is given none: axtree.py): each note that a page changed makes it read the page's accessibility tree and
     DOM through the same port, and `on_tree(snapshot)` is called with what the extension would have posted. `on_connect()` is called each time the browser is reached (the first, and again after a launch)."""
-    def __init__(self, port, on_event, on_attach=lambda target, browser: None, on_tree=None, on_connect=lambda: None):
+    def __init__(self, port, on_event, on_attach=lambda target, browser: None, on_tree=None, on_connect=lambda: None, verify=False, on_verify=lambda body: None):
         self.port, self.on_event, self.on_attach, self.on_tree, self.on_connect = port, on_event, on_attach, on_tree, on_connect
+        self.verify, self.on_verify = verify, on_verify
         self.ws = None; self.browser = None; self.next_id = 0; self.stopped = False; self.installed = set(); self.lock = threading.Lock(); self.outbox = []; self.out = threading.Lock(); self.target_of = {}; self.url_of = {}
-        self.replies = {}; self.wanted = {}; self.wake = threading.Condition(); self.seq = 0; self.page_numbers = {}; self.converters = {}; self.generation = 0
+        self.replies = {}; self.wanted = {}; self.wake = threading.Condition(); self.seq = 0; self.page_numbers = {}; self.readers = {}; self.generation = 0; self.hints = {}; self.loaded = set(); self.visited = {}; self.contexts = {}; self.reads = {'full': 0, 'incremental': 0, 'verified': 0, 'differing': 0, 'fullMs': 0.0, 'incrementalMs': 0.0}
         self.thread = threading.Thread(target=self._run, daemon=True, name='cdp'); self.thread.start()
         if on_tree: self.trees = threading.Thread(target=self._trees, daemon=True, name='trees'); self.trees.start()
 
@@ -175,10 +252,26 @@ class Cdp:
             self._send('Target.attachToTarget', {'targetId': m['params']['targetInfo']['targetId'], 'flatten': True})
         elif method == 'Target.detachedFromTarget':      # a page that is closed answers nothing more: what is waiting for it is told so
             gone = m['params'].get('sessionId')
-            self.converters.pop((self.generation, self.target_of.pop(gone, None)), None)      # its uids are of no use to a page that is gone
+            self.readers.pop((self.generation, self.target_of.pop(gone, None)), None)      # its uids are of no use to a page that is gone
             with self.wake: self.wanted.pop(gone, None)
             for ident, slot in list(self.replies.items()):
                 if slot.get('session') == gone: self.replies.pop(ident, None); self._complete(slot, {'error': {'message': 'the page was closed'}})
+        elif method == 'Runtime.executionContextCreated':      # the script context of each frame: the probe of incremental.py is asked in it
+            context = m['params']['context']; frame = (context.get('auxData') or {}).get('frameId')
+            if frame and (context.get('auxData') or {}).get('isDefault'): self.contexts.setdefault(m.get('sessionId'), {})[frame] = context['id']
+        elif method == 'Runtime.executionContextDestroyed':
+            for held in self.contexts.values():
+                for frame, ident in list(held.items()):
+                    if ident == m['params'].get('executionContextId'): del held[frame]
+        elif method == 'Runtime.executionContextsCleared': self.contexts.pop(m.get('sessionId'), None)
+        elif method == 'Accessibility.nodesUpdated':      # a node the reader asked after has changed, whatever raised no event of the page's (a CSS rule, the browser's own state): read again, with what the browser says
+            session = m.get('sessionId')
+            with self.wake: self.hints.setdefault(session, []).append(m['params'].get('nodes') or [])
+            self._want(session, 'nodesUpdated')
+        elif method == 'Accessibility.loadComplete':
+            session = m.get('sessionId')
+            with self.wake: self.loaded.add(session)
+            self._want(session, 'loadComplete')
         elif method == 'Runtime.bindingCalled' and m['params']['name'] == '__ae':
             try: event = json.loads(m['params']['payload'])
             except ValueError: return
@@ -229,19 +322,41 @@ class Cdp:
         with self.wake: self.wanted.setdefault(session, set()).add(why); self.wake.notify()
 
     def _read(self, session, target, generation):
-        """The converted tree of one page. The page's converter is taken before the read: a page that is closed while it is read forgets its converter (`Target.detachedFromTarget`), and a tree made by a new one
+        """The converted tree of one page. The page's reader (incremental.py) is taken before the read: a page that is closed while it is read forgets its reader (`Target.detachedFromTarget`), and a tree made by a new one
         numbers every node again, which the predictor takes for a new document and speaks again."""
-        import axtree
-        converter = self.converters.get((generation, target)) or axtree.Converter()
-        raw = axtree.fetch(lambda commands: self.call_many(commands, session))
-        if RAW_LOG: self._keep(raw)
-        converted = converter.convert(raw)
-        if session in self.target_of: self.converters.setdefault((generation, target), converter)      # a page that went while it was read leaves nothing behind
+        import incremental
+        reader = self.readers.get((generation, target)) or incremental.Reader(verify=self.verify, keep=self._keep if RAW_LOG else None)
+        with self.wake: hints = self.hints.pop(session, ()); visits = self.visited.pop(session, ()); loaded = session in self.loaded; self.loaded.discard(session)      # what the reader of the socket has put down since the last read
+        for nodes in hints: reader.updated(nodes)
+        reader.visited(visits)
+        if loaded: reader.loaded()
+        talk = []
+        def ask(commands):
+            answers = self.call_many(commands, session)
+            if CONVERSATION_LOG and not reader.checking: talk.append([commands, answers])      # what `verify` asks for itself is not part of the read
+            return answers
+        contexts = dict(self.contexts.get(session, {}))
+        converted = reader.read(ask, contexts.get)
+        if CONVERSATION_LOG: self._talk(target, reader, talk, contexts, converted)
+        how = reader.cost.get('how'); self.reads[how] += 1; self.reads[how + 'Ms'] = round(self.reads[how + 'Ms'] + reader.cost.get('totalMs', 0), 1)
+        if reader.mismatches: self.reads['differing'] += 1; self.on_verify({'ok': False, 'page': target, 'diff': reader.mismatches, 'ax': reader.ax_found, 'nodes': len(converted['nodes'])})
+        elif self.verify and how == 'incremental' and reader.cost.get('verified') == 'same': self.reads['verified'] += 1
+        if session in self.target_of: self.readers.setdefault((generation, target), reader)      # a page that went while it was read leaves nothing behind
+        self.last_cost = dict(reader.cost)
         return converted
 
     def _keep(self, raw):
         """AE_RAW=<file>: what each read was given, whole, one line each (as AE_RECORD keeps what the runtime was told), for the fixtures `test_axtree.py` converts."""
         with self.out, open(RAW_LOG, 'a') as f: f.write(json.dumps(raw, separators=(',', ':')) + '\n')
+
+    def _talk(self, target, reader, talk, contexts, converted):
+        """AE_CONVERSATION=<file>: a read as it was had, for a test to have it again: a full read, or an incremental one that `verify` found the same as a read from scratch."""
+        if reader.cost.get('how') == 'incremental' and reader.cost.get('verified') != 'same': return
+        with self.out, open(CONVERSATION_LOG, 'a') as f: f.write(json.dumps({'page': target, 'how': reader.cost.get('how'), 'reason': reader.cost.get('reason'), 'contexts': contexts, 'conversation': talk, 'tree': converted}, separators=(',', ':')) + '\n')
+
+    def _profile(self, page, why, took):
+        """AE_PROFILE=<file>: one line for each tree read, with what it cost."""
+        with self.out, open(PROFILE_LOG, 'a') as f: f.write(json.dumps({'at': round(time.time() * 1000), 'page': page, 'why': why, 'totalMs': round(took * 1000, 1), **self.last_cost}, separators=(',', ':')) + '\n')
 
     def _trees(self):
         """Reads the trees of the pages that have changed, one page at a time, and rests as long as a read took when that was more than a tenth of a second (so that reading is at most half the time of a busy page)."""
@@ -263,6 +378,7 @@ class Cdp:
             self.seq += 1
             number = self.page_numbers.setdefault((generation, target), len(self.page_numbers))
             took = time.time() - started
+            if PROFILE_LOG: self._profile(number, sorted(w for w in why if w), took)
             self.on_tree({'kind': 'snap', 'seq': self.seq, 't': round(started * 1000), 'page': number, 'why': sorted(w for w in why if w), 'ms': round(took * 1000, 1), **converted})
             if took > 0.1: time.sleep(min(took, 0.5))      # a page that is slow to read is not read more than half the time; a quick one is read again at once, because a test that is quick is closed in a few tens of milliseconds
 
@@ -272,6 +388,7 @@ class Cdp:
         listener = LISTENER.replace('__TICKS__', 'true' if self.on_tree else 'false')
         self._send('Runtime.enable', {}, session)      # without it the browser does not send `Runtime.bindingCalled`
         self._send('Runtime.addBinding', {'name': '__ae'}, session)
+        self._send('Accessibility.enable', {}, session)      # the browser then says when a node it was asked about has changed (nodesUpdated) and when a document has loaded (loadComplete), and answers getChildAXNodes
         self._send('Page.enable', {}, session)      # the script below is run on each new document only while the Page domain is enabled
         self._send('Page.addScriptToEvaluateOnNewDocument', {'source': listener}, session)
         self._send('Runtime.evaluate', {'expression': listener}, session)      # the document already there
@@ -323,7 +440,10 @@ class Resolution:
         with self.lock:
             if self.told: return
             self.told = True
-        self.timer.cancel(); self.cdp._release(self.entry); self.cdp._want(self.session, 'focusin')      # and now the tree is read
+        self.timer.cancel(); self.cdp._release(self.entry)
+        if self.event.get('backendNodeId') is not None:      # the reader reads the nodes the focus has been on again
+            with self.cdp.wake: self.cdp.visited.setdefault(self.session, set()).add(self.event['backendNodeId'])
+        self.cdp._want(self.session, 'focusin')      # and now the tree is read
 
     @staticmethod
     def what_is(node, ax):

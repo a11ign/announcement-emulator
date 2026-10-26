@@ -25,6 +25,11 @@ ROLES = {int(k): v for k, v in json.load(open(os.path.join(HERE, 'roles.json')))
 ADDED_ROLES = {(209, 'combobox'): 'comboBoxSelect', (212, 'gridcell'): 'gridCell'}
 
 
+def is_offscreen(bounds, viewport):
+    """Whether a box (DOMSnapshot's, in page coordinates) lies wholly outside the viewport the page is scrolled to."""
+    return bool(bounds and viewport and (bounds[1] + bounds[3] < 0 or bounds[1] > viewport.get('pageY', 0) + viewport.get('clientHeight', 1e9) or bounds[0] + bounds[2] < 0 or bounds[0] > viewport.get('pageX', 0) + viewport.get('clientWidth', 1e9)))
+
+
 def role_of(ax):
     """chrome.automation's name for the role of a DevTools AX node: its `chromeRole` number in roles.json, else one of ADDED_ROLES, else `unknown`."""
     number = (ax.get('chromeRole') or {}).get('value')
@@ -36,21 +41,39 @@ PAGE_JS = """JSON.stringify((() => { const a = document.activeElement, text = a 
 return {url: location.href, title: document.title, readyState: document.readyState, lang: document.documentElement.lang || '', caret: s}; })())"""
 
 
+def frame_ids(tree):
+    """The ids of the frames below the main one in a `Page.getFrameTree` answer, each before the ones it holds."""
+    out = []
+    def collect(t):
+        for child in t.get('childFrames', []): out.append(child['frame']['id']); collect(child)
+    collect(tree['frameTree'])
+    return out
+
+
+def prefix_frames(frames):
+    """The nodes of each frame's tree with their ids made their own by a prefix (a frame's node ids are numbered from the start, as the main tree's are): {id: node}, and the root of each frame's tree."""
+    nodes, roots = {}, {}
+    for frame, frame_nodes in (frames or {}).items():
+        for n in frame_nodes:
+            renamed = dict(n, nodeId=f'{frame}:{n["nodeId"]}', childIds=[f'{frame}:{c}' for c in n.get('childIds', [])])
+            if 'parentId' in n: renamed['parentId'] = f'{frame}:{n["parentId"]}'
+            else: roots[frame] = renamed
+            nodes[renamed['nodeId']] = renamed
+    return nodes, roots
+
+
 def fetch(call_many):
     """What a conversion needs from one page. `call_many([(method, params), ...])` sends DevTools commands of that page together and answers with their results in order: the AX tree, the DOM, the viewport
     and the page's own state are read in one round trip (the browser answers them in the order sent)."""
     ax, dom, metrics, evaluated, frames, labels = call_many([
         ('Accessibility.getFullAXTree', {}),
-        ('DOMSnapshot.captureSnapshot', {'computedStyles': STYLES, 'includeDOMRects': True}),
+        ('DOMSnapshot.captureSnapshot', {'computedStyles': STYLES}),      # without includeDOMRects: the rects it adds (offset, client, scroll) are read by nothing here, and cost a third of the call
         ('Page.getLayoutMetrics', {}),
         ('Runtime.evaluate', {'expression': PAGE_JS, 'returnByValue': True}),
         ('Page.getFrameTree', {}),
         ('Runtime.evaluate', {'expression': LABELS_JS, 'returnByValue': True, 'includeCommandLineAPI': True}),
     ])
-    children = []
-    def collect(tree):
-        for child in tree.get('childFrames', []): children.append(child['frame']['id']); collect(child)
-    collect(frames['frameTree'])
+    children = frame_ids(frames)
     inner = call_many([('Accessibility.getFullAXTree', {'frameId': f}) for f in children]) if children else []
     if 'value' not in evaluated.get('result', {}): raise ValueError('the page has no state to read (it is closing)')
     return {'ax': ax['nodes'], 'dom': dom, 'viewport': metrics.get('cssVisualViewport') or metrics.get('visualViewport'), 'page': json.loads(evaluated['result']['value']), 'frames': {f: r['nodes'] for f, r in zip(children, inner)},
@@ -87,21 +110,25 @@ def label_listeners(answer, snapshot):
 class Dom:
     """The elements of a DOMSnapshot by backendNodeId: tag, attributes, computed style and the box."""
     def __init__(self, snapshot, listeners=()):
-        strings = snapshot['strings']; s = lambda i: strings[i] if i >= 0 else None
+        strings = snapshot['strings']; table = strings + [None]; s = table.__getitem__      # a string by its number; -1, which the snapshot gives for none, is the last of the table
         listeners = set(listeners)
         self.by_backend = {}; self.frame_of_owner = {}      # frame_of_owner: the backend id of an iframe element -> the id of the frame it holds
-        for doc in snapshot['documents']:
+        self.elements = []      # the backend ids of the main document's elements in document order, as the page's `querySelectorAll('*')` lists them: not the pseudo-elements, and none in a shadow tree (the numbers cdp.py's probe gives)
+        self.shadowed = False      # whether the page has a shadow tree (the numbers above do not hold for it)
+        for number, doc in enumerate(snapshot['documents']):
             nodes = doc['nodes']
             lang = s(doc.get('contentLanguage', -1))
             layout = {}
             for row, node in enumerate(doc['layout']['nodeIndex']): layout[node] = row
             clickable = set(nodes.get('isClickable', {}).get('index', []))
             contents = dict(zip(nodes.get('contentDocumentIndex', {}).get('index', []), nodes.get('contentDocumentIndex', {}).get('value', [])))
-            for i, backend in enumerate(nodes['backendNodeId']):
-                attrs = nodes['attributes'][i]
-                tag = (s(nodes['nodeName'][i]) or '').lower()
-                info = {'tag': tag, 'type': nodes['nodeType'][i], 'attrs': {s(attrs[j]): s(attrs[j + 1]) for j in range(0, len(attrs), 2)}, 'parent': nodes['parentIndex'][i],
-                        'lang': lang if nodes['parentIndex'][i] == -1 else None, 'base': s(doc.get('baseURL')),
+            backends, parents, names, kinds, attributes = nodes['backendNodeId'], nodes['parentIndex'], nodes['nodeName'], nodes['nodeType'], nodes['attributes']; base = s(doc.get('baseURL'))
+            for i, backend in enumerate(backends):
+                attrs = attributes[i]; parent = parents[i]
+                tag = (s(names[i]) or '').lower()
+                info = {'backend': backend, 'tag': tag, 'type': kinds[i], 'attrs': dict(zip(map(s, attrs[0::2]), map(s, attrs[1::2]))) if attrs else {}, 'parent': parent,
+                        'up': backends[parent] if parent >= 0 else None,      # the backend id of the parent node
+                        'lang': lang if parent == -1 else None, 'base': base,
                         'clickable': i in clickable and (tag not in NATIVE_CLICK_TAGS or backend in listeners)}      # the page's own click listener, which is what makes a node `click`
                 if i in contents: self.frame_of_owner[backend] = snapshot['documents'][contents[i]].get('frameId') and strings[snapshot['documents'][contents[i]]['frameId']]
                 row = layout.get(i)
@@ -112,13 +139,24 @@ class Dom:
                 self.by_backend[backend] = info
             # the language a node is in is the nearest lang attribute above it, else the document's
             index_of = {i: backend for i, backend in enumerate(nodes['backendNodeId'])}
+            known = {}
             def language(i):
-                while i >= 0:
+                path = []
+                while i >= 0 and i not in known:
                     a = self.by_backend[index_of[i]]
-                    if a['attrs'].get('lang') is not None: return a['attrs']['lang']
-                    i = a['parent']
-                return lang
+                    if a['attrs'].get('lang') is not None: known[i] = a['attrs']['lang']; break
+                    path.append(i); i = a['parent']
+                value = known[i] if i >= 0 else lang
+                for j in path: known[j] = value
+                return value
             for i, backend in enumerate(nodes['backendNodeId']): self.by_backend[backend]['language'] = language(i)
+            pseudo = dict(zip(nodes.get('pseudoType', {}).get('index', []), (strings[v] for v in nodes.get('pseudoType', {}).get('value', []))))
+            for i, backend in enumerate(nodes['backendNodeId']):      # what is below each node, and which nodes the page does not number (incremental.py)
+                self.by_backend[backend]['children'] = []
+                if i in pseudo: self.by_backend[backend]['pseudo'] = pseudo[i]      # 'before', 'after', 'marker': the pseudo-element this node is
+            for i, backend in enumerate(nodes['backendNodeId']):
+                if nodes['parentIndex'][i] >= 0: self.by_backend[nodes['backendNodeId'][nodes['parentIndex'][i]]]['children'].append(backend)
+            if number == 0: self.list_elements(nodes)
             def form_owner(i):      # the nearest <form> above an element: the scope of a radio button's group
                 i = nodes['parentIndex'][i]
                 while i >= 0:
@@ -127,6 +165,17 @@ class Dom:
                 return None
             for i, backend in enumerate(nodes['backendNodeId']):
                 if self.by_backend[backend]['tag'] == 'input': self.by_backend[backend]['form'] = form_owner(i)
+
+    def list_elements(self, nodes):
+        roots = {i for i, kind in zip(nodes.get('shadowRootType', {}).get('index', []), nodes.get('shadowRootType', {}).get('value', [])) if kind >= 0}
+        pseudo = set(nodes.get('pseudoType', {}).get('index', [])); parents = nodes['parentIndex']; inside = {}
+        def in_shadow_tree(i):
+            if i < 0: return False
+            if i not in inside: inside[i] = i in roots or in_shadow_tree(parents[i])
+            return inside[i]
+        self.shadowed = bool(roots)
+        for i, backend in enumerate(nodes['backendNodeId']):
+            if nodes['nodeType'][i] == 1 and i not in pseudo and not in_shadow_tree(i): self.elements.append(backend)
 
     def get(self, backend): return self.by_backend.get(backend) or {}
 
@@ -137,16 +186,33 @@ WORD = re.compile(r'\w+|[^\w\s]', re.UNICODE)      # a run of word characters, o
 SENTENCE_END = re.compile(r'[.!?]+["\')\]]*\s+')
 
 
+MARKS = {}      # a container holds the text of what is in it, so that text is marked once for each distinct string and not once for each level of the tree
+MARKED = [0]      # the characters of the strings in MARKS: the table is emptied when they are more than MARKED_LIMIT, and a long text (a whole page's) is not kept
+MARKED_LIMIT = 2_000_000
+MARKED_LONGEST = 2000
+
+
+def remember(key, text, found):
+    if len(text) > MARKED_LONGEST: return
+    if MARKED[0] + len(text) > MARKED_LIMIT: MARKS.clear(); MARKED[0] = 0
+    MARKS[key] = found; MARKED[0] += len(text)
+
+
 def word_bounds(text):
     """Where the words of a text start and end, by `WORD`: ICU's rules (which Chromium uses) differ at hyphens, apostrophes and numbers with separators. NOT PORTED: ICU's."""
-    ms = list(WORD.finditer(text))
-    return [m.start() for m in ms], [m.end() for m in ms]
+    found = MARKS.get(('words', text))
+    if found is None:
+        ms = list(WORD.finditer(text)); found = ([m.start() for m in ms], [m.end() for m in ms]); remember(('words', text), text, found)
+    return list(found[0]), list(found[1])
 
 
 def sentence_starts(text):
     """Where the sentences of a text start: the start, and after each full stop, question mark or exclamation mark followed by a space. NOT PORTED: ICU's rules."""
     if not text.strip(): return []
-    return [0] + [m.end() for m in SENTENCE_END.finditer(text) if m.end() < len(text)]
+    found = MARKS.get(('sentences', text))
+    if found is None:
+        found = [0] + [m.end() for m in SENTENCE_END.finditer(text) if m.end() < len(text)]; remember(('sentences', text), text, found)
+    return list(found)
 
 
 # ------------------------------------------------------------------------------------------------ the conversion
@@ -178,15 +244,26 @@ TABLE_ROLES = {'table', 'grid', 'treeGrid'}
 TEXT_FIELDS = ('textField', 'searchBox', 'textFieldWithComboBox', 'spinButton')
 
 
+COLOURS = {}      # the colours and sizes a page uses are few and each is asked about for every node
+
+
 def argb(css):
-    m = re.match(r'rgba?\(\s*(\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?', css or '')
-    if not m: return None
-    r, g, b = (int(x) for x in m.groups()[:3]); a = 255 if m.group(4) is None else round(float(m.group(4)) * 255)
-    return (a << 24) | (r << 16) | (g << 8) | b
+    if css not in COLOURS:
+        m = re.match(r'rgba?\(\s*(\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?', css or '')
+        if not m: COLOURS[css] = None
+        else:
+            r, g, b = (int(x) for x in m.groups()[:3]); a = 255 if m.group(4) is None else round(float(m.group(4)) * 255)
+            COLOURS[css] = (a << 24) | (r << 16) | (g << 8) | b
+    return COLOURS[css]
+
+
+SIZES = {}
 
 
 def px(css):
-    m = re.match(r'([\d.]+)px', css or ''); return float(m.group(1)) if m else None
+    if css not in SIZES:
+        m = re.match(r'([\d.]+)px', css or ''); SIZES[css] = float(m.group(1)) if m else None
+    return SIZES[css]
 
 
 def name_from(sources):
@@ -201,27 +278,42 @@ def name_from(sources):
     return 'none'
 
 
+class Unpatchable(Exception):
+    """A list of nodes cannot be brought up to date from the nodes that changed: the page is converted whole."""
+
+
+MISSING = object()
+INTERNAL = ('_props', '_dom', '_submit')      # what `node` leaves for the passes after it, and they take away
+PATCHABLE = {'state', 'color', 'backgroundColor', 'fontFamily', 'fontSize', 'bold', 'italic', 'underline', 'lineThrough', 'textSelStart', 'textSelEnd', 'docLoaded', 'docLoadingProgress', 'docUrl', 'url',
+             'name', 'nameFrom', 'description', 'descriptionFrom'}      # what `patch` takes from a node made again
+TEXTUAL = ('staticText', 'inlineTextBox', 'lineBreak')      # the name of these is the text of the page, and the text marks of every node above are made of it: a node of another role has a name that is no one's text
+
+
+class Retained:
+    """What a conversion leaves for `patch`: the order of the nodes, where each is in the tree, the list made, what `node` made of each, and the links seen."""
+    def __init__(self, order, parent_of, roles, keys, ix_of, ix_of_backend, nodes, base, linked, viewport, focus, dom):
+        self.order, self.parent_of, self.roles, self.keys, self.ix_of, self.ix_of_backend = order, parent_of, roles, keys, ix_of, ix_of_backend
+        self.nodes, self.base, self.linked, self.viewport, self.focus, self.dom = nodes, base, set(linked), viewport, focus, dom
+
+
 class Converter:
     """Makes the node list of one page from `fetch`'s answer. It keeps the ids it gave to nodes, so that a node is the same node in the next tree (`uid`)."""
-    def __init__(self): self.uids = {}; self.next_uid = 0
+    def __init__(self): self.uids = {}; self.next_uid = 0; self.context = None
 
     def uid(self, key):
         if key not in self.uids: self.uids[key] = self.next_uid; self.next_uid += 1
         return self.uids[key]
 
-    def convert(self, raw):
+    def convert(self, raw, retain=False):
+        """The node list of a page. With `retain` it keeps what `patch` needs to bring that list up to date from the few AX nodes that changed."""
+        self.context = None
         ax = {n['nodeId']: n for n in raw['ax']}
         if not ax: return {'nodes': [], 'focusIx': -1}
         self.linked = set()
-        dom, page, viewport = Dom(raw['dom'], raw.get('listeners', ())), raw['page'], raw['viewport'] or {}
+        dom, page, viewport = raw.get('_dom') or Dom(raw['dom'], raw.get('listeners', ())), raw['page'], raw['viewport'] or {}      # `_dom`: the elements of a page that has not changed (incremental.py)
         root = next((n for n in raw['ax'] if 'parentId' not in n), raw['ax'][0])
-        frame_root = {}      # a frame's id -> the root of its tree, whose node ids are made its own by a prefix
-        for frame, frame_nodes in (raw.get('frames') or {}).items():
-            for n in frame_nodes:
-                renamed = dict(n, nodeId=f'{frame}:{n["nodeId"]}', childIds=[f'{frame}:{c}' for c in n.get('childIds', [])])
-                if 'parentId' in n: renamed['parentId'] = f'{frame}:{n["parentId"]}'
-                else: frame_root[frame] = renamed
-                ax[renamed['nodeId']] = renamed
+        frame_nodes, frame_root = prefix_frames(raw.get('frames'))      # a frame's id -> the root of its tree, whose node ids are made its own by a prefix
+        ax.update(frame_nodes)
 
         row_group = {}      # a row's node id -> the node id of the row group (<thead>, <tbody>, <tfoot>) it was in: a row span ends there
         def unignored_children(n, group=None):
@@ -250,12 +342,13 @@ class Converter:
         ix_of_backend = {n['backendDOMNodeId']: i for i, (n, _, _) in enumerate(order) if 'backendDOMNodeId' in n}
         roles = [role_of(n) for n, _, _ in order]
 
-        nodes = []; keys = []; seen = {}
+        nodes = []; keys = []; seen = {}; base = []
         for i, (n, depth, p) in enumerate(order):
             if 'backendDOMNodeId' in n: key = ('backend', n['backendDOMNodeId'])
             else: seen[p] = seen.get(p, 0) + 1; key = ('child', keys[p] if p >= 0 else None, seen[p])      # an inline text box has no element: it is its parent's nth child
             keys.append(key)
             nodes.append(self.node(i, n, depth, p, roles[i], dom, page, viewport, key, parent_of, roles, nodes[p]['language'] if p >= 0 and 'backendDOMNodeId' not in n else None, roles[p] if p >= 0 else None))
+            if retain: base.append({**nodes[-1], 'state': dict(nodes[-1]['state'])})      # what `node` made, before the passes below add to it
         for i, (n, _, _) in enumerate(order):
             if n['nodeId'] in row_group: nodes[i]['_dom']['group'] = row_group[n['nodeId']]
         self.relations(nodes, order, ix_of, ix_of_backend)
@@ -268,7 +361,53 @@ class Converter:
         flagged = [i for i, nd in enumerate(nodes) if nd['state'].get('focused')]      # the document says it is focused while a field in it is: the node that has the focus is the last of them, the deepest
         focus = flagged[-1] if flagged else -1
         for i in flagged[:-1]: del nodes[i]['state']['focused']
+        if retain: self.context = Retained(order, parent_of, roles, keys, ix_of, ix_of_backend, nodes, base, self.linked, viewport, focus, dom)
         return {'nodes': nodes, 'focusIx': focus, 'url': page['url'], 'title': page['title'], 'sel': {'anchorIx': -1, 'anchorOffset': 0, 'focusIx': -1, 'focusOffset': 0}}
+
+    def patch(self, ax, ids, backends, dom, page, viewport):
+        """The node list of the last conversion (`retain`) brought up to date when only the nodes in `ids` (AX node ids) and `backends` (DOM nodes whose style changed) can have changed, and the viewport and the page's state: the nodes
+        are made again as `convert` makes them, and one that differs from what was made before in more than the focus, the look and the page's address is not something this knows the effect of (a name is in the text marks of the
+        nodes above it): `Unpatchable`, and the page is converted whole. The result is the list `convert` makes of the same page."""
+        c = self.context
+        if c is None or c.dom is not dom: raise Unpatchable('there is no conversion to bring up to date')
+        dirty = {0, *(c.ix_of[i] for i in ids if i in c.ix_of), *(c.ix_of_backend[b] for b in backends if b in c.ix_of_backend)}
+        if c.focus >= 0: dirty.add(c.focus)
+        self.linked = set(c.linked)
+        nodes = list(c.nodes); base = list(c.base)
+        for i in sorted(dirty):
+            n = ax[c.order[i][0]['nodeId']]; depth, p = c.order[i][1], c.parent_of[i]
+            fresh = self.node(i, n, depth, p, c.roles[i], dom, page, viewport, c.keys[i], c.parent_of, c.roles, nodes[p]['language'] if p >= 0 and 'backendDOMNodeId' not in n else None, c.roles[p] if p >= 0 else None)
+            kept = base[i]; changed = [k for k in fresh.keys() | kept.keys() if k not in INTERNAL and fresh.get(k, MISSING) != kept.get(k, MISSING)]
+            for k in changed:
+                if k == 'state':
+                    now, was = fresh['state'], kept['state']
+                    if any(now.get(x) != was.get(x) for x in now.keys() | was.keys() if x not in ('focused', 'offscreen')): raise Unpatchable('the state of a node changed')
+                elif k not in PATCHABLE: raise Unpatchable(f'{k} of a node changed')
+                elif k in ('name', 'nameFrom') and c.roles[i] in TEXTUAL: raise Unpatchable('the text of a node changed')
+            new = dict(nodes[i])
+            for k in changed:
+                if k == 'state': continue
+                if k in fresh: new[k] = fresh[k]
+                else: new.pop(k, None)
+            new['state'] = {**nodes[i]['state'], **({'focused': True} if fresh['state'].get('focused') else {})}
+            if not fresh['state'].get('focused'): new['state'].pop('focused', None)
+            nodes[i] = new; base[i] = {**fresh, 'state': dict(fresh['state'])}
+        flagged = [i for i in sorted(dirty) if nodes[i]['state'].get('focused')]      # the one that has the focus is the last, the deepest, as `convert` has it
+        focus = flagged[-1] if flagged else -1
+        for i in flagged[:-1]: nodes[i]['state'].pop('focused')
+        if viewport != c.viewport: self.scroll(c, nodes, ax, dom, viewport)
+        c.nodes, c.base, c.linked, c.viewport, c.focus = nodes, base, self.linked, viewport, focus
+        return {'nodes': nodes, 'focusIx': focus, 'url': page['url'], 'title': page['title'], 'sel': {'anchorIx': -1, 'anchorOffset': 0, 'focusIx': -1, 'focusOffset': 0}}
+
+    @staticmethod
+    def scroll(c, nodes, ax, dom, viewport):
+        """The page was scrolled: which nodes are off the screen again. A node is when its own box is, and a node with no box of its own (a line of text, a pseudo-element) when its parent is."""
+        for i, node in enumerate(nodes):
+            backend = c.order[i][0].get('backendDOMNodeId')
+            off = is_offscreen(dom.get(backend).get('bounds'), viewport) if backend is not None else False
+            if 'location' not in node and c.parent_of[i] >= 0 and nodes[c.parent_of[i]]['state'].get('offscreen'): off = True
+            if bool(node['state'].get('offscreen')) != off:
+                nodes[i] = node = dict(node, state={k: v for k, v in node['state'].items() if k != 'offscreen'} | ({'offscreen': True} if off else {}))
 
     def node(self, i, n, depth, parent, role, dom, page, viewport, key, parent_of, roles, parent_lang=None, parent_role=None):
         props = {p['name']: p['value'].get('value') for p in n.get('properties', [])}
@@ -339,7 +478,7 @@ class Converter:
         if role == 'menuListOption':
             out['display'] = 'block'
             if not out.get('selected'): state['invisible'] = True
-        if b and viewport and (b[1] + b[3] < 0 or b[1] > viewport.get('pageY', 0) + viewport.get('clientHeight', 1e9) or b[0] + b[2] < 0 or b[0] > viewport.get('pageX', 0) + viewport.get('clientWidth', 1e9)): state['offscreen'] = True
+        if is_offscreen(b, viewport): state['offscreen'] = True
         if role == 'link' and (props.get('url') or 'href' in attrs): self.linked.add(i); state['linked'] = True      # a link that goes somewhere (an anchor with no href, or a role=link, does not), and its text, and nothing else below it (measured against chrome.automation)
         elif role == 'staticText' and any(j in self.linked for j in self.ancestors(i, parent_of)): state['linked'] = True
         if role == 'genericContainer' and not d and parent_role in TEXT_FIELDS: out['htmlTag'] = 'div'; out['display'] = 'flow-root'      # the editor Chromium puts inside a text field is in a closed shadow root: not in the snapshot
@@ -557,9 +696,10 @@ class Converter:
 
     def containers(self, nodes, parent_of):
         """The live region a node is in: the nearest ancestor-or-self that sets one."""
+        region = []      # the node that is the live region each node is in: itself if it sets one, else the one its parent is in (a parent comes before its children)
         for i, nd in enumerate(nodes):
-            for a in [i, *self.ancestors(i, parent_of)]:
-                if nodes[a].get('liveStatus'):
-                    nd['containerLiveStatus'] = nodes[a]['liveStatus']; nd['containerLiveAtomic'] = bool(nodes[a].get('liveAtomic')); nd['containerLiveBusy'] = bool(nodes[a].get('liveBusy'))
-                    if nodes[a].get('liveRelevant'): nd['containerLiveRelevant'] = nodes[a]['liveRelevant']
-                    break
+            a = i if nd.get('liveStatus') else (region[parent_of[i]] if parent_of[i] >= 0 else None)
+            region.append(a)
+            if a is not None:
+                nd['containerLiveStatus'] = nodes[a]['liveStatus']; nd['containerLiveAtomic'] = bool(nodes[a].get('liveAtomic')); nd['containerLiveBusy'] = bool(nodes[a].get('liveBusy'))
+                if nodes[a].get('liveRelevant'): nd['containerLiveRelevant'] = nodes[a]['liveRelevant']
