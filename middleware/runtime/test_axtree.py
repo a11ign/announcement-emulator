@@ -215,6 +215,20 @@ class Tables(unittest.TestCase):
         axtree.Converter().table(0, nodes, {0: [1], 1: [2]}, ['table', 'row', 'cell'])
         self.assertEqual((cell['tableCellRowSpan'], cell['tableCellColumnSpan'], nodes[0]['tableRowCount'], nodes[0]['tableColumnCount']), (1, 1000, 1, 1000))
 
+    def test_a_row_span_ends_at_its_row_group_and_rowspan_0_reaches_it(self):
+        """HTML clamps a span to the row group (<thead>, <tbody>) its row is in: a header cell with rowspan 2 over a one-row <thead> does not take a slot in the <tbody>, and rowspan 0 means "to the end of the group"."""
+        def cell(**attrs): return {'role': 'cell', '_dom': {'attrs': attrs}}
+        def row(group=None): return {'role': 'row', '_dom': {'attrs': {}, **({'group': group} if group else {})}}
+        a, b, c = cell(rowspan='2', colspan='2px'), cell(), cell(rowspan='0')
+        nodes = [{'role': 'table', '_dom': {'attrs': {}}}, row('head'), a, row('body'), b, row('body'), c]
+        axtree.Converter().table(0, nodes, {0: [1, 3, 5], 1: [2], 3: [4], 5: [6]}, ['table', 'row', 'cell', 'row', 'cell', 'row', 'cell'])
+        self.assertEqual((a['tableCellRowSpan'], a['tableCellColumnSpan'], b['tableCellColumnIndex'], c['tableCellRowSpan']), (1, 2, 0, 1))
+        d = cell(rowspan='0')
+        nodes = [{'role': 'table', '_dom': {'attrs': {}}}, row('body'), d, row('body'), cell(), row('body'), cell()]
+        axtree.Converter().table(0, nodes, {0: [1, 3, 5], 1: [2], 3: [4], 5: [6]}, ['table', 'row', 'cell', 'row', 'cell', 'row', 'cell'])
+        self.assertEqual(d['tableCellRowSpan'], 3)
+        self.assertEqual(nodes[4]['tableCellColumnIndex'], 1)
+
     def test_a_table_is_named_from_its_caption(self):
         self.assertEqual(find(devtools_tree('tables'), 'table', 'Prices by size')['nameFrom'], 'caption')
 
@@ -245,6 +259,25 @@ class Sets(unittest.TestCase):
         tree = devtools_tree('lists')
         large = find(tree, 'comboBoxSelect', 'Size of drink')
         self.assertEqual((large['posInSet'], large['setSize']), (3, 3))
+
+
+class Edges(unittest.TestCase):
+    """Cases the recorded pages do not hold, found by reading the diff."""
+    def test_a_role_number_is_taken_for_a_role_only_where_the_protocol_names_the_node_as_it_did(self):
+        self.assertEqual(axtree.role_of({'chromeRole': {'value': 212}, 'role': {'value': 'gridcell'}}), 'gridCell')
+        self.assertEqual(axtree.role_of({'chromeRole': {'value': 212}, 'role': {'value': 'something else'}}), 'unknown')
+        self.assertEqual(axtree.role_of({'chromeRole': {'value': 13}, 'role': {'value': 'cell'}}), 'cell')
+
+    def test_radio_buttons_of_one_name_in_two_documents_are_two_groups(self):
+        roles = ['rootWebArea', 'radioButton', 'rootWebArea', 'radioButton']
+        nodes = [{'_dom': {'tag': 'input', 'form': None, 'attrs': {'name': 'q'}}} for _ in roles]
+        axtree.Converter.radio_groups(nodes, roles, {1: 0, 3: 2})
+        self.assertEqual([(nodes[i]['posInSet'], nodes[i]['setSize']) for i in (1, 3)], [(1, 1), (1, 1)])
+
+    def test_a_contenteditable_link_is_still_a_link_and_an_editing_host_activates(self):
+        d = {'tag': 'a'}
+        self.assertEqual(axtree.Converter.action_verb('link', d, {'contenteditable': 'true', 'href': '#'}, None, {}), 'jump')
+        self.assertEqual(axtree.Converter.action_verb('genericContainer', {'tag': 'div'}, {'contenteditable': 'true'}, None, {}), 'activate')
 
 
 class Clickable(unittest.TestCase):

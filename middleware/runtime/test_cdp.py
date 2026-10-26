@@ -64,7 +64,7 @@ class KeepingTheReads(unittest.TestCase):
             path = os.path.join(dir, 'raw.jsonl'); c = reader(); was = cdp.RAW_LOG
             try:
                 cdp.RAW_LOG = path; c._keep(raw); c._keep({'ax': []})
-                self.assertEqual([json.loads(line) for line in open(path)], [raw, {'ax': []}])
+                with open(path) as f: self.assertEqual([json.loads(line) for line in f], [raw, {'ax': []}])
             finally: cdp.RAW_LOG = was
 
 

@@ -4,7 +4,7 @@ The browser's DevTools port says what the renderer's accessibility tree holds (`
 together into the node list that `emu/ext2/tree.js` makes from chrome.automation, so that the rest of the runtime (`predict.py`, and the emulator under it) does not know which it was given.
 
 It is the lower-fidelity source ADR 0047 allows, and it is not the same tree. What the DevTools protocol does not say is worked out here from what it does:
-  * the roles are exact (`chromeRole` is Chromium's own number, roles.json names it; the two numbers Chromium 156 adds that matter are named in ROLES);
+  * the roles are exact (`chromeRole` is Chromium's own number, roles.json names it; the two numbers Chromium 156 adds that matter are named in ADDED_ROLES);
   * a text's line starts are those of its inline text boxes, which Chromium makes one for each line; its word and sentence starts are found with a regular expression and not with ICU's rules;
   * the table model (where a cell is, what it spans, `aria-rowindex` / `aria-colindex`, its header cells), the position in a set and the size of one are worked out from the tree and the page's attributes by Chromium's own rules
     (AXTableInfo; AXTree::ComputeSetSizePosInSet, AXNode::GetOrderedSet), and not read from the AXNode that Chromium holds. A11-229 held each to the companion extension's tree for the same pages (fixtures/structure);
@@ -21,7 +21,14 @@ from urllib.parse import urljoin
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROLES = {int(k): v for k, v in json.load(open(os.path.join(HERE, 'roles.json'))).items()}      # Chromium's Role enum: number -> chrome.automation's name
 # Roles that Chromium 156 numbers beyond roles.json (made from 155's ax_enums.mojom), as the companion extension names them for the same elements in Playwright 1.64.1's Chromium (156.0.8078.4): a native <select> and a grid cell.
-ROLES.update({209: 'comboBoxSelect', 212: 'gridCell'})
+# A number is taken for the role only where the protocol's own name for the node is the one it had there, so that a build that numbers something else 209 or 212 is not misread.
+ADDED_ROLES = {(209, 'combobox'): 'comboBoxSelect', (212, 'gridcell'): 'gridCell'}
+
+
+def role_of(ax):
+    """chrome.automation's name for the role of a DevTools AX node: its `chromeRole` number in roles.json, else one of ADDED_ROLES, else `unknown`."""
+    number = (ax.get('chromeRole') or {}).get('value')
+    return ROLES.get(number) or ADDED_ROLES.get((number, (ax.get('role') or {}).get('value')), 'unknown')
 
 STYLES = ['display', 'color', 'background-color', 'font-family', 'font-size', 'font-weight', 'font-style', 'text-decoration-line', 'visibility']
 # What is asked of the page in the same moment as the two trees: where it is, how loaded, and the caret of the field that has the focus.
@@ -148,6 +155,7 @@ def sentence_starts(text):
 # the node itself is what a click acts on (a listener the page put on it, or a native control of the kinds in CLICK_INPUTS), and `clickAncestor` when it is something above it. NVDA says "clickable" for `click` only.
 ACTION_VERB = {'button': 'press', 'disclosureTriangle': 'press', 'disclosureTriangleGrouped': 'press', 'link': 'jump', 'listBoxOption': 'select', 'menuItem': 'select', 'menuListOption': 'select',
                'comboBoxMenuButton': 'open', 'comboBoxSelect': 'open', 'popUpButton': 'open', 'textField': 'activate', 'searchBox': 'activate', 'textFieldWithComboBox': 'activate'}
+RANGE_ROLES = {'slider', 'spinButton', 'progressIndicator', 'meter', 'scrollBar', 'splitter'}
 CHECKABLE = {'checkBox', 'menuItemCheckBox', 'menuItemRadio', 'radioButton', 'switch', 'toggleButton'}
 CLICK_INPUTS = {'color', 'date', 'datetime-local', 'month', 'week', 'time'}      # <input> types that Chromium gives a verb of their own kind: the default, `click`
 # Which roles are ordered sets and which are their items, and which a set looks through to find them (ui/accessibility/ax_role_properties.cc IsSetLike, IsItemLike; AXNode::IsIgnoredContainerForOrderedSet, SetRoleMatchesItemRole in ax_node.cc).
@@ -164,6 +172,7 @@ def item_matches(set_role, item_role):
 
 
 CELL_ROLES = {'cell', 'gridCell', 'columnHeader', 'rowHeader'}
+ROW_GROUP_TAGS = {'thead', 'tbody', 'tfoot'}
 MAX_COLSPAN = 1000
 TABLE_ROLES = {'table', 'grid', 'treeGrid'}
 TEXT_FIELDS = ('textField', 'searchBox', 'textFieldWithComboBox', 'spinButton')
@@ -214,12 +223,16 @@ class Converter:
                 else: frame_root[frame] = renamed
                 ax[renamed['nodeId']] = renamed
 
-        def unignored_children(n):
+        row_group = {}      # a row's node id -> the node id of the row group (<thead>, <tbody>, <tfoot>) it was in: a row span ends there
+        def unignored_children(n, group=None):
             for child_id in n.get('childIds', []):
                 child = ax.get(child_id)
                 if child is None: continue
-                if child.get('ignored') or ROLES.get(child.get('chromeRole', {}).get('value')) == 'rowGroup': yield from unignored_children(child)      # a row group (<thead>, <tbody>) is not in the tree chrome.automation gives: its rows are the table's
-                else: yield child
+                is_group = role_of(child) == 'rowGroup' or (child.get('ignored') and dom.get(child.get('backendDOMNodeId')).get('tag') in ROW_GROUP_TAGS)
+                if child.get('ignored') or is_group: yield from unignored_children(child, child['nodeId'] if is_group else group)      # a row group is not in the tree chrome.automation gives: its rows are the table's
+                else:
+                    if group is not None: row_group[child['nodeId']] = group
+                    yield child
             held = frame_root.get(dom.frame_of_owner.get(n.get('backendDOMNodeId')))      # an iframe holds the document of its frame, which the browser's tree reads as its child
             if held is not None: yield held
 
@@ -235,7 +248,7 @@ class Converter:
             if p >= 0: kids.setdefault(p, []).append(i)
         ix_of = {n['nodeId']: i for i, (n, _, _) in enumerate(order)}
         ix_of_backend = {n['backendDOMNodeId']: i for i, (n, _, _) in enumerate(order) if 'backendDOMNodeId' in n}
-        roles = [ROLES.get(n['chromeRole']['value'], 'unknown') for n, _, _ in order]
+        roles = [role_of(n) for n, _, _ in order]
 
         nodes = []; keys = []; seen = {}
         for i, (n, depth, p) in enumerate(order):
@@ -243,6 +256,8 @@ class Converter:
             else: seen[p] = seen.get(p, 0) + 1; key = ('child', keys[p] if p >= 0 else None, seen[p])      # an inline text box has no element: it is its parent's nth child
             keys.append(key)
             nodes.append(self.node(i, n, depth, p, roles[i], dom, page, viewport, key, parent_of, roles, nodes[p]['language'] if p >= 0 and 'backendDOMNodeId' not in n else None, roles[p] if p >= 0 else None))
+        for i, (n, _, _) in enumerate(order):
+            if n['nodeId'] in row_group: nodes[i]['_dom']['group'] = row_group[n['nodeId']]
         self.relations(nodes, order, ix_of, ix_of_backend)
         self.counts(nodes, kids, roles)
         self.defaults(nodes, parent_of)
@@ -262,7 +277,7 @@ class Converter:
         attrs = d.get('attrs', {}); style = d.get('style', {})
         name = n.get('name', {}).get('value', '') if isinstance(n.get('name'), dict) else ''
         value = n.get('value', {}).get('value') if isinstance(n.get('value'), dict) else None
-        if attrs.get('aria-valuetext'): value = attrs['aria-valuetext']      # a range's words (aria-valuetext) are what it holds, as chrome.automation's `value`: the protocol's own `valuetext` property is empty
+        if attrs.get('aria-valuetext') and role in RANGE_ROLES: value = attrs['aria-valuetext']      # a range's words (aria-valuetext) are what it holds, as chrome.automation's `value`: the protocol's own `valuetext` property is empty
         out = {'depth': depth, 'ix': i, 'uid': self.uid(key), 'role': role, 'nameFrom': 'contents' if role in ('staticText', 'inlineTextBox') else name_from(n.get('name', {}).get('sources')),
                'value': '' if value is None else str(value), 'indexInParent': 0, 'standardActions': ['doDefault'] if role not in ('inlineTextBox',) else [], 'hasPopup': '' if props.get('hasPopup') in (None, 'false') else props['hasPopup']}
         if name: out['name'] = name
@@ -312,7 +327,7 @@ class Converter:
         editable = props.get('editable')
         if editable in ('plaintext', 'richtext'): state['editable'] = True
         if editable == 'richtext': state['richlyEditable'] = True
-        if props.get('multiline') or (editable == 'richtext' and attrs.get('contenteditable') in ('', 'true')): state['multiline'] = True      # an editing host of the page's own is a block of lines
+        if props.get('multiline') or (editable == 'richtext' and attrs.get('contenteditable') in ('', 'true') and attrs.get('aria-multiline') != 'false' and role in ('genericContainer', 'textField')): state['multiline'] = True      # an editing host of the page's own is a block of lines
         if props.get('required'): state['required'] = True
         if props.get('multiselectable'): state['multiselectable'] = True
         if props.get('orientation') in ('vertical', 'horizontal'): state[props['orientation']] = True
@@ -353,9 +368,10 @@ class Converter:
         """Chromium's `AXObject::Action` for a node, from its role and its element."""
         tag = d.get('tag')
         editable_root = attrs.get('contenteditable') in ('', 'true', 'plaintext-only') and role not in ('staticText', 'inlineTextBox')
-        if role in ('textField', 'searchBox', 'textFieldWithComboBox') or (role == 'spinButton' and tag == 'input') or editable_root: return 'activate'
+        if role in ('textField', 'searchBox', 'textFieldWithComboBox') or (role == 'spinButton' and tag == 'input'): return 'activate'
         if role in CHECKABLE: return 'uncheck' if checked == 'true' else 'check'
         if role in ACTION_VERB: return ACTION_VERB[role]
+        if editable_root: return 'activate'
         if d.get('clickable') or (tag == 'input' and (attrs.get('type') or '').lower() in CLICK_INPUTS) or (Converter.native_action(tag, attrs) and not props.get('disabled')):
             return 'click' if role not in ('rootWebArea', 'staticText', 'inlineTextBox') else 'clickAncestor'
         return 'clickAncestor'
@@ -404,6 +420,12 @@ class Converter:
         except ValueError: return None
         return v if v >= minimum else None
 
+    @staticmethod
+    def span(attrs, name, zero):
+        """HTML's number of rows or columns a cell spans: the digits the attribute starts with (so `2px` is 2), `zero` where it is 0, None where there are none."""
+        found = re.match(r'\s*\+?(\d+)', attrs.get(name) or '')
+        return None if not found else int(found.group(1)) or zero
+
     def table(self, t, nodes, kids, roles):
         """AXTableInfo: where each cell of a table is and which header cells go with it."""
         cells = self.table_grid(t, nodes, kids, roles)
@@ -427,6 +449,9 @@ class Converter:
             c = stack.pop()
             if roles[c] == 'row': rows.append(c)
             elif roles[c] == 'genericContainer': stack.extend(reversed(kids.get(c, [])))
+        last_row = {}      # the last row of each row group; of a row in none, of the table
+        for r, row in enumerate(rows): last_row[nodes[row]['_dom'].get('group')] = r
+        if None in last_row: last_row[None] = len(rows) - 1
         taken = set(); cells = []; columns = 0; aria_row = 0
         for r, row in enumerate(rows):
             aria_row = self.number(nodes[row]['_dom']['attrs'], 'aria-rowindex') or aria_row + 1
@@ -434,8 +459,9 @@ class Converter:
             for c in kids.get(row, []):
                 if roles[c] not in CELL_ROLES: continue
                 attrs = nodes[c]['_dom']['attrs']
-                rs = self.number(attrs, 'rowspan') or self.number(attrs, 'aria-rowspan') or 1; cs = self.number(attrs, 'colspan') or self.number(attrs, 'aria-colspan') or 1
-                rs = min(rs, len(rows) - r); cs = min(cs, MAX_COLSPAN)      # a span reaches the table's last row at most (HTML clamps it), and a column span is at most 1000
+                end = last_row[nodes[row]['_dom'].get('group')]
+                rs = self.span(attrs, 'rowspan', end - r + 1) or self.number(attrs, 'aria-rowspan') or 1; cs = self.span(attrs, 'colspan', 1) or self.number(attrs, 'aria-colspan') or 1
+                rs = min(rs, end - r + 1); cs = min(cs, MAX_COLSPAN)      # a span ends at the row group's last row (HTML clamps it there; rowspan 0 means "to there"), and a column span is at most 1000
                 while (r, col) in taken: col += 1
                 aria_col = self.number(attrs, 'aria-colindex') or aria_col
                 nodes[c].update(tableCellRowIndex=r, tableCellColumnIndex=col, tableCellRowSpan=rs, tableCellColumnSpan=cs, tableCellAriaRowIndex=aria_row, tableCellAriaColumnIndex=aria_col)
@@ -473,7 +499,7 @@ class Converter:
                 measured[s] = (max(size, len(items)), positions)
             return measured[s]
         for i, nd in enumerate(nodes):
-            if roles[i] in SET_LIKE:
+            if roles[i] in SET_LIKE and roles[i] != 'comboBoxSelect':
                 size, positions = measure(i)
                 if size: nd['setSize'] = size
             if roles[i] == 'comboBoxSelect': self.select_position(i, nodes, kids, roles)
@@ -482,15 +508,18 @@ class Converter:
                 if s is None or not item_matches(roles[s], roles[i]): continue
                 size, positions = measure(s)
                 if i in positions: nd['posInSet'] = positions[i]; nd['setSize'] = size
-        self.radio_groups(nodes, roles)
+        self.radio_groups(nodes, roles, parent)
 
     @staticmethod
-    def radio_groups(nodes, roles):
-        """A native radio button's group is the radios of its form (or of the document) with its name, in the order of the tree; it gives the numbers whatever set holds the button."""
+    def radio_groups(nodes, roles, parent):
+        """A native radio button's group is the radios of its document and form (or of no form) with its name, in the order of the tree; it gives the numbers whatever set holds the button."""
+        def document(i):
+            while i is not None and roles[i] != 'rootWebArea': i = parent.get(i)
+            return i
         groups = {}
         for i, nd in enumerate(nodes):
             dom = nd['_dom']
-            if roles[i] == 'radioButton' and dom['tag'] == 'input' and dom['attrs'].get('name'): groups.setdefault((dom['form'], dom['attrs']['name']), []).append(i)
+            if roles[i] == 'radioButton' and dom['tag'] == 'input' and dom['attrs'].get('name'): groups.setdefault((document(i), dom['form'], dom['attrs']['name']), []).append(i)
         for group in groups.values():
             for k, i in enumerate(group): nodes[i]['posInSet'] = k + 1; nodes[i]['setSize'] = len(group)
 

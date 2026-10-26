@@ -193,3 +193,11 @@ test("a test that opens a context of its own is held to the speech of both its p
   assert.equal(result.status, 1);
   assert.match(result.stderr, /nothing predicted contains "Add a mug"/);
 });
+
+test("an option that takes a build and is given none is refused, and does not turn the build check off", () => {
+  const { report: path, run } = noTreeRun(0);
+  const last = check("--expect-measured", ...[]);
+  assert.equal(last.status, 2); assert.match(last.stderr, /--expect-measured needs a value/);
+  const swallowed = check("--expect-unmeasured", "--expect-no-tree", path, run);
+  assert.equal(swallowed.status, 2); assert.match(swallowed.stderr, /--expect-unmeasured needs a value/);
+});

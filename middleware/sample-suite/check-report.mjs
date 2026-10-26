@@ -15,7 +15,13 @@
 import { readFileSync } from "node:fs";
 
 const args = process.argv.slice(2);
-const valueOf = (flag) => { const at = args.indexOf(flag); return at < 0 ? null : args.splice(at, 2)[1]; };
+const valueOf = (flag) => {
+  const at = args.indexOf(flag);
+  if (at < 0) return null;
+  const [, value] = args.splice(at, 2);
+  if (value === undefined || value.startsWith("--")) { console.error(`${flag} needs a value`); process.exit(2); }      // an empty ${{ matrix.chromium }} must not turn the build check off
+  return value;
+};
 const unmeasured = valueOf("--expect-unmeasured"), measured = valueOf("--expect-measured");
 const expectNoTree = args.includes("--expect-no-tree"), lowerFidelity = args.includes("--lower-fidelity"), expectShapeRates = args.includes("--expect-shape-rates");
 const KNOWN = ["--expect-no-tree", "--lower-fidelity", "--expect-shape-rates"];

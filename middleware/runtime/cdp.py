@@ -241,7 +241,7 @@ class Cdp:
 
     def _keep(self, raw):
         """AE_RAW=<file>: what each read was given, whole, one line each (as AE_RECORD keeps what the runtime was told), for the fixtures `test_axtree.py` converts."""
-        with self.out: open(RAW_LOG, 'a').write(json.dumps(raw, separators=(',', ':')) + '\n')
+        with self.out, open(RAW_LOG, 'a') as f: f.write(json.dumps(raw, separators=(',', ':')) + '\n')
 
     def _trees(self):
         """Reads the trees of the pages that have changed, one page at a time, and rests as long as a read took when that was more than a tenth of a second (so that reading is at most half the time of a busy page)."""
@@ -333,4 +333,4 @@ class Resolution:
         if backend is None: return {}
         own = next((n for n in (ax or {}).get('nodes') or [] if n.get('backendDOMNodeId') == backend and not n.get('ignored')), None)
         if own is None: return {'backendNodeId': backend}
-        return {'backendNodeId': backend, 'axName': own['name'].get('value', '') if isinstance(own.get('name'), dict) else '', 'axRole': axtree.ROLES.get((own.get('chromeRole') or {}).get('value'))}
+        return {'backendNodeId': backend, 'axName': own['name'].get('value', '') if isinstance(own.get('name'), dict) else '', 'axRole': axtree.role_of(own)}
