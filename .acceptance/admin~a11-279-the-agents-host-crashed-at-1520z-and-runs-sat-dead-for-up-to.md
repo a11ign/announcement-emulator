@@ -8,10 +8,12 @@ Acceptance:
 set -eu
 cd middleware && pnpm install --frozen-lockfile && cd ..
 stamp=$(mktemp) && sleep 1
+n0=$(ls /tmp | wc -l)
 # the new test: the run's TMPDIR is the private directory, tmpdir() lands in it, makeRunTmp and removeRunTmp, and the refusal of anything not ae-run-*
 (cd middleware && pnpm exec rstest run test-setup)
 # the whole middleware suite passes under the setup, and leaves nothing of its own in /tmp (it left ~100 ae-* folders before)
 (cd middleware && pnpm test && pnpm run typecheck && pnpm run lint)
+n1=$(ls /tmp | wc -l); test "$n1" -le "$n0"   # /tmp does not grow (it grew by ~100 entries per run before)
 test -z "$(find /tmp -maxdepth 1 -newer "$stamp" \( -name 'ae-*' -o -name 'emu-profile-*' -o -name 'nvda-cfg-*' \))"
 test -z "$(ls ~/.cache/a11ign/tmp 2>/dev/null | grep '^ae-run-' || true)"   # the run's directory is removed at the end
 # the emulator's own entry points

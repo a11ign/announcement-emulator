@@ -25,15 +25,14 @@ const srv = http.createServer((req, res) => {
   let b = ''; req.on('data', d => b += d);
   req.on('end', () => { if (req.url === '/dump' && pending) { const p = pending; pending = null; p(JSON.parse(b)); } res.end('ok'); });
 }).listen(PORT);
-// A second session on a port in use fails to listen: it must not remove the first one's profile and extension copy (the error is rethrown, as an unhandled 'error' event is).
-let ownsPort = true; srv.once('error', e => { ownsPort = false; throw e; });
 // A11-279: the profile and the extension copy live under tmpdir() (so a run's private TMPDIR holds them, not /tmp) and are removed when the session ends: they were left behind by every session.
-const PROFILE = join(tmpdir(), 'emu-profile-' + PORT); rmSync(PROFILE, {recursive: true, force: true});
+// Named by pid as well as port: a second session on a port in use fails to listen (asynchronously), and must not touch the first one's profile or extension copy on its way out.
+const PROFILE = join(tmpdir(), 'emu-profile-' + PORT + '-' + process.pid); rmSync(PROFILE, {recursive: true, force: true});
 // the companion extension, with this session's collector port written into a private copy
 const extDir = PROFILE + '-ext'; rmSync(extDir, {recursive: true, force: true}); mkdirSync(extDir, {recursive: true}); cpSync(extDir0, extDir, {recursive: true});
 writeFileSync(extDir + '/bg.js', readFileSync(extDir0 + '/bg.js', 'utf8').replaceAll('__PORT__', String(PORT)));
 // A11-279: removed when the session ends, and also when the launch below is refused.
-process.on('exit', () => { if (ownsPort) for (const dir of [PROFILE, extDir]) { try { rmSync(dir, {recursive: true, force: true, maxRetries: 3}); } catch (e) {} } });
+process.on('exit', () => { for (const dir of [PROFILE, extDir]) { try { rmSync(dir, {recursive: true, force: true, maxRetries: 3}); } catch (e) {} } });
 // A replay (A11-165): the page is read through a proxy that answers every request from a recording, and the run's certificate authority is trusted by its SPKI hash. With EMU_PROXY unset the launch is as it was.
 if (process.env.EMU_PROXY && !process.env.EMU_PROXY_SPKI) throw new Error('EMU_PROXY needs EMU_PROXY_SPKI, the hash of the certificate authority the proxy signs with');
 const REPLAY = process.env.EMU_PROXY ? ['--proxy-server=' + process.env.EMU_PROXY, '--ignore-certificate-errors-spki-list=' + process.env.EMU_PROXY_SPKI, '--disable-background-networking'] : [];
