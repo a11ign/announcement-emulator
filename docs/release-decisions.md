@@ -238,3 +238,5 @@ Nothing here runs when the pull request merges. The ticket's after-merge line is
 | Record the three choices in this file, amend ADR 0047 and apply the name and licence to `middleware/` | a follow-up ticket | as listed under "What the repository has to change" in §3 and the amendment text in §4 |
 
 **Who sends.** ADR 0047 item 2 says the message is "`ceo`'s to send or delegate". The ticket names the chairman as the sender. This document treats them as the same office and does not claim to know it; if they are different people, the amended item 2 should name the one the chairman wants, and the amendment texts in §4 (which keep the ADR's wording) should be edited when the follow-up applies them.
+
+<!-- A11-260 scratch: a docs-only change, to measure CI. Closed unmerged. -->
