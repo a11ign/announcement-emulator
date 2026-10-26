@@ -165,7 +165,7 @@ test("the spike still proves what it proved: no browser in the archive, the tran
   const ran = (job: string, command: RegExp) => stepsOf(workflow(SPIKE).jobs![job]!).some((step) => command.test(step.run ?? ""));
   assert.ok(ran("bundle", /check_no_browser\.py/), "bundle: no browser");
   assert.ok(ran("transcripts", /compare_bundles\.py replay/), "transcripts: replay");
-  assert.ok(ran("bundle-format", /sizes\.py choose/), "bundle-format: the format is the measured one");
+  assert.ok(ran("bundle-format", /sizes\.py"? choose/), "bundle-format: the format is the measured one");
   assert.ok(ran("trace", /trace\.sh/), "trace: the lists");
   assert.ok(ran("demo", /compare_bundles\.py misses/) && ran("demo", /compare_live\.py/), "demo: the live comparison");
 });
