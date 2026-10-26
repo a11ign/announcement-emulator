@@ -1,0 +1,97 @@
+# Round one of the agreement measurement (A11-234, middleware/results/agreement-round-1/rule.md): the DevTools tree source on macOS, in each supported Playwright's Chromium, measured against the fleet on the held-out
+# pages and on the six pages the emulator was fitted against. Two runs of the sample suite's `corpus` project for each set and each of the two builds, with the DevTools port as the tree source, on a `macos-latest`
+# runner, and the same runs on an `ubuntu-latest` runner in the same workflow run as a control. The control separates "the runner sees other pages or a slower network" from "macOS's tree differs". Each build is run
+# in its own Playwright (`@playwright/test@<version>` and `npx playwright install chromium`, nothing else).
+#
+# It is started by committing middleware/results/agreement-round-1/ci-run.txt: the worker that takes the fleet's captures commits the stamp inside the capture window, and the run is read within about two hours of them.
+#
+# The reports hold the predicted speech of third-party pages and this repository is public: they go to an artifact kept one day, are downloaded with `gh run download`, and the artifact is deleted once
+# downloaded. Only the tables and each miss are committed (middleware/results/agreement-round-1/README.md).
+name: agreement-round
+
+on:
+  push:
+    paths:
+      - middleware/results/agreement-round-1/ci-run.txt
+
+permissions:
+  contents: read
+
+concurrency:
+  group: agreement-round-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  # build=playwright version, in the order the runs are interleaved (rule.md): the repository's own Playwright first, then the one before it
+  BUILDS: "156.0.8078.4=1.64.1 153.0.8010.12=1.63.0"
+
+jobs:
+  reading:
+    # a measurement is made on a branch, inside a capture window: merging the stamp to the default branch must not run it again
+    if: github.ref_name != github.event.repository.default_branch
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { reading: devtools-macos, platform: darwin-arm64, runner: macos-latest, deps: "" }
+          - { reading: devtools-ubuntu-ci, platform: linux-x64, runner: ubuntu-latest, deps: "--with-deps" }
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+        with: { package_json_file: middleware/package.json }
+      - uses: actions/setup-node@v7
+        with: { node-version: 22 }
+      # the runtime bundle holds no browser: the Chromium sources and NVDA's are read at their pins, and nothing is installed on the runner for it
+      - run: middleware/bundle/build.sh ${{ matrix.platform }} "$RUNNER_TEMP/bundle"
+      # The package is built here and packed as `npm pack` packs it; the pin it carries is the sha256 of the bundle just built (middleware-spike.yml does the same).
+      - run: |
+          node bundle/write-pins.mjs "$(node -p "require('./package.json').version")" "$RUNNER_TEMP"/bundle/pin-*.json > pins.json
+          pnpm install --frozen-lockfile && pnpm run build && npm pack --pack-destination "$RUNNER_TEMP"
+        working-directory: middleware
+      # One project for each build, each with its own @playwright/test and the Chromium that version ships.
+      - run: |
+          (cd "$RUNNER_TEMP/bundle" && python3 -m http.server 8099 --bind 127.0.0.1 >/dev/null 2>&1 &)
+          sleep 2
+          for spec in $BUILDS; do
+            build="${spec%%=*}"; version="${spec#*=}"
+            cp -R middleware/sample-suite "$RUNNER_TEMP/project-$build"
+            (cd "$RUNNER_TEMP/project-$build" \
+              && npm i -D "$RUNNER_TEMP"/a11ign-announcement-emulator-*.tgz "@playwright/test@$version" \
+              && npx playwright install ${{ matrix.deps }} chromium \
+              && ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST=http://127.0.0.1:8099 npx announcement-emulator install)
+          done
+      # Two rounds, each of the held-out pages and then the fitted ones, each of the corpus project in each build: the DevTools port as the tree source whatever the platform's default is, and the focus the way the fleet's focus probe reads it (rule.md).
+      # A run whose workers report another Chromium build than the one its row names is not kept.
+      - id: runs
+        run: |
+          mkdir -p "$RUNNER_TEMP/runs"
+          export ANNOUNCEMENT_EMULATOR_TREE=devtools ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1
+          for n in 1 2; do
+            for set in held-out fitted; do
+              if [ "$set" = held-out ]; then pages="$GITHUB_WORKSPACE/middleware/results/agreement-round-1/held-out-pages.json"; else pages="$GITHUB_WORKSPACE/middleware/results/agreement/pages.json"; fi
+              for spec in $BUILDS; do
+                build="${spec%%=*}"; version="${spec#*=}"
+                cd "$RUNNER_TEMP/project-$build"
+                started=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+                CORPUS_PAGES="$pages" npx playwright test --project=corpus || true
+                finished=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+                # a run in another Chromium build than its row names is not kept: the check is made before anything is copied
+                node -e 'const w = JSON.parse(require("fs").readFileSync(process.argv[1], "utf8")).workers; if (!w.length || !w.every((x) => x.startup?.chromium === process.argv[2])) { console.error("the run reports another Chromium build than " + process.argv[2]); process.exit(1) }' test-results/announcement-emulator/run.json "$build"
+                dest="$RUNNER_TEMP/runs/$set/$build/devtools-$n"
+                mkdir -p "$dest"
+                cp test-results/report.json "$dest/report.json"
+                cp test-results/announcement-emulator/run.json "$dest/run.json"
+                printf '{ "reading": "%s", "set": "%s", "chromium": "%s", "playwright": "%s", "run": %s, "startedAt": "%s", "finishedAt": "%s", "runner": "%s", "os": "%s", "arch": "%s" }\n' "${{ matrix.reading }}" "$set" "$build" "$version" "$n" "$started" "$finished" "${{ matrix.runner }}" "$RUNNER_OS" "$RUNNER_ARCH" > "$dest/times.json"
+                rm -rf test-results playwright-report
+              done
+            done
+          done
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: agreement-round-${{ matrix.reading }}
+          path: ${{ runner.temp }}/runs
+          retention-days: 1
+          if-no-files-found: error

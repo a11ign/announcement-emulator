@@ -1,0 +1,930 @@
+{
+ "linux/fitted/153.0.8010.12/devtools-1": {
+  "reading": "devtools-linux",
+  "set": "fitted",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 1,
+  "startedAt": "2026-10-25T11:19:07Z",
+  "finishedAt": "2026-10-25T11:23:26Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 252643,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-linux/)"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-linux/)"
+   }
+  ]
+ },
+ "linux/fitted/153.0.8010.12/devtools-2": {
+  "reading": "devtools-linux",
+  "set": "fitted",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 2,
+  "startedAt": "2026-10-25T11:40:51Z",
+  "finishedAt": "2026-10-25T11:46:38Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 343301,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-linux/)"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-linux/)"
+   }
+  ]
+ },
+ "linux/fitted/153.0.8010.12/extension-1": {
+  "reading": "extension-linux",
+  "set": "fitted",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 1,
+  "startedAt": "2026-10-25T10:56:40Z",
+  "finishedAt": "2026-10-25T11:12:11Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 924590,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), extension: 83.5% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/extension-linux/)"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), extension: 83.5% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/extension-linux/)"
+   }
+  ]
+ },
+ "linux/fitted/153.0.8010.12/extension-2": {
+  "reading": "extension-linux",
+  "set": "fitted",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 2,
+  "startedAt": "2026-10-25T11:33:02Z",
+  "finishedAt": "2026-10-25T11:36:31Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 205580,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), extension: 83.5% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/extension-linux/)"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), extension: 83.5% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/extension-linux/)"
+   }
+  ]
+ },
+ "linux/fitted/156.0.8078.4/devtools-1": {
+  "reading": "devtools-linux",
+  "set": "fitted",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 1,
+  "startedAt": "2026-10-25T11:12:11Z",
+  "finishedAt": "2026-10-25T11:19:07Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 411125,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 80.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 80.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)"
+   }
+  ]
+ },
+ "linux/fitted/156.0.8078.4/devtools-2": {
+  "reading": "devtools-linux",
+  "set": "fitted",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 2,
+  "startedAt": "2026-10-25T11:36:31Z",
+  "finishedAt": "2026-10-25T11:40:51Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 255773,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 80.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 80.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)"
+   }
+  ]
+ },
+ "linux/fitted/156.0.8078.4/extension-1": {
+  "reading": "extension-linux",
+  "set": "fitted",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 1,
+  "startedAt": "2026-10-25T10:49:36Z",
+  "finishedAt": "2026-10-25T10:56:40Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 418682,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), extension: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/extension-linux/)"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), extension: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/extension-linux/)"
+   }
+  ]
+ },
+ "linux/fitted/156.0.8078.4/extension-2": {
+  "reading": "extension-linux",
+  "set": "fitted",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 2,
+  "startedAt": "2026-10-25T11:29:11Z",
+  "finishedAt": "2026-10-25T11:33:02Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 226738,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), extension: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/extension-linux/)"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), extension: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/extension-linux/)"
+   }
+  ]
+ },
+ "linux/held-out/153.0.8010.12/devtools-1": {
+  "reading": "devtools-linux",
+  "set": "held-out",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 1,
+  "startedAt": "2026-10-25T10:48:08Z",
+  "finishedAt": "2026-10-25T10:49:36Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 85889,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-linux/)"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-linux/)"
+   }
+  ]
+ },
+ "linux/held-out/153.0.8010.12/devtools-2": {
+  "reading": "devtools-linux",
+  "set": "held-out",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 2,
+  "startedAt": "2026-10-25T11:27:50Z",
+  "finishedAt": "2026-10-25T11:29:11Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 77989,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-linux/)"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-linux/)"
+   }
+  ]
+ },
+ "linux/held-out/153.0.8010.12/extension-1": {
+  "reading": "extension-linux",
+  "set": "held-out",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 1,
+  "startedAt": "2026-10-25T10:45:25Z",
+  "finishedAt": "2026-10-25T10:46:43Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 75614,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), extension: 83.5% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/extension-linux/)"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), extension: 83.5% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/extension-linux/)"
+   }
+  ]
+ },
+ "linux/held-out/153.0.8010.12/extension-2": {
+  "reading": "extension-linux",
+  "set": "held-out",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 2,
+  "startedAt": "2026-10-25T11:24:47Z",
+  "finishedAt": "2026-10-25T11:26:23Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 93915,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), extension: 83.5% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/extension-linux/)"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), extension: 83.5% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/extension-linux/)"
+   }
+  ]
+ },
+ "linux/held-out/156.0.8078.4/devtools-1": {
+  "reading": "devtools-linux",
+  "set": "held-out",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 1,
+  "startedAt": "2026-10-25T10:46:43Z",
+  "finishedAt": "2026-10-25T10:48:07Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 81673,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 80.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 80.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)"
+   }
+  ]
+ },
+ "linux/held-out/156.0.8078.4/devtools-2": {
+  "reading": "devtools-linux",
+  "set": "held-out",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 2,
+  "startedAt": "2026-10-25T11:26:23Z",
+  "finishedAt": "2026-10-25T11:27:50Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 81817,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 80.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 80.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)"
+   }
+  ]
+ },
+ "linux/held-out/156.0.8078.4/extension-1": {
+  "reading": "extension-linux",
+  "set": "held-out",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 1,
+  "startedAt": "2026-10-25T10:44:07Z",
+  "finishedAt": "2026-10-25T10:45:25Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 74893,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), extension: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/extension-linux/)"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), extension: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/extension-linux/)"
+   }
+  ]
+ },
+ "linux/held-out/156.0.8078.4/extension-2": {
+  "reading": "extension-linux",
+  "set": "held-out",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 2,
+  "startedAt": "2026-10-25T11:23:26Z",
+  "finishedAt": "2026-10-25T11:24:46Z",
+  "where": "this host (linux-x64)",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 76949,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), extension: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/extension-linux/)"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "extension",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=extension",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), extension: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/extension-linux/)"
+   }
+  ]
+ },
+ "ci/devtools-macos/fitted/153.0.8010.12/devtools-1": {
+  "reading": "devtools-macos",
+  "set": "fitted",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 1,
+  "startedAt": "2026-10-25T10:50:33Z",
+  "finishedAt": "2026-10-25T10:53:00Z",
+  "where": "macos-latest macOS ARM64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 144473,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 84.0% of 960 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-macos/)"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 84.0% of 960 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-macos/)"
+   }
+  ]
+ },
+ "ci/devtools-macos/fitted/153.0.8010.12/devtools-2": {
+  "reading": "devtools-macos",
+  "set": "fitted",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 2,
+  "startedAt": "2026-10-25T10:56:26Z",
+  "finishedAt": "2026-10-25T10:57:57Z",
+  "where": "macos-latest macOS ARM64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 88251,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 84.0% of 960 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-macos/)"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 84.0% of 960 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-macos/)"
+   }
+  ]
+ },
+ "ci/devtools-macos/fitted/156.0.8078.4/devtools-1": {
+  "reading": "devtools-macos",
+  "set": "fitted",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 1,
+  "startedAt": "2026-10-25T10:48:37Z",
+  "finishedAt": "2026-10-25T10:50:33Z",
+  "where": "macos-latest macOS ARM64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 111455,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 85.1% of 960 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-macos/)"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 85.1% of 960 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-macos/)"
+   }
+  ]
+ },
+ "ci/devtools-macos/fitted/156.0.8078.4/devtools-2": {
+  "reading": "devtools-macos",
+  "set": "fitted",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 2,
+  "startedAt": "2026-10-25T10:54:54Z",
+  "finishedAt": "2026-10-25T10:56:26Z",
+  "where": "macos-latest macOS ARM64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 89231,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 85.1% of 960 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-macos/)"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 85.1% of 960 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-macos/)"
+   }
+  ]
+ },
+ "ci/devtools-macos/held-out/153.0.8010.12/devtools-1": {
+  "reading": "devtools-macos",
+  "set": "held-out",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 1,
+  "startedAt": "2026-10-25T10:47:40Z",
+  "finishedAt": "2026-10-25T10:48:37Z",
+  "where": "macos-latest macOS ARM64",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 54066,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 84.0% of 960 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-macos/)"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 84.0% of 960 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-macos/)"
+   }
+  ]
+ },
+ "ci/devtools-macos/held-out/153.0.8010.12/devtools-2": {
+  "reading": "devtools-macos",
+  "set": "held-out",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 2,
+  "startedAt": "2026-10-25T10:53:55Z",
+  "finishedAt": "2026-10-25T10:54:54Z",
+  "where": "macos-latest macOS ARM64",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 55920,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 84.0% of 960 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-macos/)"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 84.0% of 960 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-macos/)"
+   }
+  ]
+ },
+ "ci/devtools-macos/held-out/156.0.8078.4/devtools-1": {
+  "reading": "devtools-macos",
+  "set": "held-out",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 1,
+  "startedAt": "2026-10-25T10:46:38Z",
+  "finishedAt": "2026-10-25T10:47:40Z",
+  "where": "macos-latest macOS ARM64",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 59074,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 85.1% of 960 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-macos/)"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 85.1% of 960 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-macos/)"
+   }
+  ]
+ },
+ "ci/devtools-macos/held-out/156.0.8078.4/devtools-2": {
+  "reading": "devtools-macos",
+  "set": "held-out",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 2,
+  "startedAt": "2026-10-25T10:53:00Z",
+  "finishedAt": "2026-10-25T10:53:55Z",
+  "where": "macos-latest macOS ARM64",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 51648,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 85.1% of 960 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-macos/)"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 85.1% of 960 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-macos/)"
+   }
+  ]
+ },
+ "ci/devtools-ubuntu-ci/fitted/153.0.8010.12/devtools-1": {
+  "reading": "devtools-ubuntu-ci",
+  "set": "fitted",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 1,
+  "startedAt": "2026-10-25T10:49:19Z",
+  "finishedAt": "2026-10-25T10:50:39Z",
+  "where": "ubuntu-latest linux-x64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 77187,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-linux/)"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-linux/)"
+   }
+  ]
+ },
+ "ci/devtools-ubuntu-ci/fitted/153.0.8010.12/devtools-2": {
+  "reading": "devtools-ubuntu-ci",
+  "set": "fitted",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 2,
+  "startedAt": "2026-10-25T10:52:51Z",
+  "finishedAt": "2026-10-25T10:54:09Z",
+  "where": "ubuntu-latest linux-x64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 75526,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-linux/)"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-linux/)"
+   }
+  ]
+ },
+ "ci/devtools-ubuntu-ci/fitted/156.0.8078.4/devtools-1": {
+  "reading": "devtools-ubuntu-ci",
+  "set": "fitted",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 1,
+  "startedAt": "2026-10-25T10:48:05Z",
+  "finishedAt": "2026-10-25T10:49:19Z",
+  "where": "ubuntu-latest linux-x64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 70443,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 80.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 80.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)"
+   }
+  ]
+ },
+ "ci/devtools-ubuntu-ci/fitted/156.0.8078.4/devtools-2": {
+  "reading": "devtools-ubuntu-ci",
+  "set": "fitted",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 2,
+  "startedAt": "2026-10-25T10:51:40Z",
+  "finishedAt": "2026-10-25T10:52:51Z",
+  "where": "ubuntu-latest linux-x64",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 67337,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 80.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 80.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)"
+   }
+  ]
+ },
+ "ci/devtools-ubuntu-ci/held-out/153.0.8010.12/devtools-1": {
+  "reading": "devtools-ubuntu-ci",
+  "set": "held-out",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 1,
+  "startedAt": "2026-10-25T10:47:33Z",
+  "finishedAt": "2026-10-25T10:48:05Z",
+  "where": "ubuntu-latest linux-x64",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 30017,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-linux/)"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-linux/)"
+   }
+  ]
+ },
+ "ci/devtools-ubuntu-ci/held-out/153.0.8010.12/devtools-2": {
+  "reading": "devtools-ubuntu-ci",
+  "set": "held-out",
+  "chromium": "153.0.8010.12",
+  "playwright": "1.63.0",
+  "run": 2,
+  "startedAt": "2026-10-25T10:51:10Z",
+  "finishedAt": "2026-10-25T10:51:40Z",
+  "where": "ubuntu-latest linux-x64",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 28314,
+  "workers": [
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-linux/)"
+   },
+   {
+    "chromium": "153.0.8010.12",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 153.0.8010.12 (Playwright 1.63.0), devtools: 81.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/153.0.8010.12/devtools-linux/)"
+   }
+  ]
+ },
+ "ci/devtools-ubuntu-ci/held-out/156.0.8078.4/devtools-1": {
+  "reading": "devtools-ubuntu-ci",
+  "set": "held-out",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 1,
+  "startedAt": "2026-10-25T10:46:54Z",
+  "finishedAt": "2026-10-25T10:47:33Z",
+  "where": "ubuntu-latest linux-x64",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 35860,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 80.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 80.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)"
+   }
+  ]
+ },
+ "ci/devtools-ubuntu-ci/held-out/156.0.8078.4/devtools-2": {
+  "reading": "devtools-ubuntu-ci",
+  "set": "held-out",
+  "chromium": "156.0.8078.4",
+  "playwright": "1.64.1",
+  "run": 2,
+  "startedAt": "2026-10-25T10:50:39Z",
+  "finishedAt": "2026-10-25T10:51:10Z",
+  "where": "ubuntu-latest linux-x64",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 28344,
+  "workers": [
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 80.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)"
+   },
+   {
+    "chromium": "156.0.8078.4",
+    "treeSource": "devtools",
+    "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+    "fellBackAfterFirstTestStartedMs": null,
+    "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 80.2% of 1072 units, 2026-10-25 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)"
+   }
+  ]
+ }
+}

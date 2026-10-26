@@ -1,5 +1,5 @@
 """python3 -m unittest discover -s middleware/agreement -t middleware/agreement   (from the repository root)"""
-import collections, hashlib, os, sys, unittest
+import collections, hashlib, json, os, sys, unittest
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import select_pages
@@ -31,6 +31,32 @@ class Rule(unittest.TestCase):
         self.assertEqual([k['url'] for k in kept], ['a', 'c'])
         self.assertEqual([r['url'] for r in rejected], ['x', 'b'])
         self.assertIn('not opened', rejected[0]['why'])
+
+
+class Skip(unittest.TestCase):
+    """A11-234: the next pages by the same rule, with the earlier round's pages left out."""
+
+    def earlier(self):
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'results', 'agreement', 'pages.json')) as f: return json.load(f)
+
+    def test_every_page_an_earlier_round_listed_is_left_out_whether_it_was_kept_or_rejected(self):
+        urls, _ = select_pages.candidates()
+        earlier = self.earlier()
+        left = select_pages.without(urls, [earlier])
+        used = {p['url'] for p in earlier['sample'] + earlier['rejected']}
+        self.assertEqual(len(used), 7)
+        self.assertTrue(used.isdisjoint(left))
+        self.assertEqual(len(left), len(urls) - 7)
+
+    def test_the_order_of_the_rest_is_the_rules_order_so_the_next_pages_are_the_next_in_it(self):
+        urls, _ = select_pages.candidates()
+        left = select_pages.without(urls, [self.earlier()])
+        self.assertEqual(left, [u for u in urls if u in set(left)])
+
+    def test_with_nothing_to_skip_the_order_is_unchanged(self):
+        self.assertEqual(select_pages.without(['a', 'b', 'c'], []), ['a', 'b', 'c'])
+        self.assertEqual(select_pages.without(['a', 'b', 'c'], [{'sample': [{'url': 'b'}]}]), ['a', 'c'])
+        self.assertEqual(select_pages.without(['a', 'b', 'c'], [{'rejected': [{'url': 'c'}]}, {'sample': [{'url': 'a'}]}]), ['b'])
 
 
 class Plan(unittest.TestCase):

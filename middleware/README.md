@@ -60,20 +60,28 @@ Predicted speech agrees with a real NVDA at a rate that depends on the browser, 
 each entry is a Chromium build, the Playwright versions that ship it, and the measured agreement for each tree source and operating system (`extension-linux`, `devtools-linux`, `devtools-macos`).
 
 A version that is not on the list still runs and still gets predicted speech. Its report says **`agreement not measured for Chromium <build>`**, in the text, the JSON attachment and `run.json`; so does a listed build
-with no figure for the tree source the run used. A listed build says `agreement measured for Chromium <build> (Playwright <versions>), <source>: <rate>% of <units> units, <date>`.
+with no figure for the tree source the run used. A listed build says `agreement measured for Chromium <build> (Playwright <versions>), <source>: <rate>% of <units> units on <n> held-out pages, <date>; the fleet agrees with itself on <ceiling>% (<figure>)`,
+and each predicted utterance in the report names the rate of its shape (`NAME + ROLE: 86.0% of 57`), with `, low confidence` where the list marks the shape weak.
 
-The list starts with the current Playwright release and the one before it: Playwright 1.64.x (Chromium 156.0.8078.4) and 1.63.0 (Chromium 153.0.8010.12). Each is measured by the method of [`results/playwright-versions/rule.md`](results/playwright-versions/rule.md), against the fleet's NVDA, on six real pages (not held out; a preview, with no target). Measured 2026-10-25:
+This is a **preview, improved every release, with no fixed gate**: each release prints the rate it measured, and a round is judged by the figures going up. The figure the list holds is the **held-out** one: measured on pages the emulator was not fitted against,
+with the number of pages it could compare, and with the **ceiling**, the fleet's NVDA read twice against itself on the same units (the oracle's own noise: a rate above it cannot be told from that noise). A shape is **low confidence** when
+the upper end of the 95% (Wilson) interval of its rate is below the reading's overall rate and some of its misses are the middleware's and not the oracle's (`results/agreement-round-1/rule.md`).
 
-| Playwright | Chromium | source | agreement | units | date |
-|---|---|---|---|---|---|
-| 1.64.0, 1.64.1 | 156.0.8078.4 | extension, Linux | 81.2% | 1072 | 2026-10-25 |
-| 1.64.0, 1.64.1 | 156.0.8078.4 | DevTools, Linux | 80.2% | 1072 | 2026-10-25 |
-| 1.64.0, 1.64.1 | 156.0.8078.4 | DevTools, macOS | 85.1% | 960 | 2026-10-25 |
-| 1.63.0 | 153.0.8010.12 | extension, Linux | 83.5% | 1072 | 2026-10-25 |
-| 1.63.0 | 153.0.8010.12 | DevTools, Linux | 81.2% | 1072 | 2026-10-25 |
-| 1.63.0 | 153.0.8010.12 | DevTools, macOS | 84.0% | 960 | 2026-10-25 |
+The list starts with the current Playwright release and the one before it: Playwright 1.64.x (Chromium 156.0.8078.4) and 1.63.0 (Chromium 153.0.8010.12). Round one ([`results/agreement-round-1/README.md`](results/agreement-round-1/README.md)) measured them (Playwright 1.64.1 and 1.63.0 were run; 1.64.0 ships the same Chromium and was not) on six held-out pages
+(five were comparable on the Linux rows, four on macOS 153) against the fleet's NVDA, by the method of [`results/agreement-round-1/rule.md`](results/agreement-round-1/rule.md), which adopts [`results/playwright-versions/rule.md`](results/playwright-versions/rule.md) unchanged. Measured 2026-10-25:
 
-The macOS rows are over four pages and the Linux rows over five (see the write-up), so they are not a comparison of the operating systems. Windows has no figure: it reads "not measured". To add a Playwright release, measure its Chromium by that rule and add it to the list.
+| Playwright | Chromium | source | agreement | units | pages | the fleet against itself | date |
+|---|---|---|---|---|---|---|---|
+| 1.64.1 (1.64.0 not run) | 156.0.8078.4 | extension, Linux | 75.0% | 1046 | 5 | 99.9% | 2026-10-25 |
+| 1.64.1 (1.64.0 not run) | 156.0.8078.4 | DevTools, Linux | 49.5% | 1046 | 5 | 99.9% | 2026-10-25 |
+| 1.64.1 (1.64.0 not run) | 156.0.8078.4 | DevTools, macOS | 72.2% | 1046 | 5 | 99.9% | 2026-10-25 |
+| 1.63.0 | 153.0.8010.12 | extension, Linux | 75.7% | 1046 | 5 | 99.9% | 2026-10-25 |
+| 1.63.0 | 153.0.8010.12 | DevTools, Linux | 48.7% | 1046 | 5 | 99.9% | 2026-10-25 |
+| 1.63.0 | 153.0.8010.12 | DevTools, macOS | 44.6% | 945 | 4 | 99.9% | 2026-10-25 |
+
+Five pages is a small population, and the rates move with a single page: on two of the five (caselaw and Sheffield, nine in ten of the extension's misses) the passive browser's first stop is a cookie banner's button where the fleet's is the page's own first control; on one page the DevTools tree
+on this host loses most of the page's nodes (the 49.5% and 48.7%). The write-up has the misses by cause and shape. On the six pages the emulator was fitted against (not held out; the like-for-like comparison with the previous release's figures) the same readings are
+79.3% to 86.8%: up against the previous round on DevTools on Linux and at 153 on macOS, down on macOS at 156 (-0.7) and on the 153 extension, within on the 156 extension. Windows has no figure: it reads "not measured". To add a Playwright release, measure its Chromium by that rule and add it to the list.
 
 ## What you get
 

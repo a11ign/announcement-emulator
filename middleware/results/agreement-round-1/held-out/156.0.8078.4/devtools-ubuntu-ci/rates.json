@@ -1,0 +1,1022 @@
+{
+ "heldOut": true,
+ "pages": 4,
+ "headline": {
+  "agreed": 681,
+  "units": 945
+ },
+ "ceiling": {
+  "agreed": 944,
+  "units": 945
+ },
+ "byChannel": {
+  "title": {
+   "agreed": 4,
+   "units": 4,
+   "ceiling": {
+    "agreed": 4,
+    "units": 4
+   }
+  },
+  "stops": {
+   "agreed": 181,
+   "units": 323,
+   "ceiling": {
+    "agreed": 323,
+    "units": 323
+   }
+  },
+  "field": {
+   "agreed": 3,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   }
+  },
+  "typed": {
+   "agreed": 18,
+   "units": 18,
+   "ceiling": {
+    "agreed": 18,
+    "units": 18
+   }
+  },
+  "headings": {
+   "agreed": 39,
+   "units": 41,
+   "ceiling": {
+    "agreed": 41,
+    "units": 41
+   }
+  },
+  "landmarks": {
+   "agreed": 41,
+   "units": 44,
+   "ceiling": {
+    "agreed": 44,
+    "units": 44
+   }
+  },
+  "formFields": {
+   "agreed": 38,
+   "units": 108,
+   "ceiling": {
+    "agreed": 108,
+    "units": 108
+   }
+  },
+  "graphics": {
+   "agreed": 15,
+   "units": 15,
+   "ceiling": {
+    "agreed": 15,
+    "units": 15
+   }
+  },
+  "links": {
+   "agreed": 313,
+   "units": 355,
+   "ceiling": {
+    "agreed": 354,
+    "units": 355
+   }
+  },
+  "lists": {
+   "agreed": 29,
+   "units": 34,
+   "ceiling": {
+    "agreed": 34,
+    "units": 34
+   }
+  }
+ },
+ "shapes": {
+  "NAME + ROLE + STATE + STATE": {
+   "agreed": 143,
+   "units": 246,
+   "ceiling": {
+    "agreed": 246,
+    "units": 246
+   },
+   "misses": {
+    "emulator": 94,
+    "network/runner": 3,
+    "events: focus": 3,
+    "quick test": 2,
+    "chromium build": 1
+   },
+   "lowConfidence": true
+  },
+  "NAME + ROLE": {
+   "agreed": 221,
+   "units": 245,
+   "ceiling": {
+    "agreed": 245,
+    "units": 245
+   },
+   "misses": {
+    "emulator": 19,
+    "network/runner": 5
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE": {
+   "agreed": 20,
+   "units": 75,
+   "ceiling": {
+    "agreed": 75,
+    "units": 75
+   },
+   "misses": {
+    "emulator": 51,
+    "network/runner": 3,
+    "conversion: name+role+state": 1
+   },
+   "lowConfidence": true
+  },
+  "NAME + ROLE + LEVEL": {
+   "agreed": 31,
+   "units": 32,
+   "ceiling": {
+    "agreed": 32,
+    "units": 32
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + NAME": {
+   "agreed": 20,
+   "units": 29,
+   "ceiling": {
+    "agreed": 29,
+    "units": 29
+   },
+   "misses": {
+    "emulator": 9
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + ROLE + COUNT + NAME + ROLE": {
+   "agreed": 25,
+   "units": 25,
+   "ceiling": {
+    "agreed": 25,
+    "units": 25
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + STATE + ROLE": {
+   "agreed": 25,
+   "units": 25,
+   "ceiling": {
+    "agreed": 25,
+    "units": 25
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME": {
+   "agreed": 23,
+   "units": 23,
+   "ceiling": {
+    "agreed": 23,
+    "units": 23
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + COUNT + NAME + ROLE": {
+   "agreed": 15,
+   "units": 21,
+   "ceiling": {
+    "agreed": 21,
+    "units": 21
+   },
+   "misses": {
+    "emulator": 6
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + STATE + STATE": {
+   "agreed": 3,
+   "units": 19,
+   "ceiling": {
+    "agreed": 19,
+    "units": 19
+   },
+   "misses": {
+    "emulator": 9,
+    "network/runner": 7
+   },
+   "lowConfidence": true
+  },
+  "NAME + NAME + ROLE": {
+   "agreed": 16,
+   "units": 16,
+   "ceiling": {
+    "agreed": 16,
+    "units": 16
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + ROLE": {
+   "agreed": 16,
+   "units": 16,
+   "ceiling": {
+    "agreed": 16,
+    "units": 16
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME": {
+   "agreed": 6,
+   "units": 15,
+   "ceiling": {
+    "agreed": 15,
+    "units": 15
+   },
+   "misses": {
+    "emulator": 7,
+    "conversion: clickable": 1,
+    "network/runner": 1
+   },
+   "lowConfidence": true
+  },
+  "NAME + ROLE + ROLE": {
+   "agreed": 13,
+   "units": 14,
+   "ceiling": {
+    "agreed": 14,
+    "units": 14
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + ROLE": {
+   "agreed": 6,
+   "units": 10,
+   "ceiling": {
+    "agreed": 10,
+    "units": 10
+   },
+   "misses": {
+    "emulator": 3,
+    "network/runner": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + NAME + NAME": {
+   "agreed": 7,
+   "units": 8,
+   "ceiling": {
+    "agreed": 8,
+    "units": 8
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + ROLE + LEVEL": {
+   "agreed": 5,
+   "units": 7,
+   "ceiling": {
+    "agreed": 7,
+    "units": 7
+   },
+   "misses": {
+    "emulator": 2
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + STATE + NAME": {
+   "agreed": 4,
+   "units": 7,
+   "ceiling": {
+    "agreed": 7,
+    "units": 7
+   },
+   "misses": {
+    "emulator": 3
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + ROLE + COUNT + NAME + ROLE + ROLE": {
+   "agreed": 4,
+   "units": 4,
+   "ceiling": {
+    "agreed": 4,
+    "units": 4
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + LEVEL": {
+   "agreed": 4,
+   "units": 4,
+   "ceiling": {
+    "agreed": 4,
+    "units": 4
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + ROLE + COUNT + NAME + ROLE": {
+   "agreed": 4,
+   "units": 4,
+   "ceiling": {
+    "agreed": 3,
+    "units": 4
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + NAME + ROLE + NAME": {
+   "agreed": 4,
+   "units": 4,
+   "ceiling": {
+    "agreed": 4,
+    "units": 4
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + NAME + ROLE + NAME + ROLE + STATE": {
+   "agreed": 3,
+   "units": 4,
+   "ceiling": {
+    "agreed": 4,
+    "units": 4
+   },
+   "misses": {
+    "conversion: name+role+state": 1
+   },
+   "lowConfidence": false
+  },
+  "STATE + ROLE + ROLE + COUNT + NAME + ROLE + STATE": {
+   "agreed": 4,
+   "units": 4,
+   "ceiling": {
+    "agreed": 4,
+    "units": 4
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + ROLE + ROLE": {
+   "agreed": 2,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + ROLE + ROLE + COUNT + NAME + ROLE + STATE": {
+   "agreed": 3,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + ROLE + ROLE + LEVEL": {
+   "agreed": 3,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + ROLE + STATE": {
+   "agreed": 1,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   },
+   "misses": {
+    "emulator": 2
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + ROLE + COUNT + NAME + STATE + ROLE": {
+   "agreed": 3,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + COUNT + NAME + ROLE + NAME": {
+   "agreed": 0,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   },
+   "misses": {
+    "emulator": 3
+   },
+   "lowConfidence": true
+  },
+  "ROLE + NAME": {
+   "agreed": 3,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE": {
+   "agreed": 3,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + NAME + ROLE + STATE + STATE": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + NAME": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + STATE + STATE": {
+   "agreed": 0,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {
+    "network/runner": 2
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + ROLE + COUNT + NAME + ROLE + NAME": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + STATE + STATE + NAME": {
+   "agreed": 0,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {
+    "network/runner": 2
+   },
+   "lowConfidence": false
+  },
+  "ROLE + COUNT + NAME + NAME": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + COUNT + NAME + NAME + NAME + ROLE": {
+   "agreed": 0,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {
+    "emulator": 2
+   },
+   "lowConfidence": true
+  },
+  "ROLE + NAME + NAME + NAME + NAME + NAME + NAME + ROLE": {
+   "agreed": 0,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {
+    "conversion: name": 1,
+    "conversion: node": 1
+   },
+   "lowConfidence": true
+  },
+  "ROLE + NAME + ROLE + NAME + ROLE + LEVEL": {
+   "agreed": 1,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {
+    "network/runner": 1
+   },
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + ROLE + COUNT + NAME + ROLE + NAME": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + ROLE + COUNT + ROLE + NAME + ROLE + ROLE": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + COUNT + NAME + ROLE": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + NAME + ROLE + NAME + ROLE": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + NAME + NAME + ROLE": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + NAME + NAME + ROLE + LEVEL": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + NAME + NAME + STATE + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + NAME + ROLE + LEVEL": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + NAME + ROLE + ROLE + LEVEL": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + ROLE + ROLE + COUNT + ROLE + COUNT + ROLE + COUNT + NAME + ROLE + NAME": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "network/runner": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + STATE + STATE + NAME": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "network/runner": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + ROLE + COUNT + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + ROLE + COUNT + NAME + NAME + STATE + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + ROLE + COUNT + NAME + ROLE + NAME + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + ROLE + COUNT + NAME + ROLE + STATE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + ROLE + COUNT + NAME + STATE + ROLE + NAME + ROLE + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + ROLE + COUNT + ROLE + COUNT + NAME + ROLE + NAME + ROLE + LEVEL": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + ROLE + LEVEL": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + STATE + NAME + NAME": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "network/runner": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + STATE + POSITION": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "conversion: position in set": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + STATE + STATE + NAME + NAME": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "network/runner": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + STATE + ROLE + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + COUNT + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + COUNT + NAME + NAME + ROLE + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + COUNT + NAME + ROLE + NAME + ROLE + LEVEL": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": false
+  },
+  "ROLE + COUNT + NAME + STATE + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + NAME + ROLE + NAME": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "conversion: clickable": 1
+   },
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + ROLE + COUNT + NAME + NAME + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + ROLE + COUNT + NAME + STATE + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + ROLE + COUNT + ROLE + NAME + NAME + ROLE + NAME": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "conversion: clickable": 1
+   },
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + COUNT + NAME + NAME + NAME + ROLE + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + COUNT + NAME + NAME + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + LEVEL": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + NAME": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "network/runner": 1
+   },
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + NAME + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + NAME + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + NAME + ROLE + STATE + NAME": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "conversion: name+role+state": 1
+   },
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + ROLE + COUNT + NAME + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + ROLE + COUNT + NAME + ROLE + NAME + NAME + ROLE + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + ROLE + LEVEL": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + ROLE + NAME + ROLE + NAME + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + ROLE + NAME + ROLE + NAME + ROLE + STATE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  }
+ },
+ "causes": {
+  "emulator": 219,
+  "network/runner": 30,
+  "conversion: clickable": 3,
+  "conversion: name+role+state": 3,
+  "events: focus": 3,
+  "quick test": 2,
+  "conversion: position in set": 1,
+  "chromium build": 1,
+  "conversion: name": 1,
+  "conversion: node": 1
+ }
+}

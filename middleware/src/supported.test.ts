@@ -195,6 +195,84 @@ test("every figure the list ships is in the repository, and its agreement.txt gi
   }
 });
 
+/** What `rates.json` (agreement/round.py) and the by-shape table of `agreement.txt` say about a figure that the list also says, one line each where they differ. A figure a round did not write has neither and is not held to them. */
+interface Rates { pages: number; heldOut: boolean; headline: { agreed: number; units: number }; ceiling: { agreed: number; units: number }; shapes: Record<string, { agreed: number; units: number; lowConfidence: boolean }> }
+const near = (a: number, agreed: number, units: number) => Math.abs(a - agreed / units) <= 0.0005 + 1e-9;      // the list holds a rate to the tenth of a percent (the headline) or to three decimals (a shape)
+
+type Round = Required<Pick<Figure, "population" | "ceiling" | "shapes">> & Figure;
+
+const populationDisagreements = (f: Round, path: string, rates: Rates): string[] => [
+  ...(f.population.pages !== rates.pages ? [`population.pages ${f.population.pages} is not ${rates.pages}`] : []),
+  ...(f.population.heldOut !== rates.heldOut ? [`population.heldOut ${f.population.heldOut} is not ${rates.heldOut}`] : []),
+  ...(f.population.heldOut !== path.includes("/held-out/") || path.includes("/held-out/") === path.includes("/fitted/") ? [`the figure path ${path} does not say whether the pages were held out`] : []),
+  ...(f.units !== rates.headline.units ? [`units ${f.units} is not ${rates.headline.units}`] : []),
+];
+
+const ceilingDisagreements = (f: Round, rates: Rates): string[] =>
+  f.ceiling.units !== rates.ceiling.units || !near(f.ceiling.agreement, rates.ceiling.agreed, rates.ceiling.units) ? [`ceiling ${f.ceiling.agreement} of ${f.ceiling.units} is not ${rates.ceiling.agreed} of ${rates.ceiling.units}`] : [];
+
+function shapeDisagreements(f: Round, rates: Rates): string[] {
+  const withUnits = Object.entries(rates.shapes).filter(([k, v]) => v.units > 0 && k !== "");
+  const same = Object.keys(f.shapes).sort().join("|") === withUnits.map(([k]) => k).sort().join("|");
+  return [
+    ...(same ? [] : ["the shapes are not the shapes of rates.json"]),
+    ...withUnits.flatMap(([shape, v]) => {
+      const listed = f.shapes[shape];
+      return listed && (listed.units !== v.units || !near(listed.agreement, v.agreed, v.units) || listed.lowConfidence !== v.lowConfidence)
+        ? [`shape ${shape}: ${listed.agreement} of ${listed.units} (${listed.lowConfidence}) is not ${v.agreed} of ${v.units} (${v.lowConfidence})`] : [];
+    }),
+  ];
+}
+
+/** The by-shape table of an agreement.txt (the ten commonest): each line's counts are the list's for the shape. */
+function tableDisagreements(f: Round, agreementTxt: string): string[] {
+  const table = agreementTxt.split("agreement by shape").at(-1)!.split("\n").map((l) => l.split(" | ")).filter((c) => c.length === 3);
+  if (!table.length) return ["agreement.txt has no by-shape table"];
+  return table.flatMap((cells) => {
+    const counts = /^\s*(\d+) \/ (\d+)\s/.exec(cells[0]!), label = /(?:\d+\.\d%|n\/a)\s{2}(\S.*)$/.exec(cells[2]!)?.[1]?.trim();
+    const listed = label ? f.shapes[label] : undefined;
+    if (!counts || !label || !listed) return [`agreement.txt names a shape the list does not: ${label}`];
+    return listed.units !== Number(counts[2]) || !near(listed.agreement, Number(counts[1]), Number(counts[2])) ? [`shape ${label}: the list says ${listed.agreement} of ${listed.units}, agreement.txt ${counts[1]} of ${counts[2]}`] : [];
+  });
+}
+
+export function figureDisagreements(figure: Figure, path: string, rates: Rates, agreementTxt: string): string[] {
+  if (!figure.population || !figure.ceiling || !figure.shapes) return ["a round's figure has a population, a ceiling and shapes"];
+  const f = figure as Round;
+  return [...populationDisagreements(f, path, rates), ...ceilingDisagreements(f, rates), ...shapeDisagreements(f, rates), ...tableDisagreements(f, agreementTxt)];
+}
+
+test("a figure a round wrote is the same as its rates.json and the by-shape table of its agreement.txt: the population, the ceiling and each shape", () => {
+  for (const build of shipped.builds) {
+    for (const [key, figure] of Object.entries(build.measured)) {
+      if (!existsSync(join(repoRoot, figure.figure, "rates.json"))) continue;      // an earlier round's figure (A11-230's) has only the headline
+      const rates = JSON.parse(readFileSync(join(repoRoot, figure.figure, "rates.json"), "utf8")) as Rates;
+      assert.deepEqual(figureDisagreements(figure, figure.figure, rates, readFileSync(join(repoRoot, figure.figure, "agreement.txt"), "utf8")), [], `${build.chromium} ${key}`);
+    }
+  }
+});
+
+const sampleRates: Rates = { pages: 6, heldOut: true, headline: { agreed: 80, units: 100 }, ceiling: { agreed: 95, units: 100 }, shapes: { "NAME + ROLE": { agreed: 60, units: 70, lowConfidence: false }, "NAME + ROLE + LEVEL": { agreed: 20, units: 30, lowConfidence: true } } };
+const sampleFigure: Figure = { agreement: 0.8, units: 100, date: "2026-10-26", figure: "middleware/results/agreement-round-1/held-out/156.0.8078.4/extension-linux/", population: { pages: 6, heldOut: true, units: 100 }, ceiling: { agreement: 0.95, units: 100 },
+  shapes: { "NAME + ROLE": { agreement: 0.857, units: 70, lowConfidence: false }, "NAME + ROLE + LEVEL": { agreement: 0.667, units: 30, lowConfidence: true } } };
+const sampleTxt = "agreement by shape (the 10 commonest)\n   60 / 70     85.7% |   69 / 70     98.6% |   70 / 70    100.0%  NAME + ROLE\n   20 / 30     66.7% |   30 / 30    100.0% |   30 / 30    100.0%  NAME + ROLE + LEVEL\n";
+
+test("the check of a round's figure against its rates passes for a figure that matches, and names each thing that does not", () => {
+  assert.deepEqual(figureDisagreements(sampleFigure, sampleFigure.figure, sampleRates, sampleTxt), []);
+  const changed = (f: Partial<Figure>) => figureDisagreements({ ...sampleFigure, ...f }, sampleFigure.figure, sampleRates, sampleTxt);
+  assert.match(changed({ population: { pages: 5, heldOut: true, units: 100 } }).join(), /population.pages 5 is not 6/);
+  assert.match(changed({ population: { pages: 6, heldOut: false, units: 100 } }).join(), /heldOut false is not true/);
+  assert.match(changed({ ceiling: { agreement: 0.9, units: 100 } }).join(), /ceiling 0.9 of 100/);
+  assert.match(changed({ shapes: { ...sampleFigure.shapes, "NAME + ROLE": { agreement: 0.9, units: 70, lowConfidence: false } } }).join(), /shape NAME \+ ROLE: 0.9 of 70/);
+  assert.match(changed({ shapes: { ...sampleFigure.shapes, "NAME + ROLE + LEVEL": { agreement: 0.667, units: 30, lowConfidence: false } } }).join(), /shape NAME \+ ROLE \+ LEVEL.*\(false\) is not 20 of 30 \(true\)/);
+  assert.match(changed({ shapes: { "NAME + ROLE": sampleFigure.shapes!["NAME + ROLE"]! } }).join(), /the shapes are not the shapes of rates.json/);
+  assert.match(changed({ units: 99 }).join(), /units 99 is not 100/);
+  assert.match(figureDisagreements(sampleFigure, "middleware/results/agreement-round-1/fitted/156.0.8078.4/extension-linux/", sampleRates, sampleTxt).join(), /does not say whether the pages were held out/);
+  assert.match(figureDisagreements(sampleFigure, sampleFigure.figure, sampleRates, sampleTxt.replace("85.7%", "80.0%").replace("60 / 70", "56 / 70")).join(), /agreement.txt 56 of 70/);
+  assert.match(figureDisagreements(sampleFigure, sampleFigure.figure, sampleRates, "no table").join(), /no by-shape table/);
+  assert.match(changed({ shapes: undefined }).join(), /has a population, a ceiling and shapes/);
+});
+
 // The demo job of middleware-spike.yml: one row for each platform and Playwright version, and what each row's reports are held to saying (check-report.mjs).
 // The rows are the `mode` job's script (full mode has all of them): one JSON object each.
 const rows = [...readFileSync(join(repoRoot, ".github", "workflows", "middleware-spike.yml"), "utf8").matchAll(/"platform": "([\w-]+)", "runner": "([\w-]+)", "playwright": "([\d.]+)", "agreement": "(\w+)", "other-agreement": "(\w+)", "chromium": "([\d.]+)"/g)]
