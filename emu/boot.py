@@ -70,7 +70,7 @@ import kernel32_standin      # the locale calls of winBindings.kernel32 that NVD
 import winBindings; sys.modules['winBindings.kernel32'] = winBindings.kernel32 = kernel32_standin.m
 stubs.LEDGER.append('winBindings.kernel32')      # still a stub for every name but those two locale calls
 import globalVars
-globalVars.appDir = str(app_dir(R)); globalVars.appArgs.configPath = tempfile.mkdtemp(prefix='nvda-cfg-'); globalVars.appArgs.disableAddons = True
+globalVars.appDir = str(app_dir(R)); globalVars.appArgs.configPath = tempfile.mkdtemp(prefix='nvda-cfg-'); import atexit, shutil; atexit.register(shutil.rmtree, globalVars.appArgs.configPath, True); globalVars.appArgs.disableAddons = True      # A11-279: removed when the process ends
 # The system tests' own NVDA settings (tests/system/nvdaSettingsFiles/standard-dontShowWelcomeDialog.ini, chromeTests.robot:32), unmodified:
 # they turn reportLinkType and unicodeNormalization OFF, which changes the expected speech.
 import shutil; shutil.copy(os.environ.get('EMU_NVDA_INI') or R / 'nvda-src/tests/system/nvdaSettingsFiles/standard-dontShowWelcomeDialog.ini', globalVars.appArgs.configPath + '/nvda.ini')      # EMU_NVDA_INI: Q3 runs with the fleet's settings (q3/nvda-fleet.ini)
