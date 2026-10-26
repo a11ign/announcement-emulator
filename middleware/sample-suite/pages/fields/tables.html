@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Tables - field reference</title></head>
+<body>
+<!-- A11-229: every way a table says where a cell is and which header words belong to it. Small enough to be recorded as a fixture (middleware/runtime/fixtures/structure). -->
+<main>
+<h1>Tables</h1>
+
+<h2>Column and row headers</h2>
+<table id="prices">
+  <caption>Prices by size</caption>
+  <thead><tr><th scope="col">Size</th><th scope="col">Price</th><th scope="col">Stock</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">Small</th><td>$4</td><td>12</td></tr>
+    <tr><th scope="row">Large</th><td>$6</td><td>3</td></tr>
+  </tbody>
+</table>
+
+<h2>Headers by id and spans</h2>
+<table id="timetable">
+  <tr><td></td><th id="mon" colspan="2">Monday</th><th id="tue">Tuesday</th></tr>
+  <tr><td></td><th id="am" scope="col">AM</th><th id="pm" scope="col">PM</th><th id="all" scope="col">All day</th></tr>
+  <tr><th id="room1" rowspan="2">Room 1</th><td headers="room1 mon am">Yoga</td><td headers="room1 mon pm">Pilates</td><td headers="room1 tue all">Closed</td></tr>
+  <tr><td headers="room1 mon am">Choir</td><td headers="room1 mon pm" colspan="2">Rehearsal</td></tr>
+</table>
+
+<h2>A window onto a larger table</h2>
+<table id="window" aria-rowcount="200" aria-colcount="12">
+  <tr aria-rowindex="1"><th aria-colindex="1" scope="col">Date</th><th aria-colindex="5" scope="col">Amount</th></tr>
+  <tr aria-rowindex="41"><td aria-colindex="1">12 May</td><td aria-colindex="5">$20</td></tr>
+  <tr aria-rowindex="42"><td aria-colindex="1">13 May</td><td aria-colindex="5">$35</td></tr>
+</table>
+
+<h2>A grid</h2>
+<div role="grid" id="grid" aria-label="Inbox" aria-rowcount="3" aria-colcount="2">
+  <div role="row" aria-rowindex="1"><div role="columnheader" aria-colindex="1" tabindex="-1">From</div><div role="columnheader" aria-colindex="2" tabindex="-1">Subject</div></div>
+  <div role="row" aria-rowindex="2"><div role="gridcell" aria-colindex="1" tabindex="0">Ada</div><div role="gridcell" aria-colindex="2" tabindex="-1">Engine notes</div></div>
+  <div role="rowgroup"><div role="row" aria-rowindex="3"><div role="gridcell" aria-colindex="1" tabindex="-1">Grace</div><div role="gridcell" tabindex="-1">Compiler</div></div></div>
+</div>
+
+<h2>Row groups and a nested table</h2>
+<table id="grouped">
+  <thead><tr><th scope="col">Item</th><th scope="col">Qty</th></tr></thead>
+  <tbody><tr><th scope="row">Nuts</th><td>3</td></tr></tbody>
+  <tbody><tr><th scope="row">Bolts</th><td>4</td></tr></tbody>
+  <tfoot><tr><th scope="row">Total</th><td>7</td></tr></tfoot>
+</table>
+<table id="outer"><tr><td>Outer cell
+  <table id="inner"><tr><th scope="col">A</th><th scope="col">B</th></tr><tr><td>1</td><td>2</td></tr><tr><td>3</td><td>4</td></tr></table>
+</td><td>Next</td></tr></table>
+<div role="table" id="aria-table" aria-label="Scores">
+  <div role="rowgroup"><div role="row"><span role="columnheader">Team</span><span role="columnheader">Score</span></div></div>
+  <div role="rowgroup"><div role="row"><span role="rowheader">Reds</span><span role="cell">2</span></div></div>
+</div>
+
+<h2>A header cell that is described</h2>
+<table id="described">
+  <tr><th scope="col" title="Gross, before tax" aria-describedby="note">Total</th><th scope="col">Item</th></tr>
+  <tr><td>$9</td><td>Tea</td></tr>
+</table>
+<p id="note">Tax is added at the till.</p>
+<p><a id="selflink" href="tables.html" aria-current="page">Tables</a> <a id="toplink" href="#top">Back to top</a></p>
+</main>
+</body></html>

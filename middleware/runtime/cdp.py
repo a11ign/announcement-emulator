@@ -5,7 +5,7 @@ milliseconds leaves the extension one update for the three (measured: a stop of 
 `chrome.extension.isAllowedIncognitoAccess()` is false, and no content script ran), and Playwright's contexts are those. So this connects to the browser's DevTools port
 (the middleware adds `--remote-debugging-port` beside Playwright's pipe), attaches to every page and installs a listener that reports each trusted `keydown` and each `focusin`. Nothing is sent to a page but that listener, and, for each `focusin`, questions that change nothing: which DOM node the element is and what the browser calls it (`Resolution`).
 """
-import json, re, threading, time, urllib.request
+import json, os, re, threading, time, urllib.request
 from wsclient import WebSocket
 
 LISTENER = r"""(() => {
@@ -85,6 +85,7 @@ LISTENER = r"""(() => {
 
 
 TICKS_ON = 'window.__aeTicksOn = true'
+RAW_LOG = os.environ.get('AE_RAW')      # a file to append the raw answers of each tree read to: how a DevTools fixture is made
 
 
 def browser_build(version):
@@ -232,9 +233,15 @@ class Cdp:
         numbers every node again, which the predictor takes for a new document and speaks again."""
         import axtree
         converter = self.converters.get((generation, target)) or axtree.Converter()
-        converted = converter.convert(axtree.fetch(lambda commands: self.call_many(commands, session)))
+        raw = axtree.fetch(lambda commands: self.call_many(commands, session))
+        if RAW_LOG: self._keep(raw)
+        converted = converter.convert(raw)
         if session in self.target_of: self.converters.setdefault((generation, target), converter)      # a page that went while it was read leaves nothing behind
         return converted
+
+    def _keep(self, raw):
+        """AE_RAW=<file>: what each read was given, whole, one line each (as AE_RECORD keeps what the runtime was told), for the fixtures `test_axtree.py` converts."""
+        with self.out, open(RAW_LOG, 'a') as f: f.write(json.dumps(raw, separators=(',', ':')) + '\n')
 
     def _trees(self):
         """Reads the trees of the pages that have changed, one page at a time, and rests as long as a read took when that was more than a tenth of a second (so that reading is at most half the time of a busy page)."""
@@ -326,4 +333,4 @@ class Resolution:
         if backend is None: return {}
         own = next((n for n in (ax or {}).get('nodes') or [] if n.get('backendDOMNodeId') == backend and not n.get('ignored')), None)
         if own is None: return {'backendNodeId': backend}
-        return {'backendNodeId': backend, 'axName': own['name'].get('value', '') if isinstance(own.get('name'), dict) else '', 'axRole': axtree.ROLES.get((own.get('chromeRole') or {}).get('value'))}
+        return {'backendNodeId': backend, 'axName': own['name'].get('value', '') if isinstance(own.get('name'), dict) else '', 'axRole': axtree.role_of(own)}

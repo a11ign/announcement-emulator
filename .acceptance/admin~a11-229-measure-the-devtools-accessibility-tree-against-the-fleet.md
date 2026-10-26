@@ -103,3 +103,32 @@ python3 -m unittest discover -s middleware/agreement -t middleware/agreement
 ```
 
 This is step 2 of 3; the gate stopped, so step 3 waits for the chairman.
+
+## Under the plan of 2026-10-26 (DevTools as the only tree source): step 1 of 4, the fields DevTools lacks, with the extension still there as the reference
+
+The earlier "step 1 of 3" and "step 2 of 3" above are the merged measurements (#13, #16). The plan was rewritten after the chairman's work list (DevTools first: `clickable`, a field's typed value, the description words, the `row N` / `column N`
+header words, and the cost), as four steps. This is the first: the DevTools conversion (`middleware/runtime/axtree.py`) is held to the companion extension's tree for the same pages, recorded here before the extension is removed
+(`middleware/runtime/fixtures/structure/`, three small pages of `middleware/sample-suite/pages/fields/` walked by the new `fields` project), and the fields it lacked are filled from the protocol and Chromium's own rules. It also carries over
+the two parts of the closed #14 that do not depend on the extension: `check-report.mjs` refuses an option it does not know, and the `contexts` project (a suite that opens its own `browser.newContext()`).
+
+Acceptance (needs no network, no fleet and no browser; the recordings are in the repository):
+
+```bash
+set -eu
+# the conversion equals the extension's tree, field by field, on the three recorded pages: table cells (index, span, aria index, header cells), positions in a set, the click verb, values, descriptions, links
+(cd middleware/runtime && python3 -m unittest test_axtree test_cdp)
+# the pages and the tests that walk them are there, and the recordings were made of them
+test -f middleware/sample-suite/pages/fields/tables.html && test -f middleware/sample-suite/pages/fields/lists.html && test -f middleware/sample-suite/pages/fields/clickable.html
+grep -q 'name: "fields"' middleware/sample-suite/base.config.ts && grep -q 'name: "contexts"' middleware/sample-suite/base.config.ts
+for page in tables lists clickable; do test -s middleware/runtime/fixtures/structure/$page.jsonl.gz && test -s middleware/runtime/fixtures/structure/devtools-$page.json.gz; done
+# every other recorded replay still says the same (the DevTools sequences and the extension's)
+(cd middleware/runtime && python3 -m unittest test_replay test_pure test_fallback test_flags)
+# check-report refuses an option it does not know (exit 2) and holds the contexts test to the speech of both its pages
+(cd middleware && pnpm exec rstest run src/check-report.test.ts)
+# nothing the two earlier freezes name has moved at the commit each was named at (they name whole directories the runtime lives in, which this ticket changes by design)
+python3 middleware/agreement/make_freeze.py check middleware/results/tree-source/freeze.json --head bcec5908e7
+python3 middleware/agreement/make_freeze.py check middleware/results/tree-source-structure/freeze.json --head 1cf8cd09f7
+python3 -m unittest discover -s middleware/agreement -t middleware/agreement
+```
+
+This is step 1 of 4; the ticket stays open for steps 2 (read the tree incrementally), 3 (remove the extension) and 4 (re-measure under a fresh freeze).
