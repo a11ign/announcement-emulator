@@ -167,7 +167,7 @@ test("the spike still proves what it proved: no browser in the archive, the tran
   assert.ok(ran("transcripts", /compare_bundles\.py replay/), "transcripts: replay");
   assert.ok(ran("bundle-format", /sizes\.py"? choose/), "bundle-format: the format is the measured one");
   assert.ok(ran("trace", /trace\.sh/), "trace: the lists");
-  assert.ok(ran("demo", /compare_bundles\.py misses/) && ran("demo", /compare_live\.py/), "demo: the live comparison");
+  assert.ok(ran("demo", /compare_bundles\.py"? misses/) && ran("demo", /compare_live\.py/), "demo: the live comparison");
 });
 
 test("every artifact a job of the spike downloads is uploaded by a job it needs", () => {
