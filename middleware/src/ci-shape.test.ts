@@ -28,6 +28,8 @@ const stepsOf = (job: Job): Step[] => job.steps ?? [];
 
 const DRAFT = "github.event_name != 'pull_request' || !github.event.pull_request.draft";
 const SPIKE = "middleware-spike.yml";
+/** The workflows that a fleet capture window starts by committing a stamp file (A11-229, A11-230, A11-234). */
+const MEASUREMENTS = names.filter((name) => workflow(name).on?.push?.paths?.some((path) => path.startsWith("middleware/results/")));
 
 /** Every string in the parsed document: what the workflow says, with its comments left out. */
 function strings(value: unknown): string[] {
@@ -88,7 +90,7 @@ test("a nightly, a dispatch and a release run of the spike and of the dry run ar
 
 test("a workflow with a macOS job, or one that calls a workflow with one, filters its pull_request by paths, filters its push to the stamp that asks for it, and is not run by the merge queue", () => {
   const costly = names.filter((name) => usesMacos(name));
-  assert.deepEqual(costly.sort(), ["playwright-versions-agreement.yml", "release-bundles.yml", "release-dry-run.yml", "middleware-spike.yml", "tree-source-agreement.yml"].sort());
+  assert.deepEqual(costly.sort(), ["agreement-round.yml", "playwright-versions-agreement.yml", "release-bundles.yml", "release-dry-run.yml", "middleware-spike.yml", "tree-source-agreement.yml"].sort());
   for (const name of costly) {
     const on = workflow(name).on ?? {};
     assert.ok(!("merge_group" in on), `${name}: not on the merge queue`);
@@ -180,18 +182,24 @@ test("the dry run is for a pull request that changes the release machinery, and 
 
 // ---- 5: the measurements run when somebody asks ---------------------------------------------------------------------------------------------------------------------------
 
+test("the three measurement workflows are found, so that the tests below hold each of them", () => {
+  assert.deepEqual([...MEASUREMENTS].sort(), ["agreement-round.yml", "playwright-versions-agreement.yml", "tree-source-agreement.yml"]);
+});
+
 test("the agreement workflows run when their stamp file is pushed and on dispatch, never on a schedule or a pull request, and a measurement is never cancelled", () => {
-  for (const name of ["tree-source-agreement.yml", "playwright-versions-agreement.yml"]) {
+  for (const name of MEASUREMENTS) {
     const on = workflow(name).on ?? {};
     assert.deepEqual(Object.keys(on).sort(), ["push", "workflow_dispatch"], name);
     assert.equal(workflow(name).concurrency!["cancel-in-progress"], false, name);
   }
 });
 
-test("a dispatch of playwright-versions-agreement.yml is not refused by the guard that keeps the merge of its stamp from running it again", () => {
-  const guard = workflow("playwright-versions-agreement.yml").jobs!.reading!.if ?? "";
-  assert.match(guard, /github\.event_name == 'workflow_dispatch'/);
-  assert.match(guard, /github\.ref_name != github\.event\.repository\.default_branch/);
+test("a dispatch of a measurement is not refused by the guard that keeps the merge of its stamp from running it again", () => {
+  for (const name of MEASUREMENTS.filter((measurement) => workflow(measurement).jobs!.reading!.if !== undefined)) {
+    const guard = workflow(name).jobs!.reading!.if!;
+    assert.match(guard, /github\.event_name == 'workflow_dispatch'/, name);
+    assert.match(guard, /github\.ref_name != github\.event\.repository\.default_branch/, name);
+  }
 });
 
 // ---- 6: the gate passes when the heavy jobs are not run ----------------------------------------------------------------------------------------------------------------

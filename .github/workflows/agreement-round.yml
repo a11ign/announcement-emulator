@@ -13,6 +13,8 @@ on:
   push:
     paths:
       - middleware/results/agreement-round-1/ci-run.txt
+  # By hand, from a branch, inside a capture window. There is no `schedule` (A11-260): a reading is valid only within about two hours of the fleet captures (rule.md), so a nightly run would spend its macOS minutes on a reading the rule throws away.
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -27,8 +29,8 @@ env:
 
 jobs:
   reading:
-    # a measurement is made on a branch, inside a capture window: merging the stamp to the default branch must not run it again
-    if: github.ref_name != github.event.repository.default_branch
+    # a measurement is made on a branch, inside a capture window: merging the stamp to the default branch must not run it again (a dispatch is somebody asking for one)
+    if: github.event_name == 'workflow_dispatch' || github.ref_name != github.event.repository.default_branch
     strategy:
       fail-fast: false
       matrix:
