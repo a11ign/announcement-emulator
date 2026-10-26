@@ -14,7 +14,7 @@ const REPOSITORY = fileURLToPath(new URL("../..", import.meta.url));
 const WORKFLOWS = join(REPOSITORY, ".github", "workflows");
 
 type Trigger = { paths?: string[]; types?: string[] } | null;
-type Step = { id?: string; if?: string; uses?: string; run?: string };
+type Step = { id?: string; if?: string; uses?: string; run?: string; with?: { name?: string } };
 type Job = { if?: string; needs?: string | string[]; uses?: string; "runs-on"?: string; steps?: Step[]; strategy?: { matrix?: string } };
 type Concurrency = { group?: string; "cancel-in-progress"?: boolean | string };
 type Workflow = { on?: Record<string, Trigger>; concurrency?: Concurrency; jobs?: Record<string, Job> };
@@ -47,8 +47,15 @@ function usesMacos(name: string, seen: string[] = []): boolean {
   return strings(doc).some((text) => /macos-/.test(text)) || called.some((callee) => usesMacos(callee, [...seen, name]));
 }
 
-/** What the spike's `mode` job prints for an event, as parsed JSON by output name. */
+const modeRuns = new Map<string, Record<string, { include: Row[] }>>();
+
+/** What the spike's `mode` job prints for an event, as parsed JSON by output name. The script is run once for each event. */
 function modeOutputs(event: string): Record<string, { include: Row[] }> {
+  if (!modeRuns.has(event)) modeRuns.set(event, runModeJob(event));
+  return modeRuns.get(event)!;
+}
+
+function runModeJob(event: string): Record<string, { include: Row[] }> {
   const step = stepsOf(workflow(SPIKE).jobs!.mode!).find((s) => s.id === "mode") ?? assert.fail("the mode job has no step `mode`");
   const dir = mkdtempSync(join(tmpdir(), "ae-mode-"));
   const output = join(dir, "output"), summary = join(dir, "summary");
@@ -149,6 +156,30 @@ test("the spike does not build the archive twice to compare: that check is relea
   assert.equal(compares("release-bundles.yml"), true);
   assert.equal(workflow("release-dry-run.yml").jobs!.bundles!.uses, "./.github/workflows/release-bundles.yml");
   assert.ok("schedule" in (workflow("release-dry-run.yml").on ?? {}), "the dry run is nightly");
+});
+
+/** The name of an artifact with the matrix platform left as a placeholder, so that an upload and a download of one platform's file are the same name. */
+const artifactName = (step: Step) => (step.with?.name ?? "").replace(/\$\{\{ matrix\.platform \}\}/, "<platform>");
+
+test("the spike still proves what it proved: no browser in the archive, the transcripts, the format choice, the lists, and the live comparison of the lean bundle with the full layout", () => {
+  const ran = (job: string, command: RegExp) => stepsOf(workflow(SPIKE).jobs![job]!).some((step) => command.test(step.run ?? ""));
+  assert.ok(ran("bundle", /check_no_browser\.py/), "bundle: no browser");
+  assert.ok(ran("transcripts", /compare_bundles\.py replay/), "transcripts: replay");
+  assert.ok(ran("bundle-format", /sizes\.py choose/), "bundle-format: the format is the measured one");
+  assert.ok(ran("trace", /trace\.sh/), "trace: the lists");
+  assert.ok(ran("demo", /compare_bundles\.py misses/) && ran("demo", /compare_live\.py/), "demo: the live comparison");
+});
+
+test("every artifact a job of the spike downloads is uploaded by a job it needs", () => {
+  const jobs = new Map(jobsOf(SPIKE));
+  const uploadedBy = (name: string) => [...jobs].filter(([, job]) => stepsOf(job).some((step) => step.uses?.startsWith("actions/upload-artifact") && artifactName(step) === name)).map(([job]) => job);
+  let downloads = 0;
+  for (const [name, job] of jobs) for (const step of stepsOf(job).filter((s) => s.uses?.startsWith("actions/download-artifact") && artifactName(s) !== "")) {
+    downloads++;
+    const needs = [job.needs ?? []].flat();
+    assert.ok(uploadedBy(artifactName(step)).some((uploader) => needs.includes(uploader)), `${name} downloads ${artifactName(step)}, which none of ${needs.join(", ")} uploads`);
+  }
+  assert.ok(downloads >= 5, "the downloads are found");
 });
 
 test("every matrix key a job of the spike reads is in every row the mode job makes for it", () => {

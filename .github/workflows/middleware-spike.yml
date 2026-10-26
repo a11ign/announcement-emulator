@@ -3,11 +3,11 @@
 # Playwright installs for the team's version (A11-230): the bundle holds none.
 #
 # The runtime bundle is lean (A11-231): a stripped Python and the files a trace of the runtime read, in one copy of NVDA's source (middleware/bundle/trace.sh makes the list, keep/<platform>.txt). Three proofs run
-# here: the transcripts of every recorded session are byte for byte the full layout's (the `bundle` job), a run of the sample suite that wants a file the bundle lacks fails (`demo`), and `trace` makes the lists
+# here: the transcripts of every recorded session are byte for byte the full layout's (`transcripts`), a run of the sample suite that wants a file the bundle lacks fails (`demo`), and `trace` makes the lists
 # again and fails on a file they lack. That the archive is the same bytes when it is built twice is checked where a release is made: release-bundles.yml, which release-dry-run.yml calls nightly.
 #
 # WHAT RUNS WHEN (A11-260). Every build is paid for in minutes, and a macOS minute costs ten times a Linux one, so the workflow runs only what a change needs:
-#   * a pull request that touches a path below runs PR MODE: the Linux bundle (built once, and shared as an artifact with every job that needs it), its transcripts, the Linux `trace`, the Linux `demo` rows, and ONE
+#   * a pull request that touches a path below runs PR MODE: the Linux bundle (built once, and shared as an artifact with every job that needs it), its `transcripts`, the Linux `trace`, the Linux `demo` rows, and ONE
 #     macOS job, the darwin-arm64 row of the primary Playwright, which builds its own bundle. A pull request that touches none of the paths (docs, results) runs nothing here. A draft runs nothing: `ready_for_review` runs it.
 #   * the nightly run on `main`, `workflow_dispatch` and `workflow_call` (a release) run FULL MODE: both platforms, every row. Dispatching this file on a branch is full mode on that branch.
 #   * a push, a merge-queue entry or a merge to `main` runs nothing here: this workflow is not part of ci.yml's `gate`, so the queue does not wait on it.
@@ -96,7 +96,7 @@ jobs:
           echo "mode: $mode" >> "$GITHUB_STEP_SUMMARY"
 
   # One lean bundle for each platform, built here: a stripped Python with the packages in it, and the files of NVDA's source and of the standard library that a trace of the runtime read (keep/<platform>.txt), in one copy.
-  # The full layout is built beside it (--full-dir): what a run could read, nothing pruned. It is the one build of the platform in this run: the transcripts below compare the lean bundle to it, and `trace` and `demo` take it as
+  # The full layout is built beside it (--full-dir): what a run could read, nothing pruned. It is the one build of the platform in this run: `transcripts`, `trace` and `demo` take it as
   # the `full-<platform>` artifact (a tar, which keeps the modes that an artifact's zip would lose) and do not build it again. No browser and no browser library: check_no_browser.py fails the job on an archive that holds one.
   bundle:
     needs: mode
@@ -135,10 +135,6 @@ jobs:
             if docker run --rm -v "$RUNNER_TEMP/formats:/f:ro" ubuntu:24.04 sh -c "mkdir /o && tar -xf /f/bundle.tar.$fmt -C /o && test -f /o/bundle.json"; then result=ok; else result=failed; fi
             echo "$fmt=$result" | tee -a "$RUNNER_TEMP/formats-out/container.txt"
           done
-      # The transcripts: every recorded session, replayed with sweeps, without and with --report-focus, under the full layout and under the lean bundle as it was archived. The outputs must be the same bytes (the clock left out).
-      - run: |
-          { echo "### Transcripts ${{ matrix.platform }}"; echo; echo '```'; python3 middleware/bundle/compare_bundles.py replay "$RUNNER_TEMP/full" "$RUNNER_TEMP/unpacked" 2>&1; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
-        shell: bash
       - run: |
           { echo "### Bundle ${{ matrix.platform }}"; echo; echo "built in ${{ steps.build.outputs.seconds }} s"; echo; ls -l "$RUNNER_TEMP/bundle"; cat "$RUNNER_TEMP/bundle"/pin-*.json; } >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v7
@@ -157,7 +153,28 @@ jobs:
           name: full-${{ matrix.platform }}
           path: ${{ runner.temp }}/full-out
           compression-level: 0
-          retention-days: 1
+          retention-days: 3
+
+  # The transcripts: every recorded session, replayed with sweeps, without and with --report-focus, under the full layout and under the lean bundle as it was archived. The outputs must be the same bytes (the clock left out).
+  # Both come from the `bundle` job as artifacts. A job of its own, as it was (`bundle-identical`), so that a difference reddens this job and leaves `trace`, which makes the list that fixes it, and `demo` to run.
+  transcripts:
+    needs: [mode, bundle]
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.mode.outputs.bundle) }}
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with: { name: "bundle-${{ matrix.platform }}", path: "${{ runner.temp }}/bundle" }
+      - uses: actions/download-artifact@v8
+        with: { name: "full-${{ matrix.platform }}", path: "${{ runner.temp }}/full-tar" }
+      - run: |
+          tar -xf "$RUNNER_TEMP/full-tar/full-${{ matrix.platform }}.tar" -C "$RUNNER_TEMP"
+          mkdir "$RUNNER_TEMP/lean" && tar -xf "$(ls "$RUNNER_TEMP"/bundle/announcement-emulator-bundle-*.tar.* | grep -v '\.sha256$')" -C "$RUNNER_TEMP/lean"
+          { echo "### Transcripts ${{ matrix.platform }}"; echo; echo '```'; python3 middleware/bundle/compare_bundles.py replay "$RUNNER_TEMP/full" "$RUNNER_TEMP/lean" 2>&1; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
+        shell: bash
 
   # The format the bundle is built in is the one that was measured: the smaller of xz and zstd among those that unpack in 5 s or less on the runners that built a bundle (both in full mode, Linux alone in a pull request) with the host's tar. The job fails when build.sh's default is
   # any other.

@@ -9,7 +9,7 @@ set -eu
 pnpm --dir middleware install --frozen-lockfile
 # the workflow shape: concurrency that cancels a superseded pull request run, path filters, one macOS job in a pull request, one build of the bundle for each platform, the draft condition, and a gate that needs only jobs that always run
 pnpm --dir middleware exec rstest run src/ci-shape.test.ts src/release-workflow.test.ts src/supported.test.ts
-# the spike's mode job prints the matrices: one macOS row for a pull request, both platforms nightly, four macOS jobs
+# the spike's mode job prints the matrices: one macOS row for a pull request, both platforms nightly (four macOS rows in the bundle, trace and demo matrices; the transcripts job reuses the bundle one)
 node -e '
 const { parse } = require("./middleware/node_modules/yaml"), fs = require("fs"), cp = require("child_process");
 const run = parse(fs.readFileSync(".github/workflows/middleware-spike.yml", "utf8")).jobs.mode.steps[0].run;
