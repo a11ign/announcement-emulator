@@ -43,11 +43,12 @@ test("release-bundles.yml is a reusable workflow that builds linux-x64 and darwi
   assert.deepEqual(w.jobs!.files!.needs, "bundle");
 });
 
-test("release-dry-run.yml rehearses on a pull request that changes a release and on dispatch, calls release-bundles.yml, and installs on both platforms", () => {
+test("release-dry-run.yml rehearses on a pull request that changes the release machinery, nightly and on dispatch, calls release-bundles.yml, and installs on both platforms", () => {
   const w = workflow("release-dry-run.yml");
-  assert.deepEqual(Object.keys(w.on ?? {}).sort(), ["pull_request", "workflow_dispatch"]);
+  assert.deepEqual(Object.keys(w.on ?? {}).sort(), ["pull_request", "schedule", "workflow_dispatch"]);
   const paths = w.on!.pull_request!.paths!;
-  for (const path of [".github/workflows/release*.yml", "middleware/bundle/**", "middleware/release/**", "middleware/runtime/**", "middleware/src/**", "middleware/package.json", "middleware/pins.json", "pins.env", "emu/**", "q1/**", "q2/**", "q3/**"]) assert.ok(paths.includes(path), path);
+  for (const path of [".github/workflows/release*.yml", "middleware/release/**", "middleware/bundle/write-pins.mjs", "middleware/pins.json"]) assert.ok(paths.includes(path), path);
+  for (const path of ["middleware/bundle/**", "middleware/runtime/**", "middleware/src/**", "emu/**", "q1/**", "q2/**", "q3/**"]) assert.ok(!paths.includes(path), `${path} would build both platforms for a pull request that the nightly run covers`);
   assert.equal(w.jobs!.bundles!.uses, "./.github/workflows/release-bundles.yml");
   assert.deepEqual(w.jobs!.install!.strategy!.matrix!.include!.map((l) => l.platform), ["linux-x64", "darwin-arm64"]);
 });

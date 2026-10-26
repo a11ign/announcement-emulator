@@ -196,7 +196,8 @@ test("every figure the list ships is in the repository, and its agreement.txt gi
 });
 
 // The demo job of middleware-spike.yml: one row for each platform and Playwright version, and what each row's reports are held to saying (check-report.mjs).
-const rows = [...readFileSync(join(repoRoot, ".github", "workflows", "middleware-spike.yml"), "utf8").matchAll(/- \{ platform: ([\w-]+), runner: ([\w-]+), playwright: "([\d.]+)", agreement: (\w+), other-agreement: (\w+), chromium: "([\d.]+)"/g)]
+// The rows are the `mode` job's script (full mode has all of them): one JSON object each.
+const rows = [...readFileSync(join(repoRoot, ".github", "workflows", "middleware-spike.yml"), "utf8").matchAll(/"platform": "([\w-]+)", "runner": "([\w-]+)", "playwright": "([\d.]+)", "agreement": "(\w+)", "other-agreement": "(\w+)", "chromium": "([\d.]+)"/g)]
   .map(([, platform, , playwright, agreement, otherAgreement, chromium]) => ({ platform: platform!, playwright: playwright!, agreement: agreement!, otherAgreement: otherAgreement!, chromium: chromium! }));
 
 test("the sample suite's CI rows are held to the list: a listed version's rows expect a measured sentence, every other version's the not-measured one", () => {

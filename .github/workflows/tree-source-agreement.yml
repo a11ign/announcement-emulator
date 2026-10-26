@@ -13,6 +13,8 @@ on:
   push:
     paths:
       - middleware/results/tree-source/ci-run.txt
+  # By hand, from a branch, inside a capture window. There is no `schedule` (A11-260): a reading is valid only within about two hours of the fleet captures (rule.md), so a nightly run would spend its macOS minutes on a reading the rule throws away.
+  workflow_dispatch:
 
 permissions:
   contents: read

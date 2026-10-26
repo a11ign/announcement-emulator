@@ -9,40 +9,35 @@
 name: release-dry-run
 
 on:
+  # Only a pull request that changes the release machinery rehearses a release: the bundle's own inputs are rehearsed by the nightly run below (and checked, in PR mode, by middleware-spike.yml), because this file builds
+  # both platforms twice and a macOS minute costs ten times a Linux one (A11-260). `ready_for_review` runs a pull request that was a draft.
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
     paths:
       - ".github/workflows/release*.yml"
-      - ".changeset/**"
-      - "package.json"
-      - "pnpm-workspace.yaml"
-      - "pnpm-lock.yaml"
-      - "middleware/bundle/**"
       - "middleware/release/**"
-      - "middleware/runtime/**"
-      - "middleware/src/**"
-      - "middleware/package.json"
+      - "middleware/bundle/write-pins.mjs"
       - "middleware/pins.json"
-      - "middleware/supported-versions.json"
-      - "pins.env"
-      - "emu/**"
-      - "q1/**"
-      - "q2/**"
-      - "q3/**"
+  schedule:
+    - cron: "47 3 * * *"
   workflow_dispatch:
 
 permissions:
   contents: read
 
+# A new push to a pull request cancels the run it supersedes; a nightly and a dispatch are never cancelled.
 concurrency:
-  group: release-dry-run-${{ github.ref }}
-  cancel-in-progress: true
+  group: release-dry-run-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   bundles:
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     uses: ./.github/workflows/release-bundles.yml
 
   rehearse:
     needs: bundles
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -70,6 +65,7 @@ jobs:
   # The packed package installs the bundle it pins, from a mirror of the Release's assets (ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST), and its doctor finds it.
   install:
     needs: rehearse
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     strategy:
       fail-fast: false
       matrix:
