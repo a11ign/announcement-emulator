@@ -240,9 +240,9 @@ test("a dispatch of a measurement is not refused by the guard that keeps the mer
 test("gate needs only jobs that always run: ci.yml has no path filter and none of its jobs has a condition, and nothing from another workflow is in it", () => {
   const ci = workflow("ci.yml");
   for (const trigger of Object.values(ci.on ?? {})) assert.equal(trigger?.paths, undefined);
-  const needs = [ci.jobs!.gate!.needs].flat();
+  const needs = [ci.jobs!.gate!.needs ?? []].flat();
   assert.deepEqual(needs.sort(), ["middleware", "python"]);
-  for (const name of needs) assert.equal(ci.jobs![name!]!.if, undefined, name);
+  for (const name of needs) assert.equal(ci.jobs![name]!.if, undefined, name);
   assert.doesNotMatch(JSON.stringify(ci), /middleware-spike|release-dry-run|release-bundles|tree-source|playwright-versions/);
 });
 
