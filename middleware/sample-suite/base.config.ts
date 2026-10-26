@@ -18,6 +18,10 @@ export const config: PlaywrightTestConfig = {
     { name: "corpus", testDir: "./tests/corpus", timeout: 180_000, use: { viewport: { width: 1008, height: 729 } } },
     // the same walk on table- and list-heavy pages (A11-229, step 2: results/tree-source-structure/rule.md)
     { name: "structure", testDir: "./tests/structure", timeout: 180_000, use: { viewport: { width: 1008, height: 729 } } },
+    // the structure project's pages at the pace of a test that waits for the page: the cost of reading the tree is measured with it (A11-229, step 2: results/devtools-source/cost)
+    { name: "paced", testDir: "./tests/paced", timeout: 300_000, use: { viewport: { width: 1008, height: 729 } } },
+    // the five pages the structure measurement left out for their size, 705 to 1,770 tab stops (A11-229, step 2): the middleware predicted nothing for them
+    { name: "large", testDir: "./tests/large", timeout: 900_000, use: { viewport: { width: 1008, height: 729 } } },
     // two small local pages that carry the fields the DevTools tree source was found to lack; their recordings are the fixtures it is held to (A11-229, step 1)
     { name: "fields", testDir: "./tests/fields" },
   ],
