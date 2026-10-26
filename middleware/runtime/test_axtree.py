@@ -434,3 +434,23 @@ class Patching(unittest.TestCase):
     def test_a_page_that_was_not_converted_with_retain_cannot_be_patched(self):
         converter = axtree.Converter(); converter.convert(self.raw)
         with self.assertRaises(axtree.Unpatchable): converter.patch(self.ax, set(), set(), self.dom, self.raw['page'], self.raw['viewport'])
+
+
+class MarkingText(unittest.TestCase):
+    """Where the words and sentences of a text start are found once for each distinct text (a container holds the text of what is in it, so the same string comes up at each level of the tree) and the table of them is bounded."""
+    def setUp(self): axtree.MARKS.clear(); axtree.MARKED[0] = 0
+
+    def test_the_marks_of_a_text_are_the_same_the_second_time_and_a_caller_may_change_what_it_is_given(self):
+        first = axtree.word_bounds('Pick a section. Then go.')
+        first[0].append(99)
+        self.assertEqual(axtree.word_bounds('Pick a section. Then go.'), ([0, 5, 7, 14, 16, 21, 23], [4, 6, 14, 15, 20, 23, 24]))
+        sentences = axtree.sentence_starts('Pick a section. Then go.'); sentences.append(99)
+        self.assertEqual(axtree.sentence_starts('Pick a section. Then go.'), [0, 16])
+
+    def test_a_long_text_is_not_kept(self):
+        axtree.word_bounds('word ' * (axtree.MARKED_LONGEST // 4)); self.assertEqual(len(axtree.MARKS), 0)
+
+    def test_the_table_is_emptied_before_it_holds_more_than_its_limit(self):
+        for i in range(axtree.MARKED_LIMIT // 1000 + 5): axtree.word_bounds(f'{i} ' + 'x' * 998)
+        self.assertLessEqual(axtree.MARKED[0], axtree.MARKED_LIMIT)
+        self.assertEqual(axtree.MARKED[0], sum(len(key[1]) for key in axtree.MARKS))

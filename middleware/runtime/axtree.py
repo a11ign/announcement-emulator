@@ -14,6 +14,9 @@ Not forced, because the protocol does not give it (A11-229, listed with the unit
 "Day When"); the value of a colour field and the file field's "No file chosen"; ARIA radio buttons outside a radio group (Chromium groups them); the `relevant` a live region has by default; a label's listener in a frame; and, for a node with no
 action at all, the extension's `none` where this says `clickAncestor` (a listener on the document is not one DOMSnapshot sees, and neither is spoken).
 The write-up measures what that costs (docs/playwright-middleware-spike.md, Q2).
+
+A page is not converted whole at each change (A11-229, step 2): `convert(raw, retain=True)` keeps what `patch` needs to bring the node list it made up to date when only the focus, the look of some elements, the names of some
+nodes and the page's state changed, and incremental.py reads the nodes that can have changed. `patch` gives the list `convert` gives, or says it cannot (`Unpatchable`) and the page is converted whole.
 """
 import json, os, re
 from urllib.parse import urljoin
@@ -374,30 +377,34 @@ class Converter:
         if c.focus >= 0: dirty.add(c.focus)
         self.linked = set(c.linked)
         nodes = list(c.nodes); base = list(c.base)
-        for i in sorted(dirty):
-            n = ax[c.order[i][0]['nodeId']]; depth, p = c.order[i][1], c.parent_of[i]
-            fresh = self.node(i, n, depth, p, c.roles[i], dom, page, viewport, c.keys[i], c.parent_of, c.roles, nodes[p]['language'] if p >= 0 and 'backendDOMNodeId' not in n else None, c.roles[p] if p >= 0 else None)
-            kept = base[i]; changed = [k for k in fresh.keys() | kept.keys() if k not in INTERNAL and fresh.get(k, MISSING) != kept.get(k, MISSING)]
-            for k in changed:
-                if k == 'state':
-                    now, was = fresh['state'], kept['state']
-                    if any(now.get(x) != was.get(x) for x in now.keys() | was.keys() if x not in ('focused', 'offscreen')): raise Unpatchable('the state of a node changed')
-                elif k not in PATCHABLE: raise Unpatchable(f'{k} of a node changed')
-                elif k in ('name', 'nameFrom') and c.roles[i] in TEXTUAL: raise Unpatchable('the text of a node changed')
-            new = dict(nodes[i])
-            for k in changed:
-                if k == 'state': continue
-                if k in fresh: new[k] = fresh[k]
-                else: new.pop(k, None)
-            new['state'] = {**nodes[i]['state'], **({'focused': True} if fresh['state'].get('focused') else {})}
-            if not fresh['state'].get('focused'): new['state'].pop('focused', None)
-            nodes[i] = new; base[i] = {**fresh, 'state': dict(fresh['state'])}
+        for i in sorted(dirty): nodes[i], base[i] = self.remake(c, i, nodes, base[i], ax, dom, page, viewport)
         flagged = [i for i in sorted(dirty) if nodes[i]['state'].get('focused')]      # the one that has the focus is the last, the deepest, as `convert` has it
         focus = flagged[-1] if flagged else -1
         for i in flagged[:-1]: nodes[i]['state'].pop('focused')
         if viewport != c.viewport: self.scroll(c, nodes, ax, dom, viewport)
         c.nodes, c.base, c.linked, c.viewport, c.focus = nodes, base, self.linked, viewport, focus
         return {'nodes': nodes, 'focusIx': focus, 'url': page['url'], 'title': page['title'], 'sel': {'anchorIx': -1, 'anchorOffset': 0, 'focusIx': -1, 'focusOffset': 0}}
+
+    def remake(self, c, i, nodes, kept, ax, dom, page, viewport):
+        """Node `i` made again as `convert` makes it, taken into the list made before: the new node, and what `node` made of it (the next `kept`). Only what may change in a node is taken from the new one; the rest stays as the passes after
+        `node` left it. A change in anything else is `Unpatchable`."""
+        n = ax[c.order[i][0]['nodeId']]; depth, p = c.order[i][1], c.parent_of[i]
+        fresh = self.node(i, n, depth, p, c.roles[i], dom, page, viewport, c.keys[i], c.parent_of, c.roles, nodes[p]['language'] if p >= 0 and 'backendDOMNodeId' not in n else None, c.roles[p] if p >= 0 else None)
+        changed = [k for k in fresh.keys() | kept.keys() if k not in INTERNAL and fresh.get(k, MISSING) != kept.get(k, MISSING)]
+        for k in changed:
+            if k == 'state':
+                now, was = fresh['state'], kept['state']
+                if any(now.get(x) != was.get(x) for x in now.keys() | was.keys() if x not in ('focused', 'offscreen')): raise Unpatchable('the state of a node changed')
+            elif k not in PATCHABLE: raise Unpatchable(f'{k} of a node changed')
+            elif k in ('name', 'nameFrom') and c.roles[i] in TEXTUAL: raise Unpatchable('the text of a node changed')
+        new = dict(nodes[i])
+        for k in changed:
+            if k == 'state': continue
+            if k in fresh: new[k] = fresh[k]
+            else: new.pop(k, None)
+        new['state'] = {**nodes[i]['state'], **({'focused': True} if fresh['state'].get('focused') else {})}
+        if not fresh['state'].get('focused'): new['state'].pop('focused', None)
+        return new, {**fresh, 'state': dict(fresh['state'])}
 
     @staticmethod
     def scroll(c, nodes, ax, dom, viewport):

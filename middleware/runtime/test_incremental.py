@@ -111,6 +111,7 @@ class Reading(unittest.TestCase):
     def setUp(self):
         self.browser = Browser(load()); self.reader = incremental.Reader()
         self.first = self.reader.read(self.browser.call_many, self.browser.context_of)
+        self.reader.read(self.browser.call_many, self.browser.context_of)      # a document just come is read whole once more, to see that its tree has settled
         self.link = next(b for b in self.browser.elements if b in {n.get('backendDOMNodeId') for n in self.browser.ax.values() if n.get('role', {}).get('value') == 'link'})
         self.field = 275      # the text field of the page, with "Ada" in it
         self.browser.calls.clear()
@@ -119,8 +120,37 @@ class Reading(unittest.TestCase):
         self.assertEqual(tree, converted(tree_of(self.browser), self.reader.converter.uids))
 
     def test_the_first_read_is_a_full_read_and_is_the_tree_a_converter_makes(self):
-        self.assertEqual(self.reader.cost['how'], 'full'); self.assertEqual(self.reader.cost['reason'], 'first')
-        self.assertEqual(self.first, axtree.Converter().convert(copy_of(self.browser.raw)))
+        browser = Browser(load()); reader = incremental.Reader(); tree = reader.read(browser.call_many, browser.context_of)
+        self.assertEqual((reader.cost['how'], reader.cost['reason']), ('full', 'first'))
+        self.assertEqual(tree, axtree.Converter().convert(copy_of(browser.raw)))
+
+    def test_a_document_just_come_is_read_whole_again_and_trusted_when_two_reads_give_the_same_shape_of_tree(self):
+        browser = Browser(load()); reader = incremental.Reader(); reader.read(browser.call_many, browser.context_of)
+        reader.read(browser.call_many, browser.context_of)
+        self.assertEqual((reader.cost['how'], reader.cost['reason']), ('full', 'settling'))
+        reader.read(browser.call_many, browser.context_of)
+        self.assertEqual(reader.cost['how'], 'incremental')
+
+    def test_a_tree_the_browser_is_still_making_is_read_whole_until_it_stops_changing_and_not_for_ever(self):
+        """The browser makes some of its tree after the load and says nothing (an anonymous box under a <details>): the read that began it and the one after differ, and the incremental read would have kept the first."""
+        browser = Browser(load()); reader = incremental.Reader(); reader.read(browser.call_many, browser.context_of)
+        victim = next(n for n in browser.ax.values() if n.get('childIds') and n.get('role', {}).get('value') == 'list')
+        dropped = victim['childIds'].pop()      # the second read has one node fewer, the third the same as the second
+        reader.read(browser.call_many, browser.context_of); self.assertEqual(reader.cost['reason'], 'settling')
+        reader.read(browser.call_many, browser.context_of); self.assertEqual(reader.cost['reason'], 'settling')      # the shape changed between the first and the second: not yet trusted
+        reader.read(browser.call_many, browser.context_of); self.assertEqual(reader.cost['how'], 'incremental')
+
+    def test_a_tree_that_never_stops_changing_is_trusted_after_so_many_reads(self):
+        browser = Browser(load()); reader = incremental.Reader(); reader.read(browser.call_many, browser.context_of)
+        victim = next(n for n in browser.ax.values() if len(n.get('childIds', [])) > incremental.MAX_SETTLE + 2)
+        for _ in range(incremental.MAX_SETTLE + 1):
+            victim['childIds'].pop(); reader.read(browser.call_many, browser.context_of)
+        self.assertEqual(reader.unsettled, 0)
+
+    def test_a_document_that_loaded_again_is_young_again(self):
+        self.browser.probe['doc'] = 'd2'; self.reader.read(self.browser.call_many, self.browser.context_of)
+        self.assertEqual(self.reader.cost['reason'], 'document')
+        self.reader.read(self.browser.call_many, self.browser.context_of); self.assertEqual(self.reader.cost['reason'], 'settling')
 
     def test_a_page_that_only_moved_its_focus_is_read_again_without_the_whole_tree_or_the_snapshot_and_is_the_same_tree(self):
         self.browser.focus(self.link)
@@ -220,7 +250,7 @@ class Reading(unittest.TestCase):
         raw = load(); ax = {n['nodeId']: n for n in raw['ax']}
         suggestions = next(n for n in raw['ax'] if n.get('role', {}).get('value') in ('list', 'listbox') and n.get('backendDOMNodeId') in {x['backendDOMNodeId'] for x in raw['ax'] if 'backendDOMNodeId' in x} and 'name' in n)
         suggestions['properties'] = [*suggestions.get('properties', []), {'name': 'labelledby', 'value': {'type': 'nodeList', 'relatedNodes': [{'backendDOMNodeId': self.field}]}}]
-        browser = Browser(raw); reader = incremental.Reader(); reader.read(browser.call_many, browser.context_of)
+        browser = Browser(raw); reader = incremental.Reader(); reader.read(browser.call_many, browser.context_of); reader.read(browser.call_many, browser.context_of)
         browser.type_into(self.field, 'Adam'); named = browser.ax[suggestions['nodeId']]; named['name'] = dict(named['name'], value='Adam')
         tree = reader.read(browser.call_many, browser.context_of)
         self.assertEqual(reader.cost['how'], 'incremental')
@@ -261,6 +291,29 @@ class Reading(unittest.TestCase):
         for reason in ('first', 'document', 'loadComplete', 'keyframe'):
             self.reader.futile = 3; self.reader.back_off(reason); self.assertEqual(self.reader.futile, 0, reason)
         self.reader.futile = 3; self.reader.back_off(incremental.AFTER_BACK_OFF); self.assertEqual(self.reader.futile, 3)
+
+    def test_a_node_described_by_an_element_whose_title_changed_is_read_again(self):
+        """`<span id=tip title="">` described to a button by aria-describedby: the title is the description, and the button's AX node changes with it."""
+        raw = load(); button = next(n for n in raw['ax'] if n.get('role', {}).get('value') == 'button')
+        target = next(b for b in axtree.Dom(raw['dom'], raw['listeners']).elements if b != button['backendDOMNodeId'] and axtree.Dom(raw['dom'], raw['listeners']).get(b)['tag'] in ('li', 'p', 'span', 'h2'))
+        button['properties'] = [*button.get('properties', []), {'name': 'describedby', 'value': {'type': 'nodeList', 'relatedNodes': [{'backendDOMNodeId': target}]}}]
+        browser = Browser(raw); reader = incremental.Reader(); reader.read(browser.call_many, browser.context_of); reader.read(browser.call_many, browser.context_of)
+        browser.set_attribute(target, 'title', 'Tooltip'); browser.ax[button['nodeId']]['description'] = {'type': 'computedString', 'value': 'Tooltip'}
+        tree = reader.read(browser.call_many, browser.context_of)
+        self.assertEqual(reader.cost['how'], 'incremental')
+        self.assertEqual(next(n for n in tree['nodes'] if n.get('backendId') == button['backendDOMNodeId']).get('description'), 'Tooltip')
+        self.assertEqual(tree, converted(tree_of(browser), reader.converter.uids))
+
+    def test_a_frame_whose_script_context_went_while_the_read_was_made_is_a_full_read_and_not_a_lost_one(self):
+        browser = Browser(load('frames', 'devtools')); reader = incremental.Reader(); read = lambda: reader.read(browser.call_many, browser.context_of)
+        read(); read()
+        original = browser.answer
+        def answer(method, params):
+            if method == 'Runtime.evaluate' and 'contextId' in params: raise RuntimeError('Cannot find context with specified id')
+            return original(method, params)
+        browser.answer = answer
+        tree = read()
+        self.assertEqual((reader.cost['how'], reader.cost['reason']), ('full', 'a frame changed')); self.assertTrue(tree['nodes'])
 
     def test_a_change_to_the_document_is_a_full_read(self):
         self.browser.probe['muts'] += 1
@@ -330,7 +383,7 @@ class Frames(unittest.TestCase):
     """A page with frames (fixtures/devtools/frames.json.gz: two iframes with a document each) is read again without them while each frame's probe says it has not changed."""
     def setUp(self):
         self.browser = Browser(load('frames', 'devtools')); self.reader = incremental.Reader(); self.read = lambda: self.reader.read(self.browser.call_many, self.browser.context_of)
-        self.first = self.read(); self.browser.calls.clear()
+        self.first = self.read(); self.read(); self.browser.calls.clear()
         self.frames = list(self.browser.raw['frames']); self.iframe = next(b for b in self.browser.elements if b == 30)
 
     def test_a_page_whose_frames_did_not_change_is_read_again_without_the_whole_tree(self):
@@ -419,7 +472,7 @@ class Checking(unittest.TestCase):
     """`verify`: the page is read from scratch after an incremental read, and a difference is reported."""
     def setUp(self):
         self.browser = Browser(load()); self.reader = incremental.Reader(verify=True)
-        self.reader.read(self.browser.call_many, self.browser.context_of)
+        self.reader.read(self.browser.call_many, self.browser.context_of); self.reader.read(self.browser.call_many, self.browser.context_of)      # and once more, for the tree to settle
         self.link = next(b for b in self.browser.elements if b in {n.get('backendDOMNodeId') for n in self.browser.ax.values() if n.get('role', {}).get('value') == 'link'})
 
     def test_a_read_that_is_the_same_as_one_from_scratch_is_verified(self):
@@ -462,6 +515,44 @@ class Checking(unittest.TestCase):
         self.browser.answer = answer; self.browser.focus(self.link)
         self.reader.read(self.browser.call_many, self.browser.context_of)
         self.assertEqual((self.reader.cost['verified'], self.reader.mismatches), ('the page changed', []))
+
+
+def recording(name):
+    with gzip.open(os.path.join(HERE, 'fixtures', 'incremental', f'{name}.jsonl.gz'), 'rt') as f: return [json.loads(line) for line in f]
+
+
+class Recorded(unittest.TestCase):
+    """Reads as they were had in Playwright 1.64.1's Chromium (156.0.8078.4) on Linux (fixtures/incremental, made with AE_CONVERSATION and `verify` on, so that each incremental read in them is one a read from scratch agreed with): the
+    commands the reader sent, what the browser answered, what the browser had said since the last read, and the tree it made. The reader is given the same and must send the same commands and make the same tree."""
+    def play(self, name):
+        reader = incremental.Reader(); hows = []
+        for row in recording(name):
+            script = list(row['conversation'])
+            def call_many(commands, script=script):
+                expected, answers = script.pop(0)
+                self.assertEqual(json.loads(json.dumps(commands)), expected)
+                return copy_of(answers)
+            for nodes in row['told']['hints']: reader.updated(nodes)
+            reader.visited(row['told']['visits'])
+            if row['told']['loaded']: reader.loaded()
+            tree = reader.read(call_many, {frame: context for frame, context in row['contexts'].items()}.get)
+            self.assertEqual(script, [], 'the reader asked for less than it did when the read was made')
+            self.assertEqual(json.loads(json.dumps(tree)), row['tree'])
+            hows.append(reader.cost['how'])
+        return hows
+
+    def test_a_form_filled_in_key_by_key_is_read_as_it_was(self):
+        hows = self.play('form')
+        self.assertEqual(hows[:2], ['full', 'full']); self.assertEqual(hows.count('incremental'), 16)
+        self.assertEqual([row['verified'] for row in recording('form')[2:]].count('same'), 15)      # `verify` found each of these the same as a read from scratch
+
+    def test_a_basket_that_counts_while_the_focus_is_on_its_button_is_read_as_it_was(self):
+        hows = self.play('basket')
+        self.assertEqual(hows.count('incremental'), 7); self.assertEqual([row['reason'] for row in recording('basket') if row['how'] == 'full'][2:], ['mutation'] * 3)      # the live region's text is a change of the document: a full read
+
+    def test_the_recordings_have_what_the_reader_is_told_by_the_browser(self):
+        rows = recording('form')
+        self.assertTrue(any(row['told']['visits'] for row in rows)); self.assertTrue(any(row['told']['hints'] for row in rows))
 
 
 class Differences(unittest.TestCase):

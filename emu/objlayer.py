@@ -3,7 +3,7 @@
 import json, types, collections, ctypes
 import boot, standin
 import IAccessibleHandler  # NVDA imports this before NVDAObjects.IAccessible (circular otherwise)
-from standin import CONST, T
+from standin import CONST, T, reverse_relation
 
 HWND = 0x1000
 COMErr = boot.COMError
@@ -248,21 +248,11 @@ class World:
         for k in pn.kids: self._index(k)
     FORWARD = {'labelledBy': 'labelledByIx', 'describedBy': 'describedByIx', 'details': 'detailsIx', 'error': 'errorMessageIx', 'controllerFor': 'controlsIx'}
     REVERSE = {'details': 'detailsForIx', 'error': 'errorMessageForIx', 'labelledBy': 'labelForIx', 'describedBy': 'descriptionForIx'}
-    def reverse_relation(self, key):
-        """The nodes that name each node in their own `key` list, in the order of `by_ix`, each once: made once for the tree (`by_ix` does not change after it is indexed), as standin.Builder does (A11-229)."""
-        held = self.__dict__.setdefault('_reverse', {})
-        if key not in held:
-            found = {}
-            for n in self.by_ix.values():
-                for target in dict.fromkeys(n.raw.get(key) or []): found.setdefault(target, []).append(n.ix)
-            held[key] = found
-        return held[key]
-
     def relations(self, pn, rtype):
         f = pn.raw.get(self.FORWARD.get(rtype, '')) or []
         if f: return [i for i in f if i >= 0]
         r = self.REVERSE.get(rtype)
-        return list(self.reverse_relation(r).get(pn.ix, ())) if r else []
+        return list(reverse_relation(self, r).get(pn.ix, ())) if r else []
     def facade(self, pn):
         if pn.ix not in self._f: self._f[pn.ix] = Facade(pn, self)
         return self._f[pn.ix]

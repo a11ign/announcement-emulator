@@ -260,6 +260,61 @@ class WhatTheBrowserSays(unittest.TestCase):
         for part in ('window.__aeProbe = (baseline, before)', 'window.__aeCommit', 'MutationObserver', 'getBoundingClientRect', 'selectedOptions'): self.assertIn(part, cdp.LISTENER)
 
 
+class WithTheExtensionAsTheTreeSource(unittest.TestCase):
+    """Where the trees do not come from this port (the extension's runs) nothing of the incremental reading is switched on: no Accessibility domain, nothing kept of what the browser says, and a listener without the probe."""
+    def test_the_accessibility_domain_is_not_enabled_and_what_the_browser_says_of_it_is_not_kept(self):
+        c = reader(); c.installed = set(); c.on_tree = None; c.on_attach = lambda target, browser: None; c.browser = '156.0.8078.4'
+        c._install('s', 't')
+        self.assertNotIn('Accessibility.enable', [m['method'] for m in c.ws.sent])
+        c._handle({'method': 'Accessibility.nodesUpdated', 'sessionId': 's', 'params': {'nodes': [{'nodeId': '5'}]}}); c._handle({'method': 'Accessibility.loadComplete', 'sessionId': 's', 'params': {}})
+        self.assertEqual((c.hints, c.loaded, c.wanted), ({}, set(), {}))
+
+    def test_the_probe_is_in_the_listener_only_where_the_trees_are_read_here(self):
+        self.assertIn('if (__TICKS__) {', cdp.LISTENER)
+        self.assertIn('window.__aeProbe', cdp.LISTENER.split('if (__TICKS__) {')[1])      # and nowhere before the condition
+
+
+class TheScriptContextOfEachFrame(unittest.TestCase):
+    """The probe of incremental.py is asked in the context a frame's script runs in: the browser says which that is when it makes one, and when it takes one away."""
+    def created(self, c, frame, ident, default=True, session='s'):
+        c._handle({'method': 'Runtime.executionContextCreated', 'sessionId': session, 'params': {'context': {'id': ident, 'origin': 'http://x', 'auxData': {'frameId': frame, 'isDefault': default}}}})
+
+    def test_the_default_context_of_a_frame_is_the_one_kept_and_not_an_isolated_world(self):
+        c = reader(); self.created(c, 'f1', 5); self.created(c, 'f1', 6, default=False); self.created(c, 'f2', 7)
+        self.assertEqual(c.contexts, {'s': {'f1': 5, 'f2': 7}})
+
+    def test_a_context_that_is_made_again_for_a_frame_that_navigated_replaces_the_old(self):
+        c = reader(); self.created(c, 'f1', 5); self.created(c, 'f1', 9)
+        self.assertEqual(c.contexts, {'s': {'f1': 9}})
+
+    def test_a_context_the_browser_destroys_is_forgotten(self):
+        c = reader(); self.created(c, 'f1', 5); self.created(c, 'f2', 7)
+        c._handle({'method': 'Runtime.executionContextDestroyed', 'sessionId': 's', 'params': {'executionContextId': 5}})
+        self.assertEqual(c.contexts, {'s': {'f2': 7}})
+
+    def test_all_the_contexts_of_a_page_go_when_the_browser_clears_them(self):
+        c = reader(); self.created(c, 'f1', 5); self.created(c, 'g1', 8, session='t')
+        c._handle({'method': 'Runtime.executionContextsCleared', 'sessionId': 's', 'params': {}})
+        self.assertEqual(c.contexts, {'t': {'g1': 8}})
+
+    def test_a_read_is_given_a_copy_of_the_contexts_the_reader_of_the_socket_changes(self):
+        import incremental
+        seen = []
+        class Reader:
+            cost = {'how': 'full', 'totalMs': 1.0}; mismatches = []; checking = False
+            def __init__(self, **kw): pass
+            def updated(self, nodes): pass
+            def loaded(self): pass
+            def visited(self, backends): pass
+            def read(self, call_many, contexts=None): seen.append(contexts('f1')); return {'nodes': [{}]}
+        real = incremental.Reader; incremental.Reader = Reader
+        try:
+            c = reader(); c.target_of = {'s': 't'}; self.created(c, 'f1', 5)
+            c._read('s', 't', 0)
+        finally: incremental.Reader = real
+        self.assertEqual(seen, [5])
+
+
 class WhereTheFocusHasBeen(unittest.TestCase):
     """The browser's tree keeps what the focus did to the nodes it passed (a skip link's wrapper is left out once the link has had the focus), and the layout does not: every element a `focusin` named is read again (incremental.py)."""
     def test_the_node_the_browser_names_for_a_focus_is_kept_for_the_reader(self):

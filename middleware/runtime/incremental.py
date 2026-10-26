@@ -11,11 +11,12 @@ Then the AX tree is refreshed where it can have changed and nowhere else (see `u
 (`Converter.patch`: the nodes that can have changed are made again, the rest is the list made before) or, when the shape of the tree changed, made again from the AX nodes held: no DOM snapshot and no whole AX tree is fetched.
 Anything else is a full read, which is always safe: a first read, a new document, a change the probe or the AX tree reports that this does not know how to take, a node it was not told of, a frame that changed, a read that fails half way.
 
-What the probe cannot see, and an incremental read therefore does not read again until the next full one: the look (colours, fonts) of an element outside the focus chain, changed by CSS alone (a :hover rule, an animation), the
-text that a pseudo-element generates, a click listener the page adds with script after it has loaded, and what a closed shadow tree holds. None of them is something NVDA says in the settings the emulator is run with, and MAX_RUN
-bounds how long any of them goes unseen. `verify` reads the page from scratch after each incremental read and says where the two trees differ.
+What an incremental read does not see, and keeps as it was until the next full read (a mutation, a box that moved, MAX_RUN reads): the look (colours, fonts) of an element outside the focus chain that a rule restyles
+because the focus moved or something was checked (a sibling of the focused element, `input:focus + .hint`; `input:checked + label`; `:visited`), or that CSS alone changes (a :hover rule, an animation); the text that a
+pseudo-element generates; a click listener the page adds with script after it has loaded; a closed shadow tree; and a node the browser makes later with no event and no change of the page. The last is why a document just come is read
+whole until two reads agree (`settle`). None of the others is something NVDA says in the settings the emulator is run with. `verify` reads the page from scratch after each incremental read and says where the two trees differ.
 """
-import time
+import json, time
 
 import axtree
 
@@ -23,6 +24,7 @@ MAX_RUN = 25      # incremental reads in a row before a full one
 FUTILE = 4      # full reads in a row that the probe asked for (a page that never stops changing) after which the probe is not asked for a while: it costs a fifth of a full read on a page that only changes
 MAX_BACKOFF = 32      # the most reads in a row made without the probe
 AFTER_BACK_OFF = 'a page that was read without the probe'
+MAX_SETTLE = 3      # whole reads of a young document that are compared with the one before; after them the tree is trusted whether the last two agreed or not
 MAX_VISITS = 400      # elements the focus has been on, since the last read, that are read again; more is a full read
 MAX_SUBTREE = 400      # nodes below a control or an element whose class changed that are read again at most; an element that holds more is a full read
 COSMETIC = ['color', 'background-color', 'font-family', 'font-size', 'font-weight', 'font-style', 'text-decoration-line']      # axtree.py STYLES but `display` and `visibility`, which the probe's `layout` covers
@@ -63,6 +65,11 @@ def ax_differences(held, now, limit=8):
     return out
 
 
+def signature(ax):
+    """What the shape of a tree is, as a number: its nodes, which are left out of it, and which nodes each holds. The nodes that have no element (the boxes a line of text is made of) are made again by the browser with other ids and are left out."""
+    return hash(tuple((n['nodeId'], bool(n.get('ignored')), tuple(c for c in n.get('childIds', []) if not c.startswith('-'))) for n in ax if not n['nodeId'].startswith('-')))
+
+
 def related_by(nodes):
     """{the DOM node a node is named or described by: [the DOM nodes of those nodes]}"""
     out = {}
@@ -77,6 +84,7 @@ def related_by(nodes):
 class Page:
     """What is held of one page between reads: the AX nodes by id, the page's elements, the answer of the probe the last full read began with, and the frames: their ids, the AX nodes of their trees and what their probes said."""
     def __init__(self, ax, dom, probe, viewport, frames=None, frame_probes=None):
+        self.signature = signature(ax)
         self.frames = frames or {}; self.frame_ids = list(self.frames); self.frame_probes = frame_probes or {}
         self.frame_ax = axtree.prefix_frames(self.frames)[0]      # the nodes of the frames' trees by their prefixed ids, as `Converter.patch` finds them
         self.ax = {n['nodeId']: n for n in ax}; self.dom = dom; self.probe = probe; self.run = 0; self.viewport = viewport
@@ -100,6 +108,7 @@ class Reader:
         self.cost = {}; self.mismatches = []; self.ax_found = []; self.touched = set(); self.contexts = lambda frame: None; self.checking = False
         self.futile = 0      # full reads in a row that a change of the page asked for
         self.skip = 0      # reads still to be made whole without asking the probe
+        self.unsettled = 0      # the whole reads of a document that has just come, since the first, while the tree they gave was not the tree the read before gave
 
     # ---- what the browser says without being asked
     def updated(self, nodes):
@@ -133,21 +142,19 @@ class Reader:
 
     def back_off(self, reason):
         """A page that changed again and again is read whole, so the probe, which walks all its elements, is of no use: it is left out for 1, 2, 4... reads (MAX_BACKOFF) after FUTILE full reads in a row that its changes asked for."""
-        if reason in ('first', 'document', 'loadComplete', 'no probe', 'keyframe') or self.page is None: self.futile = 0; return
+        if reason in ('first', 'document', 'loadComplete', 'settling', 'no probe', 'keyframe') or self.page is None: self.futile = 0; return
         if reason == AFTER_BACK_OFF: return      # the first read after the probe was left out is whole, for there is nothing to compare with: it says nothing of the page
         self.futile += 1
         if self.futile >= FUTILE: self.skip = min(2 ** (self.futile - FUTILE), MAX_BACKOFF)
 
     def look(self, call_many, baseline, before):
         """The probe, and the state of the page the conversion needs: asked together, with the probes of the frames the last read held."""
-        import json
         held = [f for f in (self.page.frame_ids if self.page else []) if self.contexts(f) is not None]
-        questions = [('Runtime.evaluate', {'expression': PROBE % ('true' if baseline else 'false', json.dumps(before)), 'returnByValue': True}), ('Runtime.evaluate', {'expression': axtree.PAGE_JS, 'returnByValue': True}),
-                     ('Page.getLayoutMetrics', {}), ('Page.getFrameTree', {}), *(('Runtime.evaluate', {'expression': PROBE % ('false', '-1'), 'returnByValue': True, 'contextId': self.contexts(f)}) for f in held)]
-        probe, page, metrics, tree, *asked = call_many(questions)
+        probe, page, metrics, tree = call_many([('Runtime.evaluate', {'expression': PROBE % ('true' if baseline else 'false', json.dumps(before)), 'returnByValue': True}), ('Runtime.evaluate', {'expression': axtree.PAGE_JS, 'returnByValue': True}),
+                                                ('Page.getLayoutMetrics', {}), ('Page.getFrameTree', {})])
         if 'value' not in page.get('result', {}): raise ValueError('the page has no state to read (it is closing)')
         value = probe.get('result', {}).get('value')
-        frames = {f: (json.loads(a['result']['value']) if a.get('result', {}).get('value') else None) for f, a in zip(held, asked)}
+        frames = self.frame_probes(call_many, held, 'false')
         return (json.loads(value) if value else None), {'page': json.loads(page['result']['value']), 'viewport': metrics.get('cssVisualViewport') or metrics.get('visualViewport'), 'frames': axtree.frame_ids(tree), 'frame_probes': frames}
 
     def reason(self, probe, state):
@@ -159,6 +166,7 @@ class Reader:
         for frame in state['frames']:
             if self.frame_changed(frame, state['frame_probes'].get(frame)): return 'a frame changed'
         if probe['doc'] != self.page.probe['doc']: return 'document'
+        if self.unsettled: return 'settling'      # the browser may not have made all its tree of a document it was asked for just now: the next whole read is compared with this one
         if probe['muts'] != self.page.probe['muts']: return 'mutation'
         if probe['soft'] is None: return 'an element that is gone'
         if probe['layout'] != 0: return 'layout'
@@ -186,10 +194,21 @@ class Reader:
         raw['_dom'] = axtree.Dom(raw['dom'], raw.get('listeners', ()))
         converted = self.converter.convert(raw, retain=True)
         done = time.perf_counter()
+        before = self.page
         self.page = Page(raw['ax'], raw['_dom'], probe if asked else None, raw['viewport'], raw.get('frames'), frame_probes)
+        self.settle(reason, before)
         self.force = None; self.hints = {}; self.visits = set()
         self.cost = {'how': 'full', 'reason': reason, 'fetchMs': round((fetched - began) * 1000, 1), 'convertMs': round((done - fetched) * 1000, 1), 'nodes': len(converted['nodes'])}
         return converted
+
+    def settle(self, reason, before):
+        """A document just come is read whole until two reads in a row give the same shape of tree (MAX_SETTLE at most): the browser makes some of its tree after the load, with no event, and an incremental read would keep the
+        tree it had. The first read of a document has nothing to be compared with; one the browser says is the load's end, or that is made because the tree had not settled, is compared with the one before."""
+        if reason in ('first', 'document'): self.unsettled = 1; return
+        if reason == 'loadComplete' and not self.unsettled: self.unsettled = 1
+        elif self.unsettled: self.unsettled += 1
+        else: return
+        if (before is not None and before.signature == self.page.signature) or self.unsettled > MAX_SETTLE: self.unsettled = 0
 
     @staticmethod
     def commit(call_many):
@@ -198,11 +217,15 @@ class Reader:
 
     def baselines(self, call_many, frames):
         """The probe of each frame, taken as the state the full read that follows is of; None for a frame that has no script context here or no probe."""
-        import json
-        asked = [f for f in frames if self.contexts(f) is not None]
-        answers = call_many([('Runtime.evaluate', {'expression': PROBE % ('true', '-1'), 'returnByValue': True, 'contextId': self.contexts(f)}) for f in asked]) if asked else []
-        found = {f: (json.loads(a['result']['value']) if a.get('result', {}).get('value') else None) for f, a in zip(asked, answers)}
+        found = self.frame_probes(call_many, [f for f in frames if self.contexts(f) is not None], 'true')
         return {f: found.get(f) for f in frames}
+
+    def frame_probes(self, call_many, frames, baseline):
+        """The probe of each of the frames, asked in the frame's script context: None for one that does not answer (a context the browser took away while the read was made), whose frame is then read whole."""
+        if not frames: return {}
+        try: answers = call_many([('Runtime.evaluate', {'expression': PROBE % (baseline, '-1'), 'returnByValue': True, 'contextId': self.contexts(f)}) for f in frames])
+        except RuntimeError: return {f: None for f in frames}
+        return {f: (json.loads(a['result']['value']) if a.get('result', {}).get('value') else None) for f, a in zip(frames, answers)}
 
     # ---- an incremental read
     def refresh(self, call_many, probe, state):
@@ -216,24 +239,28 @@ class Reader:
         return converted
 
     def update(self, call_many, probe, state):
-        """The held page brought up to date with what the probe says and converted: the tree, how many AX nodes were read again, how many controls changed, and when the reading was done.
-
-        The AX nodes read again are those of: the document; the nodes the browser's tree has the focus on; the element that has the focus and the one that had it, and the elements above them; every element the focus has been on since
-        the last read, and the elements above them (the browser's tree keeps what the focus did to them, which the layout does not); a control whose value changed and what is named or described by it; an element whose `title`,
-        `class` or `style` changed and the elements above it; and what the browser said has changed. Below a control or an element whose class changed the whole subtree is read again."""
+        """The held page brought up to date with what the probe says and converted: the tree, how many AX nodes were read again, how many controls changed, and when the reading was done."""
         page = self.page
         changed = [i for i, (a, b) in enumerate(zip(page.probe['forms'], probe['forms'])) if a != b]
-        controls = page.controls
-        if len(controls) != len(probe['forms']): raise Stale('the form controls are not those of the page')
+        if len(page.controls) != len(probe['forms']): raise Stale('the form controls are not those of the page')
         for index in (probe['active'], page.probe['active']):      # the focus entering or leaving a frame is in the frame's tree, which is not read again here
             if index >= 0 and page.dom.get(page.dom.elements[index]).get('tag') in FRAME_TAGS: raise Stale('the focus is on a frame')
         if len(self.visits) > MAX_VISITS: raise Stale('the focus has been on a great many elements')
         restyled = self.restyle(page, probe); self.touched = set()
         softened = self.rewrite(page, probe)
-        below = [controls[i] for i in changed] + softened      # the elements whose subtree is read again
-        targets = []      # the DOM nodes whose AX nodes are read again
+        below = [page.controls[i] for i in changed] + softened      # the elements whose subtree is read again
+        targets = self.nodes_to_read(probe, changed, softened)
+        reshaped = self.read_nodes(call_many, targets, below)
+        refreshed = time.perf_counter()
+        return self.convert_again(reshaped, restyled, state), len(targets), len(changed), refreshed
+
+    def nodes_to_read(self, probe, changed, softened):
+        """The DOM nodes whose AX nodes are read again, in a fixed order: the document; the nodes the browser's tree has the focus on; the element that has the focus and the one that had it, and the elements above them; every
+        element the focus has been on since the last read, and the ones above them (the browser's tree keeps what the focus did to them, which the layout does not); a control whose value changed and what is named or described
+        by it; an element whose `title`, `class` or `style` changed and the ones above it. Only DOM nodes that have an AX node in the tree: the browser makes an ignored one up for any other."""
+        page = self.page; targets = set()
         def want(backend):
-            if backend is not None and backend in page.node_of and backend not in targets: targets.append(backend)
+            if backend is not None and backend in page.node_of: targets.add(backend)
         def want_chain(backend):
             while backend is not None and backend in page.dom.by_backend: want(backend); backend = page.dom.get(backend).get('up')
         want(page.ax[page.root].get('backendDOMNodeId'))
@@ -241,10 +268,18 @@ class Reader:
         for index in (probe['active'], page.probe['active']):
             if index >= 0: want_chain(page.dom.elements[index])
         for backend in [*self.visits, *softened]: want_chain(backend)
-        if changed and page.related is None: page.related = related_by(page.ax.values())
-        for i in changed:
-            for backend in page.related.get(controls[i], ()): want(backend)
+        named_by = [page.controls[i] for i in changed] + softened      # what is named or described by a control whose value changed, or by an element whose title changed, is read again
+        if named_by and page.related is None: page.related = related_by(page.ax.values())
+        for backend in named_by:
+            want(backend)
+            for dependent in page.related.get(backend, ()): want(dependent)
         self.visits = set()
+        return sorted(targets)      # the same questions in the same order whatever order the sets above were walked in: a recorded read can be played again
+
+    def read_nodes(self, call_many, targets, below):
+        """Reads the AX nodes of `targets` again, and everything below the elements of `below`, into the held page. True if the shape of the tree below any of those elements changed (a node came or went, or was left out of the
+        tree or put in it)."""
+        page = self.page
         for node in self.hints.values():      # what the browser said has changed is used, and replaced by what is read now
             if node['nodeId'] in page.ax: self.put(node, False)
         self.hints = {}
@@ -256,18 +291,21 @@ class Reader:
                 try: self.put(node, backend in held)
                 except Stale as e: raise Stale(f'{e} (read for a <{page.dom.get(backend).get("tag")}>, {len(answer["nodes"])} nodes answered, ignored={node.get("ignored")})')
         for backend in below: self.reread_below(call_many, backend)
-        reshaped = any(self.shape(backend) != shape for backend, shape in shapes.items())      # a node came or went, or was left out of the tree or put in it
+        reshaped = any(self.shape(backend) != shape for backend, shape in shapes.items())
         if below: page.ax = self.reachable(page); page.focused &= page.ax.keys()
-        refreshed = time.perf_counter()
-        converted = None
-        if not reshaped:      # only the focus, the look, the names and the page's state: the list made before is brought up to date
+        return reshaped
+
+    def convert_again(self, reshaped, restyled, state):
+        """The list of nodes for the held page: the one made before brought up to date when the shape of the tree is what it was and only the focus, the look, the names and the page's state changed, else made again from the AX nodes held."""
+        page = self.page; converted = None
+        if not reshaped:
             try: converted = self.converter.patch({**page.ax, **page.frame_ax} if page.frame_ax else page.ax, self.touched, restyled, page.dom, state['page'], state['viewport'])
             except axtree.Unpatchable as e: self.cost['unpatchable'] = str(e)
         self.cost['patched'] = converted is not None
         if converted is None:
             raw = {'ax': list(page.ax.values()), '_dom': page.dom, 'dom': None, 'viewport': state['viewport'], 'page': state['page'], 'frames': page.frames, 'listeners': ()}
             converted = self.converter.convert(raw, retain=True)
-        return converted, len(targets), len(changed), refreshed
+        return converted
 
     def put(self, node, may_change_below):
         """An AX node read again replaces the one held. It must be one that is held, and its children the same, unless it is a control whose value changed or an element whose class changed (what is below is read again)."""

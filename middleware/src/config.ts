@@ -10,7 +10,7 @@ import { readRun, type RunEnv } from "./run.ts";
 export interface Options {
   /** Run the structural sweep at each new state (default true). */
   sweeps?: boolean;
-  /** Check every dump the extension makes against one read from scratch (the tests turn it on). */
+  /** Check every dump the extension makes against one read from scratch, and, where the DevTools port is the tree source, every incremental read of the tree (the tests turn it on). */
   verify?: boolean;
 }
 
