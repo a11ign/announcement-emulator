@@ -143,7 +143,7 @@ made on Linux by `trace.sh --system-tests`). `bundle/lean.py` prunes to it, and 
 the list.** CI says when: the `demo` job runs the sample suite in the lean bundle and in the full layout with the trace on and fails on a file or import the lean run wanted and could not find (`compare_bundles.py misses`),
 and the `trace` job fails when a run reads a file the committed list lacks.
 
-**Unchanged behaviour.** `bundle-identical` replays every recorded session under the full layout and under the lean bundle, with sweeps, without and with `--report-focus`, on both platforms, and fails unless the outputs
+**Unchanged behaviour.** The `transcripts` job (A11-260: it was `bundle-identical`, and takes the `bundle` job's full layout as an artifact instead of building it again) replays every recorded session under the full layout and under the lean bundle, with sweeps, without and with `--report-focus`, on each platform it builds (both in the nightly run, Linux in a pull request), and fails unless the outputs
 are the same bytes (the clock, `ms`, is left out, because two runs of one layout differ in it). `demo` also reports, test by test, where the live suite's predicted speech or flags differ between the lean bundle and the full layout (`compare_live.py`; a report and not a failure, because a live run's timing moves a quick test's last event).
 
 **Compression** is measured on every build (`bundle/sizes.py formats`): gzip, xz and zstd, each archive's size and its median unpack time with the host's `tar -xf`. The bundle ships in the smaller of xz and zstd that unpacks

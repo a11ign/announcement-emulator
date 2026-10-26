@@ -2,7 +2,7 @@
 # tree source, on a `macos-latest` runner, and the same two runs on an `ubuntu-latest` runner in the same workflow run as a control. The control separates "the runner sees other pages or a
 # slower network" from "macOS's tree differs".
 #
-# It is started by committing middleware/results/tree-source/ci-run.txt, because GitHub dispatches only workflows that are on the default branch and this one is not yet: the worker that takes the fleet's
+# It is started by committing middleware/results/tree-source/ci-run.txt (or by dispatch): the worker that takes the fleet's
 # captures commits the stamp inside the capture window, and the run is read within about two hours of them.
 #
 # The reports hold the predicted speech of third-party pages and this repository is public: they go to an artifact kept one day, are downloaded with `gh run download`, and the artifact is deleted
@@ -13,6 +13,8 @@ on:
   push:
     paths:
       - middleware/results/tree-source/ci-run.txt
+  # By hand, from a branch, inside a capture window. There is no `schedule` (A11-260): a reading is valid only within about two hours of the fleet captures (rule.md), so a nightly run would spend its macOS minutes on a reading the rule throws away.
+  workflow_dispatch:
 
 permissions:
   contents: read

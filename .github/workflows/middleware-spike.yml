@@ -3,60 +3,107 @@
 # Playwright installs for the team's version (A11-230): the bundle holds none.
 #
 # The runtime bundle is lean (A11-231): a stripped Python and the files a trace of the runtime read, in one copy of NVDA's source (middleware/bundle/trace.sh makes the list, keep/<platform>.txt). Three proofs run
-# here: the transcripts of every recorded session are byte for byte the full layout's (`bundle-identical`), a run of the sample suite that wants a file the bundle lacks fails (`demo`), and the linux build is the
-# same bytes twice (`bundle`). `trace` makes the lists again and fails on a file they lack.
+# here: the transcripts of every recorded session are byte for byte the full layout's (`transcripts`), a run of the sample suite that wants a file the bundle lacks fails (`demo`), and `trace` makes the lists
+# again and fails on a file they lack. That the archive is the same bytes when it is built twice is checked where a release is made: release-bundles.yml, which release-dry-run.yml calls nightly.
+#
+# WHAT RUNS WHEN (A11-260). Every build is paid for in minutes, and a macOS minute costs ten times a Linux one, so the workflow runs only what a change needs:
+#   * a pull request that touches a path below runs PR MODE: the Linux bundle (built once, and shared as an artifact with every job that needs it), its `transcripts`, the Linux `trace`, the primary Playwright's Linux `demo` row, and ONE
+#     macOS job, the darwin-arm64 row of the primary Playwright, which builds its own bundle. A pull request that touches none of the paths (docs, results) runs nothing here. A draft runs nothing: `ready_for_review` runs it.
+#   * the nightly run on `main`, `workflow_dispatch` and `workflow_call` (a release) run FULL MODE: both platforms, every row. Dispatching this file on a branch is full mode on that branch.
+#   * a push, a merge-queue entry or a merge to `main` runs nothing here: this workflow is not part of ci.yml's `gate`, so the queue does not wait on it.
+# The matrices come from the `mode` job, so that the one macOS job of a pull request is a row of the same `bundle`, `trace` and `demo` definitions and not a copy of them (middleware/src/ci-shape.test.ts runs it).
 #
 # Nothing is published. The bundle travels as a workflow artifact and the `demo` jobs serve it from a static server on the runner, so that `install` does its real http download, its
 # checksum and its unpack. A release serves it from its GitHub Release (release-bundles.yml builds it, release-dry-run.yml rehearses it); here it is a mirror, as ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST names one: <host>/v<version>/<file>.
 name: middleware-spike
 
 on:
-  push:
+  # `paths` is what makes a docs-only or results-only pull request run nothing here: the bundle's inputs (build.sh copies emu/, q1/, q2/ and q3/ and reads pins.env), the runtime, the package the demo installs, and this file.
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - ".github/workflows/middleware-spike.yml"
+      - "middleware/bundle/**"
+      - "middleware/runtime/**"
+      - "middleware/src/**"
+      - "middleware/sample-suite/**"
+      - "middleware/package.json"
+      - "middleware/pnpm-lock.yaml"
+      - "middleware/supported-versions.json"
+      - "middleware/rslib.config.ts"
+      - "middleware/tsconfig.build.json"
+      - "pins.env"
+      - "emu/**"
+      - "q1/**"
+      - "q2/**"
+      - "q3/**"
+  schedule:
+    - cron: "17 3 * * *"
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read
 
+# A new push to a pull request cancels the run it supersedes. A nightly, a dispatch and a release run are never cancelled.
 concurrency:
-  group: middleware-spike-${{ github.ref }}
-  cancel-in-progress: true
+  group: middleware-spike-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  # The package's own checks, and the parts of the runtime that need neither NVDA nor a browser.
-  checks:
+  # Decides the mode and the matrices of the jobs below. The rows of the `demo` matrix are here: supported.test.ts reads them and holds each to supported-versions.json.
+  mode:
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: ubuntu-latest
+    outputs:
+      bundle: ${{ steps.mode.outputs.bundle }}
+      trace: ${{ steps.mode.outputs.trace }}
+      demo: ${{ steps.mode.outputs.demo }}
     steps:
-      - uses: actions/checkout@v7
-      - uses: pnpm/action-setup@v6
-        with: { package_json_file: middleware/package.json }
-      - uses: actions/setup-node@v7
-        with: { node-version: 22, cache: pnpm, cache-dependency-path: middleware/pnpm-lock.yaml }
-      - run: pnpm install --frozen-lockfile
-        working-directory: middleware
-      - run: pnpm run build
-        working-directory: middleware
-      - run: pnpm run lint
-        working-directory: middleware
-      - run: pnpm run typecheck
-        working-directory: middleware
-      - run: pnpm test
-        working-directory: middleware
-      - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_flags.py'
-      - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_pure.py'
-      - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_cdp.py'
-      - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_fallback.py'
-      - run: python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_import_trace.py'
-      - run: python3 -m unittest discover -s middleware/bundle -t middleware/bundle
+      - id: mode
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          set -eu
+          linux_bundle='{ "platform": "linux-x64", "runner": "ubuntu-latest" }'
+          darwin_bundle='{ "platform": "darwin-arm64", "runner": "macos-latest" }'
+          linux_trace='{ "platform": "linux-x64", "runner": "ubuntu-latest", "deps": "--with-deps" }'
+          darwin_trace='{ "platform": "darwin-arm64", "runner": "macos-latest", "deps": "" }'
+          # `tree` is where the first two runs get the accessibility tree (the default of the platform), `other` the third run's: each platform is run with both sources. The extension's source gives macOS no tree
+          # (chrome.automation.getDesktop never answers there), so that run is held to saying so (--expect-no-tree), and fails if macOS starts to give one, because the write-up would then be out of date.
+          # The DevTools source is the lower-fidelity one ADR 0047 allows; its runs are held to --lower-fidelity.
+          # `chromium` is the build the row's Playwright ships (its playwright-core/browsers.json): the report of every worker is held to having run in it, and to the sentence of its row's `agreement` (below). 1.63.0 and 1.64.1 are the two versions the list starts with; 1.62.1 is the newest 1.62 and is not meant to be listed: it holds the wording of an unlisted version.
+          # `agreement` is what the first two runs' reports say: `measured` for a build that middleware/supported-versions.json lists with a figure for the platform's default source, `unmeasured` for any other (supported.test.ts holds
+          # every row to the list). `other-agreement` is the third run's: macOS's other source is the extension, which has no figure there, so it reads `unmeasured` whatever the list holds.
+          # A pull request runs the `primary` row of each platform and the nightly run the others (they are the same suite in the older Playwrights: the longest jobs of the run). `primary` rows also take the cost and the probes. `build` is a row that builds the bundle it runs on, in its own job, because no `bundle` job built that platform's (the one macOS job of a pull request).
+          linux_primary='{ "platform": "linux-x64", "runner": "ubuntu-latest", "playwright": "1.64.1", "agreement": "measured", "other-agreement": "measured", "chromium": "156.0.8078.4", "deps": "--with-deps", "primary": true, "check": "", "other": "devtools", "other-check": "--lower-fidelity", "build": false }'
+          linux_others='{ "platform": "linux-x64", "runner": "ubuntu-latest", "playwright": "1.63.0", "agreement": "measured", "other-agreement": "measured", "chromium": "153.0.8010.12", "deps": "--with-deps", "primary": false, "check": "", "other": "devtools", "other-check": "--lower-fidelity", "build": false },
+          { "platform": "linux-x64", "runner": "ubuntu-latest", "playwright": "1.62.1", "agreement": "unmeasured", "other-agreement": "unmeasured", "chromium": "151.0.7922.34", "deps": "--with-deps", "primary": false, "check": "", "other": "devtools", "other-check": "--lower-fidelity", "build": false }'
+          darwin_primary='{ "platform": "darwin-arm64", "runner": "macos-latest", "playwright": "1.64.1", "agreement": "measured", "other-agreement": "unmeasured", "chromium": "156.0.8078.4", "deps": "", "primary": true, "check": "--lower-fidelity", "other": "extension", "other-check": "--expect-no-tree", "build": BUILD }'
+          darwin_second='{ "platform": "darwin-arm64", "runner": "macos-latest", "playwright": "1.63.0", "agreement": "measured", "other-agreement": "unmeasured", "chromium": "153.0.8010.12", "deps": "", "primary": false, "check": "--lower-fidelity", "other": "extension", "other-check": "--expect-no-tree", "build": false }'
+          if [ "$EVENT_NAME" = pull_request ]; then
+            mode="pull request"
+            bundle="$linux_bundle"; trace="$linux_trace"; demo="$linux_primary, ${darwin_primary/BUILD/true}"
+          else
+            mode=full
+            bundle="$linux_bundle, $darwin_bundle"; trace="$linux_trace, $darwin_trace"; demo="$linux_primary, $linux_others, ${darwin_primary/BUILD/false}, $darwin_second"
+          fi
+          {
+            echo "bundle={\"include\": [$bundle]}"
+            echo "trace={\"include\": [$trace]}"
+            echo "demo={\"include\": [$(echo "$demo" | tr -d '\n')]}"
+          } >> "$GITHUB_OUTPUT"
+          echo "mode: $mode" >> "$GITHUB_STEP_SUMMARY"
 
   # One lean bundle for each platform, built here: a stripped Python with the packages in it, and the files of NVDA's source and of the standard library that a trace of the runtime read (keep/<platform>.txt), in one copy.
-  # The full layout is built beside it (--full-dir): what a run could read, nothing pruned, which the other jobs compare the lean bundle to. No browser and no browser library: check_no_browser.py fails the job on an archive that holds one.
+  # The full layout is built beside it (--full-dir): what a run could read, nothing pruned. It is the one build of the platform in this run: `transcripts`, `trace` and `demo` take it as
+  # the `full-<platform>` artifact (a tar, which keeps the modes that an artifact's zip would lose) and do not build it again. No browser and no browser library: check_no_browser.py fails the job on an archive that holds one.
   bundle:
+    needs: mode
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          - { platform: linux-x64, runner: ubuntu-latest }
-          - { platform: darwin-arm64, runner: macos-latest }
+      matrix: ${{ fromJSON(needs.mode.outputs.bundle) }}
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v7
@@ -66,15 +113,10 @@ jobs:
           middleware/bundle/build.sh ${{ matrix.platform }} "$RUNNER_TEMP/bundle" --full-dir "$RUNNER_TEMP/full"
           echo "seconds=$(( $(date +%s) - start ))" >> "$GITHUB_OUTPUT"
           echo "archive=$(basename "$(ls "$RUNNER_TEMP"/bundle/announcement-emulator-bundle-*.tar.* | grep -v '\.sha256$')")" >> "$GITHUB_OUTPUT"
-      # The archive is the same bytes for the same inputs (mktar.py), and the pin in the package is its sha256: build it a second time and compare. Required on linux-x64; on darwin-arm64 it is reported, because the linker's UUID
-      # there is not controlled (build.sh).
-      - id: again
-        run: |
-          middleware/bundle/build.sh ${{ matrix.platform }} "$RUNNER_TEMP/bundle2"
-          if cmp -s "$RUNNER_TEMP/bundle/${{ steps.build.outputs.archive }}" "$RUNNER_TEMP/bundle2/${{ steps.build.outputs.archive }}"; then echo "same=true" >> "$GITHUB_OUTPUT"; else echo "same=false" >> "$GITHUB_OUTPUT"; fi
-          shasum -a 256 "$RUNNER_TEMP"/bundle*/${{ steps.build.outputs.archive }}
-      - if: matrix.platform == 'linux-x64'
-        run: '[ "${{ steps.again.outputs.same }}" = true ] || { echo "two builds of the lean linux-x64 bundle are not the same bytes"; exit 1; }'
+      # The full layout, before anything runs in it, for the jobs that take it from here.
+      - run: |
+          mkdir "$RUNNER_TEMP/full-out"
+          tar -cf "$RUNNER_TEMP/full-out/full-${{ matrix.platform }}.tar" -C "$RUNNER_TEMP" full
       # No browser and no browser library in the archive that is shipped; the size, by part, against the spike's and against the full layout; the three formats' sizes and unpack times.
       - run: |
           python3 middleware/bundle/check_no_browser.py "$RUNNER_TEMP/bundle/${{ steps.build.outputs.archive }}"
@@ -94,8 +136,7 @@ jobs:
             echo "$fmt=$result" | tee -a "$RUNNER_TEMP/formats-out/container.txt"
           done
       - run: |
-          { echo "### Bundle ${{ matrix.platform }}"; echo; echo "built in ${{ steps.build.outputs.seconds }} s"; echo; ls -l "$RUNNER_TEMP/bundle"; cat "$RUNNER_TEMP/bundle"/pin-*.json
-            echo; echo "built twice, byte-identical: ${{ steps.again.outputs.same }}"; } >> "$GITHUB_STEP_SUMMARY"
+          { echo "### Bundle ${{ matrix.platform }}"; echo; echo "built in ${{ steps.build.outputs.seconds }} s"; echo; ls -l "$RUNNER_TEMP/bundle"; cat "$RUNNER_TEMP/bundle"/pin-*.json; } >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v7
         with:
           name: bundle-${{ matrix.platform }}
@@ -107,11 +148,39 @@ jobs:
           name: formats-${{ matrix.platform }}
           path: ${{ runner.temp }}/formats-out
           retention-days: 14
+      - uses: actions/upload-artifact@v7
+        with:
+          name: full-${{ matrix.platform }}
+          path: ${{ runner.temp }}/full-out
+          compression-level: 0
+          retention-days: 3
 
-  # The format the bundle is built in is the one that was measured: the smaller of xz and zstd among those that unpack in 5 s or less on both runners with the host's tar. The job fails when build.sh's default is
+  # The transcripts: every recorded session, replayed with sweeps, without and with --report-focus, under the full layout and under the lean bundle as it was archived. The outputs must be the same bytes (the clock left out).
+  # Both come from the `bundle` job as artifacts. A job of its own, as it was (`bundle-identical`), so that a difference reddens this job and leaves `trace`, which makes the list that fixes it, and `demo` to run.
+  transcripts:
+    needs: [mode, bundle]
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.mode.outputs.bundle) }}
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with: { name: "bundle-${{ matrix.platform }}", path: "${{ runner.temp }}/bundle" }
+      - uses: actions/download-artifact@v8
+        with: { name: "full-${{ matrix.platform }}", path: "${{ runner.temp }}/full-tar" }
+      - run: |
+          tar -xf "$RUNNER_TEMP/full-tar/full-${{ matrix.platform }}.tar" -C "$RUNNER_TEMP"
+          mkdir "$RUNNER_TEMP/lean" && tar -xf "$(ls "$RUNNER_TEMP"/bundle/announcement-emulator-bundle-*.tar.* | grep -v '\.sha256$')" -C "$RUNNER_TEMP/lean"
+          { echo "### Transcripts ${{ matrix.platform }}"; echo; echo '```'; python3 middleware/bundle/compare_bundles.py replay "$RUNNER_TEMP/full" "$RUNNER_TEMP/lean" 2>&1; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
+        shell: bash
+
+  # The format the bundle is built in is the one that was measured: the smaller of xz and zstd among those that unpack in 5 s or less on the runners that built a bundle (both in full mode, Linux alone in a pull request) with the host's tar. The job fails when build.sh's default is
   # any other.
   bundle-format:
     needs: bundle
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -120,42 +189,20 @@ jobs:
       - run: |
           cd "$RUNNER_TEMP/formats"
           containers=""; for line in $(cat container.txt); do containers="$containers --container $line"; done
-          python3 "$GITHUB_WORKSPACE/middleware/bundle/sizes.py" choose formats-linux-x64.json formats-darwin-arm64.json $containers | tee "$RUNNER_TEMP/choice.txt" >> "$GITHUB_STEP_SUMMARY" || true      # it exits 1 when no format is acceptable; the test below then fails on the empty choice
+          python3 "$GITHUB_WORKSPACE/middleware/bundle/sizes.py" choose $(ls formats-linux-x64.json formats-darwin-arm64.json 2>/dev/null) $containers | tee "$RUNNER_TEMP/choice.txt" >> "$GITHUB_STEP_SUMMARY" || true      # it exits 1 when no format is acceptable; the test below then fails on the empty choice
           chosen="$(sed -n 's/^ships: //p' "$RUNNER_TEMP/choice.txt")"
           built="$(sed -n 's/^FORMAT=\([a-z]*\);.*/\1/p' "$GITHUB_WORKSPACE/middleware/bundle/build.sh")"
           echo "measured: $chosen; build.sh builds: $built"
           [ -n "$chosen" ] && [ "$chosen" = "$built" ]
 
-  # The transcripts: every recorded session, replayed with sweeps, without and with --report-focus, under the full layout and under the lean bundle as it was archived, on each platform. The outputs must be the same bytes
-  # (the clock left out). The full layout is built again here, from the same pins.
-  bundle-identical:
-    needs: bundle
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - { platform: linux-x64, runner: ubuntu-latest }
-          - { platform: darwin-arm64, runner: macos-latest }
-    runs-on: ${{ matrix.runner }}
-    steps:
-      - uses: actions/checkout@v7
-      - uses: actions/download-artifact@v8
-        with: { name: "bundle-${{ matrix.platform }}", path: "${{ runner.temp }}/bundle" }
-      - run: |
-          middleware/bundle/build.sh ${{ matrix.platform }} "$RUNNER_TEMP/unused" --full-dir "$RUNNER_TEMP/full" --layout-only
-          mkdir "$RUNNER_TEMP/lean" && tar -xf "$(ls "$RUNNER_TEMP"/bundle/announcement-emulator-bundle-*.tar.* | grep -v '\.sha256$')" -C "$RUNNER_TEMP/lean"
-          { echo "### Transcripts ${{ matrix.platform }}"; echo; echo '```'; python3 middleware/bundle/compare_bundles.py replay "$RUNNER_TEMP/full" "$RUNNER_TEMP/lean" 2>&1; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
-        shell: bash
-
   # The lists again: trace.sh runs everything the lists are made from (every recording, the sample suite's offline project live with each tree source) in the full layout, and the job fails when a run read a file that
-  # keep/<platform>.txt lacks. The lists made here are uploaded: the darwin-arm64 one is made on this runner, and committed from here.
+  # keep/<platform>.txt lacks. The lists made here are uploaded: the darwin-arm64 one is made on this runner, and committed from here. The full layout is the `bundle` job's.
   trace:
+    needs: [mode, bundle]
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          - { platform: linux-x64, runner: ubuntu-latest, deps: "--with-deps" }
-          - { platform: darwin-arm64, runner: macos-latest, deps: "" }
+      matrix: ${{ fromJSON(needs.mode.outputs.trace) }}
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v7
@@ -163,9 +210,12 @@ jobs:
         with: { package_json_file: middleware/package.json }
       - uses: actions/setup-node@v7
         with: { node-version: 22 }
+      - uses: actions/download-artifact@v8
+        with: { name: "full-${{ matrix.platform }}", path: "${{ runner.temp }}/full-tar" }
+      - run: tar -xf "$RUNNER_TEMP/full-tar/full-${{ matrix.platform }}.tar" -C "$RUNNER_TEMP"
       - run: |
           cp "middleware/bundle/keep/${{ matrix.platform }}.txt" "$RUNNER_TEMP/committed.txt" 2>/dev/null || : > "$RUNNER_TEMP/committed.txt"
-          PLAYWRIGHT_DEPS="${{ matrix.deps }}" middleware/bundle/trace.sh ${{ matrix.platform }} --traces "$RUNNER_TEMP/traces"
+          PLAYWRIGHT_DEPS="${{ matrix.deps }}" middleware/bundle/trace.sh ${{ matrix.platform }} --full-dir "$RUNNER_TEMP/full" --traces "$RUNNER_TEMP/traces"
           cp "middleware/bundle/keep/${{ matrix.platform }}.txt" "$RUNNER_TEMP/keep-${{ matrix.platform }}.txt"
           { echo "### Trace ${{ matrix.platform }}"; echo; echo "files the runs read that keep/${{ matrix.platform }}.txt lacks:"; echo '```'; comm -13 "$RUNNER_TEMP/committed.txt" "$RUNNER_TEMP/keep-${{ matrix.platform }}.txt"; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
           [ -z "$(comm -13 "$RUNNER_TEMP/committed.txt" "$RUNNER_TEMP/keep-${{ matrix.platform }}.txt")" ]
@@ -181,24 +231,13 @@ jobs:
 
   # The acceptance: the sample suite, with the middleware attached by the one line, after `npx playwright install chromium` and `npx announcement-emulator install`, on a plain runner with no container.
   # The browser is Playwright's: each row installs one Playwright version and the Chromium that version ships, and nothing else (`--with-deps` on Ubuntu is Playwright's own route to its browser's system libraries).
+  # The rows are the `mode` job's. In a pull request the macOS row (`build`) builds its own bundle, because no macOS `bundle` job runs; the full layout of every other primary row is the `bundle` job's.
   demo:
-    needs: [checks, bundle]
+    needs: [mode, bundle]
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          # `tree` is where the first two runs get the accessibility tree (the default of the platform), `other` the third run's: each platform is run with both sources. The extension's source gives macOS no tree
-          # (chrome.automation.getDesktop never answers there), so that run is held to saying so (--expect-no-tree), and fails if macOS starts to give one, because the write-up would then be out of date.
-          # The DevTools source is the lower-fidelity one ADR 0047 allows; its runs are held to --lower-fidelity.
-          # `chromium` is the build the row's Playwright ships (its playwright-core/browsers.json): the report of every worker is held to having run in it, and to the sentence of its row's `agreement` (below). 1.63.0 and 1.64.1 are the two versions the list starts with; 1.62.1 is the newest 1.62 and is not meant to be listed: it holds the wording of an unlisted version.
-          # `agreement` is what the first two runs' reports say: `measured` for a build that middleware/supported-versions.json lists with a figure for the platform's default source, `unmeasured` for any other (supported.test.ts holds
-          # every row to the list). `other-agreement` is the third run's: macOS's other source is the extension, which has no figure there, so it reads `unmeasured` whatever the list holds.
-          # `primary` rows also take the cost and the probes.
-          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.64.1", agreement: measured, other-agreement: measured, chromium: "156.0.8078.4", deps: "--with-deps", primary: true, check: "", other: devtools, other-check: "--lower-fidelity" }
-          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.63.0", agreement: measured, other-agreement: measured, chromium: "153.0.8010.12", deps: "--with-deps", primary: false, check: "", other: devtools, other-check: "--lower-fidelity" }
-          - { platform: linux-x64, runner: ubuntu-latest, playwright: "1.62.1", agreement: unmeasured, other-agreement: unmeasured, chromium: "151.0.7922.34", deps: "--with-deps", primary: false, check: "", other: devtools, other-check: "--lower-fidelity" }
-          - { platform: darwin-arm64, runner: macos-latest, playwright: "1.64.1", agreement: measured, other-agreement: unmeasured, chromium: "156.0.8078.4", deps: "", primary: true, check: "--lower-fidelity", other: extension, other-check: "--expect-no-tree" }
-          - { platform: darwin-arm64, runner: macos-latest, playwright: "1.63.0", agreement: measured, other-agreement: unmeasured, chromium: "153.0.8010.12", deps: "", primary: false, check: "--lower-fidelity", other: extension, other-check: "--expect-no-tree" }
+      matrix: ${{ fromJSON(needs.mode.outputs.demo) }}
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v7
@@ -206,8 +245,18 @@ jobs:
         with: { package_json_file: middleware/package.json }
       - uses: actions/setup-node@v7
         with: { node-version: 22 }
-      - uses: actions/download-artifact@v8
+      - if: ${{ !matrix.build }}
+        uses: actions/download-artifact@v8
         with: { name: "bundle-${{ matrix.platform }}", path: "${{ runner.temp }}/bundle" }
+      - if: ${{ matrix.build }}
+        run: |
+          middleware/bundle/build.sh ${{ matrix.platform }} "$RUNNER_TEMP/bundle" --full-dir "$RUNNER_TEMP/full"
+          python3 middleware/bundle/check_no_browser.py "$(ls "$RUNNER_TEMP"/bundle/announcement-emulator-bundle-*.tar.* | grep -v '\.sha256$')"
+      - if: ${{ !matrix.build && matrix.primary }}
+        uses: actions/download-artifact@v8
+        with: { name: "full-${{ matrix.platform }}", path: "${{ runner.temp }}/full-tar" }
+      - if: ${{ !matrix.build && matrix.primary }}
+        run: tar -xf "$RUNNER_TEMP/full-tar/full-${{ matrix.platform }}.tar" -C "$RUNNER_TEMP"
       # The package is built here and packed as `npm pack` packs it; the pin it carries is the sha256 of the bundle just built.
       - run: |
           node bundle/write-pins.mjs "$(node -p "require('./package.json').version")" "$RUNNER_TEMP"/bundle/pin-*.json > pins.json
@@ -255,14 +304,13 @@ jobs:
           [ -z "${{ matrix.check }}" ] && [ "${{ matrix.primary }}" = true ] || exit 0      # the cost is measured where a tree is read, once for each platform
           { time npx playwright test --config playwright.baseline.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-without.log"
           node cost.mjs --project fixtures --runs 3 --workers 1,2,4 --out "$RUNNER_TEMP/cost.json" 2>&1 | tee "$RUNNER_TEMP/cost.log"
-      # The lean bundle against the full layout, live (A11-231). The lean bundle is the one `install` just unpacked; the full layout is built here beside it. The fixtures project runs with each tree source, ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1
+      # The lean bundle against the full layout, live (A11-231). The lean bundle is the one `install` just unpacked; the full layout is the one the bundle was built with. The fixtures project runs with each tree source, ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1
       # and the import trace on: twice in the full layout and once in the lean bundle. The check fails on an import or a file the lean run wanted and could not find, where the full layout has it (compare_bundles.py misses), and reports
       # the tests whose predicted speech or flags differ in the lean run where the two full-layout runs agree (compare_live.py: reported, not a failure, because a live run's timing moves a quick test's last event). The traces are uploaded: the darwin-arm64 row's are what keep/darwin-arm64.txt is made from.
       - if: matrix.primary
         run: |
           set -e
           cache="$(ls -d ~/.cache/announcement-emulator/*/ ~/Library/Caches/announcement-emulator/*/ 2>/dev/null | head -1)"; cache="${cache%/}"
-          middleware/bundle/build.sh ${{ matrix.platform }} "$RUNNER_TEMP/unused" --full-dir "$RUNNER_TEMP/full" --layout-only
           mkdir -p "$RUNNER_TEMP/traces"; cd "$RUNNER_TEMP/project"
           status=0
           for tree in devtools extension; do
