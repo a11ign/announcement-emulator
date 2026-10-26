@@ -1,0 +1,1347 @@
+{
+ "heldOut": false,
+ "pages": 6,
+ "headline": {
+  "agreed": 920,
+  "units": 1138
+ },
+ "ceiling": {
+  "agreed": 1079,
+  "units": 1138
+ },
+ "byChannel": {
+  "title": {
+   "agreed": 4,
+   "units": 6,
+   "ceiling": {
+    "agreed": 6,
+    "units": 6
+   }
+  },
+  "stops": {
+   "agreed": 283,
+   "units": 396,
+   "ceiling": {
+    "agreed": 368,
+    "units": 396
+   }
+  },
+  "field": {
+   "agreed": 2,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   }
+  },
+  "typed": {
+   "agreed": 12,
+   "units": 18,
+   "ceiling": {
+    "agreed": 18,
+    "units": 18
+   }
+  },
+  "headings": {
+   "agreed": 62,
+   "units": 106,
+   "ceiling": {
+    "agreed": 104,
+    "units": 106
+   }
+  },
+  "landmarks": {
+   "agreed": 44,
+   "units": 45,
+   "ceiling": {
+    "agreed": 38,
+    "units": 45
+   }
+  },
+  "formFields": {
+   "agreed": 74,
+   "units": 100,
+   "ceiling": {
+    "agreed": 96,
+    "units": 100
+   }
+  },
+  "graphics": {
+   "agreed": 4,
+   "units": 7,
+   "ceiling": {
+    "agreed": 4,
+    "units": 7
+   }
+  },
+  "links": {
+   "agreed": 361,
+   "units": 376,
+   "ceiling": {
+    "agreed": 366,
+    "units": 376
+   }
+  },
+  "lists": {
+   "agreed": 57,
+   "units": 61,
+   "ceiling": {
+    "agreed": 56,
+    "units": 61
+   }
+  },
+  "frames": {
+   "agreed": 17,
+   "units": 20,
+   "ceiling": {
+    "agreed": 20,
+    "units": 20
+   }
+  }
+ },
+ "shapes": {
+  "NAME + ROLE": {
+   "agreed": 275,
+   "units": 287,
+   "ceiling": {
+    "agreed": 284,
+    "units": 287
+   },
+   "misses": {
+    "emulator": 9,
+    "tree: node": 2,
+    "chromium build": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + STATE": {
+   "agreed": 208,
+   "units": 240,
+   "ceiling": {
+    "agreed": 230,
+    "units": 240
+   },
+   "misses": {
+    "tree: name": 10,
+    "tree: focus": 10,
+    "tree: name+position in set+role": 6,
+    "page moved": 5,
+    "tree: name+position in set+role+state": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + LEVEL": {
+   "agreed": 44,
+   "units": 82,
+   "ceiling": {
+    "agreed": 82,
+    "units": 82
+   },
+   "misses": {
+    "emulator": 38
+   },
+   "lowConfidence": true
+  },
+  "NAME + ROLE + STATE": {
+   "agreed": 23,
+   "units": 39,
+   "ceiling": {
+    "agreed": 31,
+    "units": 39
+   },
+   "misses": {
+    "emulator": 6,
+    "tree: name+position in set+role": 5,
+    "tree: focus": 4,
+    "tree: node": 1
+   },
+   "lowConfidence": true
+  },
+  "NAME + ROLE + STATE + STATE + POSITION": {
+   "agreed": 10,
+   "units": 35,
+   "ceiling": {
+    "agreed": 35,
+    "units": 35
+   },
+   "misses": {
+    "emulator": 19,
+    "tree: focus": 6
+   },
+   "lowConfidence": true
+  },
+  "NAME + ROLE + STATE + STATE + STATE": {
+   "agreed": 14,
+   "units": 29,
+   "ceiling": {
+    "agreed": 19,
+    "units": 29
+   },
+   "misses": {
+    "history": 9,
+    "page moved": 4,
+    "tree: name": 2
+   },
+   "lowConfidence": true
+  },
+  "NAME + STATE + ROLE": {
+   "agreed": 23,
+   "units": 26,
+   "ceiling": {
+    "agreed": 24,
+    "units": 26
+   },
+   "misses": {
+    "history": 3
+   },
+   "lowConfidence": false
+  },
+  "NAME": {
+   "agreed": 16,
+   "units": 24,
+   "ceiling": {
+    "agreed": 24,
+    "units": 24
+   },
+   "misses": {
+    "test blocked": 6,
+    "tree: name": 2
+   },
+   "lowConfidence": false
+  },
+  "NAME + NAME + ROLE": {
+   "agreed": 22,
+   "units": 22,
+   "ceiling": {
+    "agreed": 22,
+    "units": 22
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + ROLE + COUNT + NAME + ROLE": {
+   "agreed": 19,
+   "units": 21,
+   "ceiling": {
+    "agreed": 15,
+    "units": 21
+   },
+   "misses": {
+    "emulator": 2
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + NAME": {
+   "agreed": 5,
+   "units": 21,
+   "ceiling": {
+    "agreed": 21,
+    "units": 21
+   },
+   "misses": {
+    "tree: focus": 10,
+    "emulator": 6
+   },
+   "lowConfidence": true
+  },
+  "ROLE + COUNT + NAME": {
+   "agreed": 20,
+   "units": 20,
+   "ceiling": {
+    "agreed": 20,
+    "units": 20
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + COUNT + NAME + ROLE": {
+   "agreed": 17,
+   "units": 18,
+   "ceiling": {
+    "agreed": 18,
+    "units": 18
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + LEVEL": {
+   "agreed": 12,
+   "units": 14,
+   "ceiling": {
+    "agreed": 14,
+    "units": 14
+   },
+   "misses": {
+    "emulator": 2
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + ROLE + LEVEL": {
+   "agreed": 13,
+   "units": 13,
+   "ceiling": {
+    "agreed": 9,
+    "units": 13
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + ROLE + NAME + ROLE + LEVEL": {
+   "agreed": 4,
+   "units": 11,
+   "ceiling": {
+    "agreed": 11,
+    "units": 11
+   },
+   "misses": {
+    "tree: node": 3,
+    "offscreen frame": 3,
+    "emulator": 1
+   },
+   "lowConfidence": true
+  },
+  "NAME + ROLE + STATE + NAME + ROLE + NAME + ROLE + NAME": {
+   "agreed": 10,
+   "units": 10,
+   "ceiling": {
+    "agreed": 10,
+    "units": 10
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + STATE + NAME": {
+   "agreed": 4,
+   "units": 9,
+   "ceiling": {
+    "agreed": 9,
+    "units": 9
+   },
+   "misses": {
+    "emulator": 4,
+    "tree: name+position in set+role": 1
+   },
+   "lowConfidence": true
+  },
+  "ROLE + ROLE": {
+   "agreed": 9,
+   "units": 9,
+   "ceiling": {
+    "agreed": 9,
+    "units": 9
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + STATE + STATE": {
+   "agreed": 9,
+   "units": 9,
+   "ceiling": {
+    "agreed": 9,
+    "units": 9
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME": {
+   "agreed": 5,
+   "units": 8,
+   "ceiling": {
+    "agreed": 8,
+    "units": 8
+   },
+   "misses": {
+    "emulator": 2,
+    "tree: name+role": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + ROLE": {
+   "agreed": 8,
+   "units": 8,
+   "ceiling": {
+    "agreed": 6,
+    "units": 8
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE": {
+   "agreed": 8,
+   "units": 8,
+   "ceiling": {
+    "agreed": 8,
+    "units": 8
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + COUNT + NAME + ROLE": {
+   "agreed": 8,
+   "units": 8,
+   "ceiling": {
+    "agreed": 8,
+    "units": 8
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + ROLE + ROLE + COUNT + NAME + ROLE": {
+   "agreed": 7,
+   "units": 7,
+   "ceiling": {
+    "agreed": 7,
+    "units": 7
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + ROLE + NAME + ROLE": {
+   "agreed": 1,
+   "units": 6,
+   "ceiling": {
+    "agreed": 6,
+    "units": 6
+   },
+   "misses": {
+    "tree: node": 4,
+    "emulator": 1
+   },
+   "lowConfidence": true
+  },
+  "ROLE + ROLE + ROLE + COUNT + NAME + ROLE": {
+   "agreed": 6,
+   "units": 6,
+   "ceiling": {
+    "agreed": 6,
+    "units": 6
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + COUNT + NAME + NAME + NAME + NAME": {
+   "agreed": 5,
+   "units": 5,
+   "ceiling": {
+    "agreed": 5,
+    "units": 5
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + ROLE": {
+   "agreed": 5,
+   "units": 5,
+   "ceiling": {
+    "agreed": 3,
+    "units": 5
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + POSITION": {
+   "agreed": 4,
+   "units": 4,
+   "ceiling": {
+    "agreed": 4,
+    "units": 4
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + COUNT + NAME + STATE + ROLE": {
+   "agreed": 4,
+   "units": 4,
+   "ceiling": {
+    "agreed": 4,
+    "units": 4
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "STATE + ROLE + STATE + STATE": {
+   "agreed": 4,
+   "units": 4,
+   "ceiling": {
+    "agreed": 4,
+    "units": 4
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + ROLE + LEVEL + STATE + ROLE": {
+   "agreed": 3,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + ROLE + NAME": {
+   "agreed": 3,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + STATE + ROLE": {
+   "agreed": 0,
+   "units": 3,
+   "ceiling": {
+    "agreed": 1,
+    "units": 3
+   },
+   "misses": {
+    "history": 3
+   },
+   "lowConfidence": true
+  },
+  "NAME + ROLE + STATE + STATE + STATE + NAME": {
+   "agreed": 0,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   },
+   "misses": {
+    "emulator": 3
+   },
+   "lowConfidence": true
+  },
+  "NAME + ROLE + STATE + STATE + STATE + STATE + NAME + NAME + NAME + NAME": {
+   "agreed": 3,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + STATE + NAME + ROLE": {
+   "agreed": 3,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + COUNT + NAME + NAME": {
+   "agreed": 3,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + ROLE + COUNT + NAME + ROLE": {
+   "agreed": 2,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + STATE + ROLE": {
+   "agreed": 0,
+   "units": 3,
+   "ceiling": {
+    "agreed": 0,
+    "units": 3
+   },
+   "misses": {
+    "history": 3
+   },
+   "lowConfidence": true
+  },
+  "ROLE + ROLE + NAME": {
+   "agreed": 3,
+   "units": 3,
+   "ceiling": {
+    "agreed": 3,
+    "units": 3
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + NAME + NAME + NAME + ROLE": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + NAME + NAME + ROLE + LEVEL": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + NAME + ROLE + STATE": {
+   "agreed": 0,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {
+    "emulator": 2
+   },
+   "lowConfidence": true
+  },
+  "NAME + NAME + ROLE + STATE + NAME": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + NAME + ROLE + STATE + STATE": {
+   "agreed": 1,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {
+    "tree: focus": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + ROLE + NAME + ROLE + STATE + NAME": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + ROLE + STATE": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + ROLE": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 0,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + NAME + ROLE + NAME + NAME + NAME + NAME + ROLE": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + NAME + ROLE + NAME + ROLE + NAME + ROLE + NAME": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + ROLE + STATE": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + STATE + STATE + STATE": {
+   "agreed": 0,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {
+    "emulator": 2
+   },
+   "lowConfidence": true
+  },
+  "NAME + ROLE + STATE + STATE + STATE + STATE + NAME": {
+   "agreed": 1,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + STATE + ROLE + NAME": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + COUNT + NAME + NAME + ROLE + NAME": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + NAME + NAME + NAME + NAME + ROLE": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + NAME + ROLE": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 0,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + NAME + ROLE + STATE": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + ROLE + COUNT + NAME + NAME + ROLE": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + STATE": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + STATE + STATE + STATE + STATE + NAME + NAME + NAME": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + COUNT + NAME": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + COUNT + NAME + ROLE + NAME + ROLE + NAME + STATE + ROLE + NAME + ROLE + NAME": {
+   "agreed": 0,
+   "units": 2,
+   "ceiling": {
+    "agreed": 0,
+    "units": 2
+   },
+   "misses": {
+    "history": 2
+   },
+   "lowConfidence": true
+  },
+  "STATE + ROLE + STATE": {
+   "agreed": 2,
+   "units": 2,
+   "ceiling": {
+    "agreed": 2,
+    "units": 2
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + NAME + ROLE + LEVEL": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + NAME + STATE + NAME + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + LEVEL + STATE + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + NAME + NAME + NAME + NAME + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + ROLE + COUNT + NAME + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + NAME + ROLE + NAME + ROLE + NAME": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": true
+  },
+  "NAME + ROLE + ROLE + COUNT": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + ROLE + COUNT + NAME + NAME + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + ROLE + COUNT + NAME + ROLE + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + ROLE + COUNT + NAME + STATE + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + ROLE + COUNT + STATE + NAME + ROLE + STATE": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": true
+  },
+  "NAME + ROLE + STATE + NAME + NAME": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "test blocked": 1
+   },
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + NAME + ROLE + NAME + NAME + NAME + STATE + NAME + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + NAME + ROLE + NAME + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + NAME + ROLE + ROLE + COUNT + NAME + ROLE + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + ROLE + STATE + STATE + STATE + STATE + NAME + NAME + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "NAME + STATE + STATE + ROLE": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "history": 1
+   },
+   "lowConfidence": true
+  },
+  "ROLE + COUNT + NAME + NAME + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + COUNT + STATE + NAME + STATE + ROLE + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + LEVEL + NAME + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + LEVEL + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + NAME": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": true
+  },
+  "ROLE + NAME + ROLE + NAME + ROLE + COUNT + NAME + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + NAME + ROLE + LEVEL": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + NAME + ROLE + NAME + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + NAME + ROLE + NAME + ROLE + LEVEL": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + NAME + ROLE + ROLE + STATE + NAME": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": true
+  },
+  "ROLE + NAME + ROLE + ROLE + COUNT": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + STATE + NAME": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": true
+  },
+  "ROLE + NAME + ROLE + STATE + NAME + ROLE + NAME + ROLE + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + NAME + ROLE + STATE + NAME + ROLE + ROLE + COUNT + NAME + ROLE + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + COUNT + NAME + ROLE + NAME + ROLE + NAME + ROLE + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 0,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + COUNT + NAME + ROLE + NAME + ROLE + NAME + ROLE + NAME + ROLE + NAME + ROLE + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + COUNT + NAME + ROLE + NAME + STATE + ROLE + NAME + ROLE + NAME + ROLE + NAME": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "history": 1
+   },
+   "lowConfidence": true
+  },
+  "ROLE + ROLE + NAME + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + ROLE + NAME + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + STATE + NAME + ROLE + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + ROLE + STATE + NAME + ROLE + NAME + ROLE": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": true
+  },
+  "ROLE + ROLE + STATE + NAME + ROLE + NAME + ROLE + STATE + STATE + STATE + STATE + NAME": {
+   "agreed": 0,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {
+    "emulator": 1
+   },
+   "lowConfidence": true
+  },
+  "ROLE + ROLE + STATE + STATE + STATE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + STATE + NAME + ROLE + NAME + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + STATE + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + STATE + ROLE + COUNT + NAME + STATE + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "ROLE + STATE + ROLE + COUNT + NAME + STATE + ROLE + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "STATE + NAME + STATE + ROLE": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  },
+  "STATE + NAME + STATE + ROLE + NAME": {
+   "agreed": 1,
+   "units": 1,
+   "ceiling": {
+    "agreed": 1,
+    "units": 1
+   },
+   "misses": {},
+   "lowConfidence": false
+  }
+ },
+ "causes": {
+  "emulator": 107,
+  "tree: focus": 31,
+  "history": 22,
+  "tree: name": 14,
+  "tree: name+position in set+role": 12,
+  "tree: node": 10,
+  "page moved": 9,
+  "test blocked": 7,
+  "offscreen frame": 3,
+  "tree: name+position in set+role+state": 1,
+  "chromium build": 1,
+  "tree: name+role": 1
+ }
+}

@@ -1,0 +1,75 @@
+tree source: devtools
+pages 6: comparable 6
+  unstable channels on https://check-for-flooding.service.gov.uk/river-and-sea-levels: stops, headings, landmarks, formFields, graphics, links, lists
+  unstable channels on https://design-system.service.gov.uk/components/tabs/: stops, headings, landmarks, formFields, graphics, links, lists
+  unstable channels on https://tfl.gov.uk/plan-a-journey/: headings, landmarks, formFields, graphics, links, lists
+  unstable channels on https://service-manual.nhs.uk/design-system/components/table: stops, headings, formFields, links, lists
+  unstable channels on https://design-system.service.gov.uk/components/date-input/: stops, headings, landmarks, formFields, graphics, links, lists, frames
+
+agreement by channel: the passive predictions against the fleet / the fleet against itself / the passive runs against each other
+      6 / 6     100.0% |     6 / 6     100.0% |     6 / 6     100.0%  title
+     32 / 37     86.5% |    37 / 37    100.0% |    37 / 37    100.0%  stops
+      2 / 3      66.7% |     3 / 3     100.0% |     5 / 5     100.0%  field
+     12 / 18     66.7% |    18 / 18    100.0% |    30 / 30    100.0%  typed
+      5 / 5     100.0% |     5 / 5     100.0% |     5 / 5     100.0%  headings
+     13 / 15     86.7% |    15 / 15    100.0% |    15 / 15    100.0%  landmarks
+      9 / 9     100.0% |     9 / 9     100.0% |     9 / 9     100.0%  formFields
+      1 / 1     100.0% |     1 / 1     100.0% |     1 / 1     100.0%  graphics
+     15 / 17     88.2% |    17 / 17    100.0% |    17 / 17    100.0%  links
+      7 / 8      87.5% |     8 / 8     100.0% |     8 / 8     100.0%  lists
+     14 / 14    100.0% |    14 / 14    100.0% |    14 / 14    100.0%  frames
+
+agreement by shape (the 10 commonest of the fleet's units): the passive predictions against the fleet / the fleet against itself / the passive runs against each other
+     18 / 24     75.0% |    24 / 24    100.0% |    36 / 36    100.0%  NAME
+     16 / 16    100.0% |    16 / 16    100.0% |    17 / 17    100.0%  NAME + ROLE
+     15 / 15    100.0% |    15 / 15    100.0% |    20 / 20    100.0%  NAME + ROLE + STATE + STATE
+     10 / 10    100.0% |    10 / 10    100.0% |    10 / 10    100.0%  NAME + ROLE + STATE
+     10 / 10    100.0% |    10 / 10    100.0% |    10 / 10    100.0%  NAME + ROLE + STATE + NAME + ROLE + NAME + ROLE + NAME
+      6 / 6     100.0% |     6 / 6     100.0% |     6 / 6     100.0%  ROLE + COUNT + NAME
+      1 / 4      25.0% |     4 / 4     100.0% |     1 / 1     100.0%  NAME + ROLE + STATE + STATE + STATE
+      4 / 4     100.0% |     4 / 4     100.0% |     4 / 4     100.0%  NAME + ROLE + STATE + POSITION
+      4 / 4     100.0% |     4 / 4     100.0% |     4 / 4     100.0%  ROLE + NAME + ROLE + LEVEL
+      3 / 3     100.0% |     3 / 3     100.0% |     3 / 3     100.0%  NAME + ROLE + LEVEL
+
+all channels: 116 of 133 units agreed = 87.2%
+the 10 commonest shapes: 87 of 96 = 90.6%
+
+misses by cause (all channels): no counterpart 7, history 6, unexplained 4
+
+==== the same, with the channels that were not stable counted too (first fleet capture against first passive run) ====
+pages 6: comparable 6
+  unstable channels on https://check-for-flooding.service.gov.uk/river-and-sea-levels: stops, headings, landmarks, formFields, graphics, links, lists
+  unstable channels on https://design-system.service.gov.uk/components/tabs/: stops, headings, landmarks, formFields, graphics, links, lists
+  unstable channels on https://tfl.gov.uk/plan-a-journey/: headings, landmarks, formFields, graphics, links, lists
+  unstable channels on https://service-manual.nhs.uk/design-system/components/table: stops, headings, formFields, links, lists
+  unstable channels on https://design-system.service.gov.uk/components/date-input/: stops, headings, landmarks, formFields, graphics, links, lists, frames
+
+agreement by channel: the passive predictions against the fleet / the fleet against itself / the passive runs against each other
+      6 / 6     100.0% |     6 / 6     100.0% |     6 / 6     100.0%  title
+    328 / 396    82.8% |   368 / 396    92.9% |   402 / 410    98.0%  stops
+      2 / 3      66.7% |     3 / 3     100.0% |     5 / 5     100.0%  field
+     12 / 18     66.7% |    18 / 18    100.0% |    30 / 30    100.0%  typed
+     65 / 106    61.3% |   104 / 106    98.1% |    99 / 107    92.5%  headings
+     40 / 45     88.9% |    38 / 45     84.4% |    37 / 46     80.4%  landmarks
+     73 / 100    73.0% |    96 / 100    96.0% |    63 / 94     67.0%  formFields
+      4 / 7      57.1% |     4 / 7      57.1% |     4 / 6      66.7%  graphics
+    356 / 376    94.7% |   366 / 376    97.3% |   321 / 373    86.1%  links
+     57 / 61     93.4% |    56 / 61     91.8% |    54 / 61     88.5%  lists
+     20 / 20    100.0% |    20 / 20    100.0% |    18 / 20     90.0%  frames
+
+agreement by shape (the 10 commonest of the fleet's units): the passive predictions against the fleet / the fleet against itself / the passive runs against each other
+    274 / 287    95.5% |   284 / 287    99.0% |   246 / 287    85.7%  NAME + ROLE
+    238 / 240    99.2% |   230 / 240    95.8% |   271 / 276    98.2%  NAME + ROLE + STATE + STATE
+     44 / 82     53.7% |    82 / 82    100.0% |    80 / 82     97.6%  NAME + ROLE + LEVEL
+     32 / 39     82.1% |    31 / 39     79.5% |    36 / 39     92.3%  NAME + ROLE + STATE
+     16 / 35     45.7% |    35 / 35    100.0% |    19 / 19    100.0%  NAME + ROLE + STATE + STATE + POSITION
+      6 / 29     20.7% |    19 / 29     65.5% |     5 / 7      71.4%  NAME + ROLE + STATE + STATE + STATE
+     23 / 26     88.5% |    24 / 26     92.3% |    19 / 24     79.2%  NAME + STATE + ROLE
+     18 / 24     75.0% |    24 / 24    100.0% |    36 / 36    100.0%  NAME
+     22 / 22    100.0% |    22 / 22    100.0% |    22 / 22    100.0%  NAME + NAME + ROLE
+     12 / 21     57.1% |    21 / 21    100.0% |    17 / 17    100.0%  NAME + ROLE + STATE + NAME
+
+all channels: 963 of 1138 units agreed = 84.6%
+the 10 commonest shapes: 685 of 805 = 85.1%
+
+misses by cause (all channels): no counterpart 94, unexplained 59, history 22

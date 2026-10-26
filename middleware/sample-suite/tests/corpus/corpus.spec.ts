@@ -1,5 +1,9 @@
+import { readFileSync } from "node:fs";
 import { test, expect } from "@playwright/test";
-import pages from "./pages.json" with { type: "json" };
+
+// The pages are the ones of ./pages.json, or of the file CORPUS_PAGES names: a list of `{ address }`, or select_pages.py's output (its `sample`). The steps below do not depend on which.
+const listed = JSON.parse(readFileSync(process.env.CORPUS_PAGES ?? new URL("./pages.json", import.meta.url), "utf8")) as { address: string }[] | { sample: { address: string }[] };
+const pages = Array.isArray(listed) ? listed : listed.sample;
 
 // A keyboard walk of a real page, as a team's end-to-end test might do it: open it, Tab through it until focus comes round again, press Escape, and type into the first text field.
 // The steps are the ones the fleet's focus probes take (screenreader-worker `probeFocusOrder`, `probeDialogEscape`, `probeTypedFeedback`, read at 5cfcc5a; the table is in

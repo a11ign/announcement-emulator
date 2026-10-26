@@ -1,6 +1,6 @@
 """Which corpus pages the agreement measurement runs on (A11-208, question 5), by a rule that is a function of the pages and of nothing the emulator or the fleet said about them.
 
-    python3 select_pages.py <chrome executable> <out.json> [--count 6]
+    python3 select_pages.py <chrome executable> <out.json> [--count 6] [--skip <pages.json> ...] [--rule <rule.md>]
 
 The rule, fixed and committed before any fleet capture for this ticket (results/agreement/rule.md):
   1. candidates are the corpus pages (q3/results/corpus.json) that were comparable in the Gate's freeze run of A11-166: the 60 pages of its `old60` set, less the seven that its figure
@@ -8,7 +8,10 @@ The rule, fixed and committed before any fleet capture for this ticket (results/
   2. they are put in the order of the SHA-256 of their address, read as a number (the order q3/split.py's even/odd rule is made from), so that the order is a function of the address alone;
   3. each in turn is opened in a browser and kept if its DOM, and only its DOM, has at least ten tab stops and a text field (dom_check.mjs);
   4. the first `count` that are kept are the sample.
-Pages that a browser cannot open, or that fail the check, are listed with the reason."""
+Pages that a browser cannot open, or that fail the check, are listed with the reason.
+
+A later round (A11-234) takes the next pages by the same rule: `--skip` names the earlier rounds' files, and every page in them, kept or rejected, is left out of the order before step 3. The order of the
+rest is unchanged, so the pages a round takes are the first that pass after the ones already used."""
 import hashlib, json, os, re, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -30,6 +33,12 @@ def candidates(root=ROOT):
     return sorted(urls, key=lambda u: int(hashlib.sha256(u.encode()).hexdigest(), 16)), excluded
 
 
+def without(urls, earlier):
+    """`urls` less every address that an earlier round's file (select_pages.py's output) lists, kept or rejected, in the same order."""
+    used = {p['url'] for f in earlier for p in [*f.get('sample', []), *f.get('rejected', [])]}
+    return [u for u in urls if u not in used]
+
+
 def passes(counts): return counts['tabStops'] >= MIN_TAB_STOPS and counts['textFields'] >= MIN_TEXT_FIELDS
 
 
@@ -46,11 +55,14 @@ def select(urls, check, count=6):
 if __name__ == '__main__':
     chrome, out = sys.argv[1], sys.argv[2]
     count = int(sys.argv[sys.argv.index('--count') + 1]) if '--count' in sys.argv else 6
+    skip = [a for i, a in enumerate(sys.argv) if i and sys.argv[i - 1] == '--skip']
+    rule = sys.argv[sys.argv.index('--rule') + 1] if '--rule' in sys.argv else 'results/agreement/rule.md'
     urls, excluded = candidates()
+    urls = without(urls, [load(path) for path in skip])
     def check(url):
         r = subprocess.run(['node', os.path.join(HERE, 'dom_check.mjs'), url, chrome], capture_output=True, text=True, timeout=120, cwd=os.path.join(ROOT, 'middleware'))
         if r.returncode: raise RuntimeError(r.stderr.strip().splitlines()[-1] if r.stderr.strip() else 'failed')
         return json.loads(r.stdout)
     kept, rejected = select(urls, check, count)
-    with open(out, 'w') as f: json.dump({'rule': 'results/agreement/rule.md', 'candidates': len(urls), 'excluded': sorted(excluded), 'sample': kept, 'rejected': rejected}, f, indent=1)
+    with open(out, 'w') as f: json.dump({'rule': rule, 'candidates': len(urls), 'skipped': skip, 'excluded': sorted(excluded), 'sample': kept, 'rejected': rejected}, f, indent=1)
     print(f'{len(kept)} pages kept, {len(rejected)} rejected, of {len(urls)} candidates')

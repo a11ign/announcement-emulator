@@ -1,0 +1,362 @@
+[
+ {
+  "file": "caselaw-nationalarchives-gov-uk-search-query-381a308b.f1.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-25T11:05:19.187Z",
+  "status": 200,
+  "transcriptLines": 84,
+  "focusStops": 150,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "caselaw-nationalarchives-gov-uk-search-query-381a308b.f2.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-25T10:59:25.869Z",
+  "status": 200,
+  "transcriptLines": 84,
+  "focusStops": 150,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "check-for-flooding-service-gov-uk-river-and-sea-levels-02ac4374.f1.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-25T11:09:33.105Z",
+  "status": 200,
+  "transcriptLines": 30,
+  "focusStops": 24,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "check-for-flooding-service-gov-uk-river-and-sea-levels-02ac4374.f2.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-25T11:08:19.229Z",
+  "status": 200,
+  "transcriptLines": 37,
+  "focusStops": 27,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "design-system-service-gov-uk-components-date-input-1b727a81.f1.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-25T11:25:32.926Z",
+  "status": 200,
+  "transcriptLines": 269,
+  "focusStops": 122,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "design-system-service-gov-uk-components-date-input-1b727a81.f2.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-25T11:25:26.275Z",
+  "status": 200,
+  "transcriptLines": 262,
+  "focusStops": 119,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "design-system-service-gov-uk-components-tabs-0a2a18f0.f1.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-25T11:11:10.346Z",
+  "status": 200,
+  "transcriptLines": 122,
+  "focusStops": 90,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "design-system-service-gov-uk-components-tabs-0a2a18f0.f2.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-25T11:14:33.573Z",
+  "status": 200,
+  "transcriptLines": 115,
+  "focusStops": 87,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "find-and-update-company-information-service-gov-uk-company-00000006-081efa96.f1.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-25T11:11:35.230Z",
+  "status": 200,
+  "transcriptLines": 46,
+  "focusStops": 29,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "find-and-update-company-information-service-gov-uk-company-00000006-081efa96.f2.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-25T11:06:01.014Z",
+  "status": 200,
+  "transcriptLines": 46,
+  "focusStops": 29,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "service-manual-nhs-uk-design-system-components-table-1332f01c.f1.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-25T11:22:44.133Z",
+  "status": 200,
+  "transcriptLines": 166,
+  "focusStops": 123,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "service-manual-nhs-uk-design-system-components-table-1332f01c.f2.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-25T11:18:24.549Z",
+  "status": 200,
+  "transcriptLines": 174,
+  "focusStops": 124,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "sheffield-ac-uk-postgraduate-taught-courses-2027-309878b8.f1.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-25T11:03:11.687Z",
+  "status": 200,
+  "transcriptLines": 234,
+  "focusStops": 15,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "sheffield-ac-uk-postgraduate-taught-courses-2027-309878b8.f2.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-25T10:59:36.680Z",
+  "status": 200,
+  "transcriptLines": 235,
+  "focusStops": 17,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "tfl-gov-uk-plan-a-journey-0f85db50.f1.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-25T11:18:29.562Z",
+  "status": 200,
+  "transcriptLines": 79,
+  "focusStops": 8,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "tfl-gov-uk-plan-a-journey-0f85db50.f2.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-25T11:15:32.603Z",
+  "status": 200,
+  "transcriptLines": 79,
+  "focusStops": 8,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "www-mygov-scot-scottish-child-payment-3b6a0f8b.f1.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-25T11:02:53.021Z",
+  "status": 200,
+  "transcriptLines": 50,
+  "focusStops": 33,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "www-mygov-scot-scottish-child-payment-3b6a0f8b.f2.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-25T11:06:38.118Z",
+  "status": 200,
+  "transcriptLines": 50,
+  "focusStops": 33,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "www-nidirect-gov-uk-information-and-services-motoring-mot-and-vehicle-testing-24af12a3.f1.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-25T10:52:17.894Z",
+  "status": 200,
+  "transcriptLines": 9,
+  "focusStops": 48,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "www-nidirect-gov-uk-information-and-services-motoring-mot-and-vehicle-testing-24af12a3.f2.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-25T10:46:52.684Z",
+  "status": 200,
+  "transcriptLines": 9,
+  "focusStops": 48,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "www-w3-org-wai-tutorials-forms-grouping-29b6f2dc.f1.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-25T10:53:39.669Z",
+  "status": 200,
+  "transcriptLines": 228,
+  "focusStops": 110,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "www-w3-org-wai-tutorials-forms-grouping-29b6f2dc.f2.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-25T10:55:53.073Z",
+  "status": 200,
+  "transcriptLines": 228,
+  "focusStops": 110,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "www-w3-org-wai-tutorials-images-functional-2015b7a1.f1.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-25T10:49:02.818Z",
+  "status": 200,
+  "transcriptLines": 2,
+  "focusStops": 90,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ },
+ {
+  "file": "www-w3-org-wai-tutorials-images-functional-2015b7a1.f2.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-25T10:49:39.316Z",
+  "status": 200,
+  "transcriptLines": 146,
+  "focusStops": 90,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "screenReaderVersion": "2026.1.1",
+   "workerCode": "25bb45d9b38d7a62"
+  }
+ }
+]
