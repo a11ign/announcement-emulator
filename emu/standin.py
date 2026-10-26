@@ -853,11 +853,22 @@ class Builder:
     # --- relations, from the automation node's own lists; the reverse list is used when the forward one is absent
     FORWARD = {'details': 'detailsIx', 'error': 'errorMessageIx'}
     REVERSE = {'details': 'detailsForIx', 'error': 'errorMessageForIx', 'detailsFor': 'detailsIx', 'errorFor': 'errorMessageIx'}
+    def _reverse_relation(self, key):
+        """The nodes that name each node in their own `key` list (`detailsForIx`, `errorMessageForIx`), in the order of `by_ix`, each once: made once for the tree, since `by_ix` does not change after it is indexed. Looking for them
+        in every node for every node was quadratic in the tree, and was nineteen in twenty seconds of a focus move on a page of three thousand nodes (A11-229)."""
+        held = self.__dict__.setdefault('_reverse', {})
+        if key not in held:
+            found = {}
+            for n in self.by_ix.values():
+                for target in dict.fromkeys(n.raw.get(key) or []): found.setdefault(target, []).append(n.ix)
+            held[key] = found
+        return held[key]
+
     def _relation_ids(self, pn, rtype):
         f = pn.raw.get(self.FORWARD.get(rtype, '')) or []
         if f: return [i for i in f if i >= 0]
         r = self.REVERSE.get(rtype)
-        return [n.ix for n in self.by_ix.values() if r and pn.ix in (n.raw.get(r) or [])] if r else []
+        return list(self._reverse_relation(r).get(pn.ix, ())) if r else []
 
     def _aria_details(self, pn, node, role_attr):
         """GeckoVBufBackend_t::fillVBufAriaDetails (gecko_ia2.cpp:452-500): detailsRoles / hasDetails, looked for in both directions."""
