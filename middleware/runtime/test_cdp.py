@@ -55,6 +55,19 @@ class TakingOverTheTrees(unittest.TestCase):
         self.assertEqual(cdp.TICKS_ON, 'window.__aeTicksOn = true')
 
 
+class KeepingTheReads(unittest.TestCase):
+    """AE_RAW=<file>: what a tree read was given is kept, one line for each read, for the fixtures test_axtree.py converts (A11-229)."""
+    def test_each_read_is_one_line_of_the_file(self):
+        import os, tempfile
+        raw = {'ax': [{'nodeId': '1'}], 'dom': {'strings': [], 'documents': []}}
+        with tempfile.TemporaryDirectory() as dir:
+            path = os.path.join(dir, 'raw.jsonl'); c = reader(); was = cdp.RAW_LOG
+            try:
+                cdp.RAW_LOG = path; c._keep(raw); c._keep({'ax': []})
+                self.assertEqual([json.loads(line) for line in open(path)], [raw, {'ax': []}])
+            finally: cdp.RAW_LOG = was
+
+
 class Routing(unittest.TestCase):
     def test_commands_sent_together_are_answered_in_the_order_they_were_sent_whatever_order_the_browser_answers_in(self):
         c = reader(); out = []

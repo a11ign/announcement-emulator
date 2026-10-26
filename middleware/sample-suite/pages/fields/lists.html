@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Lists and widgets - field reference</title></head>
+<body>
+<!-- A11-229: where an item sits in its set, what a click handler does to what is clickable, what a field holds and which words describe a link. Recorded as a fixture (middleware/runtime/fixtures/structure). -->
+<main>
+<h1>Lists and widgets</h1>
+
+<h2>Nested lists</h2>
+<ul id="outer">
+  <li>Fruit
+    <ol><li>Apple</li><li>Pear</li><li>Plum</li></ol>
+  </li>
+  <li>Vegetables
+    <ul><li>Leek</li><li>Kale</li></ul>
+  </li>
+  <li>Grain</li>
+</ul>
+
+<h2>Positions the page states</h2>
+<ul id="partial">
+  <li aria-posinset="31" aria-setsize="90">Thirty-first</li>
+  <li aria-posinset="32" aria-setsize="90">Thirty-second</li>
+</ul>
+
+<h2>A tree</h2>
+<ul role="tree" id="tree" aria-label="Files">
+  <li role="treeitem" aria-expanded="true" aria-level="1" aria-posinset="1" aria-setsize="2" tabindex="0">src
+    <ul role="group">
+      <li role="treeitem" aria-level="2" aria-posinset="1" aria-setsize="2" tabindex="-1">index.ts</li>
+      <li role="treeitem" aria-level="2" aria-posinset="2" aria-setsize="2" tabindex="-1">util.ts</li>
+    </ul>
+  </li>
+  <li role="treeitem" aria-level="1" aria-posinset="2" aria-setsize="2" tabindex="-1">README</li>
+</ul>
+
+<h2>A listbox</h2>
+<div role="listbox" id="listbox" aria-label="Colour" tabindex="0">
+  <div role="option" aria-selected="true">Red</div>
+  <div role="option" aria-selected="false">Green</div>
+  <div role="option" aria-selected="false">Blue</div>
+</div>
+
+<h2>More sets</h2>
+<div role="radiogroup" aria-label="Size"><label><input type="radio" name="sz"> S</label> <label><input type="radio" name="sz"> M</label> <label><input type="radio" name="sz"> L</label></div>
+<div role="tablist" aria-label="Views"><button role="tab" aria-selected="true">Day</button><button role="tab" aria-selected="false" tabindex="-1">Week</button></div>
+<div role="menu" aria-label="Actions"><div role="menuitem" tabindex="0">Open</div><div role="menuitemcheckbox" aria-checked="true" tabindex="-1">Pin</div><div role="menuitem" tabindex="-1">Close</div></div>
+<select aria-label="Fruit"><option>Apple</option><option>Pear</option></select>
+<select aria-label="Size of drink"><option>Small</option><option>Medium</option><option selected>Large</option></select>
+<select aria-label="Toppings" multiple size="3"><option>Nuts</option><option>Cream</option><option>Sprinkles</option></select>
+<form id="orderform"><label><input type="radio" name="pay"> Card</label> <label><input type="radio" name="pay"> Cash</label></form>
+<label><input type="radio" name="pay"> Elsewhere, same name outside the form</label>
+<dl><dt>Term one</dt><dd>First</dd><dt>Term two</dt><dd>Second</dd></dl>
+
+<h2>Click handlers</h2>
+<nav id="clicknav" aria-label="Sections" onclick="void 0"><a href="#a">Alpha</a> <a href="#b">Beta</a></nav>
+<nav id="plainnav" aria-label="Plain"><a href="#c">Gamma</a></nav>
+<label><input type="checkbox" id="clickcheck" onclick="void 0"> Click handler on a check box</label>
+<label><input type="checkbox" id="plaincheck"> No handler on a check box</label>
+<div role="group" id="clickgroup" aria-label="Options" onclick="void 0"><label><input type="radio" name="o"> One</label> <label><input type="radio" name="o"> Two</label></div>
+<div role="group" id="plaingroup" aria-label="More options"><label><input type="radio" name="p"> Three</label></div>
+<label id="clicklabel" for="who">A label with a handler</label>
+<label id="plainlabel" for="qty">A label without one</label>
+<div id="clickdiv" onclick="void 0">A plain block with a handler</div>
+<span id="clickspan" onclick="void 0">A plain span with a handler</span>
+<button id="clickbutton" onclick="void 0">A button with a handler</button>
+
+<h2>A field that is typed into</h2>
+<label for="who">Your name</label> <input id="who" value="">
+<label for="note2">Note</label> <textarea id="note2"></textarea>
+<label for="qty">Quantity</label> <input id="qty" type="number" value="2">
+
+<h2>Values the page sets</h2>
+<input aria-label="Preset" value="preset"> <textarea aria-label="Preset notes">preset notes</textarea> <input aria-label="Secret" type="password" value="hunter2">
+<input aria-label="Level" type="range" min="0" max="10" value="3"> <progress aria-label="Done" value="1" max="2"></progress> <meter aria-label="Fuel" value="0.5"></meter>
+<input aria-label="Count" type="number" value="5">
+<div role="slider" tabindex="0" aria-label="Volume" aria-valuemin="0" aria-valuemax="10" aria-valuenow="3" aria-valuetext="three of ten"></div>
+<div role="combobox" tabindex="0" aria-label="Country" aria-expanded="false" aria-controls="cl">Norway</div>
+
+<h2>Descriptions</h2>
+<button id="b1" title="Saves your work">Save</button>
+<button id="b2" aria-description="Opens a dialog">Share</button>
+<button id="b3" aria-describedby="hint hidden-hint">Print</button>
+<span id="hidden-hint" hidden>Hidden words.</span>
+<input id="e1" aria-label="Email" placeholder="you@example.com" title="Your address">
+<img id="g1" alt="Logo" title="Company logo" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+<a id="t1" href="#t1" title="Same as name">Same as name</a>
+<a id="t2" href="#t2" aria-describedby="rich">Rich description</a>
+<p id="rich">See <a href="#x">the guide</a> and <b>note</b>.</p>
+
+<h2>Described links</h2>
+<a id="d1" href="#d1" title="Opens the shop">Shop</a>
+<a id="d2" href="#d2" aria-describedby="hint">Basket</a>
+<p id="hint">Items stay for an hour.</p>
+<a id="d3" href="#d3" aria-label="Help" aria-describedby="hint" title="Ignored when described">Help</a>
+<script>
+// handlers the way real pages attach them: a listener on the element, and one the page puts on a label
+document.getElementById('clicklabel').addEventListener('click', () => {});
+document.getElementById('clickdiv').addEventListener('click', () => {});
+</script>
+</main>
+</body></html>

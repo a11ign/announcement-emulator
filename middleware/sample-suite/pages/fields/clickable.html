@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Click handlers - field reference</title></head>
+<body>
+<main>
+<h1>Click handlers</h1>
+<!-- A11-229: an element of each kind with a click listener of the page's own ("-own", attached by the script at the end) and without one ("-plain"), for the verb Chromium gives it (AXObject::Action): NVDA says "clickable" for  only. Recorded as a fixture (middleware/runtime/fixtures/structure). -->
+<label id="l-own" for="i1">Own label</label> <input id="i1">
+<label id="l-plain" for="i2">Plain label</label> <input id="i2">
+<label id="l-wrap">Wrapping label <input id="i3" type="checkbox"></label>
+<form id="f-plain" aria-label="Plain form" role="search"><input id="i4" type="search" aria-label="Q"></form>
+<form id="f-own" aria-label="Own form" role="search"><input id="i5" type="search" aria-label="R"></form>
+<fieldset id="fs-plain"><legend>Plain fieldset</legend><input id="i6" aria-label="s"></fieldset>
+<fieldset id="fs-own"><legend>Own fieldset</legend><input id="i7" aria-label="t"></fieldset>
+<section id="sec-own" aria-label="Own section"><p>text</p></section>
+<section id="sec-plain" aria-label="Plain section"><p id="p-plain">text</p></section>
+<p id="p-own">Own paragraph</p>
+<ul id="ul-own"><li id="li-own">Own item</li><li id="li-plain">Plain item</li></ul>
+<h2 id="h-own">Own heading</h2>
+<h2 id="h-plain">Plain heading</h2>
+<table id="t-own"><tr id="tr-own"><td id="td-own">Own cell</td><td id="td-plain">Plain</td></tr></table>
+<img id="img-own" alt="Own image" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+<img id="img-plain" alt="Plain image" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+<details id="det"><summary id="sum-plain">Plain summary</summary>body</details>
+<details><summary id="sum-own">Own summary</summary>body</details>
+<select id="sel-plain" aria-label="Pick"><option id="opt">One</option><option>Two</option></select>
+<select id="sel-own" aria-label="Pick own"><option>One</option></select>
+<textarea id="ta-plain" aria-label="Notes"></textarea>
+<textarea id="ta-own" aria-label="Notes own"></textarea>
+<input id="in-text-own" aria-label="Own text">
+<input id="in-chk-own" type="checkbox" aria-label="Own check">
+<input id="in-chk-plain" type="checkbox" aria-label="Plain check">
+<input id="in-radio-own" type="radio" name="r" aria-label="Own radio">
+<input id="in-submit" type="submit" value="Plain submit">
+<input id="in-num" type="number" aria-label="Number">
+<button id="btn-plain">Plain button</button>
+<button id="btn-own">Own button</button>
+<br><a id="a-href" href="#x">Plain link</a>
+<a id="a-href-own" href="#y">Own link</a>
+<a id="a-nohref">Anchor without href</a>
+<a id="a-nohref-own">Own anchor without href</a>
+<div id="d-own">Own div</div>
+<div id="d-plain">Plain div</div>
+<span id="s-own">Own span</span>
+<div id="d-role-button" role="button" tabindex="0">Role button</div>
+<div id="d-role-button-own" role="button" tabindex="0">Role button own</div>
+<div id="d-role-link-own" role="link" tabindex="0">Role link own</div>
+<div id="d-role-checkbox-own" role="checkbox" aria-checked="false" tabindex="0">Role checkbox own</div>
+<div id="d-role-menuitem-own" role="menuitem" tabindex="-1">Role menuitem own</div>
+<div id="d-role-tab-own" role="tab" tabindex="0">Role tab own</div>
+<div id="d-role-switch" role="switch" aria-checked="false" tabindex="0">Role switch</div>
+<div id="d-role-option-own" role="listbox" aria-label="LB"><div id="opt-own" role="option" aria-selected="false">Role option own</div></div>
+<div id="d-role-textbox" role="textbox" tabindex="0" aria-label="Textbox">x</div>
+<div id="d-toggle" role="button" aria-pressed="false" tabindex="0">Toggle</div>
+<div id="d-role-group-own" role="group" aria-label="Group own"><span>in group</span></div>
+<div id="d-role-region-own" role="region" aria-label="Region own"><span>in region</span></div>
+<div id="d-ce" contenteditable="true">Editable</div>
+<div id="d-tabindex" tabindex="0">Focusable div</div>
+<dialog id="dlg" open aria-label="Dialog own">Dialog</dialog>
+<svg id="svg-own" role="img" aria-label="Own svg" width="10" height="10"><rect width="10" height="10"/></svg>
+<progress id="prog" value="1" max="2" aria-label="Prog"></progress>
+<div id="delegate"><p id="delegate-child">Child of a delegating parent</p></div>
+<div id="d-dis-own"><button id="btn-dis-own" disabled>Disabled own</button></div>
+<div id="r-toggle" role="button" tabindex="0" aria-pressed="false">Role button</div>
+<div id="r-mi-check" role="menuitemcheckbox" tabindex="0" aria-checked="false">Role menuitemcheckbox</div>
+<div id="r-mi-radio" role="menuitemradio" tabindex="0" aria-checked="false">Role menuitemradio</div>
+<div id="r-treeitem" role="treeitem" tabindex="0" >Role treeitem</div>
+<div id="r-combobox" role="combobox" tabindex="0" aria-expanded="false">Role combobox</div>
+<div id="r-slider" role="slider" tabindex="0" aria-valuenow="1">Role slider</div>
+<div id="r-spin" role="spinbutton" tabindex="0" aria-valuenow="1">Role spinbutton</div>
+<div id="r-textbox" role="textbox" tabindex="0" >Role textbox</div>
+<div id="r-switch" role="switch" tabindex="0" aria-checked="false">Role switch</div>
+<div id="r-article" role="article" tabindex="0" >Role article</div>
+<div id="r-img" role="img" tabindex="0" aria-label="x">Role img</div>
+<div id="r-heading" role="heading" tabindex="0" aria-level="2">Role heading</div>
+<div id="r-link" role="link" tabindex="0" >Role link</div>
+<div id="r-tabpanel" role="tabpanel" tabindex="0" >Role tabpanel</div>
+<div id="r-banner" role="banner" tabindex="0" >Role banner</div>
+<div id="r-navigation" role="navigation" tabindex="0" >Role navigation</div>
+<div id="r-listitem" role="listitem" tabindex="0" >Role listitem</div>
+<div id="r-tooltip" role="tooltip" tabindex="0" >Role tooltip</div>
+<div id="r-progressbar" role="progressbar" tabindex="0" aria-valuenow="1">Role progressbar</div>
+<div id="r-separator" role="separator" tabindex="0" >Role separator</div>
+<div id="r-option" role="option" tabindex="0" aria-selected="false">Role option</div>
+<script>document.getElementById('r-toggle').addEventListener('click',()=>{});document.getElementById('r-mi-check').addEventListener('click',()=>{});document.getElementById('r-mi-radio').addEventListener('click',()=>{});document.getElementById('r-treeitem').addEventListener('click',()=>{});document.getElementById('r-combobox').addEventListener('click',()=>{});document.getElementById('r-slider').addEventListener('click',()=>{});document.getElementById('r-spin').addEventListener('click',()=>{});document.getElementById('r-textbox').addEventListener('click',()=>{});document.getElementById('r-switch').addEventListener('click',()=>{});document.getElementById('r-article').addEventListener('click',()=>{});document.getElementById('r-img').addEventListener('click',()=>{});document.getElementById('r-heading').addEventListener('click',()=>{});document.getElementById('r-link').addEventListener('click',()=>{});document.getElementById('r-tabpanel').addEventListener('click',()=>{});document.getElementById('r-banner').addEventListener('click',()=>{});document.getElementById('r-navigation').addEventListener('click',()=>{});document.getElementById('r-listitem').addEventListener('click',()=>{});document.getElementById('r-tooltip').addEventListener('click',()=>{});document.getElementById('r-progressbar').addEventListener('click',()=>{});document.getElementById('r-separator').addEventListener('click',()=>{});document.getElementById('r-option').addEventListener('click',()=>{});
+const own = ['l-own','f-own','fs-own','sec-own','p-own','ul-own','li-own','h-own','tr-own','td-own','t-own','img-own','sum-own','sel-own','ta-own','in-text-own','in-chk-own','in-radio-own','btn-own','a-href-own','a-nohref-own','d-own','s-own','d-role-button-own','d-role-link-own','d-role-checkbox-own','d-role-menuitem-own','d-role-tab-own','opt-own','d-role-group-own','d-role-region-own','dlg','svg-own','delegate','btn-dis-own'];
+for (const id of own) document.getElementById(id).addEventListener('click', () => {});
+</script>
+</main>
+</body></html>

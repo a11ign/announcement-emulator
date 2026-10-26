@@ -10,11 +10,15 @@ export const config: PlaywrightTestConfig = {
   use: { baseURL: "http://127.0.0.1:4173" },
   projects: [
     { name: "fixtures", testDir: "./tests/fixtures" },
+    // contexts the suite opens itself (`browser.newContext()`): the DevTools tree serves them, an extension does not run in them (A11-229)
+    { name: "contexts", testDir: "./tests/contexts" },
     // pages written for the faults the agreement measurement attributed to the middleware (A11-234): one test for each, recorded and replayed in middleware/runtime
     { name: "misses", testDir: "./tests/misses" },
     // the window the fleet's Edge reports (innerWidth x innerHeight, as emu/session.mjs sets it), so that what is on the screen when a stop is read is what was on its screen
     { name: "corpus", testDir: "./tests/corpus", timeout: 180_000, use: { viewport: { width: 1008, height: 729 } } },
     // the same walk on table- and list-heavy pages (A11-229, step 2: results/tree-source-structure/rule.md)
     { name: "structure", testDir: "./tests/structure", timeout: 180_000, use: { viewport: { width: 1008, height: 729 } } },
+    // two small local pages that carry the fields the DevTools tree source was found to lack; their recordings are the fixtures it is held to (A11-229, step 1)
+    { name: "fields", testDir: "./tests/fields" },
   ],
 };

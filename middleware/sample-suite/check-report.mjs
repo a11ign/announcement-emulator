@@ -8,6 +8,7 @@
 // agrees with itself on <ceiling>%] (<figure>)": the part in brackets is there when the figure says what it was measured on and what the oracle's own noise puts as the ceiling (A11-234).
 // --expect-shape-rates holds every predicted utterance to what the figure says of its shape (A11-234): where the build's figure has the rates of shapes, each utterance carries its shape's rate in the json (`shapeRate`) and in the text
 // (`[NAME + ROLE: 86.0% of 57]`, `, low confidence` where the figure marks the shape weak, or `[shape not measured]`); where it has none (a build that is not measured, or a figure from before shapes), no utterance carries one.
+// Any other option is refused (exit 2), so that a misspelt one cannot turn a check off.
 // --lower-fidelity is for a run whose tree came through the DevTools port (macOS, and the same on Linux for comparison): the tests are held to carrying the two labelled attachments, to saying where their tree came
 // from, and, over the suite, to a page load predicted for most tests, a sweep and at least one of the flags. Which flags are raised for a quick test depends on how soon the browser's answer comes: one may
 // be missing, and one the extension's run does not raise may appear (counted and printed, not a failure).
@@ -17,6 +18,9 @@ const args = process.argv.slice(2);
 const valueOf = (flag) => { const at = args.indexOf(flag); return at < 0 ? null : args.splice(at, 2)[1]; };
 const unmeasured = valueOf("--expect-unmeasured"), measured = valueOf("--expect-measured");
 const expectNoTree = args.includes("--expect-no-tree"), lowerFidelity = args.includes("--lower-fidelity"), expectShapeRates = args.includes("--expect-shape-rates");
+const KNOWN = ["--expect-no-tree", "--lower-fidelity", "--expect-shape-rates"];
+const unknown = args.filter((a) => a.startsWith("--") && !KNOWN.includes(a));
+if (unknown.length) { console.error(`unknown option ${unknown.join(", ")}; known: ${KNOWN.join(", ")}, --expect-unmeasured <build>, --expect-measured <build>`); process.exit(2); }
 const [reportPath, runPath] = args.filter((a) => !a.startsWith("--"));
 const expectedBuild = unmeasured ?? measured;
 const report = JSON.parse(readFileSync(reportPath ?? "test-results/report.json", "utf8"));
@@ -29,6 +33,10 @@ const EXPECTED = {
 // A flag a test may or may not raise, by what the tree read after the focus move had in it (A11-234): the field that takes the focus has its error message in the tree if the page had shown it by the time the tree was read,
 // and then the words are in the speech and the flag is rightly not raised (NVDA says an invalid field's error message). Which tree is read depends on how quickly the browser answered.
 const MAY_BE_ABSENT = { "an empty email is refused and the field is focused": ["unheard-error"] };
+// What a test must have heard, whatever its tree source: a part of each wording its pages predict. A test of two contexts has the speech of both (the fixture's page and the one the test opened itself).
+const HEARD = { "a context the suite opens itself is announced like the page the fixture gives it": ["Full name", "Add a mug"] };
+// Tests that raise no flag and are not held to the flags: the contexts project's. Any other test is, so renaming one cannot silently stop the flag check.
+const FLAGLESS = new Set([...Object.keys(HEARD), "a page open while the browser comes up"]);
 const tests = [];
 (function walk(suite) { for (const s of suite.suites ?? []) walk(s); for (const spec of suite.specs ?? []) for (const t of spec.tests) tests.push({ title: spec.title, results: t.results }); })({ suites: report.suites });
 
@@ -73,6 +81,8 @@ for (const { title, results } of tests) {
       rated += 1; if (r.lowConfidence) weak += 1;
     }
   }
+  const said = data.predictedSpeech.map((s) => s.text).join(" | ").toLowerCase();
+  for (const part of expectNoTree ? [] : HEARD[title] ?? []) if (!said.includes(part.toLowerCase()) && !cold(results.at(-1))) problems.push(`${title}: nothing predicted contains "${part}"`);
   speech += data.predictedSpeech.length; sweeps += data.sweeps.length; flags += data.flags.length;
   if (expectNoTree) { if (data.flags.length || data.predictedSpeech.length || data.sweeps.length) problems.push(`${title}: something was predicted, flagged or swept where the write-up says no tree is read`); continue; }
   if (lowerFidelity) {
@@ -91,7 +101,7 @@ for (const { title, results } of tests) {
 }
 if (lowerFidelity) {
   if (loads < Math.ceil(tests.length * 0.6)) problems.push(`a page load was predicted for ${loads} of ${tests.length} tests: fewer than three in five`);
-  if (!expectedFlags) problems.push("none of the flags the sample suite is built to raise was raised");
+  if (tests.some((t) => !FLAGLESS.has(t.title)) && !expectedFlags) problems.push("none of the flags the sample suite is built to raise was raised");
   if (!sweeps) problems.push("no sweep was made");
 }
 if (expectedBuild) {

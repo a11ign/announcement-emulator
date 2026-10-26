@@ -172,3 +172,24 @@ test("a test whose error message may be in the tree it was read from passes with
   const strict = report([{ title: "an empty email is refused", data: { predictedSpeech: speech, sweeps: sweep, flags: [] } }], 5);
   assert.match(check(strict.report, strict.run).stderr, /an empty email is refused: flags \[\], wanted \["unheard-error"\]/);
 });
+
+test("an option check-report does not know is refused, and the flag check is not skipped for a suite whose tests were renamed", () => {
+  const { report: path, run } = noTreeRun(0);
+  const misspelt = check("--expect-no-tre", path, run);
+  assert.equal(misspelt.status, 2);
+  assert.match(misspelt.stderr, /unknown option --expect-no-tre/);
+  const viaPort = report([{ title: "a test nobody listed", data: { treeSource: "devtools", predictedSpeech: speech, sweeps: sweep }, text: `PREDICTED NVDA SPEECH: ADVISORY, NOT A READING OF NVDA, NEVER EVIDENCE\n${lower}` }], 5);
+  assert.match(check("--lower-fidelity", viaPort.report, viaPort.run).stderr, /none of the flags the sample suite is built to raise was raised/);
+});
+
+test("a test that opens a context of its own is held to the speech of both its pages, and a project of tests that raise no flag does not fail the flag check", () => {
+  const title = "a context the suite opens itself is announced like the page the fixture gives it";
+  const text = `PREDICTED NVDA SPEECH: ADVISORY, NOT A READING OF NVDA, NEVER EVIDENCE\n${lower}`;
+  const both = report([{ title, data: { treeSource: "devtools", predictedSpeech: [{ cause: "load", text: "Full name, edit" }, { cause: "focus", text: "Add a mug, button" }], sweeps: sweep }, text }], 5);
+  const ok = check("--lower-fidelity", both.report, both.run);
+  assert.equal(ok.status, 0, ok.stderr);
+  const one = report([{ title, data: { treeSource: "devtools", predictedSpeech: [{ cause: "load", text: "Full name, edit" }], sweeps: sweep }, text }], 5);
+  const result = check("--lower-fidelity", one.report, one.run);
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /nothing predicted contains "Add a mug"/);
+});

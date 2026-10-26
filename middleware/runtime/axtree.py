@@ -4,10 +4,15 @@ The browser's DevTools port says what the renderer's accessibility tree holds (`
 together into the node list that `emu/ext2/tree.js` makes from chrome.automation, so that the rest of the runtime (`predict.py`, and the emulator under it) does not know which it was given.
 
 It is the lower-fidelity source ADR 0047 allows, and it is not the same tree. What the DevTools protocol does not say is worked out here from what it does:
-  * the roles are exact (`chromeRole` is Chromium's own number, roles.json names it);
+  * the roles are exact (`chromeRole` is Chromium's own number, roles.json names it; the two numbers Chromium 156 adds that matter are named in ROLES);
   * a text's line starts are those of its inline text boxes, which Chromium makes one for each line; its word and sentence starts are found with a regular expression and not with ICU's rules;
-  * the table indexes, the position in a set and the size of one are counted from the tree, and not read from the AXNode that Chromium holds;
+  * the table model (where a cell is, what it spans, `aria-rowindex` / `aria-colindex`, its header cells), the position in a set and the size of one are worked out from the tree and the page's attributes by Chromium's own rules
+    (AXTableInfo; AXTree::ComputeSetSizePosInSet, AXNode::GetOrderedSet), and not read from the AXNode that Chromium holds. A11-229 held each to the companion extension's tree for the same pages (fixtures/structure);
+  * the default action verb is Chromium's `AXObject::Action`: a page's own click listener (DOMSnapshot's `isClickable` less what the browser does itself, and, for a <label>, the console's `getEventListeners`) makes a node `click`;
   * `visited`, `default`, `offscreen` beyond the viewport, the document's text selection and the node's `nameFrom` beyond the first source are not known, or are guessed (each is marked below).
+Not forced, because the protocol does not give it (A11-229, listed with the units it costs in the write-up): ICU's word and sentence starts; the names of the parts inside a date or time field (the protocol computes "Day Day" where the extension has
+"Day When"); the value of a colour field and the file field's "No file chosen"; ARIA radio buttons outside a radio group (Chromium groups them); the `relevant` a live region has by default; a label's listener in a frame; and, for a node with no
+action at all, the extension's `none` where this says `clickAncestor` (a listener on the document is not one DOMSnapshot sees, and neither is spoken).
 The write-up measures what that costs (docs/playwright-middleware-spike.md, Q2).
 """
 import json, os, re
@@ -15,6 +20,8 @@ from urllib.parse import urljoin
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROLES = {int(k): v for k, v in json.load(open(os.path.join(HERE, 'roles.json'))).items()}      # Chromium's Role enum: number -> chrome.automation's name
+# Roles that Chromium 156 numbers beyond roles.json (made from 155's ax_enums.mojom), as the companion extension names them for the same elements in Playwright 1.64.1's Chromium (156.0.8078.4): a native <select> and a grid cell.
+ROLES.update({209: 'comboBoxSelect', 212: 'gridCell'})
 
 STYLES = ['display', 'color', 'background-color', 'font-family', 'font-size', 'font-weight', 'font-style', 'text-decoration-line', 'visibility']
 # What is asked of the page in the same moment as the two trees: where it is, how loaded, and the caret of the field that has the focus.
@@ -25,12 +32,13 @@ return {url: location.href, title: document.title, readyState: document.readySta
 def fetch(call_many):
     """What a conversion needs from one page. `call_many([(method, params), ...])` sends DevTools commands of that page together and answers with their results in order: the AX tree, the DOM, the viewport
     and the page's own state are read in one round trip (the browser answers them in the order sent)."""
-    ax, dom, metrics, evaluated, frames = call_many([
+    ax, dom, metrics, evaluated, frames, labels = call_many([
         ('Accessibility.getFullAXTree', {}),
         ('DOMSnapshot.captureSnapshot', {'computedStyles': STYLES, 'includeDOMRects': True}),
         ('Page.getLayoutMetrics', {}),
         ('Runtime.evaluate', {'expression': PAGE_JS, 'returnByValue': True}),
         ('Page.getFrameTree', {}),
+        ('Runtime.evaluate', {'expression': LABELS_JS, 'returnByValue': True, 'includeCommandLineAPI': True}),
     ])
     children = []
     def collect(tree):
@@ -38,15 +46,42 @@ def fetch(call_many):
     collect(frames['frameTree'])
     inner = call_many([('Accessibility.getFullAXTree', {'frameId': f}) for f in children]) if children else []
     if 'value' not in evaluated.get('result', {}): raise ValueError('the page has no state to read (it is closing)')
-    return {'ax': ax['nodes'], 'dom': dom, 'viewport': metrics.get('cssVisualViewport') or metrics.get('visualViewport'), 'page': json.loads(evaluated['result']['value']), 'frames': {f: r['nodes'] for f, r in zip(children, inner)}}      # a page that is gone has no value: KeyError, which the caller takes as one read lost
+    return {'ax': ax['nodes'], 'dom': dom, 'viewport': metrics.get('cssVisualViewport') or metrics.get('visualViewport'), 'page': json.loads(evaluated['result']['value']), 'frames': {f: r['nodes'] for f, r in zip(children, inner)},
+            'listeners': label_listeners(labels, dom)}      # a page that is gone has no value: KeyError, which the caller takes as one read lost
+
+
+# DOMSnapshot says an element is clickable when a script listens for a click on it and also when the browser itself acts on a click there: a link, a form control, a <label>. Chromium's accessibility tree
+# counts only the first as a click handler (`AXObject::Action` gives a plain <label> no verb), so for the tags below the flag says nothing about the page's own listeners.
+NATIVE_CLICK_TAGS = {'a', 'area', 'label', 'input', 'button', 'summary', 'select', 'textarea', 'option'}
+# Asked of the page in the same round trip as the trees, with the console's own `getEventListeners`: for each <label> of the document, in document order, whether the page listens for a click on it.
+LABELS_JS = """JSON.stringify([...document.querySelectorAll('label')].map(label => { const on = getEventListeners(label); return ['click', 'mousedown', 'mouseup', 'DOMActivate'].some(type => (on[type] || []).length) ? 1 : 0; }))"""
+
+
+def label_listeners(answer, snapshot):
+    """The backend ids of the <label> elements of the page's main document that carry a click listener of the page's own. A label is the one native element whose "clickable" is spoken (it has no role verb to hide it),
+    and DOMSnapshot cannot tell the page's listener from the label's own behaviour. `answer` is the result of LABELS_JS, which sees the main document's labels outside any shadow root: they are matched to the snapshot's by
+    their order, and by nothing if the two do not count the same (a page that changed between the two questions)."""
+    try: asked = json.loads(answer['result']['value'])
+    except (KeyError, TypeError, ValueError): return []
+    if not asked or not snapshot['documents']: return []
+    strings = snapshot['strings']; nodes = snapshot['documents'][0]['nodes']; parents = nodes['parentIndex']
+    in_shadow = {i for i, kind in zip(nodes.get('shadowRootType', {}).get('index', []), nodes.get('shadowRootType', {}).get('value', [])) if kind >= 0}
+    def shadowed(i):
+        while i >= 0:
+            if i in in_shadow: return True
+            i = parents[i]
+        return False
+    labels = [nodes['backendNodeId'][i] for i in range(len(parents)) if (strings[nodes['nodeName'][i]] or '').lower() == 'label' and not shadowed(i)]
+    return [backend for backend, listens in zip(labels, asked) if listens] if len(labels) == len(asked) else []
 
 
 # ------------------------------------------------------------------------------------------------ the page's elements
 
 class Dom:
     """The elements of a DOMSnapshot by backendNodeId: tag, attributes, computed style and the box."""
-    def __init__(self, snapshot):
+    def __init__(self, snapshot, listeners=()):
         strings = snapshot['strings']; s = lambda i: strings[i] if i >= 0 else None
+        listeners = set(listeners)
         self.by_backend = {}; self.frame_of_owner = {}      # frame_of_owner: the backend id of an iframe element -> the id of the frame it holds
         for doc in snapshot['documents']:
             nodes = doc['nodes']
@@ -57,8 +92,10 @@ class Dom:
             contents = dict(zip(nodes.get('contentDocumentIndex', {}).get('index', []), nodes.get('contentDocumentIndex', {}).get('value', [])))
             for i, backend in enumerate(nodes['backendNodeId']):
                 attrs = nodes['attributes'][i]
-                info = {'tag': (s(nodes['nodeName'][i]) or '').lower(), 'type': nodes['nodeType'][i], 'attrs': {s(attrs[j]): s(attrs[j + 1]) for j in range(0, len(attrs), 2)}, 'parent': nodes['parentIndex'][i],
-                        'lang': lang if nodes['parentIndex'][i] == -1 else None, 'base': s(doc.get('baseURL')), 'clickable': i in clickable}
+                tag = (s(nodes['nodeName'][i]) or '').lower()
+                info = {'tag': tag, 'type': nodes['nodeType'][i], 'attrs': {s(attrs[j]): s(attrs[j + 1]) for j in range(0, len(attrs), 2)}, 'parent': nodes['parentIndex'][i],
+                        'lang': lang if nodes['parentIndex'][i] == -1 else None, 'base': s(doc.get('baseURL')),
+                        'clickable': i in clickable and (tag not in NATIVE_CLICK_TAGS or backend in listeners)}      # the page's own click listener, which is what makes a node `click`
                 if i in contents: self.frame_of_owner[backend] = snapshot['documents'][contents[i]].get('frameId') and strings[snapshot['documents'][contents[i]]['frameId']]
                 row = layout.get(i)
                 if row is not None:
@@ -75,6 +112,14 @@ class Dom:
                     i = a['parent']
                 return lang
             for i, backend in enumerate(nodes['backendNodeId']): self.by_backend[backend]['language'] = language(i)
+            def form_owner(i):      # the nearest <form> above an element: the scope of a radio button's group
+                i = nodes['parentIndex'][i]
+                while i >= 0:
+                    if self.by_backend[index_of[i]]['tag'] == 'form': return index_of[i]
+                    i = nodes['parentIndex'][i]
+                return None
+            for i, backend in enumerate(nodes['backendNodeId']):
+                if self.by_backend[backend]['tag'] == 'input': self.by_backend[backend]['form'] = form_owner(i)
 
     def get(self, backend): return self.by_backend.get(backend) or {}
 
@@ -99,11 +144,27 @@ def sentence_starts(text):
 
 # ------------------------------------------------------------------------------------------------ the conversion
 
-ACTION_VERB = {'button': 'press', 'toggleButton': 'press', 'popUpButton': 'press', 'link': 'jump', 'checkBox': 'check', 'switch': 'check', 'menuItemCheckBox': 'check', 'radioButton': 'select', 'menuItemRadio': 'select',
-               'menuItem': 'click', 'tab': 'select', 'listBoxOption': 'select', 'textField': 'activate', 'searchBox': 'activate', 'textFieldWithComboBox': 'activate', 'comboBoxSelect': 'open',
-               'comboBoxMenuButton': 'open', 'slider': 'activate', 'spinButton': 'activate'}
-SET_ROLES = {'listItem', 'listBoxOption', 'radioButton', 'tab', 'treeItem', 'menuItem', 'menuItemCheckBox', 'menuItemRadio', 'menuListOption', 'article', 'listMarker'}
+# The default action verb Chromium gives a node (AXObject::Action, ax_object.cc): a text field activates, a checkable control checks (or unchecks), and the roles below have their own verb. Anything else is `click` when
+# the node itself is what a click acts on (a listener the page put on it, or a native control of the kinds in CLICK_INPUTS), and `clickAncestor` when it is something above it. NVDA says "clickable" for `click` only.
+ACTION_VERB = {'button': 'press', 'disclosureTriangle': 'press', 'disclosureTriangleGrouped': 'press', 'link': 'jump', 'listBoxOption': 'select', 'menuItem': 'select', 'menuListOption': 'select',
+               'comboBoxMenuButton': 'open', 'comboBoxSelect': 'open', 'popUpButton': 'open', 'textField': 'activate', 'searchBox': 'activate', 'textFieldWithComboBox': 'activate'}
+CHECKABLE = {'checkBox', 'menuItemCheckBox', 'menuItemRadio', 'radioButton', 'switch', 'toggleButton'}
+CLICK_INPUTS = {'color', 'date', 'datetime-local', 'month', 'week', 'time'}      # <input> types that Chromium gives a verb of their own kind: the default, `click`
+# Which roles are ordered sets and which are their items, and which a set looks through to find them (ui/accessibility/ax_role_properties.cc IsSetLike, IsItemLike; AXNode::IsIgnoredContainerForOrderedSet, SetRoleMatchesItemRole in ax_node.cc).
+SET_LIKE = {'comboBoxSelect', 'descriptionList', 'docBibliography', 'feed', 'group', 'list', 'listBox', 'listGrid', 'menu', 'menuBar', 'menuListPopup', 'popUpButton', 'radioGroup', 'tabList', 'tree', 'treeGrid'}
+ITEM_LIKE = {'article', 'comment', 'disclosureTriangle', 'disclosureTriangleGrouped', 'listItem', 'menuItem', 'menuItemRadio', 'tab', 'menuItemCheckBox', 'treeItem', 'listBoxOption', 'menuListOption', 'radioButton', 'term'}
+SET_TRANSPARENT = {'cell', 'details', 'labelText', 'layoutTableCell', 'layoutTableRow', 'listItem', 'genericContainer', 'gridCell', 'row', 'scrollView', 'unknown'}
+ITEMS_OF = {'feed': {'article'}, 'list': {'listItem'}, 'group': {'comment', 'listItem', 'menuItem', 'menuItemRadio', 'menuItemCheckBox', 'listBoxOption', 'treeItem'}, 'menu': {'menuItem', 'menuItemRadio', 'menuItemCheckBox'},
+            'menuBar': {'menuItem', 'menuItemRadio', 'menuItemCheckBox'}, 'tabList': {'tab'}, 'tree': {'treeItem'}, 'treeItem': {'treeItem'}, 'listBox': {'listBoxOption'},
+            'menuListPopup': {'menuListOption', 'menuItem', 'menuItemRadio', 'menuItemCheckBox'}, 'radioGroup': {'radioButton'}, 'descriptionList': {'term'}, 'comboBoxSelect': {'menuListPopup'}}
+
+
+def item_matches(set_role, item_role):
+    return item_role in ('disclosureTriangle', 'disclosureTriangleGrouped') or item_role in ITEMS_OF.get(set_role, ())
+
+
 CELL_ROLES = {'cell', 'gridCell', 'columnHeader', 'rowHeader'}
+MAX_COLSPAN = 1000
 TABLE_ROLES = {'table', 'grid', 'treeGrid'}
 TEXT_FIELDS = ('textField', 'searchBox', 'textFieldWithComboBox', 'spinButton')
 
@@ -124,8 +185,8 @@ def name_from(sources):
     for src in sources or []:
         if src.get('superseded') or not src.get('value', {}).get('value'): continue
         if src['type'] == 'contents': return 'contents'
-        if src['type'] == 'attribute': return 'title' if src.get('attribute') == 'title' else 'attribute'
-        if src['type'] == 'relatedElement': return 'relatedElement'
+        if src['type'] == 'attribute': return {'title': 'title', 'value': 'value'}.get(src.get('attribute'), 'attribute')
+        if src['type'] == 'relatedElement': return 'caption' if src.get('nativeSource') == 'tablecaption' else 'relatedElement'
         if src['type'] == 'placeholder': return 'placeholder'
         return 'attribute'
     return 'none'
@@ -142,7 +203,8 @@ class Converter:
     def convert(self, raw):
         ax = {n['nodeId']: n for n in raw['ax']}
         if not ax: return {'nodes': [], 'focusIx': -1}
-        dom, page, viewport = Dom(raw['dom']), raw['page'], raw['viewport'] or {}
+        self.linked = set()
+        dom, page, viewport = Dom(raw['dom'], raw.get('listeners', ())), raw['page'], raw['viewport'] or {}
         root = next((n for n in raw['ax'] if 'parentId' not in n), raw['ax'][0])
         frame_root = {}      # a frame's id -> the root of its tree, whose node ids are made its own by a prefix
         for frame, frame_nodes in (raw.get('frames') or {}).items():
@@ -156,7 +218,7 @@ class Converter:
             for child_id in n.get('childIds', []):
                 child = ax.get(child_id)
                 if child is None: continue
-                if child.get('ignored'): yield from unignored_children(child)
+                if child.get('ignored') or ROLES.get(child.get('chromeRole', {}).get('value')) == 'rowGroup': yield from unignored_children(child)      # a row group (<thead>, <tbody>) is not in the tree chrome.automation gives: its rows are the table's
                 else: yield child
             held = frame_root.get(dom.frame_of_owner.get(n.get('backendDOMNodeId')))      # an iframe holds the document of its frame, which the browser's tree reads as its child
             if held is not None: yield held
@@ -200,6 +262,7 @@ class Converter:
         attrs = d.get('attrs', {}); style = d.get('style', {})
         name = n.get('name', {}).get('value', '') if isinstance(n.get('name'), dict) else ''
         value = n.get('value', {}).get('value') if isinstance(n.get('value'), dict) else None
+        if attrs.get('aria-valuetext'): value = attrs['aria-valuetext']      # a range's words (aria-valuetext) are what it holds, as chrome.automation's `value`: the protocol's own `valuetext` property is empty
         out = {'depth': depth, 'ix': i, 'uid': self.uid(key), 'role': role, 'nameFrom': 'contents' if role in ('staticText', 'inlineTextBox') else name_from(n.get('name', {}).get('sources')),
                'value': '' if value is None else str(value), 'indexInParent': 0, 'standardActions': ['doDefault'] if role not in ('inlineTextBox',) else [], 'hasPopup': '' if props.get('hasPopup') in (None, 'false') else props['hasPopup']}
         if name: out['name'] = name
@@ -225,9 +288,7 @@ class Converter:
         if attrs.get('aria-sort'): out['sortDirection'] = {'none': 'unsorted'}.get(attrs['aria-sort'], attrs['aria-sort'])
         if props.get('url'): out['url'] = props['url']
         elif role == 'image' and attrs.get('src'): out['url'] = urljoin(d.get('base') or page['url'], attrs['src'])
-        verb = ACTION_VERB.get(role) or ('click' if d.get('clickable') and role not in ('rootWebArea', 'staticText', 'inlineTextBox') else None)      # a node that has a click listener: Chromium's verb for it is `click`
-        if verb == 'check' and out.get('checked') == 'true': verb = 'uncheck'
-        out['defaultActionVerb'] = verb or 'clickAncestor'
+        out['defaultActionVerb'] = self.action_verb(role, d, attrs, out.get('checked'), props)
         if role == 'rootWebArea':
             top = parent < 0      # a frame's document is not the page: it has its own address and title
             loaded = page['readyState'] == 'complete' if top else True
@@ -251,7 +312,7 @@ class Converter:
         editable = props.get('editable')
         if editable in ('plaintext', 'richtext'): state['editable'] = True
         if editable == 'richtext': state['richlyEditable'] = True
-        if props.get('multiline'): state['multiline'] = True
+        if props.get('multiline') or (editable == 'richtext' and attrs.get('contenteditable') in ('', 'true')): state['multiline'] = True      # an editing host of the page's own is a block of lines
         if props.get('required'): state['required'] = True
         if props.get('multiselectable'): state['multiselectable'] = True
         if props.get('orientation') in ('vertical', 'horizontal'): state[props['orientation']] = True
@@ -259,8 +320,13 @@ class Converter:
         elif props.get('expanded') is False: state['collapsed'] = True
         if d.get('tag') == 'input' and out.get('inputType') == 'password': state['protected'] = True
         if props.get('hidden') or style.get('visibility') in ('hidden', 'collapse'): state['invisible'] = True
+        if role == 'menuListPopup': state['invisible'] = True; out['htmlTag'] = 'div'; out['display'] = 'none'      # a select's popup is in a closed shadow root, not in the snapshot: Chromium holds it hidden, with its options not selected
+        if role == 'menuListOption':
+            out['display'] = 'block'
+            if not out.get('selected'): state['invisible'] = True
         if b and viewport and (b[1] + b[3] < 0 or b[1] > viewport.get('pageY', 0) + viewport.get('clientHeight', 1e9) or b[0] + b[2] < 0 or b[0] > viewport.get('pageX', 0) + viewport.get('clientWidth', 1e9)): state['offscreen'] = True
-        if role == 'link' or (role == 'staticText' and any(roles[j] == 'link' for j in self.ancestors(i, parent_of))): state['linked'] = True      # the link and its text, and nothing else below it (measured against chrome.automation)
+        if role == 'link' and (props.get('url') or 'href' in attrs): self.linked.add(i); state['linked'] = True      # a link that goes somewhere (an anchor with no href, or a role=link, does not), and its text, and nothing else below it (measured against chrome.automation)
+        elif role == 'staticText' and any(j in self.linked for j in self.ancestors(i, parent_of)): state['linked'] = True
         if role == 'genericContainer' and not d and parent_role in TEXT_FIELDS: out['htmlTag'] = 'div'; out['display'] = 'flow-root'      # the editor Chromium puts inside a text field is in a closed shadow root: not in the snapshot
         if (d.get('tag') == 'button' and attrs.get('type', 'submit') == 'submit') or (d.get('tag') == 'input' and out.get('inputType') in ('submit', 'image')): out['_submit'] = True
         out['state'] = state
@@ -272,7 +338,27 @@ class Converter:
         if props.get('relevant'): out['liveRelevant'] = props['relevant']
         if props.get('busy'): out['liveBusy'] = True
         out['_props'] = props
+        out['_dom'] = {'attrs': attrs, 'tag': d.get('tag'), 'form': d.get('form')}
         return out
+
+    @staticmethod
+    def native_action(tag, attrs):
+        """A native control a click acts on: what Chromium takes for the element a node's action is, with no script."""
+        if tag in ('a', 'area'): return 'href' in attrs
+        if tag == 'input': return (attrs.get('type') or 'text').lower() not in ('hidden', 'range')
+        return tag in ('button', 'select', 'textarea', 'summary', 'option')
+
+    @staticmethod
+    def action_verb(role, d, attrs, checked, props):
+        """Chromium's `AXObject::Action` for a node, from its role and its element."""
+        tag = d.get('tag')
+        editable_root = attrs.get('contenteditable') in ('', 'true', 'plaintext-only') and role not in ('staticText', 'inlineTextBox')
+        if role in ('textField', 'searchBox', 'textFieldWithComboBox') or (role == 'spinButton' and tag == 'input') or editable_root: return 'activate'
+        if role in CHECKABLE: return 'uncheck' if checked == 'true' else 'check'
+        if role in ACTION_VERB: return ACTION_VERB[role]
+        if d.get('clickable') or (tag == 'input' and (attrs.get('type') or '').lower() in CLICK_INPUTS) or (Converter.native_action(tag, attrs) and not props.get('disabled')):
+            return 'click' if role not in ('rootWebArea', 'staticText', 'inlineTextBox') else 'clickAncestor'
+        return 'clickAncestor'
 
     @staticmethod
     def ancestors(i, parent_of):
@@ -305,29 +391,118 @@ class Converter:
             if form is not None and form not in seen: seen.add(form); nd['state']['default'] = True
 
     def counts(self, nodes, kids, roles):
-        """Position in a set, size of a set, and the table indexes, counted from the tree. NOT the AXNode's own numbers."""
-        for parent, children in kids.items():
-            for role in SET_ROLES & {roles[c] for c in children}:
-                same = [c for c in children if roles[c] == role]
-                for k, c in enumerate(same): nodes[c]['posInSet'] = k + 1; nodes[c]['setSize'] = len(same)
+        """Position in a set, size of a set, and the table model: where each cell is, what it spans, and its header cells. Worked out from the tree and the page's attributes as Chromium does, and not read from the AXNode."""
+        self.sets(nodes, kids, roles)
         for t, nd in enumerate(nodes):
-            if nd['role'] not in TABLE_ROLES: continue
-            rows = [] ; stack = list(reversed(kids.get(t, [])))
+            if nd['role'] in TABLE_ROLES: self.table(t, nodes, kids, roles)
+        for nd in nodes: nd.pop('_dom', None)
+
+    @staticmethod
+    def number(attrs, name, minimum=1):
+        """An integer attribute of the page, or None when it is absent, not a number or less than `minimum`."""
+        try: v = int(str(attrs.get(name)).strip())
+        except ValueError: return None
+        return v if v >= minimum else None
+
+    def table(self, t, nodes, kids, roles):
+        """AXTableInfo: where each cell of a table is and which header cells go with it."""
+        cells = self.table_grid(t, nodes, kids, roles)
+        by_column, by_row = {}, {}
+        for c in cells:
+            nd = nodes[c]
+            for dc in range(nd['tableCellColumnSpan']):
+                if roles[c] == 'columnHeader': by_column.setdefault(nd['tableCellColumnIndex'] + dc, []).append(c)
+            for dr in range(nd['tableCellRowSpan']):
+                if roles[c] == 'rowHeader': by_row.setdefault(nd['tableCellRowIndex'] + dr, []).append(c)
+        for c in cells:      # the column headers of the first column a cell covers and the row headers of its first row, in the order they appear (a header cell lists itself)
+            nd = nodes[c]
+            if by_column.get(nd['tableCellColumnIndex']): nd['tableCellColumnHeadersIx'] = list(by_column[nd['tableCellColumnIndex']])
+            if by_row.get(nd['tableCellRowIndex']): nd['tableCellRowHeadersIx'] = list(by_row[nd['tableCellRowIndex']])
+
+    def table_grid(self, t, nodes, kids, roles):
+        """The rows of a table (through generic containers) and the grid its cells fill: a cell spanning rows or columns keeps the slots below and beside it. Sets each cell's row, column, spans and `aria-rowindex` /
+        `aria-colindex` (a cell without one follows the one before it), and the table's counts. Returns the cells."""
+        rows = []; stack = list(reversed(kids.get(t, [])))
+        while stack:
+            c = stack.pop()
+            if roles[c] == 'row': rows.append(c)
+            elif roles[c] == 'genericContainer': stack.extend(reversed(kids.get(c, [])))
+        taken = set(); cells = []; columns = 0; aria_row = 0
+        for r, row in enumerate(rows):
+            aria_row = self.number(nodes[row]['_dom']['attrs'], 'aria-rowindex') or aria_row + 1
+            col = 0; aria_col = 1
+            for c in kids.get(row, []):
+                if roles[c] not in CELL_ROLES: continue
+                attrs = nodes[c]['_dom']['attrs']
+                rs = self.number(attrs, 'rowspan') or self.number(attrs, 'aria-rowspan') or 1; cs = self.number(attrs, 'colspan') or self.number(attrs, 'aria-colspan') or 1
+                rs = min(rs, len(rows) - r); cs = min(cs, MAX_COLSPAN)      # a span reaches the table's last row at most (HTML clamps it), and a column span is at most 1000
+                while (r, col) in taken: col += 1
+                aria_col = self.number(attrs, 'aria-colindex') or aria_col
+                nodes[c].update(tableCellRowIndex=r, tableCellColumnIndex=col, tableCellRowSpan=rs, tableCellColumnSpan=cs, tableCellAriaRowIndex=aria_row, tableCellAriaColumnIndex=aria_col)
+                for dr in range(rs):
+                    for dc in range(cs): taken.add((r + dr, col + dc))
+                cells.append(c); col += cs; aria_col += cs
+            columns = max(columns, col)
+        nodes[t]['tableRowCount'] = len(rows); nodes[t]['tableColumnCount'] = columns
+        return cells
+
+    def sets(self, nodes, kids, roles):
+        """AXTree::ComputeSetSizePosInSet: an item's position in the ordered set that holds it, and a set's size. The set is the nearest ancestor that is not an ignored container (`AXNode::GetOrderedSet`), its items are the
+        descendants of the role it takes (`SetRoleMatchesItemRole`) seen through ignored containers, and `aria-posinset` / `aria-setsize` on an item or on the set say what the page means: the size is the largest of
+        the items counted, the numbers the page gave and the last position."""
+        parent = {c: p for p, cs in kids.items() for c in cs}
+        def ordered_set(i):
+            p = parent.get(i)
+            while p is not None and roles[p] in SET_TRANSPARENT: p = parent.get(p)
+            return p
+        def items_of(s):
+            out = []; stack = list(reversed(kids.get(s, [])))
             while stack:
                 c = stack.pop()
-                if roles[c] == 'row': rows.append(c)
-                elif roles[c] in ('rowGroup', 'genericContainer'): stack.extend(reversed(kids.get(c, [])))
-            cols = 0
-            for r, row in enumerate(rows):
-                col = 0
-                for c in kids.get(row, []):
-                    if roles[c] not in CELL_ROLES: continue
-                    attrs = nodes[c]
-                    nodes[c]['tableCellRowIndex'] = r; nodes[c]['tableCellColumnIndex'] = col
-                    nodes[c]['tableCellRowSpan'] = nodes[c].get('tableCellRowSpan', 1); nodes[c]['tableCellColumnSpan'] = nodes[c].get('tableCellColumnSpan', 1)
-                    col += nodes[c]['tableCellColumnSpan']
-                cols = max(cols, col)
-            nd['tableRowCount'] = len(rows); nd['tableColumnCount'] = cols
+                if item_matches(roles[s], roles[c]): out.append(c)
+                if roles[c] in SET_TRANSPARENT: stack.extend(reversed(kids.get(c, [])))
+            return out
+        measured = {}
+        def measure(s):
+            if s not in measured:
+                items = items_of(s); size = self.number(nodes[s]['_dom']['attrs'], 'aria-setsize', 0) or 0; last = 0; positions = {}
+                for c in items:
+                    attrs = nodes[c]['_dom']['attrs']
+                    last = self.number(attrs, 'aria-posinset') or last + 1; positions[c] = last
+                    size = max(size, self.number(attrs, 'aria-setsize', 0) or 0, last)
+                measured[s] = (max(size, len(items)), positions)
+            return measured[s]
+        for i, nd in enumerate(nodes):
+            if roles[i] in SET_LIKE:
+                size, positions = measure(i)
+                if size: nd['setSize'] = size
+            if roles[i] == 'comboBoxSelect': self.select_position(i, nodes, kids, roles)
+            if roles[i] in ITEM_LIKE:
+                s = ordered_set(i)
+                if s is None or not item_matches(roles[s], roles[i]): continue
+                size, positions = measure(s)
+                if i in positions: nd['posInSet'] = positions[i]; nd['setSize'] = size
+        self.radio_groups(nodes, roles)
+
+    @staticmethod
+    def radio_groups(nodes, roles):
+        """A native radio button's group is the radios of its form (or of the document) with its name, in the order of the tree; it gives the numbers whatever set holds the button."""
+        groups = {}
+        for i, nd in enumerate(nodes):
+            dom = nd['_dom']
+            if roles[i] == 'radioButton' and dom['tag'] == 'input' and dom['attrs'].get('name'): groups.setdefault((dom['form'], dom['attrs']['name']), []).append(i)
+        for group in groups.values():
+            for k, i in enumerate(group): nodes[i]['posInSet'] = k + 1; nodes[i]['setSize'] = len(group)
+
+    @staticmethod
+    def select_position(i, nodes, kids, roles):
+        """A native select holds its options below a popup node, and gives the size of the set they make and, for itself, the position of the selected option (measured against the extension's tree)."""
+        options = []; stack = list(reversed(kids.get(i, [])))
+        while stack:
+            c = stack.pop()
+            if roles[c] == 'menuListOption': options.append(c)
+            else: stack.extend(reversed(kids.get(c, [])))
+        if options: nodes[i]['setSize'] = len(options); nodes[i]['posInSet'] = next((k + 1 for k, c in enumerate(options) if nodes[c].get('selected')), 1)
 
     def text_marks(self, nodes, kids, roles):
         """Word, sentence and line starts of the nodes that hold text. A text field's are its value's, a static text's lines are those of its inline text boxes (Chromium makes one for each line it laid out),
