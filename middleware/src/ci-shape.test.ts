@@ -119,7 +119,9 @@ test("the nightly, a dispatch and a release run the spike on both platforms, wit
     assert.equal(modeOut.demo!.include.filter((row) => row.platform === "darwin-arm64").length, 2, `${event}: both macOS demo rows`);
     assert.ok(modeOut.demo!.include.every((row) => row.build === false), `${event}: no demo row builds a bundle of its own`);
   }
-  assert.equal(modeOutputs("pull_request").demo!.include.filter((row) => row.platform === "linux-x64").length, 3, "a pull request runs every Linux demo row");
+  const pullRequest = modeOutputs("pull_request").demo!.include;
+  assert.deepEqual(pullRequest.map((row) => [row.platform, row.playwright, row.primary]), [["linux-x64", "1.64.1", true], ["darwin-arm64", "1.64.1", true]], "a pull request runs the primary row of each platform");
+  assert.equal(modeOutputs("schedule").demo!.include.filter((row) => row.platform === "linux-x64").length, 3, "the nightly run takes every Linux row");
 });
 
 // ---- 3: one build of the bundle for each platform ---------------------------------------------------------------------------------------------------------------------------
