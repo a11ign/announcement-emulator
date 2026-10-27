@@ -9,10 +9,11 @@
 name: ci
 
 on:
-  # `edited` because a pull request that was open before this file merged has no `gate` run, and a body edit gives it one without a push.
-  # The concurrency group below cancels the run an edit interrupts.
+  # NO `edited` (A11-342). It was here so that a pull request open before this file merged got a `gate` run from a body edit; that is over, and nothing in this workflow reads the body. A worker pushes and then edits the
+  # body, so `edited` started a second run for the head the push had just started one for. The concurrency group below cancelled one of the two, and the cancelled run's `gate` held the merge of an approved, armed pull
+  # request (announcement-emulator#32) though the other run's `gate` was green. A job added later that reads the body (a changeset check, say) puts `edited` back, with a group that keeps the two events apart.
   pull_request:
-    types: [opened, synchronize, reopened, edited]
+    types: [opened, synchronize, reopened]
   merge_group:
 
 permissions:
