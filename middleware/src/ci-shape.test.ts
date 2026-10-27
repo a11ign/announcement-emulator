@@ -103,7 +103,7 @@ test("a nightly, a dispatch and a release run of the spike and of the dry run ar
 
 test("a workflow with a macOS job, or one that calls a workflow with one, filters its pull_request by paths, filters its push to the stamp that asks for it, and is not run by the merge queue", () => {
   const costly = names.filter((name) => usesMacos(name));
-  assert.deepEqual(costly.sort(), ["agreement-round.yml", "playwright-versions-agreement.yml", "release-bundles.yml", "release-dry-run.yml", "middleware-spike.yml", "tree-source-agreement.yml"].sort());
+  assert.deepEqual(costly.sort(), ["agreement-round.yml", "devtools-source-agreement.yml", "playwright-versions-agreement.yml", "release-bundles.yml", "release-dry-run.yml", "middleware-spike.yml", "tree-source-agreement.yml"].sort());
   for (const name of costly) {
     const on = workflow(name).on ?? {};
     assert.ok(!("merge_group" in on), `${name}: not on the merge queue`);
@@ -221,8 +221,8 @@ test("the dry run is for a pull request that changes the release machinery, and 
 
 // ---- 5: the measurements run when somebody asks ---------------------------------------------------------------------------------------------------------------------------
 
-test("the three measurement workflows are found, so that the tests below hold each of them", () => {
-  assert.deepEqual([...MEASUREMENTS].sort(), ["agreement-round.yml", "playwright-versions-agreement.yml", "tree-source-agreement.yml"]);
+test("the four measurement workflows are found, so that the tests below hold each of them", () => {
+  assert.deepEqual([...MEASUREMENTS].sort(), ["agreement-round.yml", "devtools-source-agreement.yml", "playwright-versions-agreement.yml", "tree-source-agreement.yml"]);
 });
 
 test("the agreement workflows run when their stamp file is pushed and on dispatch, never on a schedule or a pull request, and a measurement is never cancelled", () => {

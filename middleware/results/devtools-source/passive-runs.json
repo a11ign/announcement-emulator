@@ -1,0 +1,560 @@
+{
+ "devtools-linux-run1-corpus": {
+  "startedAt": "2026-10-27T09:26:30Z",
+  "finishedAt": "2026-10-27T09:29:39Z",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 185309,
+  "drainMs": 252,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 141,
+    "keys": 47,
+    "focusEvents": 37,
+    "unresolvedFocus": 0,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 2334
+   },
+   {
+    "snapshots": 16,
+    "keys": 419,
+    "focusEvents": 380,
+    "unresolvedFocus": 1,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 26772
+   }
+  ]
+ },
+ "devtools-linux-run1-large": {
+  "startedAt": "2026-10-27T09:31:39Z",
+  "finishedAt": "2026-10-27T09:41:14Z",
+  "tests": 5,
+  "flags": 0,
+  "wallMs": 570649,
+  "drainMs": 545039,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 7,
+    "keys": 462,
+    "focusEvents": 451,
+    "unresolvedFocus": 3,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 274986
+   },
+   {
+    "snapshots": 6,
+    "keys": 304,
+    "focusEvents": 300,
+    "unresolvedFocus": 5,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 216374
+   }
+  ]
+ },
+ "devtools-linux-run1-structure": {
+  "startedAt": "2026-10-27T09:29:39Z",
+  "finishedAt": "2026-10-27T09:31:39Z",
+  "tests": 8,
+  "flags": 0,
+  "wallMs": 115581,
+  "drainMs": 91483,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 10,
+    "keys": 383,
+    "focusEvents": 357,
+    "unresolvedFocus": 11,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 36784
+   },
+   {
+    "snapshots": 11,
+    "keys": 554,
+    "focusEvents": 533,
+    "unresolvedFocus": 10,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 52053
+   }
+  ]
+ },
+ "devtools-linux-run2-corpus": {
+  "startedAt": "2026-10-27T09:41:14Z",
+  "finishedAt": "2026-10-27T09:44:28Z",
+  "tests": 6,
+  "flags": 1,
+  "wallMs": 188002,
+  "drainMs": 389,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 16,
+    "keys": 421,
+    "focusEvents": 382,
+    "unresolvedFocus": 0,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 47368
+   },
+   {
+    "snapshots": 120,
+    "keys": 48,
+    "focusEvents": 38,
+    "unresolvedFocus": 0,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 3766
+   }
+  ]
+ },
+ "devtools-linux-run2-large": {
+  "startedAt": "2026-10-27T09:46:27Z",
+  "finishedAt": "2026-10-27T09:55:32Z",
+  "tests": 5,
+  "flags": 0,
+  "wallMs": 540894,
+  "drainMs": 514438,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 6,
+    "keys": 462,
+    "focusEvents": 451,
+    "unresolvedFocus": 7,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 244124
+   },
+   {
+    "snapshots": 6,
+    "keys": 304,
+    "focusEvents": 300,
+    "unresolvedFocus": 5,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 201312
+   }
+  ]
+ },
+ "devtools-linux-run2-structure": {
+  "startedAt": "2026-10-27T09:44:28Z",
+  "finishedAt": "2026-10-27T09:46:27Z",
+  "tests": 8,
+  "flags": 0,
+  "wallMs": 114720,
+  "drainMs": 91494,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 12,
+    "keys": 383,
+    "focusEvents": 357,
+    "unresolvedFocus": 14,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 39947
+   },
+   {
+    "snapshots": 10,
+    "keys": 554,
+    "focusEvents": 533,
+    "unresolvedFocus": 12,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 56517
+   }
+  ]
+ },
+ "devtools-macos-run1-corpus": {
+  "startedAt": "2026-10-27T10:31:41Z",
+  "finishedAt": "2026-10-27T10:32:29Z",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 43257,
+  "drainMs": 20830,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 20,
+    "keys": 290,
+    "focusEvents": 261,
+    "unresolvedFocus": 0,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 18308
+   },
+   {
+    "snapshots": 24,
+    "keys": 167,
+    "focusEvents": 145,
+    "unresolvedFocus": 0,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 6160
+   }
+  ]
+ },
+ "devtools-macos-run1-large": {
+  "startedAt": "2026-10-27T10:33:59Z",
+  "finishedAt": "2026-10-27T10:44:12Z",
+  "tests": 5,
+  "flags": 0,
+  "wallMs": 605697,
+  "drainMs": 579470,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 5,
+    "keys": 310,
+    "focusEvents": 301,
+    "unresolvedFocus": 2,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 90298
+   },
+   {
+    "snapshots": 7,
+    "keys": 456,
+    "focusEvents": 450,
+    "unresolvedFocus": 6,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 325653
+   }
+  ]
+ },
+ "devtools-macos-run1-structure": {
+  "startedAt": "2026-10-27T10:32:29Z",
+  "finishedAt": "2026-10-27T10:33:59Z",
+  "tests": 8,
+  "flags": 0,
+  "wallMs": 84302,
+  "drainMs": 57974,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 16,
+    "keys": 491,
+    "focusEvents": 466,
+    "unresolvedFocus": 2,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 38032
+   },
+   {
+    "snapshots": 20,
+    "keys": 452,
+    "focusEvents": 426,
+    "unresolvedFocus": 0,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 16138
+   }
+  ]
+ },
+ "devtools-macos-run2-corpus": {
+  "startedAt": "2026-10-27T10:44:12Z",
+  "finishedAt": "2026-10-27T10:44:56Z",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 38214,
+  "drainMs": 16017,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 12,
+    "keys": 292,
+    "focusEvents": 261,
+    "unresolvedFocus": 0,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 14253
+   },
+   {
+    "snapshots": 20,
+    "keys": 173,
+    "focusEvents": 151,
+    "unresolvedFocus": 0,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 5248
+   }
+  ]
+ },
+ "devtools-macos-run2-large": {
+  "startedAt": "2026-10-27T10:46:07Z",
+  "finishedAt": "2026-10-27T10:54:25Z",
+  "tests": 5,
+  "flags": 0,
+  "wallMs": 493358,
+  "drainMs": 466196,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 5,
+    "keys": 310,
+    "focusEvents": 301,
+    "unresolvedFocus": 0,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 138188
+   },
+   {
+    "snapshots": 8,
+    "keys": 456,
+    "focusEvents": 450,
+    "unresolvedFocus": 5,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 245097
+   }
+  ]
+ },
+ "devtools-macos-run2-structure": {
+  "startedAt": "2026-10-27T10:44:56Z",
+  "finishedAt": "2026-10-27T10:46:07Z",
+  "tests": 8,
+  "flags": 0,
+  "wallMs": 66595,
+  "drainMs": 43555,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 17,
+    "keys": 383,
+    "focusEvents": 357,
+    "unresolvedFocus": 3,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 25441
+   },
+   {
+    "snapshots": 15,
+    "keys": 560,
+    "focusEvents": 533,
+    "unresolvedFocus": 0,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 27848
+   }
+  ]
+ },
+ "devtools-ubuntu-ci-run1-corpus": {
+  "startedAt": "2026-10-27T10:31:37Z",
+  "finishedAt": "2026-10-27T10:32:14Z",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 33806,
+  "drainMs": 15993,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 15,
+    "keys": 263,
+    "focusEvents": 235,
+    "unresolvedFocus": 1,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 14744
+   },
+   {
+    "snapshots": 16,
+    "keys": 168,
+    "focusEvents": 151,
+    "unresolvedFocus": 1,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 5613
+   }
+  ]
+ },
+ "devtools-ubuntu-ci-run1-large": {
+  "startedAt": "2026-10-27T10:33:42Z",
+  "finishedAt": "2026-10-27T10:40:51Z",
+  "tests": 5,
+  "flags": 0,
+  "wallMs": 424697,
+  "drainMs": 400308,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 6,
+    "keys": 310,
+    "focusEvents": 301,
+    "unresolvedFocus": 6,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 126589
+   },
+   {
+    "snapshots": 9,
+    "keys": 456,
+    "focusEvents": 450,
+    "unresolvedFocus": 6,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 172841
+   }
+  ]
+ },
+ "devtools-ubuntu-ci-run1-structure": {
+  "startedAt": "2026-10-27T10:32:14Z",
+  "finishedAt": "2026-10-27T10:33:42Z",
+  "tests": 8,
+  "flags": 0,
+  "wallMs": 84286,
+  "drainMs": 58280,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 15,
+    "keys": 535,
+    "focusEvents": 507,
+    "unresolvedFocus": 15,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 44903
+   },
+   {
+    "snapshots": 8,
+    "keys": 408,
+    "focusEvents": 383,
+    "unresolvedFocus": 10,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 16434
+   }
+  ]
+ },
+ "devtools-ubuntu-ci-run2-corpus": {
+  "startedAt": "2026-10-27T10:40:51Z",
+  "finishedAt": "2026-10-27T10:41:29Z",
+  "tests": 6,
+  "flags": 0,
+  "wallMs": 34385,
+  "drainMs": 18471,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 22,
+    "keys": 167,
+    "focusEvents": 150,
+    "unresolvedFocus": 1,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 5778
+   },
+   {
+    "snapshots": 14,
+    "keys": 290,
+    "focusEvents": 262,
+    "unresolvedFocus": 1,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 16061
+   }
+  ]
+ },
+ "devtools-ubuntu-ci-run2-large": {
+  "startedAt": "2026-10-27T10:42:51Z",
+  "finishedAt": "2026-10-27T10:49:41Z",
+  "tests": 5,
+  "flags": 0,
+  "wallMs": 405951,
+  "drainMs": 381309,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 8,
+    "keys": 462,
+    "focusEvents": 451,
+    "unresolvedFocus": 4,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 168758
+   },
+   {
+    "snapshots": 8,
+    "keys": 304,
+    "focusEvents": 300,
+    "unresolvedFocus": 0,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 137475
+   }
+  ]
+ },
+ "devtools-ubuntu-ci-run2-structure": {
+  "startedAt": "2026-10-27T10:41:29Z",
+  "finishedAt": "2026-10-27T10:42:51Z",
+  "tests": 8,
+  "flags": 0,
+  "wallMs": 78461,
+  "drainMs": 54575,
+  "chromium": [
+   "156.0.8078.4"
+  ],
+  "workers": [
+   {
+    "snapshots": 14,
+    "keys": 383,
+    "focusEvents": 358,
+    "unresolvedFocus": 15,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 26591
+   },
+   {
+    "snapshots": 14,
+    "keys": 559,
+    "focusEvents": 533,
+    "unresolvedFocus": 6,
+    "skippedSweeps": 0,
+    "lostSnapshots": 0,
+    "speechMs": 34621
+   }
+  ]
+ }
+}
