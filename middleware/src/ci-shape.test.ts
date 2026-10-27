@@ -89,6 +89,12 @@ test("every workflow with a pull_request trigger has a concurrency group of the 
   }
 });
 
+test("A11-342: ci.yml starts on a push and not on an edit of the pull request, so a push and the edit of its body that follows it start one run of a head and not two, one of them cancelled", () => {
+  const types = workflow("ci.yml").on?.pull_request?.types ?? assert.fail("ci.yml has no pull_request types");
+  assert.deepEqual([...types].sort(), ["opened", "reopened", "synchronize"]);
+  for (const name of names) assert.ok(!(workflow(name).on?.pull_request?.types ?? []).includes("edited"), `${name} starts on an edit`);
+});
+
 test("a nightly, a dispatch and a release run of the spike and of the dry run are never cancelled", () => {
   for (const name of [SPIKE, "release-dry-run.yml"]) assert.match(String(workflow(name).concurrency!["cancel-in-progress"]), /github\.event_name == 'pull_request'/, name);
 });
