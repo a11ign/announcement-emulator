@@ -14,7 +14,7 @@ export function browserBuild(records: RuntimeRecord[]): string | null {
 /** The slice of a run one test owns: what happened on its worker's browser while the test ran. */
 export interface Window { title: string; start: number; end: number }
 
-/** How long after a test ends its last events may still arrive: the browser tells the extension about a change some tens of milliseconds after the test's own check of it has passed (measured, docs/playwright-middleware-spike.md). */
+/** How long after a test ends its last events may still arrive: the browser tells the runtime about a change some tens of milliseconds after the test's own check of it has passed (measured, docs/playwright-middleware-spike.md). */
 export const LAG_MS = 1000;
 
 /**

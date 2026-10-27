@@ -18,7 +18,7 @@
 name: middleware-spike
 
 on:
-  # `paths` is what makes a docs-only or results-only pull request run nothing here: the bundle's inputs (build.sh copies emu/, q1/, q2/ and q3/ and reads pins.env), the runtime, the package the demo installs, and this file.
+  # `paths` is what makes a docs-only or results-only pull request run nothing here: the bundle's inputs (build.sh copies emu/, q2/ and q3/ and reads pins.env), the runtime, the package the demo installs, and this file.
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
     paths:

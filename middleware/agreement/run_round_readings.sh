@@ -8,6 +8,8 @@
 # `npx playwright install chromium` and `npx announcement-emulator install` (as .github/workflows/agreement-round.yml makes one). Each run writes
 # <out>/<set>/<build>/<source>-<n>/{report.json,run.json,times.json}; a run that exists is not run again. The source is forced explicitly for every run, never left to the platform's default, and the corpus test
 # reads its pages from CORPUS_PAGES. A run whose workers report another Chromium build than its row names is not kept: it is a reading of another row.
+# REMOVED (A11-229, step 3): this ran the companion extension as a tree source, which no longer exists; the variable it sets is ignored, so a run would file DevTools readings under the name `extension`. It stays as the record of how the readings it made were taken.
+echo "run_round_readings.sh: the extension tree source was removed (A11-229); this script is the record of the readings it made, and refuses to run" >&2; exit 2
 set -u
 OUT="${1:?the output directory}"; HELD_OUT="${2:?the held-out pages file}"; FITTED="${3:?the fitted pages file}"; shift 3
 [ "$#" -ge 1 ] || { echo "run_round_readings.sh: at least one <build>=<project>" >&2; exit 2; }

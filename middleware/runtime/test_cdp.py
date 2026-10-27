@@ -40,9 +40,18 @@ class TheListener(unittest.TestCase):
         for gone in ('__TICKS__', '__aeTicksOn', 'ticksOn'): self.assertNotIn(gone, cdp.LISTENER)
         self.assertFalse(hasattr(cdp, 'TICKS_ON'))
 
-    def test_the_probe_is_in_the_listener_whatever_the_page(self):
-        self.assertIn('window.__aeProbe', cdp.LISTENER)
-        self.assertEqual(cdp.LISTENER.count('window.__aeProbe'), 1)
+    def test_a_page_is_held_until_its_listener_is_in(self):
+        """`waitForDebuggerOnStart`: a page that a quick test closes at once still has its first tree read. The browser is connected to by `_run`, which here is given a socket that goes away at once."""
+        c = reader(); c.stopped = False; c.installed = set(); c.target_of = {}; c.url_of = {}; c.generation = 0; c.on_connect = lambda: None
+        class Gone(FakeSocket):
+            def recv(self): raise ConnectionError()
+        def connect():
+            c.stopped = True      # one connection, then the loop ends
+            return Gone()
+        c._connect = connect
+        c._run()
+        sent = [(m['method'], m['params']) for m in c.ws.sent]
+        self.assertIn(('Target.setAutoAttach', {'autoAttach': True, 'waitForDebuggerOnStart': True, 'flatten': True}), sent)
 
     def test_a_page_is_held_until_its_listener_is_in_and_the_browser_says_what_changed(self):
         c = reader(); c.installed = set(); c.on_tree = lambda snap: None; c.on_attach = lambda target, browser: None; c.browser = '156.0.8078.4'
