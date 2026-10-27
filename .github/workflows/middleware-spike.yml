@@ -1,5 +1,5 @@
 # The Playwright middleware spike (A11-208): the package is tested, the runtime bundle is built for each platform, and the sample suite, which has no screen-reader code in it, is run with the
-# middleware attached on a plain GitHub-hosted runner: no container, no Docker, no setup beyond `npm i -D`, `npx playwright install chromium` and `npx announcement-emulator install`. The browser is the one
+# middleware attached on a plain GitHub-hosted runner: no container, no Docker, no setup beyond `npm i -D`, `npx playwright install chromium` and `npx foresay install`. The browser is the one
 # Playwright installs for the team's version (A11-230): the bundle holds none.
 #
 # The runtime bundle is lean (A11-231): a stripped Python and the files a trace of the runtime read, in one copy of NVDA's source (middleware/bundle/trace.sh makes the list, keep/<platform>.txt). Three proofs run
@@ -227,7 +227,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
-  # The acceptance: the sample suite, with the middleware attached by the one line, after `npx playwright install chromium` and `npx announcement-emulator install`, on a plain runner with no container.
+  # The acceptance: the sample suite, with the middleware attached by the one line, after `npx playwright install chromium` and `npx foresay install`, on a plain runner with no container.
   # The browser is Playwright's: each row installs one Playwright version and the Chromium that version ships, and nothing else (`--with-deps` on Ubuntu is Playwright's own route to its browser's system libraries).
   # The rows are the `mode` job's. In a pull request the macOS row (`build`) builds its own bundle, because no macOS `bundle` job runs; the full layout of every other primary row is the `bundle` job's.
   demo:
@@ -266,7 +266,7 @@ jobs:
       - run: |
           cp -R middleware/sample-suite "$RUNNER_TEMP/project"
           cd "$RUNNER_TEMP/project"
-          npm i -D "$RUNNER_TEMP"/a11ign-announcement-emulator-*.tgz @playwright/test@${{ matrix.playwright }}
+          npm i -D "$RUNNER_TEMP"/a11ign-foresay-*.tgz @playwright/test@${{ matrix.playwright }}
           npx playwright install ${{ matrix.deps }} chromium
       # The bundle is served over http from this runner, as a host would serve it; `install` downloads it, refuses it unless it is the pinned sha256, and unpacks it into the cache.
       - run: |
@@ -275,12 +275,12 @@ jobs:
           sleep 2
           cd "$RUNNER_TEMP/project"
           export ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST=http://127.0.0.1:8099
-          { time npx announcement-emulator install; } 2>&1 | tee "$RUNNER_TEMP/install.log"
-          npx announcement-emulator doctor > "$RUNNER_TEMP/doctor.log" || { cat "$RUNNER_TEMP/doctor.log"; exit 1; }      # a pipe to tee would lose its exit code
+          { time npx foresay install; } 2>&1 | tee "$RUNNER_TEMP/install.log"
+          npx foresay doctor > "$RUNNER_TEMP/doctor.log" || { cat "$RUNNER_TEMP/doctor.log"; exit 1; }      # a pipe to tee would lose its exit code
           cat "$RUNNER_TEMP/doctor.log"
           grep -q '^Chromium ${{ matrix.chromium }} ' "$RUNNER_TEMP/doctor.log"
           if [ "${{ matrix.agreement }}" = measured ]; then grep -q '^supported: yes, Chromium ${{ matrix.chromium }} is on the list' "$RUNNER_TEMP/doctor.log"; else grep -q '^supported: no\. Chromium ${{ matrix.chromium }} is not on the list' "$RUNNER_TEMP/doctor.log"; fi
-      # Run 1: the one line (playwright.config.ts), in the browser the Playwright just installed gives a launch left to it: its headless shell. Run 2: no line at all (`announcement-emulator test` wraps playwright.plain.config.ts). Run 3: the same suite without the middleware.
+      # Run 1: the one line (playwright.config.ts), in the browser the Playwright just installed gives a launch left to it: its headless shell. Run 2: no line at all (`foresay test` wraps playwright.plain.config.ts). Run 3: the same suite without the middleware.
       - id: run
         run: |
           cd "$RUNNER_TEMP/project"
@@ -289,7 +289,7 @@ jobs:
           cp -R test-results/announcement-emulator "$RUNNER_TEMP/announcement-emulator-run"; cp test-results/report.json "$RUNNER_TEMP/announcement-emulator-run/report.json"
           rm -rf test-results
           mv playwright-report "$RUNNER_TEMP/playwright-report-one-line"
-          { time npx announcement-emulator test --config playwright.plain.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-zero.log"
+          { time npx foresay test --config playwright.plain.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-zero.log"
           node check-report.mjs --expect-${{ matrix.agreement }} ${{ matrix.chromium }}
           mv playwright-report "$RUNNER_TEMP/playwright-report-zero-lines"
           rm -rf test-results

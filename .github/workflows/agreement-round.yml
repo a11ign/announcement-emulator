@@ -60,9 +60,9 @@ jobs:
             build="${spec%%=*}"; version="${spec#*=}"
             cp -R middleware/sample-suite "$RUNNER_TEMP/project-$build"
             (cd "$RUNNER_TEMP/project-$build" \
-              && npm i -D "$RUNNER_TEMP"/a11ign-announcement-emulator-*.tgz "@playwright/test@$version" \
+              && npm i -D "$RUNNER_TEMP"/a11ign-foresay-*.tgz "@playwright/test@$version" \
               && npx playwright install ${{ matrix.deps }} chromium \
-              && ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST=http://127.0.0.1:8099 npx announcement-emulator install)
+              && ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST=http://127.0.0.1:8099 npx foresay install)
           done
       # Two rounds, each of the held-out pages and then the fitted ones, each of the corpus project in each build: the DevTools port as the tree source whatever the platform's default is, and the focus the way the fleet's focus probe reads it (rule.md).
       # A run whose workers report another Chromium build than the one its row names is not kept.

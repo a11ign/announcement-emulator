@@ -7,7 +7,7 @@
 # middleware/release/after-version.sh, which writes pins.json and the measured agreement into the changelog entry. It then packs the package as `npm publish` would, and checks that the packed pins.json names the
 # same sums as SHA256SUMS. The working tree is never written: the pending changesets stay pending.
 #
-# Writes to <output>: the packed package (a11ign-announcement-emulator-<version>.tgz), pins.json and notes.md as packed, SHA256SUMS, version, and summary.md (every file with its size and sum, the reproducibility of each
+# Writes to <output>: the packed package (a11ign-foresay-<version>.tgz), pins.json and notes.md as packed, SHA256SUMS, version, and summary.md (every file with its size and sum, the reproducibility of each
 # platform, the pins and the notes), which the workflow shows in the pull request's checks.
 # Needs: git, tar, node, pnpm (the repository's packageManager), sha256sum.
 set -eu

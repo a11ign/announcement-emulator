@@ -1,0 +1,17 @@
+@a11ign/foresay
+Copyright 2026 a11ign
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Predicts what the NVDA screen reader would say, built on NVDA's open-source
+code. Not affiliated with NV Access.
+
+This package contains none of that code. The runtime that holds it is a
+separate download (`npx foresay install`), licensed under GPL-3.0-or-later,
+and its licence text, source offer and notices are in the bundle it unpacks
+(LICENSE and NOTICES). This package starts that runtime as a separate program
+and exchanges JSON lines with it; it copies no file out of the runtime and
+rewrites none.
+
+"NVDA" is named here only to say what is predicted. This package does not
+use the NVDA logo.

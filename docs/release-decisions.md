@@ -1,11 +1,31 @@
 # Release decisions for the chairman: the name, the licence, and the NV Access requirement
 
-Prepared for A11-233 (child 5 of A11-228, the Playwright middleware as a real package). **This document prepares three decisions and makes none.** They are the chairman's.
+Prepared for A11-233 (child 5 of A11-228, the Playwright middleware as a real package). **Sections 1 to 6 prepare three decisions and make none.** They are the chairman's, and the chairman made them on 2026-10-27: the **Decisions** section below records them, and A11-353 applies them.
 **Nothing was published, sent or reserved to write it:** no npm name is reserved, no repository was created, no trademark was filed and nobody was contacted. Every check below was made read-only.
 
 Where a result comes from is marked on it, as in `docs/playwright-middleware-spike.md`: **checked** (the author ran the command or read the page, on the date given), **quoted** (copied from a source, not re-run) or **not checked** (with the reason). All dates are UTC. A reading is a moment: a name that is free on 2026-10-24 can be taken tomorrow.
 
-After the chairman decides, a follow-up records the choices in this file and applies them (`middleware/package.json` `name`, `license` and `private`; a `LICENSE` for the package; the README; ADR 0047 in the `a11ign` repository).
+A11-353 records the choices in this file and applies them (`middleware/package.json` `name` and `license`; a `LICENSE` and a `NOTICE` for the package; the README; the runtime bundle's licence and notices; ADR 0047 in the `a11ign` repository). `private` stays, see "What these decisions leave undone".
+
+## Decisions
+
+Made by the chairman on 2026-10-27 and recorded in A11-233's Decisions, in three entries: [Decisions (the chairman, 2026-10-27)](https://linear.app/a11ign/issue/A11-233/prepare-the-release-decisions-for-the-chairman-package-name-candidates) (the name), [Decisions (the chairman, 2026-10-27, licence)](https://linear.app/a11ign/issue/A11-233/prepare-the-release-decisions-for-the-chairman-package-name-candidates) and [Decisions (the chairman, 2026-10-27, NV Access)](https://linear.app/a11ign/issue/A11-233/prepare-the-release-decisions-for-the-chairman-package-name-candidates). A11-353 records and applies them. Sections 1 to 6 below are the preparation they were made from, and are left as written.
+
+| | Decision | Where it is applied |
+|---|---|---|
+| **Name** | **Foresay**, published as `@a11ign/foresay` (the recommendation of §5). | `middleware/package.json` `name`, and the command is `npx foresay`. |
+| **Licence** | **Option A** (§3). The npm package is **Apache-2.0**; the runtime bundle is **GPL-3.0-or-later**, downloaded separately and never inside the package or the lockfile. It follows Guidepup's shape: `@guidepup/guidepup` and `@guidepup/setup` are MIT and download a portable NVDA from a separate GitHub Release (`guidepup/nvda`) that they drive as a separate program; Foresay's runtime comes from its own release asset with pinned sums (A11-232), and the package talks to it only as a separate process. | `middleware/package.json` `license`, `middleware/LICENSE`, `middleware/NOTICE`; the bundle's `bundle.json` `license`, `LICENSE` and `NOTICES` (`middleware/bundle/NOTICES`, §3 "The notices the bundle needs"). |
+| **The one step that blurs the boundary** | The package must not copy or rewrite GPL files out of the runtime. The runtime sets that up itself, for example from a command-line option or an environment variable. | Done before this change, by A11-229: the companion extension (the only GPL file the package copied, and the placeholders it rewrote) is gone from the package and the bundle, and the runtime takes its ports from `--port` and `--cdp`, the browser from `--remote-debugging-port`. A11-353 adds the test that keeps it so: `src/package-files.test.ts` fails if the published tarball holds a file of the runtime, by path or by content, or if the package's code copies a file. |
+| **NV Access** | **Move** (§4). ADR 0047 item 2 becomes: someone asks NV Access before the **first non-preview release**, and the answer goes on the release row; preview releases may be published before then. Item 3 and the falsifier stay. **Preview** means a version with a `-preview.N` suffix, published under the npm dist-tag `preview` and never `latest`; the first release published as `latest` is the first non-preview release. **The sender is the chairman**, and the amended item 2 names the chairman, not `ceo`. No message is due now. The §1 wording rules apply from the first preview. | ADR 0047 in `a11ign/a11ign`, amended by the pull request that goes with this one. |
+| **Counsel** | A lawyer reads §3 of this document before the first non-preview release. Commissioning that is the chairman's. | Not applied by a change; the chairman's to commission. |
+
+### What these decisions leave undone
+
+- **Renaming the repository** from `a11ign/announcement-emulator` to `a11ign/foresay` is an outward step and is not done. The package's `repository` URL, the runtime bundle's file names (`announcement-emulator-bundle-<platform>`), its cache directory and the `ANNOUNCEMENT_EMULATOR_*` variables keep the repository's name until it is renamed.
+- **Nothing is published or reserved.** `middleware/package.json` keeps `"private": true`: the org's release workflow never publishes a private package, and dropping it is what lets a release be published, which is for a person to do. `@a11ign/foresay` is not reserved on npm, and no trademark register was searched (§5 suggests one before the name has a following).
+- **Preview publishing is not built.** Nothing yet publishes under the dist-tag `preview` or checks a `-preview.N` version; the definition above is what a release workflow will check when there is one.
+- **The message to NV Access** is not drafted and is not due until the first release published as `latest`.
+- **Python's third-party licence texts.** The bundle's interpreter is an `install_only_stripped` build of python-build-standalone, which carries CPython's licence but not the licence texts of the libraries it is built against (checked on the pinned 20261013 archive for linux-x64 on 2026-10-27). `NOTICES` names them and points to the release; carrying them in the bundle is for the first release, with counsel's reading of §3.
 
 ## 1. Wording
 

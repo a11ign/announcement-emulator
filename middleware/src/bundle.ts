@@ -6,6 +6,8 @@ import { join } from "node:path";
 export interface BundleManifest {
   name: string;
   platform: string;
+  /** The SPDX identifier of the runtime: `GPL-3.0-or-later`. The package that starts it is Apache-2.0. */
+  license?: string;
   nvda: { release: string; commit: string };
   /** The Chromium milestone the mapping tables were read from (pins.env `CHROME`). Not a browser: the bundle holds none. */
   chromiumTables: string;
@@ -42,6 +44,6 @@ export function findBundle(version: string, env: NodeJS.ProcessEnv = process.env
 
 export class BundleMissing extends Error {
   constructor(version: string) {
-    super(`announcement-emulator: no runtime bundle for ${version} on ${platformId()} (looked in ${cacheRoot()}). Run: npx announcement-emulator install`);
+    super(`foresay: no runtime bundle for ${version} on ${platformId()} (looked in ${cacheRoot()}). Run: npx foresay install`);
   }
 }
