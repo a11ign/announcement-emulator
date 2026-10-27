@@ -151,6 +151,8 @@ set -eu
 # every other test of the runtime and of the measurement, the walks the sample suite's projects share, and the cost summary
 (cd middleware/runtime && python3 -m unittest discover -p 'test_*.py')
 python3 -m unittest discover -s middleware/agreement -t middleware/agreement
+# the report of a run of the `large` project (a Playwright report as the reporter's attachments leave it) has all five pages predicted: the load and at least 100 focus moves of each; the same command exits 1 on a report without them (test_check_predictions.py strips them)
+python3 middleware/agreement/check_predictions.py middleware/agreement/fixtures/large-report.json middleware/sample-suite/tests/large/pages.json
 # the reporter's verify option reaches the runtime
 (cd middleware && pnpm exec rstest run src/runtime.test.ts)
 # the recordings, the projects and the cost tables are there, and the tables in the README are the ones the committed summary makes

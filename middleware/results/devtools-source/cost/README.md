@@ -141,6 +141,7 @@ python3 middleware/agreement/summarize_cost.py summary.json <label>=<the directo
 python3 middleware/agreement/summarize_cost.py --table summary.json <label> ...
 # after the large project: exits 1 and names a page that has no load speech or fewer than 100 focus moves
 python3 middleware/agreement/check_predictions.py test-results/report.json middleware/sample-suite/tests/large/pages.json
+# (middleware/agreement/fixtures/large-report.json is such a report, from the third run after the fix, with each attachment cut to the cause of its utterances)
 ```
 
 With `ANNOUNCEMENT_EMULATOR_VERIFY=1` the runtime reads each page from scratch after every incremental read and records where the two differ (a `verify` record in the run's records, `treeReads.differing` in `run.json`).
