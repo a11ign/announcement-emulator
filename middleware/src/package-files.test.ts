@@ -2,10 +2,12 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { mkdtempSync, readdirSync, readFileSync, statSync } from "node:fs";
+import { chmodSync, lstatSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
+import { doctor } from "./doctor.ts";
+import { Runtime } from "./runtime.ts";
 
 // A11-353: the package is Apache-2.0 and holds no file of the GPL-3.0-or-later runtime it starts. The runtime is a separate download (A11-232); this reads what `npm pack` would publish.
 
@@ -76,4 +78,58 @@ test("the READMEs say what the tool is in the wording of docs/release-decisions.
     assert.ok(text.includes(sentence), path);
     assert.doesNotMatch(text, /NVDA[- ]compatible|endorsed by NV Access|NV Access endorses|\bis NVDA\b|official NVDA/i, path);
   }
+});
+
+// The behaviour behind "copies no file and rewrites none": run the package's own code against a bundle, and look at the bundle and at every place the package writes.
+
+/** Each file under `root` (a link is not followed) as `relative path -> [sha256, mode, mtime]`. */
+function snapshot(root: string): Map<string, string> {
+  const files = new Map<string, string>();
+  const walk = (directory: string): void => {
+    for (const entry of readdirSync(directory, { withFileTypes: true })) {
+      const path = join(directory, entry.name);
+      if (entry.isDirectory()) { walk(path); continue; }
+      const stat = lstatSync(path);
+      files.set(relative(root, path), `${createHash("sha256").update(readFileSync(path)).digest("hex")} ${stat.mode} ${stat.mtimeMs}`);
+    }
+  };
+  walk(root);
+  return files;
+}
+
+/** A bundle with a Python that says the runtime is ready, and files that stand for the GPL runtime and for what the package once copied out of it. Every file's content is its own. */
+function fakeBundle(): string {
+  const bundle = mkdtempSync(join(tmpdir(), "ae-nocopy-bundle-"));
+  const files: Record<string, string> = {
+    "bundle.json": JSON.stringify({ name: "b", platform: "linux-x64", license: "GPL-3.0-or-later", nvda: { release: "release-2026.1.1", commit: "5d92106f" }, chromiumTables: "155.0.8059.84", python: "3.13.16", commit: "abc" }),
+    "LICENSE": "GNU GENERAL PUBLIC LICENSE, as the bundle ships it",
+    "NOTICES": "the notices of this bundle",
+    "nvda-src/copying.txt": "NVDA's licence file",
+    "nvda-src/source/speech/speech.py": "# a file of NVDA's own",
+    "middleware/runtime/main.py": "# the runtime's main, with a placeholder: __PORT__",
+    "middleware/runtime/passive.js": "// a script with the port to rewrite: __COLLECTOR_PORT__",
+  };
+  for (const [path, content] of Object.entries(files)) { mkdirSync(join(bundle, path, ".."), { recursive: true }); writeFileSync(join(bundle, path), content); }
+  mkdirSync(join(bundle, "python", "bin"), { recursive: true });
+  const python = join(bundle, "python", "bin", "python3");
+  writeFileSync(python, `#!/bin/sh\ncase "$1" in -I) if [ "$2" = "-c" ]; then echo 3.13.16; exit 0; fi;; esac\necho '{"type":"ready","bootMs":1}'\nread line\n`);
+  chmodSync(python, 0o755);
+  return bundle;
+}
+
+test("running the package against a bundle changes no file of the bundle and leaves no copy of one anywhere the package writes", async () => {
+  const bundle = fakeBundle(), project = mkdtempSync(join(tmpdir(), "ae-nocopy-project-"));
+  const before = snapshot(bundle);
+  const log = join(project, "test-results", "foresay", "runtime-0.log");
+
+  const runtime = new Runtime(bundle, { collector: 41011, cdp: 41012 }, { log });
+  await runtime.ready;
+  await runtime.stop();
+  const lines: string[] = [];
+  doctor({ env: { ANNOUNCEMENT_EMULATOR_BUNDLE: bundle }, playwright: { version: "1.63.0", chromium: { revision: "1", build: "153.0.8010.12" }, headlessShell: { revision: "1", build: "153.0.8010.12" }, executablePath: "/x/chrome", fullInstalled: true, shellInstalled: true }, supported: { builds: [] }, version: () => ({ status: 0, out: "Chromium 153.0.8010.12" }), log: (line) => lines.push(line) });
+
+  assert.deepEqual(snapshot(bundle), before, "a file of the bundle was written, rewritten or removed");
+  const bundleContents = new Set([...before.values()].map((value) => value.split(" ")[0]));
+  const written = [...snapshot(project).entries()].filter(([, value]) => bundleContents.has(value.split(" ")[0]!));
+  assert.deepEqual(written, [], "a file of the bundle was copied into the project");
 });
