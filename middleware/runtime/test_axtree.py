@@ -402,7 +402,7 @@ class Patching(unittest.TestCase):
         with self.assertRaises(axtree.Unpatchable): self.now([dict(text, name=dict(text['name'], value='other words'))])
 
     def test_a_field_whose_text_changed_is_not_patched(self):
-        field = self.node('textbox'); 
+        field = self.node('textbox')
         with self.assertRaises(axtree.Unpatchable): self.now([dict(field, value={'type': 'string', 'value': 'changed'})])
 
     def test_a_state_other_than_the_focus_is_not_patched(self):

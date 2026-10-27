@@ -139,6 +139,8 @@ ANNOUNCEMENT_EMULATOR_TREE=devtools ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1 AE_PROF
 cp test-results/announcement-emulator/run.json .
 python3 middleware/agreement/summarize_cost.py summary.json <label>=<the directory with profile.jsonl and run.json> ...
 python3 middleware/agreement/summarize_cost.py --table summary.json <label> ...
+# after the large project: exits 1 and names a page that has no load speech or fewer than 100 focus moves
+python3 middleware/agreement/check_predictions.py test-results/report.json middleware/sample-suite/tests/large/pages.json
 ```
 
 With `ANNOUNCEMENT_EMULATOR_VERIFY=1` the runtime reads each page from scratch after every incremental read and records where the two differ (a `verify` record in the run's records, `treeReads.differing` in `run.json`).

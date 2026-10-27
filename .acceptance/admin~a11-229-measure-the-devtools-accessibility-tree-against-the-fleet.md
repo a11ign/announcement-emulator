@@ -154,7 +154,8 @@ python3 -m unittest discover -s middleware/agreement -t middleware/agreement
 # the reporter's verify option reaches the runtime
 (cd middleware && pnpm exec rstest run src/runtime.test.ts)
 # the recordings, the projects and the cost tables are there, and the tables in the README are the ones the committed summary makes
-for f in form basket devtools-basket-live devtools-error-alert devtools-spa-route; do test -s middleware/runtime/fixtures/incremental/$f.jsonl.gz; done
+for f in form basket; do test -s middleware/runtime/fixtures/incremental/$f.conversation.gz; done
+for f in devtools-basket-live devtools-error-alert devtools-spa-route; do test -s middleware/runtime/fixtures/incremental/$f.jsonl.gz; done
 grep -q 'name: "large"' middleware/sample-suite/base.config.ts && grep -q 'name: "paced"' middleware/sample-suite/base.config.ts
 python3 - <<'PY'
 import json, re, subprocess

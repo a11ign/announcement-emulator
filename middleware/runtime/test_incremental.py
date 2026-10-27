@@ -1,6 +1,6 @@
 """The incremental read of a page's tree (incremental.py, A11-229): a page that only moved its focus or changed a form control's value is brought up to date from the few nodes that changed, and the tree it gives
 is the tree a read from scratch gives. The browser here is a recorded page (fixtures/structure/devtools-lists.json.gz) that answers the commands the reader sends and can be changed the way a page changes."""
-import gzip, json, os, unittest
+import pathlib, gzip, json, os, unittest
 
 import axtree, incremental
 
@@ -562,7 +562,7 @@ class Checking(unittest.TestCase):
 
 
 def recording(name):
-    with gzip.open(os.path.join(HERE, 'fixtures', 'incremental', f'{name}.jsonl.gz'), 'rt') as f: return [json.loads(line) for line in f]
+    with gzip.open(os.path.join(HERE, 'fixtures', 'incremental', f'{name}.conversation.gz'), 'rt') as f: return [json.loads(line) for line in f]
 
 
 class Recorded(unittest.TestCase):
@@ -593,6 +593,13 @@ class Recorded(unittest.TestCase):
     def test_a_basket_that_counts_while_the_focus_is_on_its_button_is_read_as_it_was(self):
         hows = self.play('basket')
         self.assertEqual(hows.count('incremental'), 7); self.assertEqual([row['reason'] for row in recording('basket') if row['how'] == 'full'][2:], ['mutation'] * 3)      # the live region's text is a change of the document: a full read
+
+    def test_no_conversation_is_named_as_a_recording_of_the_page_events_the_bundle_comparison_replays(self):
+        """compare_bundles.py replays every `*.jsonl.gz` under fixtures through replay.py, which reads the rows the page sent (each has a `k`); a conversation is not one."""
+        found = sorted(pathlib.Path(HERE, 'fixtures').rglob('*.jsonl.gz'))
+        self.assertTrue(found)
+        for path in found:
+            with gzip.open(path, 'rt') as f: self.assertIn('k', json.loads(f.readline()), path.name)
 
     def test_the_recordings_have_what_the_reader_is_told_by_the_browser(self):
         rows = recording('form')
