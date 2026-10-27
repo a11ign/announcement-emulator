@@ -16,15 +16,15 @@ const figure = (agreement: number, units: number, key: string, more: Partial<Fig
 
 const LIST: SupportedVersions = { builds: [
   { chromium: "156.0.8078.4", playwright: ["1.64.0", "1.64.1"], measured: {
-    "extension-linux": figure(0.912, 1131, "extension-linux", {
+    "devtools-linux": figure(0.912, 1131, "devtools-linux", {
       population: { pages: 12, heldOut: true, units: 1131 }, ceiling: { agreement: 0.995, units: 1131 },
       shapes: { "NAME + ROLE": { agreement: 0.95, units: 600, lowConfidence: false }, NAME: { agreement: 0.5, units: 40, lowConfidence: true } },
     }),
     "devtools-macos": figure(0.804, 960, "devtools-macos"),
   } },
-  { chromium: "153.0.8010.12", playwright: ["1.63.0"], measured: { "devtools-linux": figure(0.85, 1100, "devtools-linux") } },
+  { chromium: "153.0.8010.12", playwright: ["1.63.0"], measured: { "devtools-linux": figure(0.85, 1100, "devtools-linux", { figure: "middleware/results/round/153.0.8010.12/devtools-linux/" }) } },
 ] };
-const EDGE: Record<string, string[]> = { "middleware/results/round/156.0.8078.4/extension-linux/": ["156.0.4314.42"] };
+const EDGE: Record<string, string[]> = { "middleware/results/round/156.0.8078.4/devtools-linux/": ["156.0.4314.42"] };
 const input = (list = LIST, edge = EDGE): NotesInput => ({ list, nvda: "release-2026.1.1", edgeOf: (f) => edge[f] ?? [] });
 
 test("the notes name every supported Playwright version, with the Chromium build each ships", () => {
@@ -35,16 +35,16 @@ test("the notes name every supported Playwright version, with the Chromium build
 
 test("every build's rate is given for each tree source, with its units and its date", () => {
   const notes = renderNotes(input());
-  assert.match(notes, /^\| 156\.0\.8078\.4 \| 1\.64\.0, 1\.64\.1 \| extension-linux \| 91\.2% \| 1131 \| 2026-10-26 \|/m);
+  assert.match(notes, /^\| 156\.0\.8078\.4 \| 1\.64\.0, 1\.64\.1 \| devtools-linux \| 91\.2% \| 1131 \| 2026-10-26 \|/m);
   assert.match(notes, /^\| 156\.0\.8078\.4 \| 1\.64\.0, 1\.64\.1 \| devtools-macos \| 80\.4% \| 960 \| 2026-10-26 \|/m);
   assert.match(notes, /^\| 153\.0\.8010\.12 \| 1\.63\.0 \| devtools-linux \| 85\.0% \| 1100 \| 2026-10-26 \|/m);
 });
 
 test("a figure's population and ceiling are given where it has them, and its shapes are a table of the rate per announcement type", () => {
   const notes = renderNotes(input());
-  assert.match(notes, /\| extension-linux \| 91\.2% \| 1131 \| 2026-10-26 \| 12, held out \| 99\.5% \|/);
+  assert.match(notes, /\| devtools-linux \| 91\.2% \| 1131 \| 2026-10-26 \| 12, held out \| 99\.5% \|/);
   assert.match(notes, /\| devtools-macos \| 80\.4% \| 960 \| 2026-10-26 \| not given \| not given \|/);
-  assert.match(notes, /^##### Chromium 156\.0\.8078\.4, extension-linux, by announcement shape$/m);
+  assert.match(notes, /^##### Chromium 156\.0\.8078\.4, devtools-linux, by announcement shape$/m);
   assert.match(notes, /^\| NAME \+ ROLE \| 95\.0% \| 600 \| {2}\|$/m);
   assert.match(notes, /^\| NAME \| 50\.0% \| 40 \| low confidence \|$/m);
   assert.equal(notes.match(/by announcement shape/g)?.length, 1);      // a figure with no shapes has no table
@@ -52,7 +52,7 @@ test("a figure's population and ceiling are given where it has them, and its sha
 
 test("the Edge version is the one the fleet readings recorded, and 'not recorded' where they record none", () => {
   const notes = renderNotes(input());
-  assert.match(notes, /\| extension-linux \|[^\n]*\| 99\.5% \| 156\.0\.4314\.42 \|$/m);
+  assert.match(notes, /\| devtools-linux \|[^\n]*\| 99\.5% \| 156\.0\.4314\.42 \|$/m);
   assert.match(notes, /\| devtools-macos \|[^\n]*\| not recorded \|$/m);
   assert.match(notes, /\| devtools-linux \|[^\n]*\| not recorded \|$/m);
   assert.doesNotMatch(renderNotes(input(LIST, {})), /156\.0\.4314\.42/);
@@ -74,9 +74,9 @@ test("the notes never say the speech is NVDA's, that NV Access endorses it, or t
 
 test("a list with no build, or a figure part this file does not know, is handled: the first fails the release, the second is left out", () => {
   assert.throws(() => renderNotes(input({ builds: [] })), /names no Chromium build/);
-  const extra = { ...figure(0.9, 10, "extension-linux"), somethingNew: { a: 1 } } as Figure;
-  const notes = renderNotes(input({ builds: [{ chromium: "156.0.8078.4", playwright: ["1.64.1"], measured: { "extension-linux": extra } }] }));
-  assert.match(notes, /\| extension-linux \| 90\.0% \| 10 \|/);
+  const extra = { ...figure(0.9, 10, "devtools-linux"), somethingNew: { a: 1 } } as Figure;
+  const notes = renderNotes(input({ builds: [{ chromium: "156.0.8078.4", playwright: ["1.64.1"], measured: { "devtools-linux": extra } }] }));
+  assert.match(notes, /\| devtools-linux \| 90\.0% \| 10 \|/);
   assert.doesNotMatch(notes, /somethingNew/);
 });
 

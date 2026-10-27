@@ -76,9 +76,9 @@ rm -rf "${B:?}/$LIB/site-packages/pip" "${B:?}/$LIB/site-packages/README.txt"
 # the console scripts pip wrote name the interpreter by the path it was built at, and the records of what pip installed hold their hashes; neither is used
 find "$B/python/bin" -type f ! -name 'python*' -delete
 find "$B/python/lib" -path '*-info/RECORD' -delete
-# 5. this repository's runtime: the emulator, the sweep it runs, the companion extension, and the middleware's runtime process. emu/langnames is the table of Windows language names and nothing that makes or checks it
+# 5. this repository's runtime: the emulator, the sweep it runs, and the middleware's runtime process (the tree comes through the browser's DevTools port: no extension is carried, A11-229). emu/langnames is the table of Windows language names and nothing that makes or checks it
 cd "$REPO"
-git ls-files --cached --others --exclude-standard -- 'emu/*.py' emu/tables.json 'emu/ext2' emu/langnames/language-names.json q1/ext-id.txt q2/stubs.py q3/sweep.py q3/livepage.py q3/shapes.py q3/nvda-fleet.ini middleware/runtime LICENSE \
+git ls-files --cached --others --exclude-standard -- 'emu/*.py' emu/tables.json emu/langnames/language-names.json q2/stubs.py q3/sweep.py q3/livepage.py q3/shapes.py q3/nvda-fleet.ini middleware/runtime LICENSE \
   | grep -Ev '^emu/(t[0-9]+|run_cases|extract_cases|gen_tables|boot_(before|objects)[a-z_]*)\.py$|__pycache__|/test_[^/]*\.py$' | tar -cf - -T - | tar -xf - -C "$B"
 find "$B" -name __pycache__ -type d -prune -exec rm -rf {} +
 cat > "$B/bundle.json" <<JSON

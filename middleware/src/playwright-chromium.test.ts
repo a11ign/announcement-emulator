@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { browsersRoot, extensionVerdict, launchChannel, readPlaywright, type PlaywrightChromium } from "./playwright-chromium.ts";
+import { browsersRoot, readPlaywright } from "./playwright-chromium.ts";
 
 interface Fake { version: string; chromium: [string, string]; shell: [string, string] | null; install: "both" | "shell" | "none" }
 
@@ -74,37 +74,4 @@ test("the browsers directory is the parent of the chromium-<revision> directory,
   assert.equal(browsersRoot("/home/u/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome"), "/home/u/.cache/ms-playwright");
   assert.equal(browsersRoot("/Users/u/Library/Caches/ms-playwright/chromium-1248/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"), "/Users/u/Library/Caches/ms-playwright");
   assert.equal(browsersRoot("/opt/chrome/chrome"), null);
-});
-
-const pw = (over: Partial<PlaywrightChromium> = {}): PlaywrightChromium => ({
-  version: "1.64.1", chromium: { revision: "1248", build: "156.0.8078.4" }, headlessShell: { revision: "1248", build: "156.0.8078.4" }, executablePath: "/x/chromium-1248/chrome", fullInstalled: true, shellInstalled: true, ...over,
-});
-
-test("the extension is expected to load in the full Chromium of a launch left to Playwright", () => {
-  assert.equal(extensionVerdict(pw()).ok, true);
-  assert.equal(extensionVerdict(pw(), { headless: false }).ok, true);
-});
-
-test("a browser the team chose is tried, and the reason says the DevTools port is read if the extension does not come up; a missing full Chromium is known to fail, and the reason says what to do", () => {
-  for (const choice of [{ channel: "chrome" }, { channel: "msedge" }, { executablePath: "/x" }]) {
-    const verdict = extensionVerdict(pw({ fullInstalled: false }), choice);
-    assert.equal(verdict.ok, true, JSON.stringify(choice));
-    assert.match(verdict.why, /DevTools port is read instead if it does not come up/);
-  }
-  const missing = extensionVerdict(pw({ fullInstalled: false }));
-  assert.equal(missing.ok, false);
-  assert.match(missing.why, /npx playwright install chromium, without --only-shell/);
-  assert.equal(extensionVerdict(null).ok, false);
-});
-
-test("the channel \"chromium\" is added to a headless launch left to Playwright and to nothing else", () => {
-  assert.equal(launchChannel(pw()), "chromium");
-  assert.equal(launchChannel(pw(), { headless: true }), "chromium");
-  assert.equal(launchChannel(pw(), { headless: false }), undefined);
-  assert.equal(launchChannel(pw(), { channel: "chromium" }), undefined);
-  assert.equal(launchChannel(pw(), { channel: "chrome" }), undefined);
-  assert.equal(launchChannel(pw(), { executablePath: "/x" }), undefined);
-  assert.equal(launchChannel(pw({ fullInstalled: false }), {}), undefined);
-  assert.equal(launchChannel(pw({ headlessShell: null }), {}), undefined);
-  assert.equal(launchChannel(null, {}), undefined);
 });

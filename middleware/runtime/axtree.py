@@ -1,13 +1,13 @@
-"""A tree source for a platform where chrome.automation gives the extension no desktop tree (macOS: A11-208 found `getDesktop` never answers there).
+"""The tree source: the accessibility tree a page's browser gives through its DevTools port, on every operating system and in any Playwright Chromium (A11-229: it is the only source; no extension is loaded).
 
 The browser's DevTools port says what the renderer's accessibility tree holds (`Accessibility.getFullAXTree`), and what the page's elements are (`DOMSnapshot.captureSnapshot`): this puts the two
-together into the node list that `emu/ext2/tree.js` makes from chrome.automation, so that the rest of the runtime (`predict.py`, and the emulator under it) does not know which it was given.
+together into the node list the rest of the runtime (`predict.py`, and the emulator under it) reads, which is the node list `emu/ext2/tree.js` makes from chrome.automation for the spike's own emulator (`emu/session.py`).
 
-It is the lower-fidelity source ADR 0047 allows, and it is not the same tree. What the DevTools protocol does not say is worked out here from what it does:
+What the DevTools protocol does not say is worked out here from what it does:
   * the roles are exact (`chromeRole` is Chromium's own number, roles.json names it; the two numbers Chromium 156 adds that matter are named in ADDED_ROLES);
   * a text's line starts are those of its inline text boxes, which Chromium makes one for each line; its word and sentence starts are found with a regular expression and not with ICU's rules;
   * the table model (where a cell is, what it spans, `aria-rowindex` / `aria-colindex`, its header cells), the position in a set and the size of one are worked out from the tree and the page's attributes by Chromium's own rules
-    (AXTableInfo; AXTree::ComputeSetSizePosInSet, AXNode::GetOrderedSet), and not read from the AXNode that Chromium holds. A11-229 held each to the companion extension's tree for the same pages (fixtures/structure);
+    (AXTableInfo; AXTree::ComputeSetSizePosInSet, AXNode::GetOrderedSet), and not read from the AXNode that Chromium holds. A11-229 held each to the tree the companion extension gave for the same pages, recorded before the extension was removed (fixtures/structure);
   * the default action verb is Chromium's `AXObject::Action`: a page's own click listener (DOMSnapshot's `isClickable` less what the browser does itself, and, for a <label>, the console's `getEventListeners`) makes a node `click`;
   * `visited`, `default`, `offscreen` beyond the viewport, the document's text selection and the node's `nameFrom` beyond the first source are not known, or are guessed (each is marked below).
 Not forced, because the protocol does not give it (A11-229, listed with the units it costs in the write-up): ICU's word and sentence starts; the names of the parts inside a date or time field (the protocol computes "Day Day" where the extension has

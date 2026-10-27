@@ -1,9 +1,9 @@
-"""The second thing the runtime hears from the test's browser: the keys the test presses, as the page receives them.
+"""What the runtime hears from the test's browser: the keys the test presses and the changes the page makes, as the page reports them, and the accessibility tree, read through the browser's DevTools port.
 
-The companion extension sees the tree but not the keyboard, and it sees the focus only as often as the browser sends tree updates, which batch: a test that presses Tab three times in ten
-milliseconds leaves the extension one update for the three (measured: a stop of seven was missing from its tree updates). The page itself sees every focus move and every key, so: an extension's content scripts do not run in the off-the-record contexts that `browser.newContext()` makes (measured:
-`chrome.extension.isAllowedIncognitoAccess()` is false, and no content script ran), and Playwright's contexts are those. So this connects to the browser's DevTools port
-(the middleware adds `--remote-debugging-port` beside Playwright's pipe), attaches to every page and installs a listener that reports each trusted `keydown` and each `focusin`. Nothing is sent to a page but that listener, and, for each `focusin`, questions that change nothing: which DOM node the element is and what the browser calls it (`Resolution`).
+The middleware adds `--remote-debugging-port` beside Playwright's pipe, and this connects to it, attaches to every page (the contexts a suite opens with `browser.newContext()` included) and installs a listener that reports
+each trusted `keydown`, each `focusin`, each live region that changed and a note that something did, for the tree to be read again after (`Cdp`, incremental.py, axtree.py). The page itself sees every focus move and every key, which a tree
+that is read after the fact does not: a test that presses Tab three times in ten milliseconds leaves one tree update for the three. Nothing is sent to a page but that listener, and, for each `focusin`, questions that change nothing:
+which DOM node the element is and what the browser calls it (`Resolution`).
 """
 import json, os, re, threading, time, urllib.request
 from wsclient import WebSocket
@@ -20,10 +20,9 @@ LISTENER = r"""(() => {
   };
   const where = () => { const a = document.activeElement; return a ? {tag: a.tagName, type: a.type || null, editable: !!(a.isContentEditable || /^(INPUT|TEXTAREA)$/.test(a.tagName))} : null; };
   const send = o => { try { window.__ae(JSON.stringify({t: Date.now(), url: location.href, ...o})); } catch (x) {} };
-  // Only where the tree comes from this port and not from the extension (axtree.py): a note that something changed, for the runtime to read the tree again after. One note at a time, a moment after the change.
-  // `__aeTicksOn` is set by the runtime when it takes over the trees from an extension that did not come up (Cdp.enable_trees): from then on the page notes its changes, as it did from the start where `__TICKS__` is true.
-  const ticksOn = () => __TICKS__ || window.__aeTicksOn === true; let ticking = false, again = null;
-  const tick = why => { if (!ticksOn()) return; if (ticking) { again = why; return; } ticking = true; send({e: 'tick', why}); setTimeout(() => { ticking = false; if (again) { const w = again; again = null; tick(w); } }, 20); };
+  // A note that something changed, for the runtime to read the tree again after (the tree comes through this port: axtree.py). One note at a time, a moment after the change.
+  let ticking = false, again = null;
+  const tick = why => { if (ticking) { again = why; return; } ticking = true; send({e: 'tick', why}); setTimeout(() => { ticking = false; if (again) { const w = again; again = null; tick(w); } }, 20); };
   for (const type of ['input', 'change', 'keyup', 'load', 'hashchange', 'popstate', 'pageshow', 'readystatechange', 'scroll']) addEventListener(type, () => tick(type), true);
   tick('installed');
   addEventListener('keydown', e => { if (e.isTrusted) send({e: 'keydown', key: e.key, code: e.code, ctrl: e.ctrlKey, alt: e.altKey, meta: e.metaKey, shift: e.shiftKey, at: where()}); }, true);
@@ -36,7 +35,7 @@ LISTENER = r"""(() => {
     send({e: 'focusin', seq: focusSeq, tag: el.tagName.toLowerCase(), id: el.id || null, role: el.getAttribute('role'), names: names(el), inDialog: !!el.closest('dialog, [role="dialog"], [role="alertdialog"]')});
   }, true);
 
-  // Live regions. The tree reaches the extension some tens of milliseconds after the page changes, and a test that ends on the change closes the page first; the page's own change does not wait.
+  // Live regions. The tree is read some tens of milliseconds after the page changes, and a test that ends on the change closes the page first; the page's own change does not wait.
   // These are the rules of nvdaHelper/remote/ia2LiveRegions.cpp (NVDA 2026.1.1, winEventProcHook, :147-189 and :233-255) on the DOM that Chromium's events are made from.
   const IMPLIED = {alert: 'assertive', status: 'polite', log: 'polite'};
   const liveOf = el => {      // container-live: the nearest ancestor-or-self that sets it; "off" ends the search
@@ -91,7 +90,6 @@ LISTENER = r"""(() => {
   //   looks     the computed style (axtree.py STYLES) of the focused element, the elements above it and below it, those of the elements that had the focus (`before`: a number or a list) and of the ones in `soft`, and of what is below
   //             them: which is what a :focus rule or a class changes
   // `baseline` takes what it sees as the state the runtime has read; otherwise the runtime says so with `__aeCommit` once it has used the answer, and until then the next answer is about the same state.
-  if (__TICKS__) {      // only where the trees come from this port: with the extension nothing asks, and the observer and the elements it holds would be for nothing
   let mutations = 0;
   const SOFT = name => name === 'title' || name === 'class' || name === 'style' || name.startsWith('data-');
   const soft = new Set(); let reported = new Map();      // reported: each element the runtime was told of, with the attributes it had then
@@ -169,11 +167,9 @@ LISTENER = r"""(() => {
     return JSON.stringify({doc: documentId, muts: mutations, soft: softs, elements: els.length, layout, shadows, active, looks, forms: formsOf()});
   };
   window.__aeCommit = () => { if (latest) committed = latest; for (const [el, was] of reported) if (signature(el) === was) soft.delete(el); reported = new Map(); };      // an element that changed again since it was told of stays
-  }
 })()"""
 
 
-TICKS_ON = 'window.__aeTicksOn = true'
 RAW_LOG = os.environ.get('AE_RAW')      # a file to append the raw answers of each tree read to: how a DevTools fixture is made
 CONVERSATION_LOG = os.environ.get('AE_CONVERSATION')      # a file to append one line to for each tree read: the commands it sent, what the browser answered, and the tree it made (middleware/runtime/fixtures/incremental)
 PROFILE_LOG = os.environ.get('AE_PROFILE')      # a file to append one line to for each tree read: what it cost (the round trip to the browser, the conversion, the whole read) and how it was made (A11-229)
@@ -188,16 +184,16 @@ def browser_build(version):
 class Cdp:
     """Calls `on_event(event)` for each trusted keydown and focusin in any page of the browser listening on `port`. Reconnects when the browser is launched again (a Playwright worker is restarted).
 
-    With `on_tree` it is also where the trees come from (a platform where the extension is given none: axtree.py): each note that a page changed makes it read the page's accessibility tree and
-    DOM through the same port (incremental.py: whole, or from what changed when only the focus did), and `on_tree(snapshot)` is called with what the extension would have posted. With `verify`, each incremental read is
+    It is also where the trees come from (axtree.py, the only tree source): each note that a page changed makes it read the page's accessibility tree and
+    DOM through the same port (incremental.py: whole, or from what changed when only the focus did), and `on_tree(snapshot)` is called with the node list the emulator reads. With `verify`, each incremental read is
     checked against one from scratch, and `on_verify(record)` is called where they differ. `on_connect()` is called each time the browser is reached (the first, and again after a launch)."""
-    def __init__(self, port, on_event, on_attach=lambda target, browser: None, on_tree=None, on_connect=lambda: None, verify=False, on_verify=lambda body: None):
+    def __init__(self, port, on_event, on_tree, on_attach=lambda target, browser: None, on_connect=lambda: None, verify=False, on_verify=lambda body: None):
         self.port, self.on_event, self.on_attach, self.on_tree, self.on_connect = port, on_event, on_attach, on_tree, on_connect
         self.verify, self.on_verify = verify, on_verify
         self.ws = None; self.browser = None; self.next_id = 0; self.stopped = False; self.installed = set(); self.lock = threading.Lock(); self.outbox = []; self.out = threading.Lock(); self.target_of = {}; self.url_of = {}
         self.replies = {}; self.wanted = {}; self.wake = threading.Condition(); self.seq = 0; self.page_numbers = {}; self.readers = {}; self.generation = 0; self.hints = {}; self.loaded = set(); self.visited = {}; self.contexts = {}; self.reading = {}; self.reads = {'full': 0, 'incremental': 0, 'verified': 0, 'differing': 0, 'fullMs': 0.0, 'incrementalMs': 0.0}
         self.thread = threading.Thread(target=self._run, daemon=True, name='cdp'); self.thread.start()
-        if on_tree: self.trees = threading.Thread(target=self._trees, daemon=True, name='trees'); self.trees.start()
+        self.trees = threading.Thread(target=self._trees, daemon=True, name='trees'); self.trees.start()
 
     def _send(self, method, params=None, session=None):
         with self.lock:
@@ -245,8 +241,8 @@ class Cdp:
             for slot in gone: self._complete(slot, {'error': {'message': 'the browser went away'}})
             try:
                 self.on_connect()
-                # Where the trees come from this port, a page is held until its listener is in, so that a test that is quick still has its first tree read (everything but a page is let go at once, below)
-                self._send('Target.setAutoAttach', {'autoAttach': True, 'waitForDebuggerOnStart': bool(self.on_tree), 'flatten': True})
+                # A page is held until its listener is in, so that a test that is quick still has its first tree read (everything but a page is let go at once, below)
+                self._send('Target.setAutoAttach', {'autoAttach': True, 'waitForDebuggerOnStart': True, 'flatten': True})
                 self._send('Target.setDiscoverTargets', {'discover': True})
                 while True: self._handle(json.loads(self.ws.recv()))
             except (ConnectionError, OSError): pass
@@ -283,11 +279,11 @@ class Cdp:
                         if ident == m['params'].get('executionContextId'): del held[frame]
         elif method == 'Runtime.executionContextsCleared':
             with self.wake: self.contexts.pop(m.get('sessionId'), None)
-        elif method == 'Accessibility.nodesUpdated' and self.on_tree:      # a node the reader asked after has changed, whatever raised no event of the page's (a CSS rule, the browser's own state): read again, with what the browser says
+        elif method == 'Accessibility.nodesUpdated':      # a node the reader asked after has changed, whatever raised no event of the page's (a CSS rule, the browser's own state): read again, with what the browser says
             session = m.get('sessionId')
             with self.wake: self.hints.setdefault(session, []).append(m['params'].get('nodes') or [])
             self._want(session, 'nodesUpdated')
-        elif method == 'Accessibility.loadComplete' and self.on_tree:
+        elif method == 'Accessibility.loadComplete':
             session = m.get('sessionId')
             with self.wake: self.loaded.add(session)
             self._want(session, 'loadComplete')
@@ -323,22 +319,8 @@ class Cdp:
         """Tells on a `focusin` after asking the browser which element it is: see `Resolution`."""
         Resolution(self, session, event, self._deliver(event, pending=True)).start(context)
 
-    def enable_trees(self, on_tree):
-        """Become the place the trees come from, from now on: the extension was to give them and did not come up (main.py's fallback). Pages already open are told to note their changes and are read once,
-        pages opened later are held until their listener is in, as where the trees came from this port from the start. Does nothing if they already do."""
-        if self.on_tree: return
-        self.on_tree = on_tree
-        self.trees = threading.Thread(target=self._trees, daemon=True, name='trees'); self.trees.start()
-        if not self.ws: return
-        self._send('Target.setAutoAttach', {'autoAttach': True, 'waitForDebuggerOnStart': True, 'flatten': True})
-        for session in list(self.target_of):
-            self._send('Accessibility.enable', {}, session)
-            self._send('Runtime.evaluate', {'expression': TICKS_ON}, session)
-            self._send('Page.addScriptToEvaluateOnNewDocument', {'source': TICKS_ON}, session)
-            self._want(session, 'fallback')
-
     def _want(self, session, why):
-        if not self.on_tree or not session: return
+        if not session: return
         with self.wake: self.wanted.setdefault(session, set()).add(why); self.wake.notify()
 
     def _read(self, session, target, generation):
@@ -414,7 +396,7 @@ class Cdp:
             except Exception:      # a tree this cannot convert is one tree lost, and not the end of the trees
                 import traceback; traceback.print_exc(); continue
             if generation != self.generation: continue
-            if len(converted['nodes']) <= 1: continue      # a document with nothing in it yet (the blank page a navigation starts from): the extension posts none either, and its language, which the page has not set yet, would be taken for the page's
+            if len(converted['nodes']) <= 1: continue      # a document with nothing in it yet (the blank page a navigation starts from): its language, which the page has not set yet, would be taken for the page's
             self.seq += 1
             number = self.page_numbers.setdefault((generation, target), len(self.page_numbers))
             took = time.time() - started
@@ -425,13 +407,12 @@ class Cdp:
     def _install(self, session, target):
         if target in self.installed: return
         self.installed.add(target); self.on_attach(target, self.browser)
-        listener = LISTENER.replace('__TICKS__', 'true' if self.on_tree else 'false')
         self._send('Runtime.enable', {}, session)      # without it the browser does not send `Runtime.bindingCalled`
         self._send('Runtime.addBinding', {'name': '__ae'}, session)
-        if self.on_tree: self._send('Accessibility.enable', {}, session)      # the browser then says when a node it was asked about has changed (nodesUpdated) and when a document has loaded (loadComplete), and answers getChildAXNodes
+        self._send('Accessibility.enable', {}, session)      # the browser then says when a node it was asked about has changed (nodesUpdated) and when a document has loaded (loadComplete), and answers getChildAXNodes
         self._send('Page.enable', {}, session)      # the script below is run on each new document only while the Page domain is enabled
-        self._send('Page.addScriptToEvaluateOnNewDocument', {'source': listener}, session)
-        self._send('Runtime.evaluate', {'expression': listener}, session)      # the document already there
+        self._send('Page.addScriptToEvaluateOnNewDocument', {'source': LISTENER}, session)
+        self._send('Runtime.evaluate', {'expression': LISTENER}, session)      # the document already there
         self._send('Runtime.runIfWaitingForDebugger', {}, session)
 
     def stop(self):
@@ -481,7 +462,7 @@ class Resolution:
             if self.told: return
             self.told = True
         self.timer.cancel(); self.cdp._release(self.entry)
-        if self.event.get('backendNodeId') is not None and self.cdp.on_tree:      # the reader reads the nodes the focus has been on again
+        if self.event.get('backendNodeId') is not None:      # the reader reads the nodes the focus has been on again
             with self.cdp.wake: self.cdp.visited.setdefault(self.session, set()).add(self.event['backendNodeId'])
         self.cdp._want(self.session, 'focusin')      # and now the tree is read
 

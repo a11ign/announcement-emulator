@@ -1,15 +1,13 @@
 import { spawnSync } from "node:child_process";
 import { BundleMissing, findBundle, layout, platformId, readManifest } from "./bundle.ts";
-import { pickTree } from "./extension.ts";
 import { readPins } from "./pins.ts";
-import { extensionVerdict, readPlaywright, type PlaywrightChromium } from "./playwright-chromium.ts";
+import { readPlaywright, type PlaywrightChromium } from "./playwright-chromium.ts";
 import { buildFor, loadSupported, percent, SOURCE_KEYS, type SupportedVersions } from "./supported.ts";
 
 export interface DoctorOptions {
   /** Where the team's `@playwright/test` is resolved from: the directory the command is run in. */
   from?: string;
   env?: NodeJS.ProcessEnv;
-  platform?: string;
   playwright?: PlaywrightChromium | null;
   /** Starts a browser to ask its version; the tests give it a made-up one. */
   version?: (executable: string) => { status: number | null; out: string };
@@ -21,7 +19,7 @@ export interface DoctorOptions {
 
 /**
  * Says what the middleware will run in, and whether that is measured: the team's Playwright, the Chromium its `browsers.json` names and whether it is installed, whether that build is on the
- * supported list (and its figures if it is), and the tree source the automatic pick takes. It exits 0 for a build that is not listed, because that build runs (its report says "agreement not
+ * supported list (and its figures if it is), and where the tree comes from. It exits 0 for a build that is not listed, because that build runs (its report says "agreement not
  * measured"); it fails for what stops a run: no Playwright, no Chromium installed, no runtime bundle, no Python.
  */
 export function doctor(options: DoctorOptions = {}): number {
@@ -42,7 +40,7 @@ function checkPlaywright(options: DoctorOptions, log: Log, fail: Log): void {
   if (!playwright) { fail("Playwright: @playwright/test is not installed here, or its browsers.json could not be read. Run: npm i -D @playwright/test"); return; }
   const { list, error } = options.supported ? { list: options.supported, error: null } : loadSupported(options.supportedUrl);
   if (error) fail(`the package's supported-versions.json ${error}. Reinstall the package`);
-  reportPlaywright(playwright, list, { env: options.env ?? process.env, platform: options.platform ?? process.platform, log, fail });
+  reportPlaywright(playwright, list, { log, fail });
   if (playwright.fullInstalled && playwright.executablePath) checkStarts(playwright.executablePath, options.version ?? browserVersion, log, fail);
 }
 
@@ -65,9 +63,9 @@ function checkStarts(executable: string, version: (executable: string) => { stat
   if (status === 0) log(`ok   chromium starts: ${out}`); else fail(`chromium does not start: ${out}. On Linux, npx playwright install --with-deps chromium installs the libraries it needs`);
 }
 
-interface Where { env: NodeJS.ProcessEnv; platform: string; log: Log; fail: Log }
+interface Where { log: Log; fail: Log }
 
-function reportPlaywright(pw: PlaywrightChromium, supported: SupportedVersions, { env, platform, log, fail }: Where): void {
+function reportPlaywright(pw: PlaywrightChromium, supported: SupportedVersions, { log, fail }: Where): void {
   log(`Playwright ${pw.version}`);
   log(`Chromium ${pw.chromium.build} (revision ${pw.chromium.revision}): ${pw.fullInstalled ? "installed" : "NOT installed"}`);
   log(`headless shell ${pw.headlessShell ? `${pw.headlessShell.build}: ${pw.shellInstalled ? "installed" : "NOT installed"}` : "none (Playwright before 1.49 has none)"}`);
@@ -82,6 +80,5 @@ function reportPlaywright(pw: PlaywrightChromium, supported: SupportedVersions, 
   } else {
     log(`supported: no. Chromium ${pw.chromium.build} is not on the list, so a report says "agreement not measured for Chromium ${pw.chromium.build}". It runs all the same.`);
   }
-  const pick = pickTree(platform, env, extensionVerdict(pw));
-  log(`tree source: ${pick.source} for a launch left to Playwright (${pick.why})`);
+  log("tree source: the DevTools port, on every platform and in whichever browser a launch gives");
 }

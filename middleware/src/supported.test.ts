@@ -2,42 +2,42 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { agreementFor, buildFor, buildOfPlaywright, percent, problemsIn, loadSupported, readSupported, shapeRateFor, sourceKey, withListError, type Figure, type SupportedVersions } from "./supported.ts";
+import { agreementFor, buildFor, buildOfPlaywright, percent, problemsIn, loadSupported, readSupported, shapeRateFor, SOURCE_KEYS, sourceKey, withListError, type Figure, type SupportedVersions } from "./supported.ts";
 
 const figure = (agreement: number, units: number, key: string) => ({ agreement, units, date: "2026-10-26", figure: `middleware/results/playwright-versions/156.0.8078.4/${key}/` });
 const list: SupportedVersions = { builds: [
-  { chromium: "156.0.8078.4", playwright: ["1.64.0", "1.64.1"], measured: { "extension-linux": figure(0.912, 1131, "extension-linux"), "devtools-macos": figure(0.804, 1131, "devtools-macos") } },
-  { chromium: "153.0.8010.12", playwright: ["1.63.0"], measured: { "devtools-linux": figure(0.85, 1100, "devtools-linux") } },
+  { chromium: "156.0.8078.4", playwright: ["1.64.0", "1.64.1"], measured: { "devtools-linux": figure(0.912, 1131, "devtools-linux"), "devtools-macos": figure(0.804, 1131, "devtools-macos") } },
+  { chromium: "153.0.8010.12", playwright: ["1.63.0"], measured: { "devtools-macos": figure(0.85, 1100, "devtools-macos") } },
 ] };
 
 test("a listed build with a figure for the source says its rate, the units, the date and where the figure is", () => {
-  const a = agreementFor(list, "156.0.8078.4", "extension", "linux");
-  assert.equal(a.line, "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), extension: 91.2% of 1131 units, 2026-10-26 (middleware/results/playwright-versions/156.0.8078.4/extension-linux/)");
+  const a = agreementFor(list, "156.0.8078.4", "linux");
+  assert.equal(a.line, "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 91.2% of 1131 units, 2026-10-26 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)");
   assert.deepEqual([a.measured, a.agreement, a.units, a.playwright], [true, 0.912, 1131, ["1.64.0", "1.64.1"]]);
 });
 
 test("the figure is the one of the source and the platform the run used", () => {
-  assert.match(agreementFor(list, "156.0.8078.4", "devtools", "darwin").line, /, devtools: 80\.4% of 1131 units/);
-  assert.match(agreementFor(list, "153.0.8010.12", "devtools", "linux").line, /Chromium 153\.0\.8010\.12 \(Playwright 1\.63\.0\), devtools: 85\.0% of 1100 units/);
+  assert.match(agreementFor(list, "156.0.8078.4", "darwin").line, /, devtools: 80\.4% of 1131 units/);
+  assert.match(agreementFor(list, "153.0.8010.12", "darwin").line, /Chromium 153\.0\.8010\.12 \(Playwright 1\.63\.0\), devtools: 85\.0% of 1100 units/);
 });
 
 test("a build that is not listed says exactly that its agreement is not measured, and the run goes on", () => {
-  const a = agreementFor(list, "152.0.7999.1", "extension", "linux");
+  const a = agreementFor(list, "152.0.7999.1", "linux");
   assert.equal(a.line, "agreement not measured for Chromium 152.0.7999.1");
   assert.equal(a.measured, false);
 });
 
-test("a listed build with no figure for this source and platform reads the same way", () => {
-  assert.equal(agreementFor(list, "153.0.8010.12", "extension", "linux").line, "agreement not measured for Chromium 153.0.8010.12");
-  assert.equal(agreementFor(list, "156.0.8078.4", "devtools", "win32").line, "agreement not measured for Chromium 156.0.8078.4");
+test("a listed build with no figure for this platform reads the same way", () => {
+  assert.equal(agreementFor(list, "153.0.8010.12", "linux").line, "agreement not measured for Chromium 153.0.8010.12");
+  assert.equal(agreementFor(list, "156.0.8078.4", "win32").line, "agreement not measured for Chromium 156.0.8078.4");
 });
 
 test("a run that never learned its browser's build says so", () => {
-  assert.equal(agreementFor(list, null, "extension", "linux").line, "agreement not measured for Chromium (build unknown)");
+  assert.equal(agreementFor(list, null, "linux").line, "agreement not measured for Chromium (build unknown)");
 });
 
 test("the empty list measures nothing", () => {
-  assert.equal(agreementFor({ builds: [] }, "156.0.8078.4", "devtools", "linux").line, "agreement not measured for Chromium 156.0.8078.4");
+  assert.equal(agreementFor({ builds: [] }, "156.0.8078.4", "linux").line, "agreement not measured for Chromium 156.0.8078.4");
 });
 
 test("the list is read by build, and by the Playwright versions that ship it", () => {
@@ -46,10 +46,16 @@ test("the list is read by build, and by the Playwright versions that ship it", (
   assert.equal(buildOfPlaywright(list, "1.62.0"), undefined);
 });
 
-test("a source is named by its tree and operating system", () => {
-  assert.equal(sourceKey("extension", "linux"), "extension-linux");
-  assert.equal(sourceKey("devtools", "darwin"), "devtools-macos");
-  assert.equal(sourceKey("extension", "win32"), "extension-windows");
+test("a source is named by the operating system: the DevTools tree is the one source", () => {
+  assert.equal(sourceKey("linux"), "devtools-linux");
+  assert.equal(sourceKey("darwin"), "devtools-macos");
+  assert.equal(sourceKey("win32"), "devtools-windows");
+});
+
+test("the list has no figure for a tree source that no longer exists: an extension reading is not one of the keys", () => {
+  assert.deepEqual([...SOURCE_KEYS], ["devtools-linux", "devtools-macos"]);
+  const old: SupportedVersions = { builds: [{ chromium: "156.0.8078.4", playwright: ["1.64.1"], measured: { "extension-linux": figure(0.8, 10, "x") } }] };
+  assert.match(problemsIn(old).join(), /builds\[0\]\.measured\.extension-linux is not one of devtools-linux, devtools-macos/);
 });
 
 test("the list the package ships has the schema, whatever it holds", () => {
@@ -59,13 +65,13 @@ test("the list the package ships has the schema, whatever it holds", () => {
 test("the schema accepts a good list and names what is wrong with a bad one", () => {
   assert.deepEqual(problemsIn(list), []);
   const bad = { builds: [
-    { chromium: "156", playwright: [], measured: { "extension-mac": { agreement: 1.2, units: 0, date: "26 October", figure: "" } } },
+    { chromium: "156", playwright: [], measured: { "devtools-mac": { agreement: 1.2, units: 0, date: "26 October", figure: "" } } },
     { chromium: "153.0.8010.12", playwright: ["1.63"], measured: {} },
     { chromium: "153.0.8010.12", playwright: ["1.63.0"] },
   ] } as unknown as SupportedVersions;
   const problems = problemsIn(bad);
-  for (const wanted of ["builds[0].chromium is not a Chromium build", "builds[0].playwright is not a list", "builds[0].measured.extension-mac is not one of", "builds[0].measured.extension-mac.agreement", "builds[0].measured.extension-mac.units",
-    "builds[0].measured.extension-mac.date", "builds[0].measured.extension-mac.figure", "builds[1].playwright", "builds[2].measured is missing", "Chromium 153.0.8010.12 is listed twice"]) {
+  for (const wanted of ["builds[0].chromium is not a Chromium build", "builds[0].playwright is not a list", "builds[0].measured.devtools-mac is not one of", "builds[0].measured.devtools-mac.agreement", "builds[0].measured.devtools-mac.units",
+    "builds[0].measured.devtools-mac.date", "builds[0].measured.devtools-mac.figure", "builds[1].playwright", "builds[2].measured is missing", "Chromium 153.0.8010.12 is listed twice"]) {
     assert.ok(problems.some((p) => p.includes(wanted)), `${wanted}\n${problems.join("\n")}`);
   }
   assert.deepEqual(problemsIn({} as SupportedVersions), ["builds is not an array"]);
@@ -82,9 +88,9 @@ test("a list that cannot be read, or fails its schema, is said so and is not tak
   const missing = loadSupported(new URL("file:///no/such/list.json"));
   assert.deepEqual(missing.list, { builds: [] });
   assert.match(missing.error!, /^could not be read: /);
-  const line = withListError(agreementFor(missing.list, "156.0.8078.4", "extension", "linux"), missing.error).line;
+  const line = withListError(agreementFor(missing.list, "156.0.8078.4", "linux"), missing.error).line;
   assert.match(line, /^agreement not measured for Chromium 156\.0\.8078\.4 \(the package's supported-versions\.json could not be read: /);
-  assert.equal(withListError(agreementFor(list, "152.0.7999.1", "extension", "linux"), null).line, "agreement not measured for Chromium 152.0.7999.1");
+  assert.equal(withListError(agreementFor(list, "152.0.7999.1", "linux"), null).line, "agreement not measured for Chromium 152.0.7999.1");
 });
 
 test("the list the package ships loads without error", () => {
@@ -93,68 +99,68 @@ test("the list the package ships loads without error", () => {
 
 test("an entry with no figures never throws in a report: the build reads as not measured", () => {
   const broken = { builds: [{ chromium: "156.0.8078.4", playwright: ["1.64.1"] }] } as unknown as SupportedVersions;
-  assert.equal(agreementFor(broken, "156.0.8078.4", "extension", "linux").line, "agreement not measured for Chromium 156.0.8078.4");
-  assert.equal(agreementFor({ builds: [null] } as unknown as SupportedVersions, "156.0.8078.4", "extension", "linux").measured, false);
+  assert.equal(agreementFor(broken, "156.0.8078.4", "linux").line, "agreement not measured for Chromium 156.0.8078.4");
+  assert.equal(agreementFor({ builds: [null] } as unknown as SupportedVersions, "156.0.8078.4", "linux").measured, false);
 });
 
 /** A figure as a round writes it (A11-234): what it was measured on, the fleet's own noise as the ceiling, and the rate of each shape. */
 const round = (over: Partial<Figure> = {}): Figure => ({
-  ...figure(0.831, 249, "extension-linux"),
+  ...figure(0.831, 249, "devtools-linux"),
   population: { pages: 6, heldOut: true, units: 249 },
   ceiling: { agreement: 0.952, units: 249 },
   shapes: { "NAME + ROLE": { agreement: 0.86, units: 57, lowConfidence: false }, "NAME": { agreement: 0.682, units: 22, lowConfidence: true } },
   ...over,
 });
-const rounds = (over: Partial<Figure> = {}): SupportedVersions => ({ builds: [{ chromium: "156.0.8078.4", playwright: ["1.64.0", "1.64.1"], measured: { "extension-linux": round(over) } }] });
+const rounds = (over: Partial<Figure> = {}): SupportedVersions => ({ builds: [{ chromium: "156.0.8078.4", playwright: ["1.64.0", "1.64.1"], measured: { "devtools-linux": round(over) } }] });
 
 test("a figure that says what it was measured on and the fleet's own noise puts both in the sentence, with the date, before where the figure is", () => {
-  const a = agreementFor(rounds(), "156.0.8078.4", "extension", "linux");
-  assert.equal(a.line, "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), extension: 83.1% of 249 units on 6 held-out pages, 2026-10-26; the fleet agrees with itself on 95.2% (middleware/results/playwright-versions/156.0.8078.4/extension-linux/)");
+  const a = agreementFor(rounds(), "156.0.8078.4", "linux");
+  assert.equal(a.line, "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 83.1% of 249 units on 6 held-out pages, 2026-10-26; the fleet agrees with itself on 95.2% (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)");
   assert.deepEqual([a.population, a.ceiling], [{ pages: 6, heldOut: true, units: 249 }, { agreement: 0.952, units: 249 }]);
 });
 
 test("pages that were not held out say so, and one page is not 'pages'", () => {
-  assert.match(agreementFor(rounds({ population: { pages: 6, heldOut: false, units: 249 } }), "156.0.8078.4", "extension", "linux").line, /of 249 units on 6 not held-out pages, 2026-10-26;/);
-  assert.match(agreementFor(rounds({ population: { pages: 1, heldOut: true, units: 249 } }), "156.0.8078.4", "extension", "linux").line, /on 1 held-out page, 2026-10-26;/);
+  assert.match(agreementFor(rounds({ population: { pages: 6, heldOut: false, units: 249 } }), "156.0.8078.4", "linux").line, /of 249 units on 6 not held-out pages, 2026-10-26;/);
+  assert.match(agreementFor(rounds({ population: { pages: 1, heldOut: true, units: 249 } }), "156.0.8078.4", "linux").line, /on 1 held-out page, 2026-10-26;/);
 });
 
 test("a figure with a population and no ceiling, or the other way round, says only what it has", () => {
-  const noCeiling = agreementFor(rounds({ ceiling: undefined }), "156.0.8078.4", "extension", "linux").line;
+  const noCeiling = agreementFor(rounds({ ceiling: undefined }), "156.0.8078.4", "linux").line;
   assert.match(noCeiling, /of 249 units on 6 held-out pages, 2026-10-26 \(middleware/); assert.doesNotMatch(noCeiling, /agrees with itself/);
-  const noPopulation = agreementFor(rounds({ population: undefined }), "156.0.8078.4", "extension", "linux").line;
+  const noPopulation = agreementFor(rounds({ population: undefined }), "156.0.8078.4", "linux").line;
   assert.match(noPopulation, /of 249 units, 2026-10-26; the fleet agrees with itself on 95\.2% \(middleware/); assert.doesNotMatch(noPopulation, / pages?,/);
 });
 
 test("a part of a figure that is not well formed is left out of the sentence, and the sentence is still said", () => {
   const broken = rounds({ population: { pages: "six", heldOut: 1, units: 249 } as unknown as Figure["population"], ceiling: { agreement: 2, units: 1 } });
-  assert.equal(agreementFor(broken, "156.0.8078.4", "extension", "linux").line, "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), extension: 83.1% of 249 units, 2026-10-26 (middleware/results/playwright-versions/156.0.8078.4/extension-linux/)");
+  assert.equal(agreementFor(broken, "156.0.8078.4", "linux").line, "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 83.1% of 249 units, 2026-10-26 (middleware/results/playwright-versions/156.0.8078.4/devtools-linux/)");
 });
 
 test("the rate of a shape is the figure's for that shape, with the marker the list gives a weak one", () => {
-  const a = agreementFor(rounds(), "156.0.8078.4", "extension", "linux");
+  const a = agreementFor(rounds(), "156.0.8078.4", "linux");
   assert.deepEqual(shapeRateFor(a, ["NAME", "ROLE"]), { shape: "NAME + ROLE", measured: true, agreement: 0.86, units: 57 });
   assert.deepEqual(shapeRateFor(a, ["NAME"]), { shape: "NAME", measured: true, agreement: 0.682, units: 22, lowConfidence: true });
 });
 
 test("a shape the round never saw is not measured, and so is one whose entry is not a rate", () => {
-  const a = agreementFor(rounds(), "156.0.8078.4", "extension", "linux");
+  const a = agreementFor(rounds(), "156.0.8078.4", "linux");
   assert.deepEqual(shapeRateFor(a, ["ROLE", "NAME", "LEVEL"]), { shape: "ROLE + NAME + LEVEL", measured: false });
-  const bad = agreementFor(rounds({ shapes: { NAME: { agreement: "high", units: 3, lowConfidence: false } as never } }), "156.0.8078.4", "extension", "linux");
+  const bad = agreementFor(rounds({ shapes: { NAME: { agreement: "high", units: 3, lowConfidence: false } as never } }), "156.0.8078.4", "linux");
   assert.deepEqual(shapeRateFor(bad, ["NAME"]), { shape: "NAME", measured: false });
 });
 
 test("a run claims no rate by shape where its figure has none: a figure from before shapes, a build that is not listed, or no figure at all", () => {
-  assert.equal(shapeRateFor(agreementFor(list, "156.0.8078.4", "extension", "linux"), ["NAME", "ROLE"]), null);
-  assert.equal(shapeRateFor(agreementFor(rounds(), "152.0.7999.1", "extension", "linux"), ["NAME", "ROLE"]), null);
+  assert.equal(shapeRateFor(agreementFor(list, "156.0.8078.4", "linux"), ["NAME", "ROLE"]), null);
+  assert.equal(shapeRateFor(agreementFor(rounds(), "152.0.7999.1", "linux"), ["NAME", "ROLE"]), null);
   assert.equal(shapeRateFor(undefined, ["NAME", "ROLE"]), null);
-  assert.equal(shapeRateFor(agreementFor(rounds(), "156.0.8078.4", "extension", "linux"), undefined), null);
+  assert.equal(shapeRateFor(agreementFor(rounds(), "156.0.8078.4", "linux"), undefined), null);
 });
 
 test("the schema accepts a figure a round wrote and names what is wrong with its population, ceiling and shapes", () => {
   assert.deepEqual(problemsIn(rounds()), []);
   const bad = rounds({ population: { pages: 0, heldOut: "yes", units: 100 } as unknown as Figure["population"], ceiling: { agreement: 1.5, units: 0 }, shapes: { "name + role": { agreement: 2, units: 0, lowConfidence: "no" } as never, "NAME +": { agreement: 0.5, units: 1, lowConfidence: false } } });
   const problems = problemsIn(bad);
-  for (const wanted of ["measured.extension-linux.population.pages is not a count", "population.heldOut is not true or false", "population.units is not the units of the rate (249)", "ceiling.agreement is not a rate", "ceiling.units is not a count",
+  for (const wanted of ["measured.devtools-linux.population.pages is not a count", "population.heldOut is not true or false", "population.units is not the units of the rate (249)", "ceiling.agreement is not a rate", "ceiling.units is not a count",
     "shapes.name + role is not a shape", "shapes.name + role.agreement is not a rate", "shapes.name + role.units is not a count", "shapes.name + role.lowConfidence is not true or false", "shapes.NAME + is not a shape"]) {
     assert.ok(problems.some((p) => p.includes(wanted)), `${wanted}\n${problems.join("\n")}`);
   }
@@ -253,7 +259,7 @@ test("a figure a round wrote is the same as its rates.json and the by-shape tabl
 });
 
 const sampleRates: Rates = { pages: 6, heldOut: true, headline: { agreed: 80, units: 100 }, ceiling: { agreed: 95, units: 100 }, shapes: { "NAME + ROLE": { agreed: 60, units: 70, lowConfidence: false }, "NAME + ROLE + LEVEL": { agreed: 20, units: 30, lowConfidence: true } } };
-const sampleFigure: Figure = { agreement: 0.8, units: 100, date: "2026-10-26", figure: "middleware/results/agreement-round-1/held-out/156.0.8078.4/extension-linux/", population: { pages: 6, heldOut: true, units: 100 }, ceiling: { agreement: 0.95, units: 100 },
+const sampleFigure: Figure = { agreement: 0.8, units: 100, date: "2026-10-26", figure: "middleware/results/agreement-round-1/held-out/156.0.8078.4/devtools-linux/", population: { pages: 6, heldOut: true, units: 100 }, ceiling: { agreement: 0.95, units: 100 },
   shapes: { "NAME + ROLE": { agreement: 0.857, units: 70, lowConfidence: false }, "NAME + ROLE + LEVEL": { agreement: 0.667, units: 30, lowConfidence: true } } };
 const sampleTxt = "agreement by shape (the 10 commonest)\n   60 / 70     85.7% |   69 / 70     98.6% |   70 / 70    100.0%  NAME + ROLE\n   20 / 30     66.7% |   30 / 30    100.0% |   30 / 30    100.0%  NAME + ROLE + LEVEL\n";
 
@@ -267,7 +273,7 @@ test("the check of a round's figure against its rates passes for a figure that m
   assert.match(changed({ shapes: { ...sampleFigure.shapes, "NAME + ROLE + LEVEL": { agreement: 0.667, units: 30, lowConfidence: false } } }).join(), /shape NAME \+ ROLE \+ LEVEL.*\(false\) is not 20 of 30 \(true\)/);
   assert.match(changed({ shapes: { "NAME + ROLE": sampleFigure.shapes!["NAME + ROLE"]! } }).join(), /the shapes are not the shapes of rates.json/);
   assert.match(changed({ units: 99 }).join(), /units 99 is not 100/);
-  assert.match(figureDisagreements(sampleFigure, "middleware/results/agreement-round-1/fitted/156.0.8078.4/extension-linux/", sampleRates, sampleTxt).join(), /does not say whether the pages were held out/);
+  assert.match(figureDisagreements(sampleFigure, "middleware/results/agreement-round-1/fitted/156.0.8078.4/devtools-linux/", sampleRates, sampleTxt).join(), /does not say whether the pages were held out/);
   assert.match(figureDisagreements(sampleFigure, sampleFigure.figure, sampleRates, sampleTxt.replace("85.7%", "80.0%").replace("60 / 70", "56 / 70")).join(), /agreement.txt 56 of 70/);
   assert.match(figureDisagreements(sampleFigure, sampleFigure.figure, sampleRates, "no table").join(), /no by-shape table/);
   assert.match(changed({ shapes: undefined }).join(), /has a population, a ceiling and shapes/);
@@ -275,23 +281,15 @@ test("the check of a round's figure against its rates passes for a figure that m
 
 // The demo job of middleware-spike.yml: one row for each platform and Playwright version, and what each row's reports are held to saying (check-report.mjs).
 // The rows are the `mode` job's script (full mode has all of them): one JSON object each.
-const rows = [...readFileSync(join(repoRoot, ".github", "workflows", "middleware-spike.yml"), "utf8").matchAll(/"platform": "([\w-]+)", "runner": "([\w-]+)", "playwright": "([\d.]+)", "agreement": "(\w+)", "other-agreement": "(\w+)", "chromium": "([\d.]+)"/g)]
-  .map(([, platform, , playwright, agreement, otherAgreement, chromium]) => ({ platform: platform!, playwright: playwright!, agreement: agreement!, otherAgreement: otherAgreement!, chromium: chromium! }));
+const rows = [...readFileSync(join(repoRoot, ".github", "workflows", "middleware-spike.yml"), "utf8").matchAll(/"platform": "([\w-]+)", "runner": "([\w-]+)", "playwright": "([\d.]+)", "agreement": "(\w+)", "chromium": "([\d.]+)"/g)]
+  .map(([, platform, , playwright, agreement, chromium]) => ({ platform: platform!, playwright: playwright!, agreement: agreement!, chromium: chromium! }));
 
 test("the sample suite's CI rows are held to the list: a listed version's rows expect a measured sentence, every other version's the not-measured one", () => {
   assert.ok(rows.length >= 4, "the matrix is read");
   for (const row of rows) {
     const listed = buildOfPlaywright(shipped, row.playwright);
-    assert.equal(row.agreement, listed?.measured[row.platform === "darwin-arm64" ? "devtools-macos" : "extension-linux"] ? "measured" : "unmeasured", `${row.platform} Playwright ${row.playwright}`);
+    assert.equal(row.agreement, listed?.measured[row.platform === "darwin-arm64" ? "devtools-macos" : "devtools-linux"] ? "measured" : "unmeasured", `${row.platform} Playwright ${row.playwright}`);
     if (listed) assert.equal(row.chromium, listed.chromium, `${row.platform} Playwright ${row.playwright} runs the build the list names`);
-  }
-});
-
-test("the third run of a row is the platform's other source: devtools on Linux (measured when the default is), the extension on macOS (never a figure there)", () => {
-  for (const row of rows) {
-    const listed = buildOfPlaywright(shipped, row.playwright);
-    const wanted = row.platform === "darwin-arm64" ? "unmeasured" : listed?.measured["devtools-linux"] ? "measured" : "unmeasured";
-    assert.equal(row.otherAgreement, wanted, `${row.platform} Playwright ${row.playwright}`);
   }
 });
 

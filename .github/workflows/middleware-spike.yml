@@ -18,7 +18,7 @@
 name: middleware-spike
 
 on:
-  # `paths` is what makes a docs-only or results-only pull request run nothing here: the bundle's inputs (build.sh copies emu/, q1/, q2/ and q3/ and reads pins.env), the runtime, the package the demo installs, and this file.
+  # `paths` is what makes a docs-only or results-only pull request run nothing here: the bundle's inputs (build.sh copies emu/, q2/ and q3/ and reads pins.env), the runtime, the package the demo installs, and this file.
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
     paths:
@@ -69,18 +69,16 @@ jobs:
           darwin_bundle='{ "platform": "darwin-arm64", "runner": "macos-latest" }'
           linux_trace='{ "platform": "linux-x64", "runner": "ubuntu-latest", "deps": "--with-deps" }'
           darwin_trace='{ "platform": "darwin-arm64", "runner": "macos-latest", "deps": "" }'
-          # `tree` is where the first two runs get the accessibility tree (the default of the platform), `other` the third run's: each platform is run with both sources. The extension's source gives macOS no tree
-          # (chrome.automation.getDesktop never answers there), so that run is held to saying so (--expect-no-tree), and fails if macOS starts to give one, because the write-up would then be out of date.
-          # The DevTools source is the lower-fidelity one ADR 0047 allows; its runs are held to --lower-fidelity.
+          # The accessibility tree is read through the browser's DevTools port, on every platform: there is one tree source (A11-229), so a row has one source and no other to run.
           # `chromium` is the build the row's Playwright ships (its playwright-core/browsers.json): the report of every worker is held to having run in it, and to the sentence of its row's `agreement` (below). 1.63.0 and 1.64.1 are the two versions the list starts with; 1.62.1 is the newest 1.62 and is not meant to be listed: it holds the wording of an unlisted version.
-          # `agreement` is what the first two runs' reports say: `measured` for a build that middleware/supported-versions.json lists with a figure for the platform's default source, `unmeasured` for any other (supported.test.ts holds
-          # every row to the list). `other-agreement` is the third run's: macOS's other source is the extension, which has no figure there, so it reads `unmeasured` whatever the list holds.
-          # A pull request runs the `primary` row of each platform and the nightly run the others (they are the same suite in the older Playwrights: the longest jobs of the run). `primary` rows also take the cost and the probes. `build` is a row that builds the bundle it runs on, in its own job, because no `bundle` job built that platform's (the one macOS job of a pull request).
-          linux_primary='{ "platform": "linux-x64", "runner": "ubuntu-latest", "playwright": "1.64.1", "agreement": "measured", "other-agreement": "measured", "chromium": "156.0.8078.4", "deps": "--with-deps", "primary": true, "check": "", "other": "devtools", "other-check": "--lower-fidelity", "build": false }'
-          linux_others='{ "platform": "linux-x64", "runner": "ubuntu-latest", "playwright": "1.63.0", "agreement": "measured", "other-agreement": "measured", "chromium": "153.0.8010.12", "deps": "--with-deps", "primary": false, "check": "", "other": "devtools", "other-check": "--lower-fidelity", "build": false },
-          { "platform": "linux-x64", "runner": "ubuntu-latest", "playwright": "1.62.1", "agreement": "unmeasured", "other-agreement": "unmeasured", "chromium": "151.0.7922.34", "deps": "--with-deps", "primary": false, "check": "", "other": "devtools", "other-check": "--lower-fidelity", "build": false }'
-          darwin_primary='{ "platform": "darwin-arm64", "runner": "macos-latest", "playwright": "1.64.1", "agreement": "measured", "other-agreement": "unmeasured", "chromium": "156.0.8078.4", "deps": "", "primary": true, "check": "--lower-fidelity", "other": "extension", "other-check": "--expect-no-tree", "build": BUILD }'
-          darwin_second='{ "platform": "darwin-arm64", "runner": "macos-latest", "playwright": "1.63.0", "agreement": "measured", "other-agreement": "unmeasured", "chromium": "153.0.8010.12", "deps": "", "primary": false, "check": "--lower-fidelity", "other": "extension", "other-check": "--expect-no-tree", "build": false }'
+          # `agreement` is what the reports say: `measured` for a build that middleware/supported-versions.json lists with a figure for the platform's DevTools reading, `unmeasured` for any other (supported.test.ts holds
+          # every row to the list).
+          # A pull request runs the `primary` row of each platform and the nightly run the others (they are the same suite in the older Playwrights: the longest jobs of the run). `primary` rows also take the cost. `build` is a row that builds the bundle it runs on, in its own job, because no `bundle` job built that platform's (the one macOS job of a pull request).
+          linux_primary='{ "platform": "linux-x64", "runner": "ubuntu-latest", "playwright": "1.64.1", "agreement": "measured", "chromium": "156.0.8078.4", "deps": "--with-deps", "primary": true, "build": false }'
+          linux_others='{ "platform": "linux-x64", "runner": "ubuntu-latest", "playwright": "1.63.0", "agreement": "measured", "chromium": "153.0.8010.12", "deps": "--with-deps", "primary": false, "build": false },
+          { "platform": "linux-x64", "runner": "ubuntu-latest", "playwright": "1.62.1", "agreement": "unmeasured", "chromium": "151.0.7922.34", "deps": "--with-deps", "primary": false, "build": false }'
+          darwin_primary='{ "platform": "darwin-arm64", "runner": "macos-latest", "playwright": "1.64.1", "agreement": "measured", "chromium": "156.0.8078.4", "deps": "", "primary": true, "build": BUILD }'
+          darwin_second='{ "platform": "darwin-arm64", "runner": "macos-latest", "playwright": "1.63.0", "agreement": "measured", "chromium": "153.0.8010.12", "deps": "", "primary": false, "build": false }'
           if [ "$EVENT_NAME" = pull_request ]; then
             mode="pull request"
             bundle="$linux_bundle"; trace="$linux_trace"; demo="$linux_primary, ${darwin_primary/BUILD/true}"
@@ -195,7 +193,7 @@ jobs:
           echo "measured: $chosen; build.sh builds: $built"
           [ -n "$chosen" ] && [ "$chosen" = "$built" ]
 
-  # The lists again: trace.sh runs everything the lists are made from (every recording, the sample suite's offline project live with each tree source) in the full layout, and the job fails when a run read a file that
+  # The lists again: trace.sh runs everything the lists are made from (every recording, the sample suite's offline project live) in the full layout, and the job fails when a run read a file that
   # keep/<platform>.txt lacks. The lists made here are uploaded: the darwin-arm64 one is made on this runner, and committed from here. The full layout is the `bundle` job's.
   trace:
     needs: [mode, bundle]
@@ -282,29 +280,23 @@ jobs:
           cat "$RUNNER_TEMP/doctor.log"
           grep -q '^Chromium ${{ matrix.chromium }} ' "$RUNNER_TEMP/doctor.log"
           if [ "${{ matrix.agreement }}" = measured ]; then grep -q '^supported: yes, Chromium ${{ matrix.chromium }} is on the list' "$RUNNER_TEMP/doctor.log"; else grep -q '^supported: no\. Chromium ${{ matrix.chromium }} is not on the list' "$RUNNER_TEMP/doctor.log"; fi
-      # Run 1: the one line (playwright.config.ts). Run 2: no line at all (`announcement-emulator test` wraps playwright.plain.config.ts). Run 3: the platform's other tree source. Run 4: the same suite without the middleware.
+      # Run 1: the one line (playwright.config.ts), in the browser the Playwright just installed gives a launch left to it: its headless shell. Run 2: no line at all (`announcement-emulator test` wraps playwright.plain.config.ts). Run 3: the same suite without the middleware.
       - id: run
         run: |
           cd "$RUNNER_TEMP/project"
           { time npx playwright test --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-with.log"
-          node check-report.mjs ${{ matrix.check }} --expect-${{ matrix.agreement }} ${{ matrix.chromium }}
+          node check-report.mjs --expect-${{ matrix.agreement }} ${{ matrix.chromium }}
           cp -R test-results/announcement-emulator "$RUNNER_TEMP/announcement-emulator-run"; cp test-results/report.json "$RUNNER_TEMP/announcement-emulator-run/report.json"
           rm -rf test-results
           mv playwright-report "$RUNNER_TEMP/playwright-report-one-line"
           { time npx announcement-emulator test --config playwright.plain.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-zero.log"
-          node check-report.mjs ${{ matrix.check }} --expect-${{ matrix.agreement }} ${{ matrix.chromium }}
+          node check-report.mjs --expect-${{ matrix.agreement }} ${{ matrix.chromium }}
           mv playwright-report "$RUNNER_TEMP/playwright-report-zero-lines"
           rm -rf test-results
-          # Run 3: the platform's other tree source.
-          { time ANNOUNCEMENT_EMULATOR_TREE=${{ matrix.other }} npx playwright test --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-${{ matrix.other }}.log"
-          node check-report.mjs ${{ matrix.other-check }} --expect-${{ matrix.other-agreement }} ${{ matrix.chromium }}
-          cp -R test-results/announcement-emulator "$RUNNER_TEMP/announcement-emulator-run-${{ matrix.other }}"; cp test-results/report.json "$RUNNER_TEMP/announcement-emulator-run-${{ matrix.other }}/report.json"
-          mv playwright-report "$RUNNER_TEMP/playwright-report-${{ matrix.other }}"
-          rm -rf test-results
-          [ -z "${{ matrix.check }}" ] && [ "${{ matrix.primary }}" = true ] || exit 0      # the cost is measured where a tree is read, once for each platform
+          [ "${{ matrix.platform }}" = linux-x64 ] && [ "${{ matrix.primary }}" = true ] || exit 0      # the cost is measured once, on Linux: a macOS minute costs ten times a Linux one
           { time npx playwright test --config playwright.baseline.config.ts --project=fixtures; } 2>&1 | tee "$RUNNER_TEMP/run-without.log"
           node cost.mjs --project fixtures --runs 3 --workers 1,2,4 --out "$RUNNER_TEMP/cost.json" 2>&1 | tee "$RUNNER_TEMP/cost.log"
-      # The lean bundle against the full layout, live (A11-231). The lean bundle is the one `install` just unpacked; the full layout is the one the bundle was built with. The fixtures project runs with each tree source, ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1
+      # The lean bundle against the full layout, live (A11-231). The lean bundle is the one `install` just unpacked; the full layout is the one the bundle was built with. The fixtures project runs with ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1
       # and the import trace on: twice in the full layout and once in the lean bundle. The check fails on an import or a file the lean run wanted and could not find, where the full layout has it (compare_bundles.py misses), and reports
       # the tests whose predicted speech or flags differ in the lean run where the two full-layout runs agree (compare_live.py: reported, not a failure, because a live run's timing moves a quick test's last event). The traces are uploaded: the darwin-arm64 row's are what keep/darwin-arm64.txt is made from.
       - if: matrix.primary
@@ -313,34 +305,21 @@ jobs:
           cache="$(ls -d ~/.cache/announcement-emulator/*/ ~/Library/Caches/announcement-emulator/*/ 2>/dev/null | head -1)"; cache="${cache%/}"
           mkdir -p "$RUNNER_TEMP/traces"; cd "$RUNNER_TEMP/project"
           status=0
-          for tree in devtools extension; do
-            for which in full-a full-b lean; do
-              dir="$RUNNER_TEMP/full"; [ "$which" = lean ] && dir="$cache"
-              rm -rf test-results
-              ANNOUNCEMENT_EMULATOR_BUNDLE="$dir" ANNOUNCEMENT_EMULATOR_TREE="$tree" ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1 ANNOUNCEMENT_EMULATOR_IMPORT_TRACE="$RUNNER_TEMP/traces/live-$which.txt" npx playwright test --project=fixtures || true
-              cp test-results/report.json "$RUNNER_TEMP/traces/report-$tree-$which.json"
-            done
-            { echo "### Live comparison, $tree tree, ${{ matrix.platform }}"; echo '```'; python3 "$GITHUB_WORKSPACE/middleware/bundle/compare_live.py" "$RUNNER_TEMP/traces/report-$tree-full-a.json" "$RUNNER_TEMP/traces/report-$tree-full-b.json" "$RUNNER_TEMP/traces/report-$tree-lean.json"; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
+          for which in full-a full-b lean; do
+            dir="$RUNNER_TEMP/full"; [ "$which" = lean ] && dir="$cache"
+            rm -rf test-results
+            ANNOUNCEMENT_EMULATOR_BUNDLE="$dir" ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1 ANNOUNCEMENT_EMULATOR_IMPORT_TRACE="$RUNNER_TEMP/traces/live-$which.txt" npx playwright test --project=fixtures || true
+            cp test-results/report.json "$RUNNER_TEMP/traces/report-$which.json"
           done
+          { echo "### Live comparison, ${{ matrix.platform }}"; echo '```'; python3 "$GITHUB_WORKSPACE/middleware/bundle/compare_live.py" "$RUNNER_TEMP/traces/report-full-a.json" "$RUNNER_TEMP/traces/report-full-b.json" "$RUNNER_TEMP/traces/report-lean.json"; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
           cat "$RUNNER_TEMP/traces/live-full-a.txt" "$RUNNER_TEMP/traces/live-full-b.txt" > "$RUNNER_TEMP/traces/live-full.txt"
           python3 "$GITHUB_WORKSPACE/middleware/bundle/compare_bundles.py" misses --full "$RUNNER_TEMP/full" --lean "$cache" --full-trace "$RUNNER_TEMP/traces/live-full.txt" --lean-trace "$RUNNER_TEMP/traces/live-lean.txt" || status=1
           exit $status
-      # Whether the companion extension is up in this platform's Playwright Chromium, and has chrome.automation: the macOS probe's answer, and the ubuntu one beside it.
-      - if: always() && matrix.primary
-        run: |
-          cd "$RUNNER_TEMP/project"
-          cache="$(ls -d ~/.cache/announcement-emulator/*/ ~/Library/Caches/announcement-emulator/*/ 2>/dev/null | head -1)"
-          export EXTENSION_DIR="$RUNNER_TEMP/project/test-results/announcement-emulator/extension-0" EXTENSION_ID="$(cat "$cache/q1/ext-id.txt")"
-          ls "$EXTENSION_DIR" > /dev/null 2>&1 || { mkdir -p "$RUNNER_TEMP/ext" && cp -R "$cache/emu/ext2/." "$RUNNER_TEMP/ext/" && EXTENSION_DIR="$RUNNER_TEMP/ext"; }
-          node probe-extension.mjs 2>&1 | tee "$RUNNER_TEMP/probe-extension.log" || true
-          # Whether the platform gives the extension the tab's own tree (chrome.automation.getTree) beside the desktop's: the macOS probe's second question.
-          export EXTENSION_SRC="$cache/emu/ext2"
-          node probe-tree.mjs 2>&1 | tee "$RUNNER_TEMP/probe-tree.log" || true
       - if: always()
         run: |
           { echo "### Sample suite on ${{ matrix.platform }} (${{ matrix.runner }}, no container), Playwright ${{ matrix.playwright }}, Chromium ${{ matrix.chromium }}"; echo; cat "$RUNNER_TEMP/install.log" 2>/dev/null || true
             for f in run-with run-zero run-without; do echo; echo "#### $f"; tail -8 "$RUNNER_TEMP/$f.log" 2>/dev/null || true; done
-            echo; echo '```'; cat "$RUNNER_TEMP/announcement-emulator-run/run.json" 2>/dev/null || true; echo '```'; echo '#### extension probe'; echo '```'; cat "$RUNNER_TEMP/probe-extension.log" 2>/dev/null || true; echo '```'; echo '#### tab-tree probe'; echo '```'; cat "$RUNNER_TEMP/probe-tree.log" 2>/dev/null || true; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+            echo; echo '```'; cat "$RUNNER_TEMP/announcement-emulator-run/run.json" 2>/dev/null || true; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
       - if: always()
         uses: actions/upload-artifact@v7
         with:
@@ -349,13 +328,9 @@ jobs:
             ${{ runner.temp }}/playwright-report-one-line
             ${{ runner.temp }}/playwright-report-zero-lines
             ${{ runner.temp }}/announcement-emulator-run
-            ${{ runner.temp }}/announcement-emulator-run-${{ matrix.other }}
-            ${{ runner.temp }}/playwright-report-${{ matrix.other }}
             ${{ runner.temp }}/project/test-results/announcement-emulator
             ${{ runner.temp }}/run-*.log
             ${{ runner.temp }}/cost.*
-            ${{ runner.temp }}/probe-extension.log
-            ${{ runner.temp }}/probe-tree.log
             ${{ runner.temp }}/install.log
             ${{ runner.temp }}/doctor.log
             ${{ runner.temp }}/traces

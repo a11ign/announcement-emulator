@@ -173,3 +173,40 @@ python3 middleware/agreement/make_freeze.py check middleware/results/tree-source
 ```
 
 This is step 2 of 4; the ticket stays open for steps 3 (remove the extension) and 4 (re-measure under a fresh freeze).
+
+## Under the plan of 2026-10-26: step 3 of 4, the companion extension is removed and the DevTools port is the only tree source
+
+The chairman's decision of 2026-10-25: DevTools is the only tree source, with no automatic pick and no `tree` option. The package launches a chromium project with `--force-renderer-accessibility` and `--remote-debugging-port` and nothing
+else (no extension flags, no channel, Playwright's `--disable-extensions` left on), reads no `ANNOUNCEMENT_EMULATOR_TREE` (a leftover one is ignored with one printed line), and reports `treeSource: "devtools"` without a reason, a fallback or
+the words "lower fidelity". The runtime loses `fallback.py`, the extension's `hello` and snapshot handling and the switch in `main.py`, `enable_trees` and the listener's switch; `emu/ext2/passive.js`, the bundle's copy of the extension and the
+`extension-linux` figures of `supported-versions.json` are gone. `check-report.mjs` loses `--expect-no-tree` and `--lower-fidelity` (both are refused now). Nothing the DevTools path writes changed: `test_main.py` runs the runtime process over
+the thirteen recorded DevTools sequences and holds its records to what `main.py` wrote for them at e127a08, before the removal.
+
+Acceptance (needs no network, no fleet and no browser; the sequences are recorded in the repository):
+
+```bash
+set -eu
+# the package: the launch flags, the ignored setting, the report, the agreement line, doctor, the runtime's command line, check-report's options
+(cd middleware && pnpm exec tsc --noEmit && pnpm exec rstest run)
+# the runtime process writes, for each recorded DevTools sequence, the records it wrote before the extension was removed (needs the emulator's virtualenv: skipped without it)
+(cd middleware/runtime && python3 -m unittest test_main test_cdp test_replay test_pure)
+(cd middleware/runtime && python3 -m unittest discover -p 'test_*.py')
+# no file of the package, the runtime, the bundle or the workflows still names what only served the extension
+test ! -e middleware/src/extension.ts && test ! -e middleware/runtime/fallback.py && test ! -e emu/ext2/passive.js && test ! -e middleware/sample-suite/probe-extension.mjs
+! grep -rIl -e 'load-extension' -e 'allowlisted-extension-id' -e 'pickTree' -e 'extensionVerdict' -e 'enable_trees' -e 'probe-extension' -e 'expect-no-tree' middleware/src middleware/runtime/*.py middleware/bundle middleware/sample-suite/*.mjs middleware/sample-suite/*.ts .github/workflows/middleware-spike.yml | grep -v -e test_cdp.py -e check-report.test.ts -e launch.test.ts -e config.test.ts -e format.test.ts -e test_main.py
+! grep -q 'emu/ext2' middleware/bundle/build.sh
+# the bundle's size table and its tests, the per-version measurement with one source, and the other tests of the measurement
+python3 -m unittest discover -s middleware/bundle -p 'test_bundle.py'
+python3 -m unittest discover -s middleware/agreement -t middleware/agreement
+# the shipped list holds no extension figure
+python3 - <<'PY'
+import json
+d = json.load(open('middleware/supported-versions.json'))
+assert all(set(b['measured']) <= {'devtools-linux', 'devtools-macos'} for b in d['builds'])
+PY
+# nothing the two earlier freezes name has moved at the commit each was named at (they name whole directories this ticket changes by design)
+python3 middleware/agreement/make_freeze.py check middleware/results/tree-source/freeze.json --head bcec5908e7
+python3 middleware/agreement/make_freeze.py check middleware/results/tree-source-structure/freeze.json --head 1cf8cd09f7
+```
+
+This is step 3 of 4; the ticket stays open for step 4 (re-measure under a fresh freeze).

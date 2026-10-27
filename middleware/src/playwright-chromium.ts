@@ -12,7 +12,7 @@ export interface PlaywrightChromium {
   version: string;
   /** The full Chromium (`npx playwright install chromium`), from `playwright-core/browsers.json`. */
   chromium: ShippedBrowser;
-  /** The headless shell, which Playwright 1.49 and later runs for a headless launch with no channel; null where `browsers.json` has none. It loads no extension. */
+  /** The headless shell, which Playwright 1.49 and later runs for a headless launch with no channel; null where `browsers.json` has none. */
   headlessShell: ShippedBrowser | null;
   /** Where the full Chromium is looked for (`chromium.executablePath()`), and whether it and the headless shell are there. */
   executablePath: string | null;
@@ -82,37 +82,4 @@ export function browsersRoot(executablePath: string): string | null {
     dir = dirname(dir);
   }
   return null;
-}
-
-/** The part of a project's `use` that decides which browser it launches. */
-export interface BrowserChoice { channel?: string; executablePath?: string; headless?: boolean }
-
-export interface Verdict { ok: boolean; why: string }
-
-/**
- * Whether the companion extension can be expected to load in the browser this launch gives. It loads in the full Chromium, which is Playwright's own for a launch the team has left to Playwright
- * (no channel, no executablePath) once `npx playwright install chromium` has run without `--only-shell`. It does not load in the headless shell, in the old headless mode, or in a branded browser.
- * A launch the team chose itself (a channel, an executablePath) is not known to fail, and is tried: the runtime reads the trees through the DevTools port instead if the extension does not come up
- * (runtime/fallback.py), so the team's setup is not broken and its browser is not decided against beforehand. What is known to fail is decided here: no full Chromium, or the old headless mode.
- */
-export function extensionVerdict(playwright: PlaywrightChromium | null, launch: BrowserChoice = {}): Verdict {
-  if (!playwright) return { ok: false, why: "the team's @playwright/test could not be read" };
-  if (launch.executablePath) return { ok: true, why: "the launch sets its own executablePath: the extension is tried there, and the DevTools port is read instead if it does not come up" };
-  if (launch.channel && launch.channel !== "chromium") return { ok: true, why: `the launch sets channel "${launch.channel}": the extension is tried there, and the DevTools port is read instead if it does not come up` };
-  if (!playwright.fullInstalled) {
-    return { ok: false, why: `Playwright's full Chromium ${playwright.chromium.build} is not installed (the headless shell loads no extension): run npx playwright install chromium, without --only-shell` };
-  }
-  if (launch.headless !== false && !playwright.headlessShell && launch.channel !== "chromium") {
-    return { ok: false, why: `Playwright ${playwright.version} runs headless in the old headless mode, which loads no extension (1.49 and later can run the full Chromium headless)` };
-  }
-  return { ok: true, why: `Playwright ${playwright.version}'s full Chromium ${playwright.chromium.build}` };
-}
-
-/**
- * The channel to add to a launch so that it runs the full Chromium and not the headless shell: "chromium", for a launch left to Playwright that loads the extension and is headless. Headed
- * launches already run the full Chromium, and a launch the team has chosen is not changed.
- */
-export function launchChannel(playwright: PlaywrightChromium | null, launch: BrowserChoice = {}): "chromium" | undefined {
-  const left = !launch.channel && !launch.executablePath;
-  return left && launch.headless !== false && !!playwright?.headlessShell && extensionVerdict(playwright, launch).ok ? "chromium" : undefined;
 }
