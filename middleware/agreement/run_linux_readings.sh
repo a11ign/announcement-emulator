@@ -5,8 +5,6 @@
 #
 # `<project>` is a project with @playwright/test, the package and the sample suite, after `npx announcement-emulator install` (as .github/workflows/tree-source-agreement.yml makes one). Each run writes
 # <out>/<source>-<n>/{report.json,run.json,times.json}; a run that exists is not run again. The source is forced explicitly for every run, never left to the platform's default.
-# REMOVED (A11-229, step 3): this ran the companion extension as a tree source, which no longer exists; the variable it sets is ignored, so a run would file DevTools readings under the name `extension`. It stays as the record of how the readings it made were taken.
-echo "run_linux_readings.sh: the extension tree source was removed (A11-229); this script is the record of the readings it made, and refuses to run" >&2; exit 2
 set -u
 PROJECT="${1:?the project directory}"
 OUT="${2:?the output directory}"
