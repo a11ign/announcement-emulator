@@ -1,74 +1,75 @@
 {
   "label": "predicted NVDA speech: run summary",
   "supportedVersionsError": null,
-  "wallMs": 311998,
-  "drainMs": 290958,
+  "wallMs": 477314,
+  "drainMs": 457547,
   "workers": [
     {
-      "bootMs": 249,
+      "bootMs": 245,
       "startup": {
         "treeSource": "devtools",
         "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
         "fellBackAfterFirstTestStartedMs": null,
         "chromium": "156.0.8078.4",
         "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 49.5% of 1046 units on 5 held-out pages, 2026-10-25; the fleet agrees with itself on 99.9% (middleware/results/agreement-round-1/held-out/156.0.8078.4/devtools-linux/)",
-        "treeSourceUpAfterFirstTestStartedMs": 91,
+        "treeSourceUpAfterFirstTestStartedMs": 107,
         "extensionUpAfterFirstTestStartedMs": null,
-        "devtoolsAttachedAfterFirstTestStartedMs": 106,
-        "desktopChildrenWhenUp": null,
-        "chromeAutomationInWorker": null
-      },
-      "snapshots": 5,
-      "speechMs": 155643,
-      "sweepMs": [
-        22034,
-        124569
-      ],
-      "keys": 310,
-      "focusEvents": 301,
-      "unresolvedFocus": 1,
-      "skippedSweeps": 0,
-      "lostSnapshots": 0,
-      "treeReads": {
-        "full": 19,
-        "incremental": 0,
-        "verified": 0,
-        "differing": 0,
-        "fullMs": 9601.9,
-        "incrementalMs": 0
-      }
-    },
-    {
-      "bootMs": 246,
-      "startup": {
-        "treeSource": "devtools",
-        "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
-        "fellBackAfterFirstTestStartedMs": null,
-        "chromium": "156.0.8078.4",
-        "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 49.5% of 1046 units on 5 held-out pages, 2026-10-25; the fleet agrees with itself on 99.9% (middleware/results/agreement-round-1/held-out/156.0.8078.4/devtools-linux/)",
-        "treeSourceUpAfterFirstTestStartedMs": 94,
-        "extensionUpAfterFirstTestStartedMs": null,
-        "devtoolsAttachedAfterFirstTestStartedMs": 104,
+        "devtoolsAttachedAfterFirstTestStartedMs": 114,
         "desktopChildrenWhenUp": null,
         "chromeAutomationInWorker": null
       },
       "snapshots": 6,
-      "speechMs": 133873,
+      "speechMs": 203580,
       "sweepMs": [
-        40313,
-        121424
+        23574,
+        121545,
+        116658
       ],
-      "keys": 304,
-      "focusEvents": 300,
-      "unresolvedFocus": 7,
+      "keys": 462,
+      "focusEvents": 451,
+      "unresolvedFocus": 4,
       "skippedSweeps": 0,
       "lostSnapshots": 0,
       "treeReads": {
-        "full": 7,
+        "full": 22,
         "incremental": 0,
         "verified": 0,
         "differing": 0,
-        "fullMs": 12864.2,
+        "fullMs": 12797.5,
+        "incrementalMs": 0
+      }
+    },
+    {
+      "bootMs": 244,
+      "startup": {
+        "treeSource": "devtools",
+        "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+        "fellBackAfterFirstTestStartedMs": null,
+        "chromium": "156.0.8078.4",
+        "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 49.5% of 1046 units on 5 held-out pages, 2026-10-25; the fleet agrees with itself on 99.9% (middleware/results/agreement-round-1/held-out/156.0.8078.4/devtools-linux/)",
+        "treeSourceUpAfterFirstTestStartedMs": 111,
+        "extensionUpAfterFirstTestStartedMs": null,
+        "devtoolsAttachedAfterFirstTestStartedMs": 117,
+        "desktopChildrenWhenUp": null,
+        "chromeAutomationInWorker": null
+      },
+      "snapshots": 4,
+      "speechMs": 163087,
+      "sweepMs": [
+        38745,
+        122453
+      ],
+      "keys": 304,
+      "focusEvents": 300,
+      "unresolvedFocus": 6,
+      "skippedSweeps": 0,
+      "lostSnapshots": 0,
+      "treeReads": {
+        "full": 4,
+        "incremental": 0,
+        "verified": 0,
+        "differing": 0,
+        "fullMs": 8924,
         "incrementalMs": 0
       }
     }

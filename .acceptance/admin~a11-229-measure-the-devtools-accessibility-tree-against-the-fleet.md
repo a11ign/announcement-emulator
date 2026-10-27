@@ -132,3 +132,41 @@ python3 -m unittest discover -s middleware/agreement -t middleware/agreement
 ```
 
 This is step 1 of 4; the ticket stays open for steps 2 (read the tree incrementally), 3 (remove the extension) and 4 (re-measure under a fresh freeze).
+
+## Under the plan of 2026-10-26: step 2 of 4, the tree is read again at the cost of what changed
+
+The profile of the `structure` run found that reading the tree was a few percent of its time and that 95% of `speechMs` was one quadratic search in the emulator (`emu/standin.py`, the reverse relations of the tree, found for every node
+by looking in every node); that is fixed with the same speech. The runtime (`middleware/runtime/incremental.py`) keeps what the last full read of a page gave and reads again only the AX nodes that can have changed, when a probe the page
+answers says that nothing but the focus, a control's value or an element's title, class or style did; `Converter.patch` brings the node list up to date. `verify` (the reporter's option, now also the runtime's `--verify`) reads the page from
+scratch after each incremental read and records where the two differ. The five pages of 705 to 1,770 tab stops that produced no prediction have a project (`large`) and a prediction. The tables are in `middleware/results/devtools-source/cost/`.
+
+Acceptance (needs no network, no fleet and no browser; the recordings and the profiles are in the repository):
+
+```bash
+set -eu
+# the incremental reader: what it reads again, when it reads whole, that its tree is the one a read from scratch gives, the patch of the node list, the reads recorded in Chromium and played again
+(cd middleware/runtime && python3 -m unittest test_incremental test_axtree test_cdp test_relations)
+# the events the page reports are the extension's, and the speech made of them (needs the emulator's virtualenv: skipped without it)
+(cd middleware/runtime && python3 -m unittest test_replay)
+# every other test of the runtime and of the measurement, the walks the sample suite's projects share, and the cost summary
+(cd middleware/runtime && python3 -m unittest discover -p 'test_*.py')
+python3 -m unittest discover -s middleware/agreement -t middleware/agreement
+# the reporter's verify option reaches the runtime
+(cd middleware && pnpm exec rstest run src/runtime.test.ts)
+# the recordings, the projects and the cost tables are there, and the tables in the README are the ones the committed summary makes
+for f in form basket devtools-basket-live devtools-error-alert devtools-spa-route; do test -s middleware/runtime/fixtures/incremental/$f.jsonl.gz; done
+grep -q 'name: "large"' middleware/sample-suite/base.config.ts && grep -q 'name: "paced"' middleware/sample-suite/base.config.ts
+python3 - <<'PY'
+import json, re, subprocess
+C = 'middleware/results/devtools-source/cost'
+readme = open(f'{C}/README.md').read()
+for labels in (['structure-before', 'structure-after'], ['paced-before', 'paced-after']):
+    table = subprocess.run(['python3', 'middleware/agreement/summarize_cost.py', '--table', f'{C}/summary.json', *labels], capture_output=True, text=True, check=True).stdout.strip()
+    assert table in readme, labels
+PY
+# nothing the two earlier freezes name has moved at the commit each was named at (they name whole directories the runtime lives in, which this ticket changes by design)
+python3 middleware/agreement/make_freeze.py check middleware/results/tree-source/freeze.json --head bcec5908e7
+python3 middleware/agreement/make_freeze.py check middleware/results/tree-source-structure/freeze.json --head 1cf8cd09f7
+```
+
+This is step 2 of 4; the ticket stays open for steps 3 (remove the extension) and 4 (re-measure under a fresh freeze).

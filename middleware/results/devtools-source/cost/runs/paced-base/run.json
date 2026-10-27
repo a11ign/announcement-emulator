@@ -1,31 +1,31 @@
 {
   "label": "predicted NVDA speech: run summary",
   "supportedVersionsError": null,
-  "wallMs": 196835,
-  "drainMs": 120817,
+  "wallMs": 198729,
+  "drainMs": 126452,
   "workers": [
     {
-      "bootMs": 234,
+      "bootMs": 229,
       "startup": {
         "treeSource": "devtools",
         "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
         "fellBackAfterFirstTestStartedMs": null,
         "chromium": "156.0.8078.4",
         "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 49.5% of 1046 units on 5 held-out pages, 2026-10-25; the fleet agrees with itself on 99.9% (middleware/results/agreement-round-1/held-out/156.0.8078.4/devtools-linux/)",
-        "treeSourceUpAfterFirstTestStartedMs": 84,
+        "treeSourceUpAfterFirstTestStartedMs": 99,
         "extensionUpAfterFirstTestStartedMs": null,
         "devtoolsAttachedAfterFirstTestStartedMs": 106,
         "desktopChildrenWhenUp": null,
         "chromeAutomationInWorker": null
       },
-      "snapshots": 150,
-      "speechMs": 133506,
+      "snapshots": 153,
+      "speechMs": 133650,
       "sweepMs": [
-        64,
-        19261,
-        2495,
-        2956,
-        28864
+        62,
+        18559,
+        2437,
+        2896,
+        29240
       ],
       "keys": 199,
       "focusEvents": 169,
@@ -34,27 +34,27 @@
       "lostSnapshots": 0
     },
     {
-      "bootMs": 226,
+      "bootMs": 231,
       "startup": {
         "treeSource": "devtools",
         "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
         "fellBackAfterFirstTestStartedMs": null,
         "chromium": "156.0.8078.4",
         "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 49.5% of 1046 units on 5 held-out pages, 2026-10-25; the fleet agrees with itself on 99.9% (middleware/results/agreement-round-1/held-out/156.0.8078.4/devtools-linux/)",
-        "treeSourceUpAfterFirstTestStartedMs": 95,
+        "treeSourceUpAfterFirstTestStartedMs": 85,
         "extensionUpAfterFirstTestStartedMs": null,
-        "devtoolsAttachedAfterFirstTestStartedMs": 107,
+        "devtoolsAttachedAfterFirstTestStartedMs": 105,
         "desktopChildrenWhenUp": null,
         "chromeAutomationInWorker": null
       },
-      "snapshots": 105,
-      "speechMs": 111296,
+      "snapshots": 103,
+      "speechMs": 109743,
       "sweepMs": [
-        26,
-        4507,
-        15856,
-        1754,
-        1795
+        23,
+        4460,
+        15973,
+        1735,
+        1812
       ],
       "keys": 182,
       "focusEvents": 166,

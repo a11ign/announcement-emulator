@@ -1,30 +1,30 @@
 {
   "label": "predicted NVDA speech: run summary",
   "supportedVersionsError": null,
-  "wallMs": 72812,
-  "drainMs": 51821,
+  "wallMs": 85832,
+  "drainMs": 65749,
   "workers": [
     {
-      "bootMs": 249,
+      "bootMs": 236,
       "startup": {
         "treeSource": "devtools",
         "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
         "fellBackAfterFirstTestStartedMs": null,
         "chromium": "156.0.8078.4",
         "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 49.5% of 1046 units on 5 held-out pages, 2026-10-25; the fleet agrees with itself on 99.9% (middleware/results/agreement-round-1/held-out/156.0.8078.4/devtools-linux/)",
-        "treeSourceUpAfterFirstTestStartedMs": 93,
+        "treeSourceUpAfterFirstTestStartedMs": 88,
         "extensionUpAfterFirstTestStartedMs": null,
-        "devtoolsAttachedAfterFirstTestStartedMs": 106,
+        "devtoolsAttachedAfterFirstTestStartedMs": 111,
         "desktopChildrenWhenUp": null,
         "chromeAutomationInWorker": null
       },
       "snapshots": 9,
-      "speechMs": 27821,
+      "speechMs": 26392,
       "sweepMs": [
-        2606,
-        10785,
-        1261,
-        1347
+        2458,
+        10911,
+        1248,
+        1309
       ],
       "keys": 383,
       "focusEvents": 357,
@@ -32,47 +32,47 @@
       "skippedSweeps": 0,
       "lostSnapshots": 0,
       "treeReads": {
-        "full": 13,
+        "full": 14,
         "incremental": 0,
         "verified": 0,
         "differing": 0,
-        "fullMs": 5133.4,
+        "fullMs": 5061,
         "incrementalMs": 0
       }
     },
     {
-      "bootMs": 248,
+      "bootMs": 234,
       "startup": {
         "treeSource": "devtools",
         "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
         "fellBackAfterFirstTestStartedMs": null,
         "chromium": "156.0.8078.4",
         "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 49.5% of 1046 units on 5 held-out pages, 2026-10-25; the fleet agrees with itself on 99.9% (middleware/results/agreement-round-1/held-out/156.0.8078.4/devtools-linux/)",
-        "treeSourceUpAfterFirstTestStartedMs": 91,
+        "treeSourceUpAfterFirstTestStartedMs": 83,
         "extensionUpAfterFirstTestStartedMs": null,
-        "devtoolsAttachedAfterFirstTestStartedMs": 104,
+        "devtoolsAttachedAfterFirstTestStartedMs": 102,
         "desktopChildrenWhenUp": null,
         "chromeAutomationInWorker": null
       },
-      "snapshots": 8,
-      "speechMs": 26839,
+      "snapshots": 9,
+      "speechMs": 40411,
       "sweepMs": [
-        13800,
-        1997,
-        2159,
-        22489
+        13190,
+        2585,
+        1758,
+        22383
       ],
-      "keys": 466,
-      "focusEvents": 448,
-      "unresolvedFocus": 11,
+      "keys": 554,
+      "focusEvents": 533,
+      "unresolvedFocus": 12,
       "skippedSweeps": 0,
       "lostSnapshots": 0,
       "treeReads": {
-        "full": 14,
+        "full": 15,
         "incremental": 0,
         "verified": 0,
         "differing": 0,
-        "fullMs": 4636.9,
+        "fullMs": 6634.7,
         "incrementalMs": 0
       }
     }

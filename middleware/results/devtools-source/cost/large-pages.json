@@ -5,26 +5,26 @@
   "load": 1,
   "focus": 151,
   "typed": 0,
-  "speechSeconds": 21.2,
+  "speechSeconds": 20.9,
   "medianMsPerUtterance": 118
  },
  {
   "page": "https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines",
   "status": "passed",
   "load": 1,
-  "focus": 145,
+  "focus": 143,
   "typed": 0,
-  "speechSeconds": 28.0,
-  "medianMsPerUtterance": 151
+  "speechSeconds": 26.8,
+  "medianMsPerUtterance": 152
  },
  {
   "page": "https://en.wikipedia.org/wiki/List_of_largest_cities",
   "status": "passed",
-  "load": 0,
-  "focus": 0,
+  "load": 1,
+  "focus": 148,
   "typed": 0,
-  "speechSeconds": 0.0,
-  "medianMsPerUtterance": null
+  "speechSeconds": 76.4,
+  "medianMsPerUtterance": 430
  },
  {
   "page": "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population",
@@ -32,8 +32,8 @@
   "load": 1,
   "focus": 149,
   "typed": 0,
-  "speechSeconds": 133.8,
-  "medianMsPerUtterance": 772
+  "speechSeconds": 135.4,
+  "medianMsPerUtterance": 782
  },
  {
   "page": "https://en.wikipedia.org/wiki/List_of_sovereign_states",
@@ -41,7 +41,7 @@
   "load": 1,
   "focus": 148,
   "typed": 0,
-  "speechSeconds": 105.3,
-  "medianMsPerUtterance": 594
+  "speechSeconds": 105.4,
+  "medianMsPerUtterance": 581
  }
 ]
