@@ -8,7 +8,7 @@ import { install } from "./install.ts";
 import { readPins } from "./pins.ts";
 import { wrapperSource } from "./wrapper.ts";
 
-const USAGE = `announcement-emulator <command>
+const USAGE = `foresay <command>
 
   install            download the runtime bundle this package is pinned to into the cache (like \`npx playwright install\`)
   test [playwright test args]
@@ -21,7 +21,7 @@ const CONFIGS = ["playwright.config.ts", "playwright.config.mts", "playwright.co
 
 async function main(argv: string[]): Promise<number> {
   const [command, ...rest] = argv;
-  if (command === "install") { await install(readPins(), { log: (l) => console.log(`announcement-emulator: ${l}`) }); return 0; }
+  if (command === "install") { await install(readPins(), { log: (l) => console.log(`foresay: ${l}`) }); return 0; }
   if (command === "test") return runTests(rest);
   if (command === "doctor") return doctor();
   console.log(USAGE);
@@ -33,13 +33,13 @@ function configFrom(args: string[]): { path: string; rest: string[] } {
   const at = rest.findIndex((a) => a === "-c" || a === "--config");
   if (at >= 0) { const [, value] = rest.splice(at, 2); return { path: resolve(value!), rest }; }
   const found = CONFIGS.map((c) => resolve(c)).find(existsSync);
-  if (!found) throw new Error("announcement-emulator: no playwright.config.* here; pass --config <file>");
+  if (!found) throw new Error("foresay: no playwright.config.* here; pass --config <file>");
   return { path: found, rest };
 }
 
 async function runTests(args: string[]): Promise<number> {
   const { path, rest } = configFrom(args);
-  const wrapper = join(dirname(path), `.announcement-emulator.config${path.endsWith(".ts") || path.endsWith(".mts") ? ".ts" : ".mjs"}`);
+  const wrapper = join(dirname(path), `.foresay.config${path.endsWith(".ts") || path.endsWith(".mts") ? ".ts" : ".mjs"}`);
   writeFileSync(wrapper, wrapperSource(path));
   try {
     const cli = createRequire(path).resolve("@playwright/test/cli");

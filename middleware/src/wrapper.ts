@@ -4,5 +4,5 @@ import { basename } from "node:path";
 export function wrapperSource(configFile: string): string {
   const ext = configFile.endsWith(".ts") || configFile.endsWith(".mts") ? "" : configFile.slice(configFile.lastIndexOf("."));
   const base = basename(configFile).replace(/\.[cm]?[jt]s$/, "");
-  return `import config from "./${base}${ext}";\nimport { withAnnouncements } from "@a11ign/announcement-emulator";\nexport default withAnnouncements(config);\n`;
+  return `import config from "./${base}${ext}";\nimport { withAnnouncements } from "@a11ign/foresay";\nexport default withAnnouncements(config);\n`;
 }

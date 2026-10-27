@@ -1,5 +1,5 @@
 {
-  "name": "announcement-emulator-sample-suite",
+  "name": "foresay-sample-suite",
   "private": true,
   "description": "An ordinary Playwright suite: no screen-reader code in any test. The middleware is attached by the one line in playwright.config.ts (A11-208).",
   "type": "module",

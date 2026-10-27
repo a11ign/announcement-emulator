@@ -5,7 +5,7 @@
 #     middleware/agreement/run_build_readings.sh <out> <build>=<project> <build>=<project> ...
 #
 # e.g. run_build_readings.sh /x/linux 156.0.8078.4=/x/p1641 153.0.8010.12=/x/p1630. Each `<project>` is a project with its own @playwright/test, the package and the sample suite, after
-# `npx playwright install chromium` and `npx announcement-emulator install` (as .github/workflows/playwright-versions-agreement.yml makes one). Each run writes
+# `npx playwright install chromium` and `npx foresay install` (as .github/workflows/playwright-versions-agreement.yml makes one). Each run writes
 # <out>/<build>/<source>-<n>/{report.json,run.json,times.json}; a run that exists is not run again. The source is forced explicitly for every run, never left to the platform's default.
 # A run whose workers report another Chromium build than its row names is not kept: it is a reading of another row.
 set -u

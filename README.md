@@ -1,5 +1,7 @@
 # announcement-emulator
 
+Predicts what the NVDA screen reader would say, built on NVDA's open-source code. Not affiliated with NV Access.
+
 **Status: a spike, finished. Below its Gate on the first reading; at or above it on pages the emulator was never fitted to (the last subsection of `## Re-measure`).** This predicts what NVDA would say when browsing a page in Chromium, on any OS (Linux CI included). It reads Chrome's own accessibility tree, applies
 Chromium's Windows (IA2) mapping, and runs NVDA's own Python, at a pinned release, above a rebuilt buffer.
 
@@ -21,7 +23,7 @@ The write-up is `docs/announcement-emulator-spike.md`, with Dates, Q1, Q2, Q3, G
 - `emu/langnames/` the Windows language names NVDA speaks, as a table recorded on a fleet box and the stand-in that answers NVDA's locale calls from it (`emu/kernel32_standin.py`); see its `README.md`.
 - `q1/`, `q2/` the first two questions' probes.
 - `q3/` the third (`q3/replay/` and `q3/gate/` have the procedures for the scripted replay and for the Gate's re-run, each with a `RUNBOOK.md`): the fleet's sweep re-implemented over the emulator (`sweep.py`, `emulate.py`), the measure (`measure.py`, `shapes.py`, `split.py`), and `results/`.
-- `middleware/` the Playwright middleware spike (A11-208): a package that attaches to an existing Playwright suite and attaches predicted speech to each test, its runtime (`middleware/runtime/`), the runtime bundle's build (`middleware/bundle/`), a sample suite, and the agreement measurement against the fleet. The write-up is `docs/playwright-middleware-spike.md`.
+- `middleware/` the Playwright middleware (A11-208), the npm package `@a11ign/foresay`: a package that attaches to an existing Playwright suite and attaches predicted speech to each test, its runtime (`middleware/runtime/`), the runtime bundle's build (`middleware/bundle/`), a sample suite, and the agreement measurement against the fleet. The write-up is `docs/playwright-middleware-spike.md`.
 - `pins.env` every revision the emulator is measured with, read by `setup.sh` and by the bundle build.
 - `setup.sh` builds what is not here.
 
@@ -36,4 +38,6 @@ The fleet's captures of the real pages are not here either (third-party pages): 
 
 ## Licence
 
-GPL-3.0. NVDA is GPL-2.0-or-later, taken under version 3 here. Chromium's mapping logic that the tables are derived from is BSD-3-Clause.
+**This repository's `LICENSE` is GPL-3.0, and the runtime is `GPL-3.0-or-later`**: the emulator, its tables and the Python in `middleware/runtime/` are a combined work with NVDA's code, which is GPL-2.0-or-later, taken under version 3 here. The runtime bundle (a separate download, built by `middleware/bundle/build.sh`) ships this `LICENSE`, NVDA's `copying.txt` and a `NOTICES` file. Chromium's mapping logic that the tables are derived from is BSD-3-Clause.
+
+**The npm package in `middleware/` is Apache-2.0** (`middleware/LICENSE`, `middleware/NOTICE`). It holds none of the runtime and starts it as a separate program. See `docs/release-decisions.md`, "Decisions".

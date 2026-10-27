@@ -38,7 +38,7 @@ export default class AnnouncementsReporter implements Reporter {
     const leftover = treeSettingNote();
     if (leftover) console.error(leftover);
     ({ list: this.supported, error: this.supportedError } = loadSupported());
-    if (this.supportedError) console.error(`announcement-emulator: the package's supported-versions.json ${this.supportedError}. Every report says its agreement is not measured; reinstall the package.`);
+    if (this.supportedError) console.error(`foresay: the package's supported-versions.json ${this.supportedError}. Every report says its agreement is not measured; reinstall the package.`);
     publishRun({ bundle: this.options.bundle, dir: this.dir, ports, verify: !!this.options.verify, sweeps: sweepsOn(this.options) });
     this.runtimes = ports.map((p, i) => new Runtime(this.options.bundle, p, { sweeps: sweepsOn(this.options), log: join(this.dir, `runtime-${i}.log`), verify: !!this.options.verify }));
   }
@@ -51,7 +51,7 @@ export default class AnnouncementsReporter implements Reporter {
   async onEnd(): Promise<void> {
     const waited = Date.now();
     const stats = await Promise.all(this.runtimes.map(async (r) => { await r.ready.catch(() => 0); return r.drain(); }));
-    for (const [i, r] of this.runtimes.entries()) if (r.failure) console.error(`announcement-emulator: runtime ${i} did not run (${r.failure}); see ${join(this.dir, `runtime-${i}.log`)}. No speech is attached for its tests.`);
+    for (const [i, r] of this.runtimes.entries()) if (r.failure) console.error(`foresay: runtime ${i} did not run (${r.failure}); see ${join(this.dir, `runtime-${i}.log`)}. No speech is attached for its tests.`);
     const drainMs = Date.now() - waited;
     const emulator = readManifestOrNull(this.options.bundle);
     let flagged = 0, unassigned = 0;
@@ -86,7 +86,7 @@ export default class AnnouncementsReporter implements Reporter {
     this.runtimes.forEach((r, i) => writeFileSync(join(this.dir, `records-${i}.json`), JSON.stringify(r.records, null, 1)));
     const run = { label: "predicted NVDA speech: run summary", supportedVersionsError: this.supportedError, wallMs: Date.now() - this.started, drainMs, workers: this.runtimes.map((r, i) => ({ bootMs: r.bootMs, startup: this.startup(r, i), ...stats[i] })), tests: this.seen.length, flags: flagged, recordsOutsideAnyTest: unassigned };
     writeFileSync(join(this.dir, "run.json"), JSON.stringify(run, null, 2));
-    console.log(`announcement-emulator: predicted NVDA speech attached to ${this.seen.length} tests, ${flagged} flags; the runtime waited ${drainMs} ms at the end (${join(this.dir, "run.json")})`);
+    console.log(`foresay: predicted NVDA speech attached to ${this.seen.length} tests, ${flagged} flags; the runtime waited ${drainMs} ms at the end (${join(this.dir, "run.json")})`);
   }
 }
 

@@ -29,7 +29,7 @@ updates:
       # FROZEN: its version picks the NVDA version CI evidence runs on (a11ign/a11ign ADR 0033): a move needs a recapture and a fleet-wide change
       - dependency-name: "@guidepup/setup"
       # a workspace package: pnpm links it and `changeset version` owns its version
-      - dependency-name: "@a11ign/announcement-emulator"
+      - dependency-name: "@a11ign/foresay"
       # a workspace package: pnpm links it and `changeset version` owns its version
       - dependency-name: "announcement-emulator-workspace"
   - package-ecosystem: github-actions

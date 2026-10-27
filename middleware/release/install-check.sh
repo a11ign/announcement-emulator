@@ -1,6 +1,6 @@
 #!/bin/sh
 # The package of a dry-run release installs its bundle, through the mirror variable (A11-232): the packed package is installed into a scratch project beside @playwright/test, the Release's assets are laid out as
-# a mirror (<host>/v<version>/<file>) on a static server on this machine, and `npx announcement-emulator install` and `doctor` run. That is the real http download, the sum check against the packed pins.json and
+# a mirror (<host>/v<version>/<file>) on a static server on this machine, and `npx foresay install` and `doctor` run. That is the real http download, the sum check against the packed pins.json and
 # the unpack of the real bundle. Used by release-dry-run.yml on each platform, and by anyone before a merge.
 #
 #     middleware/release/install-check.sh <dry-run output directory> <release-files directory> <log file>
@@ -29,8 +29,8 @@ export ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST="http://127.0.0.1:$PORT" ANNOUNCEMENT
 # not a pipe to tee: the shell has no pipefail, and a failed install must fail the check
 {
   echo "mirror: $ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST/v$VERSION/ (Playwright $PLAYWRIGHT)"
-  npx announcement-emulator install
-  npx announcement-emulator doctor
+  npx foresay install
+  npx foresay doctor
 } > "$LOG" 2>&1 || { cat "$LOG"; echo "install or doctor failed" >&2; exit 1; }
 cat "$LOG"
 grep -q 'sha256 [0-9a-f]\{64\} matches the pin' "$LOG" || { echo "install did not check the pin" >&2; exit 1; }

@@ -81,10 +81,13 @@ cd "$REPO"
 git ls-files --cached --others --exclude-standard -- 'emu/*.py' emu/tables.json emu/langnames/language-names.json q2/stubs.py q3/sweep.py q3/livepage.py q3/shapes.py q3/nvda-fleet.ini middleware/runtime LICENSE \
   | grep -Ev '^emu/(t[0-9]+|run_cases|extract_cases|gen_tables|boot_(before|objects)[a-z_]*)\.py$|__pycache__|/test_[^/]*\.py$' | tar -cf - -T - | tar -xf - -C "$B"
 find "$B" -name __pycache__ -type d -prune -exec rm -rf {} +
+# the notices the runtime needs (A11-353): the GPL text is LICENSE, above; the source offer and the other components' notices are NOTICES
+cp "$HERE/NOTICES" "$B/NOTICES"
 cat > "$B/bundle.json" <<JSON
 {
   "name": "announcement-emulator-bundle-$PLATFORM",
   "platform": "$PLATFORM",
+  "license": "GPL-3.0-or-later",
   "nvda": { "release": "$NVDA_TAG", "commit": "$NVDA_REV" },
   "chromiumTables": "$CHROME",
   "python": "$PYTHON",

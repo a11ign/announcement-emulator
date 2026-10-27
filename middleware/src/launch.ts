@@ -16,5 +16,5 @@ export const TREE_SETTING = "ANNOUNCEMENT_EMULATOR_TREE";
 /** What a run says when a setting that used to choose a tree source is still set (a CI file written before there was one source): the run goes on and the setting changes nothing, so no setup breaks. Null when it is not set. */
 export function treeSettingNote(env: NodeJS.ProcessEnv = process.env): string | null {
   const given = env[TREE_SETTING];
-  return given ? `announcement-emulator: ${TREE_SETTING}=${given} is ignored: the DevTools port is the only tree source, on every operating system.` : null;
+  return given ? `foresay: ${TREE_SETTING}=${given} is ignored: the DevTools port is the only tree source, on every operating system.` : null;
 }
