@@ -48,7 +48,7 @@ def old_extension_misses(old_dirs):
 
 # ---- attribution
 
-def own_cause(name, row, k, readings, old):
+def own_cause(row, k, old):
     """The cause of a miss of a reading on its own: the extension made it too (`emulator`), else the DevTools source's account (`conversion` for a different string, `events` for none)."""
     address, channel, _ = k
     if (address, channel, row['expected'], row['predicted']) in old:
@@ -79,7 +79,7 @@ def attribute(readings, name, k, old):
         if p_here == p_linux and not linux.ok(k): return attribute(readings, 'devtools-linux', k, old)
         if p_here != p_linux: return 'unexplained', 'predicts another string than this host and there is no control reading of the unit'
         return 'unexplained', 'this host agrees on the unit and this reading does not'
-    return own_cause(name, row, k, readings, old)
+    return own_cause(row, k, old)
 
 
 def attribute_all(readings, old, notes=()):
@@ -159,6 +159,12 @@ def share(rows): return sum(r['ok'] for r in rows), len(rows)
 def cell(rows, fleet_rows):
     ok, n = share(rows); fok, fn = share(fleet_rows)
     return f'{ok:>5} of {n:<5} {cs.rate(ok, n):>6}   (the fleet against itself {cs.rate(fok, fn)})'
+
+
+def agreed_by(rd, label_of):
+    """{label: {'agreed', 'units'}} of a reading, the label of each unit being `label_of[its page]`, in the order the labels first occur."""
+    labels = dict.fromkeys(label_of.values())
+    return {label: dict(zip(('agreed', 'units'), share([r for r in rd.main.values() if label_of.get(r['address']) == label]))) for label in labels}
 
 
 def figure_lines(readings, second, pages):
@@ -281,10 +287,9 @@ def main(argv):
     with open(os.path.join(a.out, 'comparison.txt'), 'w') as f: f.write(text + '\n')
     groups = {p['url']: p['group'] for p in pages}; classes = {p['url']: p['class'] for p in pages}
 
-    def by(keyf, rd): return {k: dict(zip(('agreed', 'units'), share([r for r in rd.main.values() if keyf(r) == k]))) for k in dict.fromkeys(keyf({'address': p['url']}) for p in pages)}
     with open(os.path.join(a.out, 'comparison.json'), 'w') as f:
         json.dump({'readings': {n: dict(zip(('agreed', 'units'), cs.headline(r))) for n, r in readings.items()}, 'second': {n: dict(zip(('agreed', 'units'), cs.headline(r))) for n, r in second.items()},
-                   'byGroup': {n: by(lambda r: groups.get(r['address']), r) for n, r in readings.items()}, 'byClass': {n: by(lambda r: classes.get(r['address']), r) for n, r in readings.items()},
+                   'byGroup': {n: agreed_by(rd, groups) for n, rd in readings.items()}, 'byClass': {n: agreed_by(rd, classes) for n, rd in readings.items()},
                    'oldPages': {n: dict(zip(('agreed', 'units'), share([r for r in rd.main.values() if groups.get(r['address']) in OLD_GROUPS]))) for n, rd in readings.items()},
                    'causes': {n: dict(collections.Counter(m['cause'] for m in ms)) for n, ms in attributed.items()}, 'workList': work}, f, indent=1)
     for n, ms in attributed.items():

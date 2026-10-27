@@ -20,9 +20,9 @@ def load(path):
 def pages():
     structure = load(STEP_2)
     counts = {p['url']: p['tabStops'] for p in structure['rejected']}
-    out = [{'url': p['url'], 'address': p['url'], 'group': 'step 1', 'class': 'corpus'} for p in load(STEP_1)['sample']]
-    out += [{'url': p['url'], 'address': p['url'], 'group': 'step 2', 'class': p['class'], 'tabStops': p['tabStops']} for p in structure['sample']]
-    out += [{'url': p['address'], 'address': p['address'], 'group': 'large', 'class': 'large', 'tabStops': counts[p['address']]} for p in load(LARGE)]
+    out = [{'url': p['url'], 'group': 'step 1', 'class': 'corpus'} for p in load(STEP_1)['sample']]
+    out += [{'url': p['url'], 'group': 'step 2', 'class': p['class'], 'tabStops': p['tabStops']} for p in structure['sample']]
+    out += [{'url': p['address'], 'group': 'large', 'class': 'large', 'tabStops': counts[p['address']]} for p in load(LARGE)]
     if len({p['url'] for p in out}) != len(out): raise ValueError('a page is in two groups')
     return out
 

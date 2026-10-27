@@ -126,6 +126,10 @@ class Tables(unittest.TestCase):
         self.assertEqual(cd.old_headline([d1, d2]), (40, 60))
         self.assertEqual(cd.old_extension_table([d1, d2]), (9, 8, 10))
 
+    def test_the_agreed_units_are_counted_by_the_group_or_class_of_their_page(self):
+        dev = cs.Reading('devtools-linux', {'status': {}, 'rows': [row(0, 'a', 'a'), row(1, 'b', 'c'), row(0, 'd', 'd', address=B)]})
+        self.assertEqual(cd.agreed_by(dev, {A: 'step 1', B: 'large'}), {'step 1': {'agreed': 1, 'units': 2}, 'large': {'agreed': 1, 'units': 1}})
+
     def test_end_to_end_writes_the_comparison_and_a_figure_with_every_miss_attributed(self):
         agreement = {'status': {A: {'status': 'comparable'}}, 'rows': [row(0, 'a, link', 'a, link'), row(1, 'b, link', 'b, button'), row(0, 'a, link', 'a, link', kind='fleet-vs-fleet')]}
         self.write('work/devtools-linux/agreement.json', agreement); self.write('work/devtools-linux-second/agreement.json', agreement)
