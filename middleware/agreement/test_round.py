@@ -277,9 +277,9 @@ class Whole(unittest.TestCase):
             with open(listing, 'w') as f: json.dump({'builds': [{'chromium': '156.0.8078.4', 'playwright': ['1.64.1'], 'measured': {}}]}, f)
             rnd.update_list(listing, all_rates, {'156.0.8078.4': '2026-10-26'})
             with open(listing) as f: got = json.load(f)['builds'][0]['measured']
-            self.assertEqual(sorted(got), ['devtools-linux', 'extension-linux'])      # the control and macOS (no reading here) are not listed
-            e = got['extension-linux']
-            self.assertEqual(e['figure'], 'middleware/results/agreement-round-1/held-out/156.0.8078.4/extension-linux/')
+            self.assertEqual(sorted(got), ['devtools-linux'])      # the control and macOS (no reading here) are not listed, and neither is the extension's reading, which A11-229 removed: the list's schema has no key for it
+            e = got['devtools-linux']
+            self.assertEqual(e['figure'], 'middleware/results/agreement-round-1/held-out/156.0.8078.4/devtools-linux/')
             self.assertTrue(e['population']['heldOut'])
             self.assertEqual(e['date'], '2026-10-26')
 

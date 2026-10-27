@@ -10,7 +10,7 @@ export const config: PlaywrightTestConfig = {
   use: { baseURL: "http://127.0.0.1:4173" },
   projects: [
     { name: "fixtures", testDir: "./tests/fixtures" },
-    // contexts the suite opens itself (`browser.newContext()`): the DevTools tree serves them, an extension does not run in them (A11-229)
+    // contexts the suite opens itself (`browser.newContext()`): the DevTools tree serves them like any other page (A11-229)
     { name: "contexts", testDir: "./tests/contexts" },
     // pages written for the faults the agreement measurement attributed to the middleware (A11-234): one test for each, recorded and replayed in middleware/runtime
     { name: "misses", testDir: "./tests/misses" },

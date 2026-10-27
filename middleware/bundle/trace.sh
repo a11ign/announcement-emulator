@@ -6,7 +6,7 @@
 #
 # The runs, all in the FULL layout (build.sh --layout-only: what a run could read, nothing pruned):
 #   * every recorded session under middleware/runtime/fixtures, recursively, through replay.py: with sweeps, without, and with --report-focus;
-#   * the sample suite's offline project (middleware/sample-suite, `fixtures`), live, in Playwright's Chromium, with each tree source and ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1 (--no-live skips it);
+#   * the sample suite's offline project (middleware/sample-suite, `fixtures`), live, in Playwright's Chromium, with ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1 (--no-live skips it);
 #   * NVDA's Chrome system tests as the emulator runs them (emu/run_cases.py), whose NVDA paths are keep/nvda-system-tests.txt. They need setup.sh's layout (a Chrome and the libraries it needs), so
 #     they run on linux, with --system-tests, and their list is committed; every platform's keep list takes it in.
 # The corpus and structure projects of the sample suite load live third-party pages and are not run.
@@ -54,10 +54,8 @@ if [ -n "$LIVE" ]; then
   ( cd "$REPO/middleware" && pnpm install --frozen-lockfile && pnpm run build && npm pack --pack-destination "$W" ) >/dev/null
   cp -R "$REPO/middleware/sample-suite" "$W/project"
   ( cd "$W/project" && npm i -D --silent "$W"/a11ign-announcement-emulator-*.tgz "@playwright/test@$(node -p "require('$REPO/middleware/package.json').devDependencies['@playwright/test']")" && npx playwright install $PLAYWRIGHT_DEPS chromium )      # PLAYWRIGHT_DEPS=--with-deps on a runner that lacks the browser's system libraries
-  for tree in devtools extension; do
-    ( cd "$W/project" && rm -rf test-results && ANNOUNCEMENT_EMULATOR_BUNDLE="$FULL" ANNOUNCEMENT_EMULATOR_TREE="$tree" ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1 ANNOUNCEMENT_EMULATOR_IMPORT_TRACE="$TRACES/live-$tree.txt" \
-        npx playwright test --project=fixtures ) || echo "the sample suite ($tree) did not pass: its trace is kept all the same" >&2
-  done
+  ( cd "$W/project" && rm -rf test-results && ANNOUNCEMENT_EMULATOR_BUNDLE="$FULL" ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1 ANNOUNCEMENT_EMULATOR_IMPORT_TRACE="$TRACES/live.txt" \
+      npx playwright test --project=fixtures ) || echo "the sample suite did not pass: its trace is kept all the same" >&2
 fi
 
 # 3. the list: what the runs read, and what NVDA's own system tests read

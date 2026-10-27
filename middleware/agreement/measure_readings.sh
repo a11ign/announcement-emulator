@@ -3,7 +3,7 @@
 #
 #     middleware/agreement/measure_readings.sh <fleet dir> <work dir> <reading>=<report 1>,<report 2> ...
 #
-# e.g. ext-linux=/x/linux/extension-1/report.json,/x/linux/extension-2/report.json. For each reading it writes <work>/<reading>/ and <work>/<reading>-second/ (agreement.txt and agreement.json);
+# e.g. devtools-linux=/x/linux/devtools-1/report.json,/x/linux/devtools-2/report.json. For each reading it writes <work>/<reading>/ and <work>/<reading>-second/ (agreement.txt and agreement.json);
 # middleware/agreement/compare_sources.py reads them. Every channel is compared, stable or not, and a page whose title is the same but whose heading or link count differs by one is compared.
 set -eu
 HERE="$(cd "$(dirname "$0")" && pwd)"

@@ -109,8 +109,8 @@ class NoBrowser(unittest.TestCase):
 
     def test_what_the_bundle_does_hold_is_not_taken_for_a_browser(self):
         held = ['bundle.json', 'chromium-src/ax_platform_node_win.cc', 'chromium-src/ax_object.cc', 'python/bin/python3', 'python/lib/python3.13/webbrowser.py',
-                'python/share/terminfo/i/iTerm.app', 'python/lib/python3.13/site-packages/nh3/nh3.abi3.so', 'emu/ext2/manifest.json', 'emu/ext2/passive.js', 'middleware/runtime/cdp.py',
-                'nvda-src/source/NVDAObjects/IAccessible/chromium.py', 'q1/ext-id.txt']
+                'python/share/terminfo/i/iTerm.app', 'python/lib/python3.13/site-packages/nh3/nh3.abi3.so', 'middleware/runtime/cdp.py',
+                'nvda-src/source/NVDAObjects/IAccessible/chromium.py']
         self.assertEqual(check_no_browser.offending(held), [])
 
     def test_an_archive_and_a_directory_are_read_the_same_way(self):
@@ -214,7 +214,7 @@ def full_layout():
              'nvda-src/tests/system/libraries/SystemTestSpy/speechSpyGlobalPlugin.py': '# spy', 'nvda-src/tests/system/libraries/SystemTestSpy/blocking.py': '# blocking',
              'nvda-src/tests/system/nvdaSettingsFiles/standard-dontShowWelcomeDialog.ini': '[x]', 'nvda-src/tests/unit/test_y.py': '# unit',
              'nvda-appdir/locale/en/cldr.dic': 'the pinned names', 'nvda-appdir/speech/speech.py': '# a second copy', 'cldr-src/locale/en/cldr.dic': 'the pinned names', 'chromium-src/ax_node.cc': '// c',
-             'emu/boot.py': '# boot', 'emu/ext2/manifest.json': '{}', 'emu/tables.json': '{}', 'q1/ext-id.txt': 'id', 'q3/shapes.py': '# shapes', 'middleware/runtime/main.py': '# main', 'middleware/runtime/import_trace.py': '# trace'}
+             'emu/boot.py': '# boot', 'emu/tables.json': '{}', 'q3/shapes.py': '# shapes', 'middleware/runtime/main.py': '# main', 'middleware/runtime/import_trace.py': '# trace'}
     for name in ('os', 'json/__init__', 'json/decoder', 'json/tool', 'encodings/__init__', 'encodings/cp1252', 'encodings/utf_8', 'argparse', 'colorsys', 'tkinter/dialog'): files.update(module(name))
     files[f'{LIB}/notcompiled.py'] = '# a module the compile left alone'
     return files
@@ -499,10 +499,11 @@ class Choice(unittest.TestCase):
 
     def test_the_size_by_part_adds_up_to_the_total(self):
         with tempfile.TemporaryDirectory() as d:
-            write_tree(d, {'python/bin/python3.13': 'a' * 1000, f'{LIB}/os.pyc': 'b' * 200, f'{SITE}/x/__init__.py': 'c' * 30, 'nvda-src/source/a.py': 'd' * 4, 'emu/boot.py': 'e' * 5, 'emu/ext2/manifest.json': 'f' * 6, 'q1/ext-id.txt': 'g', 'bundle.json': 'h' * 7})
+            write_tree(d, {'python/bin/python3.13': 'a' * 1000, f'{LIB}/os.pyc': 'b' * 200, f'{SITE}/x/__init__.py': 'c' * 30, 'nvda-src/source/a.py': 'd' * 4, 'emu/boot.py': 'e' * 5, 'q3/shapes.py': 'f' * 6, 'bundle.json': 'h' * 7})
             p = sizes.parts(d)
         self.assertEqual((p['Python: interpreter and its libraries'], p['Python: standard library'], p['Python: packages'], p['NVDA']), (1000, 200, 30, 4))
-        self.assertEqual((p['Runtime (this repository)'], p['Companion extension'], p['The rest'], p['Total']), (5, 7, 7, 1000 + 200 + 30 + 4 + 5 + 7 + 7))
+        self.assertEqual((p['Runtime (this repository)'], p['The rest'], p['Total']), (5 + 6, 7, 1000 + 200 + 30 + 4 + 5 + 6 + 7))
+        self.assertNotIn('Companion extension', p)
 
 
 class AppDir(unittest.TestCase):

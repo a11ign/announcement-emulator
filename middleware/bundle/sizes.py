@@ -29,7 +29,7 @@ SPIKE = {'Chrome': 400, 'Browser libraries': 11, 'Python': 278, 'NVDA': 149, 'To
 # A11-230's bundle (a11ign/announcement-emulator#15: no browser, the full install-only Python, NVDA's source and a second copy of it), measured by unpacking its archive: darwin-arm64 from CI run 40184473231's
 # artifact, linux-x64 built from the commit before this one. The linux build was made from a `git archive`, which has no .git for the list of this repository's runtime files, so its runtime parts here are the
 # darwin bundle's, the same files.
-RUNTIME_A11_230 = {'Runtime (this repository)': 407165, 'Companion extension': 14162}
+RUNTIME_A11_230 = {'Runtime (this repository)': 407165 + 14162}      # the companion extension's 14,162 bytes were a part of their own then; the bundle carries no extension now (A11-229), so they are counted in the runtime
 A11_230 = {
     'linux-x64': {'archive': 111658603, 'parts': {'Chrome': 0, 'Browser libraries': 0, 'Python: interpreter and its libraries': 240252387, 'Python: standard library': 17042750, 'Python: packages': 15344378, 'NVDA': 146132145,
                                                   'Chromium sources': 1171163, 'The rest': 310 + 35195, **RUNTIME_A11_230}},
@@ -54,16 +54,15 @@ def parts(root):
     packages = size_of(lib / 'site-packages') if lib else 0
     python_total = size_of(root / 'python')
     standard_library = (size_of(lib) - packages) if lib else 0
-    extension = size_of(root / 'emu' / 'ext2') + size_of(root / 'q1' / 'ext-id.txt')
-    runtime = sum(size_of(root / d) for d in ('emu', 'q1', 'q2', 'q3', 'middleware')) - extension
+    runtime = sum(size_of(root / d) for d in ('emu', 'q1', 'q2', 'q3', 'middleware'))
     nvda = sum(size_of(root / d) for d in ('nvda-src', 'nvda-appdir', 'cldr-src'))
     browser = size_of(root / 'chrome')
     libraries = size_of(root / 'libs')
     total = size_of(root)
     interpreter = python_total - standard_library - packages
-    rest = total - python_total - nvda - runtime - extension - browser - libraries
+    rest = total - python_total - nvda - runtime - browser - libraries
     return {'Chrome': browser, 'Browser libraries': libraries, 'Python: interpreter and its libraries': interpreter, 'Python: standard library': standard_library, 'Python: packages': packages,
-            'NVDA': nvda, 'Chromium sources': size_of(root / 'chromium-src'), 'Runtime (this repository)': runtime, 'Companion extension': extension, 'The rest': rest - size_of(root / 'chromium-src'), 'Total': total}
+            'NVDA': nvda, 'Chromium sources': size_of(root / 'chromium-src'), 'Runtime (this repository)': runtime, 'The rest': rest - size_of(root / 'chromium-src'), 'Total': total}
 
 
 def mb(n): return '-' if n is None else f'{n / MB:.1f}'
@@ -83,7 +82,7 @@ def table(root, platform, archive=None, columns=()):
     add('Python', SPIKE['Python'], python)
     for name in ('Python: interpreter and its libraries', 'Python: standard library', 'Python: packages'): add('&nbsp;&nbsp;' + name.split(': ')[1], None, lambda p, n=name: p[n])
     add('NVDA (source, and the overlay in the spike)', SPIKE['NVDA'], lambda p: p['NVDA']); add('Chromium sources', None, lambda p: p['Chromium sources'])
-    add('Runtime (this repository)', None, lambda p: p['Runtime (this repository)']); add('Companion extension', None, lambda p: p['Companion extension']); add('The rest', None, lambda p: p['The rest'])
+    add('Runtime (this repository)', None, lambda p: p['Runtime (this repository)']); add('The rest', None, lambda p: p['The rest'])
     add('**Total unpacked**', SPIKE['Total'], lambda p: p['Total'])
     if archive: rows.append(['**Archive** (tar.gz in the spike and A11-230; ' + os.path.basename(archive).split('.tar.')[1] + ' here)', mb(SPIKE['Archive'][platform] * MB), mb(A11_230[platform]['archive']), *['-'] * len(columns), mb(size_of(archive))])
     out = ['| ' + ' | '.join(header) + ' |', '|' + '---|' * len(header)] + ['| ' + ' | '.join(r) + ' |' for r in rows]
