@@ -24,11 +24,6 @@ type Launch = NonNullable<Use["launchOptions"]>;
  * Firefox and WebKit projects are left alone: the emulator reads Chrome's tree.
  */
 export function withAnnouncements<T extends PlaywrightTestConfig>(config: T, options: Options = {}): T {
-  return announce(config, options);
-}
-
-/** `withAnnouncements`, named for the tests that call it with the environment they made up. */
-export function announce<T extends PlaywrightTestConfig>(config: T, options: Options = {}): T {
   const pins = readPins();
   const bundle = findBundle(pins.version);
   if (!bundle) throw new BundleMissing(pins.version);

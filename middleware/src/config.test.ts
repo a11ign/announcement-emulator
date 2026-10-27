@@ -4,7 +4,7 @@ import { mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { PlaywrightTestConfig } from "@playwright/test";
-import { announce } from "./config.ts";
+import { withAnnouncements as announce } from "./config.ts";
 import { readPins } from "./pins.ts";
 import { RUN_ENV } from "./run.ts";
 
@@ -22,7 +22,7 @@ function withEnv<T>(env: Record<string, string | undefined>, body: () => T): T {
 }
 
 /** `withAnnouncements` keeps the type of the config it is given; these tests look inside the result, so they ask for the general one. */
-const withAnnouncements = (config: PlaywrightTestConfig) => announce(config, {});
+const withAnnouncements = (config: PlaywrightTestConfig) => announce(config);
 
 const run = (bundle: string) => JSON.stringify({ bundle, dir: "/tmp/x", ports: [{ collector: 41001, cdp: 41002 }], verify: false, sweeps: true });
 
