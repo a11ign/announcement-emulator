@@ -1,5 +1,7 @@
 # Playwright middleware spike (row A11-208)
 
+> **Named for what it was when it was written.** The package this page calls `@a11ign/announcement-emulator` (command `announcement-emulator`) has been `@a11ign/foresay` (command `foresay`) since A11-353; see `docs/release-decisions.md`, "Decisions". The commands below are the record of what was run, and are not copied as they stand.
+
 **Status: a spike, finished. Recommendation: go, conditionally (the last section); the chairman decides.**
 
 Everything on this page is **predicted NVDA speech**: what the announcement emulator says NVDA would say. It is advisory, it is not a reading of NVDA, and it is never evidence (a11ign ADR 0047, Decision 2).

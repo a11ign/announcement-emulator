@@ -571,8 +571,13 @@ class Licence(unittest.TestCase):
 
     def test_the_notices_name_the_licence_the_source_and_each_component_the_decision_lists(self):
         for text in ('GPL-3.0-or-later', 'bundle.json', 'pins.env', 'middleware/bundle/build.sh', 'nvda-src/copying.txt', 'GPL-2.0-or-later', 'BSD-3-Clause',
-                     'Redistribution and use in source and binary forms', 'Unicode License v3', 'Permission is hereby granted', 'python-build-standalone', 'python/lib/python3.13/LICENSE.txt', 'dist-info'):
+                     'Redistribution and use in source and binary forms', 'Unicode License v3', 'Permission is hereby granted', 'python-build-standalone', 'dist-info'):
             self.assertIn(text, self.notices)
+
+    def test_the_notices_name_the_python_the_bundle_pins(self):
+        minor = '.'.join(pins()['PYTHON'].split('.')[:2])
+        self.assertIn(f'python/lib/python{minor}/LICENSE.txt', self.notices)
+        self.assertIn(f'python/lib/python{minor}/site-packages/', self.notices)
 
     def test_the_notices_make_no_claim_the_wording_rules_forbid(self):
         for forbidden in ('NVDA-compatible', 'endorsed by NV Access', 'NVDA logo'):

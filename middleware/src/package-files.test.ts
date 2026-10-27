@@ -4,7 +4,7 @@ import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { mkdtempSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join, relative } from "node:path";
+import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 // A11-353: the package is Apache-2.0 and holds no file of the GPL-3.0-or-later runtime it starts. The runtime is a separate download (A11-232); this reads what `npm pack` would publish.
@@ -13,13 +13,11 @@ const PACKAGE = fileURLToPath(new URL("..", import.meta.url));
 const REPOSITORY = fileURLToPath(new URL("../..", import.meta.url));
 const manifest = JSON.parse(readFileSync(join(PACKAGE, "package.json"), "utf8")) as { name: string; license: string; files: string[] };
 
-/** Every file under `directory`, relative to the repository, without the dependencies and caches that are not the runtime's own. */
-function filesUnder(directory: string): string[] {
-  return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-    if (["node_modules", "__pycache__", ".git"].includes(entry.name)) return [];
-    const path = join(directory, entry.name);
-    return entry.isDirectory() ? filesUnder(path) : [relative(REPOSITORY, path)];
-  });
+/** Every file git tracks under `directories`, relative to the repository: not a venv or a capture a development machine has left beside them. */
+function trackedFilesUnder(directories: string[]): string[] {
+  const done = spawnSync("git", ["ls-files", "-z", "--", ...directories], { cwd: REPOSITORY, encoding: "utf8" });
+  assert.equal(done.status, 0, done.stderr);
+  return done.stdout.split("\0").filter(Boolean);
 }
 
 const digest = (path: string): string => createHash("sha256").update(readFileSync(join(REPOSITORY, path))).digest("hex");
@@ -34,7 +32,7 @@ function packed(): string[] {
 
 /** The runtime: its Python, the emulator and the probes, the bundle's build and its notices. Not the package's own TypeScript. */
 const RUNTIME_DIRECTORIES = ["middleware/runtime", "middleware/bundle", "emu", "q1", "q2", "q3"];
-const runtimeFiles = RUNTIME_DIRECTORIES.flatMap((directory) => filesUnder(join(REPOSITORY, directory)).filter((path) => statSync(join(REPOSITORY, path)).size > 0));
+const runtimeFiles = trackedFilesUnder(RUNTIME_DIRECTORIES).filter((path) => statSync(join(REPOSITORY, path)).size > 0);
 
 test("the package is named @a11ign/foresay and declares Apache-2.0", () => {
   assert.equal(manifest.name, "@a11ign/foresay");
