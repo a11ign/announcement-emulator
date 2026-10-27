@@ -53,7 +53,7 @@ python3 "$HERE/compare_bundles.py" replay "$FULL" --trace "$TRACES/replay.txt"
 if [ -n "$LIVE" ]; then
   ( cd "$REPO/middleware" && pnpm install --frozen-lockfile && pnpm run build && npm pack --pack-destination "$W" ) >/dev/null
   cp -R "$REPO/middleware/sample-suite" "$W/project"
-  ( cd "$W/project" && npm i -D --silent "$W"/a11ign-announcement-emulator-*.tgz "@playwright/test@$(node -p "require('$REPO/middleware/package.json').devDependencies['@playwright/test']")" && npx playwright install $PLAYWRIGHT_DEPS chromium )      # PLAYWRIGHT_DEPS=--with-deps on a runner that lacks the browser's system libraries
+  ( cd "$W/project" && npm i -D --silent "$W"/a11ign-foresay-*.tgz "@playwright/test@$(node -p "require('$REPO/middleware/package.json').devDependencies['@playwright/test']")" && npx playwright install $PLAYWRIGHT_DEPS chromium )      # PLAYWRIGHT_DEPS=--with-deps on a runner that lacks the browser's system libraries
   ( cd "$W/project" && rm -rf test-results && ANNOUNCEMENT_EMULATOR_BUNDLE="$FULL" ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1 ANNOUNCEMENT_EMULATOR_IMPORT_TRACE="$TRACES/live.txt" \
       npx playwright test --project=fixtures ) || echo "the sample suite did not pass: its trace is kept all the same" >&2
 fi

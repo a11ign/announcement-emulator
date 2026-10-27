@@ -10,6 +10,6 @@ export function readPins(url = new URL("../pins.json", import.meta.url)): Pins {
 
 export function pinFor(pins: Pins, platform: string): Pin {
   const pin = pins.bundles[platform];
-  if (!pin) throw new Error(`announcement-emulator ${pins.version} has no runtime bundle for ${platform} (it has: ${Object.keys(pins.bundles).join(", ") || "none"}). A build from the repository pins none: install a released version, or set ANNOUNCEMENT_EMULATOR_BUNDLE to an unpacked bundle you built with middleware/bundle/build.sh.`);
+  if (!pin) throw new Error(`foresay ${pins.version} has no runtime bundle for ${platform} (it has: ${Object.keys(pins.bundles).join(", ") || "none"}). A build from the repository pins none: install a released version, or set ANNOUNCEMENT_EMULATOR_BUNDLE to an unpacked bundle you built with middleware/bundle/build.sh.`);
   return pin;
 }

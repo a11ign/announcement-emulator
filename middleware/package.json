@@ -1,9 +1,9 @@
 {
-  "name": "@a11ign/announcement-emulator",
+  "name": "@a11ign/foresay",
   "version": "0.0.0",
-  "description": "Playwright middleware: reports the speech NVDA is predicted to make while your existing tests run. A prediction, never a reading of NVDA, and never evidence (a11ign ADR 0047). A spike (A11-208): private, published nowhere.",
+  "description": "Playwright middleware. Predicts what the NVDA screen reader would say, built on NVDA's open-source code, and attaches it to each test while your existing tests run. Not affiliated with NV Access. A prediction, never evidence (a11ign ADR 0047). A preview: private, published nowhere.",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/a11ign/announcement-emulator.git",
@@ -23,14 +23,16 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "announcement-emulator": "./dist/cli.mjs"
+    "foresay": "./dist/cli.mjs"
   },
   "files": [
     "dist",
     "pins.json",
     "supported-versions.json",
     "CHANGELOG.md",
-    "README.md"
+    "README.md",
+    "LICENSE",
+    "NOTICE"
   ],
   "peerDependencies": {
     "@playwright/test": ">=1.40"

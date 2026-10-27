@@ -1,0 +1,137 @@
+# the readings, the headline: every channel, the first fleet capture against the first passive run
+  all 19 pages
+    devtools-linux        3433 of 5100   67.3%   (the fleet against itself 96.2%)
+    devtools-macos        3439 of 4988   68.9%   (the fleet against itself 96.2%)
+    devtools-ubuntu-ci    3407 of 4988   68.3%   (the fleet against itself 96.2%)
+    devtools-linux second  3325 of 4901   67.8%   (the fleet against itself 99.0%)   second capture against second run
+    devtools-macos second  3249 of 4789   67.8%   (the fleet against itself 99.0%)   second capture against second run
+    devtools-ubuntu-ci second  3253 of 4789   67.9%   (the fleet against itself 99.0%)   second capture against second run
+  the 14 pages of steps 1 and 2
+    devtools-linux        2681 of 3347   80.1%   (the fleet against itself 95.7%)
+    devtools-macos        2694 of 3235   83.3%   (the fleet against itself 95.6%)
+    devtools-ubuntu-ci    2652 of 3235   82.0%   (the fleet against itself 95.6%)
+  group step 1
+    devtools-linux         905 of 1133   79.9%   (the fleet against itself 97.7%)
+    devtools-macos         903 of 1021   88.4%   (the fleet against itself 97.7%)
+    devtools-ubuntu-ci     875 of 1021   85.7%   (the fleet against itself 97.7%)
+  group step 2
+    devtools-linux        1776 of 2214   80.2%   (the fleet against itself 94.7%)
+    devtools-macos        1791 of 2214   80.9%   (the fleet against itself 94.7%)
+    devtools-ubuntu-ci    1777 of 2214   80.3%   (the fleet against itself 94.7%)
+  group large
+    devtools-linux         752 of 1753   42.9%   (the fleet against itself 97.1%)
+    devtools-macos         745 of 1753   42.5%   (the fleet against itself 97.1%)
+    devtools-ubuntu-ci     755 of 1753   43.1%   (the fleet against itself 97.1%)
+  class corpus
+    devtools-linux         905 of 1133   79.9%   (the fleet against itself 97.7%)
+    devtools-macos         903 of 1021   88.4%   (the fleet against itself 97.7%)
+    devtools-ubuntu-ci     875 of 1021   85.7%   (the fleet against itself 97.7%)
+  class list
+    devtools-linux         797 of 1150   69.3%   (the fleet against itself 91.0%)
+    devtools-macos         813 of 1150   70.7%   (the fleet against itself 91.0%)
+    devtools-ubuntu-ci     800 of 1150   69.6%   (the fleet against itself 91.0%)
+  class table
+    devtools-linux         979 of 1064   92.0%   (the fleet against itself 98.7%)
+    devtools-macos         978 of 1064   91.9%   (the fleet against itself 98.7%)
+    devtools-ubuntu-ci     977 of 1064   91.8%   (the fleet against itself 98.7%)
+  class large
+    devtools-linux         752 of 1753   42.9%   (the fleet against itself 97.1%)
+    devtools-macos         745 of 1753   42.5%   (the fleet against itself 97.1%)
+    devtools-ubuntu-ci     755 of 1753   43.1%   (the fleet against itself 97.1%)
+
+# the readings side by side, by channel (agreed of units, the fleet against itself in brackets)
+              devtools-linux         | devtools-macos         | devtools-ubuntu-ci    
+  title        18/19   94.7% (94.7%) |  17/18   94.4% (94.4%) |  16/18   88.9% (94.4%)
+  stops       935/1063  88.0% (92.5%) | 950/1055  90.0% (92.6%) | 901/1055  85.4% (92.6%)
+  field         4/7    57.1% (100.0%) |   4/6    66.7% (100.0%) |   4/6    66.7% (100.0%)
+  typed        24/42   57.1% (100.0%) |  24/36   66.7% (100.0%) |  24/36   66.7% (100.0%)
+  headings    163/236  69.1% (95.3%) | 163/230  70.9% (95.2%) | 163/230  70.9% (95.2%)
+  landmarks   191/216  88.4% (95.4%) | 179/207  86.5% (95.2%) | 191/207  92.3% (95.2%)
+  formFields  180/222  81.1% (98.2%) | 180/209  86.1% (98.1%) | 180/209  86.1% (98.1%)
+  graphics    149/182  81.9% (98.4%) | 149/179  83.2% (98.3%) | 152/179  84.9% (98.3%)
+  links       1512/2812  53.8% (97.6%) | 1517/2755  55.1% (97.6%) | 1519/2755  55.1% (97.6%)
+  lists       233/274  85.0% (93.8%) | 231/266  86.8% (93.6%) | 233/266  87.6% (93.6%)
+  frames       24/27   88.9% (100.0%) |  25/27   92.6% (100.0%) |  24/27   88.9% (100.0%)
+
+# the readings side by side, by shape (the 10 commonest)
+                                               devtools-linux         | devtools-macos         | devtools-ubuntu-ci    
+  NAME + ROLE                                  814/1280  63.6% (97.1%) | 816/1240  65.8% (97.0%) | 818/1240  66.0% (97.0%)
+  NAME + ROLE + STATE + STATE                  723/741  97.6% (93.9%) | 727/739  98.4% (93.9%) | 705/739  95.4% (93.9%)
+  NAME + ROLE + NAME                           145/685  21.2% (99.7%) | 147/684  21.5% (99.7%) | 148/684  21.6% (99.7%)
+  ROLE + COUNT + NAME + ROLE                   134/144  93.1% (95.8%) | 134/142  94.4% (95.8%) | 134/142  94.4% (95.8%)
+  ROLE + COUNT + NAME + ROLE + NAME             85/139  61.2% (100.0%) |  86/139  61.9% (100.0%) |  86/139  61.9% (100.0%)
+  NAME + ROLE + LEVEL                           90/139  64.7% (94.2%) |  90/137  65.7% (94.2%) |  90/137  65.7% (94.2%)
+  NAME + NAME + NAME + NAME + ROLE              96/127  75.6% (100.0%) |  96/127  75.6% (100.0%) |  96/127  75.6% (100.0%)
+  NAME + NAME + NAME + ROLE                     92/97   94.8% (99.0%) |  92/97   94.8% (99.0%) |  92/97   94.8% (99.0%)
+  NAME + STATE + ROLE                           78/92   84.8% (90.2%) |  78/87   89.7% (90.8%) |  78/87   89.7% (90.8%)
+  NAME + ROLE + NAME + ROLE + LEVEL             70/86   81.4% (95.3%) |  70/83   84.3% (95.2%) |  70/83   84.3% (95.2%)
+
+# every miss has one cause (count of misses)
+  devtools-linux: 1667 misses; conversion: node 719, emulator 388, conversion: name 264, prompt 55, page moved 34, conversion: name+role+set size+table index 34, history 31, conversion: name+table index 29, conversion: name+role+set size 26, conversion: name+role 20, events: focus 11, conversion: state 9, conversion: name+position in set+role+state 6, events: typed 6, conversion: name+position in set+state 5, conversion: name+set size+table index 5, conversion: landmark+name+role+set size+table index 4, conversion: landmark+name+role 3, conversion: name+state 2, conversion: level+name+role 2, quick test 2, conversion: name+visited 2, conversion: landmark+name+role+table index 2, conversion: name+role+table index 2, language 2, conversion: position in set 1, conversion: landmark+state 1, conversion: landmark+name+role+set size 1, conversion: landmark+level+name+role 1
+    unexplained 0 of 1667; read by a person (attribution-notes.json) 0
+  devtools-macos: 1549 misses; conversion: node 627, emulator 343, conversion: name 236, prompt 55, page moved 36, conversion: name+role+set size+table index 33, history 31, conversion: name+role+set size 26, macos: node 24, conversion: name+table index 22, macos: name 21, network/runner 21, conversion: name+role 20, conversion: name+position in set+role+state 6, events: typed 6, conversion: name+position in set+state 5, conversion: name+set size+table index 5, events: focus 4, conversion: landmark+name+role+set size+table index 4, conversion: state 3, macos: name+state 3, conversion: landmark+name+role 3, conversion: level+name+role 2, conversion: landmark+name+role+table index 2, conversion: name+role+table index 2, language 2, macos: name+position in set+role+state 1, conversion: position in set 1, conversion: name+visited 1, conversion: landmark+name+role+set size 1, macos: landmark+name+role+state+table index 1, macos: landmark+name+role+set size 1, conversion: landmark+level+name+role 1
+    unexplained 0 of 1549; read by a person (attribution-notes.json) 0
+  devtools-ubuntu-ci: 1581 misses; conversion: node 627, emulator 360, conversion: name 247, network/runner 63, prompt 55, page moved 34, conversion: name+role+set size+table index 33, history 31, conversion: name+role+set size 26, conversion: name+table index 22, conversion: name+role 20, events: focus 11, conversion: name+position in set+role+state 6, events: typed 6, conversion: state 5, conversion: name+position in set+state 5, conversion: name+set size+table index 5, conversion: landmark+name+role+set size+table index 4, conversion: landmark+name+role 3, conversion: name+state 2, conversion: level+name+role 2, quick test 2, conversion: name+visited 2, conversion: landmark+name+role+table index 2, conversion: name+role+table index 2, language 2, conversion: position in set 1, conversion: landmark+state 1, conversion: landmark+name+role+set size 1, conversion: landmark+level+name+role 1
+    unexplained 0 of 1581; read by a person (attribution-notes.json) 0
+
+# the causes by shape (the ten commonest), one block per reading
+  devtools-linux
+    NAME + ROLE                                  conversion: node 278, emulator 116, conversion: name 59, page moved 7, conversion: name+role+set size 4, conversion: landmark+name+role+table index 1, language 1
+    NAME + ROLE + STATE + STATE                  page moved 8, emulator 7, quick test 2, events: focus 1
+    NAME + ROLE + NAME                           conversion: node 283, conversion: name 153, emulator 56, conversion: name+role 19, conversion: name+role+set size 13, conversion: name+table index 5, conversion: name+role+set size+table index 4, conversion: landmark+name+role+set size+table index 2, conversion: name+role+table index 2, conversion: landmark+name+role+table index 1, conversion: landmark+name+role+set size 1, page moved 1
+    ROLE + COUNT + NAME + ROLE                   conversion: node 5, emulator 2, conversion: name+role+set size 2, conversion: name 1
+    ROLE + COUNT + NAME + ROLE + NAME            conversion: node 42, conversion: name+role+set size 6, emulator 5, conversion: name 1
+    NAME + ROLE + LEVEL                          emulator 44, conversion: node 2, conversion: landmark+name+role 2, conversion: landmark+level+name+role 1
+    NAME + NAME + NAME + NAME + ROLE             prompt 27, conversion: name+table index 4
+    NAME + NAME + NAME + ROLE                    conversion: name+table index 4, emulator 1
+    NAME + STATE + ROLE                          conversion: node 6, history 4, conversion: name 2, page moved 1, emulator 1
+    NAME + ROLE + NAME + ROLE + LEVEL            conversion: node 16
+    (other shapes)                               emulator 156, conversion: node 87, conversion: name 48, conversion: name+role+set size+table index 30, prompt 28, history 27, page moved 17, conversion: name+table index 16, events: focus 10, conversion: state 9, conversion: name+position in set+role+state 6, events: typed 6, conversion: name+position in set+state 5, conversion: name+set size+table index 5, conversion: name+state 2, conversion: level+name+role 2, conversion: landmark+name+role+set size+table index 2, conversion: name+visited 2, conversion: name+role 1, conversion: position in set 1, conversion: landmark+state 1, conversion: landmark+name+role 1, conversion: name+role+set size 1, language 1
+  devtools-macos
+    NAME + ROLE                                  conversion: node 245, emulator 108, conversion: name 56, page moved 7, conversion: name+role+set size 4, macos: node 1, conversion: landmark+name+role+table index 1, macos: name 1, language 1
+    NAME + ROLE + STATE + STATE                  page moved 8, macos: node 3, emulator 1
+    NAME + ROLE + NAME                           conversion: node 278, conversion: name 147, emulator 56, conversion: name+role 19, conversion: name+role+set size 13, network/runner 7, conversion: name+table index 5, conversion: name+role+set size+table index 4, conversion: landmark+name+role+set size+table index 2, conversion: name+role+table index 2, conversion: landmark+name+role+table index 1, conversion: landmark+name+role+set size 1, page moved 1, macos: name 1
+    ROLE + COUNT + NAME + ROLE                   conversion: node 4, conversion: name+role+set size 2, emulator 1, conversion: name 1
+    ROLE + COUNT + NAME + ROLE + NAME            conversion: node 42, conversion: name+role+set size 6, emulator 5
+    NAME + ROLE + LEVEL                          emulator 44, conversion: landmark+name+role 2, conversion: landmark+level+name+role 1
+    NAME + NAME + NAME + NAME + ROLE             prompt 27, conversion: name+table index 4
+    NAME + NAME + NAME + ROLE                    conversion: name+table index 4, emulator 1
+    NAME + STATE + ROLE                          history 4, conversion: name 2, conversion: node 2, emulator 1
+    NAME + ROLE + NAME + ROLE + LEVEL            conversion: node 13
+    (other shapes)                               emulator 126, conversion: node 43, conversion: name 30, conversion: name+role+set size+table index 29, prompt 28, history 27, page moved 20, macos: node 20, macos: name 19, network/runner 14, conversion: name+table index 9, conversion: name+position in set+role+state 6, events: typed 6, conversion: name+position in set+state 5, conversion: name+set size+table index 5, events: focus 4, conversion: state 3, macos: name+state 3, conversion: level+name+role 2, conversion: landmark+name+role+set size+table index 2, conversion: name+role 1, macos: name+position in set+role+state 1, conversion: position in set 1, conversion: name+visited 1, conversion: landmark+name+role 1, macos: landmark+name+role+state+table index 1, conversion: name+role+set size 1, macos: landmark+name+role+set size 1, language 1
+  devtools-ubuntu-ci
+    NAME + ROLE                                  conversion: node 245, emulator 108, conversion: name 56, page moved 7, conversion: name+role+set size 4, conversion: landmark+name+role+table index 1, language 1
+    NAME + ROLE + STATE + STATE                  network/runner 15, page moved 9, emulator 7, quick test 2, events: focus 1
+    NAME + ROLE + NAME                           conversion: node 278, conversion: name 147, emulator 56, conversion: name+role 19, conversion: name+role+set size 13, network/runner 7, conversion: name+table index 5, conversion: name+role+set size+table index 4, conversion: landmark+name+role+set size+table index 2, conversion: name+role+table index 2, conversion: landmark+name+role+table index 1, conversion: landmark+name+role+set size 1, page moved 1
+    ROLE + COUNT + NAME + ROLE                   conversion: node 4, conversion: name+role+set size 2, emulator 1, conversion: name 1
+    ROLE + COUNT + NAME + ROLE + NAME            conversion: node 42, conversion: name+role+set size 6, emulator 5
+    NAME + ROLE + LEVEL                          emulator 44, conversion: landmark+name+role 2, conversion: landmark+level+name+role 1
+    NAME + NAME + NAME + NAME + ROLE             prompt 27, conversion: name+table index 4
+    NAME + NAME + NAME + ROLE                    conversion: name+table index 4, emulator 1
+    NAME + STATE + ROLE                          history 4, conversion: name 2, conversion: node 2, emulator 1
+    NAME + ROLE + NAME + ROLE + LEVEL            conversion: node 13
+    (other shapes)                               emulator 137, conversion: node 43, conversion: name 41, network/runner 41, conversion: name+role+set size+table index 29, prompt 28, history 27, page moved 17, events: focus 10, conversion: name+table index 9, conversion: name+position in set+role+state 6, events: typed 6, conversion: state 5, conversion: name+position in set+state 5, conversion: name+set size+table index 5, conversion: name+state 2, conversion: level+name+role 2, conversion: landmark+name+role+set size+table index 2, conversion: name+visited 2, conversion: name+role 1, conversion: position in set 1, conversion: landmark+state 1, conversion: landmark+name+role 1, conversion: name+role+set size 1, language 1
+
+# the work list of the chairman's decision, in units missed on the 14 pages of steps 1 and 2 (another window: steps 1 and 2's DevTools reading, and this one)
+  item                  before   now  recovered
+  clickable                 12     0         12
+  typed value                0     0          0
+  description words         54    58         -4
+  header words             179     0        179
+  the DevTools headline of steps 1 and 2 on these pages: 2535 of 3337 = 76.0% (the two figures added; not the same window)
+
+# the extension on the table pages (context: it is not read in this measurement; step 2's window, over the units it and DevTools both read)
+  step 2: the extension 323 of 342 = 94.4%, DevTools 317 of 342 = 92.7%
+  now: DevTools 979 of 1064 = 92.0% on the table pages (all the units of those pages, four pages)
+
+# the cost of the runs on this host (wall time, the runtime finishing after the last test, the predictor, the tree reads), in seconds
+  corpus-1     wall   185.3  after the last test     0.3  speechMs    29.1  reads 157 (126 full, 31 incremental)  114.0 s
+  corpus-2     wall   188.0  after the last test     0.4  speechMs    51.1  reads 137 (95 full, 42 incremental)  139.3 s
+  large-1      wall   570.6  after the last test   545.0  speechMs   491.4  reads  13 (13 full, 0 incremental)   31.4 s
+  large-2      wall   540.9  after the last test   514.4  speechMs   445.4  reads  12 (12 full, 0 incremental)   32.8 s
+  structure-1  wall   115.6  after the last test    91.5  speechMs    88.8  reads  21 (20 full, 1 incremental)   17.1 s
+  structure-2  wall   114.7  after the last test    91.5  speechMs    96.5  reads  22 (20 full, 2 incremental)   14.4 s
+  step 2's structure-before  wall   407.9  speechMs   528.0  reads 27 12.6 s
+  step 2's structure-after   wall    85.8  speechMs    66.8  reads 18 10.8 s
+  step 2's large-after       wall   477.3  speechMs   366.7  reads 10 21.4 s
+  step 2 (the first measurement), wall time of the structure project: devtools-linux-run1 450 s, devtools-linux-run2 415 s, ext-linux-run1 130 s, ext-linux-run2 113 s

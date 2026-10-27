@@ -8,7 +8,7 @@ Makes the runtime bundle lean (A11-231), in place: the full layout in, and out o
                   distribution that has a listed file, whole, with its dist-info and so its licence. No tests, idle, tkinter, ensurepip, pydoc data, headers, static libraries or caches
     NVDA          one tree, nvda-src/source: the listed files, locale/en, and NVDA's licence. The pinned CLDR names are copied over NVDA's own file in place; there is no second tree (nvda-appdir),
                   no cldr-src and no chromium-src
-    the rest      this repository's runtime (emu, q1, q2, q3, middleware), bundle.json and the licence, as they are
+    the rest      this repository's runtime (emu, q1, q2, q3, middleware), bundle.json, the licence and the notices, as they are
 
 A file the list names that the full layout lacks fails the run: the list is stale (NVDA or the Python moved), and trace.sh makes it again.
 """
@@ -16,7 +16,7 @@ import os, re, shutil, subprocess, sys
 
 PYTHON_LIB = re.compile(r'^(python/lib/python3\.\d+)/')
 ALWAYS = [re.compile(p) for p in (
-    r'^(bundle\.json|LICENSE|nvda-src/copying\.txt)$',
+    r'^(bundle\.json|LICENSE|NOTICES|nvda-src/copying\.txt)$',
     r'^python/bin/python3(\.\d+)?$',
     r'^python/lib/python3\.\d+/(LICENSE\.txt|encodings/.*)$',
     r'^nvda-src/source/locale/en/.*',

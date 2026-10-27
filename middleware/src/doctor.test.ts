@@ -92,7 +92,7 @@ test("without a bundle doctor fails and says what to run, after saying what it k
   const { code, text } = run({ env: { ANNOUNCEMENT_EMULATOR_BUNDLE: join(tmpdir(), "no-such-bundle") } });
   assert.equal(code, 1);
   assert.match(text, /^Playwright 1\.63\.0$/m);
-  assert.match(text, /npx announcement-emulator install/);
+  assert.match(text, /npx foresay install/);
 });
 
 test("doctor starts the browser Playwright installed, and fails with the command that installs its libraries when it does not start", () => {

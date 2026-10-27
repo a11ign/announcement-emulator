@@ -22,7 +22,7 @@ export interface BundleSource { url: string; via: string }
 export function repositoryUrl(repository: unknown): string {
   const raw = typeof repository === "string" ? repository : (repository as { url?: unknown } | undefined)?.url;
   const url = typeof raw === "string" ? raw.trim().replace(/^git\+/, "").replace(/^git:\/\//, "https://").replace(/\/+$/, "").replace(/\.git$/, "") : "";
-  if (!/^https?:\/\/[^/]+\/./.test(url)) throw new Error("announcement-emulator: this package's package.json has no `repository` URL, so there is no Release to download the bundle from. Set ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST to a mirror of it.");
+  if (!/^https?:\/\/[^/]+\/./.test(url)) throw new Error("foresay: this package's package.json has no `repository` URL, so there is no Release to download the bundle from. Set ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST to a mirror of it.");
   return url;
 }
 
@@ -58,7 +58,7 @@ export async function install(pins: Pins, options: InstallOptions = {}): Promise
   const digest = await download(url, archive);
   if (digest !== pin.sha256) {
     rmSync(archive, { force: true });
-    throw new Error(`announcement-emulator: the bundle from ${url} (${via}) has sha256 ${digest}, and this package pins ${pin.sha256}. Nothing was unpacked.`);
+    throw new Error(`foresay: the bundle from ${url} (${via}) has sha256 ${digest}, and this package pins ${pin.sha256}. Nothing was unpacked.`);
   }
   log(`sha256 ${digest} matches the pin`);
   const staging = `${target}.unpacking`;
@@ -78,7 +78,7 @@ function download(url: string, file: string, hops = 0): Promise<string> {
     get(url, (response) => {
       const status = response.statusCode ?? 0;
       if (status >= 300 && status < 400 && response.headers.location && hops < 5) { response.resume(); download(new URL(response.headers.location, url).href, file, hops + 1).then(resolve, reject); return; }
-      if (status !== 200) { response.resume(); reject(new Error(`announcement-emulator: ${url} answered ${status}`)); return; }
+      if (status !== 200) { response.resume(); reject(new Error(`foresay: ${url} answered ${status}`)); return; }
       const hash = createHash("sha256");
       const summing = new Transform({ transform(chunk: Buffer, _encoding, done) { hash.update(chunk); done(null, chunk); } });
       pipeline(response, summing, createWriteStream(file)).then(() => resolve(hash.digest("hex")), reject);

@@ -199,7 +199,7 @@ def module(name, directory=LIB):
 
 
 def full_layout():
-    files = {'bundle.json': '{}', 'LICENSE': 'GPL', f'{LIB}/LICENSE.txt': 'PSF', 'python/bin/python3.13': 'elf', 'python/bin/idle3.13': 'script', 'python/bin/pip3': 'script',
+    files = {'bundle.json': '{}', 'LICENSE': 'GPL', 'NOTICES': 'notices', f'{LIB}/LICENSE.txt': 'PSF', 'python/bin/python3.13': 'elf', 'python/bin/idle3.13': 'script', 'python/bin/pip3': 'script',
              'python/lib/libpython3.13.so.1.0': 'so', 'python/include/Python.h': 'h', 'python/share/man/python.1': 'man',
              f'{LIB}/__pycache__/os.cpython-313.pyc': 'cache', f'{LIB}/lib-dynload/_tkinter.so': 'so',
              f'{LIB}/test/test_x.py': '# test', f'{LIB}/idlelib/x.py': '# idle', f'{LIB}/tkinter/__init__.py': '# tk', f'{LIB}/ensurepip/__init__.py': '# ensurepip', f'{LIB}/turtledemo/x.py': '# turtle',
@@ -271,7 +271,7 @@ class Lean(unittest.TestCase):
         self.assertEqual((self.root / 'nvda-src/source/locale/en/cldr.dic').read_text(), 'the pinned names')
 
     def test_this_repositorys_runtime_and_the_interpreter_stay(self):
-        for kept in ('bundle.json', 'LICENSE', 'emu/boot.py', 'emu/tables.json', 'q3/shapes.py', 'middleware/runtime/main.py', 'middleware/runtime/import_trace.py', 'python/bin/python3.13', 'python/bin/python3', f'{LIB}/LICENSE.txt'):
+        for kept in ('bundle.json', 'LICENSE', 'NOTICES', 'emu/boot.py', 'emu/tables.json', 'q3/shapes.py', 'middleware/runtime/main.py', 'middleware/runtime/import_trace.py', 'python/bin/python3.13', 'python/bin/python3', f'{LIB}/LICENSE.txt'):
             self.assertIn(kept, self.left)
         self.assertTrue((self.root / 'python/bin/python3').is_symlink())
         self.assertNotIn('python/bin/idle3', self.left); self.assertNotIn('python/bin/python', self.left)      # a link to what is gone, and one nothing uses
@@ -554,6 +554,34 @@ class Build(unittest.TestCase):
 
     def test_the_default_format_is_one_of_the_two_compressions_the_ticket_names(self):
         self.assertRegex(self.TEXT, r'(^|\n)FORMAT=(xz|zst);')
+
+
+class Licence(unittest.TestCase):
+    """A11-353: the runtime bundle is GPL-3.0-or-later and ships the GPL text and the notices its components ask for."""
+    notices = (HERE / 'NOTICES').read_text()
+    build = (HERE / 'build.sh').read_text()
+
+    def test_the_build_declares_the_runtime_gpl_3_or_later_in_bundle_json(self):
+        self.assertIn('"license": "GPL-3.0-or-later"', self.build)
+
+    def test_the_build_puts_the_notices_into_the_bundle_and_the_gpl_text_is_the_root_licence(self):
+        self.assertIn('cp "$HERE/NOTICES" "$B/NOTICES"', self.build)
+        self.assertIn('middleware/runtime LICENSE', self.build)
+        self.assertTrue((ROOT / 'LICENSE').read_text().lstrip().startswith('GNU GENERAL PUBLIC LICENSE\n                       Version 3'))
+
+    def test_the_notices_name_the_licence_the_source_and_each_component_the_decision_lists(self):
+        for text in ('GPL-3.0-or-later', 'bundle.json', 'pins.env', 'middleware/bundle/build.sh', 'nvda-src/copying.txt', 'GPL-2.0-or-later', 'BSD-3-Clause',
+                     'Redistribution and use in source and binary forms', 'Unicode License v3', 'Permission is hereby granted', 'python-build-standalone', 'dist-info'):
+            self.assertIn(text, self.notices)
+
+    def test_the_notices_name_the_python_the_bundle_pins(self):
+        minor = '.'.join(pins()['PYTHON'].split('.')[:2])
+        self.assertIn(f'python/lib/python{minor}/LICENSE.txt', self.notices)
+        self.assertIn(f'python/lib/python{minor}/site-packages/', self.notices)
+
+    def test_the_notices_make_no_claim_the_wording_rules_forbid(self):
+        for forbidden in ('NVDA-compatible', 'endorsed by NV Access', 'NVDA logo'):
+            self.assertNotIn(forbidden, self.notices)
 
 
 if __name__ == '__main__': unittest.main()

@@ -1,0 +1,534 @@
+[
+ {
+  "file": "check-for-flooding-service-gov-uk-river-and-sea-levels-02ac4374.f1.json",
+  "worker": "a11y-worker-2",
+  "capturedAt": "2026-10-27T10:32:46.526Z",
+  "status": 200,
+  "transcriptLines": 37,
+  "focusStops": 28,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "check-for-flooding-service-gov-uk-river-and-sea-levels-02ac4374.f2.json",
+  "worker": "a11y-worker-3",
+  "capturedAt": "2026-10-27T10:32:49.873Z",
+  "status": 200,
+  "transcriptLines": 37,
+  "focusStops": 28,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "design-system-service-gov-uk-components-date-input-1b727a81.f1.json",
+  "worker": "a11y-worker-9",
+  "capturedAt": "2026-10-27T10:43:51.717Z",
+  "status": 200,
+  "transcriptLines": 262,
+  "focusStops": 119,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "design-system-service-gov-uk-components-date-input-1b727a81.f2.json",
+  "worker": "a11y-worker-10",
+  "capturedAt": "2026-10-27T10:36:55.964Z",
+  "status": 200,
+  "transcriptLines": 267,
+  "focusStops": 122,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "design-system-service-gov-uk-components-table-55d6c624.f1.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-27T10:40:07.161Z",
+  "status": 200,
+  "transcriptLines": 104,
+  "focusStops": 112,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "design-system-service-gov-uk-components-table-55d6c624.f2.json",
+  "worker": "a11y-worker-2",
+  "capturedAt": "2026-10-27T10:38:01.756Z",
+  "status": 200,
+  "transcriptLines": 104,
+  "focusStops": 112,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "design-system-service-gov-uk-components-tabs-0a2a18f0.f1.json",
+  "worker": "a11y-worker-4",
+  "capturedAt": "2026-10-27T10:37:51.307Z",
+  "status": 200,
+  "transcriptLines": 115,
+  "focusStops": 87,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "design-system-service-gov-uk-components-tabs-0a2a18f0.f2.json",
+  "worker": "a11y-worker-7",
+  "capturedAt": "2026-10-27T10:35:00.468Z",
+  "status": 200,
+  "transcriptLines": 121,
+  "focusStops": 90,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "en-wikipedia-org-wiki-beaufort-scale-fc3f8d9a.f1.json",
+  "worker": "a11y-worker-3",
+  "capturedAt": "2026-10-27T10:47:34.898Z",
+  "status": 200,
+  "transcriptLines": 444,
+  "focusStops": 15,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "en-wikipedia-org-wiki-beaufort-scale-fc3f8d9a.f2.json",
+  "worker": "a11y-worker-4",
+  "capturedAt": "2026-10-27T10:45:08.803Z",
+  "status": 200,
+  "transcriptLines": 444,
+  "focusStops": 10,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "en-wikipedia-org-wiki-list-of-countries-and-dependencies-by-population-6c6c441a.f1.json",
+  "worker": "a11y-worker-9",
+  "capturedAt": "2026-10-27T10:59:25.369Z",
+  "status": 200,
+  "transcriptLines": 500,
+  "focusStops": 0,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "en-wikipedia-org-wiki-list-of-countries-and-dependencies-by-population-6c6c441a.f2.json",
+  "worker": "a11y-worker-10",
+  "capturedAt": "2026-10-27T10:50:01.323Z",
+  "status": 200,
+  "transcriptLines": 500,
+  "focusStops": 0,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "en-wikipedia-org-wiki-list-of-largest-cities-85146c14.f1.json",
+  "worker": "a11y-worker-8",
+  "capturedAt": "2026-10-27T10:56:32.717Z",
+  "status": 200,
+  "transcriptLines": 572,
+  "focusStops": 0,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "en-wikipedia-org-wiki-list-of-largest-cities-85146c14.f2.json",
+  "worker": "a11y-worker-9",
+  "capturedAt": "2026-10-27T10:51:39.094Z",
+  "status": 200,
+  "transcriptLines": 572,
+  "focusStops": 0,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "en-wikipedia-org-wiki-list-of-sovereign-states-346c21bf.f1.json",
+  "worker": "a11y-worker-10",
+  "capturedAt": "2026-10-27T10:57:49.056Z",
+  "status": 200,
+  "transcriptLines": 316,
+  "focusStops": 0,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "en-wikipedia-org-wiki-list-of-sovereign-states-346c21bf.f2.json",
+  "worker": "a11y-worker-11",
+  "capturedAt": "2026-10-27T10:49:26.427Z",
+  "status": 200,
+  "transcriptLines": 316,
+  "focusStops": 0,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "en-wikipedia-org-wiki-outline-of-computer-science-12b9b3ee.f1.json",
+  "worker": "a11y-worker-11",
+  "capturedAt": "2026-10-27T10:41:38.458Z",
+  "status": 200,
+  "transcriptLines": 215,
+  "focusStops": 0,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "en-wikipedia-org-wiki-outline-of-computer-science-12b9b3ee.f2.json",
+  "worker": "a11y-worker-12",
+  "capturedAt": "2026-10-27T10:37:21.736Z",
+  "status": 200,
+  "transcriptLines": 215,
+  "focusStops": 0,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "en-wikipedia-org-wiki-web-content-accessibility-guidelines-64b2c4e6.f1.json",
+  "worker": "a11y-worker-7",
+  "capturedAt": "2026-10-27T10:54:03.344Z",
+  "status": 200,
+  "transcriptLines": 439,
+  "focusStops": 0,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "en-wikipedia-org-wiki-web-content-accessibility-guidelines-64b2c4e6.f2.json",
+  "worker": "a11y-worker-8",
+  "capturedAt": "2026-10-27T10:48:45.403Z",
+  "status": 200,
+  "transcriptLines": 439,
+  "focusStops": 0,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "find-and-update-company-information-service-gov-uk-company-00000006-081efa96.f1.json",
+  "worker": "a11y-worker-3",
+  "capturedAt": "2026-10-27T10:35:52.356Z",
+  "status": 200,
+  "transcriptLines": 46,
+  "focusStops": 29,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "find-and-update-company-information-service-gov-uk-company-00000006-081efa96.f2.json",
+  "worker": "a11y-worker-4",
+  "capturedAt": "2026-10-27T10:33:09.695Z",
+  "status": 200,
+  "transcriptLines": 46,
+  "focusStops": 29,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "find-and-update-company-information-service-gov-uk-company-00000006-filing-histo-dcd8a89c.f1.json",
+  "worker": "a11y-worker-2",
+  "capturedAt": "2026-10-27T10:42:24.213Z",
+  "status": 200,
+  "transcriptLines": 160,
+  "focusStops": 71,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "find-and-update-company-information-service-gov-uk-company-00000006-filing-histo-dcd8a89c.f2.json",
+  "worker": "a11y-worker-3",
+  "capturedAt": "2026-10-27T10:40:18.178Z",
+  "status": 200,
+  "transcriptLines": 160,
+  "focusStops": 71,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "find-and-update-company-information-service-gov-uk-company-00000086-filing-histo-3dcfd4ae.f1.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-27T10:40:17.319Z",
+  "status": 200,
+  "transcriptLines": 160,
+  "focusStops": 74,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "find-and-update-company-information-service-gov-uk-company-00000086-filing-histo-3dcfd4ae.f2.json",
+  "worker": "a11y-worker-16",
+  "capturedAt": "2026-10-27T10:34:35.618Z",
+  "status": 200,
+  "transcriptLines": 160,
+  "focusStops": 74,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "service-manual-nhs-uk-design-system-components-table-1332f01c.f1.json",
+  "worker": "a11y-worker-8",
+  "capturedAt": "2026-10-27T10:40:59.139Z",
+  "status": 200,
+  "transcriptLines": 166,
+  "focusStops": 124,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "service-manual-nhs-uk-design-system-components-table-1332f01c.f2.json",
+  "worker": "a11y-worker-9",
+  "capturedAt": "2026-10-27T10:37:02.275Z",
+  "status": 200,
+  "transcriptLines": 163,
+  "focusStops": 123,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "tfl-gov-uk-plan-a-journey-0f85db50.f1.json",
+  "worker": "a11y-worker-7",
+  "capturedAt": "2026-10-27T10:38:58.570Z",
+  "status": 200,
+  "transcriptLines": 79,
+  "focusStops": 8,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "tfl-gov-uk-plan-a-journey-0f85db50.f2.json",
+  "worker": "a11y-worker-8",
+  "capturedAt": "2026-10-27T10:33:46.734Z",
+  "status": 200,
+  "transcriptLines": 79,
+  "focusStops": 8,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "www-legislation-gov-uk-changes-affected-ukpga-1998-42-1cdd3c42.f1.json",
+  "worker": "a11y-worker-12",
+  "capturedAt": "2026-10-27T10:44:18.307Z",
+  "status": 200,
+  "transcriptLines": 144,
+  "focusStops": 150,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "www-legislation-gov-uk-changes-affected-ukpga-1998-42-1cdd3c42.f2.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-27T10:36:50.041Z",
+  "status": 200,
+  "transcriptLines": 144,
+  "focusStops": 150,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "www-legislation-gov-uk-ukpga-1998-42-contents-3974caa2.f1.json",
+  "worker": "a11y-worker-14",
+  "capturedAt": "2026-10-27T10:42:34.855Z",
+  "status": 200,
+  "transcriptLines": 110,
+  "focusStops": 128,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "www-legislation-gov-uk-ukpga-1998-42-contents-3974caa2.f2.json",
+  "worker": "a11y-worker-15",
+  "capturedAt": "2026-10-27T10:35:33.957Z",
+  "status": 200,
+  "transcriptLines": 110,
+  "focusStops": 128,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "www-legislation-gov-uk-ukpga-2010-15-contents-0a162f67.f1.json",
+  "worker": "a11y-worker-4",
+  "capturedAt": "2026-10-27T10:52:26.286Z",
+  "status": 200,
+  "transcriptLines": 413,
+  "focusStops": 54,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "www-legislation-gov-uk-ukpga-2010-15-contents-0a162f67.f2.json",
+  "worker": "a11y-worker-7",
+  "capturedAt": "2026-10-27T10:46:17.831Z",
+  "status": 200,
+  "transcriptLines": 413,
+  "focusStops": 7,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "www-w3-org-wai-aria-apg-patterns-listbox-examples-listbox-scrollable-09e0a5b8.f1.json",
+  "worker": "a11y-worker-10",
+  "capturedAt": "2026-10-27T10:42:12.629Z",
+  "status": 200,
+  "transcriptLines": 219,
+  "focusStops": 64,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ },
+ {
+  "file": "www-w3-org-wai-aria-apg-patterns-listbox-examples-listbox-scrollable-09e0a5b8.f2.json",
+  "worker": "a11y-worker-11",
+  "capturedAt": "2026-10-27T10:34:10.685Z",
+  "status": 200,
+  "transcriptLines": 2,
+  "focusStops": 59,
+  "environment": {
+   "browserVersion": "156.0.4314.42",
+   "windowsVersion": "Microsoft Windows 11 Pro 10.0.26300",
+   "windowsBuild": "26300.9711",
+   "nvdaVersion": null
+  }
+ }
+]

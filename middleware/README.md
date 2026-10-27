@@ -1,4 +1,6 @@
-# @a11ign/announcement-emulator (a spike: private, published nowhere)
+# @a11ign/foresay (a preview: private, published nowhere)
+
+Predicts what the NVDA screen reader would say, built on NVDA's open-source code. Not affiliated with NV Access.
 
 Playwright middleware. It latches onto the tests you already have and attaches, to each test in Playwright's report, **predicted NVDA speech**: what the announcement emulator
 predicts NVDA would say while the test ran. No test is written twice.
@@ -9,9 +11,9 @@ tree and NVDA's own Python; the write-up (`docs/playwright-middleware-spike.md`)
 ## Setup
 
 ```sh
-npm i -D @playwright/test @a11ign/announcement-emulator   # the working name: the name and the licence are undecided (docs/release-decisions.md), and nothing is published until they are
+npm i -D @playwright/test @a11ign/foresay   # nothing is published yet: the name and the licence are decided (docs/release-decisions.md), and the package stays private until a release is made
 npx playwright install chromium               # Playwright's own Chromium: the browser your tests, and the middleware, run in. Not `--only-shell`: see below
-npx announcement-emulator install             # downloads the pinned, checksummed runtime bundle into a cache, as `npx playwright install` does for browsers
+npx foresay install             # downloads the pinned, checksummed runtime bundle into a cache, as `npx playwright install` does for browsers
 ```
 
 Until the first release nothing is on npm: install the tarball `npm pack` makes in `middleware/`, with the bundle served as a mirror (`middleware/release/install-check.sh` does exactly that).
@@ -23,12 +25,12 @@ Then **one line** in `playwright.config.ts`:
 
 ```ts
 import { defineConfig } from "@playwright/test";
-import { withAnnouncements } from "@a11ign/announcement-emulator";
+import { withAnnouncements } from "@a11ign/foresay";
 
 export default defineConfig(withAnnouncements({ /* your config, as it was */ }));
 ```
 
-or **no line at all**: `npx announcement-emulator test [playwright test arguments]` writes a config beside yours that imports it and wraps it, runs `playwright test` with it, and removes it.
+or **no line at all**: `npx foresay test [playwright test arguments]` writes a config beside yours that imports it and wraps it, runs `playwright test` with it, and removes it.
 
 Nothing else changes: not a test, not a fixture, not another part of the config.
 
@@ -49,7 +51,7 @@ are read like any other page. A team's own `ANNOUNCEMENT_EMULATOR_TREE` setting 
 - **A `channel` or an `executablePath` you chose is yours.** The middleware does not change it.
 - The team's Playwright is looked for from the working directory, then from where this package is installed.
 
-`npx announcement-emulator doctor` prints your Playwright version, the Chromium build its `browsers.json` names, which of the full browser and the headless shell are installed, whether that build is on
+`npx foresay doctor` prints your Playwright version, the Chromium build its `browsers.json` names, which of the full browser and the headless shell are installed, whether that build is on
 the supported list below, and where the tree comes from.
 
 ## Supported Playwright versions
@@ -107,7 +109,7 @@ starts it and reads its JSON lines and **never imports it** (the runtime is GPL-
 
 ## The runtime bundle is lean
 
-`npx announcement-emulator install` downloads one archive, checks its sha256 against the pin in the package and unpacks it with the host's `tar -xf` (A11-231). What is in it:
+`npx foresay install` downloads one archive, checks its sha256 against the pin in the package and unpacks it with the host's `tar -xf` (A11-231). What is in it:
 
 - **Python**: python-build-standalone's `install_only_stripped` build (3.13), its standard library as bytecode, and only the modules the runtime was seen to import; the `encodings` package whole (a page's charset picks a codec at run time);
   the packages NVDA's source needs. No tests, `idlelib`, `tkinter`, `ensurepip`, `turtle`, headers, static libraries or `pip`.
@@ -167,10 +169,14 @@ Each version is a GitHub Release `v<version>` of this repository (`middleware/re
 - `SHA256SUMS`, the sum of every bundle, which is also what the `pins.json` of that version's package names: `middleware/release/after-version.sh` writes it into the release commit from the very files attached to the Release, and fails the release if the two differ;
 - notes that carry **the measured agreement of that version** (per Chromium build and operating system, with the units, the date and, where the figure has them, the pages and the rate of each announcement shape) and **the Playwright versions it supports**, as `supported-versions.json` lists them.
 
-Nothing is published yet: the package is `private` until the name, the licence and the NV Access question are decided (`docs/release-decisions.md`), and the org's release workflow never publishes a private package. Until then `.github/workflows/release-dry-run.yml`
+Nothing is published yet: the name, the licence and the NV Access question are decided (`docs/release-decisions.md`), and the package stays `private` until a person chooses to publish a first release (the org's release workflow never publishes a private package). Until then `.github/workflows/release-dry-run.yml`
 rehearses a release on every pull request that changes one: it builds the bundles, versions this branch's changesets on a scratch copy, packs the package and installs it with its bundle through the mirror variable on both platforms,
 and shows every file with its size and sum. The same rehearsal runs on your machine with `middleware/release/dry-run.sh <release-files> <out>` (and `install-check.sh`) after `release-bundles.yml`'s legs are gathered by `middleware/release/gather.sh`.
 
 ## Licence
 
-Undecided, and a decision the spike leaves to a person: the package is `UNLICENSED` and private. The runtime in the bundle is GPL-3.0 (`../LICENSE`).
+**The package is Apache-2.0** (`LICENSE`, with a `NOTICE`; `license` in `package.json`). It holds no file of the runtime: the tarball is `dist`, `pins.json`, `supported-versions.json`, the changelog, this README, `LICENSE` and `NOTICE`, and a test (`src/package-files.test.ts`) fails if a file of the runtime gets into it. The package starts the runtime as a separate program and exchanges JSON lines with it over a pipe; it copies nothing out of the runtime and rewrites nothing in it.
+
+**The runtime is GPL-3.0-or-later.** It is a separate download (`npx foresay install`), never part of the npm package, and it is a combined work with NVDA's code (GPL-2.0-or-later). Its bundle carries the GPL text (`LICENSE`), NVDA's licence file (`nvda-src/copying.txt`), and `NOTICES`: the offer of the corresponding source and the notices of the other components (Chromium's mapping tables, the CLDR names, Python and its packages). `bundle.json` says `"license": "GPL-3.0-or-later"`. Its source is this repository (`../LICENSE`), at the commit `bundle.json` names.
+
+The name, the licence and the NV Access requirement were decided by the chairman on 2026-10-27: see `../docs/release-decisions.md`, "Decisions".

@@ -1,0 +1,138 @@
+NOTICES: the licences of this runtime bundle
+
+This bundle is the runtime of @a11ign/foresay: the program that predicts what
+the NVDA screen reader would say, built on NVDA's open-source code. Not
+affiliated with NV Access. Its output is a prediction, never evidence.
+
+1. The licence of the bundle
+----------------------------
+
+The runtime as a whole is licensed under the GNU General Public License,
+version 3 or (at your option) any later version: SPDX GPL-3.0-or-later. The
+text of version 3 is the file LICENSE in this bundle. It is a combined work
+with NVDA's code, which is available under the GNU General Public License
+version 2 or later (nvda-src/copying.txt), so it is taken under version 3.
+
+The npm package that starts this runtime (@a11ign/foresay) is a separate
+program under Apache-2.0 and holds none of these files. It talks to the
+runtime over a pipe.
+
+2. The source
+-------------
+
+The corresponding source of this bundle is:
+
+- this repository, https://github.com/a11ign/announcement-emulator, at the
+  commit named in bundle.json, with pins.env (every revision the runtime is
+  built from) and middleware/bundle/build.sh (the build), which make the bundle
+  from it;
+- NVDA at the commit named in bundle.json (the tag in pins.env), unmodified:
+  https://github.com/nvaccess/nvda. The files under nvda-src/ are NVDA's own,
+  with their copyright notices as NVDA wrote them, and nvda-src/copying.txt
+  is NVDA's licence file, which also carries its two special exceptions;
+- the Python packages listed in pins.env (PYTHON_PACKAGES), each at the version
+  pinned there, from PyPI, and the interpreter below.
+
+3. The components
+-----------------
+
+NVDA's Python modules (nvda-src/)
+    GPL-2.0-or-later, with NVDA's two special exceptions. The licence text and
+    copyright notices are kept: nvda-src/copying.txt and the headers of the files.
+
+This repository's runtime, tables and tests (emu/, q1/, q2/, q3/, middleware/runtime/)
+    GPL-3.0-or-later (section 1). LICENSE.
+
+Tables derived from Chromium's Windows accessibility mapping (emu/tables.json)
+    BSD-3-Clause. The notice, from the LICENSE file of Chromium at the tag named
+    by pins.env CHROME, is reproduced in section 4.
+
+CLDR names (the pinned nvaccess/nvda-cldr locale/en/cldr.dic, put over NVDA's file)
+    The names are Unicode CLDR data, under the Unicode License v3. nvaccess/nvda-cldr
+    carries no licence file at the pinned revision, so the notice of the Unicode CLDR
+    repository is reproduced in section 5.
+
+CPython, from python-build-standalone (python/)
+    The Python Software Foundation licence: python/lib/python3.13/LICENSE.txt.
+    The interpreter is an unmodified python-build-standalone build, which says its
+    builds are governed by varied software use licences (the libraries it is built
+    against); it builds against libedit and disables _gdbm to avoid GPL readline and
+    GDBM. The licence texts of those libraries are in the python-build-standalone
+    release named in pins.env (PBS_RELEASE), https://github.com/astral-sh/python-build-standalone,
+    and not in this bundle.
+
+The Python packages NVDA imports (python/lib/python3.13/site-packages/)
+    Each under its own licence. The licence files each package ships are kept with it,
+    in its dist-info directory.
+
+4. Chromium
+-----------
+
+Copyright 2015 The Chromium Authors
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+   * Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.
+   * Neither the name of Google LLC nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+5. Unicode CLDR
+---------------
+
+All other content in this repo is released under UNICODE LICENSE V3
+
+NOTICE TO USER: Carefully read the following legal agreement. BY
+DOWNLOADING, INSTALLING, COPYING OR OTHERWISE USING DATA FILES, AND/OR
+SOFTWARE, YOU UNEQUIVOCALLY ACCEPT, AND AGREE TO BE BOUND BY, ALL OF THE
+TERMS AND CONDITIONS OF THIS AGREEMENT. IF YOU DO NOT AGREE, DO NOT
+DOWNLOAD, INSTALL, COPY, DISTRIBUTE OR USE THE DATA FILES OR SOFTWARE.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of data files and any associated documentation (the "Data Files") or
+software and any associated documentation (the "Software") to deal in the
+Data Files or Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, and/or sell
+copies of the Data Files or Software, and to permit persons to whom the
+Data Files or Software are furnished to do so, provided that either (a)
+this copyright and permission notice appear with all copies of the Data
+Files or Software, or (b) this copyright and permission notice appear in
+associated Documentation.
+
+THE DATA FILES AND SOFTWARE ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF
+THIRD PARTY RIGHTS.
+
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS INCLUDED IN THIS NOTICE
+BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL INDIRECT OR CONSEQUENTIAL DAMAGES,
+OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,
+ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THE DATA
+FILES OR SOFTWARE.
+
+Except as contained in this notice, the name of a copyright holder shall
+not be used in advertising or otherwise to promote the sale, use or other
+dealings in these Data Files or Software without prior written
+authorization of the copyright holder.
+
+SPDX-License-Identifier: Unicode-3.0

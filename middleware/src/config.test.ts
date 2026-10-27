@@ -28,7 +28,7 @@ const run = (bundle: string) => JSON.stringify({ bundle, dir: "/tmp/x", ports: [
 
 test("without a bundle the one line says what to run", () => {
   withEnv({ ANNOUNCEMENT_EMULATOR_BUNDLE: join(tmpdir(), "no-such-bundle") }, () => {
-    assert.throws(() => withAnnouncements({}), /npx announcement-emulator install/);
+    assert.throws(() => withAnnouncements({}), /npx foresay install/);
   });
 });
 

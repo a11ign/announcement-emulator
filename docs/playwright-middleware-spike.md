@@ -1,5 +1,7 @@
 # Playwright middleware spike (row A11-208)
 
+> **Named for what it was when it was written.** The package this page calls `@a11ign/announcement-emulator` (command `announcement-emulator`) has been `@a11ign/foresay` (command `foresay`) since A11-353; see `docs/release-decisions.md`, "Decisions". The commands below are the record of what was run, and are not copied as they stand.
+
 **Status: a spike, finished. Recommendation: go, conditionally (the last section); the chairman decides.**
 
 Everything on this page is **predicted NVDA speech**: what the announcement emulator says NVDA would say. It is advisory, it is not a reading of NVDA, and it is never evidence (a11ign ADR 0047, Decision 2).
@@ -11,7 +13,7 @@ Nothing here fills an a11ign evidence field, and nothing is published: the packa
 `tree` option and no fallback, and the middleware runs in whichever browser a launch gives (Playwright's headless shell included, with no `channel` added). This document is the spike's record: where a sentence below says the extension is the default on Linux and
 Windows, that macOS gets the DevTools port as a fallback, or that the browser is the bundle's Chrome, it says what the spike did, and it is marked where it is overtaken. A setting of `ANNOUNCEMENT_EMULATOR_TREE` is ignored with one printed line. The extension's own
 files that the spike emulator uses (`emu/ext2/bg.js`, `tree.js`, `manifest.json`, `q1/`) stay; its recordings stay as the test data the DevTools conversion is held to (`middleware/runtime/fixtures/structure/`). The measured figure of the DevTools tree alone, under a rule frozen
-before its captures, is this ticket's last step.
+before its captures, is the section "The tree source, decided and measured (A11-229)" (step 4).
 
 **The questions, answered (details in the sections):**
 
@@ -24,6 +26,7 @@ before its captures, is this ticket's last step.
 - **Q7: yes on a plain `ubuntu-latest` runner with no container** (the sample suite passes after `npm i -D` and `npx announcement-emulator install`; 298 MB bundle). **macOS: the extension's source produced 0 predictions** (`chrome.automation.getDesktop` answers "getDesktop is unsupported by this platform" there, and `chrome.automation.getTree` is not in Chrome 155's API at all), **and the DevTools source, which macOS took by default (every platform takes it now, A11-229), predicts: all 13 tests of the sample suite had their page load predicted, 17 sweeps and the 4 flags** (CI run 40125495459). The bundle is built twice on the linux-x64 runner, byte for byte the same (sha256 96ea8aaae874a1d8…; not checked on macOS or on two runners).
 - **The tree sources, measured against the fleet (A11-229): the extension buys 0.7 points over the DevTools port on Linux (82.1% against 81.4% of 1,138 units, inside the frozen 1.0-point margin), so the recommendation by the rule is to drop it; DevTools on macOS 83.6% of 1,026. The chairman reads it** (the section after Q7).
 - **The structure safeguard (A11-229, step 2): on table- and list-heavy pages the frozen gate says STOP AND REPORT (the extension leads by +1.8 points on the table pages, 6 units from 342), while DevTools leads by 4.9 points over all the units both read and the extension read 6 of 8 pages; the fields behind the table lead are `clickable`, a typed value and a link's description words. The chairman reads it** (the section after the tree sources).
+- **The DevTools tree source alone, measured against the fleet on 19 pages under a rule frozen first (A11-229, step 4): 67.3% of 5,100 units on Linux, 68.9% of 4,988 on macOS (80.1% and 83.3% on the 14 pages of steps 1 and 2; 92.0% on the four table pages; the five large pages, which had no prediction, 42.9%). Recommendation by the numbers: DevTools only, as the chairman decided. The chairman reads it** (the section after the structure safeguard).
 - **Recommendation: go, conditionally, as an advisory tool whose first release prints its measured rate (about 80% on this sample); the chairman decides. What a real version needs is the last section.**
 
 ## Q1. One line of setup, no test changes
@@ -463,6 +466,90 @@ The channels are step 1's. The walk presses Tab, so a grid or tree that moves fo
 
 By the gate, step 3 (remove the extension) does not go on until the chairman reads this. The numbers beside the gate: DevTools is ahead overall and on lists by far more than the margin, the table-page lead of the extension is 6 units on one template (p = 0.21), and the fields that make it up are three that DevTools can work on without the extension: why `isClickable` marks a landmark, a check box and a grouping that the fleet does not call clickable (6 units); the typed digits in a field's string (1); and a link's and a header cell's description words (4). **My recommendation, which the chairman may overrule: take the stop as a work list rather than as a veto: fix those three and the header text in DevTools, re-run this measurement under a fresh freeze, and remove the extension once the table pages are within the margin.** If the chairman prefers to remove the extension now, step 3 carries the same work list. Either way the cost finding applies to DevTools alone.
 
+## The tree source, decided and measured (A11-229)
+
+**The DevTools port is the only tree source, as the chairman decided on 2026-10-25. Its measured agreement with the fleet, under a rule frozen before the captures, on 19 pages (the 14 of steps 1 and 2 and five large pages), every channel: 67.3% of 5,100 units on Linux, 68.9% of 4,988 on macOS and 68.3% of 4,988 on an `ubuntu-latest` control (the fleet against itself: 96.2%). On the 14 pages of steps 1 and 2 alone: 80.1% (Linux), 83.3% (macOS), 82.0% (control). The five large pages (705 to 1,770 tab stops, 42.9% of 1,753 units) produced no prediction before this ticket and account for the difference; the four table pages are 92.0% of 1,064 units, the four list pages 69.3% of 1,150. The recommendation by the numbers is the chairman's decision: DevTools only, no second source and no margin.**
+(*measured* 2026-10-27: Linux 09:26 to 09:55 UTC, macOS and the control from 10:30, the fleet 10:32 to 10:59; everything under `middleware/results/devtools-source/`; **not held out**; an oracle of the same milestone as the browser, not the same build.)
+
+### What was done, and in what order
+
+The chairman's decision of 2026-10-25 turned step 2's stop into a work list (`clickable`, a field's typed value, the description words, the `row N` / `column N` header words, and DevTools's cost), to be fixed in DevTools first, the extension removed, and DevTools measured again under a fresh freeze. Four pull requests: #30 filled the fields from the protocol, held to the extension's tree recorded for three small pages (`middleware/runtime/fixtures/structure/`); #32 reads the tree again at the cost of what changed and gives the five large pages a prediction; #34 removed the extension, the pick and the `tree` option; this one measures the code that ships. The measurement comes last so that the figure is the figure of the runtime a team gets, which the freeze names.
+
+### How it was measured
+
+`rule.md` was written, and `freeze.json` named its objects (the runtime as step 3 and A11-234 left it), before the captures it reads: `make_freeze.py check middleware/results/devtools-source/freeze.json --head febe50f --fleet <records>` says nothing has moved and every fleet capture is dated after the freeze. The rule adopts the Q5 rule, the corpus walk, `measure.py` and the headline of steps 1 and 2 unchanged (every channel, stable or not, the first fleet capture against the first passive run, `--include-unstable --tolerate-census`), on **19 pages**: step 1's six (`corpus`), step 2's eight (four table, four list) and the five large pages that step 2's rejected list left out for their size (`large`). It was frozen twice (`rule.md`, "The first freeze, and why it was replaced"): the first fleet job took captures on a box whose Windows build differs, so no record was written, and the macOS workflow's mirror was laid out wrongly; nothing of either had been read and the runtime is the same git object in both freezes.
+
+The fleet job is `fj-20261027T102953Z-0d28ec`: 38 captures on twelve boxes that agree on every version (`boxes.md`). Two runs of each of the three projects on this host (Playwright 1.64.1, Chromium 156.0.8078.4), and the same on a `macos-latest` and an `ubuntu-latest` runner of one workflow run (`devtools-source-agreement.yml`, run 40488938550; its artifact was downloaded and deleted). Windows is not measured.
+
+### The readings
+
+| reading | all 19 pages | the 14 pages of steps 1 and 2 | the second reading, all 19 | the fleet against itself (second) |
+|---|---|---|---|---|
+| `devtools-linux` (this host) | **3,433 of 5,100 = 67.3%** | 2,681 of 3,347 = 80.1% | 3,325 of 4,901 = 67.8% | 96.2% (99.0%) |
+| `devtools-macos` | **3,439 of 4,988 = 68.9%** | 2,694 of 3,235 = 83.3% | 3,249 of 4,789 = 67.8% | 96.2% (99.0%) |
+| `devtools-ubuntu-ci` (control) | 3,407 of 4,988 = 68.3% | 2,652 of 3,235 = 82.0% | 3,253 of 4,789 = 67.9% | 96.2% (99.0%) |
+
+macOS is 1.6 points above this host and 0.6 above the control on the 19 pages. 51 of macOS's 1,549 misses are given to macOS (`macos: node` 24, `macos: name` 21, 6 others) and 21 to the runner or the network; the rest are the Linux readings' own misses. The second reading is within 0.5 points of the first on Linux and 1.1 on macOS.
+
+**By group and class** (Linux, macOS, control):
+
+| | Linux | macOS | control |
+|---|---|---|---|
+| step 1's six pages (`corpus`) | 905 of 1,133 = 79.9% | 903 of 1,021 = 88.4% | 875 of 1,021 = 85.7% |
+| step 2's eight pages | 1,776 of 2,214 = 80.2% | 1,791 of 2,214 = 80.9% | 1,777 of 2,214 = 80.3% |
+| of which the four table pages | 979 of 1,064 = **92.0%** | 978 of 1,064 = 91.9% | 977 of 1,064 = 91.8% |
+| of which the four list pages | 797 of 1,150 = 69.3% | 813 of 1,150 = 70.7% | 800 of 1,150 = 69.6% |
+| the five large pages | 752 of 1,753 = 42.9% | 745 of 1,753 = 42.5% | 755 of 1,753 = 43.1% |
+
+On the six pages, macOS and the control compare fewer units than Linux (1,021 against 1,133): the `tfl.gov.uk/plan-a-journey/` test timed out at 180 s in both Linux runs (the one flag of those runs) and not on CI. The gap between 79.9% and 88.4% on that group is not explained further here.
+
+**By channel** (Linux; the fleet against itself in brackets): title 18 of 19; stops 935 of 1,063 = 88.0% (92.5%); field 4 of 7; typed 24 of 42 = 57.1% (100%); headings 163 of 236 = 69.1% (95.3%); landmarks 191 of 216 = 88.4%; formFields 180 of 222 = 81.1%; graphics 149 of 182 = 81.9%; **links 1,512 of 2,812 = 53.8% (97.6%)**; lists 233 of 274 = 85.0%; frames 24 of 27. Links are 55% of the units and 1,300 of the 1,667 misses, 951 of them on the large pages. The three readings side by side, by channel and by the ten commonest shapes, with the causes by shape, are in `comparison.txt`; `NAME + ROLE + NAME` (a link and its following name) is 21.2% of 685 units.
+
+### The misses, every one attributed
+
+Linux has 1,667 misses, macOS 1,549 and the control 1,581. Each has one cause of the closed list, assigned by `compare_devtools.py` in the rule's order; **`unexplained` is 0 in all three** (`figure-<reading>/misses.json`). Linux:
+
+- `conversion: node` 719: nothing was predicted for the unit. **633 are on the five large pages (614 of them links) and 79 on the six pages of step 1.** Rule 8 gives such a miss to the DevTools source's account and says that this is not a finding that the tree is wrong: with one source nothing separates the tree's conversion from the walk's depth and the emulator. This measurement did not find which it is.
+- `emulator` 388: the extension, in an earlier window (step 1 or 2), predicted the same string for the same unit and missed it too. 238 are links on list pages and 44 are `NAME + ROLE + LEVEL` headings.
+- `conversion: name` 264 (214 of them links on large pages); 155 more `conversion:` misses name another field (`table index`, `set size`, `position in set`, `state`, `landmark`, `level`); `prompt` 55 (the image-description prompt), `page moved` 34, `history` 31, `events: focus` 11, `events: typed` 6, `quick test` 2, `language` 2.
+
+### The work list of the chairman's decision, before and after
+
+On the 14 pages of steps 1 and 2: units missed *before* (DevTools in steps 1 and 2) and *now*. This counts misses of a kind in two windows of public pages; it is not a proof of a cause (`compare_devtools.py` prints it so).
+
+| item | before | now | recovered |
+|---|---|---|---|
+| `clickable` (the token differs) | 12 | 0 | 12 |
+| `row N` / `column N` header words | 179 | 0 | 179 |
+| a field's typed value | 0 | 0 | 0 |
+| description words | 54 | 58 | −4 |
+
+The header words, which the extension's lead on the table pages and 163 of DevTools's misses on the pages it did not read were made of, are no longer misses (179 units); `clickable` is not either (12). **The description words are not recovered:** 58 units on the 14 pages have everything DevTools predicted in the fleet's string with some of the fleet's words missing, four more than before. The typed channel is 24 of 42 units (Linux): 12 are `emulator` misses (the extension missed the same strings in an earlier window), 6 are `events: typed`. Both are handed to A11-234 with the large pages.
+
+**The extension on the table pages.** Step 2 measured the extension at 323 of 342 units (94.4%) and DevTools at 317 (92.7%) over the units both read. DevTools now reads 979 of 1,064 (92.0%) of all the units of the four table pages, a larger denominator that includes the two pages the extension did not read. The extension no longer exists in the middleware, so its lead cannot be measured in this window: the comparison is not like for like, and `comparison.txt` labels it so.
+
+### Cost
+
+On this host, two runs each (seconds; `cost.json`, from `summarize_cost.py`):
+
+| project | wall | the runtime after the last test | `speechMs` (predictor) | tree reads: count (full / incremental), total |
+|---|---|---|---|---|
+| `corpus` (6 pages) | 185, 188 | 0.3, 0.4 | 29, 51 | 157 (126 / 31), 137 (95 / 42): 114 s, 139 s |
+| `structure` (8 pages) | 116, 115 | 91.5, 91.5 | 89, 97 | 21 (20 / 1), 22 (20 / 2): 17.1 s, 14.4 s |
+| `large` (5 pages) | 571, 541 | 545, 514 | 491, 445 | 13 (13 / 0), 12 (12 / 0): 31.4 s, 32.8 s |
+
+Beside it: the first measurement's `structure` project took 415 to 450 s with DevTools and 113 to 130 s with the extension; step 2's runs of it took 408 s before and 86 s after the emulator's quadratic search was fixed (`results/devtools-source/cost/`). **It takes 115 s here, and all five large pages now have a prediction (a run that ends).** On the large project the runtime finishes 514 to 545 s after the last test, and 445 to 491 s of the 541 to 571 s are the predictor's (`speechMs`), against 31 to 33 s of tree reads: what is left of the cost is the emulator's per-event rebuild, common to any tree source, handed to A11-234. The same projects on the CI runners took 33 to 43 s (`corpus`), 66 to 84 s (`structure`) and 405 to 605 s (`large`). The `corpus` reads of this host (114 to 139 s) include the `tfl.gov.uk` test that timed out; this was not separated. Step 2's target (tree reads of `structure` at least halved) is not re-tested: its after-figure was 10.8 s over 18 reads, this window's is 14.4 to 17.1 s over 21 and 22 reads on pages that moved.
+
+### What this measurement does not see
+
+The walk presses Tab and stops at 150; the fleet's capture takes up to 600 steps; the large pages have 705 to 1,770 tab stops, so what is compared there is the first part of each page, and the `links` channel of those pages is the largest block of misses (whether the 633 `conversion: node` misses on them are the tree's, the walk's or the emulator's was not separated). Change events and live regions are not in the corpus walk. Windows was not measured. **The 19 pages are not held out**: the emulator was fitted to the kinds of page the corpus holds, and step 1's six pages are the ones it was fitted against; the held-out figure is A11-234's (`middleware/results/agreement-round-1/`). The Linux readings were taken 37 to 66 minutes before the fleet's captures and the macOS and control ones inside the window, all within the two hours the rule allows. The pages are public and move (`page moved`: 34 misses). A test that fails in a run is still a reading: the `structure` project has two failing tests in each run, the `large` project one and the `corpus` project one (`tfl.gov.uk`, timed out).
+
+### What is published, and what is recommended
+
+`supported-versions.json` is **not** written by this measurement, as `rule.md` fixes: the figure it lists for Chromium 156.0.8078.4 is A11-234's held-out one, and a figure over pages the emulator was fitted against, measured in the same window, would replace it with a better-looking and less honest one. A11-234's per-release re-measure moves the listed figure.
+
+**Recommendation by the numbers: DevTools is the only tree source, as the chairman decided.** Linux and macOS agree to within 1.6 points (67.3% and 68.9% of the 19 pages, 80.1% and 83.3% of the 14); it needs no extension, no persistent context and no desktop tree; the fields that made the extension's lead on the table pages are filled (header words 179 units, `clickable` 12) and the table pages read 92.0%. What stays below the bar, handed to A11-234 with its attributed misses: the large pages (42.9%; 633 `conversion: node` misses), the list pages (69.3%; 238 link units the extension also missed in an earlier window), the description words (58 units), the typed channel (24 of 42), and the emulator's per-event rebuild, where the large pages' time goes. **The chairman reads this.**
+
 ## What a real version needs, and the recommendation
 
 **Go for building it properly, as an advisory tool with its measured rate printed first, if the chairman wants the product; the spike answers "can it be done the Playwright way" with yes and "how well" with "about four in five stops and lists, on a small sample, on one platform".** The decision is the chairman's.
@@ -577,4 +664,17 @@ PAGES=middleware/results/tree-source-structure/pages.json sh middleware/agreemen
 python3 middleware/agreement/compare_sources.py --work <work dir> --out middleware/results/tree-source-structure --classes middleware/results/tree-source-structure/pages.json --notes middleware/results/tree-source-structure/attribution-notes.json
 python3 middleware/agreement/fields_after_the_figure.py --work <work dir> --classes middleware/results/tree-source-structure/pages.json     # after the figure; --write-notes wrote attribution-notes.json
 python3 middleware/agreement/make_freeze.py check middleware/results/tree-source-structure/freeze.json --head 1cf8cd09f7 --fleet <fleet dir>
+# the DevTools tree source alone (A11-229, step 4): freeze, one fleet job, two runs of each project on this host, the workflow for macOS and the control, measure, compare
+python3 middleware/agreement/make_devtools_pages.py middleware/results/devtools-source/pages.json     # once; the three groups
+python3 middleware/agreement/make_freeze.py name middleware/results/devtools-source/freeze.json --also middleware/results/devtools-source/rule.md --also middleware/results/devtools-source/pages.json \
+  --also middleware/agreement/compare_devtools.py --also middleware/agreement/run_devtools_readings.sh --also middleware/agreement/merge_reports.py --also middleware/agreement/make_devtools_pages.py --also middleware/agreement/compare_sources.py \
+  --also middleware/agreement/fields_after_the_figure.py --also middleware/agreement/summarize_cost.py --also middleware/agreement/summarize_readings.py --also middleware/results/tree-source --also middleware/results/tree-source-structure \
+  --also .github/workflows/devtools-source-agreement.yml   # BEFORE any capture; the list is the objects freeze.json names
+python3 middleware/agreement/capture_fleet.py middleware/results/devtools-source/pages.json <fleet dir> --boxes ready --label A11-229      # a fleet job; then: capture_fleet.py collect <fleet dir> <job>
+sh middleware/agreement/run_devtools_readings.sh <project with the package installed> <runs dir>      # then commit a new stamp in middleware/results/devtools-source/ci-run.txt: devtools-source-agreement.yml runs macOS and the control
+python3 middleware/agreement/merge_reports.py <runs dir>/devtools-1 <work dir>/merged/linux-1.json     # for each run; then:
+PAGES=middleware/results/devtools-source/pages.json sh middleware/agreement/measure_readings.sh <fleet dir> <work dir> devtools-linux=<r1>,<r2> devtools-macos=<r1>,<r2> devtools-ubuntu-ci=<r1>,<r2>
+python3 middleware/agreement/summarize_cost.py <work dir>/cost.json corpus-1=<run dir> structure-1=<run dir> large-1=<run dir> corpus-2=<run dir> structure-2=<run dir> large-2=<run dir>
+python3 middleware/agreement/compare_devtools.py --work <work dir> --pages middleware/results/devtools-source/pages.json --out middleware/results/devtools-source --cost <work dir>/cost.json
+python3 middleware/agreement/make_freeze.py check middleware/results/devtools-source/freeze.json --head febe50f --fleet <fleet dir>
 ```

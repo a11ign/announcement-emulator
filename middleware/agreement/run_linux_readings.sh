@@ -3,7 +3,7 @@
 #
 #     middleware/agreement/run_linux_readings.sh <project> <out> [<playwright project: corpus>]
 #
-# `<project>` is a project with @playwright/test, the package and the sample suite, after `npx announcement-emulator install` (as .github/workflows/tree-source-agreement.yml makes one). Each run writes
+# `<project>` is a project with @playwright/test, the package and the sample suite, after `npx foresay install` (as .github/workflows/tree-source-agreement.yml makes one). Each run writes
 # <out>/<source>-<n>/{report.json,run.json,times.json}; a run that exists is not run again. The source is forced explicitly for every run, never left to the platform's default.
 set -u
 PROJECT="${1:?the project directory}"

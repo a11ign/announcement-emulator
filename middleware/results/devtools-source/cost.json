@@ -1,0 +1,237 @@
+{
+ "corpus-1": {
+  "wallMs": 185309,
+  "drainMs": 252,
+  "speechMs": 29106,
+  "snapshots": 157,
+  "keys": 466,
+  "focusEvents": 417,
+  "unresolvedFocus": 1,
+  "tests": 6,
+  "reads": {
+   "count": 157,
+   "full": 126,
+   "incremental": 31,
+   "patched": 31,
+   "totalMs": 113961,
+   "fullMs": 109628,
+   "incrementalMs": 4334,
+   "fetchMs": 36311,
+   "convertMs": 51539,
+   "meanFullMs": 870.1,
+   "meanIncrementalMs": 139.8,
+   "largePages": {
+    "fullMs": 1125.1,
+    "incrementalMs": 0,
+    "fullReads": 4,
+    "incrementalReads": 0,
+    "incrementalOverFull": null
+   },
+   "whyFull": {
+    "layout": 81,
+    "a page that keeps changing": 18,
+    "mutation": 9,
+    "loadComplete": 6,
+    "a page that was read without the probe": 6,
+    "frames": 4,
+    "settling": 2
+   }
+  }
+ },
+ "structure-1": {
+  "wallMs": 115581,
+  "drainMs": 91483,
+  "speechMs": 88837,
+  "snapshots": 21,
+  "keys": 937,
+  "focusEvents": 890,
+  "unresolvedFocus": 21,
+  "tests": 8,
+  "reads": {
+   "count": 21,
+   "full": 20,
+   "incremental": 1,
+   "patched": 1,
+   "totalMs": 17132,
+   "fullMs": 16635,
+   "incrementalMs": 497,
+   "fetchMs": 9649,
+   "convertMs": 4726,
+   "meanFullMs": 831.8,
+   "meanIncrementalMs": 496.9,
+   "largePages": {
+    "fullMs": 788.9,
+    "incrementalMs": 496.9,
+    "fullReads": 17,
+    "incrementalReads": 1,
+    "incrementalOverFull": 0.63
+   },
+   "whyFull": {
+    "settling": 6,
+    "loadComplete": 6,
+    "first": 4,
+    "frames": 1,
+    "mutation": 1,
+    "a frame changed": 1,
+    "document": 1
+   }
+  }
+ },
+ "large-1": {
+  "wallMs": 570649,
+  "drainMs": 545039,
+  "speechMs": 491360,
+  "snapshots": 13,
+  "keys": 766,
+  "focusEvents": 751,
+  "unresolvedFocus": 8,
+  "tests": 5,
+  "reads": {
+   "count": 13,
+   "full": 13,
+   "incremental": 0,
+   "patched": 0,
+   "totalMs": 31385,
+   "fullMs": 31385,
+   "incrementalMs": 0,
+   "fetchMs": 12099,
+   "convertMs": 15587,
+   "meanFullMs": 2414.2,
+   "meanIncrementalMs": 0,
+   "largePages": {
+    "fullMs": 2414.2,
+    "incrementalMs": 0,
+    "fullReads": 13,
+    "incrementalReads": 0,
+    "incrementalOverFull": null
+   },
+   "whyFull": {
+    "a page that keeps changing": 3,
+    "settling": 3,
+    "document": 2,
+    "loadComplete": 2,
+    "first": 2,
+    "mutation": 1
+   }
+  }
+ },
+ "corpus-2": {
+  "wallMs": 188002,
+  "drainMs": 389,
+  "speechMs": 51134,
+  "snapshots": 136,
+  "keys": 469,
+  "focusEvents": 420,
+  "unresolvedFocus": 0,
+  "tests": 6,
+  "reads": {
+   "count": 137,
+   "full": 95,
+   "incremental": 42,
+   "patched": 42,
+   "totalMs": 139262,
+   "fullMs": 128766,
+   "incrementalMs": 10496,
+   "fetchMs": 44044,
+   "convertMs": 57501,
+   "meanFullMs": 1355.4,
+   "meanIncrementalMs": 249.9,
+   "largePages": {
+    "fullMs": 1825.9,
+    "incrementalMs": 0,
+    "fullReads": 5,
+    "incrementalReads": 0,
+    "incrementalOverFull": null
+   },
+   "whyFull": {
+    "layout": 73,
+    "loadComplete": 7,
+    "mutation": 4,
+    "settling": 4,
+    "first": 2,
+    "frames": 2,
+    "stale: the structure of the tree changed": 1,
+    "document": 1,
+    "a frame changed": 1
+   }
+  }
+ },
+ "structure-2": {
+  "wallMs": 114720,
+  "drainMs": 91494,
+  "speechMs": 96464,
+  "snapshots": 22,
+  "keys": 937,
+  "focusEvents": 890,
+  "unresolvedFocus": 26,
+  "tests": 8,
+  "reads": {
+   "count": 22,
+   "full": 20,
+   "incremental": 2,
+   "patched": 2,
+   "totalMs": 14372,
+   "fullMs": 12811,
+   "incrementalMs": 1561,
+   "fetchMs": 5709,
+   "convertMs": 5069,
+   "meanFullMs": 640.6,
+   "meanIncrementalMs": 780.7,
+   "largePages": {
+    "fullMs": 694.0,
+    "incrementalMs": 780.7,
+    "fullReads": 18,
+    "incrementalReads": 2,
+    "incrementalOverFull": 1.125
+   },
+   "whyFull": {
+    "loadComplete": 6,
+    "first": 5,
+    "settling": 4,
+    "mutation": 2,
+    "a page that was read without the probe": 1,
+    "a page that keeps changing": 1,
+    "a frame changed": 1
+   }
+  }
+ },
+ "large-2": {
+  "wallMs": 540894,
+  "drainMs": 514438,
+  "speechMs": 445436,
+  "snapshots": 12,
+  "keys": 766,
+  "focusEvents": 751,
+  "unresolvedFocus": 12,
+  "tests": 5,
+  "reads": {
+   "count": 12,
+   "full": 12,
+   "incremental": 0,
+   "patched": 0,
+   "totalMs": 32766,
+   "fullMs": 32766,
+   "incrementalMs": 0,
+   "fetchMs": 12954,
+   "convertMs": 16479,
+   "meanFullMs": 2730.5,
+   "meanIncrementalMs": 0,
+   "largePages": {
+    "fullMs": 2730.5,
+    "incrementalMs": 0,
+    "fullReads": 12,
+    "incrementalReads": 0,
+    "incrementalOverFull": null
+   },
+   "whyFull": {
+    "first": 2,
+    "loadComplete": 2,
+    "a page that keeps changing": 2,
+    "settling": 2,
+    "document": 2,
+    "frames": 1,
+    "mutation": 1
+   }
+  }
+ }
+}

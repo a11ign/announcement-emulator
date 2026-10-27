@@ -1,0 +1,113 @@
+{
+ "rule": "middleware/results/devtools-source/rule.md",
+ "sample": [
+  {
+   "url": "https://check-for-flooding.service.gov.uk/river-and-sea-levels",
+   "group": "step 1",
+   "class": "corpus"
+  },
+  {
+   "url": "https://find-and-update.company-information.service.gov.uk/company/00000006",
+   "group": "step 1",
+   "class": "corpus"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/tabs/",
+   "group": "step 1",
+   "class": "corpus"
+  },
+  {
+   "url": "https://tfl.gov.uk/plan-a-journey/",
+   "group": "step 1",
+   "class": "corpus"
+  },
+  {
+   "url": "https://service-manual.nhs.uk/design-system/components/table",
+   "group": "step 1",
+   "class": "corpus"
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/date-input/",
+   "group": "step 1",
+   "class": "corpus"
+  },
+  {
+   "url": "https://www.w3.org/WAI/ARIA/apg/patterns/listbox/examples/listbox-scrollable/",
+   "group": "step 2",
+   "class": "list",
+   "tabStops": 59
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/Outline_of_computer_science",
+   "group": "step 2",
+   "class": "list",
+   "tabStops": 409
+  },
+  {
+   "url": "https://www.legislation.gov.uk/changes/affected/ukpga/1998/42",
+   "group": "step 2",
+   "class": "table",
+   "tabStops": 284
+  },
+  {
+   "url": "https://www.legislation.gov.uk/ukpga/1998/42/contents",
+   "group": "step 2",
+   "class": "list",
+   "tabStops": 125
+  },
+  {
+   "url": "https://find-and-update.company-information.service.gov.uk/company/00000086/filing-history",
+   "group": "step 2",
+   "class": "table",
+   "tabStops": 71
+  },
+  {
+   "url": "https://design-system.service.gov.uk/components/table/",
+   "group": "step 2",
+   "class": "list",
+   "tabStops": 100
+  },
+  {
+   "url": "https://find-and-update.company-information.service.gov.uk/company/00000006/filing-history",
+   "group": "step 2",
+   "class": "table",
+   "tabStops": 68
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/Beaufort_scale",
+   "group": "step 2",
+   "class": "table",
+   "tabStops": 293
+  },
+  {
+   "url": "https://www.legislation.gov.uk/ukpga/2010/15/contents",
+   "group": "large",
+   "class": "large",
+   "tabStops": 705
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines",
+   "group": "large",
+   "class": "large",
+   "tabStops": 963
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/List_of_largest_cities",
+   "group": "large",
+   "class": "large",
+   "tabStops": 1383
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population",
+   "group": "large",
+   "class": "large",
+   "tabStops": 1753
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/List_of_sovereign_states",
+   "group": "large",
+   "class": "large",
+   "tabStops": 1770
+  }
+ ]
+}

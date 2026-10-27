@@ -210,3 +210,57 @@ python3 middleware/agreement/make_freeze.py check middleware/results/tree-source
 ```
 
 This is step 3 of 4; the ticket stays open for step 4 (re-measure under a fresh freeze).
+
+## Under the plan of 2026-10-26: step 4 of 4, the DevTools tree source measured against the fleet under a fresh freeze
+
+The measurement of the source that ships: 19 pages (step 1's six, step 2's eight, five large pages), a rule frozen before the captures (`middleware/results/devtools-source/rule.md`, `freeze.json`), one fleet job of 38 captures on twelve boxes that agree on every version,
+two runs of each project on this host, and a `macos-latest` and an `ubuntu-latest` reading of one workflow run. The tables, every miss with one cause, the work list, the cost and the recommendation (DevTools only, as the chairman decided) are in
+`middleware/results/devtools-source/` and in the spike doc's section "The tree source, decided and measured (A11-229)". `supported-versions.json` is not written, as the frozen rule fixes. No runtime or package code changes in this step.
+
+Acceptance (needs no network, no fleet and no browser; the fleet's records and the passive reports are third-party pages and are not committed):
+
+```bash
+set -eu
+D=middleware/results/devtools-source
+# the rule was frozen before any capture: nothing the figure is made by has moved since the freeze, and the fleet job's captures are dated after it
+python3 middleware/agreement/make_freeze.py check $D/freeze.json
+python3 - <<'PY'
+import json
+freeze = json.load(open('middleware/results/devtools-source/freeze.json'))
+readings = json.load(open('middleware/results/devtools-source/fleet-readings.json'))
+assert len(readings) == 38 and all(r['status'] == 200 for r in readings)
+assert all(r['capturedAt'] > freeze['namedAt'].replace('Z', '.000Z') for r in readings), 'a capture is older than the freeze'
+pages = json.load(open('middleware/results/devtools-source/pages.json'))['sample']
+assert len(pages) == 19 and sorted({p['class'] for p in pages}) == ['corpus', 'large', 'list', 'table']
+runs = json.load(open('middleware/results/devtools-source/passive-runs.json'))
+assert len(runs) == 18 and all(r['chromium'] == ['156.0.8078.4'] for r in runs.values())
+PY
+# a figure for each reading, and every miss has one cause from the rule's closed list; an unexplained miss has its reason
+python3 - <<'PY'
+import json, sys
+sys.path.insert(0, 'middleware/agreement')
+import compare_devtools as cd
+for reading in ('devtools-linux', 'devtools-macos', 'devtools-ubuntu-ci'):
+    d = json.load(open(f'middleware/results/devtools-source/figure-{reading}/misses.json'))
+    assert d['misses'], reading
+    for m in d['misses']:
+        assert cd.is_cause(m['cause']), (reading, m['cause'])
+        assert m['cause'] != 'unexplained' or m['reason'], (reading, m)
+    open(f'middleware/results/devtools-source/figure-{reading}/agreement.txt').read().index('agreement by shape')
+c = json.load(open('middleware/results/devtools-source/comparison.json'))
+r = c['readings']
+assert (r['devtools-linux']['agreed'], r['devtools-linux']['units']) == (3433, 5100)
+assert (r['devtools-macos']['agreed'], r['devtools-macos']['units']) == (3439, 4988)
+assert (c['byClass']['devtools-linux']['table']['agreed'], c['byClass']['devtools-linux']['table']['units']) == (979, 1064)
+doc = open('docs/playwright-middleware-spike.md').read()
+assert '## The tree source, decided and measured (A11-229)' in doc
+assert '**3,433 of 5,100 = 67.3%**' in doc and '**Recommendation by the numbers: DevTools is the only tree source, as the chairman decided.**' in doc
+PY
+# the earlier freezes still hold at the commit each was named at
+python3 middleware/agreement/make_freeze.py check middleware/results/tree-source/freeze.json --head bcec5908e7
+python3 middleware/agreement/make_freeze.py check middleware/results/tree-source-structure/freeze.json --head 1cf8cd09f7
+# the tests of the measurement
+python3 -m unittest discover -s middleware/agreement -t middleware/agreement
+```
+
+This is step 4 of 4 and completes the ticket; the chairman reads the recommendation after the merge.
