@@ -94,79 +94,45 @@ class Between(unittest.TestCase):
 
 class FillList(unittest.TestCase):
     def test_each_build_gets_its_figures_the_newest_first_and_the_control_is_never_listed(self):
-        figures = {OLD: {'devtools-linux': (80, 100, f'middleware/results/playwright-versions/{OLD}/devtools-linux/')},
+        figures = {OLD: {'extension-linux': (80, 100, f'middleware/results/playwright-versions/{OLD}/extension-linux/')},
                    NEW: {'extension-linux': (86, 100, 'p/ext/'), 'devtools-linux': (84, 100, 'p/dev/'), 'devtools-macos': (1, 3, 'p/mac/'), 'devtools-ubuntu-ci': (99, 100, 'p/ci/')}}
         listing = cb.fill_list({'builds': []}, figures, {NEW: '2026-10-25', OLD: '2026-10-25'}, {NEW: ['1.64.0', '1.64.1'], OLD: ['1.63.0']})
         self.assertEqual([b['chromium'] for b in listing['builds']], [NEW, OLD])
         self.assertEqual(listing['builds'][0]['playwright'], ['1.64.0', '1.64.1'])
-        self.assertEqual(sorted(listing['builds'][0]['measured']), ['devtools-linux', 'devtools-macos'])      # the extension, which A11-229 removed, is not listed even where a reading of it is given
-        self.assertEqual(listing['builds'][0]['measured']['devtools-linux'], {'agreement': 0.84, 'units': 100, 'date': '2026-10-25', 'figure': 'p/dev/'})
+        self.assertEqual(sorted(listing['builds'][0]['measured']), ['devtools-linux', 'devtools-macos', 'extension-linux'])
+        self.assertEqual(listing['builds'][0]['measured']['extension-linux'], {'agreement': 0.86, 'units': 100, 'date': '2026-10-25', 'figure': 'p/ext/'})
         self.assertEqual(listing['builds'][0]['measured']['devtools-macos']['agreement'], 0.333)
-        self.assertEqual(cb.fill_list({'builds': []}, {NEW: {'devtools-linux': (871, 1072, 'p/')}}, {NEW: 'd'}, {NEW: ['1']})['builds'][0]['measured']['devtools-linux']['agreement'], 0.812)      # 81.25%: agreement.txt prints 81.2
+        self.assertEqual(cb.fill_list({'builds': []}, {NEW: {'extension-linux': (871, 1072, 'p/')}}, {NEW: 'd'}, {NEW: ['1']})['builds'][0]['measured']['extension-linux']['agreement'], 0.812)      # 81.25%: agreement.txt prints 81.2
 
     def test_a_build_already_listed_is_replaced_and_one_not_measured_now_is_kept(self):
         before = {'builds': [{'chromium': NEW, 'playwright': ['1.64.1'], 'measured': {}}, {'chromium': '150.0.1.1', 'playwright': ['1.60.0'], 'measured': {}}]}
-        listing = cb.fill_list(before, {NEW: {'devtools-linux': (1, 2, 'p/')}}, {NEW: '2026-10-25'}, {NEW: ['1.64.1']})
+        listing = cb.fill_list(before, {NEW: {'extension-linux': (1, 2, 'p/')}}, {NEW: '2026-10-25'}, {NEW: ['1.64.1']})
         self.assertEqual([b['chromium'] for b in listing['builds']], [NEW, '150.0.1.1'])
-        self.assertEqual(listing['builds'][0]['measured']['devtools-linux']['agreement'], 0.5)
-
-
-def write_work(work, builds, second):
-    rows = lambda r: {'status': r.status, 'rows': [dict(x) for x in [*r.main.values(), *r.fleet.values()]]}      # noqa: E731
-    for build in builds:
-        for group in (builds, second):
-            for name, r in group[build].items():
-                d = os.path.join(work, build, name + ('-second' if group is second else '')); os.makedirs(d)
-                with open(os.path.join(d, 'agreement.json'), 'w') as f: json.dump(rows(r), f)
-                with open(os.path.join(d, 'agreement.txt'), 'w') as f: f.write('all channels: made up\n')
-
-
-def run_main(work, out):
-    listing = os.path.join(out, 'supported-versions.json')
-    with open(listing, 'w') as f: json.dump({'builds': []}, f)
-    code = cb.main(['--work', work, '--out', out, '--list', listing, '--dates', f'{NEW}=2026-10-25', f'{OLD}=2026-10-25', '--playwright', f'{NEW}=1.64.1', f'{OLD}=1.63.0'])
-    with open(listing) as f: return code, json.load(f)
+        self.assertEqual(listing['builds'][0]['measured']['extension-linux']['agreement'], 0.5)
 
 
 class Main(unittest.TestCase):
     def test_the_figures_the_list_and_the_comparison_are_written(self):
-        """A work directory made while the extension was a source still has its reading: it is written beside the others and compared, and the list holds the DevTools figures only."""
         with tempfile.TemporaryDirectory() as work, tempfile.TemporaryDirectory() as out:
             builds, second = pair([('links', 0, 'a', 'a'), ('links', 1, 'b', 'x')], [('links', 0, 'a', 'a'), ('links', 1, 'b', 'b')])
-            write_work(work, builds, second)
-            code, got = run_main(work, out)
-            self.assertEqual(code, 0)
+            rows = lambda r: {'status': r.status, 'rows': [dict(x) for x in [*r.main.values(), *r.fleet.values()]]}      # noqa: E731
+            for build in builds:
+                for group in (builds, second):
+                    for name, r in group[build].items():
+                        d = os.path.join(work, build, name + ('-second' if group is second else '')); os.makedirs(d)
+                        with open(os.path.join(d, 'agreement.json'), 'w') as f: json.dump(rows(r), f)
+                        with open(os.path.join(d, 'agreement.txt'), 'w') as f: f.write('all channels: made up\n')
+            listing = os.path.join(out, 'supported-versions.json')
+            with open(listing, 'w') as f: json.dump({'builds': []}, f)
+            self.assertEqual(cb.main(['--work', work, '--out', out, '--list', listing, '--dates', f'{NEW}=2026-10-25', f'{OLD}=2026-10-25', '--playwright', f'{NEW}=1.64.1', f'{OLD}=1.63.0']), 0)
             for build in (NEW, OLD):
                 for key in ('extension-linux', 'devtools-linux'):
                     self.assertTrue(os.path.exists(os.path.join(out, build, key, 'misses.json')))
                     self.assertTrue(os.path.exists(os.path.join(out, build, key, 'agreement.txt')))
-            self.assertEqual(got['builds'][0]['measured']['devtools-linux']['agreement'], 0.5)
-            self.assertEqual(got['builds'][1]['measured']['devtools-linux']['agreement'], 1.0)
-            self.assertTrue(all('extension-linux' not in b['measured'] for b in got['builds']))
+            with open(listing) as f: got = json.load(f)
+            self.assertEqual(got['builds'][0]['measured']['extension-linux']['agreement'], 0.5)
+            self.assertEqual(got['builds'][1]['measured']['extension-linux']['agreement'], 1.0)
             self.assertTrue(os.path.exists(os.path.join(out, 'comparison.txt')) and os.path.exists(os.path.join(out, 'comparison.json')))
-
-    def test_a_work_directory_with_the_devtools_reading_alone_is_measured_and_says_nothing_of_an_extension(self):
-        """What the per-version measurement makes now (run_build_readings.sh): one source."""
-        with tempfile.TemporaryDirectory() as work, tempfile.TemporaryDirectory() as out:
-            builds, second = pair([('links', 0, 'a', 'a'), ('links', 1, 'b', 'x')], [('links', 0, 'a', 'a'), ('links', 1, 'b', 'b')])
-            for group in (builds, second):
-                for build in group: del group[build]['ext-linux']
-            write_work(work, builds, second)
-            code, got = run_main(work, out)
-            self.assertEqual(code, 0)
-            self.assertEqual([b['measured']['devtools-linux']['agreement'] for b in got['builds']], [0.5, 1.0])
-            with open(os.path.join(out, 'comparison.txt')) as f: text = f.read()
-            self.assertNotIn('what the extension buys', text)
-            self.assertFalse(os.path.exists(os.path.join(out, NEW, 'extension-linux')))
-
-    def test_a_work_directory_with_no_devtools_reading_is_refused(self):
-        with tempfile.TemporaryDirectory() as work, tempfile.TemporaryDirectory() as out:
-            builds, second = pair([('links', 0, 'a', 'a')], [('links', 0, 'a', 'a')])
-            for group in (builds, second):
-                for build in group: del group[build]['devtools-linux']
-            write_work(work, builds, second)
-            with self.assertRaises(SystemExit) as stopped: run_main(work, out)
-            self.assertIn('needs devtools-linux', str(stopped.exception))
 
 
 if __name__ == '__main__': unittest.main()

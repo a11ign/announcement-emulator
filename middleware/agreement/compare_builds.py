@@ -3,8 +3,8 @@
     python3 compare_builds.py --work <dir> --out <dir> [--notes attribution-notes.json]
     python3 compare_builds.py --work <dir> --out <dir> --list middleware/supported-versions.json --dates <build>=<YYYY-MM-DD> ... --playwright <build>=<version>,<version> ...
 
-`<dir>/<build>/<reading>/agreement.json` is what `measure.py --include-unstable --tolerate-census --out` wrote for the reading of that build (`devtools-linux`, `devtools-macos`, and the control
-`devtools-ubuntu-ci`; `ext-linux` too in a work directory made while the extension was a source: A11-229 removed it, and `devtools-linux` is the one a build must have), and `<dir>/<build>/<reading>-second/agreement.json` the same with `--second` (agreement/measure_readings.sh makes both). The attribution is compare_sources.py's, unchanged, with one cause added:
+`<dir>/<build>/<reading>/agreement.json` is what `measure.py --include-unstable --tolerate-census --out` wrote for the reading of that build (`ext-linux`, `devtools-linux`, `devtools-macos`, and the control
+`devtools-ubuntu-ci`), and `<dir>/<build>/<reading>-second/agreement.json` the same with `--second` (agreement/measure_readings.sh makes both). The attribution is compare_sources.py's, unchanged, with one cause added:
 `chromium build`. This script writes, under `--out`: `<build>/<source>-<os>/agreement.txt` and `misses.json` for every reading, `comparison.txt` and `comparison.json`. With `--list` it also writes the figures into the
 supported-versions list, which is the only thing that fills it. Nothing here writes an a11ign evidence field: the output is a measurement of a prediction (ADR 0047)."""
 import argparse, collections, json, os, shutil, sys
@@ -15,7 +15,7 @@ import compare_sources as cs        # noqa: E402
 
 # a reading's name in the work directory, and the key it has in the list and in the figure directory
 FIGURE_KEY = {'ext-linux': 'extension-linux', 'devtools-linux': 'devtools-linux', 'devtools-macos': 'devtools-macos', 'devtools-ubuntu-ci': 'devtools-ubuntu-ci'}
-LISTED = ('devtools-linux', 'devtools-macos')      # the control is reported and never listed; the extension, which A11-229 removed, is reported where a work directory holds its reading (the record of the measurement that chose to drop it) and is not listed
+LISTED = ('extension-linux', 'devtools-linux', 'devtools-macos')      # the control is reported and never listed
 CHANNELS = ('title', 'stops', 'field', 'typed', *cs.LISTS)
 # the causes compare_sources.attribute() names before this one in the order of rule.md: a unit that has one of them is not a difference between the builds
 BEFORE = ('prompt', 'language', 'history', 'page moved', 'quick test')
@@ -108,7 +108,7 @@ def load_builds(work):
     builds = {b: {n: r for n in cs.READINGS if (r := load(b, n))} for b in found}
     second = {b: {n: r for n in cs.READINGS if (r := load(b, f'{n}-second'))} for b in found}
     for b in found:
-        if 'devtools-linux' not in builds[b]: sys.exit(f'compare_builds.py: Chromium {b} needs devtools-linux in --work')
+        if 'ext-linux' not in builds[b] or 'devtools-linux' not in builds[b]: sys.exit(f'compare_builds.py: Chromium {b} needs ext-linux and devtools-linux in --work')
     return builds, second
 
 

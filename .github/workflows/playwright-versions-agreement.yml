@@ -64,12 +64,12 @@ jobs:
               && npx playwright install ${{ matrix.deps }} chromium \
               && ANNOUNCEMENT_EMULATOR_DOWNLOAD_HOST=http://127.0.0.1:8099 npx announcement-emulator install)
           done
-      # Two runs of the corpus project for each build, interleaved by build, the DevTools port as the tree source (the only one: A11-229), and the focus the way the fleet's focus probe reads it (rule.md).
+      # Two runs of the corpus project for each build, interleaved by build, the DevTools port as the tree source whatever the platform's default is, and the focus the way the fleet's focus probe reads it (rule.md).
       # A run whose workers report another Chromium build than the one its row names is not kept.
       - id: runs
         run: |
           mkdir -p "$RUNNER_TEMP/runs"
-          export ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1
+          export ANNOUNCEMENT_EMULATOR_TREE=devtools ANNOUNCEMENT_EMULATOR_REPORT_FOCUS=1
           for n in 1 2; do
             for spec in $BUILDS; do
               build="${spec%%=*}"; version="${spec#*=}"
