@@ -91,7 +91,7 @@ def main():
     ordered = Ordered()
     switch = {'first_page': None, 'extension_up': False, 'done': False}      # the extension that does not come up: fallback.py
     dump = open(os.environ['AE_DUMP'], 'a', buffering=1) if os.environ.get('AE_DUMP') else None      # a log of what arrived and when, for finding what a run lost
-    record = open(os.environ['AE_RECORD'], 'a', buffering=1) if os.environ.get('AE_RECORD') else None      # everything the runtime was told, whole, for replay.py
+    record = open(os.environ['AE_RECORD'].replace('%p', str(os.getpid())), 'a', buffering=1) if os.environ.get('AE_RECORD') else None      # everything the runtime was told, whole, for replay.py (%p: this process's number, for a run with more than one runtime)
     def note(kind, body, arrived):
         if record and kind in ('snap', 'page', 'ready'): record.write(json.dumps({'k': kind, 'arrived': arrived, 'body': body}, separators=(',', ':')) + '\n')
         if not dump: return
@@ -130,9 +130,11 @@ def main():
         if cdp and args.tree == 'extension' and fallback.due(args.fallback_after, switch['first_page'], switch['extension_up'], switch['done'], time.time()): switch_to_devtools()
         try: kind, body, arrived = inbox.get(timeout=0.05)
         except queue.Empty:
+            if cdp: cdp.wait_for_first_reads()      # a page's first tree is read before the speech of the last one goes on: the page may be closed before it is
             snapshots()
             if not ordered.held: predictor.settle_events(time.time()); predictor.settle_states(time.time()); predictor.run_sweep()      # idle: one sweep, between two events
             continue
+        if cdp and kind in ('page', 'snap'): cdp.wait_for_first_reads()
         if switch['done'] and fallback.from_extension_after_switch(kind, body): continue
         note(kind, body, arrived)
         if kind == 'snap': switch['extension_up'] = switch['extension_up'] or not body.get('devtools'); ordered.add(body, arrived); snapshots()

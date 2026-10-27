@@ -1,6 +1,6 @@
 """The part of cdp.py that routes answers: commands sent together are answered in the order they were sent, and what waits for a page that is closed is told so and does not wait for the timeout (A11-208:
 a tree read of a page the test had just closed held the reading of every page after it for twenty seconds)."""
-import json, threading, unittest
+import json, threading, time, unittest
 
 import cdp
 
@@ -13,7 +13,7 @@ class FakeSocket:
 
 def reader():
     c = cdp.Cdp.__new__(cdp.Cdp)      # not connected: nothing is read from a browser
-    c.ws = FakeSocket(); c.lock = threading.Lock(); c.next_id = 0; c.replies = {}; c.wanted = {}; c.wake = threading.Condition(); c.on_tree = None; c.readers = {}; c.hints = {}; c.loaded = set(); c.visited = {}; c.contexts = {}; c.verify = False; c.on_verify = lambda body: None; c.reads = {'full': 0, 'incremental': 0, 'verified': 0, 'differing': 0, 'fullMs': 0.0, 'incrementalMs': 0.0}; c.generation = 0; c.target_of = {}; c.outbox = []; c.out = threading.Lock()
+    c.ws = FakeSocket(); c.lock = threading.Lock(); c.next_id = 0; c.replies = {}; c.wanted = {}; c.wake = threading.Condition(); c.on_tree = None; c.readers = {}; c.hints = {}; c.loaded = set(); c.visited = {}; c.contexts = {}; c.reading = {}; c.verify = False; c.on_verify = lambda body: None; c.reads = {'full': 0, 'incremental': 0, 'verified': 0, 'differing': 0, 'fullMs': 0.0, 'incrementalMs': 0.0}; c.generation = 0; c.target_of = {}; c.outbox = []; c.out = threading.Lock()
     return c
 
 
@@ -272,6 +272,45 @@ class WithTheExtensionAsTheTreeSource(unittest.TestCase):
     def test_the_probe_is_in_the_listener_only_where_the_trees_are_read_here(self):
         self.assertIn('if (__TICKS__) {', cdp.LISTENER)
         self.assertIn('window.__aeProbe', cdp.LISTENER.split('if (__TICKS__) {')[1])      # and nowhere before the condition
+
+
+class WaitingForTheFirstTreeOfAPage(unittest.TestCase):
+    """The predictor goes on after the tree of a page that has just come has been read, but not for longer than `limit`: a page closed before its first read has no prediction."""
+    def test_it_returns_at_once_when_no_page_is_being_read_for_the_first_time(self):
+        c = reader(); c.reading = {}
+        started = time.time(); c.wait_for_first_reads(); self.assertLess(time.time() - started, 0.1)
+        class Reader: urgent_since = None
+        c.reading = {'s': Reader()}
+        started = time.time(); c.wait_for_first_reads(); self.assertLess(time.time() - started, 0.1)
+
+    def test_it_waits_for_the_read_to_end(self):
+        c = reader()
+        class Reader: urgent_since = time.time()
+        held = Reader(); c.reading = {'s': held}
+        threading.Timer(0.3, lambda: setattr(held, 'urgent_since', None)).start()
+        started = time.time(); c.wait_for_first_reads(); self.assertGreaterEqual(time.time() - started, 0.25); self.assertLess(time.time() - started, 2)
+
+    def test_it_does_not_wait_longer_than_the_limit_from_when_the_read_began(self):
+        c = reader()
+        class Reader: urgent_since = time.time() - 5.9
+        c.reading = {'s': Reader()}
+        started = time.time(); c.wait_for_first_reads(limit=6.0); self.assertLess(time.time() - started, 0.5)
+
+    def test_a_page_is_registered_while_it_is_read_and_not_after(self):
+        import incremental
+        seen = []
+        class Reader:
+            cost = {'how': 'full', 'totalMs': 1.0}; mismatches = []; checking = False; urgent_since = 1.0
+            def __init__(self, **kw): pass
+            def updated(self, nodes): pass
+            def loaded(self): pass
+            def visited(self, backends): pass
+            def read(self, call_many, contexts=None): seen.append(dict(c.reading)); return {'nodes': [{}]}
+        real = incremental.Reader; incremental.Reader = Reader
+        try:
+            c = reader(); c.target_of = {'s': 't'}; c._read('s', 't', 0)
+        finally: incremental.Reader = real
+        self.assertEqual(list(seen[0]), ['s']); self.assertEqual(c.reading, {})
 
 
 class TheScriptContextOfEachFrame(unittest.TestCase):

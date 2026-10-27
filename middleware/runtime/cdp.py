@@ -195,7 +195,7 @@ class Cdp:
         self.port, self.on_event, self.on_attach, self.on_tree, self.on_connect = port, on_event, on_attach, on_tree, on_connect
         self.verify, self.on_verify = verify, on_verify
         self.ws = None; self.browser = None; self.next_id = 0; self.stopped = False; self.installed = set(); self.lock = threading.Lock(); self.outbox = []; self.out = threading.Lock(); self.target_of = {}; self.url_of = {}
-        self.replies = {}; self.wanted = {}; self.wake = threading.Condition(); self.seq = 0; self.page_numbers = {}; self.readers = {}; self.generation = 0; self.hints = {}; self.loaded = set(); self.visited = {}; self.contexts = {}; self.reads = {'full': 0, 'incremental': 0, 'verified': 0, 'differing': 0, 'fullMs': 0.0, 'incrementalMs': 0.0}
+        self.replies = {}; self.wanted = {}; self.wake = threading.Condition(); self.seq = 0; self.page_numbers = {}; self.readers = {}; self.generation = 0; self.hints = {}; self.loaded = set(); self.visited = {}; self.contexts = {}; self.reading = {}; self.reads = {'full': 0, 'incremental': 0, 'verified': 0, 'differing': 0, 'fullMs': 0.0, 'incrementalMs': 0.0}
         self.thread = threading.Thread(target=self._run, daemon=True, name='cdp'); self.thread.start()
         if on_tree: self.trees = threading.Thread(target=self._trees, daemon=True, name='trees'); self.trees.start()
 
@@ -353,12 +353,22 @@ class Cdp:
             if CONVERSATION_LOG and not reader.checking: talk.append([commands, answers])      # what `verify` asks for itself is not part of the read
             return answers
         with self.wake: contexts = dict(self.contexts.get(session, {}))      # the socket's reader changes them while this reads
-        converted = reader.read(ask, contexts.get)
+        self.reading[session] = reader
+        try: converted = reader.read(ask, contexts.get)
+        finally: self.reading.pop(session, None)
         self._account(target, reader, converted)
         if CONVERSATION_LOG: self._talk(target, reader, talk, contexts, converted, told)
         if session in self.target_of: self.readers.setdefault((generation, target), reader)      # a page that went while it was read leaves nothing behind
         self.last_cost = dict(reader.cost)
         return converted
+
+    def wait_for_first_reads(self, limit=6.0):
+        """Returns when no page is being read for the first time, or `limit` seconds after the oldest such read began. The predictor's work (speech, sweeps) and the reading of a tree share one Python's lock: a page of twenty thousand
+        nodes is read in 1.5 s alone and 4 s beside a sweep, which is longer than a test that walks it lasts, and a page that is closed before it has been read has no prediction at all."""
+        while True:
+            since = min((r.urgent_since for r in list(self.reading.values()) if r.urgent_since is not None), default=None)
+            if since is None or time.time() - since > limit: return
+            time.sleep(0.02)
 
     def _tell(self, reader, session):
         """What the browser said of the page since its last read, given to the reader (and returned as it was said, for AE_CONVERSATION)."""

@@ -1,0 +1,398 @@
+{"at":1793058837972,"page":0,"why":["installed"],"totalMs":10.8,"how":"full","reason":"first","fetchMs":2.2,"convertMs":1.2,"nodes":9}
+{"at":1793058837979,"page":0,"why":["loadComplete","observe"],"totalMs":6.8,"how":"full","reason":"loadComplete","fetchMs":2.7,"convertMs":0.6,"nodes":9}
+{"at":1793058837990,"page":0,"why":["installed"],"totalMs":17.3,"how":"full","reason":"first","fetchMs":5.4,"convertMs":2.3,"nodes":30}
+{"at":1793058838007,"page":0,"why":["loadComplete","observe","pageshow"],"totalMs":17.4,"how":"full","reason":"loadComplete","fetchMs":12.6,"convertMs":1.5,"nodes":30}
+{"at":1793058838024,"page":0,"why":["pageshow"],"totalMs":31.8,"patched":true,"how":"incremental","reason":null,"fetchMs":28.7,"convertMs":0.4,"nodes":9,"refreshed":3,"controls":0}
+{"at":1793058838274,"page":0,"why":["keydown"],"totalMs":4.8,"patched":true,"how":"incremental","reason":null,"fetchMs":1.1,"convertMs":0.3,"nodes":9,"refreshed":5,"controls":0}
+{"at":1793058838288,"page":0,"why":["focusin","keydown","keyup","live"],"totalMs":13.1,"how":"full","reason":"mutation","fetchMs":4.5,"convertMs":0.7,"nodes":11}
+{"at":1793058838294,"page":0,"why":["keydown"],"totalMs":5.5,"patched":true,"how":"incremental","reason":null,"fetchMs":1.3,"convertMs":0.8,"nodes":30,"refreshed":6,"controls":0}
+{"at":1793058838305,"page":0,"why":["focusin","keyup"],"totalMs":10.9,"patched":true,"how":"incremental","reason":null,"fetchMs":3.2,"convertMs":0.3,"nodes":30,"refreshed":6,"controls":0}
+{"at":1793058838307,"page":0,"why":["keyup"],"totalMs":9.9,"patched":true,"how":"incremental","reason":null,"fetchMs":3.1,"convertMs":0.2,"nodes":11,"refreshed":5,"controls":0}
+{"at":1793058838582,"page":0,"why":["keydown"],"totalMs":4.0,"how":"full","reason":"mutation","fetchMs":1.5,"convertMs":0.5,"nodes":11}
+{"at":1793058838587,"page":0,"why":["live","mutation"],"totalMs":4.5,"patched":true,"how":"incremental","reason":null,"fetchMs":1.3,"convertMs":0.2,"nodes":11,"refreshed":5,"controls":0}
+{"at":1793058838597,"page":0,"why":["keydown"],"totalMs":3.7,"patched":true,"how":"incremental","reason":null,"fetchMs":1.1,"convertMs":0.3,"nodes":30,"refreshed":7,"controls":0}
+{"at":1793058838601,"page":0,"why":["keyup"],"totalMs":2.5,"patched":true,"how":"incremental","reason":null,"fetchMs":0.9,"convertMs":0.2,"nodes":11,"refreshed":5,"controls":0}
+{"at":1793058838607,"page":0,"why":["focusin","keyup"],"totalMs":9.1,"patched":true,"how":"incremental","reason":null,"fetchMs":1.0,"convertMs":0.2,"nodes":30,"refreshed":6,"controls":0}
+{"at":1793058838888,"page":0,"why":["keydown"],"totalMs":4.3,"how":"full","reason":"mutation","fetchMs":1.8,"convertMs":0.5,"nodes":11}
+{"at":1793058838892,"page":0,"why":["live","mutation"],"totalMs":4.2,"patched":true,"how":"incremental","reason":null,"fetchMs":1.0,"convertMs":0.2,"nodes":11,"refreshed":5,"controls":0}
+{"at":1793058838904,"page":0,"why":["keydown"],"totalMs":4.8,"patched":true,"how":"incremental","reason":null,"fetchMs":1.5,"convertMs":0.4,"nodes":30,"refreshed":9,"controls":0}
+{"at":1793058838907,"page":0,"why":["keyup"],"totalMs":2.9,"patched":true,"how":"incremental","reason":null,"fetchMs":1.0,"convertMs":0.2,"nodes":11,"refreshed":5,"controls":0}
+{"at":1793058838923,"page":0,"why":["focusin","keyup","nodesUpdated"],"totalMs":18.6,"patched":true,"how":"incremental","reason":null,"fetchMs":2.8,"convertMs":0.3,"nodes":30,"refreshed":6,"controls":0}
+{"at":1793058839212,"page":0,"why":["keydown"],"totalMs":7.0,"patched":false,"how":"incremental","reason":null,"fetchMs":2.7,"convertMs":1.0,"nodes":32,"refreshed":6,"controls":1}
+{"at":1793058839218,"page":0,"why":["input","nodesUpdated"],"totalMs":5.5,"patched":true,"how":"incremental","reason":null,"fetchMs":2.0,"convertMs":0.2,"nodes":32,"refreshed":6,"controls":0}
+{"at":1793058839315,"page":0,"why":["keyup"],"totalMs":7.8,"patched":false,"how":"incremental","reason":null,"fetchMs":2.8,"convertMs":1.3,"nodes":32,"refreshed":6,"controls":1}
+{"at":1793058839321,"page":0,"why":["keydown","nodesUpdated"],"totalMs":5.9,"patched":true,"how":"incremental","reason":null,"fetchMs":1.6,"convertMs":0.3,"nodes":32,"refreshed":6,"controls":0}
+{"at":1793058839331,"page":0,"why":["input"],"totalMs":3.5,"patched":true,"how":"incremental","reason":null,"fetchMs":1.2,"convertMs":0.2,"nodes":32,"refreshed":6,"controls":0}
+{"at":1793058839418,"page":0,"why":["keyup"],"totalMs":9.6,"patched":false,"how":"incremental","reason":null,"fetchMs":4.5,"convertMs":1.4,"nodes":32,"refreshed":6,"controls":1}
+{"at":1793058839424,"page":0,"why":["keydown","nodesUpdated"],"totalMs":5.9,"patched":true,"how":"incremental","reason":null,"fetchMs":1.4,"convertMs":0.2,"nodes":32,"refreshed":6,"controls":0}
+{"at":1793058839432,"page":0,"why":["input"],"totalMs":3.5,"patched":true,"how":"incremental","reason":null,"fetchMs":1.5,"convertMs":0.2,"nodes":32,"refreshed":6,"controls":0}
+{"at":1793058839450,"page":1,"why":["installed"],"totalMs":62.8,"how":"full","reason":"first","fetchMs":39.0,"convertMs":9.1,"nodes":92}
+{"at":1793058839516,"page":0,"why":["keyup"],"totalMs":4.9,"patched":true,"how":"incremental","reason":null,"fetchMs":1.9,"convertMs":0.2,"nodes":32,"refreshed":6,"controls":0}
+{"at":1793058839519,"page":0,"why":["focusin","keydown","nodesUpdated"],"totalMs":3.1,"patched":true,"how":"incremental","reason":null,"fetchMs":1.4,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058839534,"page":0,"why":["keyup"],"totalMs":3.0,"patched":true,"how":"incremental","reason":null,"fetchMs":1.1,"convertMs":0.2,"nodes":32,"refreshed":6,"controls":0}
+{"at":1793058839816,"page":1,"why":["mutation","observe"],"totalMs":365.5,"how":"full","reason":"settling","fetchMs":180.8,"convertMs":92.8,"nodes":2740}
+{"at":1793058839821,"page":0,"why":["keydown"],"totalMs":4.0,"patched":true,"how":"incremental","reason":null,"fetchMs":1.3,"convertMs":0.2,"nodes":32,"refreshed":8,"controls":0}
+{"at":1793058839834,"page":0,"why":["focusin","keyup"],"totalMs":12.4,"patched":true,"how":"incremental","reason":null,"fetchMs":1.4,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058840126,"page":0,"why":["keydown"],"totalMs":3.7,"patched":true,"how":"incremental","reason":null,"fetchMs":1.5,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058840226,"page":0,"why":["keyup"],"totalMs":2.9,"patched":true,"how":"incremental","reason":null,"fetchMs":1.0,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058840231,"page":0,"why":["keydown"],"totalMs":4.8,"patched":true,"how":"incremental","reason":null,"fetchMs":1.2,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058840329,"page":0,"why":["keyup"],"totalMs":3.3,"patched":true,"how":"incremental","reason":null,"fetchMs":1.3,"convertMs":0.4,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058840334,"page":0,"why":["keydown"],"totalMs":5.3,"patched":true,"how":"incremental","reason":null,"fetchMs":1.1,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058840430,"page":0,"why":["keyup"],"totalMs":3.5,"patched":true,"how":"incremental","reason":null,"fetchMs":1.2,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058840439,"page":0,"why":["keydown"],"totalMs":8.2,"how":"full","reason":"keyframe","fetchMs":3.4,"convertMs":1.5,"nodes":32}
+{"at":1793058840507,"page":1,"why":["loadComplete","mutation","nodesUpdated","pageshow"],"totalMs":325.3,"how":"full","reason":"loadComplete","fetchMs":95.7,"convertMs":166.9,"nodes":2746}
+{"at":1793058840532,"page":0,"why":["keyup"],"totalMs":3.4,"patched":true,"how":"incremental","reason":null,"fetchMs":1.3,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058840538,"page":0,"why":["keydown"],"totalMs":5.4,"patched":true,"how":"incremental","reason":null,"fetchMs":1.4,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058840633,"page":0,"why":["keyup"],"totalMs":3.1,"patched":true,"how":"incremental","reason":null,"fetchMs":1.1,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058840638,"page":0,"why":["keydown"],"totalMs":4.8,"patched":true,"how":"incremental","reason":null,"fetchMs":1.3,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058840735,"page":0,"why":["keyup"],"totalMs":3.0,"patched":true,"how":"incremental","reason":null,"fetchMs":1.2,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058840740,"page":0,"why":["keydown"],"totalMs":4.6,"patched":true,"how":"incremental","reason":null,"fetchMs":1.2,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058840837,"page":0,"why":["keyup"],"totalMs":3.1,"patched":true,"how":"incremental","reason":null,"fetchMs":1.1,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058840842,"page":0,"why":["keydown"],"totalMs":5.3,"patched":true,"how":"incremental","reason":null,"fetchMs":1.2,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058840938,"page":0,"why":["keyup"],"totalMs":2.9,"patched":true,"how":"incremental","reason":null,"fetchMs":1.1,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058840943,"page":0,"why":["keydown"],"totalMs":4.4,"patched":true,"how":"incremental","reason":null,"fetchMs":1.2,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058841040,"page":0,"why":["keyup"],"totalMs":3.1,"patched":true,"how":"incremental","reason":null,"fetchMs":1.2,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058841046,"page":0,"why":["keydown"],"totalMs":5.6,"patched":true,"how":"incremental","reason":null,"fetchMs":2.3,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058841142,"page":0,"why":["keyup"],"totalMs":2.8,"patched":true,"how":"incremental","reason":null,"fetchMs":1.1,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058841147,"page":0,"why":["keydown"],"totalMs":5.1,"patched":true,"how":"incremental","reason":null,"fetchMs":1.2,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058841244,"page":0,"why":["keyup"],"totalMs":2.8,"patched":true,"how":"incremental","reason":null,"fetchMs":1.0,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058841249,"page":0,"why":["keydown"],"totalMs":5.7,"patched":true,"how":"incremental","reason":null,"fetchMs":1.4,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058841346,"page":0,"why":["keyup"],"totalMs":3.6,"patched":true,"how":"incremental","reason":null,"fetchMs":1.2,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058841352,"page":0,"why":["keydown"],"totalMs":6.0,"patched":true,"how":"incremental","reason":null,"fetchMs":1.4,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058841447,"page":0,"why":["keyup"],"totalMs":2.9,"patched":true,"how":"incremental","reason":null,"fetchMs":1.1,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058841453,"page":0,"why":["keydown"],"totalMs":5.1,"patched":true,"how":"incremental","reason":null,"fetchMs":1.2,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058841549,"page":0,"why":["keyup"],"totalMs":3.0,"patched":true,"how":"incremental","reason":null,"fetchMs":1.1,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058841554,"page":0,"why":["keydown"],"totalMs":5.1,"patched":true,"how":"incremental","reason":null,"fetchMs":1.1,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058841653,"page":0,"why":["keyup"],"totalMs":4.4,"patched":true,"how":"incremental","reason":null,"fetchMs":1.1,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058841656,"page":0,"why":["focusin","keydown"],"totalMs":2.9,"patched":true,"how":"incremental","reason":null,"fetchMs":1.2,"convertMs":0.3,"nodes":32,"refreshed":8,"controls":0}
+{"at":1793058841672,"page":0,"why":["keyup"],"totalMs":3.8,"patched":true,"how":"incremental","reason":null,"fetchMs":1.7,"convertMs":0.2,"nodes":32,"refreshed":6,"controls":0}
+{"at":1793058841963,"page":0,"why":["keydown"],"totalMs":7.9,"how":"full","reason":"keyframe","fetchMs":3.8,"convertMs":1.4,"nodes":32}
+{"at":1793058841976,"page":0,"why":["focusin","keydown","keyup"],"totalMs":12.9,"patched":true,"how":"incremental","reason":null,"fetchMs":1.2,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058841981,"page":0,"why":["keyup"],"totalMs":3.1,"patched":true,"how":"incremental","reason":null,"fetchMs":1.0,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058842270,"page":0,"why":["keydown"],"totalMs":9.2,"unpatchable":"checked of a node changed","patched":false,"how":"incremental","reason":null,"fetchMs":2.0,"convertMs":5.2,"nodes":32,"refreshed":7,"controls":1}
+{"at":1793058842276,"page":0,"why":["keyup"],"totalMs":6.0,"patched":true,"how":"incremental","reason":null,"fetchMs":1.4,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058842285,"page":0,"why":["change"],"totalMs":2.8,"patched":true,"how":"incremental","reason":null,"fetchMs":1.1,"convertMs":0.2,"nodes":32,"refreshed":7,"controls":0}
+{"at":1793058842611,"page":1,"why":["keydown"],"totalMs":515.4,"how":"full","reason":"settling","fetchMs":249.7,"convertMs":200.9,"nodes":2746}
+{"at":1793058843220,"page":1,"why":["installed"],"totalMs":460.8,"how":"full","reason":"first","fetchMs":252.0,"convertMs":126.4,"nodes":2600}
+{"at":1793058843780,"page":1,"why":["focusin","keydown","keyup","mutation"],"totalMs":621.9,"how":"full","reason":"mutation","fetchMs":233.3,"convertMs":353.9,"nodes":2746}
+{"at":1793058843992,"page":1,"why":["loadComplete","mutation","nodesUpdated","observe","pageshow"],"totalMs":311.4,"how":"full","reason":"loadComplete","fetchMs":173.3,"convertMs":80.0,"nodes":1443}
+{"at":1793058844782,"page":1,"why":["focusin","keydown","keyup"],"totalMs":484.3,"how":"full","reason":"an element that is gone","fetchMs":248.2,"convertMs":184.4,"nodes":2746}
+{"at":1793058845848,"page":1,"why":["focusin","keydown","keyup"],"totalMs":550.6,"how":"full","reason":"an element that is gone","fetchMs":335.1,"convertMs":165.7,"nodes":2746}
+{"at":1793058846028,"page":1,"why":["keydown"],"totalMs":421.7,"how":"full","reason":"settling","fetchMs":212.4,"convertMs":173.5,"nodes":1441}
+{"at":1793058846795,"page":1,"why":["focusin","keydown","keyup"],"totalMs":416.5,"how":"full","reason":"an element that is gone","fetchMs":127.1,"convertMs":256.5,"nodes":2746}
+{"at":1793058846897,"page":1,"why":["focusin","keydown","keyup","nodesUpdated"],"totalMs":417.0,"how":"full","reason":"layout","fetchMs":256.0,"convertMs":119.7,"nodes":1443}
+{"at":1793058847402,"page":1,"why":["focusin","keydown","keyup"],"totalMs":175.6,"how":"full","reason":"a page that keeps changing","fetchMs":89.5,"convertMs":81.5,"nodes":2746}
+{"at":1793058847523,"page":1,"why":["focusin","keydown","keyup"],"totalMs":178.2,"patched":true,"how":"incremental","reason":null,"fetchMs":150.5,"convertMs":1.1,"nodes":1443,"refreshed":20,"controls":0}
+{"at":1793058847781,"page":1,"why":["focusin","keydown","keyup"],"totalMs":203.1,"how":"full","reason":"a page that was read without the probe","fetchMs":100.1,"convertMs":90.9,"nodes":2746}
+{"at":1793058847921,"page":1,"why":["focusin","keydown","keyup"],"totalMs":193.3,"patched":true,"how":"incremental","reason":null,"fetchMs":120.7,"convertMs":0.9,"nodes":1443,"refreshed":15,"controls":0}
+{"at":1793058848332,"page":1,"why":["focusin","keydown","keyup"],"totalMs":192.0,"patched":true,"how":"incremental","reason":null,"fetchMs":127.9,"convertMs":0.8,"nodes":1443,"refreshed":23,"controls":0}
+{"at":1793058848477,"page":1,"why":["focusin","keydown","keyup"],"totalMs":492.4,"how":"full","reason":"an element that is gone","fetchMs":92.2,"convertMs":384.7,"nodes":2746}
+{"at":1793058848945,"page":1,"why":["focusin","keydown","keyup","mutation"],"totalMs":387.0,"how":"full","reason":"mutation","fetchMs":214.2,"convertMs":134.0,"nodes":1443}
+{"at":1793058849171,"page":1,"why":["focusin","keydown","keyup","scroll"],"totalMs":185.4,"how":"full","reason":"a page that keeps changing","fetchMs":93.6,"convertMs":87.0,"nodes":2746}
+{"at":1793058849598,"page":1,"why":["focusin","keydown","keyup"],"totalMs":235.1,"patched":true,"how":"incremental","reason":null,"fetchMs":161.4,"convertMs":0.7,"nodes":1443,"refreshed":21,"controls":0}
+{"at":1793058849828,"page":1,"why":["focusin","keydown","keyup","mutation","scroll"],"totalMs":460.9,"how":"full","reason":"a page that keeps changing","fetchMs":85.5,"convertMs":368.2,"nodes":2746}
+{"at":1793058850120,"page":1,"why":["focusin","keydown","keyup"],"totalMs":261.0,"patched":true,"how":"incremental","reason":null,"fetchMs":183.7,"convertMs":1.5,"nodes":1443,"refreshed":25,"controls":0}
+{"at":1793058850528,"page":1,"why":["focusin","keydown","keyup"],"totalMs":116.9,"patched":true,"how":"incremental","reason":null,"fetchMs":33.7,"convertMs":0.8,"nodes":1443,"refreshed":21,"controls":0}
+{"at":1793058850597,"page":1,"why":["focusin","keydown","keyup","mutation","scroll"],"totalMs":308.1,"how":"full","reason":"a page that was read without the probe","fetchMs":87.8,"convertMs":206.4,"nodes":2746}
+{"at":1793058851076,"page":1,"why":["focusin","keydown","keyup","mutation"],"totalMs":409.0,"patched":false,"how":"incremental","reason":null,"fetchMs":140.3,"convertMs":231.8,"nodes":1443,"refreshed":19,"controls":0}
+{"at":1793058851583,"page":1,"why":["focusin","keydown","keyup","scroll"],"totalMs":666.8,"how":"full","reason":"an element that is gone","fetchMs":163.3,"convertMs":478.0,"nodes":2746}
+{"at":1793058851903,"page":1,"why":["focusin","keydown","keyup","mutation","nodesUpdated"],"totalMs":407.0,"how":"full","reason":"stale: Stale the structure of the tree changed","fetchMs":196.7,"convertMs":151.6,"nodes":1443}
+{"at":1793058852289,"page":1,"why":["focusin","keydown","keyup"],"totalMs":200.4,"how":"full","reason":"a page that keeps changing","fetchMs":99.5,"convertMs":95.6,"nodes":2746}
+{"at":1793058852774,"page":1,"why":["focusin","keydown","keyup","scroll"],"totalMs":284.3,"how":"full","reason":"a page that keeps changing","fetchMs":106.5,"convertMs":172.1,"nodes":2746}
+{"at":1793058852789,"page":1,"why":["focusin","keydown","keyup","mutation","nodesUpdated"],"totalMs":468.4,"how":"full","reason":"stale: Stale the structure of the tree changed","fetchMs":216.0,"convertMs":208.8,"nodes":1443}
+{"at":1793058853341,"page":1,"why":["focusin","keydown","keyup"],"totalMs":208.0,"how":"full","reason":"a page that keeps changing","fetchMs":88.2,"convertMs":106.2,"nodes":2746}
+{"at":1793058853699,"page":1,"why":["focusin","keydown","keyup","mutation"],"totalMs":405.4,"patched":false,"how":"incremental","reason":null,"fetchMs":268.8,"convertMs":104.9,"nodes":1443,"refreshed":21,"controls":0}
+{"at":1793058853750,"page":1,"why":["focusin","keydown","keyup"],"totalMs":194.5,"how":"full","reason":"a page that keeps changing","fetchMs":91.0,"convertMs":97.9,"nodes":2746}
+{"at":1793058854501,"page":1,"why":["focusin","keydown","keyup"],"totalMs":525.6,"how":"full","reason":"a page that was read without the probe","fetchMs":90.3,"convertMs":416.8,"nodes":2746}
+{"at":1793058854507,"page":1,"why":["focusin","keydown","keyup","mutation"],"totalMs":382.6,"how":"full","reason":"mutation","fetchMs":208.4,"convertMs":142.8,"nodes":1463}
+{"at":1793058855433,"page":1,"why":["focusin","keydown","keyup","mutation"],"totalMs":507.5,"how":"full","reason":"mutation","fetchMs":261.4,"convertMs":188.8,"nodes":1443}
+{"at":1793058855445,"page":2,"why":["mutation"],"totalMs":367.7,"how":"full","reason":"mutation","fetchMs":251.5,"convertMs":108.8,"nodes":2536}
+{"at":1793058856119,"page":2,"why":["installed","loadComplete","mutation","observe","pageshow","readystatechange"],"totalMs":306.7,"how":"full","reason":"loadComplete","fetchMs":102.7,"convertMs":117.0,"nodes":2441}
+{"at":1793058856637,"page":1,"why":["focusin","keydown","keyup","mutation"],"totalMs":677.7,"patched":false,"how":"incremental","reason":null,"fetchMs":365.8,"convertMs":259.0,"nodes":1443,"refreshed":22,"controls":0}
+{"at":1793058857569,"page":1,"why":["focusin","keydown","keyup","mutation","nodesUpdated","scroll"],"totalMs":405.0,"how":"full","reason":"an element that is gone","fetchMs":205.7,"convertMs":143.1,"nodes":1443}
+{"at":1793058858835,"page":2,"why":["keydown"],"totalMs":712.0,"how":"full","reason":"settling","fetchMs":296.3,"convertMs":230.8,"nodes":2439}
+{"at":1793058858879,"page":2,"why":["mutation"],"totalMs":381.2,"how":"full","reason":"mutation","fetchMs":196.2,"convertMs":120.7,"nodes":1154}
+{"at":1793058859600,"page":2,"why":["installed","loadComplete","mutation","nodesUpdated","observe","pageshow"],"totalMs":308.9,"how":"full","reason":"loadComplete","fetchMs":113.6,"convertMs":58.2,"nodes":694}
+{"at":1793058859926,"page":2,"why":["focusin","keydown","keyup"],"totalMs":549.2,"how":"full","reason":"layout","fetchMs":245.5,"convertMs":231.2,"nodes":2441}
+{"at":1793058860700,"page":2,"why":["focusin","keydown","keyup"],"totalMs":253.7,"patched":true,"how":"incremental","reason":null,"fetchMs":138.1,"convertMs":1.3,"nodes":2441,"refreshed":21,"controls":0}
+{"at":1793058861183,"page":2,"why":["focusin","keydown","keyup"],"totalMs":203.4,"patched":true,"how":"incremental","reason":null,"fetchMs":100.0,"convertMs":1.0,"nodes":2441,"refreshed":11,"controls":0}
+{"at":1793058861455,"page":2,"why":["keydown"],"totalMs":292.4,"how":"full","reason":"settling","fetchMs":108.3,"convertMs":46.8,"nodes":691}
+{"at":1793058861563,"page":2,"why":["focusin","keydown","keyup"],"totalMs":147.8,"patched":true,"how":"incremental","reason":null,"fetchMs":84.2,"convertMs":0.8,"nodes":2441,"refreshed":13,"controls":0}
+{"at":1793058861883,"page":2,"why":["focusin","keydown","keyup"],"totalMs":147.4,"patched":true,"how":"incremental","reason":null,"fetchMs":79.3,"convertMs":0.8,"nodes":2441,"refreshed":11,"controls":0}
+{"at":1793058862049,"page":2,"why":["focusin","keydown","keyup"],"totalMs":279.4,"how":"full","reason":"layout","fetchMs":111.6,"convertMs":61.8,"nodes":694}
+{"at":1793058862209,"page":2,"why":["focusin","keydown","keyup"],"totalMs":147.3,"patched":true,"how":"incremental","reason":null,"fetchMs":78.8,"convertMs":0.9,"nodes":2441,"refreshed":11,"controls":0}
+{"at":1793058862504,"page":2,"why":["focusin","keydown","keyup","nodesUpdated"],"totalMs":132.1,"patched":true,"how":"incremental","reason":null,"fetchMs":78.9,"convertMs":1.0,"nodes":2441,"refreshed":13,"controls":0}
+{"at":1793058862519,"page":2,"why":["focusin","keydown","keyup"],"totalMs":165.1,"patched":true,"how":"incremental","reason":null,"fetchMs":114.1,"convertMs":0.6,"nodes":694,"refreshed":10,"controls":0}
+{"at":1793058862766,"page":2,"why":["focusin","keydown","keyup","nodesUpdated"],"totalMs":105.6,"patched":true,"how":"incremental","reason":null,"fetchMs":47.6,"convertMs":0.8,"nodes":2441,"refreshed":10,"controls":0}
+{"at":1793058863019,"page":2,"why":["keydown"],"totalMs":127.1,"patched":true,"how":"incremental","reason":null,"fetchMs":37.3,"convertMs":0.7,"nodes":2441,"refreshed":10,"controls":0}
+{"at":1793058863057,"page":2,"why":["focusin","keydown","keyup"],"totalMs":348.1,"patched":true,"how":"incremental","reason":null,"fetchMs":261.8,"convertMs":0.8,"nodes":694,"refreshed":14,"controls":0}
+{"at":1793058863330,"page":2,"why":["focusin","keyup","nodesUpdated"],"totalMs":152.9,"patched":true,"how":"incremental","reason":null,"fetchMs":89.0,"convertMs":0.7,"nodes":2441,"refreshed":8,"controls":0}
+{"at":1793058863527,"page":2,"why":["focusin","keydown","keyup"],"totalMs":111.6,"patched":true,"how":"incremental","reason":null,"fetchMs":68.3,"convertMs":0.9,"nodes":694,"refreshed":11,"controls":0}
+{"at":1793058863678,"page":2,"why":["focusin","keydown","keyup"],"totalMs":173.9,"patched":true,"how":"incremental","reason":null,"fetchMs":73.6,"convertMs":0.7,"nodes":2441,"refreshed":12,"controls":0}
+{"at":1793058863716,"page":2,"why":["keydown","keyup"],"totalMs":52.0,"patched":true,"how":"incremental","reason":null,"fetchMs":23.4,"convertMs":0.5,"nodes":694,"refreshed":13,"controls":0}
+{"at":1793058863769,"page":2,"why":["focusin"],"totalMs":52.8,"patched":true,"how":"incremental","reason":null,"fetchMs":2.1,"convertMs":0.4,"nodes":694,"refreshed":9,"controls":0}
+{"at":1793058863907,"page":2,"why":["keydown"],"totalMs":8.9,"patched":true,"how":"incremental","reason":null,"fetchMs":1.3,"convertMs":0.5,"nodes":694,"refreshed":11,"controls":0}
+{"at":1793058863968,"page":2,"why":["focusin","keyup"],"totalMs":60.5,"patched":true,"how":"incremental","reason":null,"fetchMs":14.6,"convertMs":0.4,"nodes":694,"refreshed":9,"controls":0}
+{"at":1793058863988,"page":2,"why":["focusin","keydown","keyup"],"totalMs":110.7,"patched":true,"how":"incremental","reason":null,"fetchMs":78.0,"convertMs":0.7,"nodes":2441,"refreshed":10,"controls":0}
+{"at":1793058864213,"page":2,"why":["keydown"],"totalMs":9.1,"patched":true,"how":"incremental","reason":null,"fetchMs":1.5,"convertMs":0.7,"nodes":694,"refreshed":11,"controls":0}
+{"at":1793058864271,"page":2,"why":["focusin","keyup"],"totalMs":58.2,"patched":true,"how":"incremental","reason":null,"fetchMs":19.9,"convertMs":0.4,"nodes":694,"refreshed":9,"controls":0}
+{"at":1793058864332,"page":2,"why":["keydown"],"totalMs":207.2,"patched":true,"how":"incremental","reason":null,"fetchMs":111.7,"convertMs":1.2,"nodes":2441,"refreshed":13,"controls":0}
+{"at":1793058864518,"page":2,"why":["keydown"],"totalMs":9.3,"patched":true,"how":"incremental","reason":null,"fetchMs":1.4,"convertMs":0.5,"nodes":694,"refreshed":11,"controls":0}
+{"at":1793058864574,"page":2,"why":["focusin","keyup"],"totalMs":55.9,"patched":true,"how":"incremental","reason":null,"fetchMs":12.7,"convertMs":0.5,"nodes":694,"refreshed":9,"controls":0}
+{"at":1793058864719,"page":2,"why":["focusin","keydown","keyup"],"totalMs":148.6,"patched":true,"how":"incremental","reason":null,"fetchMs":105.4,"convertMs":0.8,"nodes":2441,"refreshed":16,"controls":0}
+{"at":1793058864823,"page":2,"why":["keydown"],"totalMs":9.4,"patched":true,"how":"incremental","reason":null,"fetchMs":1.3,"convertMs":0.6,"nodes":694,"refreshed":11,"controls":0}
+{"at":1793058864873,"page":2,"why":["focusin","keyup"],"totalMs":50.2,"patched":true,"how":"incremental","reason":null,"fetchMs":17.0,"convertMs":0.5,"nodes":694,"refreshed":9,"controls":0}
+{"at":1793058865032,"page":2,"why":["focusin","keydown","keyup"],"totalMs":138.8,"patched":true,"how":"incremental","reason":null,"fetchMs":79.6,"convertMs":1.1,"nodes":2441,"refreshed":14,"controls":0}
+{"at":1793058865128,"page":2,"why":["keydown"],"totalMs":9.6,"patched":true,"how":"incremental","reason":null,"fetchMs":1.6,"convertMs":0.7,"nodes":694,"refreshed":11,"controls":0}
+{"at":1793058865184,"page":2,"why":["focusin","keyup"],"totalMs":55.6,"patched":true,"how":"incremental","reason":null,"fetchMs":15.6,"convertMs":0.5,"nodes":694,"refreshed":9,"controls":0}
+{"at":1793058865376,"page":2,"why":["focusin","keydown","keyup"],"totalMs":173.9,"patched":true,"how":"incremental","reason":null,"fetchMs":109.7,"convertMs":1.1,"nodes":2441,"refreshed":14,"controls":0}
+{"at":1793058865436,"page":2,"why":["keydown"],"totalMs":11.6,"patched":true,"how":"incremental","reason":null,"fetchMs":1.6,"convertMs":0.7,"nodes":694,"refreshed":13,"controls":0}
+{"at":1793058865496,"page":2,"why":["focusin","keyup","nodesUpdated"],"totalMs":59.7,"patched":true,"how":"incremental","reason":null,"fetchMs":26.4,"convertMs":0.4,"nodes":694,"refreshed":8,"controls":0}
+{"at":1793058865743,"page":2,"why":["keydown"],"totalMs":10.1,"patched":true,"how":"incremental","reason":null,"fetchMs":1.5,"convertMs":0.4,"nodes":694,"refreshed":10,"controls":0}
+{"at":1793058865792,"page":2,"why":["focusin","keyup","nodesUpdated"],"totalMs":48.9,"patched":true,"how":"incremental","reason":null,"fetchMs":4.8,"convertMs":0.4,"nodes":694,"refreshed":8,"controls":0}
+{"at":1793058866056,"page":2,"why":["keydown"],"totalMs":16.3,"patched":true,"how":"incremental","reason":null,"fetchMs":7.2,"convertMs":0.5,"nodes":694,"refreshed":10,"controls":0}
+{"at":1793058866109,"page":2,"why":["focusin","keyup","nodesUpdated"],"totalMs":52.4,"patched":true,"how":"incremental","reason":null,"fetchMs":19.2,"convertMs":0.3,"nodes":694,"refreshed":8,"controls":0}
+{"at":1793058866312,"page":2,"why":["focusin","keydown","keyup","scroll"],"totalMs":730.5,"how":"full","reason":"layout","fetchMs":244.7,"convertMs":428.2,"nodes":2441}
+{"at":1793058866357,"page":2,"why":["keydown"],"totalMs":12.4,"patched":true,"how":"incremental","reason":null,"fetchMs":1.5,"convertMs":0.4,"nodes":694,"refreshed":10,"controls":0}
+{"at":1793058866416,"page":2,"why":["focusin","keyup"],"totalMs":58.5,"patched":true,"how":"incremental","reason":null,"fetchMs":24.5,"convertMs":0.3,"nodes":694,"refreshed":8,"controls":0}
+{"at":1793058866665,"page":2,"why":["keydown"],"totalMs":12.5,"patched":true,"how":"incremental","reason":null,"fetchMs":1.5,"convertMs":0.4,"nodes":694,"refreshed":10,"controls":0}
+{"at":1793058866723,"page":2,"why":["focusin","keyup"],"totalMs":58.4,"patched":true,"how":"incremental","reason":null,"fetchMs":15.0,"convertMs":0.5,"nodes":694,"refreshed":8,"controls":0}
+{"at":1793058867039,"page":2,"why":["keydown"],"totalMs":80.5,"how":"full","reason":"keyframe","fetchMs":40.0,"convertMs":28.3,"nodes":694}
+{"at":1793058867044,"page":2,"why":["focusin","keydown","keyup"],"totalMs":206.3,"patched":true,"how":"incremental","reason":null,"fetchMs":110.6,"convertMs":1.7,"nodes":2441,"refreshed":20,"controls":0}
+{"at":1793058867101,"page":2,"why":["focusin","keyup"],"totalMs":61.2,"patched":true,"how":"incremental","reason":null,"fetchMs":18.7,"convertMs":0.4,"nodes":694,"refreshed":8,"controls":0}
+{"at":1793058867278,"page":2,"why":["keydown"],"totalMs":11.9,"patched":true,"how":"incremental","reason":null,"fetchMs":2.4,"convertMs":0.8,"nodes":694,"refreshed":12,"controls":0}
+{"at":1793058867340,"page":2,"why":["focusin","keyup"],"totalMs":61.2,"patched":true,"how":"incremental","reason":null,"fetchMs":33.8,"convertMs":0.5,"nodes":694,"refreshed":9,"controls":0}
+{"at":1793058867482,"page":2,"why":["focusin","keydown","keyup"],"totalMs":215.8,"patched":true,"how":"incremental","reason":null,"fetchMs":84.6,"convertMs":1.2,"nodes":2441,"refreshed":15,"controls":0}
+{"at":1793058867584,"page":2,"why":["keydown"],"totalMs":10.4,"patched":true,"how":"incremental","reason":null,"fetchMs":1.6,"convertMs":0.6,"nodes":694,"refreshed":11,"controls":0}
+{"at":1793058867642,"page":2,"why":["focusin","keyup"],"totalMs":58.2,"patched":true,"how":"incremental","reason":null,"fetchMs":8.0,"convertMs":0.4,"nodes":694,"refreshed":9,"controls":0}
+{"at":1793058867892,"page":2,"why":["keydown"],"totalMs":10.9,"patched":true,"how":"incremental","reason":null,"fetchMs":1.4,"convertMs":0.6,"nodes":694,"refreshed":12,"controls":0}
+{"at":1793058867950,"page":2,"why":["focusin","keyup"],"totalMs":57.5,"patched":true,"how":"incremental","reason":null,"fetchMs":29.7,"convertMs":0.6,"nodes":694,"refreshed":8,"controls":0}
+{"at":1793058868198,"page":2,"why":["keydown"],"totalMs":10.4,"patched":true,"how":"incremental","reason":null,"fetchMs":1.4,"convertMs":0.5,"nodes":694,"refreshed":10,"controls":0}
+{"at":1793058868232,"page":2,"why":["focusin","keydown","keyup","scroll"],"totalMs":508.3,"how":"full","reason":"layout","fetchMs":265.3,"convertMs":189.1,"nodes":2441}
+{"at":1793058868254,"page":2,"why":["focusin","keyup"],"totalMs":55.9,"patched":true,"how":"incremental","reason":null,"fetchMs":12.0,"convertMs":0.4,"nodes":694,"refreshed":8,"controls":0}
+{"at":1793058868503,"page":2,"why":["keydown"],"totalMs":9.1,"patched":true,"how":"incremental","reason":null,"fetchMs":1.2,"convertMs":0.5,"nodes":694,"refreshed":10,"controls":0}
+{"at":1793058868557,"page":2,"why":["focusin","keyup"],"totalMs":53.6,"patched":true,"how":"incremental","reason":null,"fetchMs":2.4,"convertMs":0.4,"nodes":694,"refreshed":8,"controls":0}
+{"at":1793058868810,"page":2,"why":["keydown"],"totalMs":10.3,"patched":true,"how":"incremental","reason":null,"fetchMs":1.2,"convertMs":0.8,"nodes":694,"refreshed":9,"controls":0}
+{"at":1793058868839,"page":2,"why":["focusin","keydown","keyup"],"totalMs":76.2,"patched":true,"how":"incremental","reason":null,"fetchMs":32.1,"convertMs":1.0,"nodes":2441,"refreshed":18,"controls":0}
+{"at":1793058868866,"page":2,"why":["focusin","keyup"],"totalMs":55.6,"patched":true,"how":"incremental","reason":null,"fetchMs":13.0,"convertMs":0.4,"nodes":694,"refreshed":8,"controls":0}
+{"at":1793058869026,"page":2,"why":["keydown","keyup"],"totalMs":170.6,"patched":true,"how":"incremental","reason":null,"fetchMs":85.5,"convertMs":1.2,"nodes":2441,"refreshed":13,"controls":0}
+{"at":1793058869117,"page":2,"why":["keydown"],"totalMs":10.3,"patched":true,"how":"incremental","reason":null,"fetchMs":1.6,"convertMs":0.6,"nodes":694,"refreshed":12,"controls":0}
+{"at":1793058869176,"page":2,"why":["focusin","keyup"],"totalMs":58.4,"patched":true,"how":"incremental","reason":null,"fetchMs":11.8,"convertMs":0.4,"nodes":694,"refreshed":9,"controls":0}
+{"at":1793058869309,"page":2,"why":["focusin","keydown","keyup"],"totalMs":96.1,"patched":true,"how":"incremental","reason":null,"fetchMs":58.1,"convertMs":0.8,"nodes":2441,"refreshed":13,"controls":0}
+{"at":1793058869423,"page":2,"why":["keydown"],"totalMs":9.4,"patched":true,"how":"incremental","reason":null,"fetchMs":1.3,"convertMs":0.6,"nodes":694,"refreshed":11,"controls":0}
+{"at":1793058869481,"page":2,"why":["focusin","keyup"],"totalMs":57.4,"patched":true,"how":"incremental","reason":null,"fetchMs":11.7,"convertMs":0.4,"nodes":694,"refreshed":9,"controls":0}
+{"at":1793058869537,"page":2,"why":["keydown"],"totalMs":116.4,"patched":true,"how":"incremental","reason":null,"fetchMs":71.9,"convertMs":0.8,"nodes":2441,"refreshed":13,"controls":0}
+{"at":1793058869732,"page":2,"why":["keydown"],"totalMs":12.3,"patched":true,"how":"incremental","reason":null,"fetchMs":2.2,"convertMs":0.6,"nodes":694,"refreshed":13,"controls":0}
+{"at":1793058869904,"page":2,"why":["focusin","keyup"],"totalMs":214.1,"patched":true,"how":"incremental","reason":null,"fetchMs":145.0,"convertMs":1.1,"nodes":2441,"refreshed":12,"controls":0}
+{"at":1793058869964,"page":2,"why":["focusin","keyup"],"totalMs":232.1,"patched":true,"how":"incremental","reason":null,"fetchMs":199.5,"convertMs":0.4,"nodes":694,"refreshed":9,"controls":0}
+{"at":1793058870206,"page":2,"why":["focusin","keydown","keyup"],"totalMs":9.5,"patched":true,"how":"incremental","reason":null,"fetchMs":1.6,"convertMs":0.5,"nodes":694,"refreshed":13,"controls":0}
+{"at":1793058870273,"page":2,"why":["focusin","keydown","keyup"],"totalMs":133.1,"patched":true,"how":"incremental","reason":null,"fetchMs":84.7,"convertMs":1.3,"nodes":2441,"refreshed":16,"controls":0}
+{"at":1793058870428,"page":2,"why":["keydown"],"totalMs":95.3,"how":"full","reason":"layout","fetchMs":52.6,"convertMs":30.4,"nodes":694}
+{"at":1793058870488,"page":2,"why":["focusin","keyup","scroll"],"totalMs":59.6,"patched":true,"how":"incremental","reason":null,"fetchMs":11.2,"convertMs":0.4,"nodes":694,"refreshed":9,"controls":0}
+{"at":1793058870730,"page":2,"why":["keydown"],"totalMs":89.0,"how":"full","reason":"layout","fetchMs":39.0,"convertMs":37.4,"nodes":694}
+{"at":1793058870786,"page":2,"why":["focusin","keyup","scroll"],"totalMs":56.1,"patched":true,"how":"incremental","reason":null,"fetchMs":22.5,"convertMs":0.5,"nodes":694,"refreshed":10,"controls":0}
+{"at":1793058871032,"page":2,"why":["keydown"],"totalMs":84.2,"how":"full","reason":"layout","fetchMs":44.9,"convertMs":28.9,"nodes":694}
+{"at":1793058871091,"page":2,"why":["focusin","keyup","scroll"],"totalMs":58.8,"patched":true,"how":"incremental","reason":null,"fetchMs":25.5,"convertMs":0.5,"nodes":694,"refreshed":10,"controls":0}
+{"at":1793058871152,"page":2,"why":["input","keydown","nodesUpdated"],"totalMs":704.5,"how":"full","reason":"layout","fetchMs":401.9,"convertMs":216.2,"nodes":2443}
+{"at":1793058871266,"page":2,"why":["keydown"],"totalMs":10.3,"patched":true,"how":"incremental","reason":null,"fetchMs":2.0,"convertMs":0.7,"nodes":694,"refreshed":15,"controls":0}
+{"at":1793058871321,"page":2,"why":["focusin","keyup"],"totalMs":54.7,"patched":true,"how":"incremental","reason":null,"fetchMs":12.1,"convertMs":0.5,"nodes":694,"refreshed":10,"controls":0}
+{"at":1793058871575,"page":2,"why":["keydown"],"totalMs":11.6,"patched":true,"how":"incremental","reason":null,"fetchMs":2.5,"convertMs":0.6,"nodes":694,"refreshed":12,"controls":0}
+{"at":1793058871629,"page":2,"why":["focusin","keyup"],"totalMs":54.0,"patched":true,"how":"incremental","reason":null,"fetchMs":1.7,"convertMs":0.4,"nodes":694,"refreshed":10,"controls":0}
+{"at":1793058871880,"page":2,"why":["keydown"],"totalMs":10.5,"patched":true,"how":"incremental","reason":null,"fetchMs":1.7,"convertMs":0.6,"nodes":694,"refreshed":16,"controls":0}
+{"at":1793058871941,"page":2,"why":["focusin","keyup"],"totalMs":60.8,"patched":true,"how":"incremental","reason":null,"fetchMs":22.0,"convertMs":0.5,"nodes":694,"refreshed":12,"controls":0}
+{"at":1793058872189,"page":2,"why":["keydown"],"totalMs":11.4,"patched":true,"how":"incremental","reason":null,"fetchMs":2.0,"convertMs":0.6,"nodes":694,"refreshed":16,"controls":0}
+{"at":1793058872236,"page":2,"why":["focusin","keyup"],"totalMs":34.9,"patched":true,"how":"incremental","reason":null,"fetchMs":16.7,"convertMs":0.7,"nodes":694,"refreshed":13,"controls":0}
+{"at":1793058872495,"page":2,"why":["keydown"],"totalMs":10.8,"patched":true,"how":"incremental","reason":null,"fetchMs":1.8,"convertMs":0.6,"nodes":694,"refreshed":16,"controls":0}
+{"at":1793058872554,"page":2,"why":["focusin","keyup"],"totalMs":59.4,"patched":true,"how":"incremental","reason":null,"fetchMs":23.6,"convertMs":0.5,"nodes":694,"refreshed":13,"controls":0}
+{"at":1793058872803,"page":2,"why":["keydown"],"totalMs":11.7,"patched":true,"how":"incremental","reason":null,"fetchMs":2.0,"convertMs":0.6,"nodes":694,"refreshed":17,"controls":0}
+{"at":1793058872862,"page":2,"why":["focusin","keyup"],"totalMs":59.5,"patched":true,"how":"incremental","reason":null,"fetchMs":24.9,"convertMs":0.7,"nodes":694,"refreshed":15,"controls":0}
+{"at":1793058872941,"page":3,"why":["mutation","observe"],"totalMs":281.5,"how":"full","reason":"settling","fetchMs":133.3,"convertMs":77.9,"nodes":1069}
+{"at":1793058873110,"page":2,"why":["keydown"],"totalMs":12.5,"patched":true,"how":"incremental","reason":null,"fetchMs":1.6,"convertMs":0.6,"nodes":694,"refreshed":16,"controls":0}
+{"at":1793058873176,"page":2,"why":["focusin","keyup"],"totalMs":65.3,"patched":true,"how":"incremental","reason":null,"fetchMs":19.0,"convertMs":0.5,"nodes":694,"refreshed":15,"controls":0}
+{"at":1793058873562,"page":3,"why":["loadComplete","mutation","nodesUpdated","readystatechange"],"totalMs":287.0,"how":"full","reason":"loadComplete","fetchMs":125.7,"convertMs":74.7,"nodes":1069}
+{"at":1793058873782,"page":2,"why":["nodesUpdated"],"totalMs":310.9,"how":"full","reason":"layout","fetchMs":36.6,"convertMs":264.2,"nodes":696}
+{"at":1793058874130,"page":2,"why":["focusin","input","keydown","keyup","nodesUpdated","scroll"],"totalMs":36.1,"patched":false,"how":"incremental","reason":null,"fetchMs":3.6,"convertMs":25.4,"nodes":696,"refreshed":8,"controls":1}
+{"at":1793058874154,"page":2,"why":["input"],"totalMs":24.3,"patched":true,"how":"incremental","reason":null,"fetchMs":2.1,"convertMs":0.4,"nodes":696,"refreshed":8,"controls":0}
+{"at":1793058874422,"page":2,"why":["keyup"],"totalMs":35.1,"patched":false,"how":"incremental","reason":null,"fetchMs":3.4,"convertMs":23.1,"nodes":696,"refreshed":8,"controls":1}
+{"at":1793058874448,"page":2,"why":["input","keydown","nodesUpdated"],"totalMs":26.1,"patched":true,"how":"incremental","reason":null,"fetchMs":1.9,"convertMs":0.6,"nodes":696,"refreshed":8,"controls":0}
+{"at":1793058874731,"page":2,"why":["keyup"],"totalMs":41.1,"patched":false,"how":"incremental","reason":null,"fetchMs":3.6,"convertMs":28.9,"nodes":696,"refreshed":8,"controls":1}
+{"at":1793058874756,"page":2,"why":["input","keydown","nodesUpdated"],"totalMs":24.9,"patched":true,"how":"incremental","reason":null,"fetchMs":1.5,"convertMs":0.4,"nodes":696,"refreshed":8,"controls":0}
+{"at":1793058875028,"page":2,"why":["keyup"],"totalMs":35.7,"patched":false,"how":"incremental","reason":null,"fetchMs":3.2,"convertMs":23.8,"nodes":696,"refreshed":8,"controls":1}
+{"at":1793058875052,"page":2,"why":["input","keydown","nodesUpdated"],"totalMs":23.6,"patched":true,"how":"incremental","reason":null,"fetchMs":1.6,"convertMs":0.3,"nodes":696,"refreshed":8,"controls":0}
+{"at":1793058875425,"page":3,"why":["keydown"],"totalMs":197.1,"patched":true,"how":"incremental","reason":null,"fetchMs":71.6,"convertMs":43.3,"nodes":1069,"refreshed":8,"controls":0}
+{"at":1793058875738,"page":3,"why":["focusin","keydown","keyup"],"totalMs":94.6,"patched":true,"how":"incremental","reason":null,"fetchMs":58.9,"convertMs":0.6,"nodes":1069,"refreshed":9,"controls":0}
+{"at":1793058875837,"page":3,"why":["mutation"],"totalMs":294.8,"how":"full","reason":"frames","fetchMs":167.6,"convertMs":59.1,"nodes":883}
+{"at":1793058876014,"page":3,"why":["keydown"],"totalMs":175.2,"patched":true,"how":"incremental","reason":null,"fetchMs":93.2,"convertMs":0.6,"nodes":1069,"refreshed":9,"controls":0}
+{"at":1793058876303,"page":3,"why":["installed","loadComplete","mutation","observe","pageshow"],"totalMs":170.7,"how":"full","reason":"loadComplete","fetchMs":74.0,"convertMs":63.9,"nodes":1050}
+{"at":1793058876829,"page":3,"why":["focusin","keydown","keyup","nodesUpdated"],"totalMs":605.8,"how":"full","reason":"layout","fetchMs":157.4,"convertMs":92.7,"nodes":1068}
+{"at":1793058877599,"page":3,"why":["focusin","keydown","keyup","nodesUpdated"],"totalMs":254.6,"how":"full","reason":"layout","fetchMs":148.2,"convertMs":61.5,"nodes":1068}
+{"at":1793058878503,"page":3,"why":["focusin","keydown","keyup","nodesUpdated"],"totalMs":623.5,"patched":true,"how":"incremental","reason":null,"fetchMs":590.8,"convertMs":0.6,"nodes":1068,"refreshed":18,"controls":0}
+{"at":1793058878981,"page":3,"why":["keydown"],"totalMs":492.4,"how":"full","reason":"a frame changed","fetchMs":255.6,"convertMs":145.7,"nodes":1050}
+{"at":1793058879249,"page":3,"why":["focusin","keydown","keyup","scroll"],"totalMs":234.9,"how":"full","reason":"layout","fetchMs":150.2,"convertMs":54.1,"nodes":1068}
+{"at":1793058879499,"page":3,"why":["focusin","keydown","keyup"],"totalMs":14.6,"patched":true,"how":"incremental","reason":null,"fetchMs":7.6,"convertMs":0.7,"nodes":1068,"refreshed":12,"controls":0}
+{"at":1793058879572,"page":3,"why":["keydown"],"totalMs":33.4,"patched":true,"how":"incremental","reason":null,"fetchMs":5.8,"convertMs":0.5,"nodes":1068,"refreshed":10,"controls":0}
+{"at":1793058879647,"page":3,"why":["focusin","keyup"],"totalMs":74.9,"patched":true,"how":"incremental","reason":null,"fetchMs":45.5,"convertMs":0.5,"nodes":1068,"refreshed":9,"controls":0}
+{"at":1793058879655,"page":3,"why":["focusin","keydown","keyup"],"totalMs":170.2,"how":"full","reason":"a frame changed","fetchMs":80.4,"convertMs":67.4,"nodes":1050}
+{"at":1793058879856,"page":3,"why":["keydown"],"totalMs":10.5,"patched":true,"how":"incremental","reason":null,"fetchMs":2.0,"convertMs":0.5,"nodes":1068,"refreshed":10,"controls":0}
+{"at":1793058879929,"page":3,"why":["focusin","keyup"],"totalMs":72.5,"patched":true,"how":"incremental","reason":null,"fetchMs":25.0,"convertMs":0.4,"nodes":1068,"refreshed":9,"controls":0}
+{"at":1793058879998,"page":3,"why":["focusin","keydown","keyup"],"totalMs":157.2,"how":"full","reason":"a frame changed","fetchMs":72.4,"convertMs":60.9,"nodes":1050}
+{"at":1793058880161,"page":3,"why":["keydown"],"totalMs":7.8,"patched":true,"how":"incremental","reason":null,"fetchMs":1.9,"convertMs":0.5,"nodes":1068,"refreshed":10,"controls":0}
+{"at":1793058880231,"page":3,"why":["focusin","keyup"],"totalMs":69.0,"patched":true,"how":"incremental","reason":null,"fetchMs":36.6,"convertMs":0.4,"nodes":1068,"refreshed":9,"controls":0}
+{"at":1793058880471,"page":3,"why":["keydown"],"totalMs":9.0,"patched":true,"how":"incremental","reason":null,"fetchMs":2.1,"convertMs":0.7,"nodes":1068,"refreshed":10,"controls":0}
+{"at":1793058880549,"page":3,"why":["focusin","keyup"],"totalMs":78.4,"patched":true,"how":"incremental","reason":null,"fetchMs":40.0,"convertMs":0.5,"nodes":1068,"refreshed":9,"controls":0}
+{"at":1793058880631,"page":3,"why":["focusin","keydown","keyup","mutation"],"totalMs":454.9,"how":"full","reason":"a frame changed","fetchMs":73.9,"convertMs":351.0,"nodes":1050}
+{"at":1793058880869,"page":3,"why":["keydown"],"totalMs":98.9,"how":"full","reason":"stale: Stale text is drawn where it was not","fetchMs":50.4,"convertMs":37.5,"nodes":1068}
+{"at":1793058881244,"page":3,"why":["focusin","keydown","keyup","mutation"],"totalMs":147.2,"how":"full","reason":"a page that keeps changing","fetchMs":74.1,"convertMs":68.1,"nodes":1050}
+{"at":1793058881307,"page":3,"why":["focusin","keyup","mutation"],"totalMs":438.3,"patched":true,"how":"incremental","reason":null,"fetchMs":28.1,"convertMs":0.3,"nodes":1068,"refreshed":13,"controls":0}
+{"at":1793058881544,"page":3,"why":["focusin","keydown","keyup"],"totalMs":153.0,"how":"full","reason":"a page that was read without the probe","fetchMs":70.6,"convertMs":62.3,"nodes":1050}
+{"at":1793058881872,"page":3,"why":["focusin","keydown","keyup"],"totalMs":174.3,"how":"full","reason":"a frame changed","fetchMs":91.6,"convertMs":60.3,"nodes":1050}
+{"at":1793058881918,"page":3,"why":["focusin","keydown","keyup","mutation"],"totalMs":171.9,"how":"full","reason":"layout","fetchMs":101.5,"convertMs":59.2,"nodes":1074}
+{"at":1793058882143,"page":3,"why":["focusin","keydown","keyup","mutation"],"totalMs":52.8,"patched":false,"how":"incremental","reason":null,"fetchMs":7.1,"convertMs":39.8,"nodes":1076,"refreshed":18,"controls":0}
+{"at":1793058882360,"page":3,"why":["keydown"],"totalMs":50.6,"patched":false,"how":"incremental","reason":null,"fetchMs":6.0,"convertMs":35.7,"nodes":1078,"refreshed":16,"controls":0}
+{"at":1793058882434,"page":3,"why":["focusin","keyup","mutation","nodesUpdated"],"totalMs":73.7,"patched":true,"how":"incremental","reason":null,"fetchMs":24.8,"convertMs":0.6,"nodes":1078,"refreshed":14,"controls":0}
+{"at":1793058882499,"page":3,"why":["focusin","keydown","keyup"],"totalMs":452.1,"how":"full","reason":"a page that keeps changing","fetchMs":65.4,"convertMs":381.4,"nodes":1050}
+{"at":1793058882675,"page":3,"why":["keydown"],"totalMs":56.3,"patched":false,"how":"incremental","reason":null,"fetchMs":6.1,"convertMs":41.9,"nodes":1080,"refreshed":16,"controls":0}
+{"at":1793058882752,"page":3,"why":["focusin","keyup","mutation","nodesUpdated"],"totalMs":76.4,"patched":true,"how":"incremental","reason":null,"fetchMs":53.8,"convertMs":0.6,"nodes":1080,"refreshed":14,"controls":0}
+{"at":1793058883033,"page":3,"why":["keydown"],"totalMs":104.7,"how":"full","reason":"layout","fetchMs":46.7,"convertMs":46.9,"nodes":1080}
+{"at":1793058883095,"page":3,"why":["focusin","keydown","keyup"],"totalMs":143.7,"how":"full","reason":"a page that keeps changing","fetchMs":65.6,"convertMs":73.5,"nodes":1050}
+{"at":1793058883147,"page":3,"why":["focusin","keyup","mutation","nodesUpdated"],"totalMs":9.3,"patched":true,"how":"incremental","reason":null,"fetchMs":2.5,"convertMs":0.7,"nodes":1080,"refreshed":15,"controls":0}
+{"at":1793058883252,"page":3,"why":["keydown"],"totalMs":13.5,"patched":true,"how":"incremental","reason":null,"fetchMs":3.4,"convertMs":0.9,"nodes":1080,"refreshed":19,"controls":0}
+{"at":1793058883331,"page":3,"why":["focusin","keyup"],"totalMs":78.6,"patched":true,"how":"incremental","reason":null,"fetchMs":36.1,"convertMs":0.7,"nodes":1080,"refreshed":15,"controls":0}
+{"at":1793058883395,"page":3,"why":["focusin","keydown","keyup"],"totalMs":155.0,"how":"full","reason":"a page that was read without the probe","fetchMs":71.7,"convertMs":62.4,"nodes":1050}
+{"at":1793058883562,"page":3,"why":["keydown"],"totalMs":14.3,"patched":true,"how":"incremental","reason":null,"fetchMs":3.3,"convertMs":1.3,"nodes":1080,"refreshed":19,"controls":0}
+{"at":1793058883650,"page":3,"why":["focusin","keyup"],"totalMs":87.1,"patched":true,"how":"incremental","reason":null,"fetchMs":49.4,"convertMs":0.7,"nodes":1080,"refreshed":15,"controls":0}
+{"at":1793058883728,"page":3,"why":["focusin","keydown","keyup"],"totalMs":177.5,"how":"full","reason":"a frame changed","fetchMs":91.6,"convertMs":60.9,"nodes":1050}
+{"at":1793058883869,"page":3,"why":["keydown"],"totalMs":10.9,"patched":true,"how":"incremental","reason":null,"fetchMs":2.5,"convertMs":0.9,"nodes":1080,"refreshed":19,"controls":0}
+{"at":1793058883943,"page":3,"why":["focusin","keyup"],"totalMs":73.8,"patched":true,"how":"incremental","reason":null,"fetchMs":46.3,"convertMs":0.7,"nodes":1080,"refreshed":15,"controls":0}
+{"at":1793058884179,"page":3,"why":["keydown"],"totalMs":10.1,"patched":true,"how":"incremental","reason":null,"fetchMs":2.3,"convertMs":0.9,"nodes":1080,"refreshed":19,"controls":0}
+{"at":1793058884255,"page":3,"why":["focusin","keyup"],"totalMs":76.1,"patched":true,"how":"incremental","reason":null,"fetchMs":48.2,"convertMs":0.7,"nodes":1080,"refreshed":15,"controls":0}
+{"at":1793058884396,"page":3,"why":["focusin","keydown","keyup"],"totalMs":479.6,"how":"full","reason":"a page that keeps changing","fetchMs":63.3,"convertMs":405.5,"nodes":1050}
+{"at":1793058884489,"page":3,"why":["keydown"],"totalMs":11.1,"patched":true,"how":"incremental","reason":null,"fetchMs":2.9,"convertMs":1.2,"nodes":1080,"refreshed":19,"controls":0}
+{"at":1793058884567,"page":3,"why":["focusin","keyup"],"totalMs":77.4,"patched":true,"how":"incremental","reason":null,"fetchMs":34.8,"convertMs":0.6,"nodes":1080,"refreshed":15,"controls":0}
+{"at":1793058884798,"page":3,"why":["keydown"],"totalMs":10.7,"patched":true,"how":"incremental","reason":null,"fetchMs":2.5,"convertMs":1.3,"nodes":1080,"refreshed":19,"controls":0}
+{"at":1793058885103,"page":3,"why":["focusin","keydown","keyup","scroll"],"totalMs":217.0,"how":"full","reason":"a page that keeps changing","fetchMs":65.8,"convertMs":145.4,"nodes":1050}
+{"at":1793058885280,"page":3,"why":["focusin","keyup"],"totalMs":481.4,"patched":true,"how":"incremental","reason":null,"fetchMs":32.7,"convertMs":0.6,"nodes":1080,"refreshed":15,"controls":0}
+{"at":1793058885448,"page":3,"why":["focusin","keydown","keyup"],"totalMs":128.2,"how":"full","reason":"a page that keeps changing","fetchMs":62.7,"convertMs":57.8,"nodes":1050}
+{"at":1793058885725,"page":3,"why":["focusin","keydown","keyup"],"totalMs":147.5,"how":"full","reason":"a page that keeps changing","fetchMs":66.2,"convertMs":72.6,"nodes":1050}
+{"at":1793058885947,"page":3,"why":["focusin","keydown","keyup","scroll"],"totalMs":185.5,"how":"full","reason":"layout","fetchMs":91.9,"convertMs":82.3,"nodes":1080}
+{"at":1793058886048,"page":3,"why":["focusin","keydown","keyup"],"totalMs":174.8,"how":"full","reason":"a page that was read without the probe","fetchMs":75.4,"convertMs":76.5,"nodes":1050}
+{"at":1793058886144,"page":3,"why":["focusin","keydown","keyup"],"totalMs":10.8,"patched":true,"how":"incremental","reason":null,"fetchMs":3.0,"convertMs":0.8,"nodes":1080,"refreshed":19,"controls":0}
+{"at":1793058886344,"page":3,"why":["keydown"],"totalMs":14.3,"patched":true,"how":"incremental","reason":null,"fetchMs":3.2,"convertMs":1.1,"nodes":1080,"refreshed":19,"controls":0}
+{"at":1793058886428,"page":3,"why":["focusin","keyup"],"totalMs":83.5,"patched":true,"how":"incremental","reason":null,"fetchMs":50.5,"convertMs":0.6,"nodes":1080,"refreshed":15,"controls":0}
+{"at":1793058886626,"page":3,"why":["keydown"],"totalMs":310.3,"how":"full","reason":"a frame changed","fetchMs":69.4,"convertMs":85.8,"nodes":1050}
+{"at":1793058886651,"page":3,"why":["keydown"],"totalMs":10.1,"patched":true,"how":"incremental","reason":null,"fetchMs":2.2,"convertMs":1.0,"nodes":1080,"refreshed":19,"controls":0}
+{"at":1793058886658,"page":3,"why":["focusin","keyup"],"totalMs":6.9,"patched":true,"how":"incremental","reason":null,"fetchMs":2.1,"convertMs":0.5,"nodes":1080,"refreshed":15,"controls":0}
+{"at":1793058886960,"page":3,"why":["keydown"],"totalMs":10.6,"patched":true,"how":"incremental","reason":null,"fetchMs":2.8,"convertMs":0.9,"nodes":1080,"refreshed":19,"controls":0}
+{"at":1793058887040,"page":3,"why":["focusin","keyup"],"totalMs":80.2,"patched":true,"how":"incremental","reason":null,"fetchMs":37.7,"convertMs":0.6,"nodes":1080,"refreshed":15,"controls":0}
+{"at":1793058887088,"page":3,"why":["focusin","keydown","keyup"],"totalMs":146.0,"how":"full","reason":"a page that keeps changing","fetchMs":61.2,"convertMs":75.2,"nodes":1050}
+{"at":1793058887269,"page":3,"why":["keydown"],"totalMs":11.0,"patched":true,"how":"incremental","reason":null,"fetchMs":2.9,"convertMs":1.0,"nodes":1080,"refreshed":19,"controls":0}
+{"at":1793058887346,"page":3,"why":["focusin","keyup"],"totalMs":76.5,"patched":true,"how":"incremental","reason":null,"fetchMs":44.3,"convertMs":0.6,"nodes":1080,"refreshed":15,"controls":0}
+{"at":1793058887375,"page":3,"why":["focusin","keydown","keyup"],"totalMs":140.0,"how":"full","reason":"a page that keeps changing","fetchMs":63.1,"convertMs":67.9,"nodes":1050}
+{"at":1793058887655,"page":3,"why":["focusin","keydown","keyup"],"totalMs":139.4,"how":"full","reason":"a page that keeps changing","fetchMs":67.6,"convertMs":66.8,"nodes":1050}
+{"at":1793058887726,"page":3,"why":["focusin"],"totalMs":105.7,"how":"full","reason":"layout","fetchMs":52.3,"convertMs":46.0,"nodes":1082}
+{"at":1793058887842,"page":3,"why":["input","keydown","nodesUpdated","scroll"],"totalMs":10.4,"patched":true,"how":"incremental","reason":null,"fetchMs":5.2,"convertMs":0.4,"nodes":1082,"refreshed":10,"controls":1}
+{"at":1793058887974,"page":3,"why":["keyup"],"totalMs":48.7,"patched":false,"how":"incremental","reason":null,"fetchMs":5.0,"convertMs":37.3,"nodes":1082,"refreshed":10,"controls":1}
+{"at":1793058888010,"page":3,"why":["input","keydown","nodesUpdated"],"totalMs":35.5,"patched":true,"how":"incremental","reason":null,"fetchMs":10.9,"convertMs":0.4,"nodes":1082,"refreshed":10,"controls":0}
+{"at":1793058888285,"page":3,"why":["keyup"],"totalMs":57.0,"patched":false,"how":"incremental","reason":null,"fetchMs":5.6,"convertMs":42.7,"nodes":1082,"refreshed":10,"controls":1}
+{"at":1793058888334,"page":3,"why":["input","keydown","nodesUpdated"],"totalMs":48.4,"patched":true,"how":"incremental","reason":null,"fetchMs":15.5,"convertMs":0.4,"nodes":1082,"refreshed":10,"controls":0}
+{"at":1793058888348,"page":3,"why":["focusin","keydown","keyup"],"totalMs":553.2,"how":"full","reason":"a page that keeps changing","fetchMs":63.4,"convertMs":482.6,"nodes":1050}
+{"at":1793058888582,"page":3,"why":["keyup"],"totalMs":50.9,"patched":false,"how":"incremental","reason":null,"fetchMs":5.2,"convertMs":39.4,"nodes":1082,"refreshed":10,"controls":1}
+{"at":1793058888613,"page":3,"why":["input","keydown","nodesUpdated"],"totalMs":30.8,"patched":true,"how":"incremental","reason":null,"fetchMs":7.1,"convertMs":0.3,"nodes":1082,"refreshed":10,"controls":0}
+{"at":1793058888879,"page":3,"why":["keyup"],"totalMs":45.2,"patched":false,"how":"incremental","reason":null,"fetchMs":4.1,"convertMs":35.2,"nodes":1082,"refreshed":10,"controls":1}
+{"at":1793058888910,"page":3,"why":["input","keydown","nodesUpdated"],"totalMs":31.3,"patched":true,"how":"incremental","reason":null,"fetchMs":1.7,"convertMs":0.3,"nodes":1082,"refreshed":10,"controls":0}
+{"at":1793058888989,"page":3,"why":["focusin","installed","keydown","keyup","mutation","observe","scroll"],"totalMs":140.7,"how":"full","reason":"a page that keeps changing","fetchMs":68.4,"convertMs":68.1,"nodes":1114}
+{"at":1793058889186,"page":3,"why":["keyup"],"totalMs":50.5,"patched":false,"how":"incremental","reason":null,"fetchMs":5.2,"convertMs":38.9,"nodes":1082,"refreshed":10,"controls":1}
+{"at":1793058889281,"page":3,"why":["focusin","keydown","keyup"],"totalMs":150.8,"how":"full","reason":"a page that keeps changing","fetchMs":70.2,"convertMs":75.9,"nodes":1114}
+{"at":1793058889611,"page":3,"why":["focusin","keydown","keyup"],"totalMs":177.9,"how":"full","reason":"a page that keeps changing","fetchMs":104.7,"convertMs":69.4,"nodes":1114}
+{"at":1793058890082,"page":4,"why":["mutation"],"totalMs":106.8,"how":"full","reason":"mutation","fetchMs":89.7,"convertMs":10.2,"nodes":58}
+{"at":1793058890323,"page":4,"why":["loadComplete","mutation","pageshow","readystatechange"],"totalMs":133.6,"how":"full","reason":"loadComplete","fetchMs":53.2,"convertMs":45.1,"nodes":1078}
+{"at":1793058890354,"page":3,"why":["focusin","keydown","keyup"],"totalMs":564.9,"how":"full","reason":"a page that keeps changing","fetchMs":64.3,"convertMs":495.2,"nodes":1114}
+{"at":1793058891041,"page":3,"why":["focusin","keydown","keyup","mutation","scroll"],"totalMs":186.2,"how":"full","reason":"a page that was read without the probe","fetchMs":90.7,"convertMs":69.8,"nodes":1120}
+{"at":1793058891296,"page":3,"why":["input","keydown","keyup"],"totalMs":68.3,"patched":false,"how":"incremental","reason":null,"fetchMs":5.8,"convertMs":42.5,"nodes":1120,"refreshed":10,"controls":1}
+{"at":1793058891504,"page":3,"why":["keyup"],"totalMs":59.8,"patched":false,"how":"incremental","reason":null,"fetchMs":3.7,"convertMs":34.7,"nodes":1120,"refreshed":10,"controls":1}
+{"at":1793058891546,"page":3,"why":["input","keydown","nodesUpdated"],"totalMs":41.5,"patched":true,"how":"incremental","reason":null,"fetchMs":1.7,"convertMs":0.4,"nodes":1120,"refreshed":9,"controls":0}
+{"at":1793058891810,"page":3,"why":["keyup"],"totalMs":62.3,"patched":false,"how":"incremental","reason":null,"fetchMs":4.4,"convertMs":36.7,"nodes":1120,"refreshed":10,"controls":1}
+{"at":1793058891859,"page":3,"why":["input","keydown","nodesUpdated"],"totalMs":48.7,"patched":true,"how":"incremental","reason":null,"fetchMs":1.8,"convertMs":0.4,"nodes":1120,"refreshed":9,"controls":0}
+{"at":1793058892126,"page":3,"why":["keyup"],"totalMs":75.8,"patched":false,"how":"incremental","reason":null,"fetchMs":7.5,"convertMs":45.2,"nodes":1120,"refreshed":10,"controls":1}
+{"at":1793058892167,"page":3,"why":["input","keydown","nodesUpdated"],"totalMs":40.5,"patched":true,"how":"incremental","reason":null,"fetchMs":2.1,"convertMs":0.5,"nodes":1120,"refreshed":9,"controls":0}
+{"at":1793058892586,"page":3,"why":["keyup"],"totalMs":122.3,"patched":false,"how":"incremental","reason":null,"fetchMs":4.0,"convertMs":31.8,"nodes":1120,"refreshed":10,"controls":1}
+{"at":1793058892992,"page":4,"why":["keydown"],"totalMs":314.6,"how":"full","reason":"settling","fetchMs":158.2,"convertMs":101.7,"nodes":1078}
+{"at":1793058893396,"page":4,"why":["installed"],"totalMs":593.6,"how":"full","reason":"first","fetchMs":309.8,"convertMs":209.6,"nodes":3643}
+{"at":1793058893446,"page":4,"why":["focusin","keydown","keyup"],"totalMs":96.9,"patched":true,"how":"incremental","reason":null,"fetchMs":58.9,"convertMs":0.5,"nodes":1078,"refreshed":10,"controls":0}
+{"at":1793058893897,"page":4,"why":["keydown"],"totalMs":301.3,"how":"full","reason":"layout","fetchMs":157.3,"convertMs":98.2,"nodes":1077}
+{"at":1793058894350,"page":4,"why":["focusin","keydown","keyup","nodesUpdated"],"totalMs":134.0,"how":"full","reason":"layout","fetchMs":52.5,"convertMs":73.8,"nodes":1077}
+{"at":1793058894406,"page":4,"why":["loadComplete","mutation","nodesUpdated","observe","pageshow"],"totalMs":499.6,"how":"full","reason":"loadComplete","fetchMs":149.9,"convertMs":304.1,"nodes":3779}
+{"at":1793058894511,"page":4,"why":["keydown"],"totalMs":8.2,"patched":true,"how":"incremental","reason":null,"fetchMs":1.4,"convertMs":0.4,"nodes":1077,"refreshed":13,"controls":0}
+{"at":1793058894578,"page":4,"why":["focusin","keyup"],"totalMs":66.9,"patched":true,"how":"incremental","reason":null,"fetchMs":34.9,"convertMs":0.3,"nodes":1077,"refreshed":8,"controls":0}
+{"at":1793058894818,"page":4,"why":["keydown"],"totalMs":8.2,"patched":true,"how":"incremental","reason":null,"fetchMs":1.7,"convertMs":0.5,"nodes":1077,"refreshed":13,"controls":0}
+{"at":1793058894891,"page":4,"why":["focusin","keyup"],"totalMs":73.4,"patched":true,"how":"incremental","reason":null,"fetchMs":46.2,"convertMs":0.4,"nodes":1077,"refreshed":10,"controls":0}
+{"at":1793058895128,"page":4,"why":["keydown"],"totalMs":10.1,"patched":true,"how":"incremental","reason":null,"fetchMs":1.9,"convertMs":0.5,"nodes":1077,"refreshed":15,"controls":0}
+{"at":1793058895678,"page":4,"why":["focusin","keyup","nodesUpdated"],"totalMs":549.7,"patched":true,"how":"incremental","reason":null,"fetchMs":503.2,"convertMs":0.5,"nodes":1077,"refreshed":10,"controls":0}
+{"at":1793058896306,"page":4,"why":["focusin","keydown","keyup","scroll"],"totalMs":122.7,"how":"full","reason":"layout","fetchMs":52.7,"convertMs":59.6,"nodes":1077}
+{"at":1793058896437,"page":4,"why":["focusin","keydown","keyup"],"totalMs":8.5,"patched":true,"how":"incremental","reason":null,"fetchMs":2.1,"convertMs":0.6,"nodes":1077,"refreshed":12,"controls":0}
+{"at":1793058896547,"page":4,"why":["keydown"],"totalMs":826.2,"how":"full","reason":"settling","fetchMs":339.6,"convertMs":401.9,"nodes":3777}
+{"at":1793058896667,"page":4,"why":["keydown"],"totalMs":8.5,"patched":true,"how":"incremental","reason":null,"fetchMs":2.0,"convertMs":0.5,"nodes":1077,"refreshed":10,"controls":0}
+{"at":1793058896738,"page":4,"why":["focusin","keyup"],"totalMs":70.7,"patched":true,"how":"incremental","reason":null,"fetchMs":38.5,"convertMs":0.4,"nodes":1077,"refreshed":9,"controls":0}
+{"at":1793058896975,"page":4,"why":["keydown"],"totalMs":10.2,"patched":true,"how":"incremental","reason":null,"fetchMs":1.8,"convertMs":0.5,"nodes":1077,"refreshed":10,"controls":0}
+{"at":1793058897052,"page":4,"why":["focusin","keyup"],"totalMs":76.9,"patched":true,"how":"incremental","reason":null,"fetchMs":27.2,"convertMs":0.5,"nodes":1077,"refreshed":9,"controls":0}
+{"at":1793058897281,"page":4,"why":["keydown"],"totalMs":8.3,"patched":true,"how":"incremental","reason":null,"fetchMs":1.8,"convertMs":0.7,"nodes":1077,"refreshed":10,"controls":0}
+{"at":1793058897650,"page":4,"why":["focusin","keyup"],"totalMs":74.2,"patched":true,"how":"incremental","reason":null,"fetchMs":13.1,"convertMs":0.5,"nodes":1077,"refreshed":9,"controls":0}
+{"at":1793058897658,"page":4,"why":["focusin","keydown","keyup"],"totalMs":8.4,"patched":true,"how":"incremental","reason":null,"fetchMs":1.7,"convertMs":1.1,"nodes":1077,"refreshed":10,"controls":0}
+{"at":1793058898000,"page":4,"why":["keydown"],"totalMs":113.8,"how":"full","reason":"stale: Stale text is drawn where it was not","fetchMs":55.8,"convertMs":47.8,"nodes":1077}
+{"at":1793058898077,"page":4,"why":["focusin","keydown","keyup","nodesUpdated"],"totalMs":994.6,"how":"full","reason":"layout","fetchMs":268.8,"convertMs":672.8,"nodes":3779}
+{"at":1793058898122,"page":4,"why":["focusin","keyup","mutation"],"totalMs":7.7,"patched":true,"how":"incremental","reason":null,"fetchMs":2.0,"convertMs":0.3,"nodes":1077,"refreshed":13,"controls":0}
+{"at":1793058898316,"page":4,"why":["keydown"],"totalMs":122.2,"how":"full","reason":"stale: Stale text is drawn where it was not","fetchMs":61.2,"convertMs":47.4,"nodes":1079}
+{"at":1793058898447,"page":4,"why":["focusin","keyup","mutation"],"totalMs":8.2,"patched":true,"how":"incremental","reason":null,"fetchMs":2.2,"convertMs":0.4,"nodes":1079,"refreshed":14,"controls":0}
+{"at":1793058898565,"page":4,"why":["keydown"],"totalMs":55.6,"patched":false,"how":"incremental","reason":null,"fetchMs":7.4,"convertMs":38.8,"nodes":1081,"refreshed":16,"controls":0}
+{"at":1793058898650,"page":4,"why":["focusin","keyup","mutation"],"totalMs":84.7,"patched":true,"how":"incremental","reason":null,"fetchMs":62.3,"convertMs":0.5,"nodes":1081,"refreshed":14,"controls":0}
+{"at":1793058898933,"page":4,"why":["keydown"],"totalMs":117.3,"how":"full","reason":"layout","fetchMs":57.4,"convertMs":45.9,"nodes":1083}
+{"at":1793058899058,"page":4,"why":["focusin","keyup","mutation","nodesUpdated"],"totalMs":7.8,"patched":true,"how":"incremental","reason":null,"fetchMs":1.7,"convertMs":0.5,"nodes":1083,"refreshed":14,"controls":0}
+{"at":1793058899186,"page":4,"why":["keydown"],"totalMs":55.9,"patched":false,"how":"incremental","reason":null,"fetchMs":7.0,"convertMs":43.1,"nodes":1085,"refreshed":18,"controls":0}
+{"at":1793058899256,"page":4,"why":["focusin","keyup","mutation"],"totalMs":70.1,"patched":true,"how":"incremental","reason":null,"fetchMs":42.9,"convertMs":0.5,"nodes":1085,"refreshed":14,"controls":0}
+{"at":1793058899736,"page":4,"why":["focusin","keydown","keyup","mutation"],"totalMs":1112.8,"how":"full","reason":"mutation","fetchMs":263.9,"convertMs":794.8,"nodes":3779}
+{"at":1793058899867,"page":4,"why":["keydown"],"totalMs":133.0,"patched":false,"how":"incremental","reason":null,"fetchMs":6.9,"convertMs":39.8,"nodes":1087,"refreshed":16,"controls":0}
+{"at":1793058900049,"page":4,"why":["focusin","keydown","keyup","mutation","nodesUpdated"],"totalMs":48.9,"patched":false,"how":"incremental","reason":null,"fetchMs":6.8,"convertMs":36.3,"nodes":1089,"refreshed":16,"controls":0}
+{"at":1793058900242,"page":4,"why":["keydown"],"totalMs":179.3,"how":"full","reason":"layout","fetchMs":100.1,"convertMs":52.7,"nodes":1089}
+{"at":1793058900431,"page":4,"why":["focusin","keydown","keyup","mutation","nodesUpdated"],"totalMs":9.5,"patched":true,"how":"incremental","reason":null,"fetchMs":3.2,"convertMs":1.1,"nodes":1089,"refreshed":19,"controls":0}
+{"at":1793058900468,"page":4,"why":["focusin","keydown","keyup"],"totalMs":200.8,"patched":true,"how":"incremental","reason":null,"fetchMs":167.0,"convertMs":1.9,"nodes":3779,"refreshed":32,"controls":0}
+{"at":1793058900687,"page":4,"why":["keydown"],"totalMs":12.0,"patched":true,"how":"incremental","reason":null,"fetchMs":3.1,"convertMs":0.9,"nodes":1089,"refreshed":19,"controls":0}
+{"at":1793058900694,"page":4,"why":["focusin","keyup"],"totalMs":7.5,"patched":true,"how":"incremental","reason":null,"fetchMs":2.1,"convertMs":0.6,"nodes":1089,"refreshed":15,"controls":0}
+{"at":1793058900994,"page":4,"why":["keydown"],"totalMs":11.0,"patched":true,"how":"incremental","reason":null,"fetchMs":2.7,"convertMs":0.9,"nodes":1089,"refreshed":19,"controls":0}
+{"at":1793058901073,"page":4,"why":["focusin","keyup"],"totalMs":79.5,"patched":true,"how":"incremental","reason":null,"fetchMs":47.8,"convertMs":0.6,"nodes":1089,"refreshed":15,"controls":0}
+{"at":1793058901260,"page":4,"why":["focusin","keydown","keyup","mutation"],"totalMs":560.6,"patched":false,"how":"incremental","reason":null,"fetchMs":190.1,"convertMs":269.1,"nodes":3779,"refreshed":25,"controls":0}
+{"at":1793058901304,"page":4,"why":["keydown"],"totalMs":12.4,"patched":true,"how":"incremental","reason":null,"fetchMs":2.7,"convertMs":1.4,"nodes":1089,"refreshed":19,"controls":0}
+{"at":1793058901398,"page":4,"why":["focusin","keyup"],"totalMs":93.1,"patched":true,"how":"incremental","reason":null,"fetchMs":46.8,"convertMs":0.6,"nodes":1089,"refreshed":15,"controls":0}
+{"at":1793058901613,"page":4,"why":["keydown"],"totalMs":11.4,"patched":true,"how":"incremental","reason":null,"fetchMs":2.8,"convertMs":1.1,"nodes":1089,"refreshed":19,"controls":0}
+{"at":1793058901696,"page":4,"why":["focusin","keyup"],"totalMs":83.2,"patched":true,"how":"incremental","reason":null,"fetchMs":50.6,"convertMs":0.7,"nodes":1089,"refreshed":15,"controls":0}
+{"at":1793058901922,"page":4,"why":["keydown"],"totalMs":12.0,"patched":true,"how":"incremental","reason":null,"fetchMs":2.9,"convertMs":0.9,"nodes":1089,"refreshed":19,"controls":0}
+{"at":1793058902004,"page":4,"why":["focusin","keyup"],"totalMs":82.1,"patched":true,"how":"incremental","reason":null,"fetchMs":39.4,"convertMs":0.6,"nodes":1089,"refreshed":15,"controls":0}
+{"at":1793058902229,"page":4,"why":["keydown"],"totalMs":11.4,"patched":true,"how":"incremental","reason":null,"fetchMs":3.3,"convertMs":1.1,"nodes":1089,"refreshed":19,"controls":0}
+{"at":1793058902306,"page":4,"why":["focusin","keyup"],"totalMs":76.1,"patched":true,"how":"incremental","reason":null,"fetchMs":33.3,"convertMs":0.7,"nodes":1089,"refreshed":15,"controls":0}
+{"at":1793058902666,"page":4,"why":["keydown"],"totalMs":138.8,"how":"full","reason":"layout","fetchMs":65.3,"convertMs":60.3,"nodes":1089}
+{"at":1793058902813,"page":4,"why":["focusin","keyup","scroll"],"totalMs":7.8,"patched":true,"how":"incremental","reason":null,"fetchMs":2.4,"convertMs":0.6,"nodes":1089,"refreshed":15,"controls":0}
+{"at":1793058902855,"page":4,"why":["keydown"],"totalMs":11.4,"patched":true,"how":"incremental","reason":null,"fetchMs":3.2,"convertMs":1.1,"nodes":1089,"refreshed":19,"controls":0}
+{"at":1793058902939,"page":4,"why":["focusin","keyup"],"totalMs":84.0,"patched":true,"how":"incremental","reason":null,"fetchMs":56.5,"convertMs":0.6,"nodes":1089,"refreshed":15,"controls":0}
+{"at":1793058903021,"page":4,"why":["focusin","keydown","keyup","mutation","nodesUpdated"],"totalMs":1225.6,"how":"full","reason":"mutation","fetchMs":360.6,"convertMs":801.0,"nodes":3779}
+{"at":1793058903165,"page":4,"why":["keydown"],"totalMs":16.2,"patched":true,"how":"incremental","reason":null,"fetchMs":3.7,"convertMs":1.4,"nodes":1089,"refreshed":19,"controls":0}
+{"at":1793058903174,"page":4,"why":["focusin","keyup"],"totalMs":9.0,"patched":true,"how":"incremental","reason":null,"fetchMs":2.7,"convertMs":0.9,"nodes":1089,"refreshed":15,"controls":0}
+{"at":1793058903471,"page":4,"why":["keydown"],"totalMs":12.0,"patched":true,"how":"incremental","reason":null,"fetchMs":2.9,"convertMs":1.2,"nodes":1089,"refreshed":19,"controls":0}
+{"at":1793058903480,"page":4,"why":["focusin","keyup"],"totalMs":8.3,"patched":true,"how":"incremental","reason":null,"fetchMs":2.1,"convertMs":0.7,"nodes":1089,"refreshed":15,"controls":0}
+{"at":1793058903780,"page":4,"why":["keydown"],"totalMs":10.7,"patched":true,"how":"incremental","reason":null,"fetchMs":2.5,"convertMs":1.0,"nodes":1089,"refreshed":19,"controls":0}
+{"at":1793058903860,"page":4,"why":["focusin","keyup"],"totalMs":80.0,"patched":true,"how":"incremental","reason":null,"fetchMs":47.5,"convertMs":0.7,"nodes":1089,"refreshed":15,"controls":0}
+{"at":1793058904173,"page":4,"why":["keydown"],"totalMs":97.0,"how":"full","reason":"layout","fetchMs":46.7,"convertMs":41.6,"nodes":1089}
+{"at":1793058904245,"page":4,"why":["focusin","keyup","scroll"],"totalMs":71.8,"patched":true,"how":"incremental","reason":null,"fetchMs":34.3,"convertMs":0.7,"nodes":1089,"refreshed":15,"controls":0}
+{"at":1793058904255,"page":4,"why":["focusin","keydown","keyup","mutation"],"totalMs":703.0,"how":"full","reason":"mutation","fetchMs":292.3,"convertMs":311.6,"nodes":3779}
+{"at":1793058904945,"page":4,"why":["keydown"],"totalMs":238.9,"how":"full","reason":"layout","fetchMs":46.3,"convertMs":93.1,"nodes":1089}
+{"at":1793058905292,"page":4,"why":["focusin","input","keydown","keyup","nodesUpdated","scroll"],"totalMs":107.4,"how":"full","reason":"layout","fetchMs":52.0,"convertMs":47.9,"nodes":1091}
+{"at":1793058905448,"page":4,"why":["input","keydown","keyup","nodesUpdated"],"totalMs":48.8,"patched":false,"how":"incremental","reason":null,"fetchMs":5.2,"convertMs":38.7,"nodes":1091,"refreshed":10,"controls":1}
+{"at":1793058905464,"page":4,"why":["focusin","keydown","keyup","mutation","nodesUpdated"],"totalMs":698.2,"how":"full","reason":"mutation","fetchMs":376.4,"convertMs":271.5,"nodes":3826}
+{"at":1793058905701,"page":4,"why":["keyup"],"totalMs":44.0,"patched":false,"how":"incremental","reason":null,"fetchMs":4.2,"convertMs":32.4,"nodes":1091,"refreshed":10,"controls":1}
+{"at":1793058905735,"page":4,"why":["input","keydown","nodesUpdated"],"totalMs":33.2,"patched":true,"how":"incremental","reason":null,"fetchMs":7.6,"convertMs":0.3,"nodes":1091,"refreshed":10,"controls":0}
+{"at":1793058906008,"page":4,"why":["keyup"],"totalMs":47.9,"patched":false,"how":"incremental","reason":null,"fetchMs":5.5,"convertMs":36.3,"nodes":1091,"refreshed":10,"controls":1}
+{"at":1793058906036,"page":4,"why":["input","keydown","nodesUpdated"],"totalMs":28.4,"patched":true,"how":"incremental","reason":null,"fetchMs":1.9,"convertMs":0.3,"nodes":1091,"refreshed":10,"controls":0}
+{"at":1793058906307,"page":4,"why":["keyup"],"totalMs":45.1,"patched":false,"how":"incremental","reason":null,"fetchMs":4.8,"convertMs":32.6,"nodes":1091,"refreshed":10,"controls":1}
+{"at":1793058906337,"page":4,"why":["input","keydown","nodesUpdated"],"totalMs":29.1,"patched":true,"how":"incremental","reason":null,"fetchMs":2.0,"convertMs":0.3,"nodes":1091,"refreshed":10,"controls":0}
+{"at":1793058906613,"page":4,"why":["keyup"],"totalMs":47.6,"patched":false,"how":"incremental","reason":null,"fetchMs":4.6,"convertMs":36.3,"nodes":1091,"refreshed":10,"controls":1}
+{"at":1793058906644,"page":4,"why":["input","keydown","nodesUpdated"],"totalMs":31.3,"patched":true,"how":"incremental","reason":null,"fetchMs":7.1,"convertMs":0.3,"nodes":1091,"refreshed":10,"controls":0}
+{"at":1793058907183,"page":4,"why":["focusin","keydown","keyup","mutation","scroll"],"totalMs":1197.7,"how":"full","reason":"mutation","fetchMs":397.3,"convertMs":757.7,"nodes":3779}
+{"at":1793058908487,"page":4,"why":["focusin","keydown","keyup","mutation"],"totalMs":762.9,"how":"full","reason":"a page that keeps changing","fetchMs":349.3,"convertMs":393.1,"nodes":3779}

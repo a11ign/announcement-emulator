@@ -315,6 +315,50 @@ class Reading(unittest.TestCase):
         tree = read()
         self.assertEqual((reader.cost['how'], reader.cost['reason']), ('full', 'a frame changed')); self.assertTrue(tree['nodes'])
 
+    def test_a_page_is_urgent_while_its_first_tree_is_read_and_not_after(self):
+        browser = Browser(load()); reader = incremental.Reader(); seen = []
+        original = browser.answer
+        def answer(method, params):
+            seen.append(reader.urgent_since is not None)
+            return original(method, params)
+        browser.answer = answer
+        reader.read(browser.call_many, browser.context_of)
+        self.assertTrue(any(seen)); self.assertIsNone(reader.urgent_since)
+        seen.clear(); reader.read(browser.call_many, browser.context_of)      # the read that settles it is not urgent: the page has its tree
+        self.assertFalse(any(seen))
+
+    def test_a_heavy_page_that_is_still_loading_is_waited_for_before_it_is_read_whole(self):
+        raw = load(); raw['page'] = dict(raw['page'], readyState='loading')
+        browser = Browser(raw); reader = incremental.Reader(); real = incremental.HEAVY, incremental.LOAD_WAIT
+        incremental.HEAVY = 10
+        looks = []
+        original = browser.answer
+        def answer(method, params):
+            if method == 'Runtime.evaluate' and 'readyState' in params['expression']:
+                looks.append(1)
+                if len(looks) == 3: browser.raw['page']['readyState'] = 'complete'
+            return original(method, params)
+        browser.answer = answer
+        try: tree = reader.read(browser.call_many, browser.context_of)
+        finally: incremental.HEAVY, incremental.LOAD_WAIT = real
+        self.assertGreaterEqual(len(looks), 4)      # the page was looked at until it said it had loaded, and then read
+        self.assertTrue(tree['nodes'][0]['docLoaded'])
+
+    def test_a_light_page_that_is_still_loading_is_read_at_once_and_a_heavy_page_that_never_loads_is_read_after_the_wait(self):
+        raw = load(); raw['page'] = dict(raw['page'], readyState='loading')
+        browser = Browser(raw); reader = incremental.Reader(); looks = []
+        original = browser.answer
+        def answer(method, params):
+            if method == 'Runtime.evaluate' and 'readyState' in params['expression']: looks.append(1)
+            return original(method, params)
+        browser.answer = answer
+        reader.read(browser.call_many, browser.context_of)
+        self.assertEqual(len(looks), 2)      # the first look, and the read's own
+        real = incremental.HEAVY, incremental.LOAD_WAIT; incremental.HEAVY, incremental.LOAD_WAIT = 10, 0.3; looks.clear()
+        try: incremental.Reader().read(browser.call_many, browser.context_of)
+        finally: incremental.HEAVY, incremental.LOAD_WAIT = real
+        self.assertGreater(len(looks), 3); self.assertLess(len(looks), 12)
+
     def test_a_change_to_the_document_is_a_full_read(self):
         self.browser.probe['muts'] += 1
         self.reader.read(self.browser.call_many, self.browser.context_of)

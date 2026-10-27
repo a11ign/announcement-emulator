@@ -23,6 +23,8 @@ import axtree
 MAX_RUN = 25      # incremental reads in a row before a full one
 FUTILE = 4      # full reads in a row that the probe asked for (a page that never stops changing) after which the probe is not asked for a while: it costs a fifth of a full read on a page that only changes
 MAX_BACKOFF = 32      # the most reads in a row made without the probe
+HEAVY = 3000      # elements of a page that is dear to read: one still loading is waited for (at most LOAD_WAIT seconds) and read once, loaded, not twice
+LOAD_WAIT = 4.0
 AFTER_BACK_OFF = 'a page that was read without the probe'
 MAX_SETTLE = 3      # whole reads of a young document that are compared with the one before; after them the tree is trusted whether the last two agreed or not
 MAX_VISITS = 400      # elements the focus has been on, since the last read, that are read again; more is a full read
@@ -108,6 +110,7 @@ class Reader:
         self.cost = {}; self.mismatches = []; self.ax_found = []; self.touched = set(); self.contexts = lambda frame: None; self.checking = False
         self.futile = 0      # full reads in a row that a change of the page asked for
         self.skip = 0      # reads still to be made whole without asking the probe
+        self.urgent_since = None      # when the whole read of a page's first tree began, while it is being made: the predictor waits for it (cdp.py `Cdp.wait_for_first_reads`)
         self.unsettled = 0      # the whole reads of a document that has just come, since the first, while the tree they gave was not the tree the read before gave
 
     # ---- what the browser says without being asked
@@ -130,6 +133,7 @@ class Reader:
             before = [self.page.probe.get('active', -1), *(self.page.index[b] for b in self.visits if b in self.page.index)] if self.page and self.page.probe else -1      # where the focus was and where it has been: their look is read again
             probe, state = self.look(call_many, self.page is None, before)
             reason = self.force or self.reason(probe, state)
+            if reason in ('first', 'document'): probe, state = self.after_load(call_many, probe, state, before)
             converted = None
             if reason is None:
                 try: converted = self.refresh(call_many, probe, state); self.futile = 0
@@ -139,6 +143,15 @@ class Reader:
                 converted = self.full(call_many, reason, probe, state)
         self.cost['totalMs'] = round((time.perf_counter() - began) * 1000, 1)
         return converted
+
+    def after_load(self, call_many, probe, state, before):
+        """The first read of a document of HEAVY elements or more that is still loading waits for it, up to LOAD_WAIT seconds: a read of twenty thousand nodes takes seconds, the tree of a page that has not loaded is not
+        spoken from (predict.py) and the page is read again as soon as it has, so that a test that is over before the second read is over has no prediction at all."""
+        began = time.time()
+        while probe is not None and probe.get('elements', 0) >= HEAVY and state['page']['readyState'] != 'complete' and time.time() - began < LOAD_WAIT:
+            time.sleep(0.1)
+            probe, state = self.look(call_many, self.page is None, before)
+        return probe, state
 
     def back_off(self, reason):
         """A page that changed again and again is read whole, so the probe, which walks all its elements, is of no use: it is left out for 1, 2, 4... reads (MAX_BACKOFF) after FUTILE full reads in a row that its changes asked for."""
@@ -185,6 +198,11 @@ class Reader:
 
     # ---- a full read
     def full(self, call_many, reason, probe=None, state=None, asked=True):
+        self.urgent_since = time.time() if reason in ('first', 'document') else None
+        try: return self.read_whole(call_many, reason, probe, state, asked)
+        finally: self.urgent_since = None
+
+    def read_whole(self, call_many, reason, probe, state, asked):
         began = time.perf_counter()
         if asked and reason != 'first' and probe is not None: self.commit(call_many)      # what the probe saw is what the read that follows is of
         frame_probes = self.baselines(call_many, state['frames']) if state else {}

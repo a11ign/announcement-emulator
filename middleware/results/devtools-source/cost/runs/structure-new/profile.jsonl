@@ -1,0 +1,17 @@
+{"at":1793058560843,"page":0,"why":["installed"],"totalMs":71.5,"how":"full","reason":"first","fetchMs":12.5,"convertMs":9.9,"nodes":90}
+{"at":1793058561217,"page":0,"why":["mutation","observe"],"totalMs":373.1,"how":"full","reason":"settling","fetchMs":189.7,"convertMs":104.7,"nodes":2740}
+{"at":1793058561288,"page":0,"why":["installed"],"totalMs":507.2,"how":"full","reason":"first","fetchMs":222.2,"convertMs":121.5,"nodes":2600}
+{"at":1793058561895,"page":0,"why":["loadComplete","mutation","nodesUpdated","pageshow"],"totalMs":305.2,"how":"full","reason":"loadComplete","fetchMs":100.1,"convertMs":144.7,"nodes":2746}
+{"at":1793058562018,"page":0,"why":["loadComplete","mutation","nodesUpdated","observe","pageshow"],"totalMs":229.8,"how":"full","reason":"loadComplete","fetchMs":106.9,"convertMs":75.2,"nodes":1443}
+{"at":1793058564202,"page":0,"why":["keydown"],"totalMs":512.8,"how":"full","reason":"settling","fetchMs":327.1,"convertMs":151.9,"nodes":1441}
+{"at":1793058565279,"page":1,"why":["mutation"],"totalMs":589.6,"how":"full","reason":"mutation","fetchMs":342.7,"convertMs":220.2,"nodes":2536}
+{"at":1793058566445,"page":1,"why":["installed","loadComplete","mutation","nodesUpdated","observe","pageshow","readystatechange"],"totalMs":634.8,"how":"full","reason":"loadComplete","fetchMs":160.2,"convertMs":336.6,"nodes":2441}
+{"at":1793058567150,"page":1,"why":["mutation"],"totalMs":465.3,"how":"full","reason":"frames","fetchMs":197.1,"convertMs":117.2,"nodes":1145}
+{"at":1793058567979,"page":1,"why":["installed","loadComplete","mutation","nodesUpdated","observe","pageshow"],"totalMs":327.9,"how":"full","reason":"loadComplete","fetchMs":133.6,"convertMs":64.1,"nodes":694}
+{"at":1793058571394,"page":2,"why":["installed"],"totalMs":271.5,"how":"full","reason":"first","fetchMs":113.5,"convertMs":91.4,"nodes":1069}
+{"at":1793058572972,"page":2,"why":["installed"],"totalMs":486.3,"how":"full","reason":"first","fetchMs":235.7,"convertMs":217.1,"nodes":1050}
+{"at":1793058574842,"page":2,"why":["keydown"],"totalMs":1875.7,"how":"full","reason":"settling","fetchMs":1528.1,"convertMs":290.3,"nodes":1080}
+{"at":1793058575664,"page":3,"why":["installed","mutation","observe"],"totalMs":283.4,"how":"full","reason":"first","fetchMs":144.9,"convertMs":81.5,"nodes":1078}
+{"at":1793058576436,"page":3,"why":["loadComplete","mutation","nodesUpdated","readystatechange"],"totalMs":466.9,"how":"full","reason":"loadComplete","fetchMs":307.0,"convertMs":89.2,"nodes":1078}
+{"at":1793058577538,"page":3,"why":["installed","mutation","observe"],"totalMs":977.4,"how":"full","reason":"document","fetchMs":453.8,"convertMs":347.5,"nodes":3733}
+{"at":1793058578785,"page":3,"why":["loadComplete","mutation"],"totalMs":726.3,"how":"full","reason":"loadComplete","fetchMs":345.2,"convertMs":320.5,"nodes":3779}
