@@ -36,31 +36,29 @@ Nothing else changes: not a test, not a fixture, not another part of the config.
 
 The middleware downloads no browser and bundles none: it runs in **the Chromium your Playwright version installs** (`npx playwright install chromium`, the revision your `@playwright/test`'s
 `playwright-core/browsers.json` names). The runtime bundle holds no browser and no browser library; `bundle/check_no_browser.py` fails the build on one. A chromium project is launched with
-`--force-renderer-accessibility` and `--remote-debugging-port`, and, where the companion extension is the tree source, `--load-extension`, `--allowlisted-extension-id`,
-`--disable-features=DisableLoadExtensionCommandLineSwitch` (without it a recent Chrome ignores `--load-extension`) and without Playwright's `--disable-extensions`. Firefox and WebKit projects are left alone.
+`--force-renderer-accessibility` and `--remote-debugging-port`, and nothing else: no extension is loaded, no `channel` is named and no default argument of Playwright's is switched off. Firefox and WebKit projects are left alone.
+
+**The tree is read through the browser's DevTools port** (`Accessibility.getFullAXTree` and `DOMSnapshot`, A11-229), on Linux, macOS and Windows alike, and in whichever browser a launch gives: the headless shell
+that Playwright 1.49 and later runs for a headless launch with no `channel`, the full Chromium, a branded Chrome or Edge, a browser at an `executablePath` you chose. The contexts a suite opens itself (`browser.newContext()`)
+are read like any other page. A team's own `ANNOUNCEMENT_EMULATOR_TREE` setting from before there was one source is ignored, with one line that says so.
 
 **What your config needs.** Only the one line (or none). Two things about the browser matter:
 
-- **Install the full Chromium, not only the headless shell.** Since Playwright 1.49 a headless launch with no `channel` runs `chromium-headless-shell`, which loads no extension.
-  `npx playwright install chromium` installs both (`--only-shell` installs only the shell). Where the extension is the tree source and your launch is headless and left to Playwright (no `channel`, no `executablePath`),
-  the middleware adds `channel: "chromium"`, which runs the full Chromium in the new headless mode. On Linux CI use `npx playwright install --with-deps chromium`, Playwright's own route to the browser's system libraries.
-- **A `channel` or an `executablePath` you chose is yours.** The middleware does not change it. It cannot know whether that browser loads the extension, so it tries it: if the extension has said nothing
-  five seconds after the browser's first page (`ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT`, in seconds), the runtime reads the trees through the DevTools port from then on, in whatever Chromium that is, and each report says
-  so and why. Speech for what ran before the switch is lost. A source set with `ANNOUNCEMENT_EMULATOR_TREE` is never switched. Where it is known beforehand that the extension cannot load (only the headless shell is installed,
-  or a Playwright older than 1.49 launched headless), the DevTools port is used from the start. Nothing breaks: the tests run as they did.
-  The tree source is one for the whole run, and a project that is known not to load the extension puts every project on the DevTools source.
-- The team's Playwright is looked for from the working directory, then from where this package is installed. The channel the middleware adds is visible to a test as `testInfo.project.use.channel`.
+- **Install a Chromium.** `npx playwright install chromium` installs the full browser and the headless shell (`--only-shell` installs only the shell, which is enough). On Linux CI use `npx playwright install --with-deps chromium`,
+  Playwright's own route to the browser's system libraries.
+- **A `channel` or an `executablePath` you chose is yours.** The middleware does not change it.
+- The team's Playwright is looked for from the working directory, then from where this package is installed.
 
 `npx announcement-emulator doctor` prints your Playwright version, the Chromium build its `browsers.json` names, which of the full browser and the headless shell are installed, whether that build is on
-the supported list below, and the tree source the automatic pick takes.
+the supported list below, and where the tree comes from.
 
 ## Supported Playwright versions
 
 Predicted speech agrees with a real NVDA at a rate that depends on the browser, so the rate is **measured for each Chromium build** and listed in [`supported-versions.json`](supported-versions.json), which ships in the package:
-each entry is a Chromium build, the Playwright versions that ship it, and the measured agreement for each tree source and operating system (`extension-linux`, `devtools-linux`, `devtools-macos`).
+each entry is a Chromium build, the Playwright versions that ship it, and the measured agreement for the DevTools tree on each operating system (`devtools-linux`, `devtools-macos`).
 
 A version that is not on the list still runs and still gets predicted speech. Its report says **`agreement not measured for Chromium <build>`**, in the text, the JSON attachment and `run.json`; so does a listed build
-with no figure for the tree source the run used. A listed build says `agreement measured for Chromium <build> (Playwright <versions>), <source>: <rate>% of <units> units on <n> held-out pages, <date>; the fleet agrees with itself on <ceiling>% (<figure>)`,
+with no figure for the operating system the run used. A listed build says `agreement measured for Chromium <build> (Playwright <versions>), devtools: <rate>% of <units> units on <n> held-out pages, <date>; the fleet agrees with itself on <ceiling>% (<figure>)`,
 and each predicted utterance in the report names the rate of its shape (`NAME + ROLE: 86.0% of 57`), with `, low confidence` where the list marks the shape weak.
 
 This is a **preview, improved every release, with no fixed gate**: each release prints the rate it measured, and a round is judged by the figures going up. The figure the list holds is the **held-out** one: measured on pages the emulator was not fitted against,
@@ -72,16 +70,16 @@ The list starts with the current Playwright release and the one before it: Playw
 
 | Playwright | Chromium | source | agreement | units | pages | the fleet against itself | date |
 |---|---|---|---|---|---|---|---|
-| 1.64.1 (1.64.0 not run) | 156.0.8078.4 | extension, Linux | 75.0% | 1046 | 5 | 99.9% | 2026-10-25 |
 | 1.64.1 (1.64.0 not run) | 156.0.8078.4 | DevTools, Linux | 49.5% | 1046 | 5 | 99.9% | 2026-10-25 |
 | 1.64.1 (1.64.0 not run) | 156.0.8078.4 | DevTools, macOS | 72.2% | 1046 | 5 | 99.9% | 2026-10-25 |
-| 1.63.0 | 153.0.8010.12 | extension, Linux | 75.7% | 1046 | 5 | 99.9% | 2026-10-25 |
 | 1.63.0 | 153.0.8010.12 | DevTools, Linux | 48.7% | 1046 | 5 | 99.9% | 2026-10-25 |
 | 1.63.0 | 153.0.8010.12 | DevTools, macOS | 44.6% | 945 | 4 | 99.9% | 2026-10-25 |
 
-Five pages is a small population, and the rates move with a single page: on two of the five (caselaw and Sheffield, nine in ten of the extension's misses) the passive browser's first stop is a cookie banner's button where the fleet's is the page's own first control; on one page the DevTools tree
+Those are the readings of the DevTools tree as it was before A11-229 filled its missing fields and read it incrementally; the companion extension, which was the Linux source then and measured 75.0% and 75.7% on the same pages, has been removed, and its readings stay under `results/` as the record. A11-229's last step measures the tree again, under a rule frozen before the captures, and replaces these figures.
+
+Five pages is a small population, and the rates move with a single page: on two of the five (caselaw and Sheffield) the passive browser's first stop is a cookie banner's button where the fleet's is the page's own first control; on one page the DevTools tree
 on this host loses most of the page's nodes (the 49.5% and 48.7%). The write-up has the misses by cause and shape. On the six pages the emulator was fitted against (not held out; the like-for-like comparison with the previous release's figures) the same readings are
-79.3% to 86.8%: up against the previous round on DevTools on Linux and at 153 on macOS, down on macOS at 156 (-0.7) and on the 153 extension, within on the 156 extension. Windows has no figure: it reads "not measured". To add a Playwright release, measure its Chromium by that rule and add it to the list.
+79.3% to 86.8%: up against the previous round on DevTools on Linux and at 153 on macOS, down on macOS at 156 (-0.7). Windows has no figure: it reads "not measured". To add a Playwright release, measure its Chromium by that rule and add it to the list.
 
 ## What you get
 
@@ -104,8 +102,8 @@ Three flags, with rules that are written in `runtime/flags.py`, and shown as ann
 ## How it works
 
 Three processes. Playwright's main process holds the reporter, which starts one **runtime** for each worker. The runtime is a separate program in the bundle (Python, NVDA's source, the emulator); this package
-starts it and reads its JSON lines and **never imports it** (the runtime is GPL-3.0, ADR 0047 Decision 3). The test's browser reports to the runtime through the companion extension (the accessibility tree,
-after each change) and through the DevTools port (the page's own focus moves, keys, live-region changes, dialogs and error messages).
+starts it and reads its JSON lines and **never imports it** (the runtime is GPL-3.0, ADR 0047 Decision 3). The test's browser reports to the runtime through its DevTools port alone: the accessibility tree (read again from what changed after each change, `runtime/cdp.py`, `runtime/incremental.py`,
+`runtime/axtree.py`) and the page's own focus moves, keys, live-region changes, dialogs and error messages.
 
 ## The runtime bundle is lean
 
@@ -114,7 +112,7 @@ after each change) and through the DevTools port (the page's own focus moves, ke
 - **Python**: python-build-standalone's `install_only_stripped` build (3.13), its standard library as bytecode, and only the modules the runtime was seen to import; the `encodings` package whole (a page's charset picks a codec at run time);
   the packages NVDA's source needs. No tests, `idlelib`, `tkinter`, `ensurepip`, `turtle`, headers, static libraries or `pip`.
 - **NVDA's source**, one tree (`nvda-src/source`): the files the runtime was seen to import or read, `locale/en`, and the pinned CLDR names (`cldr.dic`) put over NVDA's own file in place. No other locale, no docs, images or tests, no second copy.
-- **This repository's runtime** (the emulator, the sweep, the runtime process, `emu/tables.json`) and, until A11-229 removes it, the companion extension. The Chromium source files `emu/tables.json` was generated from are not shipped:
+- **This repository's runtime** (the emulator, the sweep, the runtime process, `emu/tables.json`); it carries no browser extension (A11-229). The Chromium source files `emu/tables.json` was generated from are not shipped:
   nothing reads them at run time.
 - No browser and no browser library (`bundle/check_no_browser.py`).
 
@@ -129,7 +127,7 @@ after each change) and through the DevTools port (the page's own focus moves, ke
 | &nbsp;&nbsp;packages | | 15.3 | 1.2 | 17.0 | 1.0 |
 | NVDA (the spike's and A11-230's hold it twice) | 149.0 | 146.1 | **2.6** | 146.1 | **2.6** |
 | Chromium sources | | 1.2 | 0 | 1.2 | 0 |
-| This repository's runtime, the extension, the rest | | 0.4 | 0.4 | 0.4 | 0.4 |
+| This repository's runtime, the rest (A11-230's also holds the companion extension, 14 KB) | | 0.4 | 0.4 | 0.4 | 0.4 |
 | **Total unpacked** | **838.0** | **420.4** | **40.3** | **224.7** | **26.1** |
 | **Archive** | 298.0 (gz) | 111.7 (gz) | **10.2** (xz) | 63.2 (gz) | **7.5** (xz) |
 
@@ -137,7 +135,7 @@ The same bundle as gzip, xz and zstd (archive MB; median of three unpacks with t
 The interpreter is 31.6 MB of the 40.3 on linux: python-build-standalone links OpenSSL, SQLite and the rest into it, and the stripped build still holds its symbol table (`strip --strip-unneeded` on it leaves an interpreter that fails to start with a symbol lookup error). Two builds of each platform's bundle are the same bytes (CI checks both).
 
 **It is traced, not guessed.** `bundle/keep/<platform>.txt` lists every file of `python/` and `nvda-src/` that a run read. `bundle/trace.sh <platform>` makes it: it runs every recorded session under `runtime/fixtures/`
-(with sweeps, without, and with `--report-focus`) and the sample suite's offline project live with each tree source, in the unpruned layout, with `runtime/import_trace.py` on (`ANNOUNCEMENT_EMULATOR_IMPORT_TRACE=<file>`
+(with sweeps, without, and with `--report-focus`) and the sample suite's offline project live, in the unpruned layout, with `runtime/import_trace.py` on (`ANNOUNCEMENT_EMULATOR_IMPORT_TRACE=<file>`
 records the files imported or opened, and the imports that failed, which NVDA's own `try: import … except ImportError` would otherwise hide), and adds what NVDA's Chrome system tests read (`keep/nvda-system-tests.txt`,
 made on Linux by `trace.sh --system-tests`). `bundle/lean.py` prunes to it, and `build.sh` refuses to build without it. **When the runtime starts to import or read something new, run `trace.sh <platform>` and commit
 the list.** CI says when: the `demo` job runs the sample suite in the lean bundle and in the full layout with the trace on and fails on a file or import the lean run wanted and could not find (`compare_bundles.py misses`),
@@ -159,8 +157,7 @@ such as `ubuntu:24.04` lacks (it has no zstd either; `bundle-format` reports wha
 | `ANNOUNCEMENT_EMULATOR_BUNDLE` | use this unpacked bundle instead of the cache |
 | `ANNOUNCEMENT_EMULATOR_IMPORT_TRACE` | a file the runtime appends the files it read from the bundle to, and the imports that failed (`bundle/trace.sh` and the CI miss check use it; unset, nothing is recorded) |
 | `ANNOUNCEMENT_EMULATOR_SWEEPS=0` | no sweeps |
-| `ANNOUNCEMENT_EMULATOR_EXTENSION_WAIT` | seconds the runtime waits for an extension that has said nothing, after the first page, before it reads the trees through the DevTools port (default 5; 0 never) |
-| `ANNOUNCEMENT_EMULATOR_TREE` | `extension` or `devtools`: where the accessibility tree comes from. Unset, the middleware picks: the extension where the browser gives it a desktop tree and it is expected to load (Linux, Windows), the DevTools port on macOS and wherever the extension cannot be expected to load |
+| `ANNOUNCEMENT_EMULATOR_TREE` | ignored: the DevTools port is the only tree source, on every operating system (A11-229). A run that finds it set prints one line saying so, and goes on |
 
 ## Releases
 
@@ -168,7 +165,7 @@ Each version is a GitHub Release `v<version>` of this repository (`middleware/re
 
 - the runtime bundle of each platform it supports (`linux-x64`, `darwin-arm64`), `announcement-emulator-bundle-<platform>.tar.xz`, built twice and compared (the linux build must be the same bytes both times; darwin's is reported, because the macOS linker's UUID is not controlled);
 - `SHA256SUMS`, the sum of every bundle, which is also what the `pins.json` of that version's package names: `middleware/release/after-version.sh` writes it into the release commit from the very files attached to the Release, and fails the release if the two differ;
-- notes that carry **the measured agreement of that version** (per Chromium build and tree source, with the units, the date and, where the figure has them, the pages and the rate of each announcement shape) and **the Playwright versions it supports**, as `supported-versions.json` lists them.
+- notes that carry **the measured agreement of that version** (per Chromium build and operating system, with the units, the date and, where the figure has them, the pages and the rate of each announcement shape) and **the Playwright versions it supports**, as `supported-versions.json` lists them.
 
 Nothing is published yet: the package is `private` until the name, the licence and the NV Access question are decided (`docs/release-decisions.md`), and the org's release workflow never publishes a private package. Until then `.github/workflows/release-dry-run.yml`
 rehearses a release on every pull request that changes one: it builds the bundles, versions this branch's changesets on a scratch copy, packs the package and installs it with its bundle through the mirror variable on both platforms,
