@@ -53,7 +53,8 @@ jobs:
         working-directory: middleware
       # One project with its own @playwright/test and the Chromium that version ships.
       - run: |
-          (cd "$RUNNER_TEMP/bundle" && python3 -m http.server 8099 --bind 127.0.0.1 >/dev/null 2>&1 &)
+          mkdir "$RUNNER_TEMP/mirror" && ln -s "$RUNNER_TEMP/bundle" "$RUNNER_TEMP/mirror/v$(node -p "require('./middleware/package.json').version")"      # a mirror lays a Release out as <host>/v<version>/<file>
+          (cd "$RUNNER_TEMP/mirror" && python3 -m http.server 8099 --bind 127.0.0.1 >/dev/null 2>&1 &)
           sleep 2
           cp -R middleware/sample-suite "$RUNNER_TEMP/project"
           cd "$RUNNER_TEMP/project"

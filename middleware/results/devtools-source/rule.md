@@ -28,6 +28,16 @@ emulator has never been fitted to these pages, but it was fitted to the kinds of
 The table pages are in, as the decision asks. The headline is over all 19; it is also reported for the 14 pages of steps 1 and 2 alone, so that the figure sits beside the old ones on the same pages, and by group and by class. The sample
 suite's three projects, `corpus`, `structure` and `large`, walk the three groups with one test body (held equal by `test_structure_walk.py` and `test_large_walk.py`); each page is walked by exactly one project.
 
+## The first freeze, and why it was replaced
+
+The rule was first frozen at `eaf063acdb` (2026-10-27 09:25:34 UTC), and a fleet job and the macOS workflow were started under it (09:25 and 09:26). Two things were found before any record of either was read:
+
+1. the fleet job took four captures on `a11y-worker-5`, whose Windows is 22631 where the other fourteen boxes are 26300.9711, so `capture_fleet.py collect` refused to write any record ("a second OS image would blend two corpora into one"). The job's records were never read and are discarded; the second job names the twelve boxes of worker code `25bb45d9b38d7a62` and Windows 26300.9711;
+2. the workflow served the bundle at the mirror's root and the package looks for `v<version>/<file>` there: the install answered 404 on both runners and no reading was taken (`gh run view 40480743889`). The workflow is a frozen object, so it was corrected (the mirror is laid out as a release is, as `tree-source-agreement.yml` lays it out) and the rule frozen again.
+
+Nothing was compared: no figure, no agreement and no miss of any reading had been computed, and no fleet record had been opened. The runtime (`middleware/runtime`, `middleware/src`, `emu`) is the same git object in both freezes, so the six Linux passive runs taken between them (09:30 to 09:55 UTC) are readings of the runtime that
+ships; they were taken before the second freeze and are not taken again. The first freeze stays in git history; `freeze.json` is the second.
+
 ## The readings
 
 | reading | tree source | where it runs |
