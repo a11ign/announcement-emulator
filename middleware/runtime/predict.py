@@ -1,7 +1,7 @@
 """Layer 5 of the emulator, on a browser it did not launch (A11-208).
 
 `emu/live.py` drives a Chrome it started and asks it for the tree after each key it sends. A running Playwright test sends its own keys, so this is given the tree after each
-change instead (`emu/ext2/passive.js` posts it) and works out from two trees in a row what NVDA would have been told:
+change instead (cdp.py reads it through the browser's DevTools port, axtree.py converts it) and works out from two trees in a row what NVDA would have been told:
 
     a document loaded      NVDA's own treeInterceptor_gainFocus on a fresh buffer: the title, then the line the caret starts on
     the focus moved        NVDA's own event_gainFocus through the browse-mode buffer, as `LiveDoc.gain_focus` does
@@ -102,7 +102,7 @@ def focused_on(snap, node):
 def match_focus(snap, event, last_resort=True):
     """The node of the tree the page's `focusin` is about. In the order of how exactly each says it:
     1. the DOM node the browser says took the focus (`backendNodeId`, cdp.py `Resolution`), where the tree holds its node (the DevTools source: `backendId`);
-    2. an element of that tag (and id) whose name is the one the browser computed for it (`axName`): the extension's tree has no DOM node, and its name is Chromium's too;
+    2. an element of that tag (and id) whose name is the one the browser computed for it (`axName`): a node of a tree that holds no DOM node (the recordings the extension made have none), and its name is Chromium's too;
     3. an element of that tag (and id) whose accessible name is one of the strings the page script could make it from: a guess, so only when `last_resort`, or when the browser could say nothing of the element.
     The node the tree itself has focused if several fit. None if the tree does not have it (yet)."""
     backend = event.get('backendNodeId')
@@ -217,7 +217,7 @@ class Predictor:
             doc = self.document_for(page, snap, at_root=True)
             earliest = min([t] + [e['t'] for e in self.events if (e.get('pageUrl') or e.get('url') or '').split('#')[0] == without_fragment(page.url)])      # the document loaded before anything the page did in it
             self.speak('load', earliest - 1, page, self.node_info(root), lambda: self.load_speech(doc))
-            page.focus_uid = root['uid']      # a document has the focus when it has loaded; if the test's first key was faster than the extension, the focus is already on a control, and that is a move
+            page.focus_uid = root['uid']      # a document has the focus when it has loaded; if the test's first key was faster than the tree's first read, the focus is already on a control, and that is a move
             self.begin_state(page, snap, t, 'load')
         elif loaded:
             self.document_for(page, snap)
@@ -365,7 +365,7 @@ class Predictor:
         return True
 
     def restart(self):
-        """The extension's service worker started again (the browser was launched again, as it is when Playwright replaces a worker after a timeout): its numbers for nodes and pages begin again, so what was known
+        """The browser was reached again (it was launched again, as it is when Playwright replaces a worker after a timeout): its numbers for nodes and pages begin again, so what was known
         of the pages is not about the ones that will come. Their states are swept first."""
         self.events_until(float('inf'), final=True)
         for page in self.pages.values(): self.end_state(page)

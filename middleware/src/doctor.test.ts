@@ -24,7 +24,7 @@ const listed: SupportedVersions = { builds: [{ chromium: "153.0.8010.12", playwr
 
 function run(over: Parameters<typeof doctor>[0] = {}) {
   const lines: string[] = [];
-  const code = doctor({ env: { ANNOUNCEMENT_EMULATOR_BUNDLE: bundle() }, platform: "linux", playwright: pw(), supported: { builds: [] }, version: () => ({ status: 0, out: "Chromium 153.0.8010.12" }), log: (l) => lines.push(l), ...over });
+  const code = doctor({ env: { ANNOUNCEMENT_EMULATOR_BUNDLE: bundle() }, playwright: pw(), supported: { builds: [] }, version: () => ({ status: 0, out: "Chromium 153.0.8010.12" }), log: (l) => lines.push(l), ...over });
   return { code, text: lines.join("\n") };
 }
 
@@ -36,7 +36,8 @@ test("doctor prints the team's Playwright and Chromium, which of the browser and
   assert.match(text, /^headless shell 153\.0\.8010\.12: installed$/m);
   assert.match(text, /^supported: yes, Chromium 153\.0\.8010\.12 is on the list \(Playwright 1\.63\.0\)$/m);
   assert.match(text, /^ {2}devtools-linux: 85\.0% of 1100 units, 2026-10-26 \(middleware\/results\/playwright-versions\/153\.0\.8010\.12\/devtools-linux\/\)$/m);
-  assert.match(text, /^ {2}extension-linux: not measured$/m);
+  assert.match(text, /^ {2}devtools-macos: not measured$/m);
+  assert.doesNotMatch(text, /extension/);
 });
 
 test("a build that is not on the list is not a failure: doctor says its agreement is not measured and exits 0", () => {
@@ -45,12 +46,12 @@ test("a build that is not on the list is not a failure: doctor says its agreemen
   assert.match(text, /supported: no\. Chromium 153\.0\.8010\.12 is not on the list, so a report says "agreement not measured for Chromium 153\.0\.8010\.12"\. It runs all the same\./);
 });
 
-test("with the headless shell only, doctor says which is missing and still exits 0, and says the extension is not used", () => {
+test("with the headless shell only, doctor says which is missing and still exits 0: the tree comes through the DevTools port, which the headless shell serves", () => {
   const { code, text } = run({ playwright: pw({ fullInstalled: false }) });
   assert.equal(code, 0);
   assert.match(text, /^Chromium 153\.0\.8010\.12 \(revision 1243\): NOT installed$/m);
   assert.match(text, /^headless shell 153\.0\.8010\.12: installed$/m);
-  assert.match(text, /^tree source: devtools for a launch left to Playwright \(the extension was not used: .*npx playwright install chromium/m);
+  assert.match(text, /^tree source: the DevTools port, on every platform and in whichever browser a launch gives$/m);
 });
 
 test("with no Chromium at all doctor fails and says the command that fixes it", () => {
@@ -65,9 +66,10 @@ test("with no Playwright doctor fails and says how to install it", () => {
   assert.match(text, /FAIL Playwright: .*npm i -D @playwright\/test/);
 });
 
-test("doctor names the tree source the automatic pick takes on this platform, and why", () => {
-  assert.match(run({ platform: "linux" }).text, /^tree source: extension for a launch left to Playwright \(the default where the browser gives the extension a desktop tree\)$/m);
-  assert.match(run({ platform: "darwin" }).text, /^tree source: devtools for a launch left to Playwright \(macOS gives the extension no desktop tree\)$/m);
+test("doctor says the tree comes through the DevTools port, and names no other source", () => {
+  const { text } = run();
+  assert.match(text, /^tree source: the DevTools port, on every platform and in whichever browser a launch gives$/m);
+  assert.doesNotMatch(text, /extension|automatic pick|lower fidelity/i);
 });
 
 test("doctor no longer runs a browser of the bundle's: it checks the bundle's Python and names the Chromium its tables came from", () => {

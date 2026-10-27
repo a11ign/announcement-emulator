@@ -1,5 +1,4 @@
 import { readFileSync } from "node:fs";
-import type { TreeSource } from "./extension.ts";
 
 /** What the headline rate was measured on: how many pages, whether they were held out (chosen and frozen before the emulator or the fleet read them), and the units compared, which are the units of the rate. */
 export interface Population { pages: number; heldOut: boolean; units: number }
@@ -18,8 +17,8 @@ export interface Figure { agreement: number; units: number; date: string; figure
 export interface SupportedBuild { chromium: string; playwright: string[]; measured: Record<string, Figure> }
 export interface SupportedVersions { builds: SupportedBuild[] }
 
-/** The readings a build can have: a tree source on an operating system. Windows has none, and says so by being "not measured". */
-export const SOURCE_KEYS = ["extension-linux", "devtools-linux", "devtools-macos"] as const;
+/** The readings a build can have: the DevTools tree, the one tree source, on an operating system. Windows has none, and says so by being "not measured". */
+export const SOURCE_KEYS = ["devtools-linux", "devtools-macos"] as const;
 
 /** The list ships in the package (`supported-versions.json` beside `dist`). */
 export function readSupported(url = new URL("../supported-versions.json", import.meta.url)): SupportedVersions {
@@ -27,7 +26,7 @@ export function readSupported(url = new URL("../supported-versions.json", import
 }
 
 const OS: Record<string, string> = { linux: "linux", darwin: "macos", win32: "windows" };
-export const sourceKey = (tree: TreeSource, platform: string = process.platform): string => `${tree}-${OS[platform] ?? platform}`;
+export const sourceKey = (platform: string = process.platform): string => `devtools-${OS[platform] ?? platform}`;
 
 export const buildFor = (list: SupportedVersions, chromium: string | null): SupportedBuild | undefined => list.builds.find((b) => b?.chromium === chromium);
 export const buildOfPlaywright = (list: SupportedVersions, version: string): SupportedBuild | undefined => list.builds.find((b) => b.playwright.includes(version));
@@ -74,11 +73,11 @@ const isCount = (x: unknown) => Number.isInteger(x) && (x as number) > 0;
 const plural = (n: number, noun: string) => `${n} ${noun}${n === 1 ? "" : "s"}`;
 
 /** The sentence for a measured figure: the rate and its units, what they were measured on if the figure says, the date, what the oracle's own noise puts as the ceiling if the figure says, and where the figure is. */
-function measuredLine(chromium: string, build: SupportedBuild, tree: TreeSource, figure: Figure): string {
+function measuredLine(chromium: string, build: SupportedBuild, figure: Figure): string {
   const { population, ceiling: noise } = figure;      // a part of the figure that is not well formed is left out of the sentence: the wording of a prediction must never fail a run
   const on = population && isCount(population.pages) && typeof population.heldOut === "boolean" ? ` on ${plural(population.pages, `${population.heldOut ? "held-out" : "not held-out"} page`)}` : "";
   const ceiling = noise && isRate(noise.agreement) ? `; the fleet agrees with itself on ${percent(noise.agreement)}` : "";
-  return `agreement measured for Chromium ${chromium} (Playwright ${(build.playwright ?? []).join(", ")}), ${tree}: ${percent(figure.agreement)} of ${figure.units} units${on}, ${figure.date}${ceiling} (${figure.figure})`;
+  return `agreement measured for Chromium ${chromium} (Playwright ${(build.playwright ?? []).join(", ")}), devtools: ${percent(figure.agreement)} of ${figure.units} units${on}, ${figure.date}${ceiling} (${figure.figure})`;
 }
 
 /** What a measured rate says of one announcement, by its shape. */
@@ -96,15 +95,15 @@ export function shapeRateFor(agreement: Agreement | undefined, shape: unknown): 
 }
 
 /**
- * The agreement of the build a run used, for the tree source it used. A listed build with a figure for this source and platform says its rate; every other case says "not measured" and the run
+ * The agreement of the build a run used, for the operating system it ran on (the tree source is the DevTools port on every one). A listed build with a figure for this platform says its rate; every other case says "not measured" and the run
  * goes on: an unlisted version still gets predicted speech.
  */
-export function agreementFor(list: SupportedVersions, chromium: string | null, tree: TreeSource, platform: string = process.platform): Agreement {
-  const source = sourceKey(tree, platform);
+export function agreementFor(list: SupportedVersions, chromium: string | null, platform: string = process.platform): Agreement {
+  const source = sourceKey(platform);
   if (!chromium) return { line: "agreement not measured for Chromium (build unknown)", measured: false, chromium, source };
   const build = buildFor(list, chromium), figure = build?.measured?.[source];
   if (!build || !figure) return { line: `agreement not measured for Chromium ${chromium}`, measured: false, chromium, source };
-  return { line: measuredLine(chromium, build, tree, figure), measured: true, chromium, source, playwright: build.playwright, ...figure };
+  return { line: measuredLine(chromium, build, figure), measured: true, chromium, source, playwright: build.playwright, ...figure };
 }
 
 const SHAPE_KEY = /^[A-Z]+( \+ [A-Z]+)*$/;

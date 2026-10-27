@@ -65,7 +65,7 @@ export function renderNotes(input: NotesInput): string {
     "#### Supported Playwright versions", "", ...playwrightLines(list), "",
     "#### Agreement by build and tree source", "", ...agreementTable(input), "",
     ...shapes,
-    "Windows: not measured. No reading of the extension or the DevTools tree on Windows has been taken.", "",
+    "Windows: not measured. No reading of the DevTools tree on Windows has been taken.", "",
   ].join("\n");
 }
 

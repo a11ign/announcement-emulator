@@ -12,9 +12,9 @@ The conversations are not named `*.jsonl.gz` on purpose: `middleware/bundle/comp
 To record again (a conversation is written as plain lines; `gzip` it to `*.conversation.gz`), in a project that has the package and the sample suite, with `ANNOUNCEMENT_EMULATOR_BUNDLE` naming a bundle:
 
 ```sh
-ANNOUNCEMENT_EMULATOR_TREE=devtools ANNOUNCEMENT_EMULATOR_VERIFY=1 AE_CONVERSATION=form.conversation   npx playwright test --project=paced -g "a form is filled in key by key" --workers=1
-ANNOUNCEMENT_EMULATOR_TREE=devtools ANNOUNCEMENT_EMULATOR_VERIFY=1 AE_CONVERSATION=basket.conversation npx playwright test --project=paced -g "a basket counts" --workers=1
-ANNOUNCEMENT_EMULATOR_TREE=devtools AE_RECORD=devtools-basket-live.jsonl npx playwright test --project=fixtures -g "adding a mug" --workers=1
+ANNOUNCEMENT_EMULATOR_VERIFY=1 AE_CONVERSATION=form.conversation   npx playwright test --project=paced -g "a form is filled in key by key" --workers=1
+ANNOUNCEMENT_EMULATOR_VERIFY=1 AE_CONVERSATION=basket.conversation npx playwright test --project=paced -g "a basket counts" --workers=1
+AE_RECORD=devtools-basket-live.jsonl npx playwright test --project=fixtures -g "adding a mug" --workers=1
 ```
 
 A recorded read depends on the commands the reader sends, in order: a change to what `incremental.py` asks the browser for makes `Recorded` fail until the files are recorded again (keep the first lines of each file and the rows `verified: same`).

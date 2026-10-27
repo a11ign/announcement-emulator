@@ -144,7 +144,7 @@ class Replay(unittest.TestCase):
 
 @unittest.skipUnless(HAVE, "needs the emulator's virtualenv and NVDA's source (setup.sh)")
 class ReplayDevtools(unittest.TestCase):
-    """The same sessions with the tree read through the DevTools port (axtree.py, where the extension is given none: macOS). Recorded with ANNOUNCEMENT_EMULATOR_TREE=devtools."""
+    """The same sessions with the tree read through the DevTools port (axtree.py: the one tree source since A11-229, step 3). Recorded with AE_RECORD, the DevTools recordings of the fixtures project (`devtools-` in their names)."""
     def test_every_tab_stop_is_spoken(self):
         focus = [t for c, t in said('devtools-tab-order') if c == 'focus']
         self.assertEqual(focus, ['Home, link', 'Basket, link', 'main landmark | form landmark | Full name, edit, blank', 'Email address, edit, blank', 'Send me news, check box, not checked', 'Create account, button'])

@@ -8,14 +8,15 @@ Three small pages (`middleware/sample-suite/pages/fields/`), each read twice in 
 | `devtools-<page>.json.gz` | the answers of the DevTools port for the same page at its end: `getFullAXTree`, `DOMSnapshot`, the layout metrics, the page's state, the frame tree and the labels that carry a click listener (`AE_RAW`, the last read of the test). `test_axtree.py` converts it. |
 
 `tables` is every way a table says where a cell is and which header words belong to it; `lists` is positions in a set, a field typed into, values and descriptions; `clickable` is an element of each kind with and without a
-click listener. The extension recordings stay when the extension is removed (step 3 of A11-229): they are the reference the conversion is held to.
+click listener. The extension recordings stay now that the extension is removed (step 3 of A11-229): they are the reference the conversion is held to, and they are test data, not something this package can make again.
 
-To record again, in a project that has the package and the sample suite, with `ANNOUNCEMENT_EMULATOR_BUNDLE` naming a bundle:
+To record the DevTools answers again, in a project that has the package and the sample suite, with `ANNOUNCEMENT_EMULATOR_BUNDLE` naming a bundle:
 
 ```sh
-ANNOUNCEMENT_EMULATOR_TREE=extension AE_RECORD=tables.jsonl     npx playwright test --project=fields -g "tables is opened" --workers=1
-ANNOUNCEMENT_EMULATOR_TREE=devtools  AE_RAW=devtools-tables.jsonl npx playwright test --project=fields -g "tables is opened" --workers=1   # the last line is the fixture
+AE_RAW=devtools-tables.jsonl npx playwright test --project=fields -g "tables is opened" --workers=1   # the last line is the fixture
 ```
+
+The extension recordings (`<page>.jsonl.gz`) were made in step 1 (e4724d4) with the extension as the tree source (`ANNOUNCEMENT_EMULATOR_TREE=extension AE_RECORD=tables.jsonl`, the same command), before the extension was removed.
 
 ## What the DevTools tree does not give (the fixtures leave these out of the pages)
 

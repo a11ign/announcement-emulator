@@ -28,8 +28,6 @@ export const layout = (root: string) => ({
   root,
   python: join(root, "python", "bin", "python3"),
   runtime: join(root, "middleware", "runtime", "main.py"),
-  extension: join(root, "emu", "ext2"),
-  extensionId: join(root, "q1", "ext-id.txt"),
   manifest: join(root, "bundle.json"),
 });
 

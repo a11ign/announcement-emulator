@@ -13,7 +13,7 @@ class FakeSocket:
 
 def reader():
     c = cdp.Cdp.__new__(cdp.Cdp)      # not connected: nothing is read from a browser
-    c.ws = FakeSocket(); c.lock = threading.Lock(); c.next_id = 0; c.replies = {}; c.wanted = {}; c.wake = threading.Condition(); c.on_tree = None; c.readers = {}; c.hints = {}; c.loaded = set(); c.visited = {}; c.contexts = {}; c.reading = {}; c.verify = False; c.on_verify = lambda body: None; c.reads = {'full': 0, 'incremental': 0, 'verified': 0, 'differing': 0, 'fullMs': 0.0, 'incrementalMs': 0.0}; c.generation = 0; c.target_of = {}; c.outbox = []; c.out = threading.Lock()
+    c.ws = FakeSocket(); c.lock = threading.Lock(); c.next_id = 0; c.replies = {}; c.wanted = {}; c.wake = threading.Condition(); c.on_tree = lambda snap: None; c.readers = {}; c.hints = {}; c.loaded = set(); c.visited = {}; c.contexts = {}; c.reading = {}; c.verify = False; c.on_verify = lambda body: None; c.reads = {'full': 0, 'incremental': 0, 'verified': 0, 'differing': 0, 'fullMs': 0.0, 'incrementalMs': 0.0}; c.generation = 0; c.target_of = {}; c.outbox = []; c.out = threading.Lock()
     return c
 
 
@@ -28,31 +28,31 @@ class BrowserBuild(unittest.TestCase):
         self.assertIsNone(cdp.browser_build('Chrome'))
 
     def test_the_build_is_told_to_whoever_wants_to_know_a_page_was_attached(self):
-        c = reader(); c.browser = '156.0.8078.4'; told = []; c.on_attach = lambda target, browser: told.append((target, browser)); c.installed = set(); c.on_tree = None
+        c = reader(); c.browser = '156.0.8078.4'; told = []; c.on_attach = lambda target, browser: told.append((target, browser)); c.installed = set(); c.on_tree = lambda snap: None
         c._install('s', 't')
         self.assertEqual(told, [('t', '156.0.8078.4')])
 
 
-class TakingOverTheTrees(unittest.TestCase):
-    """The extension did not come up (fallback.py): the pages that are open are told to note their changes, and the port is where the trees come from from then on."""
-    def test_open_pages_are_told_to_note_their_changes_and_are_read_once_and_later_pages_are_held_for_their_listener(self):
-        c = reader(); c.target_of = {'s1': 't1', 's2': 't2'}; c.stopped = True      # the tree reader thread starts and ends at once
-        c.enable_trees(lambda snap: None)
-        sent = [(m['method'], m.get('sessionId'), m['params']) for m in c.ws.sent]
-        self.assertIn(('Target.setAutoAttach', None, {'autoAttach': True, 'waitForDebuggerOnStart': True, 'flatten': True}), sent)
-        for session in ('s1', 's2'):
-            self.assertIn(('Runtime.evaluate', session, {'expression': cdp.TICKS_ON}), sent)
-            self.assertIn(('Page.addScriptToEvaluateOnNewDocument', session, {'source': cdp.TICKS_ON}), sent)
-        self.assertEqual(c.wanted, {'s1': {'fallback'}, 's2': {'fallback'}})
+class TheListener(unittest.TestCase):
+    """The page always notes its changes: the tree comes through this port and from no other place, so there is no switch to turn the notes on (A11-229)."""
+    def test_it_notes_a_change_and_has_no_switch_for_it(self):
+        self.assertIn("const tick = why => { if (ticking)", cdp.LISTENER)
+        for gone in ('__TICKS__', '__aeTicksOn', 'ticksOn'): self.assertNotIn(gone, cdp.LISTENER)
+        self.assertFalse(hasattr(cdp, 'TICKS_ON'))
 
-    def test_it_does_nothing_when_the_trees_already_come_from_the_port(self):
-        c = reader(); c.on_tree = lambda snap: None; c.target_of = {'s1': 't1'}
-        c.enable_trees(lambda snap: None)
-        self.assertEqual(c.ws.sent, [])
+    def test_the_probe_is_in_the_listener_whatever_the_page(self):
+        self.assertIn('window.__aeProbe', cdp.LISTENER)
+        self.assertEqual(cdp.LISTENER.count('window.__aeProbe'), 1)
 
-    def test_the_listener_notes_changes_only_where_asked_to_or_once_told_to(self):
-        self.assertIn("const ticksOn = () => __TICKS__ || window.__aeTicksOn === true", cdp.LISTENER)
-        self.assertEqual(cdp.TICKS_ON, 'window.__aeTicksOn = true')
+    def test_a_page_is_held_until_its_listener_is_in_and_the_browser_says_what_changed(self):
+        c = reader(); c.installed = set(); c.on_tree = lambda snap: None; c.on_attach = lambda target, browser: None; c.browser = '156.0.8078.4'
+        c._install('s', 't')
+        sent = [(m['method'], m['params']) for m in c.ws.sent]
+        self.assertIn(('Accessibility.enable', {}), sent)
+        self.assertIn(('Page.addScriptToEvaluateOnNewDocument', {'source': cdp.LISTENER}), sent)
+        self.assertIn(('Runtime.evaluate', {'expression': cdp.LISTENER}), sent)
+        c._handle({'method': 'Accessibility.nodesUpdated', 'sessionId': 's', 'params': {'nodes': [{'nodeId': '5'}]}}); c._handle({'method': 'Accessibility.loadComplete', 'sessionId': 's', 'params': {}})
+        self.assertEqual((c.hints, c.loaded, c.wanted), ({'s': [[{'nodeId': '5'}]]}, {'s'}, {'s': {'nodesUpdated', 'loadComplete'}}))
 
 
 class KeepingTheReads(unittest.TestCase):
@@ -102,11 +102,6 @@ class Routing(unittest.TestCase):
         c._handle({'method': 'Runtime.bindingCalled', 'sessionId': 's', 'params': {'name': '__ae', 'payload': json.dumps({'e': 'focusin', 'tag': 'a'})}})
         self.assertEqual([e['e'] for e in events], ['focusin']); self.assertEqual(events[0]['pageUrl'], 'http://x/')
         self.assertEqual(c.wanted, {'s': {'mutation', 'focusin'}})
-
-    def test_without_a_tree_reader_a_note_from_the_page_asks_for_nothing(self):
-        c = reader(); c.target_of = {'s': 't'}; c.url_of = {}; c.on_event = lambda e: None
-        c._handle({'method': 'Runtime.bindingCalled', 'sessionId': 's', 'params': {'name': '__ae', 'payload': json.dumps({'e': 'focusin', 'tag': 'a'})}})
-        self.assertEqual(c.wanted, {})
 
 
 class Resolving(unittest.TestCase):
@@ -258,20 +253,6 @@ class WhatTheBrowserSays(unittest.TestCase):
 
     def test_the_listener_answers_the_probe_incremental_py_asks_and_takes_a_commit(self):
         for part in ('window.__aeProbe = (baseline, before)', 'window.__aeCommit', 'MutationObserver', 'getBoundingClientRect', 'selectedOptions'): self.assertIn(part, cdp.LISTENER)
-
-
-class WithTheExtensionAsTheTreeSource(unittest.TestCase):
-    """Where the trees do not come from this port (the extension's runs) nothing of the incremental reading is switched on: no Accessibility domain, nothing kept of what the browser says, and a listener without the probe."""
-    def test_the_accessibility_domain_is_not_enabled_and_what_the_browser_says_of_it_is_not_kept(self):
-        c = reader(); c.installed = set(); c.on_tree = None; c.on_attach = lambda target, browser: None; c.browser = '156.0.8078.4'
-        c._install('s', 't')
-        self.assertNotIn('Accessibility.enable', [m['method'] for m in c.ws.sent])
-        c._handle({'method': 'Accessibility.nodesUpdated', 'sessionId': 's', 'params': {'nodes': [{'nodeId': '5'}]}}); c._handle({'method': 'Accessibility.loadComplete', 'sessionId': 's', 'params': {}})
-        self.assertEqual((c.hints, c.loaded, c.wanted), ({}, set(), {}))
-
-    def test_the_probe_is_in_the_listener_only_where_the_trees_are_read_here(self):
-        self.assertIn('if (__TICKS__) {', cdp.LISTENER)
-        self.assertIn('window.__aeProbe', cdp.LISTENER.split('if (__TICKS__) {')[1])      # and nowhere before the condition
 
 
 class WaitingForTheFirstTreeOfAPage(unittest.TestCase):
