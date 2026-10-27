@@ -159,6 +159,42 @@ class ReplayDevtools(unittest.TestCase):
         self.assertEqual(flagged('devtools-tab-order'), [])
 
 
+def page_events(name):
+    """What the page told the runtime in a recording, whichever tree source was reading: the live-region changes, the dialogs and error messages it reported, and the focus moves, without the times and the numbers the browser gave an element."""
+    import gzip
+    keep = ('e', 'tag', 'id', 'role', 'names', 'inDialog', 'politeness', 'text', 'dialogs', 'errors')
+    with gzip.open(HERE / 'fixtures' / f'{name}.jsonl.gz', 'rt') as f: return [{k: row['body'][k] for k in keep if k in row['body']} for row in map(json.loads, f) if row['k'] == 'page']
+
+
+EVENT_PAGES = ('basket-live', 'error-alert', 'spa-route')
+
+
+class EventsOfTheTwoSources(unittest.TestCase):
+    """What the page reports does not depend on where the tree comes from, and does not depend on how it is read (A11-229, step 2: the tree is read again from what changed, and the browser's own signals make it be read when the page raised no event):
+    the live-region, dialog and error events of the DevTools recordings of three sample pages (fixtures/incremental, made with the incremental reads on) are those of the companion extension's recordings of the same pages."""
+    def test_the_live_regions_and_the_dialogs_the_page_reports_are_the_same_events(self):
+        for name in EVENT_PAGES:
+            self.assertEqual(page_events(name), page_events(f'incremental/devtools-{name}'), name)
+
+    def test_there_are_events_to_compare(self):
+        self.assertEqual([e['text'] for e in page_events('incremental/devtools-basket-live') if e['e'] == 'live'], ['1 item in your basket', '2 items in your basket'])
+        self.assertEqual([e['text'] for e in page_events('incremental/devtools-error-alert') if e['e'] == 'live'], ['Enter an email address'])
+        self.assertEqual([e['errors'][0]['text'] for e in page_events('incremental/devtools-error-alert') if e['e'] == 'observe' and e['errors']], ['Enter an email address'])
+
+
+@unittest.skipUnless(HAVE, "needs the emulator's virtualenv and NVDA's source (setup.sh)")
+class SpeechOfTheTwoSources(unittest.TestCase):
+    """The speech made of those events, with the tree read incrementally, is the extension's: the same live-region speech, the same flags, and a route change that is not spoken."""
+    def test_a_live_region_is_said_as_the_extension_says_it_and_an_alert_that_ends_the_test_is_heard(self):
+        for name in ('basket-live', 'error-alert'):
+            self.assertEqual([t for c, t in said(name) if c == 'live'], [t for c, t in said(f'incremental/devtools-{name}') if c == 'live'], name)
+        self.assertEqual(flagged('incremental/devtools-error-alert'), flagged('error-alert'))
+
+    def test_a_route_change_of_the_page_is_not_spoken(self):
+        self.assertEqual([c for c, t in said('incremental/devtools-spa-route')], [c for c, t in said('spa-route')])
+        self.assertEqual([c for c, t in said('incremental/devtools-spa-route')], ['load', 'focus'])
+
+
 def stops(name):
     """What was said for each focus move of a recording, in order."""
     return [t for c, t in said(name) if c == 'focus']

@@ -70,7 +70,7 @@ class Ordered:
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('--port', type=int, required=True); ap.add_argument('--cdp', type=int, default=0); ap.add_argument('--tree', choices=['extension', 'devtools'], default='extension'); ap.add_argument('--no-sweeps', action='store_true'); ap.add_argument('--fallback-after', type=float, default=0, help='with --tree extension: seconds after the first page without a word from the extension before the trees are read through the DevTools port instead (0: never)'); ap.add_argument('--report-focus', action='store_true', help='also record what NVDA+Tab says for each focus move (the fleet probe\'s phrase), for the agreement measure')
+    ap = argparse.ArgumentParser(); ap.add_argument('--port', type=int, required=True); ap.add_argument('--cdp', type=int, default=0); ap.add_argument('--tree', choices=['extension', 'devtools'], default='extension'); ap.add_argument('--no-sweeps', action='store_true'); ap.add_argument('--fallback-after', type=float, default=0, help='with --tree extension: seconds after the first page without a word from the extension before the trees are read through the DevTools port instead (0: never)'); ap.add_argument('--verify', action='store_true', help='read each page from scratch after every incremental read of its tree and record where the two differ (a `verify` record)'); ap.add_argument('--report-focus', action='store_true', help='also record what NVDA+Tab says for each focus move (the fleet probe\'s phrase), for the agreement measure')
     args = ap.parse_args()
     protocol = os.fdopen(os.dup(1), 'w', buffering=1); sys.stdout = sys.stderr      # nothing NVDA prints may be taken for a record
     def send(message): protocol.write(json.dumps(message, separators=(',', ':')) + '\n'); protocol.flush()
@@ -85,13 +85,13 @@ def main():
         import cdp as cdp_module
         devtools = args.tree == 'devtools'      # the trees come through this port as well (axtree.py), where the extension is given none
         cdp = cdp_module.Cdp(args.cdp, lambda ev: inbox.put(('page', ev, time.time())), lambda target, browser: inbox.put(('attached', {'target': target, 'browser': browser}, time.time())),
-                             on_tree=(lambda snap: inbox.put(('snap', snap, time.time()))) if devtools else None,
+                             on_tree=(lambda snap: inbox.put(('snap', snap, time.time()))) if devtools else None, verify=args.verify, on_verify=lambda body: inbox.put(('verify', {'t': round(time.time() * 1000), **body}, time.time())),
                              on_connect=(lambda: inbox.put(('ready', {'t': round(time.time() * 1000), 'source': 'devtools'}, time.time()))) if devtools else lambda: None)
     send({'type': 'ready', 'bootMs': round((time.time() - t0) * 1000)})
     ordered = Ordered()
     switch = {'first_page': None, 'extension_up': False, 'done': False}      # the extension that does not come up: fallback.py
     dump = open(os.environ['AE_DUMP'], 'a', buffering=1) if os.environ.get('AE_DUMP') else None      # a log of what arrived and when, for finding what a run lost
-    record = open(os.environ['AE_RECORD'], 'a', buffering=1) if os.environ.get('AE_RECORD') else None      # everything the runtime was told, whole, for replay.py
+    record = open(os.environ['AE_RECORD'].replace('%p', str(os.getpid())), 'a', buffering=1) if os.environ.get('AE_RECORD') else None      # everything the runtime was told, whole, for replay.py (%p: this process's number, for a run with more than one runtime)
     def note(kind, body, arrived):
         if record and kind in ('snap', 'page', 'ready'): record.write(json.dumps({'k': kind, 'arrived': arrived, 'body': body}, separators=(',', ':')) + '\n')
         if not dump: return
@@ -130,9 +130,11 @@ def main():
         if cdp and args.tree == 'extension' and fallback.due(args.fallback_after, switch['first_page'], switch['extension_up'], switch['done'], time.time()): switch_to_devtools()
         try: kind, body, arrived = inbox.get(timeout=0.05)
         except queue.Empty:
+            if cdp: cdp.wait_for_first_reads()      # a page's first tree is read before the speech of the last one goes on: the page may be closed before it is
             snapshots()
             if not ordered.held: predictor.settle_events(time.time()); predictor.settle_states(time.time()); predictor.run_sweep()      # idle: one sweep, between two events
             continue
+        if cdp and kind in ('page', 'snap'): cdp.wait_for_first_reads()
         if switch['done'] and fallback.from_extension_after_switch(kind, body): continue
         note(kind, body, arrived)
         if kind == 'snap': switch['extension_up'] = switch['extension_up'] or not body.get('devtools'); ordered.add(body, arrived); snapshots()
@@ -156,6 +158,7 @@ def main():
                     except queue.Empty: pass
                 snapshots(final=True)
                 stats = predictor.finish(); stats['lostSnapshots'] = ordered.lost
+                if cdp: stats['treeReads'] = cdp.reads
                 send({'type': 'drained', 'id': body.get('id'), 'stats': stats})
         else: handle(kind, body, arrived)
     if cdp: cdp.stop()

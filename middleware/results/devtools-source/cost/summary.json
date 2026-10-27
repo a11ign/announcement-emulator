@@ -1,0 +1,188 @@
+{
+ "structure-before": {
+  "wallMs": 407937,
+  "drainMs": 385211,
+  "speechMs": 528017,
+  "snapshots": 27,
+  "keys": 936,
+  "focusEvents": 890,
+  "unresolvedFocus": 28,
+  "tests": 8,
+  "reads": {
+   "count": 27,
+   "full": 27,
+   "incremental": 0,
+   "patched": 0,
+   "totalMs": 12567,
+   "fullMs": 12567,
+   "incrementalMs": 0,
+   "fetchMs": 7892,
+   "convertMs": 4630,
+   "meanFullMs": 465.5,
+   "meanIncrementalMs": 0,
+   "largePages": {
+    "fullMs": 484.2,
+    "incrementalMs": 0,
+    "fullReads": 24,
+    "incrementalReads": 0,
+    "incrementalOverFull": null
+   },
+   "whyFull": {
+    "before the probe existed": 27
+   }
+  }
+ },
+ "structure-after": {
+  "wallMs": 85832,
+  "drainMs": 65749,
+  "speechMs": 66803,
+  "snapshots": 18,
+  "keys": 937,
+  "focusEvents": 890,
+  "unresolvedFocus": 28,
+  "tests": 8,
+  "reads": {
+   "count": 18,
+   "full": 18,
+   "incremental": 0,
+   "patched": 0,
+   "totalMs": 10759,
+   "fullMs": 10759,
+   "incrementalMs": 0,
+   "fetchMs": 6524,
+   "convertMs": 2886,
+   "meanFullMs": 597.7,
+   "meanIncrementalMs": 0,
+   "largePages": {
+    "fullMs": 668.4,
+    "incrementalMs": 0,
+    "fullReads": 15,
+    "incrementalReads": 0,
+    "incrementalOverFull": null
+   },
+   "whyFull": {
+    "loadComplete": 6,
+    "settling": 5,
+    "first": 4,
+    "mutation": 1,
+    "frames": 1,
+    "document": 1
+   }
+  }
+ },
+ "paced-before": {
+  "wallMs": 198729,
+  "drainMs": 126452,
+  "speechMs": 243393,
+  "snapshots": 256,
+  "keys": 381,
+  "focusEvents": 335,
+  "unresolvedFocus": 1,
+  "tests": 10,
+  "reads": {
+   "count": 256,
+   "full": 256,
+   "incremental": 0,
+   "patched": 0,
+   "totalMs": 64352,
+   "fullMs": 64352,
+   "incrementalMs": 0,
+   "fetchMs": 33032,
+   "convertMs": 31075,
+   "meanFullMs": 251.4,
+   "meanIncrementalMs": 0,
+   "largePages": {
+    "fullMs": 404.6,
+    "incrementalMs": 0,
+    "fullReads": 140,
+    "incrementalReads": 0,
+    "incrementalOverFull": null
+   },
+   "whyFull": {
+    "before the probe existed": 256
+   }
+  }
+ },
+ "paced-after": {
+  "wallMs": 95155,
+  "drainMs": 24039,
+  "speechMs": 38465,
+  "snapshots": 416,
+  "keys": 381,
+  "focusEvents": 335,
+  "unresolvedFocus": 1,
+  "tests": 10,
+  "reads": {
+   "count": 416,
+   "full": 126,
+   "incremental": 290,
+   "patched": 259,
+   "totalMs": 54356,
+   "fullMs": 38960,
+   "incrementalMs": 15396,
+   "fetchMs": 23336,
+   "convertMs": 19060,
+   "meanFullMs": 309.2,
+   "meanIncrementalMs": 53.1,
+   "largePages": {
+    "fullMs": 350.5,
+    "incrementalMs": 79.4,
+    "fullReads": 105,
+    "incrementalReads": 152,
+    "incrementalOverFull": 0.226
+   },
+   "whyFull": {
+    "layout": 27,
+    "a page that keeps changing": 26,
+    "mutation": 14,
+    "loadComplete": 9,
+    "a page that was read without the probe": 9,
+    "a frame changed": 8,
+    "an element that is gone": 7,
+    "stale: the structure of the tree changed": 7,
+    "settling": 6,
+    "first": 5,
+    "stale: text is drawn where it was not": 4,
+    "keyframe": 3,
+    "frames": 1
+   }
+  }
+ },
+ "large-after": {
+  "wallMs": 477314,
+  "drainMs": 457547,
+  "speechMs": 366667,
+  "snapshots": 10,
+  "keys": 766,
+  "focusEvents": 751,
+  "unresolvedFocus": 10,
+  "tests": 5,
+  "reads": {
+   "count": 10,
+   "full": 10,
+   "incremental": 0,
+   "patched": 0,
+   "totalMs": 21407,
+   "fullMs": 21407,
+   "incrementalMs": 0,
+   "fetchMs": 8717,
+   "convertMs": 8354,
+   "meanFullMs": 2140.7,
+   "meanIncrementalMs": 0,
+   "largePages": {
+    "fullMs": 2140.7,
+    "incrementalMs": 0,
+    "fullReads": 10,
+    "incrementalReads": 0,
+    "incrementalOverFull": null
+   },
+   "whyFull": {
+    "first": 3,
+    "a page that keeps changing": 3,
+    "loadComplete": 2,
+    "settling": 1,
+    "document": 1
+   }
+  }
+ }
+}

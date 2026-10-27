@@ -1,0 +1,67 @@
+{
+  "label": "predicted NVDA speech: run summary",
+  "supportedVersionsError": null,
+  "wallMs": 407937,
+  "drainMs": 385211,
+  "workers": [
+    {
+      "bootMs": 335,
+      "startup": {
+        "treeSource": "devtools",
+        "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+        "fellBackAfterFirstTestStartedMs": null,
+        "chromium": "156.0.8078.4",
+        "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 49.5% of 1046 units on 5 held-out pages, 2026-10-25; the fleet agrees with itself on 99.9% (middleware/results/agreement-round-1/held-out/156.0.8078.4/devtools-linux/)",
+        "treeSourceUpAfterFirstTestStartedMs": 102,
+        "extensionUpAfterFirstTestStartedMs": null,
+        "devtoolsAttachedAfterFirstTestStartedMs": 161,
+        "desktopChildrenWhenUp": null,
+        "chromeAutomationInWorker": null
+      },
+      "snapshots": 12,
+      "speechMs": 179395,
+      "sweepMs": [
+        3683,
+        15953,
+        1694,
+        1721
+      ],
+      "keys": 383,
+      "focusEvents": 357,
+      "unresolvedFocus": 16,
+      "skippedSweeps": 0,
+      "lostSnapshots": 0
+    },
+    {
+      "bootMs": 333,
+      "startup": {
+        "treeSource": "devtools",
+        "treeSourceWhy": "ANNOUNCEMENT_EMULATOR_TREE=devtools",
+        "fellBackAfterFirstTestStartedMs": null,
+        "chromium": "156.0.8078.4",
+        "agreement": "agreement measured for Chromium 156.0.8078.4 (Playwright 1.64.0, 1.64.1), devtools: 49.5% of 1046 units on 5 held-out pages, 2026-10-25; the fleet agrees with itself on 99.9% (middleware/results/agreement-round-1/held-out/156.0.8078.4/devtools-linux/)",
+        "treeSourceUpAfterFirstTestStartedMs": 105,
+        "extensionUpAfterFirstTestStartedMs": null,
+        "devtoolsAttachedAfterFirstTestStartedMs": 164,
+        "desktopChildrenWhenUp": null,
+        "chromeAutomationInWorker": null
+      },
+      "snapshots": 15,
+      "speechMs": 348622,
+      "sweepMs": [
+        14927,
+        2535,
+        3247,
+        28572
+      ],
+      "keys": 553,
+      "focusEvents": 533,
+      "unresolvedFocus": 12,
+      "skippedSweeps": 0,
+      "lostSnapshots": 0
+    }
+  ],
+  "tests": 8,
+  "flags": 0,
+  "recordsOutsideAnyTest": 0
+}

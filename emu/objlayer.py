@@ -3,7 +3,7 @@
 import json, types, collections, ctypes
 import boot, standin
 import IAccessibleHandler  # NVDA imports this before NVDAObjects.IAccessible (circular otherwise)
-from standin import CONST, T
+from standin import CONST, T, reverse_relation
 
 HWND = 0x1000
 COMErr = boot.COMError
@@ -252,7 +252,7 @@ class World:
         f = pn.raw.get(self.FORWARD.get(rtype, '')) or []
         if f: return [i for i in f if i >= 0]
         r = self.REVERSE.get(rtype)
-        return [n.ix for n in self.by_ix.values() if r and pn.ix in (n.raw.get(r) or [])] if r else []
+        return list(reverse_relation(self, r).get(pn.ix, ())) if r else []
     def facade(self, pn):
         if pn.ix not in self._f: self._f[pn.ix] = Facade(pn, self)
         return self._f[pn.ix]

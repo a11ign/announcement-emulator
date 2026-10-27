@@ -45,7 +45,7 @@ export default class AnnouncementsReporter implements Reporter {
     if (this.supportedError) console.error(`announcement-emulator: the package's supported-versions.json ${this.supportedError}. Every report says its agreement is not measured; reinstall the package.`);
     const extensions = this.tree === "extension" ? ports.map((p, i) => prepareExtension(this.options.bundle, join(this.dir, `extension-${i}`), p.collector, this.options.verify)) : [];
     publishRun({ bundle: this.options.bundle, dir: this.dir, ports, extensions, verify: !!this.options.verify, sweeps: sweepsOn(this.options), tree: this.tree });
-    this.runtimes = ports.map((p, i) => new Runtime(this.options.bundle, p, { sweeps: sweepsOn(this.options), log: join(this.dir, `runtime-${i}.log`), tree: this.tree, fallbackAfter: this.fallbackAfter }));
+    this.runtimes = ports.map((p, i) => new Runtime(this.options.bundle, p, { sweeps: sweepsOn(this.options), log: join(this.dir, `runtime-${i}.log`), tree: this.tree, fallbackAfter: this.fallbackAfter, verify: !!this.options.verify }));
   }
 
   onTestEnd(test: TestCase, result: TestResult): void {

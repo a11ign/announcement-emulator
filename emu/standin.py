@@ -25,6 +25,18 @@ EMPTY_TEXT = ' '
 # ---------------------------------------------------------------- layer 2: Windows mapping
 
 
+def reverse_relation(tree, key):
+    """The nodes that name each node in their own `key` list (`detailsForIx`, `errorMessageForIx`), in the order of the tree's `by_ix`, each once: made once for a tree and kept on it, since `by_ix` does not change after it is
+    indexed. Looking for them in every node for every node was quadratic in the tree: 95% of the time the buffer of a page of 3,700 nodes took to build (A11-229, middleware/results/devtools-source/cost)."""
+    held = tree.__dict__.setdefault('_reverse', {})
+    if key not in held:
+        found = {}
+        for n in tree.by_ix.values():
+            for target in dict.fromkeys(n.raw.get(key) or []): found.setdefault(target, []).append(n.ix)
+        held[key] = found
+    return held[key]
+
+
 class PN:
     """A platform node: one chrome.automation node as the Windows platform layer would expose it."""
 
@@ -857,7 +869,7 @@ class Builder:
         f = pn.raw.get(self.FORWARD.get(rtype, '')) or []
         if f: return [i for i in f if i >= 0]
         r = self.REVERSE.get(rtype)
-        return [n.ix for n in self.by_ix.values() if r and pn.ix in (n.raw.get(r) or [])] if r else []
+        return list(reverse_relation(self, r).get(pn.ix, ())) if r else []
 
     def _aria_details(self, pn, node, role_attr):
         """GeckoVBufBackend_t::fillVBufAriaDetails (gecko_ia2.cpp:452-500): detailsRoles / hasDetails, looked for in both directions."""

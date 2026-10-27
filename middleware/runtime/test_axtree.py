@@ -346,3 +346,111 @@ class Values(unittest.TestCase):
 
 
 if __name__ == '__main__': unittest.main()
+
+
+# ------------------------------------------------------------------------------------------------ a list of nodes brought up to date (A11-229, step 2)
+# `Converter.patch` makes again the nodes that can have changed and takes the rest of the list as it was; the list it gives is the one `convert` gives of the page as it is now.
+
+class Patching(unittest.TestCase):
+    def setUp(self):
+        with gzip.open(os.path.join(HERE, 'fixtures', 'structure', 'devtools-lists.json.gz'), 'rt') as f: self.raw = json.load(f)
+        self.converter = axtree.Converter(); self.dom = axtree.Dom(self.raw['dom'], self.raw['listeners']); self.raw['_dom'] = self.dom
+        self.first = self.converter.convert(self.raw, retain=True)
+        self.ax = {n['nodeId']: n for n in self.raw['ax']}
+
+    def now(self, changed=(), page=None, viewport=None):
+        """The list `patch` makes after the AX nodes in `changed` were replaced, and the list `convert` makes of the same page."""
+        page = page or self.raw['page']; viewport = viewport or self.raw['viewport']
+        ax = dict(self.ax); ax.update({n['nodeId']: n for n in changed})
+        patched = self.converter.patch(ax, {n['nodeId'] for n in changed}, set(), self.dom, page, viewport)
+        twin = axtree.Converter(); twin.uids = dict(self.converter.uids); twin.next_uid = self.converter.next_uid
+        whole = twin.convert(dict(self.raw, ax=list(ax.values()), page=page, viewport=viewport))
+        return patched, whole
+
+    def node(self, role, name=None):
+        return next(n for n in self.ax.values() if n.get('role', {}).get('value') == role and (name is None or n.get('name', {}).get('value') == name))
+
+    def focused(self, node, on=True):
+        props = [p for p in node.get('properties', []) if p['name'] != 'focused']
+        return dict(node, properties=[*props, {'name': 'focused', 'value': {'type': 'booleanOrUndefined', 'value': True}}] if on else props)
+
+    def test_nothing_changed_is_the_list_that_was_made(self):
+        patched, whole = self.now()
+        self.assertEqual(patched, whole); self.assertEqual(patched['nodes'], self.first['nodes'])
+
+    def test_the_focus_moved_from_one_node_to_another(self):
+        old = next(n for n in self.ax.values() if any(p['name'] == 'focused' for p in n.get('properties', [])) and n['role']['value'] != 'RootWebArea')
+        new = self.node('link')
+        patched, whole = self.now([self.focused(old, on=False), self.focused(new)])
+        self.assertEqual(patched, whole)
+        self.assertEqual(patched['focusIx'], next(n['ix'] for n in patched['nodes'] if n.get('backendId') == new['backendDOMNodeId']))
+        self.assertEqual(sum(1 for n in patched['nodes'] if n['state'].get('focused')), 1)
+
+    def test_the_nodes_that_did_not_change_are_the_ones_that_were_made(self):
+        patched, whole = self.now([self.focused(self.node('link'))])
+        same = sum(1 for a, b in zip(patched['nodes'], self.first['nodes']) if a is b)
+        self.assertGreater(same, len(self.first['nodes']) - 12)
+
+    def test_the_name_of_a_node_that_is_no_ones_text_can_change(self):
+        link = self.node('link'); renamed = dict(link, name=dict(link['name'], value='a new name'))
+        patched, whole = self.now([renamed])
+        self.assertEqual(patched, whole)
+        self.assertEqual(next(n for n in patched['nodes'] if n.get('backendId') == link['backendDOMNodeId'])['name'], 'a new name')
+
+    def test_the_text_of_a_text_is_the_marks_of_every_node_above_it_and_is_not_patched(self):
+        text = self.node('StaticText', next(n['name']['value'] for n in self.ax.values() if n.get('role', {}).get('value') == 'StaticText' and n['name']['value'].strip()))
+        with self.assertRaises(axtree.Unpatchable): self.now([dict(text, name=dict(text['name'], value='other words'))])
+
+    def test_a_field_whose_text_changed_is_not_patched(self):
+        field = self.node('textbox')
+        with self.assertRaises(axtree.Unpatchable): self.now([dict(field, value={'type': 'string', 'value': 'changed'})])
+
+    def test_a_state_other_than_the_focus_is_not_patched(self):
+        box = self.node('checkbox'); flipped = dict(box, properties=[dict(p, value=dict(p['value'], value='true' if p['value']['value'] != 'true' else 'false')) if p['name'] == 'checked' else p for p in box['properties']])
+        with self.assertRaises(axtree.Unpatchable): self.now([flipped])
+
+    def test_the_page_scrolled(self):
+        viewport = dict(self.raw['viewport'], pageY=self.raw['viewport'].get('pageY', 0) + 2000)
+        patched, whole = self.now(viewport=viewport)
+        self.assertEqual(patched, whole)
+        self.assertNotEqual([n['state'].get('offscreen') for n in patched['nodes']], [n['state'].get('offscreen') for n in self.first['nodes']])
+
+    def test_the_address_of_the_page_changed_without_a_load(self):
+        patched, whole = self.now(page=dict(self.raw['page'], url=self.raw['page']['url'] + '#route'))
+        self.assertEqual(patched, whole); self.assertTrue(patched['nodes'][0]['docUrl'].endswith('#route'))
+
+    def test_the_caret_moved_in_the_field_that_has_the_focus(self):
+        patched, whole = self.now(page=dict(self.raw['page'], caret=[1, 2]))
+        self.assertEqual(patched, whole)
+
+    def test_a_look_that_changed_is_patched_where_the_style_was_set(self):
+        link = self.node('link'); backend = link['backendDOMNodeId']
+        self.dom.get(backend)['style']['color'] = 'rgb(1, 2, 3)'
+        patched = self.converter.patch(self.ax, set(), {backend}, self.dom, self.raw['page'], self.raw['viewport'])
+        twin = axtree.Converter(); twin.uids = dict(self.converter.uids); twin.next_uid = self.converter.next_uid
+        self.assertEqual(patched, twin.convert(self.raw))
+        self.assertEqual(next(n for n in patched['nodes'] if n.get('backendId') == backend)['color'], 0xff010203)
+
+    def test_a_page_that_was_not_converted_with_retain_cannot_be_patched(self):
+        converter = axtree.Converter(); converter.convert(self.raw)
+        with self.assertRaises(axtree.Unpatchable): converter.patch(self.ax, set(), set(), self.dom, self.raw['page'], self.raw['viewport'])
+
+
+class MarkingText(unittest.TestCase):
+    """Where the words and sentences of a text start are found once for each distinct text (a container holds the text of what is in it, so the same string comes up at each level of the tree) and the table of them is bounded."""
+    def setUp(self): axtree.MARKS.clear(); axtree.MARKED[0] = 0
+
+    def test_the_marks_of_a_text_are_the_same_the_second_time_and_a_caller_may_change_what_it_is_given(self):
+        first = axtree.word_bounds('Pick a section. Then go.')
+        first[0].append(99)
+        self.assertEqual(axtree.word_bounds('Pick a section. Then go.'), ([0, 5, 7, 14, 16, 21, 23], [4, 6, 14, 15, 20, 23, 24]))
+        sentences = axtree.sentence_starts('Pick a section. Then go.'); sentences.append(99)
+        self.assertEqual(axtree.sentence_starts('Pick a section. Then go.'), [0, 16])
+
+    def test_a_long_text_is_not_kept(self):
+        axtree.word_bounds('word ' * (axtree.MARKED_LONGEST // 4)); self.assertEqual(len(axtree.MARKS), 0)
+
+    def test_the_table_is_emptied_before_it_holds_more_than_its_limit(self):
+        for i in range(axtree.MARKED_LIMIT // 1000 + 5): axtree.word_bounds(f'{i} ' + 'x' * 998)
+        self.assertLessEqual(axtree.MARKED[0], axtree.MARKED_LIMIT)
+        self.assertEqual(axtree.MARKED[0], sum(len(key[1]) for key in axtree.MARKS))

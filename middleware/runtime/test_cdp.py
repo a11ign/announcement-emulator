@@ -1,6 +1,6 @@
 """The part of cdp.py that routes answers: commands sent together are answered in the order they were sent, and what waits for a page that is closed is told so and does not wait for the timeout (A11-208:
 a tree read of a page the test had just closed held the reading of every page after it for twenty seconds)."""
-import json, threading, unittest
+import json, threading, time, unittest
 
 import cdp
 
@@ -13,7 +13,7 @@ class FakeSocket:
 
 def reader():
     c = cdp.Cdp.__new__(cdp.Cdp)      # not connected: nothing is read from a browser
-    c.ws = FakeSocket(); c.lock = threading.Lock(); c.next_id = 0; c.replies = {}; c.wanted = {}; c.wake = threading.Condition(); c.on_tree = None; c.converters = {}; c.generation = 0; c.target_of = {}; c.outbox = []; c.out = threading.Lock()
+    c.ws = FakeSocket(); c.lock = threading.Lock(); c.next_id = 0; c.replies = {}; c.wanted = {}; c.wake = threading.Condition(); c.on_tree = None; c.readers = {}; c.hints = {}; c.loaded = set(); c.visited = {}; c.contexts = {}; c.reading = {}; c.verify = False; c.on_verify = lambda body: None; c.reads = {'full': 0, 'incremental': 0, 'verified': 0, 'differing': 0, 'fullMs': 0.0, 'incrementalMs': 0.0}; c.generation = 0; c.target_of = {}; c.outbox = []; c.out = threading.Lock()
     return c
 
 
@@ -92,9 +92,9 @@ class Routing(unittest.TestCase):
         self.assertFalse(thread.is_alive()); self.assertEqual(errors, ['Accessibility.getFullAXTree: the page was closed'])
 
     def test_a_page_that_goes_takes_what_was_wanted_of_it_and_its_converter_with_it(self):
-        c = reader(); c.target_of = {'gone': 't'}; c.wanted = {'gone': {'focusin'}, 'other': {'tick'}}; c.converters = {(0, 't'): object(), (0, 'u'): object()}
+        c = reader(); c.target_of = {'gone': 't'}; c.wanted = {'gone': {'focusin'}, 'other': {'tick'}}; c.readers = {(0, 't'): object(), (0, 'u'): object()}
         c._handle({'method': 'Target.detachedFromTarget', 'params': {'sessionId': 'gone'}})
-        self.assertEqual(c.wanted, {'other': {'tick'}}); self.assertEqual(list(c.converters), [(0, 'u')])
+        self.assertEqual(c.wanted, {'other': {'tick'}}); self.assertEqual(list(c.readers), [(0, 'u')])
 
     def test_a_note_from_the_page_asks_for_a_tree_and_is_not_an_event_for_the_predictor(self):
         c = reader(); c.on_tree = lambda snap: None; c.target_of = {'s': 't'}; c.url_of = {'t': 'http://x/'}; events = []; c.on_event = events.append
@@ -195,16 +195,191 @@ class Resolving(unittest.TestCase):
         self.assertTrue(any(m['method'] == 'Runtime.evaluate' and 'delete(5)' in m['params']['expression'] for m in c.ws.sent))
 
 
+def asked_nothing_of(c):
+    """The questions a read begins with (incremental.py: the page's probe, its state, its viewport and its frames) answered as a page without a probe answers them; the tree itself is the test's `axtree.fetch`."""
+    state = {'url': 'http://x/', 'title': 't', 'readyState': 'complete', 'lang': 'en', 'caret': None}
+    def call_many(commands, session=None, timeout=20):
+        answers = {'Page.getLayoutMetrics': {}, 'Page.getFrameTree': {'frameTree': {'frame': {'id': 'main'}}}}
+        return [({'result': {}} if '__aeProbe' in params['expression'] else {'result': {'value': json.dumps(state)}}) if method == 'Runtime.evaluate' else answers[method] for method, params in commands]
+    c.call_many = call_many
+
+
+class WhatTheBrowserSays(unittest.TestCase):
+    """The browser tells when a node it was asked about has changed and when a document has loaded (the Accessibility domain, enabled for each page): both make the page's tree be read again, and the reader is told."""
+    def test_the_accessibility_domain_is_enabled_for_a_page_that_is_attached(self):
+        c = reader(); c.installed = set(); c.on_tree = lambda snap: None; c.on_attach = lambda target, browser: None; c.browser = '156.0.8078.4'
+        c._install('s', 't')
+        self.assertIn(('Accessibility.enable', 's'), [(m['method'], m.get('sessionId')) for m in c.ws.sent])
+
+    def test_a_node_the_browser_says_changed_is_kept_for_the_reader_and_the_page_is_read_again(self):
+        c = reader(); c.on_tree = lambda snap: None
+        c._handle({'method': 'Accessibility.nodesUpdated', 'sessionId': 's', 'params': {'nodes': [{'nodeId': '5'}]}})
+        self.assertEqual(c.hints, {'s': [[{'nodeId': '5'}]]}); self.assertEqual(c.wanted, {'s': {'nodesUpdated'}})
+
+    def test_a_document_the_browser_says_has_loaded_makes_the_next_read_a_full_one(self):
+        c = reader(); c.on_tree = lambda snap: None
+        c._handle({'method': 'Accessibility.loadComplete', 'sessionId': 's', 'params': {'root': {'nodeId': '1'}}})
+        self.assertEqual(c.loaded, {'s'}); self.assertEqual(c.wanted, {'s': {'loadComplete'}})
+
+    def test_the_reader_is_told_what_the_browser_said_once(self):
+        import incremental
+        told = []
+        class Reader:
+            cost = {'how': 'incremental', 'totalMs': 1.0}; mismatches = []
+            def __init__(self, **kw): pass
+            def updated(self, nodes): told.append(('updated', nodes))
+            def loaded(self): told.append(('loaded',))
+            def visited(self, backends): told.append(('visited', set(backends)))
+            def read(self, call_many, contexts=None): return {'nodes': [{}]}
+        real = incremental.Reader; incremental.Reader = Reader
+        try:
+            c = reader(); c.target_of = {'s': 't'}; c.hints = {'s': [[{'nodeId': '5'}]]}; c.loaded = {'s'}; c.visited = {'s': {7, 8}}
+            c._read('s', 't', 0); c._read('s', 't', 0)
+        finally: incremental.Reader = real
+        self.assertEqual(told, [('updated', [{'nodeId': '5'}]), ('visited', {7, 8}), ('loaded',), ('visited', set())])
+
+    def test_a_tree_that_differs_from_one_read_from_scratch_is_reported_and_counted(self):
+        import incremental
+        said = []
+        class Reader:
+            cost = {'how': 'incremental', 'totalMs': 1.0, 'verified': 'differs'}; mismatches = [[3, 'link', [['name', 'a', 'b']]]]; ax_found = [['7', {'ignored': [False, True]}]]
+            def __init__(self, **kw): pass
+            def updated(self, nodes): pass
+            def loaded(self): pass
+            def visited(self, backends): pass
+            def read(self, call_many, contexts=None): return {'nodes': [{}, {}]}
+        real = incremental.Reader; incremental.Reader = Reader
+        try:
+            c = reader(); c.target_of = {'s': 't'}; c.on_verify = said.append
+            c._read('s', 't', 0)
+        finally: incremental.Reader = real
+        self.assertEqual(said, [{'ok': False, 'page': 't', 'diff': [[3, 'link', [['name', 'a', 'b']]]], 'ax': [['7', {'ignored': [False, True]}]], 'nodes': 2}])
+        self.assertEqual((c.reads['differing'], c.reads['incremental']), (1, 1))
+
+    def test_the_listener_answers_the_probe_incremental_py_asks_and_takes_a_commit(self):
+        for part in ('window.__aeProbe = (baseline, before)', 'window.__aeCommit', 'MutationObserver', 'getBoundingClientRect', 'selectedOptions'): self.assertIn(part, cdp.LISTENER)
+
+
+class WithTheExtensionAsTheTreeSource(unittest.TestCase):
+    """Where the trees do not come from this port (the extension's runs) nothing of the incremental reading is switched on: no Accessibility domain, nothing kept of what the browser says, and a listener without the probe."""
+    def test_the_accessibility_domain_is_not_enabled_and_what_the_browser_says_of_it_is_not_kept(self):
+        c = reader(); c.installed = set(); c.on_tree = None; c.on_attach = lambda target, browser: None; c.browser = '156.0.8078.4'
+        c._install('s', 't')
+        self.assertNotIn('Accessibility.enable', [m['method'] for m in c.ws.sent])
+        c._handle({'method': 'Accessibility.nodesUpdated', 'sessionId': 's', 'params': {'nodes': [{'nodeId': '5'}]}}); c._handle({'method': 'Accessibility.loadComplete', 'sessionId': 's', 'params': {}})
+        self.assertEqual((c.hints, c.loaded, c.wanted), ({}, set(), {}))
+
+    def test_the_probe_is_in_the_listener_only_where_the_trees_are_read_here(self):
+        self.assertIn('if (__TICKS__) {', cdp.LISTENER)
+        self.assertIn('window.__aeProbe', cdp.LISTENER.split('if (__TICKS__) {')[1])      # and nowhere before the condition
+
+
+class WaitingForTheFirstTreeOfAPage(unittest.TestCase):
+    """The predictor goes on after the tree of a page that has just come has been read, but not for longer than `limit`: a page closed before its first read has no prediction."""
+    def test_it_returns_at_once_when_no_page_is_being_read_for_the_first_time(self):
+        c = reader(); c.reading = {}
+        started = time.time(); c.wait_for_first_reads(); self.assertLess(time.time() - started, 0.1)
+        class Reader: urgent_since = None
+        c.reading = {'s': Reader()}
+        started = time.time(); c.wait_for_first_reads(); self.assertLess(time.time() - started, 0.1)
+
+    def test_it_waits_for_the_read_to_end(self):
+        c = reader()
+        class Reader: urgent_since = time.time()
+        held = Reader(); c.reading = {'s': held}
+        threading.Timer(0.3, lambda: setattr(held, 'urgent_since', None)).start()
+        started = time.time(); c.wait_for_first_reads(); self.assertGreaterEqual(time.time() - started, 0.25); self.assertLess(time.time() - started, 2)
+
+    def test_it_does_not_wait_longer_than_the_limit_from_when_the_read_began(self):
+        c = reader()
+        class Reader: urgent_since = time.time() - 5.9
+        c.reading = {'s': Reader()}
+        started = time.time(); c.wait_for_first_reads(limit=6.0); self.assertLess(time.time() - started, 0.5)
+
+    def test_a_page_is_registered_while_it_is_read_and_not_after(self):
+        import incremental
+        seen = []
+        class Reader:
+            cost = {'how': 'full', 'totalMs': 1.0}; mismatches = []; checking = False; urgent_since = 1.0
+            def __init__(self, **kw): pass
+            def updated(self, nodes): pass
+            def loaded(self): pass
+            def visited(self, backends): pass
+            def read(self, call_many, contexts=None): seen.append(dict(c.reading)); return {'nodes': [{}]}
+        real = incremental.Reader; incremental.Reader = Reader
+        try:
+            c = reader(); c.target_of = {'s': 't'}; c._read('s', 't', 0)
+        finally: incremental.Reader = real
+        self.assertEqual(list(seen[0]), ['s']); self.assertEqual(c.reading, {})
+
+
+class TheScriptContextOfEachFrame(unittest.TestCase):
+    """The probe of incremental.py is asked in the context a frame's script runs in: the browser says which that is when it makes one, and when it takes one away."""
+    def created(self, c, frame, ident, default=True, session='s'):
+        c._handle({'method': 'Runtime.executionContextCreated', 'sessionId': session, 'params': {'context': {'id': ident, 'origin': 'http://x', 'auxData': {'frameId': frame, 'isDefault': default}}}})
+
+    def test_the_default_context_of_a_frame_is_the_one_kept_and_not_an_isolated_world(self):
+        c = reader(); self.created(c, 'f1', 5); self.created(c, 'f1', 6, default=False); self.created(c, 'f2', 7)
+        self.assertEqual(c.contexts, {'s': {'f1': 5, 'f2': 7}})
+
+    def test_a_context_that_is_made_again_for_a_frame_that_navigated_replaces_the_old(self):
+        c = reader(); self.created(c, 'f1', 5); self.created(c, 'f1', 9)
+        self.assertEqual(c.contexts, {'s': {'f1': 9}})
+
+    def test_a_context_the_browser_destroys_is_forgotten(self):
+        c = reader(); self.created(c, 'f1', 5); self.created(c, 'f2', 7)
+        c._handle({'method': 'Runtime.executionContextDestroyed', 'sessionId': 's', 'params': {'executionContextId': 5}})
+        self.assertEqual(c.contexts, {'s': {'f2': 7}})
+
+    def test_all_the_contexts_of_a_page_go_when_the_browser_clears_them(self):
+        c = reader(); self.created(c, 'f1', 5); self.created(c, 'g1', 8, session='t')
+        c._handle({'method': 'Runtime.executionContextsCleared', 'sessionId': 's', 'params': {}})
+        self.assertEqual(c.contexts, {'t': {'g1': 8}})
+
+    def test_a_read_is_given_a_copy_of_the_contexts_the_reader_of_the_socket_changes(self):
+        import incremental
+        seen = []
+        class Reader:
+            cost = {'how': 'full', 'totalMs': 1.0}; mismatches = []; checking = False
+            def __init__(self, **kw): pass
+            def updated(self, nodes): pass
+            def loaded(self): pass
+            def visited(self, backends): pass
+            def read(self, call_many, contexts=None): seen.append(contexts('f1')); return {'nodes': [{}]}
+        real = incremental.Reader; incremental.Reader = Reader
+        try:
+            c = reader(); c.target_of = {'s': 't'}; self.created(c, 'f1', 5)
+            c._read('s', 't', 0)
+        finally: incremental.Reader = real
+        self.assertEqual(seen, [5])
+
+
+class WhereTheFocusHasBeen(unittest.TestCase):
+    """The browser's tree keeps what the focus did to the nodes it passed (a skip link's wrapper is left out once the link has had the focus), and the layout does not: every element a `focusin` named is read again (incremental.py)."""
+    def test_the_node_the_browser_names_for_a_focus_is_kept_for_the_reader(self):
+        c = reader(); c.on_tree = lambda snap: None; c.url_of = {}; c.on_event = lambda e: None; c.target_of = {'s': 't'}
+        c._handle({'method': 'Runtime.bindingCalled', 'sessionId': 's', 'params': {'name': '__ae', 'payload': json.dumps({'e': 'focusin', 'seq': 1, 'tag': 'a'})}})
+        for m in list(c.ws.sent): c._handle({'id': m['id'], 'result': {'result': {'objectId': 'o'}}})
+        c._handle({'id': c.ws.sent[1]['id'], 'result': {'node': {'backendNodeId': 42}}}); c._handle({'id': c.ws.sent[2]['id'], 'result': {'nodes': []}})
+        self.assertEqual(c.visited, {'s': {42}})
+
+    def test_a_focus_the_browser_could_not_name_is_not_kept(self):
+        c = reader(); c.on_tree = lambda snap: None; c.url_of = {}; c.on_event = lambda e: None; c.target_of = {'s': 't'}
+        c._handle({'method': 'Runtime.bindingCalled', 'sessionId': 's', 'params': {'name': '__ae', 'payload': json.dumps({'e': 'focusin', 'seq': 1, 'tag': 'a'})}})
+        c._handle({'id': c.ws.sent[0]['id'], 'result': {'result': {}}})      # the element is gone
+        self.assertEqual(c.visited, {})
+
+
 class Converting(unittest.TestCase):
     def test_a_page_that_went_while_it_was_read_leaves_no_converter_behind(self):
         import axtree
-        c = reader(); c.target_of = {'s': 't'}
+        c = reader(); c.target_of = {'s': 't'}; asked_nothing_of(c)
         raw = {'ax': [{'nodeId': '1', 'chromeRole': {'value': 5}, 'childIds': []}], 'dom': {'documents': [], 'strings': []}, 'viewport': {}, 'page': {'url': 'http://x/', 'title': 't', 'readyState': 'complete', 'lang': 'en', 'caret': None}, 'frames': {}}
         real = axtree.fetch
         axtree.fetch = lambda call: (c._handle({'method': 'Target.detachedFromTarget', 'params': {'sessionId': 's'}}), raw)[1]
         try: c._read('s', 't', 0)
         finally: axtree.fetch = real
-        self.assertEqual(c.converters, {})
+        self.assertEqual(c.readers, {})
 
     def test_a_page_closed_while_it_is_read_is_converted_by_the_converter_it_had_so_that_its_nodes_keep_their_numbers(self):
         """The converter is forgotten when the page goes (`Target.detachedFromTarget`); a read in flight that took a new one would number the document's nodes again, and the predictor would speak the page's load again."""
@@ -212,7 +387,7 @@ class Converting(unittest.TestCase):
         made = []
         class Counting(axtree.Converter):
             def __init__(self): super().__init__(); made.append(self)
-        c = reader(); c.target_of = {'s': 't'}
+        c = reader(); c.target_of = {'s': 't'}; asked_nothing_of(c)
         real_fetch, real_converter = axtree.fetch, axtree.Converter
         raw = {'ax': [{'nodeId': '1', 'chromeRole': {'value': 5}, 'childIds': []}], 'dom': {'documents': [], 'strings': []}, 'viewport': {}, 'page': {'url': 'http://x/', 'title': 't', 'readyState': 'complete', 'lang': 'en', 'caret': None}, 'frames': {}}
         reads = []
