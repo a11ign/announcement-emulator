@@ -35,6 +35,11 @@ class Causes(unittest.TestCase):
         for c in ('prompt', 'emulator', 'conversion: clickable', 'conversion: name+role', 'events: focus', 'macos: state', 'unexplained'): self.assertTrue(cd.is_cause(c), c)
         for c in ('tree: name', 'conversion', 'events', 'because'): self.assertFalse(cd.is_cause(c), c)       # the extension's `tree:` cause does not occur: there is no extension reading
 
+    def test_the_closed_list_is_step_ones_without_the_extension_causes(self):
+        # compare_devtools.py and compare_sources.py are frozen (freeze.json), so the list is kept in two places; this holds them together: the only cause that step 1 has and this does not is `tree`
+        self.assertEqual(cd.PLAIN_CAUSES, cs.PLAIN_CAUSES)
+        self.assertEqual(cd.PREFIXED_CAUSES, tuple(c for c in cs.PREFIXED_CAUSES if c != 'tree'))
+
     def test_a_different_string_is_a_conversion_miss_named_by_its_field(self):
         r = {'devtools-linux': reading('devtools-linux', [('links', 0, 'a, clickable, link', 'a, link')])}
         self.assertEqual(cause(r, 'devtools-linux', (A, 'links', 0)), 'conversion: clickable')
