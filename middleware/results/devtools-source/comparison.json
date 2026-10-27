@@ -1,0 +1,266 @@
+{
+ "readings": {
+  "devtools-linux": {
+   "agreed": 3433,
+   "units": 5100
+  },
+  "devtools-macos": {
+   "agreed": 3439,
+   "units": 4988
+  },
+  "devtools-ubuntu-ci": {
+   "agreed": 3407,
+   "units": 4988
+  }
+ },
+ "second": {
+  "devtools-linux": {
+   "agreed": 3325,
+   "units": 4901
+  },
+  "devtools-macos": {
+   "agreed": 3249,
+   "units": 4789
+  },
+  "devtools-ubuntu-ci": {
+   "agreed": 3253,
+   "units": 4789
+  }
+ },
+ "byGroup": {
+  "devtools-linux": {
+   "step 1": {
+    "agreed": 905,
+    "units": 1133
+   },
+   "step 2": {
+    "agreed": 1776,
+    "units": 2214
+   },
+   "large": {
+    "agreed": 752,
+    "units": 1753
+   }
+  },
+  "devtools-macos": {
+   "step 1": {
+    "agreed": 903,
+    "units": 1021
+   },
+   "step 2": {
+    "agreed": 1791,
+    "units": 2214
+   },
+   "large": {
+    "agreed": 745,
+    "units": 1753
+   }
+  },
+  "devtools-ubuntu-ci": {
+   "step 1": {
+    "agreed": 875,
+    "units": 1021
+   },
+   "step 2": {
+    "agreed": 1777,
+    "units": 2214
+   },
+   "large": {
+    "agreed": 755,
+    "units": 1753
+   }
+  }
+ },
+ "byClass": {
+  "devtools-linux": {
+   "corpus": {
+    "agreed": 905,
+    "units": 1133
+   },
+   "list": {
+    "agreed": 797,
+    "units": 1150
+   },
+   "table": {
+    "agreed": 979,
+    "units": 1064
+   },
+   "large": {
+    "agreed": 752,
+    "units": 1753
+   }
+  },
+  "devtools-macos": {
+   "corpus": {
+    "agreed": 903,
+    "units": 1021
+   },
+   "list": {
+    "agreed": 813,
+    "units": 1150
+   },
+   "table": {
+    "agreed": 978,
+    "units": 1064
+   },
+   "large": {
+    "agreed": 745,
+    "units": 1753
+   }
+  },
+  "devtools-ubuntu-ci": {
+   "corpus": {
+    "agreed": 875,
+    "units": 1021
+   },
+   "list": {
+    "agreed": 800,
+    "units": 1150
+   },
+   "table": {
+    "agreed": 977,
+    "units": 1064
+   },
+   "large": {
+    "agreed": 755,
+    "units": 1753
+   }
+  }
+ },
+ "oldPages": {
+  "devtools-linux": {
+   "agreed": 2681,
+   "units": 3347
+  },
+  "devtools-macos": {
+   "agreed": 2694,
+   "units": 3235
+  },
+  "devtools-ubuntu-ci": {
+   "agreed": 2652,
+   "units": 3235
+  }
+ },
+ "causes": {
+  "devtools-linux": {
+   "history": 31,
+   "events: focus": 11,
+   "conversion: name": 264,
+   "page moved": 34,
+   "emulator": 388,
+   "conversion: state": 9,
+   "conversion: name+role": 20,
+   "conversion: node": 719,
+   "conversion: name+position in set+role+state": 6,
+   "conversion: name+position in set+state": 5,
+   "conversion: name+state": 2,
+   "conversion: level+name+role": 2,
+   "conversion: name+role+set size+table index": 34,
+   "conversion: landmark+name+role+set size+table index": 4,
+   "conversion: position in set": 1,
+   "quick test": 2,
+   "events: typed": 6,
+   "conversion: name+visited": 2,
+   "conversion: landmark+state": 1,
+   "conversion: name+table index": 29,
+   "prompt": 55,
+   "conversion: landmark+name+role": 3,
+   "conversion: name+set size+table index": 5,
+   "conversion: landmark+name+role+table index": 2,
+   "conversion: name+role+set size": 26,
+   "conversion: name+role+table index": 2,
+   "conversion: landmark+name+role+set size": 1,
+   "conversion: landmark+level+name+role": 1,
+   "language": 2
+  },
+  "devtools-macos": {
+   "history": 31,
+   "events: focus": 4,
+   "page moved": 36,
+   "conversion: state": 3,
+   "emulator": 343,
+   "conversion: name+role": 20,
+   "conversion: name+position in set+role+state": 6,
+   "conversion: name+position in set+state": 5,
+   "macos: node": 24,
+   "macos: name+state": 3,
+   "macos: name+position in set+role+state": 1,
+   "conversion: node": 627,
+   "conversion: level+name+role": 2,
+   "macos: name": 21,
+   "conversion: name": 236,
+   "conversion: name+role+set size+table index": 33,
+   "conversion: landmark+name+role+set size+table index": 4,
+   "conversion: position in set": 1,
+   "events: typed": 6,
+   "conversion: name+visited": 1,
+   "network/runner": 21,
+   "prompt": 55,
+   "conversion: landmark+name+role": 3,
+   "conversion: name+set size+table index": 5,
+   "conversion: landmark+name+role+table index": 2,
+   "conversion: name+role+set size": 26,
+   "conversion: name+table index": 22,
+   "conversion: name+role+table index": 2,
+   "conversion: landmark+name+role+set size": 1,
+   "macos: landmark+name+role+state+table index": 1,
+   "macos: landmark+name+role+set size": 1,
+   "conversion: landmark+level+name+role": 1,
+   "language": 2
+  },
+  "devtools-ubuntu-ci": {
+   "history": 31,
+   "events: focus": 11,
+   "conversion: name": 247,
+   "page moved": 34,
+   "emulator": 360,
+   "conversion: state": 5,
+   "conversion: name+role": 20,
+   "network/runner": 63,
+   "conversion: name+position in set+role+state": 6,
+   "conversion: name+position in set+state": 5,
+   "conversion: name+state": 2,
+   "conversion: node": 627,
+   "conversion: level+name+role": 2,
+   "conversion: name+role+set size+table index": 33,
+   "conversion: landmark+name+role+set size+table index": 4,
+   "conversion: position in set": 1,
+   "quick test": 2,
+   "events: typed": 6,
+   "conversion: name+visited": 2,
+   "conversion: landmark+state": 1,
+   "prompt": 55,
+   "conversion: landmark+name+role": 3,
+   "conversion: name+set size+table index": 5,
+   "conversion: landmark+name+role+table index": 2,
+   "conversion: name+role+set size": 26,
+   "conversion: name+table index": 22,
+   "conversion: name+role+table index": 2,
+   "conversion: landmark+name+role+set size": 1,
+   "conversion: landmark+level+name+role": 1,
+   "language": 2
+  }
+ },
+ "workList": {
+  "clickable": {
+   "before": 12,
+   "after": 0,
+   "recovered": 12
+  },
+  "typed value": {
+   "before": 0,
+   "after": 0,
+   "recovered": 0
+  },
+  "description words": {
+   "before": 54,
+   "after": 58,
+   "recovered": -4
+  },
+  "header words": {
+   "before": 179,
+   "after": 0,
+   "recovered": 179
+  }
+ }
+}
