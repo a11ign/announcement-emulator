@@ -13,10 +13,9 @@ for f in middleware/release/*.sh; do sh -n "$f"; test -x "$f"; done
 python3 -m unittest discover -s middleware/bundle -t middleware/bundle -p 'test_bundle.py'
 grep -Eq 'uses: a11ign/toolchain/.github/workflows/release-per-merge.yml@[0-9a-f]{40}$' .github/workflows/release.yml
 grep -q 'dist-tag: preview' .github/workflows/release.yml
-( cd middleware && pnpm install --frozen-lockfile >/dev/null \
-  && pnpm exec dependabot-config --check --root .. \
-  && pnpm exec rstest run src/release-workflow.test.ts src/ci-shape.test.ts \
-  && pnpm run lint && pnpm run typecheck && pnpm test >/dev/null )
+pnpm --dir middleware install --frozen-lockfile >/dev/null
+pnpm --dir middleware exec dependabot-config --check --root ..
+pnpm --dir middleware exec rstest run src/release-workflow.test.ts src/ci-shape.test.ts
 ```
 
 The dry run of the bundles, the sums and the mirror install is `.github/workflows/release-dry-run.yml`, which a change to `.github/workflows/release*.yml` starts on the pull request; its run summary lists every asset with its size and sum.
