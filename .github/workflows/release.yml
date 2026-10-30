@@ -1,0 +1,85 @@
+# The publish path of @a11ign/foresay (A11-232). A push to `main` that carries a changeset no tag has consumed is versioned on a detached commit, published to npm by trusted publishing (OIDC, no stored token), tagged and
+# released on GitHub with the runtime bundles attached, by the org's one release workflow (a11ign/toolchain `release-per-merge.yml`, ADR 0041). `main` is never written: the sums in `middleware/pins.json` and the measured
+# agreement in the changelog are written into the release commit by `middleware/release/after-version.sh`, because a bundle names the commit it was built from and the darwin build is not byte-reproducible.
+#
+# THE ONE SWITCH IS `"private": true` IN `middleware/package.json`. While it is there this workflow stops at `plan` with a dry-run message and nothing below it runs, and the toolchain's `kind: npm` never releases a private
+# package either: two guards behind one field, which a person drops when the first real release is to be cut (docs/release-decisions.md, "What these decisions leave undone"). The rehearsal of a release that does run is
+# release-dry-run.yml, on pull requests and nightly; it holds neither `id-token: write` nor `contents: write`.
+#
+# THE FILE NAME IS THE ONE npm'S TRUSTED-PUBLISHER ENTRY NAMES: the OIDC token names the CALLING file. The entry for `@a11ign/foresay` is repository `a11ign/announcement-emulator` (the repository's name until it is renamed),
+# workflow `release.yml`, environment `npm-publish` (limited to `main`). Renaming this file breaks the publish. The environment itself is on the publishing job of the called file: GitHub refuses `environment:` on a job
+# that calls a reusable workflow.
+#
+# PREVIEW: the package is published under the npm dist-tag `preview`, never `latest` (docs/release-decisions.md, "NV Access"): the first `latest` needs NV Access to have been asked first. Moving to `latest` is an edit of
+# `dist-tag` below, which a person makes with that answer. The `-preview.N` version suffix of that decision is not built: the toolchain refuses a version that is not MAJOR.MINOR.PATCH.
+#
+# WHAT A RELEASE WAITS FOR: `bundles` (release-bundles.yml: each platform's bundle built twice and compared, then gathered as the `release-files` artifact) and `spike` (middleware-spike.yml, which a call runs in full mode:
+# both platforms, every row, so the full macOS demo and trace run on a release). `release` needs both, so a release whose demo or trace fails does not ship. A failed job is re-run from this run (same sha on `main`): the
+# registry and the tags are the state, and the called workflow recomputes the same release.
+name: release
+
+on:
+  # NO `workflow_dispatch`, ON PURPOSE: a workflow file on a branch is the branch author's, and the publish holds `id-token: write`, so a dispatch from an unreviewed branch could reach an irreversible publish without `main`'s
+  # approving review. A push to `main` is allowed to start costly jobs only because `plan` gates every one of them on `private` (middleware/src/ci-shape.test.ts holds that).
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      publish: ${{ steps.private.outputs.publish }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          sparse-checkout: middleware/package.json
+          sparse-checkout-cone-mode: false
+      - name: Is the package still private
+        id: private
+        run: |
+          # A variable of its own, so that a package.json node cannot read fails the step (bash -e): inside `[ ... ]` the failure would read as "not private" and the run would release.
+          private="$(node -p "require('./middleware/package.json').private === true")"
+          if [ "$private" = true ]; then
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+            echo "dry run only: middleware/package.json is private, so no bundle is built, nothing is versioned and nothing is published (release-dry-run.yml rehearses a release)" | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+            echo "middleware/package.json is not private: this run releases" | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
+        shell: bash
+
+  bundles:
+    needs: plan
+    if: needs.plan.outputs.publish == 'true'
+    uses: ./.github/workflows/release-bundles.yml
+
+  spike:
+    needs: plan
+    if: needs.plan.outputs.publish == 'true'
+    uses: ./.github/workflows/middleware-spike.yml
+
+  release:
+    needs: [plan, bundles, spike]
+    if: needs.plan.outputs.publish == 'true'
+    permissions:
+      contents: write
+      checks: read
+      id-token: write
+    # ONE RELEASE AT A TIME, AND NEVER CANCELLED IN FLIGHT: a publish cancelled half way cannot be rolled back. The called workflow carries the same block; where GitHub honours neither, two runs end in a refused push of a
+    # tag, never a moved one.
+    concurrency:
+      group: release
+      cancel-in-progress: false
+    # Pinned by FULL SHA (the merge of a11ign/toolchain#61, which added `release-files` and `after-version`); Dependabot's `github-actions` entry moves it in a pull request.
+    uses: a11ign/toolchain/.github/workflows/release-per-merge.yml@91321cbf8a27286e539d4c343d57ad9b3b584eb3
+    with:
+      kind: npm
+      gate-check: gate
+      lone-package-dir: middleware
+      dist-tag: preview
+      release-files: release-files
+      after-version: sh middleware/release/after-version.sh

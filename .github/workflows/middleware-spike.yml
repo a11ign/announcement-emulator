@@ -10,7 +10,7 @@
 #   * a pull request that touches a path below runs PR MODE: the Linux bundle (built once, and shared as an artifact with every job that needs it), its `transcripts`, the Linux `trace`, the primary Playwright's Linux `demo` row, and ONE
 #     macOS job, the darwin-arm64 row of the primary Playwright, which builds its own bundle. A pull request that touches none of the paths (docs, results) runs nothing here. A draft runs nothing: `ready_for_review` runs it.
 #   * the nightly run on `main`, `workflow_dispatch` and `workflow_call` (a release) run FULL MODE: both platforms, every row. Dispatching this file on a branch is full mode on that branch.
-#   * a push, a merge-queue entry or a merge to `main` runs nothing here: this workflow is not part of ci.yml's `gate`, so the queue does not wait on it.
+#   * a push, a merge-queue entry or a merge to `main` runs nothing here: this workflow is not part of ci.yml's `gate`, so the queue does not wait on it. (release.yml calls it on a push to `main`, once the package is not private.)
 # The matrices come from the `mode` job, so that the one macOS job of a pull request is a row of the same `bundle`, `trace` and `demo` definitions and not a copy of them (middleware/src/ci-shape.test.ts runs it).
 #
 # Nothing is published. The bundle travels as a workflow artifact and the `demo` jobs serve it from a static server on the runner, so that `install` does its real http download, its
@@ -45,9 +45,10 @@ on:
 permissions:
   contents: read
 
-# A new push to a pull request cancels the run it supersedes. A nightly, a dispatch and a release run are never cancelled.
+# A new push to a pull request cancels the run it supersedes. A nightly, a dispatch and a release run are never cancelled. `github.workflow` is the CALLING workflow's name in a call, so a release's run (`release`) is not in the
+# nightly's group: GitHub keeps one pending run per group and drops the older when a newer queues, which would otherwise skip a release's `spike` job (and with it the release) behind a nightly run.
 concurrency:
-  group: middleware-spike-${{ github.event.pull_request.number || github.ref }}
+  group: middleware-spike-${{ github.event.pull_request.number || format('{0}-{1}', github.workflow, github.ref) }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:

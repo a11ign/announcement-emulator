@@ -13,8 +13,9 @@ import { parse } from "yaml";
 const REPOSITORY = fileURLToPath(new URL("../..", import.meta.url));
 const read = (path: string) => readFileSync(join(REPOSITORY, path), "utf8");
 
-type Job = { uses?: string; needs?: string | string[]; permissions?: Record<string, string>; strategy?: { matrix?: { include?: Record<string, unknown>[] } }; steps?: { uses?: string; with?: Record<string, unknown>; run?: string }[] };
-type Workflow = { on?: Record<string, { paths?: string[] } | null>; permissions?: Record<string, string>; jobs?: Record<string, Job> };
+type Step = { id?: string; uses?: string; with?: Record<string, unknown>; run?: string };
+type Job = { if?: string; uses?: string; with?: Record<string, unknown>; needs?: string | string[]; outputs?: Record<string, string>; permissions?: Record<string, string>; concurrency?: { group?: string; "cancel-in-progress"?: boolean }; strategy?: { matrix?: { include?: Record<string, unknown>[] } }; steps?: Step[] };
+type Workflow = { on?: Record<string, { paths?: string[]; branches?: string[] } | null>; permissions?: Record<string, string>; jobs?: Record<string, Job> };
 const workflow = (name: string): Workflow => parse(read(`.github/workflows/${name}`)) as Workflow;
 
 /** Every permissions block of a workflow: its own and each job's. */
@@ -56,6 +57,77 @@ test("release-dry-run.yml rehearses on a pull request that changes the release m
 test("the dry run is not part of the merge gate", () => {
   const ci = workflow("ci.yml");
   assert.ok(!JSON.stringify(ci).includes("release"), "ci.yml names a release job");
+});
+
+// ---- release.yml: the real path, behind `private` -----------------------------------------------------------------------------------------------------------------------------------
+
+const RELEASE = workflow("release.yml");
+const TOOLCHAIN_SHA = /^a11ign\/toolchain\/\.github\/workflows\/release-per-merge\.yml@[0-9a-f]{40}$/;
+
+test("release.yml runs on a push to main only: no dispatch, no pull request, no schedule, no merge queue", () => {
+  assert.deepEqual(Object.keys(RELEASE.on ?? {}), ["push"]);
+  assert.deepEqual(RELEASE.on!.push!.branches, ["main"]);
+});
+
+test("release.yml calls the org's release workflow pinned by a full 40-hex sha, with the lone package, the npm kind, the preview dist-tag, the bundles and the after-version command", () => {
+  const release = RELEASE.jobs!.release!;
+  assert.match(release.uses ?? "", TOOLCHAIN_SHA);
+  assert.deepEqual(release.with, { kind: "npm", "gate-check": "gate", "lone-package-dir": "middleware", "dist-tag": "preview", "release-files": "release-files", "after-version": "sh middleware/release/after-version.sh" });
+  assert.deepEqual(release.concurrency, { group: "release", "cancel-in-progress": false });
+});
+
+test("the release job is the only job of release.yml that holds contents: write or id-token: write, and the workflow's own permissions are read", () => {
+  assert.deepEqual(RELEASE.permissions, { contents: "read" });
+  assert.deepEqual(RELEASE.jobs!.release!.permissions, { contents: "write", checks: "read", "id-token": "write" });
+  for (const [name, job] of Object.entries(RELEASE.jobs!).filter(([name]) => name !== "release")) assert.equal(job.permissions, undefined, `${name} widens the workflow's read permission`);
+});
+
+test("release.yml builds the bundles with release-bundles.yml and runs the spike in full mode by calling middleware-spike.yml, and the release waits for plan, bundles and the spike", () => {
+  assert.equal(RELEASE.jobs!.bundles!.uses, "./.github/workflows/release-bundles.yml");
+  assert.equal(RELEASE.jobs!.spike!.uses, "./.github/workflows/middleware-spike.yml");
+  assert.ok("workflow_call" in (workflow("middleware-spike.yml").on ?? {}), "the spike can be called");
+  assert.deepEqual([RELEASE.jobs!.release!.needs].flat().sort(), ["bundles", "plan", "spike"]);
+});
+
+test("the bundles release.yml attaches are the artifact release-bundles.yml uploads", () => {
+  const uploads = Object.values(workflow("release-bundles.yml").jobs!).flatMap((job) => job.steps ?? []).filter((s) => s.uses?.startsWith("actions/upload-artifact")).map((s) => s.with?.name);
+  assert.ok(uploads.includes(RELEASE.jobs!.release!.with!["release-files"]));
+});
+
+/** The `plan` job's script, run in a scratch directory whose middleware/package.json is the fixture. */
+function plan(packageJson: string | undefined) {
+  const root = mkdtempSync(join(tmpdir(), "ae-plan-"));
+  if (packageJson !== undefined) { mkdirSync(join(root, "middleware")); writeFileSync(join(root, "middleware/package.json"), packageJson); }
+  const output = join(root, "output"), summary = join(root, "summary");
+  writeFileSync(output, ""); writeFileSync(summary, "");
+  const step = RELEASE.jobs!.plan!.steps!.find((s) => s.id === "private") ?? assert.fail("plan has no step `private`");
+  const done = spawnSync("bash", ["-eo", "pipefail", "-c", step.run!], { cwd: root, encoding: "utf8", env: { PATH: process.env.PATH, GITHUB_OUTPUT: output, GITHUB_STEP_SUMMARY: summary } });
+  return { done, output: readFileSync(output, "utf8").trim(), summary: readFileSync(summary, "utf8") };
+}
+
+test("plan reports a dry run for a private package, and nothing else runs", () => {
+  const { done, output, summary } = plan('{ "name": "x", "private": true }');
+  assert.equal(done.status, 0, done.stderr);
+  assert.equal(output, "publish=false");
+  assert.match(summary, /dry run only: middleware\/package\.json is private/);
+  assert.equal(RELEASE.jobs!.plan!.outputs!.publish, "${{ steps.private.outputs.publish }}");
+});
+
+test("plan reports publish for a package that is not private, whether the field is false or gone", () => {
+  for (const json of ['{ "name": "x", "private": false }', '{ "name": "x" }']) {
+    const { done, output, summary } = plan(json);
+    assert.equal(done.status, 0, done.stderr);
+    assert.equal(output, "publish=true", json);
+    assert.match(summary, /is not private: this run releases/);
+  }
+});
+
+test("plan fails, and sets no output, when the package.json is missing or unreadable, so a release never starts for want of an answer", () => {
+  for (const json of [undefined, "{ not json"]) {
+    const { done, output } = plan(json);
+    assert.notEqual(done.status, 0);
+    assert.equal(output, "");
+  }
 });
 
 // ---- after-version.sh and gather.sh, on scratch copies ------------------------------------------------------------------------------------------------------------------------------------
