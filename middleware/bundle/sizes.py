@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """What the runtime bundle weighs, by part and by compression (A11-231). Markdown on stdout, so that CI can write it to the job summary.
 
-    python3 sizes.py table <unpacked bundle> --platform <linux-x64|darwin-arm64> [--archive <file>] [--column <label>=<unpacked directory>]...
+    python3 sizes.py table <unpacked bundle> --platform <linux-x64|linux-arm64|darwin-arm64> [--archive <file>] [--column <label>=<unpacked directory>]...
     python3 sizes.py formats <unpacked bundle> [--json <file>] [--keep <directory>]
     python3 sizes.py choose <formats json>... [--container <format>=ok|failed]...
 
@@ -70,7 +70,9 @@ def mb(n): return '-' if n is None else f'{n / MB:.1f}'
 
 def table(root, platform, archive=None, columns=()):
     ours = parts(root)
-    others = [('A11-230 (no browser)', A11_230[platform]['parts'])] + [(label, parts(path)) for label, path in columns]
+    # linux-arm64 has no spike and no A11-230 bundle to be set beside: its table has the columns it is given and this bundle
+    before = A11_230.get(platform)
+    others = ([('A11-230 (no browser)', before['parts'])] if before else []) + [(label, parts(path)) for label, path in columns]
     python = lambda p: p['Python: interpreter and its libraries'] + p['Python: standard library'] + p['Python: packages']
     header = ['Part (MB unpacked)', 'Spike', *[l for l, _ in others], 'This bundle']
     rows = []
@@ -84,7 +86,7 @@ def table(root, platform, archive=None, columns=()):
     add('NVDA (source, and the overlay in the spike)', SPIKE['NVDA'], lambda p: p['NVDA']); add('Chromium sources', None, lambda p: p['Chromium sources'])
     add('Runtime (this repository)', None, lambda p: p['Runtime (this repository)']); add('The rest', None, lambda p: p['The rest'])
     add('**Total unpacked**', SPIKE['Total'], lambda p: p['Total'])
-    if archive: rows.append(['**Archive** (tar.gz in the spike and A11-230; ' + os.path.basename(archive).split('.tar.')[1] + ' here)', mb(SPIKE['Archive'][platform] * MB), mb(A11_230[platform]['archive']), *['-'] * len(columns), mb(size_of(archive))])
+    if archive: rows.append(['**Archive** (tar.gz in the spike and A11-230; ' + os.path.basename(archive).split('.tar.')[1] + ' here)', mb(SPIKE['Archive'][platform] * MB if platform in SPIKE['Archive'] else None), *([mb(before['archive'])] if before else []), *['-'] * len(columns), mb(size_of(archive))])
     out = ['| ' + ' | '.join(header) + ' |', '|' + '---|' * len(header)] + ['| ' + ' | '.join(r) + ' |' for r in rows]
     return '\n'.join(out)
 
@@ -151,7 +153,7 @@ def choose(platforms, containers=None):
 def main(argv):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest='mode', required=True)
-    t = sub.add_parser('table'); t.add_argument('bundle'); t.add_argument('--platform', required=True, choices=sorted(A11_230)); t.add_argument('--archive'); t.add_argument('--column', action='append', default=[])
+    t = sub.add_parser('table'); t.add_argument('bundle'); t.add_argument('--platform', required=True, choices=sorted({*A11_230, 'linux-arm64'})); t.add_argument('--archive'); t.add_argument('--column', action='append', default=[])
     f = sub.add_parser('formats'); f.add_argument('bundle'); f.add_argument('--json'); f.add_argument('--keep')
     c = sub.add_parser('choose'); c.add_argument('files', nargs='+'); c.add_argument('--container', action='append', default=[])
     args = parser.parse_args(argv[1:])

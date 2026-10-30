@@ -1,7 +1,7 @@
 #!/bin/sh
 # Decide what the lean bundle keeps (A11-231): run the runtime over everything it is meant to do, with import_trace.py on, and write what it read to keep/<platform>.txt.
 #
-#     middleware/bundle/trace.sh <linux-x64|darwin-arm64> [--full-dir <dir>] [--traces <dir>] [--no-live]
+#     middleware/bundle/trace.sh <linux-x64|linux-arm64|darwin-arm64> [--full-dir <dir>] [--traces <dir>] [--no-live]
 #     middleware/bundle/trace.sh --system-tests <EMU_DOWNLOADS of setup.sh's layout>          (linux; rewrites keep/nvda-system-tests.txt)
 #
 # The runs, all in the FULL layout (build.sh --layout-only: what a run could read, nothing pruned):
@@ -30,7 +30,7 @@ if [ "${1:-}" = "--system-tests" ]; then
   exit 0
 fi
 
-PLATFORM="${1:?platform: linux-x64 or darwin-arm64}"; shift
+PLATFORM="${1:?platform: linux-x64, linux-arm64 or darwin-arm64}"; shift
 FULL_DIR=""; TRACES=""; LIVE=1
 while [ $# -gt 0 ]; do
   case "$1" in

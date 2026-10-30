@@ -6,8 +6,9 @@
 # Reproducibility: the archive is the same bytes for the same inputs (mktar.py), and the pin in the package is its sha256, so each leg builds it a second time and compares. A difference fails the linux leg. On
 # darwin-arm64 it is reported in the run's summary and does not fail, because the macOS linker's UUID is not controlled (build.sh): requiring it there would block every release on a thing nobody can fix here.
 #
-# linux-arm64 is not built yet: it needs build.sh's case, a pinned python-build-standalone sum and a keep list that trace.sh makes on an arm runner (middleware/bundle/keep/linux-arm64.txt), none of which exist. The ticket asks
-# for it only "if cheap" (A11-232).
+# linux-arm64 (A11-232, "if cheap"): the repository is public, so GitHub's arm runners (ubuntu-24.04-arm) cost nothing, and python-build-standalone publishes an aarch64 build (pins.env). It is reproducible on the same
+# terms as linux-x64 (the same compiler flags, the same mktar.py, relative .pyc paths), so it is required here too: the first run of this file shows it, and a leg that is not the same bytes twice is made `required: false`
+# with the measured reason, as darwin-arm64 is. Its keep list (middleware/bundle/keep/linux-arm64.txt) is checked on an arm runner by middleware-spike.yml's `trace` job.
 name: release-bundles
 
 on:
@@ -23,6 +24,7 @@ jobs:
       matrix:
         include:
           - { platform: linux-x64, runner: ubuntu-latest, required: true }
+          - { platform: linux-arm64, runner: ubuntu-24.04-arm, required: true }
           - { platform: darwin-arm64, runner: macos-latest, required: false }
     runs-on: ${{ matrix.runner }}
     steps:

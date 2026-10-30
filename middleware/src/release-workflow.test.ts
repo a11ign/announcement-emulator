@@ -34,11 +34,11 @@ for (const name of ["release-bundles.yml", "release-dry-run.yml"]) {
   });
 }
 
-test("release-bundles.yml is a reusable workflow that builds linux-x64 and darwin-arm64, requires the linux build to be reproducible and only reports darwin's, and uploads release-files", () => {
+test("release-bundles.yml is a reusable workflow that builds linux-x64, linux-arm64 and darwin-arm64, requires the linux builds to be reproducible and only reports darwin's, and uploads release-files", () => {
   const w = workflow("release-bundles.yml");
   assert.deepEqual(Object.keys(w.on ?? {}), ["workflow_call"]);
   const legs = w.jobs!.bundle!.strategy!.matrix!.include!;
-  assert.deepEqual(legs.map((l) => [l.platform, l.required]), [["linux-x64", true], ["darwin-arm64", false]]);
+  assert.deepEqual(legs.map((l) => [l.platform, l.required, l.runner]), [["linux-x64", true, "ubuntu-latest"], ["linux-arm64", true, "ubuntu-24.04-arm"], ["darwin-arm64", false, "macos-latest"]]);
   const uploads = Object.values(w.jobs!).flatMap((job) => job.steps ?? []).filter((s) => s.uses?.startsWith("actions/upload-artifact"));
   assert.ok(uploads.some((s) => s.with?.name === "release-files"));
   assert.deepEqual(w.jobs!.files!.needs, "bundle");
@@ -51,7 +51,8 @@ test("release-dry-run.yml rehearses on a pull request that changes the release m
   for (const path of [".github/workflows/release*.yml", "middleware/release/**", "middleware/bundle/write-pins.mjs", "middleware/pins.json"]) assert.ok(paths.includes(path), path);
   for (const path of ["middleware/bundle/**", "middleware/runtime/**", "middleware/src/**", "emu/**", "q1/**", "q2/**", "q3/**"]) assert.ok(!paths.includes(path), `${path} would build both platforms for a pull request that the nightly run covers`);
   assert.equal(w.jobs!.bundles!.uses, "./.github/workflows/release-bundles.yml");
-  assert.deepEqual(w.jobs!.install!.strategy!.matrix!.include!.map((l) => l.platform), ["linux-x64", "darwin-arm64"]);
+  assert.deepEqual(w.jobs!.install!.strategy!.matrix!.include!.map((l) => l.platform), ["linux-x64", "linux-arm64", "darwin-arm64"]);
+  assert.equal(w.jobs!.install!.strategy!.matrix!.include!.find((l) => l.platform === "linux-arm64")!.runner, "ubuntu-24.04-arm");
 });
 
 test("the dry run is not part of the merge gate", () => {

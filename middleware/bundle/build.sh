@@ -1,7 +1,7 @@
 #!/bin/sh
 # Build the runtime bundle for one platform (A11-208): everything the Playwright middleware needs to predict NVDA's speech, so that the user needs no Python and no NVDA. The browser is never ours: the middleware runs in the Chromium the team's Playwright installed (A11-230), so the bundle holds no browser and no browser library (check_no_browser.py fails on one).
 #
-#     middleware/bundle/build.sh <linux-x64|darwin-arm64> <output directory> [--format xz|zst|gz] [--full-dir <dir>] [--layout-only]
+#     middleware/bundle/build.sh <linux-x64|linux-arm64|darwin-arm64> <output directory> [--format xz|zst|gz] [--full-dir <dir>] [--layout-only]
 #
 # It writes <output>/announcement-emulator-bundle-<platform>.tar.<format>, its sha256, and <output>/pin-<platform>.json (what the package pins). The revisions are pins.env's. The archive is the same
 # bytes for the same inputs (mktar.py), so that CI can build it twice and compare.
@@ -11,7 +11,7 @@
 #
 # Needs: git, curl, tar, python3, base64, a C++ compiler, xz or zstd for the format, and sha256sum or shasum.
 set -eu
-PLATFORM="${1:?platform: linux-x64 or darwin-arm64}"
+PLATFORM="${1:?platform: linux-x64, linux-arm64 or darwin-arm64}"
 OUT="${2:?output directory}"
 shift 2
 FORMAT=xz; FULL_DIR=""; LAYOUT_ONLY=""
@@ -35,8 +35,9 @@ trap 'rm -rf "${W:?}"' EXIT
 sha256() { if command -v sha256sum >/dev/null 2>&1; then sha256sum "$1" | cut -d' ' -f1; else shasum -a 256 "$1" | cut -d' ' -f1; fi; }
 
 case "$PLATFORM" in
-  linux-x64)    TRIPLE=x86_64-unknown-linux-gnu; PBS_SHA="$PBS_SHA256_LINUX_X64" ;;
-  darwin-arm64) TRIPLE=aarch64-apple-darwin;     PBS_SHA="$PBS_SHA256_DARWIN_ARM64" ;;
+  linux-x64)    TRIPLE=x86_64-unknown-linux-gnu;  PBS_SHA="$PBS_SHA256_LINUX_X64" ;;
+  linux-arm64)  TRIPLE=aarch64-unknown-linux-gnu; PBS_SHA="$PBS_SHA256_LINUX_ARM64" ;;
+  darwin-arm64) TRIPLE=aarch64-apple-darwin;      PBS_SHA="$PBS_SHA256_DARWIN_ARM64" ;;
   *) echo "no bundle for $PLATFORM" >&2; exit 2 ;;
 esac
 
@@ -67,7 +68,7 @@ tar -xzf "$W/python.tar.gz" -C "$B"
 # what the build leaves in the extension it compiles (a build id, the build directory in its debug information) and in the scripts pip writes (the interpreter's absolute path) differs from one build to the next
 # and from one place to the next: none is wanted, so the compiler is told to leave it out and the scripts, which nothing here runs, are removed after
 export SOURCE_DATE_EPOCH=1767225600 CFLAGS="-g0 -ffile-prefix-map=$W=/build" CXXFLAGS="-g0 -ffile-prefix-map=$W=/build" LDFLAGS=""
-[ "$PLATFORM" = linux-x64 ] && export LDFLAGS="-Wl,--build-id=none"      # macOS's linker has no such option (its UUID is not controlled here, so only the linux bundle is checked for reproducibility)
+case "$PLATFORM" in linux-*) export LDFLAGS="-Wl,--build-id=none" ;; esac      # macOS's linker has no such option (its UUID is not controlled here, so only the linux bundles are checked for reproducibility)
 CC="${CC:-cc}" CXX="${CXX:-c++}" "$B/python/bin/python3" -m pip install --quiet --no-cache-dir --disable-pip-version-check --no-build-isolation $PYTHON_PACKAGES      # python-build-standalone was built with clang; the host's compiler is what is there
 # the tools that built it are not part of the runtime (and setuptools' distutils-precedence.pth would import its shim at every start): out they go, pip last
 "$B/python/bin/python3" -m pip uninstall --quiet --yes setuptools wheel

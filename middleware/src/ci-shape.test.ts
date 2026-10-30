@@ -136,10 +136,11 @@ test("a pull request runs one macOS job in the spike: the primary Playwright's d
   assert.deepEqual([rows[0]!.platform, rows[0]!.playwright, rows[0]!.primary, rows[0]!.build], ["darwin-arm64", "1.64.1", true, true]);
 });
 
-test("the nightly, a dispatch and a release run the spike on both platforms, with a bundle, a trace and a demo row for each, and the macOS demo rows take the bundle job's bundle", () => {
+test("the nightly, a dispatch and a release run the spike on every platform, with a bundle and a trace row for each and a demo row for the two that have a measured Playwright list, and the macOS demo rows take the bundle job's bundle", () => {
   for (const event of ["schedule", "workflow_dispatch", "push"]) {
     const modeOut = modeOutputs(event);
-    for (const output of ["bundle", "trace", "demo"]) assert.deepEqual([...new Set(modeOut[output]!.include.map((row) => row.platform))].sort(), ["darwin-arm64", "linux-x64"], `${event}: ${output}`);
+    for (const output of ["bundle", "trace"]) assert.deepEqual([...new Set(modeOut[output]!.include.map((row) => row.platform))].sort(), ["darwin-arm64", "linux-arm64", "linux-x64"], `${event}: ${output}`);
+    assert.deepEqual([...new Set(modeOut.demo!.include.map((row) => row.platform))].sort(), ["darwin-arm64", "linux-x64"], `${event}: demo`);
     assert.equal(modeOut.demo!.include.filter((row) => row.platform === "darwin-arm64").length, 2, `${event}: both macOS demo rows`);
     assert.ok(modeOut.demo!.include.every((row) => row.build === false), `${event}: no demo row builds a bundle of its own`);
   }
@@ -170,10 +171,24 @@ test("build.sh is never run as a layout-only rebuild, and trace.sh takes the ful
 test("a run of the spike builds the bundle once for each platform it runs on, and for no other", () => {
   for (const event of ["pull_request", "schedule"]) {
     const platforms = buildsOf(event).map((build) => build.platform).sort();
-    assert.deepEqual(platforms, ["darwin-arm64", "linux-x64"], `${event}: ${JSON.stringify(buildsOf(event))}`);
+    assert.deepEqual(platforms, ["darwin-arm64", "linux-arm64", "linux-x64"], `${event}: ${JSON.stringify(buildsOf(event))}`);
   }
-  assert.deepEqual(buildsOf("pull_request").map((build) => build.job).sort(), ["bundle", "demo"], "a pull request's macOS bundle is built by its one macOS job");
-  assert.deepEqual(buildsOf("schedule").map((build) => build.job), ["bundle", "bundle"]);
+  assert.deepEqual(buildsOf("pull_request").map((build) => build.job).sort(), ["bundle", "bundle", "demo"], "a pull request's macOS bundle is built by its one macOS job");
+  assert.deepEqual(buildsOf("schedule").map((build) => build.job), ["bundle", "bundle", "bundle"]);
+});
+
+test("linux-arm64 (A11-232) is built, replayed and traced on GitHub's free arm runner in a pull request and in a full run, and has no demo row: no Playwright list is measured on arm", () => {
+  for (const event of ["pull_request", "schedule", "workflow_dispatch", "push"]) {
+    const modeOut = modeOutputs(event);
+    for (const output of ["bundle", "trace"]) {
+      const rows = modeOut[output]!.include.filter((row) => row.platform === "linux-arm64");
+      assert.deepEqual(rows.map((row) => row.runner), ["ubuntu-24.04-arm"], `${event}: ${output}`);
+    }
+    assert.deepEqual(modeOut.trace!.include.filter((row) => row.platform === "linux-arm64").map((row) => row.deps), ["--with-deps"], `${event}: the arm trace installs the browser's system libraries`);
+    assert.ok(!modeOut.demo!.include.some((row) => row.platform === "linux-arm64"), `${event}: a demo row on arm`);
+  }
+  assert.equal(macosRows("pull_request").length, 1, "the arm rows are not macOS minutes");
+  assert.equal(workflow(SPIKE).jobs!.transcripts!.strategy!.matrix, workflow(SPIKE).jobs!.bundle!.strategy!.matrix, "transcripts replays every platform that is built");
 });
 
 test("the spike does not build the archive twice to compare: that check is release-bundles.yml's, which the dry run calls", () => {
