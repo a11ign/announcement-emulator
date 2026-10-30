@@ -5,11 +5,11 @@ Acceptance:
 ```bash
 # no network and no browser; the package's own tests need `pnpm install` once
 set -eu
-test "$(node -p "require('./middleware/package.json').private")" = true       # still private: release.yml is a dry run
+node -e 'if (require("./middleware/package.json").private !== true) process.exit(1)'       # still private: release.yml is a dry run
 node -e 'const c=require("./.changeset/config.json"); if (c.access !== "public") process.exit(1)'   # the toolchain's publish job re-checks it
-test "$(node -p "require('./middleware/package.json').version")" = 0.0.0
+node -e 'if (require("./middleware/package.json").version !== "0.0.0") process.exit(1)'
 node -p "require('./middleware/package.json').repository.url" | grep -q 'github.com/a11ign/announcement-emulator'
-for f in middleware/release/*.sh; do sh -n "$f"; test -x "$f"; done
+bash -c 'for f in middleware/release/*.sh; do sh -n "$f"; test -x "$f"; done'
 python3 -m unittest discover -s middleware/bundle -t middleware/bundle -p 'test_bundle.py'
 grep -Eq 'uses: a11ign/toolchain/.github/workflows/release-per-merge.yml@[0-9a-f]{40}$' .github/workflows/release.yml
 grep -q 'dist-tag: preview' .github/workflows/release.yml
