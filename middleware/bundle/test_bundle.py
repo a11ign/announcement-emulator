@@ -557,13 +557,31 @@ class Build(unittest.TestCase):
 
 
 class Trace(unittest.TestCase):
-    TEXT = (HERE / 'trace.sh').read_text()
+    """trace.sh run for real, with every tool it calls replaced by a stand-in that logs its arguments: only what trace.sh itself does with its environment is under test."""
+    STAND_IN = '#!/bin/sh\nprintf "%s %s\\n" "$(basename "$0")" "$*" >> "$TRACE_TEST_LOG"\n[ "$(basename "$0")" != node ] || echo 1\n'
+
+    def run_trace(self, **env):
+        with tempfile.TemporaryDirectory() as d:
+            d = pathlib.Path(d); (d / 'bin').mkdir(); (d / 'full').mkdir(); (d / 'traces').mkdir()
+            for tool in ('python3', 'pnpm', 'npm', 'npx', 'node'):
+                (d / 'bin' / tool).write_text(self.STAND_IN); (d / 'bin' / tool).chmod(0o755)
+            environment = {k: v for k, v in os.environ.items() if k != 'PLAYWRIGHT_DEPS'}
+            environment.update(PATH=f'{d / "bin"}:{environment["PATH"]}', TRACE_TEST_LOG=str(d / 'log'), **env)
+            ran = subprocess.run(['sh', str(HERE / 'trace.sh'), 'linux-x64', '--full-dir', str(d / 'full'), '--traces', str(d / 'traces')], capture_output=True, text=True, env=environment)
+            log = (d / 'log').read_text().splitlines() if (d / 'log').exists() else []
+        return ran, log
 
     def test_the_trace_runs_where_playwright_deps_is_not_set(self):
-        """trace.sh runs under `set -u`: a developer's shell sets no PLAYWRIGHT_DEPS (only the Ubuntu runners do), and a bare $PLAYWRIGHT_DEPS stopped the run after its sample suite was built."""
-        self.assertIn('set -eu', self.TEXT)
-        self.assertNotRegex(self.TEXT, r'\$PLAYWRIGHT_DEPS|\$\{PLAYWRIGHT_DEPS\}')
-        self.assertIn('${PLAYWRIGHT_DEPS:-}', self.TEXT)
+        """A developer's shell sets no PLAYWRIGHT_DEPS (only the Ubuntu runners do), and under `set -u` a bare $PLAYWRIGHT_DEPS stopped the run once its sample suite was built."""
+        ran, log = self.run_trace()
+        self.assertEqual(ran.returncode, 0, ran.stderr)
+        self.assertIn('npx playwright install chromium', log)
+        self.assertTrue(any(line.startswith('npx playwright test') for line in log), log)
+
+    def test_the_browsers_system_libraries_are_installed_when_playwright_deps_asks(self):
+        ran, log = self.run_trace(PLAYWRIGHT_DEPS='--with-deps')
+        self.assertEqual(ran.returncode, 0, ran.stderr)
+        self.assertIn('npx playwright install --with-deps chromium', log)
 
 
 class Licence(unittest.TestCase):
