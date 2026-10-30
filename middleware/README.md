@@ -11,7 +11,7 @@ tree and NVDA's own Python; the write-up (`docs/playwright-middleware-spike.md`)
 ## Setup
 
 ```sh
-npm i -D @playwright/test @a11ign/foresay   # nothing is published yet: the name and the licence are decided (docs/release-decisions.md), and the package stays private until a release is made
+npm i -D @playwright/test @a11ign/foresay@preview   # the preview: no release is on npm yet (the package stays private until a person chooses to publish), and every release is published under the `preview` tag, so a bare `npm i -D @a11ign/foresay` has no `latest` to resolve
 npx playwright install chromium               # Playwright's own Chromium: the browser your tests, and the middleware, run in. Not `--only-shell`: see below
 npx foresay install             # downloads the pinned, checksummed runtime bundle into a cache, as `npx playwright install` does for browsers
 ```
@@ -169,9 +169,20 @@ Each version is a GitHub Release `v<version>` of this repository (`middleware/re
 - `SHA256SUMS`, the sum of every bundle, which is also what the `pins.json` of that version's package names: `middleware/release/after-version.sh` writes it into the release commit from the very files attached to the Release, and fails the release if the two differ;
 - notes that carry **the measured agreement of that version** (per Chromium build and operating system, with the units, the date and, where the figure has them, the pages and the rate of each announcement shape) and **the Playwright versions it supports**, as `supported-versions.json` lists them.
 
-Nothing is published yet: the name, the licence and the NV Access question are decided (`docs/release-decisions.md`), and the package stays `private` until a person chooses to publish a first release (the org's release workflow never publishes a private package). Until then `.github/workflows/release-dry-run.yml`
-rehearses a release on every pull request that changes one: it builds the bundles, versions this branch's changesets on a scratch copy, packs the package and installs it with its bundle through the mirror variable on both platforms,
-and shows every file with its size and sum. The same rehearsal runs on your machine with `middleware/release/dry-run.sh <release-files> <out>` (and `install-check.sh`) after `release-bundles.yml`'s legs are gathered by `middleware/release/gather.sh`.
+**Nothing is published yet.** The name, the licence and the NV Access question are decided (`docs/release-decisions.md`), and the package stays `"private": true` in `package.json` until a person chooses to publish a first release.
+That field is the one switch between a dry run and a release, and it has two guards behind it: `.github/workflows/release.yml` stops at its `plan` job with a dry-run message while the package is private (no bundle is built, nothing is
+versioned), and the org's release workflow never publishes a private package. Until then `.github/workflows/release-dry-run.yml` rehearses a release on every pull request that changes one, and nightly: it builds the bundles,
+versions this branch's changesets on a scratch copy, packs the package and installs it with its bundle through the mirror variable on both platforms, and shows every file with its size and sum. The same rehearsal runs on your
+machine with `middleware/release/dry-run.sh <release-files> <out>` (and `install-check.sh`) after `release-bundles.yml`'s legs are gathered by `middleware/release/gather.sh`.
+
+**What a release does, once the field is dropped.** `release.yml` runs on a push to `main` that carries a changeset no tag has consumed (there is no dispatch, on purpose). It builds the bundles (`release-bundles.yml`) and runs the full spike
+(`middleware-spike.yml`: both platforms, every row), and when both pass it calls a11ign/toolchain's `release-per-merge.yml`: the version is whatever the pending changesets compute, `after-version.sh` writes `pins.json` (the sums of the very
+files attached) and the measured agreement into the release commit, the package is published to npm with provenance by **trusted publishing** (OIDC, no stored token) under the dist-tag **`preview`**, never `latest`, and the tag
+`v<version>` and its GitHub Release are made with the bundles and `SHA256SUMS` attached. The first `latest` needs NV Access to have been asked first (`docs/release-decisions.md`, "NV Access"); moving to it is an edit of `dist-tag` in
+`release.yml`. The `-preview.N` version suffix that decision defines is not built: the org's release workflow takes plain `MAJOR.MINOR.PATCH` only, so the first versions are plain `0.x.y` under the `preview` tag.
+
+**Before the first publish, a person sets up npm's side:** the `npm-publish` GitHub environment of this repository (limited to `main`), and a trusted-publisher entry for `@a11ign/foresay` naming repository `a11ign/announcement-emulator`
+(the repository's name until it is renamed, and the entry names it too), workflow `release.yml` and environment `npm-publish`. The workflow's file name is part of that entry: renaming `release.yml` breaks the publish.
 
 ## Licence
 

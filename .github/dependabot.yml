@@ -4,7 +4,9 @@
 version: 2
 updates:
   - package-ecosystem: npm
-    directory: /middleware
+    directories:
+      - /
+      - /middleware
     schedule:
       interval: weekly
       day: monday

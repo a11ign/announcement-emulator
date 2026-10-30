@@ -28,6 +28,7 @@ const stepsOf = (job: Job): Step[] => job.steps ?? [];
 
 const DRAFT = "github.event_name != 'pull_request' || !github.event.pull_request.draft";
 const SPIKE = "middleware-spike.yml";
+const RELEASE = "release.yml";
 /** The workflows that a fleet capture window starts by committing a stamp file (A11-229, A11-230, A11-234). */
 const MEASUREMENTS = names.filter((name) => workflow(name).on?.push?.paths?.some((path) => path.startsWith("middleware/results/")));
 
@@ -99,17 +100,34 @@ test("a nightly, a dispatch and a release run of the spike and of the dry run ar
   for (const name of [SPIKE, "release-dry-run.yml"]) assert.match(String(workflow(name).concurrency!["cancel-in-progress"]), /github\.event_name == 'pull_request'/, name);
 });
 
+test("a release's call of the spike is in a concurrency group of its own, not the nightly's, so a nightly run cannot drop it as the older pending run", () => {
+  assert.match(workflow(SPIKE).concurrency!.group!, /github\.workflow/);
+});
+
 // ---- 2: macOS runs only for a relevant pull request --------------------------------------------------------------------------------------------------------------------------
 
 test("a workflow with a macOS job, or one that calls a workflow with one, filters its pull_request by paths, filters its push to the stamp that asks for it, and is not run by the merge queue", () => {
   const costly = names.filter((name) => usesMacos(name));
-  assert.deepEqual(costly.sort(), ["agreement-round.yml", "devtools-source-agreement.yml", "playwright-versions-agreement.yml", "release-bundles.yml", "release-dry-run.yml", "middleware-spike.yml", "tree-source-agreement.yml"].sort());
+  assert.deepEqual(costly.sort(), ["agreement-round.yml", "devtools-source-agreement.yml", "playwright-versions-agreement.yml", "release-bundles.yml", "release-dry-run.yml", "release.yml", "middleware-spike.yml", "tree-source-agreement.yml"].sort());
   for (const name of costly) {
     const on = workflow(name).on ?? {};
     assert.ok(!("merge_group" in on), `${name}: not on the merge queue`);
     if ("pull_request" in on) assert.ok(on.pull_request?.paths?.length, `${name}: pull_request has no paths`);
-    if ("push" in on) assert.ok(on.push?.paths?.length && on.push.paths.every((path) => path.startsWith("middleware/results/")), `${name}: push is not a stamp file`);
+    if ("push" in on && name !== RELEASE) assert.ok(on.push?.paths?.length && on.push.paths.every((path) => path.startsWith("middleware/results/")), `${name}: push is not a stamp file`);
   }
+});
+
+test("release.yml is the one costly workflow that runs on every push to main, and only because its plan job gates every costly job on the package not being private", () => {
+  const on = workflow(RELEASE).on ?? {};
+  assert.deepEqual(Object.keys(on), ["push"]);
+  assert.equal(on.push?.paths, undefined);
+  const jobs = jobsOf(RELEASE);
+  assert.deepEqual(jobs.filter(([, job]) => job.uses?.startsWith("./.github/workflows/")).map(([name]) => name).sort(), ["bundles", "spike"]);
+  for (const [name, job] of jobs.filter(([name]) => name !== "plan")) {
+    assert.equal(job.if, "needs.plan.outputs.publish == 'true'", name);
+    assert.ok([job.needs ?? []].flat().includes("plan"), `${name} does not need plan`);
+  }
+  assert.ok(!jobs.find(([name]) => name === "plan")![1]["runs-on"]?.startsWith("macos"), "plan is the cheap job");
 });
 
 test("a pull request runs one macOS job in the spike: the primary Playwright's darwin row, which builds its own bundle", () => {
