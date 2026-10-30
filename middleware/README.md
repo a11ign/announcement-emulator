@@ -148,7 +148,7 @@ are the same bytes (the clock, `ms`, is left out, because two runs of one layout
 
 **Compression** is measured on every build (`bundle/sizes.py formats`): gzip, xz and zstd, each archive's size and its median unpack time with the host's `tar -xf`. The bundle ships in the smaller of xz and zstd that unpacks
 in 5 s or less on both runners; `bundle-format` fails if `build.sh`'s default is any other. **`install` needs a `tar` that reads xz**: macOS's does, and a GNU tar needs the `xz` program (`xz-utils`), which a minimal container
-such as `ubuntu:24.04` lacks (it has no zstd either; `bundle-format` reports what that image's tar does). The same inputs make the same archive (`mktar.py`): CI builds the linux-x64 bundle twice and compares the bytes.
+such as `ubuntu:24.04` lacks (it has no zstd either; `bundle-format` reports what that image's tar does). The same inputs make the same archive (`mktar.py`): the release's `release-bundles.yml` builds each linux bundle twice and compares the bytes.
 
 ## Environment
 
@@ -165,18 +165,18 @@ such as `ubuntu:24.04` lacks (it has no zstd either; `bundle-format` reports wha
 
 Each version is a GitHub Release `v<version>` of this repository (`middleware/release/`, `.github/workflows/release-bundles.yml`). It carries:
 
-- the runtime bundle of each platform it supports (`linux-x64`, `darwin-arm64`), `announcement-emulator-bundle-<platform>.tar.xz`, built twice and compared (the linux build must be the same bytes both times; darwin's is reported, because the macOS linker's UUID is not controlled);
+- the runtime bundle of each platform it supports (`linux-x64`, `linux-arm64`, `darwin-arm64`), `announcement-emulator-bundle-<platform>.tar.xz`, built twice and compared (the linux builds must be the same bytes both times; darwin's is reported, because the macOS linker's UUID is not controlled). `linux-arm64` is built on GitHub's arm runners and its keep list is checked there; no agreement has been measured on it, so its speech is as unmeasured as any platform's that `supported-versions.json` has no figure for;
 - `SHA256SUMS`, the sum of every bundle, which is also what the `pins.json` of that version's package names: `middleware/release/after-version.sh` writes it into the release commit from the very files attached to the Release, and fails the release if the two differ;
 - notes that carry **the measured agreement of that version** (per Chromium build and operating system, with the units, the date and, where the figure has them, the pages and the rate of each announcement shape) and **the Playwright versions it supports**, as `supported-versions.json` lists them.
 
 **Nothing is published yet.** The name, the licence and the NV Access question are decided (`docs/release-decisions.md`), and the package stays `"private": true` in `package.json` until a person chooses to publish a first release.
 That field is the one switch between a dry run and a release, and it has two guards behind it: `.github/workflows/release.yml` stops at its `plan` job with a dry-run message while the package is private (no bundle is built, nothing is
 versioned), and the org's release workflow never publishes a private package. Until then `.github/workflows/release-dry-run.yml` rehearses a release on every pull request that changes one, and nightly: it builds the bundles,
-versions this branch's changesets on a scratch copy, packs the package and installs it with its bundle through the mirror variable on both platforms, and shows every file with its size and sum. The same rehearsal runs on your
+versions this branch's changesets on a scratch copy, packs the package and installs it with its bundle through the mirror variable on each platform, and shows every file with its size and sum. The same rehearsal runs on your
 machine with `middleware/release/dry-run.sh <release-files> <out>` (and `install-check.sh`) after `release-bundles.yml`'s legs are gathered by `middleware/release/gather.sh`.
 
 **What a release does, once the field is dropped.** `release.yml` runs on a push to `main` that carries a changeset no tag has consumed (there is no dispatch, on purpose). It builds the bundles (`release-bundles.yml`) and runs the full spike
-(`middleware-spike.yml`: both platforms, every row), and when both pass it calls a11ign/toolchain's `release-per-merge.yml`: the version is whatever the pending changesets compute, `after-version.sh` writes `pins.json` (the sums of the very
+(`middleware-spike.yml`: every platform, every row), and when both pass it calls a11ign/toolchain's `release-per-merge.yml`: the version is whatever the pending changesets compute, `after-version.sh` writes `pins.json` (the sums of the very
 files attached) and the measured agreement into the release commit, the package is published to npm with provenance by **trusted publishing** (OIDC, no stored token) under the dist-tag **`preview`**, never `latest`, and the tag
 `v<version>` and its GitHub Release are made with the bundles and `SHA256SUMS` attached. The first `latest` needs NV Access to have been asked first (`docs/release-decisions.md`, "NV Access"); moving to it is an edit of `dist-tag` in
 `release.yml`. The `-preview.N` version suffix that decision defines is not built: the org's release workflow takes plain `MAJOR.MINOR.PATCH` only, so the first versions are plain `0.x.y` under the `preview` tag.

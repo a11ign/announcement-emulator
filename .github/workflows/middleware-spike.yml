@@ -9,7 +9,9 @@
 # WHAT RUNS WHEN (A11-260). Every build is paid for in minutes, and a macOS minute costs ten times a Linux one, so the workflow runs only what a change needs:
 #   * a pull request that touches a path below runs PR MODE: the Linux bundle (built once, and shared as an artifact with every job that needs it), its `transcripts`, the Linux `trace`, the primary Playwright's Linux `demo` row, and ONE
 #     macOS job, the darwin-arm64 row of the primary Playwright, which builds its own bundle. A pull request that touches none of the paths (docs, results) runs nothing here. A draft runs nothing: `ready_for_review` runs it.
-#   * the nightly run on `main`, `workflow_dispatch` and `workflow_call` (a release) run FULL MODE: both platforms, every row. Dispatching this file on a branch is full mode on that branch.
+#     The linux-arm64 bundle (A11-232) is built, its `transcripts` and its `trace` run in both modes, on GitHub's free arm runners (the repository is public), so that a module the arm list lacks fails in the pull request that needs it, as on the other two. It has no `demo` row: the supported
+#     Playwright versions are measured on x64 Linux and on macOS (supported-versions.json), and no agreement has been measured on arm.
+#   * the nightly run on `main`, `workflow_dispatch` and `workflow_call` (a release) run FULL MODE: every platform, every row. Dispatching this file on a branch is full mode on that branch.
 #   * a push, a merge-queue entry or a merge to `main` runs nothing here: this workflow is not part of ci.yml's `gate`, so the queue does not wait on it. (release.yml calls it on a push to `main`, once the package is not private.)
 # The matrices come from the `mode` job, so that the one macOS job of a pull request is a row of the same `bundle`, `trace` and `demo` definitions and not a copy of them (middleware/src/ci-shape.test.ts runs it).
 #
@@ -67,8 +69,10 @@ jobs:
         run: |
           set -eu
           linux_bundle='{ "platform": "linux-x64", "runner": "ubuntu-latest" }'
+          arm_bundle='{ "platform": "linux-arm64", "runner": "ubuntu-24.04-arm" }'
           darwin_bundle='{ "platform": "darwin-arm64", "runner": "macos-latest" }'
           linux_trace='{ "platform": "linux-x64", "runner": "ubuntu-latest", "deps": "--with-deps" }'
+          arm_trace='{ "platform": "linux-arm64", "runner": "ubuntu-24.04-arm", "deps": "--with-deps" }'
           darwin_trace='{ "platform": "darwin-arm64", "runner": "macos-latest", "deps": "" }'
           # The accessibility tree is read through the browser's DevTools port, on every platform: there is one tree source (A11-229), so a row has one source and no other to run.
           # `chromium` is the build the row's Playwright ships (its playwright-core/browsers.json): the report of every worker is held to having run in it, and to the sentence of its row's `agreement` (below). 1.63.0 and 1.64.1 are the two versions the list starts with; 1.62.1 is the newest 1.62 and is not meant to be listed: it holds the wording of an unlisted version.
@@ -82,10 +86,10 @@ jobs:
           darwin_second='{ "platform": "darwin-arm64", "runner": "macos-latest", "playwright": "1.63.0", "agreement": "measured", "chromium": "153.0.8010.12", "deps": "", "primary": false, "build": false }'
           if [ "$EVENT_NAME" = pull_request ]; then
             mode="pull request"
-            bundle="$linux_bundle"; trace="$linux_trace"; demo="$linux_primary, ${darwin_primary/BUILD/true}"
+            bundle="$linux_bundle, $arm_bundle"; trace="$linux_trace, $arm_trace"; demo="$linux_primary, ${darwin_primary/BUILD/true}"
           else
             mode=full
-            bundle="$linux_bundle, $darwin_bundle"; trace="$linux_trace, $darwin_trace"; demo="$linux_primary, $linux_others, ${darwin_primary/BUILD/false}, $darwin_second"
+            bundle="$linux_bundle, $arm_bundle, $darwin_bundle"; trace="$linux_trace, $arm_trace, $darwin_trace"; demo="$linux_primary, $linux_others, ${darwin_primary/BUILD/false}, $darwin_second"
           fi
           {
             echo "bundle={\"include\": [$bundle]}"
@@ -175,7 +179,7 @@ jobs:
           { echo "### Transcripts ${{ matrix.platform }}"; echo; echo '```'; python3 middleware/bundle/compare_bundles.py replay "$RUNNER_TEMP/full" "$RUNNER_TEMP/lean" 2>&1; echo '```'; } | tee -a "$GITHUB_STEP_SUMMARY"
         shell: bash
 
-  # The format the bundle is built in is the one that was measured: the smaller of xz and zstd among those that unpack in 5 s or less on the runners that built a bundle (both in full mode, Linux alone in a pull request) with the host's tar. The job fails when build.sh's default is
+  # The format the bundle is built in is the one that was measured: the smaller of xz and zstd among those that unpack in 5 s or less on the x64 Linux and macOS runners (both in full mode, Linux alone in a pull request) with the host's tar. The arm bundle's formats are uploaded and not part of the choice: it ships in the format the other two were measured to. The job fails when build.sh's default is
   # any other.
   bundle-format:
     needs: bundle

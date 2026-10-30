@@ -35,16 +35,23 @@ class Pins(unittest.TestCase):
 
     def test_every_python_build_the_bundle_downloads_has_a_checksum_pinned(self):
         p = pins()
-        for key in ('PBS_SHA256_LINUX_X64', 'PBS_SHA256_DARWIN_ARM64'): self.assertRegex(p[key], r'^[0-9a-f]{64}$')
+        for key in ('PBS_SHA256_LINUX_X64', 'PBS_SHA256_LINUX_ARM64', 'PBS_SHA256_DARWIN_ARM64'): self.assertRegex(p[key], r'^[0-9a-f]{64}$')
 
     def test_the_python_is_the_stripped_install_only_build_and_the_pins_are_its_checksums(self):
         """The release's own SHA256SUMS: cpython-3.13.16+20261013-<triple>-install_only_stripped.tar.gz (the install_only ones were e588e50d… and ca0e6a70…)."""
         p = pins()
         self.assertEqual(p['PBS_SHA256_LINUX_X64'], 'd0080766b6b74aeb81e1949ef0d9a20e6c17f7b160fb295a69b936ccb17660be')
+        self.assertEqual(p['PBS_SHA256_LINUX_ARM64'], '69a30ed26198178732c37b8de0b6b5191479fbacfe526954da776befe38f18e7')
         self.assertEqual(p['PBS_SHA256_DARWIN_ARM64'], '16a5332fb0dcb77f163fc8f8cbccd95be1644cc53e68e5d2a79f50afd6680a0e')
         text = (ROOT / 'middleware/bundle/build.sh').read_text()
         self.assertIn('-install_only_stripped.tar.gz"', text)
         self.assertNotRegex(text, r'-install_only\.tar\.gz')
+
+    def test_each_platform_downloads_its_own_python_build_and_is_refused_unless_it_is_that_builds_pinned_sum(self):
+        text = (ROOT / 'middleware/bundle/build.sh').read_text()
+        for platform, triple, key in (('linux-x64', 'x86_64-unknown-linux-gnu', 'PBS_SHA256_LINUX_X64'), ('linux-arm64', 'aarch64-unknown-linux-gnu', 'PBS_SHA256_LINUX_ARM64'), ('darwin-arm64', 'aarch64-apple-darwin', 'PBS_SHA256_DARWIN_ARM64')):
+            self.assertRegex(text, rf'\n  {platform}\) +TRIPLE={triple}; +PBS_SHA="\${key}" ;;', platform)
+        self.assertIn('is not the pinned build', text)
 
     def test_a_python_whose_checksum_is_not_the_pinned_one_is_refused_before_anything_is_unpacked(self):
         check = next(l for l in (ROOT / 'middleware/bundle/build.sh').read_text().splitlines() if 'is not the pinned build' in l)
@@ -317,6 +324,31 @@ class KeepList(unittest.TestCase):
             out = pathlib.Path(d) / 'out.txt'
             self.assertEqual(subprocess.run([sys.executable, str(HERE / 'keep.py'), str(out), '--layout', str(pathlib.Path(d) / 'layout'), '--also', also, t], capture_output=True, text=True).returncode, 0)
             self.assertEqual(out.read_text(), 'nvda-src/source/a.py\nnvda-src/source/b.py\npython/lib/python3.13/os.py\n')
+
+    def test_every_platform_build_sh_builds_has_a_keep_list_and_the_lists_differ_only_in_the_extension_modules_platform_tag(self):
+        platforms = re.findall(r'\n  ([a-z]+-[a-z0-9]+)\) +TRIPLE=', (HERE / 'build.sh').read_text())
+        self.assertEqual(platforms, ['linux-x64', 'linux-arm64', 'darwin-arm64'])
+        lists = {p: (HERE / 'keep' / f'{p}.txt').read_text().splitlines() for p in platforms}
+        tag = re.compile(r'\.cpython-313-(x86_64-linux-gnu|aarch64-linux-gnu|darwin)\.so$')
+        neutral = {p: [tag.sub('.so', l) for l in lines] for p, lines in lists.items()}
+        self.assertEqual(neutral['linux-arm64'], neutral['linux-x64']); self.assertEqual(neutral['darwin-arm64'], neutral['linux-x64'])
+        self.assertIn('python/lib/python3.13/site-packages/fast_diff_match_patch.cpython-313-aarch64-linux-gnu.so', lists['linux-arm64'])
+        self.assertNotIn('x86_64', '\n'.join(lists['linux-arm64']))
+
+    def test_the_size_table_of_a_platform_with_no_earlier_bundle_has_the_columns_it_is_given_and_this_one(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = pathlib.Path(d, 'bundle'); write_tree(root, {'bundle.json': '{}', 'python/bin/python3': 'x'})
+            table = sizes.table(str(root), 'linux-arm64')
+        header = table.splitlines()[0]
+        self.assertEqual(header, '| Part (MB unpacked) | Spike | This bundle |')
+        self.assertEqual({len(row.split('|')) for row in table.splitlines()}, {len(header.split('|'))})
+
+    def test_the_size_command_takes_every_platform_a_bundle_is_built_for(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = pathlib.Path(d, 'bundle'); write_tree(root, {'bundle.json': '{}', 'python/bin/python3': 'x'})
+            for platform in ('linux-x64', 'linux-arm64', 'darwin-arm64'):
+                ran = subprocess.run([sys.executable, str(HERE / 'sizes.py'), 'table', str(root), '--platform', platform], capture_output=True, text=True)
+                self.assertEqual(ran.returncode, 0, f'{platform}: {ran.stderr}')
 
     def test_the_committed_lists_are_sorted_and_name_only_the_two_pruned_parts(self):
         for path in sorted((HERE / 'keep').glob('*.txt')):

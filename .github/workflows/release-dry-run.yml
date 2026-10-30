@@ -71,6 +71,7 @@ jobs:
       matrix:
         include:
           - { platform: linux-x64, runner: ubuntu-latest, deps: "--with-deps" }
+          - { platform: linux-arm64, runner: ubuntu-24.04-arm, deps: "--with-deps" }
           - { platform: darwin-arm64, runner: macos-latest, deps: "" }
     runs-on: ${{ matrix.runner }}
     steps:
