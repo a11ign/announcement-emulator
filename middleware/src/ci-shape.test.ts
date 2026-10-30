@@ -222,7 +222,7 @@ test("the spike runs for a pull request that touches it, nightly, on dispatch an
   const on = workflow(SPIKE).on ?? {};
   assert.deepEqual(Object.keys(on).sort(), ["pull_request", "schedule", "workflow_call", "workflow_dispatch"]);
   const paths = on.pull_request!.paths!;
-  for (const path of [".github/workflows/middleware-spike.yml", "middleware/bundle/**", "middleware/runtime/**", "middleware/src/**", "middleware/sample-suite/**", "pins.env", "emu/**", "q1/**", "q2/**", "q3/**"]) assert.ok(paths.includes(path), path);
+  for (const path of [".github/workflows/middleware-spike.yml", "middleware/bundle/**", "middleware/runtime/**", "middleware/src/**", "middleware/sample-suite/**", "middleware/.npmrc", ".pnpmfile.cjs", "pins.env", "emu/**", "q1/**", "q2/**", "q3/**"]) assert.ok(paths.includes(path), path);
   for (const docs of ["docs/**", "README.md", "middleware/README.md", "middleware/results/**", "middleware/agreement/**"]) assert.ok(!paths.some((path) => path === docs), `${docs} would run the spike`);
   assert.ok(on.pull_request!.types!.includes("ready_for_review"), "a draft that is marked ready runs");
 });
