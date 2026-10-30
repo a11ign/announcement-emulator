@@ -1,8 +1,9 @@
 Row A11-232, step 2 of 3: `.github/workflows/release.yml` is the publish path (the org's per-merge release workflow, pinned by the full sha of the toolchain merge that added `release-files` and `after-version`), behind the one switch `"private": true`. While the package is private the workflow stops at its `plan` job and builds and publishes nothing. When it is not, `bundles` (release-bundles.yml) and `spike` (middleware-spike.yml, full mode) must pass before `release` publishes under the dist-tag `preview` with the bundles attached. Nothing is published: the package is still `private`. `linux-arm64` is step 3.
 
-Acceptance (no network and no browser; the package's own tests need `pnpm install` once):
+Acceptance:
 
 ```bash
+# no network and no browser; the package's own tests need `pnpm install` once
 set -eu
 test "$(node -p "require('./middleware/package.json').private")" = true       # still private: release.yml is a dry run
 node -e 'const c=require("./.changeset/config.json"); if (c.access !== "public") process.exit(1)'   # the toolchain's publish job re-checks it
