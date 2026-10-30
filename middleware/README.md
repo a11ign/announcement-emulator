@@ -116,7 +116,7 @@ starts it and reads its JSON lines and **never imports it** (the runtime is GPL-
 - **NVDA's source**, one tree (`nvda-src/source`): the files the runtime was seen to import or read, `locale/en`, and the pinned CLDR names (`cldr.dic`) put over NVDA's own file in place. No other locale, no docs, images or tests, no second copy.
 - **This repository's runtime** (the emulator, the sweep, the runtime process, `emu/tables.json`); it carries no browser extension (A11-229). The Chromium source files `emu/tables.json` was generated from are not shipped:
   nothing reads them at run time.
-- No browser and no browser library (`bundle/check_no_browser.py`).
+- No browser, no browser library and no extension (`bundle/check_no_browser.py`, with `bundle/check_no_extension.py`).
 
 **Measured** (CI, `middleware-spike.yml`; MB of 10^6 bytes; the spike is A11-208's bundle, which had Chrome and a full Python, and A11-230's had no browser):
 

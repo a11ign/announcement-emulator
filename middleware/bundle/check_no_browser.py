@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """python3 middleware/bundle/check_no_browser.py <bundle directory | bundle .tar.gz or .tar.xz>
 
-Fails (exit 1, one line for each entry) on an entry of the runtime bundle that is a browser or a browser library. The middleware runs in the Chromium the team's Playwright installed (A11-230),
+Fails (exit 1, one line for each entry) on an entry of the runtime bundle that is a browser or a browser library, or an extension (check_no_extension.py's rules, so that the one command the build and CI run guards both). The middleware runs in the Chromium the team's Playwright installed (A11-230),
 so the bundle holds none. The rule is a closed list of patterns, and it names what a Chrome for Testing archive and the libraries it needs contain, so that a browser put back in is found
 by what it is called and not by how big it is."""
 import os, re, sys, tarfile
+
+import check_no_extension
 
 BROWSER_DIRECTORIES = {'chrome', 'chromium', 'libs', 'chrome-linux64', 'chrome-mac-arm64', 'chrome-headless-shell-linux64', 'chrome-headless-shell-mac-arm64'}
 BROWSER_FILES = re.compile(r'^(chrome|chromium|chrome-wrapper|chrome_sandbox|chrome_crashpad_handler|headless_shell|chrome-headless-shell|xvfb|xvfb-run)$|^Google Chrome|^Chromium$', re.I)
@@ -37,9 +39,10 @@ def names_in(path):
 
 def main(argv):
     if len(argv) != 2: print(__doc__, file=sys.stderr); return 2
-    found = offending(names_in(argv[1]))
+    names = list(names_in(argv[1]))
+    found = offending(names) + check_no_extension.offending(names, check_no_extension.manifests_in(argv[1]).get)
     for name, why in found: print(f'{name}: {why}', file=sys.stderr)
-    print(f'{argv[1]}: ' + (f'{len(found)} entries are a browser or a browser library' if found else 'no browser and no browser library'))
+    print(f'{argv[1]}: ' + (f'{len(found)} entries are a browser, a browser library or an extension' if found else 'no browser, no browser library and no extension'))
     return 1 if found else 0
 
 

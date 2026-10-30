@@ -1,24 +1,24 @@
-Row A11-231, step 1 of 2: the runtime bundle is lean. Python is python-build-standalone's `install_only_stripped` build; the standard library ships as bytecode, and only the modules a trace of the runtime read; NVDA is one tree of the files the trace read plus `locale/en`, with the pinned CLDR names put over its own file in place (no `nvda-appdir`, no `cldr-src`); the Chromium sources are not shipped (`emu/tables.json` is); the archive is `.tar.xz` (measured against gzip and zstd), which `install` unpacks with `tar -xf`. The companion extension is still in the bundle, because the runtime still loads it (A11-229 removes it; step 2 of this ticket takes it out of the bundle after that).
+Row A11-231, step 2 of 2 (step 1, `a11ign/announcement-emulator#19`, made the bundle lean; its acceptance block is in that pull request's history). The lean runtime bundle can no longer carry a browser extension: `check_no_browser.py`, the one command `build.sh`, the `bundle` job and `release-bundles.yml` run on the bundle, now also fails on `emu/ext2/`, `q1/ext-id.txt`, a `*.crx`, a `manifest.json` that declares `manifest_version` (outside `python/`) and `middleware/runtime/fallback.py` (rules in `middleware/bundle/check_no_extension.py`). The committed keep lists were traced again against the runtime as A11-229 left it, and the README states the guard.
 
-Acceptance (the checks that need no network and no browser; the package's own tests need `pnpm install` once):
+Acceptance (needs no network):
 
 ```bash
 set -eu
-# the Python is the stripped build, pinned by its own checksums, and refused before anything is unpacked when it is another file
-grep -q 'install_only_stripped.tar.gz"' middleware/bundle/build.sh
-test -z "$(grep -nE -- '-install_only\.tar\.gz' middleware/bundle/build.sh)"
-grep -q '^PBS_SHA256_LINUX_X64=d0080766b6b74aeb81e1949ef0d9a20e6c17f7b160fb295a69b936ccb17660be$' pins.env
-# the Chromium sources and the second copy of NVDA are not in the lean bundle: lean.py prunes to the keep lists, and the lists name only the two pruned parts
-test -s middleware/bundle/keep/linux-x64.txt && test -s middleware/bundle/keep/darwin-arm64.txt && test -s middleware/bundle/keep/nvda-system-tests.txt
-test -z "$(grep -vE '^(python|nvda-src)/' middleware/bundle/keep/linux-x64.txt middleware/bundle/keep/darwin-arm64.txt)"
-# the unit tests: the pruning rules on a synthetic tree, the bytecode-only rule, one copy of NVDA, the formats (same bytes twice), the choice rule, the transcripts comparison, the miss check, the keep lists
-python3 -m unittest discover -s middleware/bundle -t middleware/bundle
-python3 -m unittest discover -s middleware/runtime -t middleware/runtime -p 'test_import_trace.py'
-# the package: install unpacks .tar.gz, .tar.xz and .tar.zst with the host's tar
-( cd middleware && pnpm install --frozen-lockfile >/dev/null && pnpm run lint && pnpm run typecheck && pnpm test >/dev/null )
+d="$(mktemp -d)"; trap 'rm -rf "${d:?}"' EXIT
+# the guard: an extension in a bundle directory fails the check and names the rule; without it the check passes
+mkdir -p "$d/bundle/emu/ext2" "$d/bundle/python/bin"
+printf '{"manifest_version": 3}' > "$d/bundle/emu/ext2/manifest.json"; : > "$d/bundle/python/bin/python3"
+if python3 middleware/bundle/check_no_browser.py "$d/bundle" 2> "$d/err"; then echo "an extension passed"; exit 1; fi
+grep -q 'emu/ext2/manifest.json: an extension or its switch (emu/ext2)' "$d/err"
+rm -rf "${d:?}/bundle/emu"
+python3 middleware/bundle/check_no_browser.py "$d/bundle" | grep -q 'no browser, no browser library and no extension'
+# the tests of the guard, and of the rest of the bundle's inputs
+python3 -m unittest discover -s middleware/bundle -t middleware/bundle -p 'test_*.py'
+# the README states the guard
+grep -q 'No browser, no browser library and no extension (`bundle/check_no_browser.py`, with `bundle/check_no_extension.py`)' middleware/README.md
 ```
 
-The proofs the ticket's Done-when asks for run in CI (`.github/workflows/middleware-spike.yml`) on `ubuntu-latest` and `macos-latest`, and can be run on a Linux host with the network, in about five minutes:
+The proofs the ticket's Done-when asks for (the size table, the identical transcripts, the reproducibility) run in CI (`.github/workflows/middleware-spike.yml`) on `ubuntu-latest` and `macos-latest`, and can be run on a Linux host with the network, in about five minutes:
 
 ```bash
 set -eu
@@ -26,6 +26,7 @@ out="$(mktemp -d)"
 middleware/bundle/build.sh linux-x64 "$out/bundle" --full-dir "$out/full"                    # the lean archive, and the full layout beside it
 archive="$(ls "$out"/bundle/announcement-emulator-bundle-linux-x64.tar.* | grep -v '\.sha256$')"
 mkdir "$out/lean" && tar -xf "$archive" -C "$out/lean"
+python3 middleware/bundle/check_no_browser.py "$archive"                                     # no browser, no browser library and no extension
 python3 middleware/bundle/sizes.py table "$out/lean" --platform linux-x64 --archive "$archive"   # the size, by part, against the spike's and A11-230's
 python3 middleware/bundle/compare_bundles.py replay "$out/full" "$out/lean"                  # every recorded session, three ways, byte for byte (the clock left out)
 middleware/bundle/build.sh linux-x64 "$out/bundle2"                                          # and again
