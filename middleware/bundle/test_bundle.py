@@ -556,6 +556,16 @@ class Build(unittest.TestCase):
         self.assertRegex(self.TEXT, r'(^|\n)FORMAT=(xz|zst);')
 
 
+class Trace(unittest.TestCase):
+    TEXT = (HERE / 'trace.sh').read_text()
+
+    def test_the_trace_runs_where_playwright_deps_is_not_set(self):
+        """trace.sh runs under `set -u`: a developer's shell sets no PLAYWRIGHT_DEPS (only the Ubuntu runners do), and a bare $PLAYWRIGHT_DEPS stopped the run after its sample suite was built."""
+        self.assertIn('set -eu', self.TEXT)
+        self.assertNotRegex(self.TEXT, r'\$PLAYWRIGHT_DEPS|\$\{PLAYWRIGHT_DEPS\}')
+        self.assertIn('${PLAYWRIGHT_DEPS:-}', self.TEXT)
+
+
 class Licence(unittest.TestCase):
     """A11-353: the runtime bundle is GPL-3.0-or-later and ships the GPL text and the notices its components ask for."""
     notices = (HERE / 'NOTICES').read_text()
