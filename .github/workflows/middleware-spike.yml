@@ -31,6 +31,8 @@ on:
       - "middleware/sample-suite/**"
       - "middleware/package.json"
       - "middleware/pnpm-lock.yaml"
+      - "middleware/.npmrc"
+      - ".pnpmfile.cjs"
       - "middleware/supported-versions.json"
       - "middleware/rslib.config.ts"
       - "middleware/tsconfig.build.json"
