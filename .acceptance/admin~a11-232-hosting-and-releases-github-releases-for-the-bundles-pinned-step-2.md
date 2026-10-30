@@ -4,7 +4,6 @@ Acceptance:
 
 ```bash
 # no network and no browser; the package's own tests need `pnpm install` once
-set -eu
 node -e 'if (require("./middleware/package.json").private !== true) process.exit(1)'       # still private: release.yml is a dry run
 node -e 'const c=require("./.changeset/config.json"); if (c.access !== "public") process.exit(1)'   # the toolchain's publish job re-checks it
 node -e 'if (require("./middleware/package.json").version !== "0.0.0") process.exit(1)'
@@ -19,3 +18,5 @@ pnpm --dir middleware exec rstest run src/release-workflow.test.ts src/ci-shape.
 ```
 
 The dry run of the bundles, the sums and the mirror install is `.github/workflows/release-dry-run.yml`, which a change to `.github/workflows/release*.yml` starts on the pull request; its run summary lists every asset with its size and sum.
+
+Mutation: put the fail-open form of the `plan` script back (the test "plan fails … when the package.json is missing or unreadable" went red); dropped `spike` from `release`'s `needs` and replaced the sha by `@main` (two tests red); put the spike's old concurrency group back (the new ci-shape test red)
