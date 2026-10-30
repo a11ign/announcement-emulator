@@ -23,5 +23,5 @@ const missing = targets.filter((t) => !existsSync(t));
 if (missing.length) throw new Error("missing: " + missing);
 '
 # typescript-eslint runs on its own TypeScript 6, and the tests hold all of it
-pnpm exec rstest run src/typescript-seven.test.ts
+pnpm exec rstest run src/typescript-toolchain.test.ts
 ```

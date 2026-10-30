@@ -26,10 +26,10 @@ test("the `tsc` the typecheck step runs reports TypeScript 7", () => {
 
 test("typescript-eslint and every @typescript-eslint package resolve their own TypeScript 6, beside the 7", () => {
   const eslintSnapshots = Object.entries(lock.snapshots).filter(([key]) => /^(typescript-eslint|@typescript-eslint\/[^@]+)@/.test(key));
-  assert.ok(eslintSnapshots.length >= 8, `found ${eslintSnapshots.map(([key]) => key).join(", ")}`);
-  for (const [key, snapshot] of eslintSnapshots) {
-    if (snapshot.dependencies?.typescript !== undefined) assert.match(snapshot.dependencies.typescript, /^6\./, key);
-  }
+  assert.deepEqual(eslintSnapshots.map(([key]) => key).filter((key) => key.includes("typescript@7")), [], "a typescript-eslint package took the importer's TypeScript 7");
+  const withTypescript = eslintSnapshots.filter(([, snapshot]) => snapshot.dependencies?.typescript !== undefined);
+  assert.ok(withTypescript.length >= 8, `found ${withTypescript.map(([key]) => key).join(", ")}`);
+  for (const [key, snapshot] of withTypescript) assert.match(snapshot.dependencies!.typescript!, /^6\./, key);
   const typescripts = Object.keys(lock.snapshots).filter((key) => /^typescript@/.test(key));
   assert.ok(typescripts.some((key) => key.startsWith("typescript@6.")) && typescripts.some((key) => key.startsWith("typescript@7.")), typescripts.join(", "));
 });
