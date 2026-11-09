@@ -75,7 +75,7 @@ jobs:
       group: release
       cancel-in-progress: false
     # Pinned by FULL SHA (the merge of a11ign/toolchain#61, which added `release-files` and `after-version`); Dependabot's `github-actions` entry moves it in a pull request.
-    uses: a11ign/toolchain/.github/workflows/release-per-merge.yml@91321cbf8a27286e539d4c343d57ad9b3b584eb3
+    uses: a11ign/toolchain/.github/workflows/release-per-merge.yml@7c69486d4becc9794e98c3004a36fdf0f8148cf6
     with:
       kind: npm
       gate-check: gate
