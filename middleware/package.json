@@ -40,14 +40,14 @@
   "devDependencies": {
     "@a11ign/toolchain": "0.15.0",
     "@eslint/js": "^10.0.1",
-    "@playwright/test": "1.65.0",
-    "@rslib/core": "1.0.6",
+    "@playwright/test": "1.65.1",
+    "@rslib/core": "1.0.7",
     "@rstest/core": "0.12.6",
     "@types/node": "^26.6.6",
-    "eslint": "^10.14.0",
+    "eslint": "^10.15.0",
     "globals": "^17.14.0",
     "typescript": "^7.0.2",
-    "typescript-eslint": "^8.72.1",
+    "typescript-eslint": "^8.72.2",
     "yaml": "2.9.1"
   },
   "engines": {
